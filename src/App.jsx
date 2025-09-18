@@ -1332,7 +1332,9 @@ const BlogPage = ({ posts, loading, error }) => (
           <article key={post.id} className="bg-[#262626] rounded-lg shadow-lg p-8 border border-white/10">
             <h3 className="text-2xl font-display text-white mb-2">{post.title}</h3>
             <div className="text-xs text-[#E6D5B8]/60 mb-4">{new Date(post.created_at).toLocaleDateString()}</div>
-            <div className="prose prose-invert max-w-none text-[#E6D5B8]/90" dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div className="prose prose-invert max-w-none text-[#E6D5B8]/90">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content || ''}</ReactMarkdown>
+            </div>
           </article>
         ))}
       </div>
