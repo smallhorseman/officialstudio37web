@@ -2,6 +2,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import PhotoshootPlanner from './PhotoshootPlanner';
 import { createClient } from '@supabase/supabase-js';
 // --- Supabase Setup --- //
 const SUPABASE_URL = 'https://sqfqlnodwjubacmaduzl.supabase.co';
@@ -59,6 +60,9 @@ const Logo = ({ className }) => (
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  // Planner page override if ?planner=1 or pathname includes /planner
+  const urlParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
+  const isPlanner = (typeof window !== 'undefined' && (window.location.pathname.includes('planner') || urlParams?.get('planner')));
   const [blogPosts, setBlogPosts] = useState([]);
   const [blogLoading, setBlogLoading] = useState(false);
   const [blogError, setBlogError] = useState('');
@@ -267,6 +271,7 @@ export default function App() {
   };
 
   const PageContent = () => {
+    if (isPlanner) return <PhotoshootPlanner />;
     switch(currentPage) {
       case 'home': return <HomePage navigate={handleNav} />;
       case 'about': return <AboutPage content={siteContent.about} />;
@@ -275,7 +280,7 @@ export default function App() {
       case 'blog': return <BlogPage posts={blogPosts} loading={blogLoading} error={blogError} />;
       case 'contact': return <ContactPage />;
       case 'adminLogin': return <AdminLoginPage onLogin={() => { setIsAdmin(true); handleNav('adminDashboard'); }} />;
-    case 'adminDashboard': return isAdmin ? <AdminDashboard 
+      case 'adminDashboard': return isAdmin ? <AdminDashboard 
                                    leads={leads} 
                                    updateLeadStatus={updateLeadStatus}
                                    content={siteContent}
@@ -537,6 +542,7 @@ const PortfolioGate = ({ onUnlock }) => {
           <div className="text-center bg-[#262626] rounded-lg p-8 max-w-lg mx-auto">
             <h3 className="text-2xl font-display text-white mb-2">Thank You!</h3>
             <p className="text-[#E6D5B8]/80">The portfolio is now unlocked. Check your email for a 10% off coupon!</p>
+            <p className="text-[#E6D5B8]/80 mt-4">Want to plan your shoot? <a href={`/planner?email=${encodeURIComponent(formData.email)}`} className="underline text-[#E6D5B8]">Try our Photoshoot AI Planner</a></p>
           </div>
       );
   }
@@ -647,8 +653,69 @@ const AdminDashboard = ({
   leads, updateLeadStatus, content, updateContent, portfolioImages, addPortfolioImage, deletePortfolioImage,
   blogPosts, createBlogPost, updateBlogPost, deleteBlogPost, blogEdit, setBlogEdit, blogSaving, blogAdminError
 }) => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [projectTodos, setProjectTodos] = useState([]);
+  const [todosLoading, setTodosLoading] = useState(false);
+  const [newTodo, setNewTodo] = useState('');
+
+  // Fetch todos for selected project
+  useEffect(() => {
+    if (selectedProject) {
+      setTodosLoading(true);
+      supabase.from('project_todos').select('*').eq('project_id', selectedProject.id).order('created_at', { ascending: true }).then(({ data }) => {
+        setProjectTodos(data || []);
+        setTodosLoading(false);
+      });
+    }
+  }, [selectedProject]);
+
+  const handleAddTodo = async (e) => {
+    e.preventDefault();
+    if (!newTodo.trim()) return;
+    const { data, error } = await supabase.from('project_todos').insert([{ project_id: selectedProject.id, task: newTodo }]).select();
+    if (!error && data && data[0]) {
+      setProjectTodos(t => [...t, data[0]]);
+      setNewTodo('');
+    }
+  };
+
+  const handleToggleTodo = async (todoId, completed) => {
+    await supabase.from('project_todos').update({ completed: !completed }).eq('id', todoId);
+    setProjectTodos(todos => todos.map(t => t.id === todoId ? { ...t, completed: !completed } : t));
+  };
+
+  const handleDeleteTodo = async (todoId) => {
+    await supabase.from('project_todos').delete().eq('id', todoId);
+    setProjectTodos(todos => todos.filter(t => t.id !== todoId));
+  };
   const [activeTab, setActiveTab] = useState('crm');
   const [siteMapPage, setSiteMapPage] = useState('home');
+  const [projects, setProjects] = useState([]);
+  const [projectsLoading, setProjectsLoading] = useState(false);
+  const [showProjectForm, setShowProjectForm] = useState(false);
+  const [newProject, setNewProject] = useState({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '' });
+  const projectStages = ['Inquiry', 'Proposal', 'Booked', 'In Progress', 'Delivered', 'Closed'];
+
+  // Fetch projects from Supabase
+  useEffect(() => {
+    if (activeTab === 'projects') {
+      setProjectsLoading(true);
+      supabase.from('projects').select('*').order('created_at', { ascending: false }).then(({ data }) => {
+        setProjects(data || []);
+        setProjectsLoading(false);
+      });
+    }
+  }, [activeTab]);
+
+  const handleCreateProject = async (e) => {
+    e.preventDefault();
+    const { data, error } = await supabase.from('projects').insert([{ ...newProject, opportunity_amount: parseFloat(newProject.opportunity_amount) || 0 }]).select();
+    if (!error && data && data[0]) {
+      setProjects(p => [data[0], ...p]);
+      setShowProjectForm(false);
+      setNewProject({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '' });
+    }
+  };
 
   // --- Analytics calculations --- //
   const totalLeads = leads.length;
@@ -672,6 +739,7 @@ const AdminDashboard = ({
           <button onClick={() => setActiveTab('blog')} className={`py-2 px-6 text-lg ${activeTab === 'blog' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Blog</button>
           <button onClick={() => setActiveTab('sitemap')} className={`py-2 px-6 text-lg ${activeTab === 'sitemap' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Site Map</button>
           <button onClick={() => setActiveTab('analytics')} className={`py-2 px-6 text-lg ${activeTab === 'analytics' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Analytics</button>
+          <button onClick={() => setActiveTab('projects')} className={`py-2 px-6 text-lg ${activeTab === 'projects' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Projects</button>
         </div>
         {activeTab === 'crm' && <CrmSection leads={leads} updateLeadStatus={updateLeadStatus} />}
         {activeTab === 'cms' && <CmsSection 
@@ -716,6 +784,93 @@ const AdminDashboard = ({
                 </div>
               </div>
             </div>
+          </div>
+        )}
+        {activeTab === 'projects' && (
+          <div className="bg-[#262626] p-8 rounded-lg">
+            <div className="flex justify-between items-center mb-6">
+              <h4 className="text-xl font-display">Projects</h4>
+              <button onClick={() => setShowProjectForm(f => !f)} className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">{showProjectForm ? 'Cancel' : 'New Project'}</button>
+            </div>
+            {showProjectForm && (
+              <form onSubmit={handleCreateProject} className="mb-8 grid md:grid-cols-2 gap-4">
+                <input type="text" value={newProject.name} onChange={e => setNewProject(p => ({ ...p, name: e.target.value }))} placeholder="Project Name" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" required />
+                <input type="text" value={newProject.client} onChange={e => setNewProject(p => ({ ...p, client: e.target.value }))} placeholder="Client Name" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
+                <input type="number" value={newProject.opportunity_amount} onChange={e => setNewProject(p => ({ ...p, opportunity_amount: e.target.value }))} placeholder="Opportunity Amount ($)" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
+                <select value={newProject.stage} onChange={e => setNewProject(p => ({ ...p, stage: e.target.value }))} className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3">
+                  {projectStages.map(stage => <option key={stage}>{stage}</option>)}
+                </select>
+                <textarea value={newProject.notes} onChange={e => setNewProject(p => ({ ...p, notes: e.target.value }))} placeholder="Notes" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 md:col-span-2" />
+                <button type="submit" className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md md:col-span-2">Create Project</button>
+              </form>
+            )}
+            {projectsLoading ? (
+              <div className="text-[#E6D5B8]">Loading projects...</div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-left">
+                  <thead className="border-b border-white/10">
+                    <tr>
+                      <th className="p-3">Name</th>
+                      <th className="p-3">Client</th>
+                      <th className="p-3">Amount</th>
+                      <th className="p-3">Stage</th>
+                      <th className="p-3">Notes</th>
+                      <th className="p-3">Created</th>
+                      <th className="p-3">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {projects.map(proj => (
+                      <tr key={proj.id} className="border-b border-white/10 last:border-b-0">
+                        <td className="p-3 font-bold">{proj.name}</td>
+                        <td className="p-3">{proj.client}</td>
+                        <td className="p-3">${proj.opportunity_amount?.toLocaleString?.() ?? ''}</td>
+                        <td className="p-3">{proj.stage}</td>
+                        <td className="p-3">{proj.notes}</td>
+                        <td className="p-3 text-xs">{proj.created_at ? new Date(proj.created_at).toLocaleDateString() : ''}</td>
+                        <td className="p-3">
+                          <button onClick={() => setSelectedProject(proj)} className="bg-blue-500 text-white px-3 py-1 rounded text-xs">View</button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {/* Project Detail Modal */}
+            {selectedProject && (
+              <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+                <div className="bg-[#232323] p-8 rounded-lg shadow-lg w-full max-w-2xl relative">
+                  <button onClick={() => setSelectedProject(null)} className="absolute top-2 right-2 text-white text-xl">&times;</button>
+                  <h4 className="text-2xl font-display mb-2">{selectedProject.name}</h4>
+                  <div className="mb-2 text-[#E6D5B8]/80">Client: {selectedProject.client || 'N/A'}</div>
+                  <div className="mb-2 text-[#E6D5B8]/80">Opportunity: ${selectedProject.opportunity_amount?.toLocaleString?.() ?? ''}</div>
+                  <div className="mb-2 text-[#E6D5B8]/80">Stage: {selectedProject.stage}</div>
+                  <div className="mb-4 text-[#E6D5B8]/80">Notes: {selectedProject.notes}</div>
+                  <h5 className="text-lg font-display mb-2 mt-4">Project Todo List</h5>
+                  <form onSubmit={handleAddTodo} className="flex gap-2 mb-4">
+                    <input type="text" value={newTodo} onChange={e => setNewTodo(e.target.value)} placeholder="Add a task..." className="flex-grow bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
+                    <button type="submit" className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">Add</button>
+                  </form>
+                  {todosLoading ? (
+                    <div className="text-[#E6D5B8]">Loading tasks...</div>
+                  ) : (
+                    <ul className="space-y-2">
+                      {projectTodos.map(todo => (
+                        <li key={todo.id} className="flex items-center gap-2 bg-[#1a1a1a] rounded p-2">
+                          <input type="checkbox" checked={!!todo.completed} onChange={() => handleToggleTodo(todo.id, todo.completed)} />
+                          <span className={todo.completed ? 'line-through text-[#E6D5B8]/50' : ''}>{todo.task}</span>
+                          <button onClick={() => handleDeleteTodo(todo.id)} className="ml-auto text-red-400 hover:text-red-600 text-xs">Delete</button>
+                        </li>
+                      ))}
+                      {projectTodos.length === 0 && <li className="text-[#E6D5B8]/60">No tasks yet.</li>}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>
