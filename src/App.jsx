@@ -444,6 +444,14 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggl
           </nav>
         </div>
       )}
+      <style>{`
+        header, header * {
+          color: #fff !important;
+        }
+        .dark header, .dark header * {
+          color: #F7F7F7 !important;
+        }
+      `}</style>
     </header>
   );
 };
