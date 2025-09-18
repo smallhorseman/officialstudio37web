@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import PhotoshootPlanner from './PhotoshootPlanner';
 import ConversationalPlanner from './ConversationalPlanner';
+import VirtualAgentPlanner from './VirtualAgentPlanner';
 import { createClient } from '@supabase/supabase-js';
 // --- Supabase Setup --- //
 const SUPABASE_URL = 'https://sqfqlnodwjubacmaduzl.supabase.co';
