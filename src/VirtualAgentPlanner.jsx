@@ -21,6 +21,8 @@ export default function VirtualAgentPlanner({ onComplete }) {
   ]);
   const [saving, setSaving] = useState(false);
   const [done, setDone] = useState(false);
+  const [leadId, setLeadId] = useState(null);
+  const [projectId, setProjectId] = useState(null);
 
   const handleSend = async (e) => {
     e.preventDefault();
@@ -57,13 +59,14 @@ export default function VirtualAgentPlanner({ onComplete }) {
           status: 'New'
         }
       ]).select();
-      let leadId = leadData && leadData[0]?.id;
+      const newLeadId = leadData && leadData[0]?.id;
+      setLeadId(newLeadId);
       // 2. Create project (Inquiry status)
-      let projectId = null;
-      if (leadId) {
+      let newProjectId = null;
+      if (newLeadId) {
         const { data: projData } = await supabase.from('projects').insert([
           {
-            lead_id: leadId,
+            lead_id: newLeadId,
             name: `${answers.name}'s Photoshoot`,
             client: answers.name,
             opportunity_amount: 0,
@@ -71,13 +74,14 @@ export default function VirtualAgentPlanner({ onComplete }) {
             notes: answers.notes
           }
         ]).select();
-        projectId = projData && projData[0]?.id;
+        newProjectId = projData && projData[0]?.id;
+        setProjectId(newProjectId);
       }
       // 3. Add AI-generated note to lead_notes
-      if (leadId) {
+      if (newLeadId) {
         const noteText = `AI Planner: Date: ${answers.date}; Location: ${answers.location}; Style: ${answers.style}; Inspiration: ${answers.inspiration}; Notes: ${answers.notes}`;
         await supabase.from('lead_notes').insert([
-          { lead_id: leadId, note: noteText, status: 'Inquiry' }
+          { lead_id: newLeadId, note: noteText, status: 'Inquiry' }
         ]);
       }
 
@@ -124,29 +128,7 @@ export default function VirtualAgentPlanner({ onComplete }) {
 
   // Add note, todo, or update info
   const [postField, setPostField] = useState('');
-  const [leadId, setLeadId] = useState(null);
-  const [projectId, setProjectId] = useState(null);
 
-  // Save leadId/projectId after creation
-  React.useEffect(() => {
-    if (!leadId && messages.length > 0) {
-      const lastMsg = messages[messages.length - 1];
-      if (lastMsg.text.includes("We've created your project")) {
-        // Try to fetch latest lead/project for this email
-        (async () => {
-          const { createClient } = await import('@supabase/supabase-js');
-          const supabase = createClient(
-            'https://sqfqlnodwjubacmaduzl.supabase.co',
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZnFsbm9kd2p1YmFjbWFkdXpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzQ2ODUsImV4cCI6MjA3Mzc1MDY4NX0.OtEDSh5UCm8CxWufG_NBLDzgNFI3wnr-oAyaRib_4Mw'
-          );
-          const { data: leads } = await supabase.from('leads').select('id').eq('email', answers.email).order('created_at', { ascending: false }).limit(1);
-          if (leads && leads[0]) setLeadId(leads[0].id);
-          const { data: projects } = await supabase.from('projects').select('id').eq('client', answers.name).order('created_at', { ascending: false }).limit(1);
-          if (projects && projects[0]) setProjectId(projects[0].id);
-        })();
-      }
-    }
-  }, [messages, answers.email, answers.name, leadId, projectId]);
 
   // Handle add note
   const handleAddNote = async (e) => {
