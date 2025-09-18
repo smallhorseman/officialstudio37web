@@ -80,12 +80,146 @@ export default function VirtualAgentPlanner({ onComplete }) {
           { lead_id: leadId, note: noteText, status: 'Inquiry' }
         ]);
       }
+
       setSaving(false);
-      setMessages(msgs => [...msgs, { from: 'bot', text: "You're all set! We've created your project and will reach out soon. You can continue planning here or close this chat." }]);
-      setDone(true);
+      setMessages(msgs => [
+        ...msgs,
+        { from: 'bot', text: "You're all set! We've created your project and will reach out soon. You can continue planning here or close this chat." },
+        { from: 'bot', text: "What would you like to do next? (Type: add note, add todo, update info, or 'done' to finish)" }
+      ]);
+      setDone(false); // allow further interaction
+      setStep(steps.length); // move past initial flow
       if (onComplete) onComplete();
     }
   };
+
+  // Handle post-creation actions
+  const handlePostCreation = async (e) => {
+    e.preventDefault();
+    const cmd = input.trim().toLowerCase();
+    setMessages(msgs => [...msgs, { from: 'user', text: input }]);
+    setInput('');
+    if (cmd === 'done' || cmd === 'exit' || cmd === 'close') {
+      setMessages(msgs => [...msgs, { from: 'bot', text: 'Thank you for planning with Studio37! You can close this chat anytime.' }]);
+      setDone(true);
+      return;
+    }
+    if (cmd.includes('note')) {
+      setMessages(msgs => [...msgs, { from: 'bot', text: 'Please type your note:' }]);
+      setStep('add_note');
+      return;
+    }
+    if (cmd.includes('todo')) {
+      setMessages(msgs => [...msgs, { from: 'bot', text: 'Please type your todo/task:' }]);
+      setStep('add_todo');
+      return;
+    }
+    if (cmd.includes('update')) {
+      setMessages(msgs => [...msgs, { from: 'bot', text: 'What info would you like to update? (name, email, phone, date, location, style, inspiration, notes)' }]);
+      setStep('update_field');
+      return;
+    }
+    setMessages(msgs => [...msgs, { from: 'bot', text: "Sorry, I didn't understand. Type: add note, add todo, update info, or 'done'." }]);
+  };
+
+  // Add note, todo, or update info
+  const [postField, setPostField] = useState('');
+  const [leadId, setLeadId] = useState(null);
+  const [projectId, setProjectId] = useState(null);
+
+  // Save leadId/projectId after creation
+  React.useEffect(() => {
+    if (!leadId && messages.length > 0) {
+      const lastMsg = messages[messages.length - 1];
+      if (lastMsg.text.includes("We've created your project")) {
+        // Try to fetch latest lead/project for this email
+        (async () => {
+          const { createClient } = await import('@supabase/supabase-js');
+          const supabase = createClient(
+            'https://sqfqlnodwjubacmaduzl.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZnFsbm9kd2p1YmFjbWFkdXpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzQ2ODUsImV4cCI6MjA3Mzc1MDY4NX0.OtEDSh5UCm8CxWufG_NBLDzgNFI3wnr-oAyaRib_4Mw'
+          );
+          const { data: leads } = await supabase.from('leads').select('id').eq('email', answers.email).order('created_at', { ascending: false }).limit(1);
+          if (leads && leads[0]) setLeadId(leads[0].id);
+          const { data: projects } = await supabase.from('projects').select('id').eq('client', answers.name).order('created_at', { ascending: false }).limit(1);
+          if (projects && projects[0]) setProjectId(projects[0].id);
+        })();
+      }
+    }
+  }, [messages, answers.email, answers.name, leadId, projectId]);
+
+  // Handle add note
+  const handleAddNote = async (e) => {
+    e.preventDefault();
+    if (!leadId) {
+      setMessages(msgs => [...msgs, { from: 'bot', text: 'Lead not found. Please try again later.' }]);
+      setStep(steps.length);
+      return;
+    }
+    const { createClient } = await import('@supabase/supabase-js');
+    const supabase = createClient(
+      'https://sqfqlnodwjubacmaduzl.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZnFsbm9kd2p1YmFjbWFkdXpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzQ2ODUsImV4cCI6MjA3Mzc1MDY4NX0.OtEDSh5UCm8CxWufG_NBLDzgNFI3wnr-oAyaRib_4Mw'
+    );
+    await supabase.from('lead_notes').insert([{ lead_id: leadId, note: input, status: 'Update' }]);
+    setMessages(msgs => [...msgs, { from: 'user', text: input }, { from: 'bot', text: 'Note added! What next? (add note, add todo, update info, done)' }]);
+    setInput('');
+    setStep(steps.length);
+  };
+
+  // Handle add todo (project_todos)
+  const handleAddTodo = async (e) => {
+    e.preventDefault();
+    if (!projectId) {
+      setMessages(msgs => [...msgs, { from: 'bot', text: 'Project not found. Please try again later.' }]);
+      setStep(steps.length);
+      return;
+    }
+    const { createClient } = await import('@supabase/supabase-js');
+    const supabase = createClient(
+      'https://sqfqlnodwjubacmaduzl.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZnFsbm9kd2p1YmFjbWFkdXpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzQ2ODUsImV4cCI6MjA3Mzc1MDY4NX0.OtEDSh5UCm8CxWufG_NBLDzgNFI3wnr-oAyaRib_4Mw'
+    );
+    await supabase.from('project_todos').insert([{ project_id: projectId, task: input }]);
+    setMessages(msgs => [...msgs, { from: 'user', text: input }, { from: 'bot', text: 'Todo added! What next? (add note, add todo, update info, done)' }]);
+    setInput('');
+    setStep(steps.length);
+  };
+
+  // Handle update info
+  const handleUpdateField = async (e) => {
+    e.preventDefault();
+    const field = input.trim().toLowerCase();
+    setPostField(field);
+    setMessages(msgs => [...msgs, { from: 'user', text: input }, { from: 'bot', text: `What is the new value for ${field}?` }]);
+    setInput('');
+    setStep('update_value');
+  };
+
+  const handleUpdateValue = async (e) => {
+    e.preventDefault();
+    if (!leadId) {
+      setMessages(msgs => [...msgs, { from: 'bot', text: 'Lead not found. Please try again later.' }]);
+      setStep(steps.length);
+      return;
+    }
+    const { createClient } = await import('@supabase/supabase-js');
+    const supabase = createClient(
+      'https://sqfqlnodwjubacmaduzl.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZnFsbm9kd2p1YmFjbWFkdXpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzQ2ODUsImV4cCI6MjA3Mzc1MDY4NX0.OtEDSh5UCm8CxWufG_NBLDzgNFI3wnr-oAyaRib_4Mw'
+    );
+    await supabase.from('leads').update({ [postField]: input }).eq('id', leadId);
+    setMessages(msgs => [...msgs, { from: 'user', text: input }, { from: 'bot', text: `${postField} updated! What next? (add note, add todo, update info, done)` }]);
+    setInput('');
+    setStep(steps.length);
+  };
+
+  let formHandler = handleSend;
+  if (step === steps.length) formHandler = handlePostCreation;
+  if (step === 'add_note') formHandler = handleAddNote;
+  if (step === 'add_todo') formHandler = handleAddTodo;
+  if (step === 'update_field') formHandler = handleUpdateField;
+  if (step === 'update_value') formHandler = handleUpdateValue;
 
   return (
     <div className="flex flex-col h-[60vh] md:h-[70vh]">
@@ -95,7 +229,7 @@ export default function VirtualAgentPlanner({ onComplete }) {
         ))}
       </div>
       {!done && (
-        <form onSubmit={handleSend} className="flex gap-2 p-4 border-t border-white/10">
+        <form onSubmit={formHandler} className="flex gap-2 p-4 border-t border-white/10">
           <input
             type="text"
             value={input}
