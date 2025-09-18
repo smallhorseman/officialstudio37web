@@ -302,6 +302,9 @@ export default function App() {
     }
   };
 
+  // Floating chat bot state
+  const [showChatBot, setShowChatBot] = useState(false);
+
   return (
     <div className="bg-[#1a1a1a] text-[#E6D5B8] min-h-screen font-sans antialiased">
       <style>{`
@@ -330,6 +333,31 @@ export default function App() {
         <PageContent />
       </main>
       <Footer navigate={handleNav} />
+
+      {/* Floating Chat Bot Button */}
+      <button
+        onClick={() => setShowChatBot(true)}
+        className="fixed bottom-6 right-6 z-50 bg-[#E6D5B8] text-[#1a1a1a] rounded-full shadow-lg p-4 flex items-center gap-2 hover:scale-105 transition-transform"
+        aria-label="Open Photoshoot Planner Chat Bot"
+        style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.25)' }}
+      >
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        <span className="font-bold hidden md:inline">Plan My Shoot</span>
+      </button>
+
+      {/* Floating Chat Bot Modal */}
+      {showChatBot && (
+        <div className="fixed inset-0 bg-black/40 flex items-end md:items-center justify-center z-[100]">
+          <div className="bg-[#232323] rounded-t-2xl md:rounded-lg shadow-2xl w-full max-w-md mx-auto p-0 md:p-0 relative animate-fadeInUp">
+            <button onClick={() => setShowChatBot(false)} className="absolute top-2 right-4 text-white text-2xl">&times;</button>
+            <div className="p-4 border-b border-white/10 flex items-center gap-2">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+              <span className="font-display text-lg font-bold">Photoshoot Planner</span>
+            </div>
+            <ConversationalPlanner email={''} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
