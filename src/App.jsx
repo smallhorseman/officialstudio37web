@@ -394,12 +394,12 @@ export default function App() {
 
 const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggleTheme }) => {
   const navLinks = [
-    { page: 'home', label: 'Home' },
-    { page: 'about', label: 'About' },
-    { page: 'services', label: 'Services' },
-    { page: 'portfolio', label: 'Portfolio' },
-    { page: 'blog', label: 'Blog' },
-    { page: 'contact', label: 'Contact' },
+  { page: 'home', label: 'Home' },
+  { page: 'about', label: 'About' },
+  { page: 'services', label: 'Services' },
+  { page: 'portfolio', label: 'Portfolio' },
+  { page: 'blog', label: 'Blog' },
+  { page: 'contact', label: 'Contact' },
   ];
 
   const NavLink = ({ page, label }) => (
@@ -461,10 +461,10 @@ const HomePage = ({ navigate }) => (
     <img src="https://res.cloudinary.com/dmjxho2rl/image/upload/a_vflip/l_image:upload:My%20Brand:IMG_2115_mtuowt/c_scale,fl_relative,w_0.35/o_100/fl_layer_apply,g_north,x_0.03,y_0.04/v1758172510/A4B03835-ED8B-4FBB-A27E-1F2EE6CA1A18_1_105_c_gstgil.jpg" alt="Studio37 Hero" className="absolute inset-0 w-full h-full object-cover"/>
     <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-0 pointer-events-none"></div>
     <div className="relative z-10">
-      <h1 className="text-5xl md:text-7xl lg:text-8xl font-display mb-4 leading-tight">Capture. Create. Captivate.</h1>
-      <p className="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-[#E6D5B8]/80">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
-      <div className="space-x-4">
-        <button onClick={() => navigate('portfolio')} className="group inline-flex items-center bg-[#E6D5B8] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
+      <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display mb-4 leading-tight break-words max-w-full">Capture. Create. Captivate.</h1>
+      <p className="text-base sm:text-lg md:text-xl max-w-xs sm:max-w-2xl mx-auto mb-8 text-[#E6D5B8]/80">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
+      <div className="space-y-4 sm:space-x-4 flex flex-col sm:flex-row items-center justify-center w-full">
+        <button onClick={() => navigate('portfolio')} className="group inline-flex items-center bg-[#E6D5B8] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 w-full sm:w-auto">
           View Our Work <ArrowRight />
         </button>
       </div>
