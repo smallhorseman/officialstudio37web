@@ -945,71 +945,84 @@ const CrmSection = ({ leads, updateLeadStatus }) => (
 );
 
 const CmsSection = ({ content, updateContent, portfolioImages, addPortfolioImage, deletePortfolioImage }) => {
-    const [newImageUrl, setNewImageUrl] = useState('');
-    const [newImageCategory, setNewImageCategory] = useState('Portrait');
-    
-    const handleAddImage = (e) => {
-        e.preventDefault();
-        if(newImageUrl) {
-            addPortfolioImage({ url: newImageUrl, category: newImageCategory });
-            setNewImageUrl('');
-        }
+  const [newImageUrl, setNewImageUrl] = useState('');
+  const [newImageCategory, setNewImageCategory] = useState('Portrait');
+  const [showPreview, setShowPreview] = useState(false);
+
+  const handleAddImage = (e) => {
+    e.preventDefault();
+    if(newImageUrl) {
+      addPortfolioImage({ url: newImageUrl, category: newImageCategory });
+      setNewImageUrl('');
+      setShowPreview(false);
     }
+  }
 
-    return (
-        <div>
-            <h3 className="text-2xl font-display mb-6">Website Content</h3>
-            
-            {/* About Page Editor */}
-            <div className="bg-[#262626] p-6 rounded-lg mb-8">
-                <h4 className="text-xl font-display mb-4">About Page Content</h4>
-                <div className="space-y-4">
-                    <input 
-                        type="text"
-                        value={content.about.title}
-                        onChange={e => updateContent('about', 'title', e.target.value)}
-                        className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-                    />
-                    <textarea 
-                        rows="5"
-                        value={content.about.bio}
-                        onChange={e => updateContent('about', 'bio', e.target.value)}
-                        className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-                    ></textarea>
-                </div>
-            </div>
+  const handleUrlChange = (e) => {
+    setNewImageUrl(e.target.value);
+    setShowPreview(!!e.target.value);
+  };
 
-            {/* Portfolio Manager */}
-            <div className="bg-[#262626] p-6 rounded-lg">
-                <h4 className="text-xl font-display mb-4">Portfolio Images</h4>
-                <form onSubmit={handleAddImage} className="flex gap-4 mb-6">
-                    <input type="text" value={newImageUrl} onChange={e => setNewImageUrl(e.target.value)} placeholder="Image URL (e.g., from placehold.co)" className="flex-grow bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
-                    <select value={newImageCategory} onChange={e => setNewImageCategory(e.target.value)} className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3">
-                        <option>Portrait</option>
-                        <option>Event</option>
-                        <option>Professional</option>
-                        <option>Wedding</option>
-                        <option>Real Estate</option>
-                        <option>Nature</option>
-                    </select>
-                    <button type="submit" className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">Add Image</button>
-                </form>
+  return (
+    <div>
+      <h3 className="text-2xl font-display mb-6">Website Content</h3>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                    {portfolioImages.map(img => (
-                        <div key={img.id} className="relative group">
-                            <img src={img.url} className="rounded-md" />
-                            <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button onClick={() => deletePortfolioImage(img.id)} className="bg-red-500 text-white rounded-full p-2">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                                </button>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+      {/* About Page Editor */}
+      <div className="bg-[#262626] p-6 rounded-lg mb-8">
+        <h4 className="text-xl font-display mb-4">About Page Content</h4>
+        <div className="space-y-4">
+          <input 
+            type="text"
+            value={content.about.title}
+            onChange={e => updateContent('about', 'title', e.target.value)}
+            className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+          />
+          <textarea 
+            rows="5"
+            value={content.about.bio}
+            onChange={e => updateContent('about', 'bio', e.target.value)}
+            className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+          ></textarea>
         </div>
-    );
+      </div>
+
+      {/* Portfolio Manager */}
+      <div className="bg-[#262626] p-6 rounded-lg">
+        <h4 className="text-xl font-display mb-4">Portfolio Images</h4>
+        <form onSubmit={handleAddImage} className="flex flex-col md:flex-row gap-4 mb-6 items-center">
+          <input type="text" value={newImageUrl} onChange={handleUrlChange} placeholder="Image URL (e.g., from placehold.co or Cloudinary)" className="flex-grow bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
+          <select value={newImageCategory} onChange={e => setNewImageCategory(e.target.value)} className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3">
+            <option>Portrait</option>
+            <option>Event</option>
+            <option>Professional</option>
+            <option>Wedding</option>
+            <option>Real Estate</option>
+            <option>Nature</option>
+          </select>
+          <button type="submit" className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">Add Image</button>
+        </form>
+        {showPreview && newImageUrl && (
+          <div className="mb-6 flex flex-col items-center">
+            <span className="text-[#E6D5B8]/70 text-xs mb-2">Image Preview:</span>
+            <img src={newImageUrl} alt="Preview" className="max-h-40 rounded shadow border border-white/10" onError={e => {e.target.style.display='none';}} />
+          </div>
+        )}
+
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          {portfolioImages.map(img => (
+            <div key={img.id} className="relative group">
+              <img src={img.url} className="rounded-md" />
+              <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <button onClick={() => deletePortfolioImage(img.id)} className="bg-red-500 text-white rounded-full p-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 
