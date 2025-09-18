@@ -62,6 +62,20 @@ const Logo = ({ className }) => (
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  // Dark/Light mode state
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') || 'dark';
+    }
+    return 'dark';
+  });
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.documentElement.classList.toggle('dark', theme === 'dark');
+      localStorage.setItem('theme', theme);
+    }
+  }, [theme]);
+  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
   // Planner page override if ?planner=1 or pathname includes /planner
   const urlParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
   const isPlanner = (typeof window !== 'undefined' && (window.location.pathname.includes('planner') || urlParams?.get('planner')));
@@ -307,7 +321,12 @@ export default function App() {
   const [showChatBot, setShowChatBot] = useState(false);
 
   return (
-    <div className="bg-[#1a1a1a] text-[#E6D5B8] min-h-screen font-sans antialiased">
+    <div className={
+      `min-h-screen font-sans antialiased transition-colors duration-300 ` +
+      (theme === 'dark'
+        ? 'bg-[#1a1a1a] text-[#E6D5B8]'
+        : 'bg-white text-[#232323]')
+    }>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
@@ -328,8 +347,15 @@ export default function App() {
             z-index: 10;
         }
       `}</style>
-      
-      <Header navigate={handleNav} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} currentPage={currentPage} />
+
+      <Header 
+        navigate={handleNav} 
+        isMenuOpen={isMenuOpen} 
+        setIsMenuOpen={setIsMenuOpen} 
+        currentPage={currentPage}
+        theme={theme}
+        toggleTheme={toggleTheme}
+      />
       <main className="pt-20">
         <PageContent />
       </main>
@@ -338,7 +364,7 @@ export default function App() {
       {/* Floating Chat Bot Button */}
       <button
         onClick={() => setShowChatBot(true)}
-        className="fixed bottom-6 right-6 z-50 bg-[#E6D5B8] text-[#1a1a1a] rounded-full shadow-lg p-4 flex items-center gap-2 hover:scale-105 transition-transform"
+        className="fixed bottom-6 right-6 z-50 bg-[#E6D5B8] text-[#1a1a1a] dark:bg-[#232323] dark:text-[#E6D5B8] rounded-full shadow-lg p-4 flex items-center gap-2 hover:scale-105 transition-transform"
         aria-label="Open Photoshoot Planner Chat Bot"
         style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.25)' }}
       >
@@ -349,8 +375,8 @@ export default function App() {
       {/* Floating Chat Bot Modal */}
       {showChatBot && (
         <div className="fixed inset-0 bg-black/40 flex items-end md:items-center justify-center z-[100]">
-          <div className="bg-[#232323] rounded-t-2xl md:rounded-lg shadow-2xl w-full max-w-md mx-auto p-0 md:p-0 relative animate-fadeInUp">
-            <button onClick={() => setShowChatBot(false)} className="absolute top-2 right-4 text-white text-2xl">&times;</button>
+          <div className="bg-[#232323] dark:bg-white rounded-t-2xl md:rounded-lg shadow-2xl w-full max-w-md mx-auto p-0 md:p-0 relative animate-fadeInUp">
+            <button onClick={() => setShowChatBot(false)} className="absolute top-2 right-4 text-white dark:text-black text-2xl">&times;</button>
             <div className="p-4 border-b border-white/10 flex items-center gap-2">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
               <span className="font-display text-lg font-bold">Photoshoot Planner</span>
@@ -366,7 +392,7 @@ export default function App() {
 
 // --- Page & Section Components --- //
 
-const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage }) => {
+const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggleTheme }) => {
   const navLinks = [
     { page: 'home', label: 'Home' },
     { page: 'about', label: 'About' },
@@ -386,22 +412,33 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage }) => {
   );
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#1a1a1a]/80 backdrop-blur-md shadow-md">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#1a1a1a]/80 dark:bg-white/80 backdrop-blur-md shadow-md">
+      <div className="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
         <button onClick={() => navigate('home')}>
           <Logo />
         </button>
         <nav className="hidden md:flex items-center">
           {navLinks.map(link => <NavLink key={link.page} {...link} />)}
         </nav>
-        <div className="md:hidden">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white">
+        <button
+          onClick={toggleTheme}
+          className="ml-4 p-2 rounded-full border border-[#E6D5B8]/30 dark:border-[#232323]/30 bg-[#232323] dark:bg-[#E6D5B8] text-[#E6D5B8] dark:text-[#232323] transition-colors"
+          aria-label="Toggle dark/light mode"
+        >
+          {theme === 'dark' ? (
+            <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"></path></svg>
+          ) : (
+            <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2m0 18v2m11-11h-2M3 12H1m16.95 6.95l-1.41-1.41M6.34 6.34L4.93 4.93m12.02 0l-1.41 1.41M6.34 17.66l-1.41 1.41"></path></svg>
+          )}
+        </button>
+        <div className="md:hidden ml-2">
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white dark:text-[#232323]">
             {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
         </div>
       </div>
       {isMenuOpen && (
-        <div className="md:hidden bg-[#1a1a1a]">
+        <div className="md:hidden bg-[#1a1a1a] dark:bg-white">
           <nav className="flex flex-col items-center py-4">
             {navLinks.map(link => <NavLink key={link.page} {...link} />)}
           </nav>
@@ -769,6 +806,7 @@ const AdminDashboard = ({
   const mostPopularService = Object.entries(serviceCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || 'N/A';
   const blogCount = blogPosts.length;
   const portfolioCount = portfolioImages.length;
+  const potentialRevenue = projects.reduce((sum, p) => sum + (parseFloat(p.opportunity_amount) || 0), 0);
 
   return (
     <div className="py-20 md:py-28">
@@ -802,7 +840,7 @@ const AdminDashboard = ({
         />}
         {activeTab === 'sitemap' && <SiteMapTab siteMapPage={siteMapPage} setSiteMapPage={setSiteMapPage} content={content} portfolioImages={portfolioImages} blogPosts={blogPosts} />}
         {activeTab === 'analytics' && (
-          <div className="bg-[#262626] p-8 rounded-lg grid md:grid-cols-2 gap-8">
+          <div className="bg-[#262626] p-8 rounded-lg grid md:grid-cols-3 gap-8">
             <div>
               <h4 className="text-xl font-display mb-4">Leads & Conversion</h4>
               <div className="text-4xl font-bold mb-2">{totalLeads}</div>
@@ -824,6 +862,11 @@ const AdminDashboard = ({
                   <span className="ml-2 text-[#E6D5B8]/70">Portfolio Images</span>
                 </div>
               </div>
+            </div>
+            <div>
+              <h4 className="text-xl font-display mb-4">Potential Revenue</h4>
+              <div className="text-4xl font-bold mb-2">${potentialRevenue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
+              <div className="text-[#E6D5B8]/70 mb-2">Sum of all project opportunity values</div>
             </div>
           </div>
         )}
