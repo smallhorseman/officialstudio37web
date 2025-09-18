@@ -692,6 +692,36 @@ const defaultSiteMapPages = [
 
 const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blogPosts }) => {
   const [pages, setPages] = React.useState(defaultSiteMapPages);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState('');
+
+  // Load order from Supabase
+  React.useEffect(() => {
+    setLoading(true);
+    setError('');
+    supabase
+      .from('site_map_order')
+      .select('*')
+      .order('order_index', { ascending: true })
+      .then(({ data, error }) => {
+        if (error) setError('Failed to load site map order.');
+        else if (data && data.length > 0) {
+          setPages(data.map(row => ({ key: row.page_key, label: row.page_label })));
+        }
+        setLoading(false);
+      });
+  }, []);
+
+  // Save order to Supabase
+  const saveOrder = async (newPages) => {
+    // Update each row's order_index
+    for (let i = 0; i < newPages.length; i++) {
+      await supabase
+        .from('site_map_order')
+        .update({ order_index: i })
+        .eq('page_key', newPages[i].key);
+    }
+  };
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
@@ -699,7 +729,11 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
     const [removed] = reordered.splice(result.source.index, 1);
     reordered.splice(result.destination.index, 0, removed);
     setPages(reordered);
+    saveOrder(reordered);
   };
+
+  if (loading) return <div className="text-[#E6D5B8]">Loading site map...</div>;
+  if (error) return <div className="text-red-400">{error}</div>;
 
   return (
     <div className="flex flex-col md:flex-row gap-8">
