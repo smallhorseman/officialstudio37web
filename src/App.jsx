@@ -1,3 +1,4 @@
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 // --- Supabase Setup --- //
@@ -680,7 +681,7 @@ const AdminDashboard = ({
   );
 };
 // --- Site Map Tab with Flowchart and Live Preview --- //
-const siteMapPages = [
+const defaultSiteMapPages = [
   { key: 'home', label: 'Home' },
   { key: 'about', label: 'About' },
   { key: 'services', label: 'Services' },
@@ -690,24 +691,49 @@ const siteMapPages = [
 ];
 
 const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blogPosts }) => {
-  // Simple flowchart layout
+  const [pages, setPages] = React.useState(defaultSiteMapPages);
+
+  const onDragEnd = (result) => {
+    if (!result.destination) return;
+    const reordered = Array.from(pages);
+    const [removed] = reordered.splice(result.source.index, 1);
+    reordered.splice(result.destination.index, 0, removed);
+    setPages(reordered);
+  };
+
   return (
     <div className="flex flex-col md:flex-row gap-8">
       <div className="md:w-1/3">
         <h4 className="text-xl font-display mb-4">Website Map</h4>
-        <div className="flex flex-col items-start gap-4">
-          {siteMapPages.map((page, idx) => (
-            <div key={page.key} className="flex items-center gap-2">
-              <button
-                onClick={() => setSiteMapPage(page.key)}
-                className={`px-4 py-2 rounded-full font-bold transition-colors ${siteMapPage === page.key ? 'bg-[#E6D5B8] text-[#1a1a1a]' : 'bg-[#262626] text-[#E6D5B8] hover:bg-[#E6D5B8]/30'}`}
-              >
-                {page.label}
-              </button>
-              {idx < siteMapPages.length - 1 && <span className="text-[#E6D5B8]">→</span>}
-            </div>
-          ))}
-        </div>
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable droppableId="siteMapPages">
+            {(provided) => (
+              <div ref={provided.innerRef} {...provided.droppableProps} className="flex flex-col items-start gap-4">
+                {pages.map((page, idx) => (
+                  <Draggable key={page.key} draggableId={page.key} index={idx}>
+                    {(provided, snapshot) => (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        className={`flex items-center gap-2 ${snapshot.isDragging ? 'opacity-80' : ''}`}
+                      >
+                        <button
+                          onClick={() => setSiteMapPage(page.key)}
+                          className={`px-4 py-2 rounded-full font-bold transition-colors ${siteMapPage === page.key ? 'bg-[#E6D5B8] text-[#1a1a1a]' : 'bg-[#262626] text-[#E6D5B8] hover:bg-[#E6D5B8]/30'}`}
+                        >
+                          {page.label}
+                        </button>
+                        {idx < pages.length - 1 && <span className="text-[#E6D5B8]">→</span>}
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
       </div>
       <div className="md:w-2/3">
         <h4 className="text-xl font-display mb-4">Live Preview</h4>
