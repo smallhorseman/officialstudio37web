@@ -1,5 +1,7 @@
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import React, { useState, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { createClient } from '@supabase/supabase-js';
 // --- Supabase Setup --- //
 const SUPABASE_URL = 'https://sqfqlnodwjubacmaduzl.supabase.co';
@@ -647,15 +649,29 @@ const AdminDashboard = ({
 }) => {
   const [activeTab, setActiveTab] = useState('crm');
   const [siteMapPage, setSiteMapPage] = useState('home');
+
+  // --- Analytics calculations --- //
+  const totalLeads = leads.length;
+  const bookedLeads = leads.filter(l => l.status === 'Booked').length;
+  const conversionRate = totalLeads > 0 ? ((bookedLeads / totalLeads) * 100).toFixed(1) : '0.0';
+  const serviceCounts = leads.reduce((acc, l) => {
+    if (l.service) acc[l.service] = (acc[l.service] || 0) + 1;
+    return acc;
+  }, {});
+  const mostPopularService = Object.entries(serviceCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || 'N/A';
+  const blogCount = blogPosts.length;
+  const portfolioCount = portfolioImages.length;
+
   return (
     <div className="py-20 md:py-28">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-display mb-10">Admin Dashboard</h2>
-        <div className="flex border-b border-white/20 mb-8">
+        <div className="flex border-b border-white/20 mb-8 flex-wrap">
           <button onClick={() => setActiveTab('crm')} className={`py-2 px-6 text-lg ${activeTab === 'crm' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>CRM (Leads)</button>
           <button onClick={() => setActiveTab('cms')} className={`py-2 px-6 text-lg ${activeTab === 'cms' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>CMS (Content)</button>
           <button onClick={() => setActiveTab('blog')} className={`py-2 px-6 text-lg ${activeTab === 'blog' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Blog</button>
           <button onClick={() => setActiveTab('sitemap')} className={`py-2 px-6 text-lg ${activeTab === 'sitemap' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Site Map</button>
+          <button onClick={() => setActiveTab('analytics')} className={`py-2 px-6 text-lg ${activeTab === 'analytics' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Analytics</button>
         </div>
         {activeTab === 'crm' && <CrmSection leads={leads} updateLeadStatus={updateLeadStatus} />}
         {activeTab === 'cms' && <CmsSection 
@@ -676,6 +692,32 @@ const AdminDashboard = ({
           blogAdminError={blogAdminError}
         />}
         {activeTab === 'sitemap' && <SiteMapTab siteMapPage={siteMapPage} setSiteMapPage={setSiteMapPage} content={content} portfolioImages={portfolioImages} blogPosts={blogPosts} />}
+        {activeTab === 'analytics' && (
+          <div className="bg-[#262626] p-8 rounded-lg grid md:grid-cols-2 gap-8">
+            <div>
+              <h4 className="text-xl font-display mb-4">Leads & Conversion</h4>
+              <div className="text-4xl font-bold mb-2">{totalLeads}</div>
+              <div className="text-[#E6D5B8]/70 mb-2">Total Leads</div>
+              <div className="text-2xl font-bold mb-2">{conversionRate}%</div>
+              <div className="text-[#E6D5B8]/70 mb-2">Conversion Rate (Booked)</div>
+              <div className="text-lg font-bold mb-2">{mostPopularService}</div>
+              <div className="text-[#E6D5B8]/70">Most Popular Service</div>
+            </div>
+            <div>
+              <h4 className="text-xl font-display mb-4">Content Stats</h4>
+              <div className="flex flex-col gap-4">
+                <div>
+                  <span className="text-3xl font-bold">{blogCount}</span>
+                  <span className="ml-2 text-[#E6D5B8]/70">Blog Posts</span>
+                </div>
+                <div>
+                  <span className="text-3xl font-bold">{portfolioCount}</span>
+                  <span className="ml-2 text-[#E6D5B8]/70">Portfolio Images</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -833,13 +875,34 @@ const SiteMapPreview = ({ page, content, portfolioImages, blogPosts }) => {
 };
 // --- Blog Admin Section --- //
 const BlogAdminSection = ({ blogPosts, createBlogPost, updateBlogPost, deleteBlogPost, blogEdit, setBlogEdit, blogSaving, blogAdminError }) => {
-  const [form, setForm] = useState({ title: '', slug: '', author: '', excerpt: '', content: '' });
+  const [form, setForm] = useState({
+    title: '',
+    slug: '',
+    author: '',
+    excerpt: '',
+    content: '',
+    publish_date: '',
+    tags: [],
+    category: ''
+  });
   useEffect(() => {
-    if (blogEdit) setForm(blogEdit);
-    else setForm({ title: '', slug: '', author: '', excerpt: '', content: '' });
+    if (blogEdit) setForm({
+      ...blogEdit,
+      tags: blogEdit.tags || [],
+      category: blogEdit.category || '',
+      publish_date: blogEdit.publish_date ? blogEdit.publish_date.slice(0, 16) : ''
+    });
+    else setForm({ title: '', slug: '', author: '', excerpt: '', content: '', publish_date: '', tags: [], category: '' });
   }, [blogEdit]);
 
-  const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
+  const handleChange = e => {
+    const { name, value, type } = e.target;
+    if (name === 'tags') {
+      setForm(f => ({ ...f, tags: Array.from(e.target.selectedOptions, o => o.value) }));
+    } else {
+      setForm(f => ({ ...f, [name]: value }));
+    }
+  };
   const handleSubmit = e => {
     e.preventDefault();
     if (blogEdit) updateBlogPost(blogEdit.id, form).then(() => setBlogEdit(null));
@@ -849,6 +912,10 @@ const BlogAdminSection = ({ blogPosts, createBlogPost, updateBlogPost, deleteBlo
   const handleDelete = id => { if (window.confirm('Delete this post?')) deleteBlogPost(id); };
   const handleCancel = () => setBlogEdit(null);
 
+  // Example tag/category options
+  const tagOptions = ['Tips', 'Behind the Scenes', 'Gear', 'Events', 'Portraits', 'Business', 'Personal'];
+  const categoryOptions = ['General', 'Portrait', 'Event', 'Business', 'Wedding', 'Real Estate', 'Nature'];
+
   return (
     <div className="bg-[#262626] p-6 rounded-lg">
       <h4 className="text-xl font-display mb-4">{blogEdit ? 'Edit Blog Post' : 'New Blog Post'}</h4>
@@ -857,7 +924,35 @@ const BlogAdminSection = ({ blogPosts, createBlogPost, updateBlogPost, deleteBlo
         <input name="slug" value={form.slug} onChange={handleChange} placeholder="Slug (unique, e.g. my-post)" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" required />
         <input name="author" value={form.author} onChange={handleChange} placeholder="Author" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
         <input name="excerpt" value={form.excerpt} onChange={handleChange} placeholder="Excerpt" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
-        <textarea name="content" value={form.content} onChange={handleChange} placeholder="Content (HTML allowed)" rows={6} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" required />
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex-1">
+            <label className="block text-xs mb-1 text-[#E6D5B8]/70">Publish Date</label>
+            <input type="datetime-local" name="publish_date" value={form.publish_date} onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
+          </div>
+          <div className="flex-1">
+            <label className="block text-xs mb-1 text-[#E6D5B8]/70">Category</label>
+            <select name="category" value={form.category} onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3">
+              <option value="">Select category</option>
+              {categoryOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+            </select>
+          </div>
+          <div className="flex-1">
+            <label className="block text-xs mb-1 text-[#E6D5B8]/70">Tags</label>
+            <select name="tags" multiple value={form.tags} onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 h-24">
+              {tagOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+            </select>
+          </div>
+        </div>
+        <label className="block text-xs mb-1 text-[#E6D5B8]/70">Content (Markdown supported)</label>
+        <div className="grid md:grid-cols-2 gap-4">
+          <textarea name="content" value={form.content} onChange={handleChange} placeholder="Write your post in Markdown..." rows={10} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 font-mono" required />
+          <div className="bg-[#181818] border border-white/10 rounded-md p-3 overflow-auto min-h-[200px]">
+            <div className="text-xs text-[#E6D5B8]/60 mb-1">Live Preview</div>
+            <ReactMarkdown remarkPlugins={[remarkGfm]} className="prose prose-invert max-w-none text-[#E6D5B8]/90">
+              {form.content || 'Nothing to preview.'}
+            </ReactMarkdown>
+          </div>
+        </div>
         <div className="flex gap-2">
           <button type="submit" className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md" disabled={blogSaving}>{blogEdit ? 'Update' : 'Create'}</button>
           {blogEdit && <button type="button" onClick={handleCancel} className="bg-gray-500 text-white py-2 px-4 rounded-md">Cancel</button>}
@@ -872,6 +967,7 @@ const BlogAdminSection = ({ blogPosts, createBlogPost, updateBlogPost, deleteBlo
               <div className="font-bold text-white">{post.title}</div>
               <div className="text-xs text-[#E6D5B8]/60">/{post.slug} &middot; {post.author} &middot; {post.created_at ? new Date(post.created_at).toLocaleDateString() : ''}</div>
               <div className="text-[#E6D5B8]/80 text-sm mt-1">{post.excerpt}</div>
+              <div className="text-xs text-[#E6D5B8]/60 mt-1">{post.category} {post.tags && post.tags.length > 0 && <> &middot; {post.tags.join(', ')}</>}</div>
             </div>
             <div className="flex gap-2 mt-2 md:mt-0">
               <button onClick={() => handleEdit(post)} className="bg-blue-500 text-white px-3 py-1 rounded">Edit</button>
@@ -884,76 +980,173 @@ const BlogAdminSection = ({ blogPosts, createBlogPost, updateBlogPost, deleteBlo
   );
 };
 
-const CrmSection = ({ leads, updateLeadStatus }) => (
+const CrmSection = ({ leads, updateLeadStatus }) => {
+  const [openLeadId, setOpenLeadId] = React.useState(null);
+  const [notes, setNotes] = React.useState({}); // {leadId: [notes]}
+  const [loadingNotes, setLoadingNotes] = React.useState(false);
+  const [noteInput, setNoteInput] = React.useState('');
+  const [noteStatus, setNoteStatus] = React.useState('');
+  const [addingNote, setAddingNote] = React.useState(false);
+
+  // Fetch notes for a lead when opened
+  const fetchNotes = async (leadId) => {
+    setLoadingNotes(true);
+    const { data, error } = await supabase
+      .from('lead_notes')
+      .select('*')
+      .eq('lead_id', leadId)
+      .order('created_at', { ascending: false });
+    if (!error) setNotes(prev => ({ ...prev, [leadId]: data }));
+    setLoadingNotes(false);
+  };
+
+  const handleOpenNotes = (leadId) => {
+    setOpenLeadId(openLeadId === leadId ? null : leadId);
+    if (openLeadId !== leadId) fetchNotes(leadId);
+  };
+
+  const handleAddNote = async (leadId) => {
+    setAddingNote(true);
+    const { data, error } = await supabase
+      .from('lead_notes')
+      .insert([{ lead_id: leadId, note: noteInput, status: noteStatus }]);
+    setAddingNote(false);
+    setNoteInput('');
+    setNoteStatus('');
+    if (!error) fetchNotes(leadId);
+  };
+
+  return (
     <div>
-        <h3 className="text-2xl font-display mb-6">Client Leads ({leads.length})</h3>
-        <div className="bg-[#262626] rounded-lg shadow-lg overflow-x-auto">
-            <table className="w-full text-left">
-                <thead className="border-b border-white/10">
-                    <tr>
-                        <th className="p-4 uppercase text-sm font-bold tracking-wider">Name</th>
-                        <th className="p-4 uppercase text-sm font-bold tracking-wider">Contact</th>
-                        <th className="p-4 uppercase text-sm font-bold tracking-wider">Service</th>
-                        <th className="p-4 uppercase text-sm font-bold tracking-wider">Status</th>
-                        <th className="p-4 uppercase text-sm font-bold tracking-wider">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {leads.map(lead => (
-                        <tr key={lead.id} className="border-b border-white/10 last:border-b-0">
-                            <td className="p-4">{lead.name}</td>
-                            <td className="p-4">
-                                <div className="text-sm">{lead.email}</div>
-                                {lead.phone && <div className="text-xs text-white/60">{lead.phone}</div>}
-                            </td>
-                            <td className="p-4">{lead.service || 'N/A'}</td>
-                            <td className="p-4">
-                                <select 
-                                    value={lead.status} 
-                                    onChange={(e) => updateLeadStatus(lead.id, e.target.value)}
-                                    className="bg-[#1a1a1a] border border-white/20 rounded-md py-1 px-2 focus:outline-none focus:ring-1 focus:ring-[#E6D5B8]"
-                                >
-                                    <option>New</option>
-                                    <option>Contacted</option>
-                                    <option>Booked</option>
-                                    <option>Closed</option>
-                                </select>
-                            </td>
-                            <td className="p-4">
-                                <div className="flex items-center gap-4">
-                                    <a href={`mailto:${lead.email}`} title="Email" className="text-[#E6D5B8] hover:text-white">
-                                        <MailIcon />
-                                    </a>
-                                    {lead.phone && (
-                                        <>
-                                            <a href={`tel:${lead.phone}`} title="Call" className="text-[#E6D5B8] hover:text-white">
-                                                <PhoneIcon />
-                                            </a>
-                                            <a href={`sms:${lead.phone}`} title="SMS" className="text-[#E6D5B8] hover:text-white">
-                                                <SmsIcon />
-                                            </a>
-                                        </>
-                                    )}
-                                </div>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+      <h3 className="text-2xl font-display mb-6">Client Leads ({leads.length})</h3>
+      <div className="bg-[#262626] rounded-lg shadow-lg overflow-x-auto">
+        <table className="w-full text-left">
+          <thead className="border-b border-white/10">
+            <tr>
+              <th className="p-4 uppercase text-sm font-bold tracking-wider">Name</th>
+              <th className="p-4 uppercase text-sm font-bold tracking-wider">Contact</th>
+              <th className="p-4 uppercase text-sm font-bold tracking-wider">Service</th>
+              <th className="p-4 uppercase text-sm font-bold tracking-wider">Status</th>
+              <th className="p-4 uppercase text-sm font-bold tracking-wider">Actions</th>
+              <th className="p-4 uppercase text-sm font-bold tracking-wider">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {leads.map(lead => (
+              <React.Fragment key={lead.id}>
+                <tr className="border-b border-white/10 last:border-b-0">
+                  <td className="p-4">{lead.name}</td>
+                  <td className="p-4">
+                    <div className="text-sm">{lead.email}</div>
+                    {lead.phone && <div className="text-xs text-white/60">{lead.phone}</div>}
+                  </td>
+                  <td className="p-4">{lead.service || 'N/A'}</td>
+                  <td className="p-4">
+                    <select 
+                      value={lead.status} 
+                      onChange={(e) => updateLeadStatus(lead.id, e.target.value)}
+                      className="bg-[#1a1a1a] border border-white/20 rounded-md py-1 px-2 focus:outline-none focus:ring-1 focus:ring-[#E6D5B8]"
+                    >
+                      <option>New</option>
+                      <option>Contacted</option>
+                      <option>Booked</option>
+                      <option>Closed</option>
+                    </select>
+                  </td>
+                  <td className="p-4">
+                    <div className="flex items-center gap-4">
+                      <a href={`mailto:${lead.email}`} title="Email" className="text-[#E6D5B8] hover:text-white">
+                        <MailIcon />
+                      </a>
+                      {lead.phone && (
+                        <>
+                          <a href={`tel:${lead.phone}`} title="Call" className="text-[#E6D5B8] hover:text-white">
+                            <PhoneIcon />
+                          </a>
+                          <a href={`sms:${lead.phone}`} title="SMS" className="text-[#E6D5B8] hover:text-white">
+                            <SmsIcon />
+                          </a>
+                        </>
+                      )}
+                    </div>
+                  </td>
+                  <td className="p-4">
+                    <button onClick={() => handleOpenNotes(lead.id)} className="bg-[#E6D5B8] text-[#1a1a1a] px-3 py-1 rounded-full text-xs font-bold hover:bg-[#e6d5b8]/80">{openLeadId === lead.id ? 'Hide' : 'Show'} Notes</button>
+                  </td>
+                </tr>
+                {openLeadId === lead.id && (
+                  <tr>
+                    <td colSpan={6} className="bg-[#232323] p-4">
+                      <div className="mb-2 font-bold text-[#E6D5B8]">Notes & Status History</div>
+                      {loadingNotes ? (
+                        <div className="text-[#E6D5B8]">Loading...</div>
+                      ) : (
+                        <div className="space-y-2 mb-4">
+                          {(notes[lead.id] || []).length === 0 && <div className="text-[#E6D5B8]/60">No notes yet.</div>}
+                          {(notes[lead.id] || []).map(note => (
+                            <div key={note.id} className="bg-[#1a1a1a] rounded p-2 text-sm flex flex-col md:flex-row md:items-center md:gap-4">
+                              <span className="text-[#E6D5B8]">{note.status && <span className="font-bold">[{note.status}] </span>}{note.note}</span>
+                              <span className="text-xs text-[#E6D5B8]/60 md:ml-auto">{new Date(note.created_at).toLocaleString()}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      <form onSubmit={e => { e.preventDefault(); handleAddNote(lead.id); }} className="flex flex-col md:flex-row gap-2 items-start md:items-end">
+                        <input type="text" value={noteInput} onChange={e => setNoteInput(e.target.value)} placeholder="Add note..." className="bg-[#1a1a1a] border border-white/20 rounded-md py-1 px-2 w-full md:w-1/2" />
+                        <select value={noteStatus} onChange={e => setNoteStatus(e.target.value)} className="bg-[#1a1a1a] border border-white/20 rounded-md py-1 px-2">
+                          <option value="">Status (optional)</option>
+                          <option>New</option>
+                          <option>Contacted</option>
+                          <option>Booked</option>
+                          <option>Closed</option>
+                        </select>
+                        <button type="submit" className="bg-[#E6D5B8] text-[#1a1a1a] px-3 py-1 rounded-md font-bold" disabled={addingNote || (!noteInput && !noteStatus)}>{addingNote ? 'Adding...' : 'Add'}</button>
+                      </form>
+                    </td>
+                  </tr>
+                )}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
-);
+  );
+};
 
 const CmsSection = ({ content, updateContent, portfolioImages, addPortfolioImage, deletePortfolioImage }) => {
   const [newImageUrl, setNewImageUrl] = useState('');
   const [newImageCategory, setNewImageCategory] = useState('Portrait');
+  const [newImageCaption, setNewImageCaption] = useState('');
   const [showPreview, setShowPreview] = useState(false);
+  const [selectedImages, setSelectedImages] = useState([]); // for bulk delete
+  const [editingImage, setEditingImage] = useState(null); // {id, url, category, caption}
+  const [editFields, setEditFields] = useState({ url: '', category: '', caption: '' });
+
+  // Drag-and-drop reordering
+  const [images, setImages] = useState([]);
+  useEffect(() => {
+    setImages([...portfolioImages].sort((a, b) => (a.order_index ?? 0) - (b.order_index ?? 0)));
+  }, [portfolioImages]);
+
+  const onDragEnd = async (result) => {
+    if (!result.destination) return;
+    const reordered = Array.from(images);
+    const [removed] = reordered.splice(result.source.index, 1);
+    reordered.splice(result.destination.index, 0, removed);
+    setImages(reordered);
+    // Persist new order to Supabase
+    for (let i = 0; i < reordered.length; i++) {
+      await supabase.from('portfolio_images').update({ order_index: i }).eq('id', reordered[i].id);
+    }
+  };
 
   const handleAddImage = (e) => {
     e.preventDefault();
     if(newImageUrl) {
-      addPortfolioImage({ url: newImageUrl, category: newImageCategory });
+      addPortfolioImage({ url: newImageUrl, category: newImageCategory, caption: newImageCaption });
       setNewImageUrl('');
+      setNewImageCaption('');
       setShowPreview(false);
     }
   }
@@ -961,6 +1154,35 @@ const CmsSection = ({ content, updateContent, portfolioImages, addPortfolioImage
   const handleUrlChange = (e) => {
     setNewImageUrl(e.target.value);
     setShowPreview(!!e.target.value);
+  };
+
+  const handleSelectImage = (id) => {
+    setSelectedImages(sel => sel.includes(id) ? sel.filter(i => i !== id) : [...sel, id]);
+  };
+
+  const handleBulkDelete = async () => {
+    for (const id of selectedImages) {
+      await deletePortfolioImage(id);
+    }
+    setSelectedImages([]);
+  };
+
+  const handleEditImage = (img) => {
+    setEditingImage(img);
+    setEditFields({ url: img.url, category: img.category, caption: img.caption || '' });
+  };
+
+  const handleEditFieldChange = (e) => {
+    setEditFields(f => ({ ...f, [e.target.name]: e.target.value }));
+  };
+
+  const handleSaveEdit = async () => {
+    await supabase.from('portfolio_images').update({
+      url: editFields.url,
+      category: editFields.category,
+      caption: editFields.caption
+    }).eq('id', editingImage.id);
+    setEditingImage(null);
   };
 
   return (
@@ -999,6 +1221,7 @@ const CmsSection = ({ content, updateContent, portfolioImages, addPortfolioImage
             <option>Real Estate</option>
             <option>Nature</option>
           </select>
+          <input type="text" value={newImageCaption} onChange={e => setNewImageCaption(e.target.value)} placeholder="Caption (optional)" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
           <button type="submit" className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">Add Image</button>
         </form>
         {showPreview && newImageUrl && (
@@ -1008,18 +1231,65 @@ const CmsSection = ({ content, updateContent, portfolioImages, addPortfolioImage
           </div>
         )}
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {portfolioImages.map(img => (
-            <div key={img.id} className="relative group">
-              <img src={img.url} className="rounded-md" />
-              <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <button onClick={() => deletePortfolioImage(img.id)} className="bg-red-500 text-white rounded-full p-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                </button>
+        <div className="mb-4 flex gap-2">
+          <button onClick={handleBulkDelete} className="bg-red-500 text-white px-4 py-2 rounded-md font-bold" disabled={selectedImages.length === 0}>Delete Selected</button>
+          <span className="text-[#E6D5B8]/70 text-xs">(Select images below to delete in bulk)</span>
+        </div>
+
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable droppableId="portfolioImages" direction="horizontal">
+            {(provided) => (
+              <div ref={provided.innerRef} {...provided.droppableProps} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                {images.map((img, idx) => (
+                  <Draggable key={img.id} draggableId={img.id.toString()} index={idx}>
+                    {(provided, snapshot) => (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        className={`relative group bg-[#1a1a1a] rounded-md p-2 border border-white/10 ${snapshot.isDragging ? 'opacity-80' : ''}`}
+                      >
+                        <input type="checkbox" checked={selectedImages.includes(img.id)} onChange={() => handleSelectImage(img.id)} className="absolute top-2 left-2 z-10" />
+                        <img src={img.url} className="rounded-md mb-2 w-full h-32 object-cover" />
+                        <div className="text-xs text-[#E6D5B8]/80 mb-1">{img.category}</div>
+                        {img.caption && <div className="text-xs text-[#E6D5B8]/60 mb-1 italic">{img.caption}</div>}
+                        <div className="flex gap-2 mt-2">
+                          <button onClick={() => handleEditImage(img)} className="bg-blue-500 text-white px-2 py-1 rounded text-xs">Edit</button>
+                          <button onClick={() => deletePortfolioImage(img.id)} className="bg-red-500 text-white px-2 py-1 rounded text-xs">Delete</button>
+                        </div>
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+
+        {/* Edit Modal */}
+        {editingImage && (
+          <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+            <div className="bg-[#232323] p-8 rounded-lg shadow-lg w-full max-w-md relative">
+              <button onClick={() => setEditingImage(null)} className="absolute top-2 right-2 text-white text-xl">&times;</button>
+              <h4 className="text-xl font-display mb-4">Edit Image</h4>
+              <div className="space-y-4">
+                <input type="text" name="url" value={editFields.url} onChange={handleEditFieldChange} placeholder="Image URL" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
+                <select name="category" value={editFields.category} onChange={handleEditFieldChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3">
+                  <option>Portrait</option>
+                  <option>Event</option>
+                  <option>Professional</option>
+                  <option>Wedding</option>
+                  <option>Real Estate</option>
+                  <option>Nature</option>
+                </select>
+                <input type="text" name="caption" value={editFields.caption} onChange={handleEditFieldChange} placeholder="Caption (optional)" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
+                <img src={editFields.url} alt="Preview" className="max-h-40 rounded shadow border border-white/10 mx-auto" />
+                <button onClick={handleSaveEdit} className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md w-full">Save Changes</button>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
