@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import PhotoshootPlanner from './PhotoshootPlanner';
+import ConversationalPlanner from './ConversationalPlanner';
 import { createClient } from '@supabase/supabase-js';
 // --- Supabase Setup --- //
 const SUPABASE_URL = 'https://sqfqlnodwjubacmaduzl.supabase.co';
@@ -524,6 +525,7 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
 const PortfolioGate = ({ onUnlock }) => {
   const [formData, setFormData] = useState({ name: '', email: '', service: '', phone: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [showPlanner, setShowPlanner] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -539,11 +541,21 @@ const PortfolioGate = ({ onUnlock }) => {
 
   if (submitted) {
       return (
-          <div className="text-center bg-[#262626] rounded-lg p-8 max-w-lg mx-auto">
-            <h3 className="text-2xl font-display text-white mb-2">Thank You!</h3>
-            <p className="text-[#E6D5B8]/80">The portfolio is now unlocked. Check your email for a 10% off coupon!</p>
-            <p className="text-[#E6D5B8]/80 mt-4">Want to plan your shoot? <a href={`/planner?email=${encodeURIComponent(formData.email)}`} className="underline text-[#E6D5B8]">Try our Photoshoot AI Planner</a></p>
-          </div>
+        <div className="text-center bg-[#262626] rounded-lg p-8 max-w-lg mx-auto relative">
+          <h3 className="text-2xl font-display text-white mb-2">Thank You!</h3>
+          <p className="text-[#E6D5B8]/80">The portfolio is now unlocked. Check your email for a 10% off coupon!</p>
+          <p className="text-[#E6D5B8]/80 mt-4">Want to plan your shoot?{' '}
+            <button onClick={() => setShowPlanner(true)} className="underline text-[#E6D5B8]">Try our Conversational AI Planner</button>
+          </p>
+          {showPlanner && (
+            <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+              <div className="bg-[#232323] rounded-lg shadow-lg max-w-md w-full relative">
+                <button onClick={() => setShowPlanner(false)} className="absolute top-2 right-2 text-white text-xl">&times;</button>
+                <ConversationalPlanner email={formData.email} onComplete={() => {}} />
+              </div>
+            </div>
+          )}
+        </div>
       );
   }
 
