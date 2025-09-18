@@ -224,7 +224,7 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage }) => {
 const HomePage = ({ navigate }) => (
   <div className="relative h-screen flex items-center justify-center text-center text-white px-4 -mt-20">
     <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
-    <img src="https://placehold.co/1920x1080/000000/333333?text=Studio37" alt="Studio37 Hero" className="absolute inset-0 w-full h-full object-cover"/>
+    <img src="https://res.cloudinary.com/dmjxho2rl/image/upload/e_improve,e_sharpen/l_image:upload:My Brand:IMG_2115_mtuowt/c_scale,fl_relative,w_0.20/o_80/fl_layer_apply,g_south_east,x_0.03,y_0.04/v1758172510/A4B03835-ED8B-4FBB-A27E-1F2EE6CA1A18_1_105_c_gstgil.jpg" alt="Studio37 Hero" className="absolute inset-0 w-full h-full object-cover"/>
     <div className="relative z-10">
       <h1 className="text-5xl md:text-7xl lg:text-8xl font-display mb-4 leading-tight">Capture. Create. Captivate.</h1>
       <p className="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-[#E6D5B8]/80">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
