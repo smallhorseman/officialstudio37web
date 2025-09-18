@@ -645,6 +645,7 @@ const AdminDashboard = ({
   blogPosts, createBlogPost, updateBlogPost, deleteBlogPost, blogEdit, setBlogEdit, blogSaving, blogAdminError
 }) => {
   const [activeTab, setActiveTab] = useState('crm');
+  const [siteMapPage, setSiteMapPage] = useState('home');
   return (
     <div className="py-20 md:py-28">
       <div className="container mx-auto px-6">
@@ -653,6 +654,7 @@ const AdminDashboard = ({
           <button onClick={() => setActiveTab('crm')} className={`py-2 px-6 text-lg ${activeTab === 'crm' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>CRM (Leads)</button>
           <button onClick={() => setActiveTab('cms')} className={`py-2 px-6 text-lg ${activeTab === 'cms' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>CMS (Content)</button>
           <button onClick={() => setActiveTab('blog')} className={`py-2 px-6 text-lg ${activeTab === 'blog' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Blog</button>
+          <button onClick={() => setActiveTab('sitemap')} className={`py-2 px-6 text-lg ${activeTab === 'sitemap' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Site Map</button>
         </div>
         {activeTab === 'crm' && <CrmSection leads={leads} updateLeadStatus={updateLeadStatus} />}
         {activeTab === 'cms' && <CmsSection 
@@ -672,9 +674,102 @@ const AdminDashboard = ({
           blogSaving={blogSaving}
           blogAdminError={blogAdminError}
         />}
+        {activeTab === 'sitemap' && <SiteMapTab siteMapPage={siteMapPage} setSiteMapPage={setSiteMapPage} content={content} portfolioImages={portfolioImages} blogPosts={blogPosts} />}
       </div>
     </div>
   );
+};
+// --- Site Map Tab with Flowchart and Live Preview --- //
+const siteMapPages = [
+  { key: 'home', label: 'Home' },
+  { key: 'about', label: 'About' },
+  { key: 'services', label: 'Services' },
+  { key: 'portfolio', label: 'Portfolio' },
+  { key: 'blog', label: 'Blog' },
+  { key: 'contact', label: 'Contact' },
+];
+
+const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blogPosts }) => {
+  // Simple flowchart layout
+  return (
+    <div className="flex flex-col md:flex-row gap-8">
+      <div className="md:w-1/3">
+        <h4 className="text-xl font-display mb-4">Website Map</h4>
+        <div className="flex flex-col items-start gap-4">
+          {siteMapPages.map((page, idx) => (
+            <div key={page.key} className="flex items-center gap-2">
+              <button
+                onClick={() => setSiteMapPage(page.key)}
+                className={`px-4 py-2 rounded-full font-bold transition-colors ${siteMapPage === page.key ? 'bg-[#E6D5B8] text-[#1a1a1a]' : 'bg-[#262626] text-[#E6D5B8] hover:bg-[#E6D5B8]/30'}`}
+              >
+                {page.label}
+              </button>
+              {idx < siteMapPages.length - 1 && <span className="text-[#E6D5B8]">→</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="md:w-2/3">
+        <h4 className="text-xl font-display mb-4">Live Preview</h4>
+        <div className="bg-[#181818] rounded-lg shadow-lg p-6 min-h-[300px]">
+          <SiteMapPreview page={siteMapPage} content={content} portfolioImages={portfolioImages} blogPosts={blogPosts} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- Live Preview Renderer for Each Page --- //
+const SiteMapPreview = ({ page, content, portfolioImages, blogPosts }) => {
+  switch (page) {
+    case 'home':
+      return (
+        <div>
+          <h1 className="text-3xl font-display mb-2">Capture. Create. Captivate.</h1>
+          <p className="text-[#E6D5B8]/80 mb-4">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
+        </div>
+      );
+    case 'about':
+      return (
+        <div>
+          <h2 className="text-2xl font-display mb-2">{content.about.title}</h2>
+          <p className="text-[#E6D5B8]/80">{content.about.bio}</p>
+        </div>
+      );
+    case 'services':
+      return <div><h2 className="text-2xl font-display mb-2">Our Services</h2><p className="text-[#E6D5B8]/80">From comprehensive brand management to capturing your most precious personal moments.</p></div>;
+    case 'portfolio':
+      return (
+        <div>
+          <h2 className="text-2xl font-display mb-2">Our Work</h2>
+          <div className="flex flex-wrap gap-2">
+            {portfolioImages.slice(0, 4).map(img => (
+              <img key={img.id} src={img.url} alt={img.category} className="w-20 h-20 object-cover rounded" />
+            ))}
+          </div>
+        </div>
+      );
+    case 'blog':
+      return (
+        <div>
+          <h2 className="text-2xl font-display mb-2">Blog</h2>
+          <ul className="list-disc ml-6">
+            {blogPosts.slice(0, 3).map(post => (
+              <li key={post.id} className="text-[#E6D5B8]/80">{post.title}</li>
+            ))}
+          </ul>
+        </div>
+      );
+    case 'contact':
+      return (
+        <div>
+          <h2 className="text-2xl font-display mb-2">Get In Touch</h2>
+          <p className="text-[#E6D5B8]/80">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
+        </div>
+      );
+    default:
+      return null;
+  }
 };
 // --- Blog Admin Section --- //
 const BlogAdminSection = ({ blogPosts, createBlogPost, updateBlogPost, deleteBlogPost, blogEdit, setBlogEdit, blogSaving, blogAdminError }) => {
