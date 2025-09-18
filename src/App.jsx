@@ -1264,35 +1264,35 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
   };
 
   return (
-    <div>
+    <div className="px-1 sm:px-4">
       <h3 className="text-2xl font-display mb-6">Client Leads ({leads.length})</h3>
       <div className="bg-[#262626] rounded-lg shadow-lg overflow-x-auto">
-        <table className="w-full text-left">
+        <table className="w-full text-left text-xs sm:text-sm md:text-base">
           <thead className="border-b border-white/10">
             <tr>
-              <th className="p-4 uppercase text-sm font-bold tracking-wider">Name</th>
-              <th className="p-4 uppercase text-sm font-bold tracking-wider">Contact</th>
-              <th className="p-4 uppercase text-sm font-bold tracking-wider">Service</th>
-              <th className="p-4 uppercase text-sm font-bold tracking-wider">Status</th>
-              <th className="p-4 uppercase text-sm font-bold tracking-wider">Actions</th>
-              <th className="p-4 uppercase text-sm font-bold tracking-wider">Notes</th>
+              <th className="p-2 sm:p-4 uppercase font-bold tracking-wider whitespace-nowrap">Name</th>
+              <th className="p-2 sm:p-4 uppercase font-bold tracking-wider whitespace-nowrap">Contact</th>
+              <th className="p-2 sm:p-4 uppercase font-bold tracking-wider whitespace-nowrap">Service</th>
+              <th className="p-2 sm:p-4 uppercase font-bold tracking-wider whitespace-nowrap">Status</th>
+              <th className="p-2 sm:p-4 uppercase font-bold tracking-wider whitespace-nowrap">Actions</th>
+              <th className="p-2 sm:p-4 uppercase font-bold tracking-wider whitespace-nowrap">Notes</th>
             </tr>
           </thead>
           <tbody>
             {leads.map(lead => (
               <React.Fragment key={lead.id}>
                 <tr className="border-b border-white/10 last:border-b-0">
-                  <td className="p-4">{lead.name}</td>
-                  <td className="p-4">
-                    <div className="text-sm">{lead.email}</div>
+                  <td className="p-2 sm:p-4 max-w-[120px] truncate">{lead.name}</td>
+                  <td className="p-2 sm:p-4">
+                    <div className="text-xs sm:text-sm md:text-base">{lead.email}</div>
                     {lead.phone && <div className="text-xs text-white/60">{lead.phone}</div>}
                   </td>
-                  <td className="p-4">{lead.service || 'N/A'}</td>
-                  <td className="p-4">
+                  <td className="p-2 sm:p-4 max-w-[100px] truncate">{lead.service || 'N/A'}</td>
+                  <td className="p-2 sm:p-4">
                     <select 
                       value={lead.status} 
                       onChange={(e) => updateLeadStatus(lead.id, e.target.value)}
-                      className="bg-[#1a1a1a] border border-white/20 rounded-md py-1 px-2 focus:outline-none focus:ring-1 focus:ring-[#E6D5B8]"
+                      className="bg-[#1a1a1a] border border-white/20 rounded-md py-1 px-2 focus:outline-none focus:ring-1 focus:ring-[#E6D5B8] w-full min-w-[80px]"
                     >
                       <option>New</option>
                       <option>Contacted</option>
@@ -1300,8 +1300,8 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
                       <option>Closed</option>
                     </select>
                   </td>
-                  <td className="p-4">
-                    <div className="flex items-center gap-4">
+                  <td className="p-2 sm:p-4">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-4">
                       <a href={`mailto:${lead.email}`} title="Email" className="text-[#E6D5B8] hover:text-white">
                         <MailIcon />
                       </a>
@@ -1317,13 +1317,13 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
                       )}
                     </div>
                   </td>
-                  <td className="p-4">
-                    <button onClick={() => handleOpenNotes(lead.id)} className="bg-[#E6D5B8] text-[#1a1a1a] px-3 py-1 rounded-full text-xs font-bold hover:bg-[#e6d5b8]/80">{openLeadId === lead.id ? 'Hide' : 'Show'} Notes</button>
+                  <td className="p-2 sm:p-4">
+                    <button onClick={() => handleOpenNotes(lead.id)} className="bg-[#E6D5B8] text-[#1a1a1a] px-2 sm:px-3 py-1 rounded-full text-xs font-bold hover:bg-[#e6d5b8]/80 w-full sm:w-auto">{openLeadId === lead.id ? 'Hide' : 'Show'} Notes</button>
                   </td>
                 </tr>
                 {openLeadId === lead.id && (
                   <tr>
-                    <td colSpan={6} className="bg-[#232323] p-4">
+                    <td colSpan={6} className="bg-[#232323] p-2 sm:p-4">
                       <div className="mb-2 font-bold text-[#E6D5B8]">Notes & Status History</div>
                       {loadingNotes ? (
                         <div className="text-[#E6D5B8]">Loading...</div>
@@ -1338,16 +1338,16 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
                           ))}
                         </div>
                       )}
-                      <form onSubmit={e => { e.preventDefault(); handleAddNote(lead.id); }} className="flex flex-col md:flex-row gap-2 items-start md:items-end">
+                      <form onSubmit={e => { e.preventDefault(); handleAddNote(lead.id); }} className="flex flex-col md:flex-row gap-2 items-start md:items-end w-full">
                         <input type="text" value={noteInput} onChange={e => setNoteInput(e.target.value)} placeholder="Add note..." className="bg-[#1a1a1a] border border-white/20 rounded-md py-1 px-2 w-full md:w-1/2" />
-                        <select value={noteStatus} onChange={e => setNoteStatus(e.target.value)} className="bg-[#1a1a1a] border border-white/20 rounded-md py-1 px-2">
+                        <select value={noteStatus} onChange={e => setNoteStatus(e.target.value)} className="bg-[#1a1a1a] border border-white/20 rounded-md py-1 px-2 w-full md:w-auto">
                           <option value="">Status (optional)</option>
                           <option>New</option>
                           <option>Contacted</option>
                           <option>Booked</option>
                           <option>Closed</option>
                         </select>
-                        <button type="submit" className="bg-[#E6D5B8] text-[#1a1a1a] px-3 py-1 rounded-md font-bold" disabled={addingNote || (!noteInput && !noteStatus)}>{addingNote ? 'Adding...' : 'Add'}</button>
+                        <button type="submit" className="bg-[#E6D5B8] text-[#1a1a1a] px-3 py-1 rounded-md font-bold w-full md:w-auto" disabled={addingNote || (!noteInput && !noteStatus)}>{addingNote ? 'Adding...' : 'Add'}</button>
                       </form>
                     </td>
                   </tr>
@@ -1433,11 +1433,11 @@ const CmsSection = ({ content, updateContent, portfolioImages, addPortfolioImage
   };
 
   return (
-    <div>
+  <div className="px-1 sm:px-4">
       <h3 className="text-2xl font-display mb-6">Website Content</h3>
 
       {/* About Page Editor */}
-      <div className="bg-[#262626] p-6 rounded-lg mb-8">
+  <div className="bg-[#262626] p-4 sm:p-6 rounded-lg mb-8">
         <h4 className="text-xl font-display mb-4">About Page Content</h4>
         <div className="space-y-4">
           <input 
@@ -1456,11 +1456,11 @@ const CmsSection = ({ content, updateContent, portfolioImages, addPortfolioImage
       </div>
 
       {/* Portfolio Manager */}
-      <div className="bg-[#262626] p-6 rounded-lg">
+  <div className="bg-[#262626] p-4 sm:p-6 rounded-lg">
         <h4 className="text-xl font-display mb-4">Portfolio Images</h4>
-        <form onSubmit={handleAddImage} className="flex flex-col md:flex-row gap-4 mb-6 items-center">
-          <input type="text" value={newImageUrl} onChange={handleUrlChange} placeholder="Image URL (e.g., from placehold.co or Cloudinary)" className="flex-grow bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
-          <select value={newImageCategory} onChange={e => setNewImageCategory(e.target.value)} className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3">
+  <form onSubmit={handleAddImage} className="flex flex-col md:flex-row gap-2 md:gap-4 mb-6 items-center w-full">
+          <input type="text" value={newImageUrl} onChange={handleUrlChange} placeholder="Image URL (e.g., from placehold.co or Cloudinary)" className="flex-grow bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 w-full md:w-auto" />
+          <select value={newImageCategory} onChange={e => setNewImageCategory(e.target.value)} className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 w-full md:w-auto">
             <option>Portrait</option>
             <option>Event</option>
             <option>Professional</option>
@@ -1468,8 +1468,8 @@ const CmsSection = ({ content, updateContent, portfolioImages, addPortfolioImage
             <option>Real Estate</option>
             <option>Nature</option>
           </select>
-          <input type="text" value={newImageCaption} onChange={e => setNewImageCaption(e.target.value)} placeholder="Caption (optional)" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
-          <button type="submit" className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">Add Image</button>
+          <input type="text" value={newImageCaption} onChange={e => setNewImageCaption(e.target.value)} placeholder="Caption (optional)" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 w-full md:w-auto" />
+          <button type="submit" className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md w-full md:w-auto">Add Image</button>
         </form>
         {showPreview && newImageUrl && (
           <div className="mb-6 flex flex-col items-center">
@@ -1478,15 +1478,15 @@ const CmsSection = ({ content, updateContent, portfolioImages, addPortfolioImage
           </div>
         )}
 
-        <div className="mb-4 flex gap-2">
-          <button onClick={handleBulkDelete} className="bg-red-500 text-white px-4 py-2 rounded-md font-bold" disabled={selectedImages.length === 0}>Delete Selected</button>
+  <div className="mb-4 flex flex-col sm:flex-row gap-2">
+          <button onClick={handleBulkDelete} className="bg-red-500 text-white px-4 py-2 rounded-md font-bold w-full sm:w-auto" disabled={selectedImages.length === 0}>Delete Selected</button>
           <span className="text-[#E6D5B8]/70 text-xs">(Select images below to delete in bulk)</span>
         </div>
 
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="portfolioImages" direction="horizontal">
             {(provided) => (
-              <div ref={provided.innerRef} {...provided.droppableProps} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              <div ref={provided.innerRef} {...provided.droppableProps} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4">
                 {images.map((img, idx) => (
                   <Draggable key={img.id} draggableId={img.id.toString()} index={idx}>
                     {(provided, snapshot) => (
