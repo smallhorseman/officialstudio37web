@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+  import React, { useState, useEffect } from 'react';
 
 // --- Helper Components & Icons --- //
 
@@ -130,14 +130,14 @@ export default function App() {
       case 'contact': return <ContactPage />;
       case 'adminLogin': return <AdminLoginPage onLogin={() => { setIsAdmin(true); handleNav('adminDashboard'); }} />;
       case 'adminDashboard': return isAdmin ? <AdminDashboard 
-                                                    leads={leads} 
-                                                    updateLeadStatus={updateLeadStatus}
-                                                    content={siteContent}
-                                                    updateContent={updateSiteContent}
-                                                    portfolioImages={siteContent.portfolioImages}
-                                                    addPortfolioImage={addPortfolioImage}
-                                                    deletePortfolioImage={deletePortfolioImage}
-                                                 /> : <AdminLoginPage onLogin={() => { setIsAdmin(true); handleNav('adminDashboard'); }} />;
+                                                  leads={leads} 
+                                                  updateLeadStatus={updateLeadStatus}
+                                                  content={siteContent}
+                                                  updateContent={updateSiteContent}
+                                                  portfolioImages={siteContent.portfolioImages}
+                                                  addPortfolioImage={addPortfolioImage}
+                                                  deletePortfolioImage={deletePortfolioImage}
+                                               /> : <AdminLoginPage onLogin={() => { setIsAdmin(true); handleNav('adminDashboard'); }} />;
       default: return <HomePage navigate={handleNav} />;
     }
   };
@@ -222,10 +222,17 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage }) => {
 };
 
 const HomePage = ({ navigate }) => (
-  <div className="relative h-screen flex items-center justify-center text-center text-white px-4 -mt-20">
-    <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
-    <img src="https://res.cloudinary.com/dmjxho2rl/image/upload/a_vflip/l_image:upload:My Brand:IMG_2115_mtuowt/c_scale,fl_relative,w_0.35/o_100/fl_layer_apply,g_north,x_0.03,y_0.04/v1758172510/A4B03835-ED8B-4FBB-A27E-1F2EE6CA1A18_1_105_c_gstgil.jpg"/>
-    <div className="relative z-10">
+  <div className="relative h-screen flex items-center justify-center text-center text-white px-4 -mt-20 overflow-hidden">
+    {/* Background Image: Positioned to cover the div */}
+    <img 
+      src="https://res.cloudinary.com/dmjxho2rl/image/upload/a_vflip/l_image:upload:My%20Brand:IMG_2115_mtuowt/c_scale,fl_relative,w_0.35/o_100/fl_layer_apply,g_north,x_0.03,y_0.04/v1758172510/A4B03835-ED8B-4FBB-A27E-1F2EE6CA1A18_1_105_c_gstgil.jpg"
+      alt="Photographer taking a picture in a studio setting"
+      className="absolute inset-0 w-full h-full object-cover z-0"
+    />
+    {/* Dark Overlay: Positioned on top of the image */}
+    <div className="absolute inset-0 bg-black opacity-60 z-10"></div>
+    {/* Content: Positioned on top of the overlay */}
+    <div className="relative z-20">
       <h1 className="text-5xl md:text-7xl lg:text-8xl font-display mb-4 leading-tight">Capture. Create. Captivate.</h1>
       <p className="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-[#E6D5B8]/80">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
       <div className="space-x-4">
@@ -492,11 +499,11 @@ const AdminDashboard = ({ leads, updateLeadStatus, content, updateContent, portf
 
                 {activeTab === 'crm' && <CrmSection leads={leads} updateLeadStatus={updateLeadStatus} />}
                 {activeTab === 'cms' && <CmsSection 
-                                            content={content} 
-                                            updateContent={updateContent} 
-                                            portfolioImages={portfolioImages}
-                                            addPortfolioImage={addPortfolioImage}
-                                            deletePortfolioImage={deletePortfolioImage} 
+                                          content={content} 
+                                          updateContent={updateContent} 
+                                          portfolioImages={portfolioImages}
+                                          addPortfolioImage={addPortfolioImage}
+                                          deletePortfolioImage={deletePortfolioImage} 
                                         />}
             </div>
         </div>
@@ -617,7 +624,7 @@ const CmsSection = ({ content, updateContent, portfolioImages, addPortfolioImage
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
                     {portfolioImages.map(img => (
                         <div key={img.id} className="relative group">
-                            <img src={img.url} className="rounded-md" />
+                            <img src={img.url} className="rounded-md" alt="Portfolio item" />
                             <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                                 <button onClick={() => deletePortfolioImage(img.id)} className="bg-red-500 text-white rounded-full p-2">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
@@ -649,5 +656,3 @@ const Footer = ({ navigate }) => (
     </div>
   </footer>
 );
-
-
