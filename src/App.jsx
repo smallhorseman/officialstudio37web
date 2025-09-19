@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import PhotoshootPlanner from './PhotoshootPlanner';
@@ -985,7 +985,7 @@ const AdminDashboard = ({
 // --- Site Map Tab with Flowchart and Live Preview --- //
 const defaultSiteMapPages = [
   { key: 'home', label: 'Home' },
-  // { key: 'about', label: 'About' }, // Removed from site_map_order for editing, but still in navigation
+  { key: 'about', label: 'About' },
   { key: 'services', label: 'Services' },
   { key: 'portfolio', label: 'Portfolio' },
   { key: 'blog', label: 'Blog' },
@@ -1000,7 +1000,7 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
   const [editForm, setEditForm] = React.useState({ title: '', content: '' });
   const [saving, setSaving] = React.useState(false);
 
-  // Load order from Supabase, but skip 'about' since it's not in site_map_order anymore
+  // Load order from Supabase
   React.useEffect(() => {
     setLoading(true);
     setError('');
@@ -1011,8 +1011,7 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
       .then(({ data, error }) => {
         if (error) setError('Failed to load site map order.');
         else if (data && data.length > 0) {
-          // Filter out 'about' if present
-          setPages(data.filter(row => row.page_key !== 'about').map(row => ({ key: row.page_key, label: row.page_label })));
+          setPages(data.map(row => ({ key: row.page_key, label: row.page_label })));
         }
         setLoading(false);
       });
@@ -1104,8 +1103,8 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
                         >
                           {page.label}
                         </button>
-                        {/* Only allow editing for editablePages */}
-                        {editablePages.includes(page.key) && (
+                        {/* Only allow editing for About, Home, Services, Contact for now */}
+                        {['about', 'home', 'services', 'contact'].includes(page.key) && (
                           <button
                             className="ml-1 text-xs px-2 py-1 bg-[#E6D5B8] text-[#1a1a1a] rounded hover:bg-[#e6d5b8cc] transition"
                             onClick={() => handleEditPage(page.key)}
@@ -1531,10 +1530,27 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
 
 // --- CmsSection (placeholder, implement as needed) --- //
 function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage, deletePortfolioImage }) {
-  // Remove useState and useEffect for aboutForm, since About editing is removed
+  const [aboutForm, setAboutForm] = useState(content.about);
+  const [saving, setSaving] = useState(false);
   const [portfolioUrl, setPortfolioUrl] = useState('');
   const [portfolioCategory, setPortfolioCategory] = useState('');
   const [portfolioUploading, setPortfolioUploading] = useState(false);
+
+  useEffect(() => {
+    setAboutForm(content.about);
+  }, [content]);
+
+  const handleAboutChange = (e) => {
+    const { name, value } = e.target;
+    setAboutForm(f => ({ ...f, [name]: value }));
+  };
+
+  const handleAboutSave = async (e) => {
+    e.preventDefault();
+    setSaving(true);
+    await updateContent({ ...content, about: aboutForm });
+    setSaving(false);
+  };
 
   const handlePortfolioAdd = async (e) => {
     e.preventDefault();
@@ -1549,8 +1565,36 @@ function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage
   return (
     <div>
       <h3 className="text-2xl font-display mb-6">Website Content</h3>
-      <div className="grid md:grid-cols-1 gap-8">
-        {/* Portfolio Manager ONLY */}
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* About Page Editor */}
+        <form onSubmit={handleAboutSave} className="bg-[#262626] p-6 rounded-lg flex flex-col gap-4">
+          <h4 className="text-lg font-bold mb-2">Edit About Page</h4>
+          <input
+            name="title"
+            value={aboutForm.title}
+            onChange={handleAboutChange}
+            placeholder="About Title"
+            className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+            required
+          />
+          <textarea
+            name="bio"
+            value={aboutForm.bio}
+            onChange={handleAboutChange}
+            placeholder="About Bio"
+            rows={6}
+            className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+            required
+          />
+          <button
+            type="submit"
+            className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md mt-2"
+            disabled={saving}
+          >
+            {saving ? 'Saving...' : 'Save About'}
+          </button>
+        </form>
+        {/* Portfolio Manager */}
         <div className="bg-[#262626] p-6 rounded-lg">
           <h4 className="text-lg font-bold mb-2">Portfolio Images</h4>
           <form onSubmit={handlePortfolioAdd} className="flex flex-col gap-2 mb-4">
@@ -1578,27 +1622,110 @@ function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage
             </button>
           </form>
           <div className="max-h-64 overflow-y-auto space-y-2">
-            {portfolioImages && portfolioImages.length > 0 ? (
-              portfolioImages.map(img => (
-                <div key={img.id} className="flex items-center gap-2 bg-[#1a1a1a] rounded p-2">
-                  <img src={img.url} alt={img.category} className="w-12 h-12 object-cover rounded" />
-                  <div className="flex-1">
-                    <div className="text-xs text-white">{img.category}</div>
-                    <div className="text-xs text-[#E6D5B8]/70 break-all">{img.url}</div>
-                  </div>
-                  <button
-                    onClick={() => deletePortfolioImage(img.id)}
-                    className="bg-red-500 text-white px-2 py-1 rounded text-xs"
-                    title="Delete"
-                  >
-                    Delete
-                  </button>
+            {portfolioImages.map(img => (
+              <div key={img.id} className="flex items-center gap-2 bg-[#1a1a1a] rounded p-2">
+                <img src={img.url} alt={img.category} className="w-12 h-12 object-cover rounded" />
+                <div className="flex-1">
+                  <div className="text-xs text-white">{img.category}</div>
+                  <div className="text-xs text-[#E6D5B8]/70 break-all">{img.url}</div>
                 </div>
-              ))
-            ) : (
+                <button
+                  onClick={() => deletePortfolioImage(img.id)}
+                  className="bg-red-500 text-white px-2 py-1 rounded text-xs"
+                  title="Delete"
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+            {portfolioImages.length === 0 && (
               <div className="text-[#E6D5B8]/70 text-xs">No images in portfolio.</div>
             )}
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+function Footer({ navigate }) {
+  return (
+    <footer className="bg-[#111] text-[#E6D5B8] dark:text-[#232323] py-12 relative">
+      {/* Floating CTA Button - now left side and renamed */}
+      <a
+        href="https://book.usesession.com/i/sbDooN5rcH"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 left-6 z-50 bg-[#E6D5B8] text-black font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 transition-transform text-lg flex items-center justify-center"
+        style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.25)' }}
+      >
+        <span className="block">Book a Session</span>
+      </a>
+      <div className="container mx-auto px-6 text-center">
+        <div className="flex justify-center mb-4">
+          <Logo />
+        </div>
+        <div className="flex justify-center gap-6 my-4">
+          <button onClick={() => navigate('home')} className="hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">Home</button>
+          <button onClick={() => navigate('about')} className="hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">About</button>
+          <button onClick={() => navigate('services')} className="hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">Services</button>
+          <button onClick={() => navigate('portfolio')} className="hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">Portfolio</button>
+          <button onClick={() => navigate('blog')} className="hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">Blog</button>
+        </div>
+        <p className="text-sm text-[#E6D5B8] dark:text-[#232323]">&copy; {new Date().getFullYear()} Studio37 Photography & Content. All Rights Reserved.</p>
+        <button onClick={() => navigate('adminLogin')} className="text-xs mt-4 hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">Admin Access</button>
+      </div>
+      <style>{`
+        footer, footer * {
+          color: #E6D5B8 !important;
+        }
+        .dark footer, .dark footer * {
+          color: #232323 !important;
+        }
+        @media (prefers-color-scheme: light) {
+          footer, footer * {
+            color: #3a2e1a !important;
+            background-color: #f7f5ef !important;
+          }
+          .hover\\:text-\\[\\#E6D5B8\\]:hover {
+            color: #b89c6d !important;
+          }
+        }
+        .light footer, .light footer * {
+          color: #3a2e1a !important;
+          background-color: #f7f5ef !important;
+        }
+        .light .hover\\:text-\\[\\#E6D5B8\\]:hover {
+          color: #b89c6d !important;
+        }
+      `}</style>
+    </footer>
+  );
+}
+
+// --- Blog Page Component --- //
+function BlogPage({ posts, loading, error }) {
+  return (
+    <div className="py-20 md:py-28 min-h-[60vh]">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-display">Blog</h2>
+          <p className="text-lg text-[#E6D5B8]/70 mt-4 max-w-2xl mx-auto">Stories, tips, and behind-the-scenes from Studio37.</p>
+        </div>
+        {loading && <div className="text-center text-[#E6D5B8]">Loading...</div>}
+        {error && <div className="text-center text-red-400">{error}</div>}
+        {!loading && !error && posts.length === 0 && (
+          <div className="text-center text-[#E6D5B8]/70">No blog posts yet.</div>
+        )}
+        <div className="space-y-10 max-w-2xl mx-auto">
+          {posts.map(post => (
+            <article key={post.id} className="bg-[#262626] rounded-lg shadow-lg p-8 border border-white/10">
+              <h3 className="text-2xl font-display text-white mb-2">{post.title}</h3>
+              <div className="text-xs text-[#E6D5B8]/60 mb-4">{new Date(post.created_at).toLocaleDateString()}</div>
+              <div className="prose prose-invert max-w-none text-[#E6D5B8]/90">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content || ''}</ReactMarkdown>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </div>
