@@ -20,17 +20,10 @@ const ArrowRight = () => (
 
   </svg>);
 
-const MenuIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
 
-  </svg>);
 
-const CloseIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
 
-  </svg>);
+
 
 
 
@@ -40,7 +33,10 @@ const CloseIcon = () => (
 
 
 const MailIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+    <polyline points="22,6 12,13 2,6"></polyline>
+  </svg>
 );
 
 
@@ -50,10 +46,15 @@ const MailIcon = () => (
 
 
 const PhoneIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+  </svg>
 );
+
 const SmsIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+  </svg>
 );
 
 const Logo = ({ className }) => (
@@ -195,6 +196,7 @@ export default function App() {
           );
 // ProjectsTab extracted for clarity
 function ProjectsTab({ projects, internalProjects, projectsLoading, internalProjectsLoading, showProjectForm, setShowProjectForm, newProject, setNewProject, handleCreateProject, setSelectedProject, selectedProject, projectStages }) {
+function CmsSection(props) {
   return (
     <div className="bg-[#262626] p-8 rounded-lg">
       <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4">
@@ -300,7 +302,7 @@ function ProjectsTab({ projects, internalProjects, projectsLoading, internalProj
       )}
     </div>
   );
-}
+
 
 // InternalProjectCompletion component
 function InternalProjectCompletion({ projectId }) {
@@ -325,7 +327,6 @@ function InternalProjectCompletion({ projectId }) {
       <div className="text-xs text-[#E6D5B8]">{percent}% complete</div>
     </div>
   );
-}
 
 // ProjectDetailModal component
 function ProjectDetailModal({ project, onClose }) {
@@ -631,66 +632,50 @@ const AboutPage = ({ content }) => (
   </div>
 );
 
-const ServicesPage = () => {
-  const proPackages = [
-    { name: 'Director', price: '$2,500/mo+', details: 'Full scope content & marketing solutions, SEO, weekly content, on-call consulting. For businesses ready to take on the world.' },
-    { name: 'Producer', price: '$2,000/mo', details: 'Bi-weekly content, website creation & maintenance, reporting & strategy meetings, ad management, pro photo/video.' },
-    { name: 'Executive Assistant', price: '$1000/mo ($500/mo w/ contract)', details: '5-page website, monthly content, social media scheduling, strategy calls, 40 photo/video credits.' },
-    { name: 'Stage Hand', price: '$500/mo ($250/mo w/ contract)', details: 'Landing page, 1 post/week, quarterly strategy meeting, brand pack (logo, domain), 20 photo/video credits.' }
-  ];
 
-  const personalPackages = [
-      {name: 'Movie Premier', price: '$300', details: '1 hour session, 60 edited photos, 1-min video reel, and a Polaroid printout.'},
-      {name: 'Full Episode', price: '$150', details: '30 minute session, 30 edited photos, 1-min video reel, and a Polaroid printout.'},
-      {name: 'Mini Reel', price: '$75', details: '15 minute session, 15 edited photos, 1-min video reel, and a Polaroid printout.'}
-  ];
+const MailIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+    <polyline points="22,6 12,13 2,6"></polyline>
+  </svg>
+);
 
-  const otherServices = [
-      {name: 'Creative Services', details: 'YouTube filming & editing, podcast production, music recording.'},
-      {name: 'Personal Shoots', details: 'Family, social media, headshots, nature, maternity, wedding/engagement.'},
-      {name: 'Specialized Coverage', details: 'Art gallery shoots, real estate photography, and event coverage with included press-ready articles.'}
-  ]
-  
-  const ServiceCard = ({ name, price, details }) => (
-    <div className="bg-[#262626] rounded-lg shadow-xl p-8 border border-white/10 flex flex-col h-full">
-      <h3 className="text-2xl font-display text-white">{name}</h3>
-      {price && <p className="text-xl font-bold my-4 text-[#E6D5B8]">{price}</p>}
-      <p className="text-[#E6D5B8]/70 flex-grow">{details}</p>
-    </div>
-  );
+const PhoneIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+  </svg>
+);
 
-  return (
-    <div className="py-20 md:py-28">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-display">Our Services</h2>
-          <p className="text-lg text-[#E6D5B8]/70 mt-4 max-w-2xl mx-auto">From comprehensive brand management to capturing your most precious personal moments.</p>
+const SmsIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+  </svg>
+);
+
+const ServicesPage = () => (
+  <div className="py-20 md:py-28">
+    <div className="container mx-auto px-6">
+      <section id="pro-packages" className="mb-20">
+        <h3 className="text-3xl font-display text-center mb-10">Content & Marketing Packages</h3>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {proPackages.map(p => <ServiceCard key={p.name} {...p} />)}
         </div>
-
-        <section id="pro-packages" className="mb-20">
-            <h3 className="text-3xl font-display text-center mb-10">Content & Marketing Packages</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {proPackages.map(p => <ServiceCard key={p.name} {...p} />)}
-            </div>
-        </section>
-
-        <section id="personal-packages" className="mb-20">
-            <h3 className="text-3xl font-display text-center mb-10">Portrait Packages</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {personalPackages.map(p => <ServiceCard key={p.name} {...p} />)}
-            </div>
-        </section>
-
-        <section id="other-services">
-            <h3 className="text-3xl font-display text-center mb-10">Additional Creative & Event Services</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {otherServices.map(s => <ServiceCard key={s.name} {...s} />)}
-            </div>
-        </section>
-      </div>
+      </section>
+      <section id="personal-packages" className="mb-20">
+        <h3 className="text-3xl font-display text-center mb-10">Portrait Packages</h3>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {personalPackages.map(p => <ServiceCard key={p.name} {...p} />)}
+        </div>
+      </section>
+      <section id="other-services">
+        <h3 className="text-3xl font-display text-center mb-10">Additional Creative & Event Services</h3>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {otherServices.map(s => <ServiceCard key={s.name} {...s} />)}
+        </div>
+      </section>
     </div>
-  );
-};
+  </div>
+);
 
 const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
   const [filter, setFilter] = useState('All');
@@ -732,9 +717,10 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
           </div>
         )}
       </div>
+
     </div>
   );
-};
+}
 
 const PortfolioGate = ({ onUnlock }) => {
   const [formData, setFormData] = useState({ name: '', email: '', service: '', phone: '' });
@@ -1181,7 +1167,6 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
   const onDragEnd = (result) => {
     if (!result.destination) return;
     const reordered = Array.from(pages);
-    const [removed] = reordered.splice(result.source.index, 1);
     reordered.splice(result.destination.index, 0, removed);
     setPages(reordered);
     saveOrder(reordered);
@@ -1483,41 +1468,7 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
                       )}
                     </div>
                   </td>
-                  <td className="p-4">
-                    <button onClick={() => handleOpenNotes(lead.id)} className="bg-[#E6D5B8] text-[#1a1a1a] px-3 py-1 rounded-full text-xs font-bold hover:bg-[#e6d5b8]/80">{openLeadId === lead.id ? 'Hide' : 'Show'} Notes</button>
-                  </td>
                 </tr>
-                {openLeadId === lead.id && (
-                  <tr>
-                    <td colSpan={6} className="bg-[#232323] p-4">
-                      <div className="mb-2 font-bold text-[#E6D5B8]">Notes & Status History</div>
-                      {loadingNotes ? (
-                        <div className="text-[#E6D5B8]">Loading...</div>
-                      ) : (
-                        <div className="space-y-2 mb-4">
-                          {(notes[lead.id] || []).length === 0 && <div className="text-[#E6D5B8]/60">No notes yet.</div>}
-                          {(notes[lead.id] || []).map(note => (
-                            <div key={note.id} className="bg-[#1a1a1a] rounded p-2 text-sm flex flex-col md:flex-row md:items-center md:gap-4">
-                              <span className="text-[#E6D5B8]">{note.status && <span className="font-bold">[{note.status}] </span>}{note.note}</span>
-                              <span className="text-xs text-[#E6D5B8]/60 md:ml-auto">{new Date(note.created_at).toLocaleString()}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                      <form onSubmit={e => { e.preventDefault(); handleAddNote(lead.id); }} className="flex flex-col md:flex-row gap-2 items-start md:items-end">
-                        <input type="text" value={noteInput} onChange={e => setNoteInput(e.target.value)} placeholder="Add note..." className="bg-[#1a1a1a] border border-white/20 rounded-md py-1 px-2 w-full md:w-1/2" />
-                        <select value={noteStatus} onChange={e => setNoteStatus(e.target.value)} className="bg-[#1a1a1a] border border-white/20 rounded-md py-1 px-2">
-                          <option value="">Status (optional)</option>
-                          <option>New</option>
-                          <option>Contacted</option>
-                          <option>Booked</option>
-                          <option>Closed</option>
-                        </select>
-                        <button type="submit" className="bg-[#E6D5B8] text-[#1a1a1a] px-3 py-1 rounded-md font-bold" disabled={addingNote || (!noteInput && !noteStatus)}>{addingNote ? 'Adding...' : 'Add'}</button>
-                      </form>
-                    </td>
-                  </tr>
-                )}
               </React.Fragment>
             ))}
           </tbody>
@@ -1525,35 +1476,11 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
       </div>
     </div>
   );
-};
+}
 
-const CmsSection = ({ content, updateContent, portfolioImages, addPortfolioImage, deletePortfolioImage }) => {
-  const [newImageUrl, setNewImageUrl] = useState('');
-  const [newImageCategory, setNewImageCategory] = useState('Portrait');
-  const [newImageCaption, setNewImageCaption] = useState('');
-  const [showPreview, setShowPreview] = useState(false);
-  const [selectedImages, setSelectedImages] = useState([]); // for bulk delete
-  const [editingImage, setEditingImage] = useState(null); // {id, url, category, caption}
-  const [editFields, setEditFields] = useState({ url: '', category: '', caption: '' });
 
-  // Drag-and-drop reordering
-  const [images, setImages] = useState([]);
-  useEffect(() => {
-    setImages([...portfolioImages].sort((a, b) => (a.order_index ?? 0) - (b.order_index ?? 0)));
-  }, [portfolioImages]);
-
-  const onDragEnd = async (result) => {
-    if (!result.destination) return;
-    const reordered = Array.from(images);
-    const [removed] = reordered.splice(result.source.index, 1);
-    reordered.splice(result.destination.index, 0, removed);
-    setImages(reordered);
-    // Persist new order to Supabase
-    for (let i = 0; i < reordered.length; i++) {
-      await supabase.from('portfolio_images').update({ order_index: i }).eq('id', reordered[i].id);
-    }
-  };
-
+function CmsSection(props) {
+  // ...existing code...
   const handleAddImage = (e) => {
     e.preventDefault();
     if(newImageUrl) {
@@ -1601,119 +1528,18 @@ const CmsSection = ({ content, updateContent, portfolioImages, addPortfolioImage
   return (
     <div>
       <h3 className="text-2xl font-display mb-6">Website Content</h3>
-
-      {/* About Page Editor */}
-      <div className="bg-[#262626] p-6 rounded-lg mb-8">
-        <h4 className="text-xl font-display mb-4">About Page Content</h4>
-        <div className="space-y-4">
-          <input 
-            type="text"
-            value={content.about.title}
-            onChange={e => updateContent('about', 'title', e.target.value)}
-            className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-          />
-          <textarea 
-            rows="5"
-            value={content.about.bio}
-            onChange={e => updateContent('about', 'bio', e.target.value)}
-            className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-          ></textarea>
-        </div>
-      </div>
-
-      {/* Portfolio Manager */}
-      <div className="bg-[#262626] p-6 rounded-lg">
-        <h4 className="text-xl font-display mb-4">Portfolio Images</h4>
-        <form onSubmit={handleAddImage} className="flex flex-col md:flex-row gap-4 mb-6 items-center">
-          <input type="text" value={newImageUrl} onChange={handleUrlChange} placeholder="Image URL (e.g., from placehold.co or Cloudinary)" className="flex-grow bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
-          <select value={newImageCategory} onChange={e => setNewImageCategory(e.target.value)} className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3">
-            <option>Portrait</option>
-            <option>Event</option>
-            <option>Professional</option>
-            <option>Wedding</option>
-            <option>Real Estate</option>
-            <option>Nature</option>
-          </select>
-          <input type="text" value={newImageCaption} onChange={e => setNewImageCaption(e.target.value)} placeholder="Caption (optional)" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
-          <button type="submit" className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">Add Image</button>
-        </form>
-        {showPreview && newImageUrl && (
-          <div className="mb-6 flex flex-col items-center">
-            <span className="text-[#E6D5B8]/70 text-xs mb-2">Image Preview:</span>
-            <img src={newImageUrl} alt="Preview" className="max-h-40 rounded shadow border border-white/10" onError={e => {e.target.style.display='none';}} />
-          </div>
-        )}
-
-        <div className="mb-4 flex gap-2">
-          <button onClick={handleBulkDelete} className="bg-red-500 text-white px-4 py-2 rounded-md font-bold" disabled={selectedImages.length === 0}>Delete Selected</button>
-          <span className="text-[#E6D5B8]/70 text-xs">(Select images below to delete in bulk)</span>
-        </div>
-
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="portfolioImages" direction="horizontal">
-            {(provided) => (
-              <div ref={provided.innerRef} {...provided.droppableProps} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                {images.map((img, idx) => (
-                  <Draggable key={img.id} draggableId={img.id.toString()} index={idx}>
-                    {(provided, snapshot) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        className={`relative group bg-[#1a1a1a] rounded-md p-2 border border-white/10 ${snapshot.isDragging ? 'opacity-80' : ''}`}
-                      >
-                        <input type="checkbox" checked={selectedImages.includes(img.id)} onChange={() => handleSelectImage(img.id)} className="absolute top-2 left-2 z-10" />
-                        <img src={img.url} className="rounded-md mb-2 w-full h-32 object-cover" />
-                        <div className="text-xs text-[#E6D5B8]/80 mb-1">{img.category}</div>
-                        {img.caption && <div className="text-xs text-[#E6D5B8]/60 mb-1 italic">{img.caption}</div>}
-                        <div className="flex gap-2 mt-2">
-                          <button onClick={() => handleEditImage(img)} className="bg-blue-500 text-white px-2 py-1 rounded text-xs">Edit</button>
-                          <button onClick={() => deletePortfolioImage(img.id)} className="bg-red-500 text-white px-2 py-1 rounded text-xs">Delete</button>
-                        </div>
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
-
-        {/* Edit Modal */}
-        {editingImage && (
-          <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-            <div className="bg-[#232323] p-8 rounded-lg shadow-lg w-full max-w-md relative">
-              <button onClick={() => setEditingImage(null)} className="absolute top-2 right-2 text-white text-xl">&times;</button>
-              <h4 className="text-xl font-display mb-4">Edit Image</h4>
-              <div className="space-y-4">
-                <input type="text" name="url" value={editFields.url} onChange={handleEditFieldChange} placeholder="Image URL" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
-                <select name="category" value={editFields.category} onChange={handleEditFieldChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3">
-                  <option>Portrait</option>
-                  <option>Event</option>
-                  <option>Professional</option>
-                  <option>Wedding</option>
-                  <option>Real Estate</option>
-                  <option>Nature</option>
-                </select>
-                <input type="text" name="caption" value={editFields.caption} onChange={handleEditFieldChange} placeholder="Caption (optional)" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
-                <img src={editFields.url} alt="Preview" className="max-h-40 rounded shadow border border-white/10 mx-auto" />
-                <button onClick={handleSaveEdit} className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md w-full">Save Changes</button>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
+      {/* ...existing code for About Page Editor and Portfolio Manager... */}
     </div>
   );
-};
+}
 
 
-const Footer = ({ navigate }) => (
-  <footer className="bg-[#111] text-white/50 py-12">
-    <div className="container mx-auto px-6 text-center">
-      <div className="flex justify-center mb-4">
-        <Logo />
+function Footer({ navigate }) {
+  return (
+    <footer className="bg-[#111] text-white/50 py-12">
+      <div className="container mx-auto px-6 text-center">
+        <div className="flex justify-center mb-4">
+          <Logo />
       </div>
       <div className="flex justify-center gap-6 my-4">
         <button onClick={() => navigate('home')} className="hover:text-white transition">Home</button>
@@ -1728,29 +1554,31 @@ const Footer = ({ navigate }) => (
   </footer>
 );
 // --- Blog Page Component --- //
-const BlogPage = ({ posts, loading, error }) => (
-  <div className="py-20 md:py-28 min-h-[60vh]">
-    <div className="container mx-auto px-6">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-display">Blog</h2>
-        <p className="text-lg text-[#E6D5B8]/70 mt-4 max-w-2xl mx-auto">Stories, tips, and behind-the-scenes from Studio37.</p>
-      </div>
-      {loading && <div className="text-center text-[#E6D5B8]">Loading...</div>}
-      {error && <div className="text-center text-red-400">{error}</div>}
-      {!loading && !error && posts.length === 0 && (
-        <div className="text-center text-[#E6D5B8]/70">No blog posts yet.</div>
-      )}
-      <div className="space-y-10 max-w-2xl mx-auto">
-        {posts.map(post => (
-          <article key={post.id} className="bg-[#262626] rounded-lg shadow-lg p-8 border border-white/10">
-            <h3 className="text-2xl font-display text-white mb-2">{post.title}</h3>
-            <div className="text-xs text-[#E6D5B8]/60 mb-4">{new Date(post.created_at).toLocaleDateString()}</div>
-            <div className="prose prose-invert max-w-none text-[#E6D5B8]/90">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content || ''}</ReactMarkdown>
-            </div>
-          </article>
-        ))}
+function BlogPage({ posts, loading, error }) {
+  return (
+    <div className="py-20 md:py-28 min-h-[60vh]">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-display">Blog</h2>
+          <p className="text-lg text-[#E6D5B8]/70 mt-4 max-w-2xl mx-auto">Stories, tips, and behind-the-scenes from Studio37.</p>
+        </div>
+        {loading && <div className="text-center text-[#E6D5B8]">Loading...</div>}
+        {error && <div className="text-center text-red-400">{error}</div>}
+        {!loading && !error && posts.length === 0 && (
+          <div className="text-center text-[#E6D5B8]/70">No blog posts yet.</div>
+        )}
+        <div className="space-y-10 max-w-2xl mx-auto">
+          {posts.map(post => (
+            <article key={post.id} className="bg-[#262626] rounded-lg shadow-lg p-8 border border-white/10">
+              <h3 className="text-2xl font-display text-white mb-2">{post.title}</h3>
+              <div className="text-xs text-[#E6D5B8]/60 mb-4">{new Date(post.created_at).toLocaleDateString()}</div>
+              <div className="prose prose-invert max-w-none text-[#E6D5B8]/90">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content || ''}</ReactMarkdown>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+}
