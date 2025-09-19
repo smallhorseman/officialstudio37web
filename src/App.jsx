@@ -463,17 +463,62 @@ const AboutPage = ({ content }) => (
 
 // --- ServicesPage: Add missing package/service arrays ---
 const proPackages = [
-  { name: "Director Package", description: "Full content strategy and production.", price: "$2000+" },
-  { name: "Producer Package", description: "Photo/video content for brands.", price: "$1200+" },
-  // ...add more as needed...
+  {
+    name: "Director Package",
+    description: "Our most comprehensive package for brands and businesses. Includes full content strategy, creative direction, multi-location photo/video shoots, and post-production. Ideal for campaigns, launches, and ongoing brand storytelling.",
+    price: "$2,000+"
+  },
+  {
+    name: "Producer Package",
+    description: "Perfect for small businesses and creators. Includes a half-day photo/video shoot, creative planning, and a set of edited images and short-form video content for social media and web.",
+    price: "$1,200+"
+  },
+  {
+    name: "Brand Builder",
+    description: "A focused session for new businesses or rebrands. Includes headshots, team photos, and product or location images, plus a content strategy consult.",
+    price: "$750+"
+  },
+  {
+    name: "Content Day",
+    description: "A quick, high-impact shoot for monthly content refreshes. Includes up to 2 hours on-site, 20 edited images, and 2 short video clips.",
+    price: "$500+"
+  }
 ];
+
 const personalPackages = [
-  { name: "Portrait Session", description: "Individual or family portraits.", price: "$350+" },
-  // ...add more as needed...
+  {
+    name: "Mini Reel",
+    description: "A quick 15-minute session for individuals or couples. Includes 15 edited photos, a free 1-minute movie reel of your shoot, and a complimentary Polaroid print.",
+    price: "$75"
+  },
+  {
+    name: "Full Episode",
+    description: "A 30-minute session for individuals, couples, or small families. Includes 30 edited photos, a free 1-minute movie reel of your shoot, and a complimentary Polaroid print.",
+    price: "$150"
+  },
+  {
+    name: "Movie Premier",
+    description: "A deluxe 60-minute session for couples, families, or creative portraits. Includes 60 edited photos, a free 1-minute movie reel of your shoot, and a complimentary Polaroid print.",
+    price: "$300"
+  }
 ];
+
 const otherServices = [
-  { name: "Event Coverage", description: "Photography for events.", price: "$500+" },
-  // ...add more as needed...
+  {
+    name: "Event Coverage",
+    description: "Professional photography for events, parties, and gatherings. Includes candid and group shots, with fast turnaround on edited images.",
+    price: "$500+"
+  },
+  {
+    name: "Wedding & Engagement",
+    description: "Custom packages for weddings and engagements. Includes planning consult, full-day coverage, and a highlight movie reel.",
+    price: "Contact for Quote"
+  },
+  {
+    name: "Real Estate & Architecture",
+    description: "High-quality images and video for real estate listings, Airbnbs, and architectural projects. Includes drone options.",
+    price: "$250+"
+  }
 ];
 
 // --- Fix: ServiceCard component ---
