@@ -373,7 +373,12 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggl
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className={`px-4 py-2 text-sm uppercase tracking-widest transition-colors duration-300 text-[#E6D5B8]/70 hover:text-white`}
+        className={
+          `px-4 py-2 text-sm uppercase tracking-widest transition-colors duration-300 
+          text-[#E6D5B8]/70 hover:text-white
+          dark:bg-[#E6D5B8] dark:text-[#232323] dark:font-bold dark:rounded-full dark:px-5 dark:py-2 dark:hover:bg-[#e6d5b8]/90 dark:hover:text-[#232323]`
+        }
+        style={label === 'Book a Session' ? { fontWeight: 'bold' } : {}}
       >
         {label}
       </a>
@@ -428,6 +433,18 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggl
             color: #3a2e1a !important;
             background-color: #f7f5ef !important;
           }
+        }
+        /* Book a Session button override for dark mode */
+        .dark a[href*="book.usesession.com"] {
+          background: #E6D5B8 !important;
+          color: #232323 !important;
+          border-radius: 9999px !important;
+          font-weight: bold !important;
+          padding: 0.5rem 1.25rem !important;
+        }
+        .dark a[href*="book.usesession.com"]:hover {
+          background: #e6d5b8cc !important;
+          color: #232323 !important;
         }
       `}</style>
     </header>
