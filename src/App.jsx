@@ -1292,11 +1292,121 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
 
 
 // --- CmsSection (placeholder, implement as needed) --- //
-function CmsSection(props) {
+function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage, deletePortfolioImage }) {
+  const [aboutForm, setAboutForm] = useState(content.about);
+  const [saving, setSaving] = useState(false);
+  const [portfolioUrl, setPortfolioUrl] = useState('');
+  const [portfolioCategory, setPortfolioCategory] = useState('');
+  const [portfolioUploading, setPortfolioUploading] = useState(false);
+
+  useEffect(() => {
+    setAboutForm(content.about);
+  }, [content]);
+
+  const handleAboutChange = (e) => {
+    const { name, value } = e.target;
+    setAboutForm(f => ({ ...f, [name]: value }));
+  };
+
+  const handleAboutSave = async (e) => {
+    e.preventDefault();
+    setSaving(true);
+    await updateContent({ ...content, about: aboutForm });
+    setSaving(false);
+  };
+
+  const handlePortfolioAdd = async (e) => {
+    e.preventDefault();
+    if (!portfolioUrl) return;
+    setPortfolioUploading(true);
+    await addPortfolioImage({ url: portfolioUrl, category: portfolioCategory || 'Uncategorized' });
+    setPortfolioUrl('');
+    setPortfolioCategory('');
+    setPortfolioUploading(false);
+  };
+
   return (
     <div>
       <h3 className="text-2xl font-display mb-6">Website Content</h3>
-      {/* TODO: Implement About Page Editor and Portfolio Manager here */}
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* About Page Editor */}
+        <form onSubmit={handleAboutSave} className="bg-[#262626] p-6 rounded-lg flex flex-col gap-4">
+          <h4 className="text-lg font-bold mb-2">Edit About Page</h4>
+          <input
+            name="title"
+            value={aboutForm.title}
+            onChange={handleAboutChange}
+            placeholder="About Title"
+            className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+            required
+          />
+          <textarea
+            name="bio"
+            value={aboutForm.bio}
+            onChange={handleAboutChange}
+            placeholder="About Bio"
+            rows={6}
+            className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+            required
+          />
+          <button
+            type="submit"
+            className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md mt-2"
+            disabled={saving}
+          >
+            {saving ? 'Saving...' : 'Save About'}
+          </button>
+        </form>
+        {/* Portfolio Manager */}
+        <div className="bg-[#262626] p-6 rounded-lg">
+          <h4 className="text-lg font-bold mb-2">Portfolio Images</h4>
+          <form onSubmit={handlePortfolioAdd} className="flex flex-col gap-2 mb-4">
+            <input
+              type="url"
+              value={portfolioUrl}
+              onChange={e => setPortfolioUrl(e.target.value)}
+              placeholder="Image URL"
+              className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+              required
+            />
+            <input
+              type="text"
+              value={portfolioCategory}
+              onChange={e => setPortfolioCategory(e.target.value)}
+              placeholder="Category (optional)"
+              className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+            />
+            <button
+              type="submit"
+              className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
+              disabled={portfolioUploading}
+            >
+              {portfolioUploading ? 'Adding...' : 'Add Image'}
+            </button>
+          </form>
+          <div className="max-h-64 overflow-y-auto space-y-2">
+            {portfolioImages.map(img => (
+              <div key={img.id} className="flex items-center gap-2 bg-[#1a1a1a] rounded p-2">
+                <img src={img.url} alt={img.category} className="w-12 h-12 object-cover rounded" />
+                <div className="flex-1">
+                  <div className="text-xs text-white">{img.category}</div>
+                  <div className="text-xs text-[#E6D5B8]/70 break-all">{img.url}</div>
+                </div>
+                <button
+                  onClick={() => deletePortfolioImage(img.id)}
+                  className="bg-red-500 text-white px-2 py-1 rounded text-xs"
+                  title="Delete"
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+            {portfolioImages.length === 0 && (
+              <div className="text-[#E6D5B8]/70 text-xs">No images in portfolio.</div>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
