@@ -1531,7 +1531,7 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
 
 // --- CmsSection (placeholder, implement as needed) --- //
 function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage, deletePortfolioImage }) {
-  // Remove About page editing form, only keep Portfolio Manager
+  // Remove useState and useEffect for aboutForm, since About editing is removed
   const [portfolioUrl, setPortfolioUrl] = useState('');
   const [portfolioCategory, setPortfolioCategory] = useState('');
   const [portfolioUploading, setPortfolioUploading] = useState(false);
@@ -1578,23 +1578,24 @@ function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage
             </button>
           </form>
           <div className="max-h-64 overflow-y-auto space-y-2">
-            {portfolioImages.map(img => (
-              <div key={img.id} className="flex items-center gap-2 bg-[#1a1a1a] rounded p-2">
-                <img src={img.url} alt={img.category} className="w-12 h-12 object-cover rounded" />
-                <div className="flex-1">
-                  <div className="text-xs text-white">{img.category}</div>
-                  <div className="text-xs text-[#E6D5B8]/70 break-all">{img.url}</div>
+            {portfolioImages && portfolioImages.length > 0 ? (
+              portfolioImages.map(img => (
+                <div key={img.id} className="flex items-center gap-2 bg-[#1a1a1a] rounded p-2">
+                  <img src={img.url} alt={img.category} className="w-12 h-12 object-cover rounded" />
+                  <div className="flex-1">
+                    <div className="text-xs text-white">{img.category}</div>
+                    <div className="text-xs text-[#E6D5B8]/70 break-all">{img.url}</div>
+                  </div>
+                  <button
+                    onClick={() => deletePortfolioImage(img.id)}
+                    className="bg-red-500 text-white px-2 py-1 rounded text-xs"
+                    title="Delete"
+                  >
+                    Delete
+                  </button>
                 </div>
-                <button
-                  onClick={() => deletePortfolioImage(img.id)}
-                  className="bg-red-500 text-white px-2 py-1 rounded text-xs"
-                  title="Delete"
-                >
-                  Delete
-                </button>
-              </div>
-            ))}
-            {portfolioImages.length === 0 && (
+              ))
+            ) : (
               <div className="text-[#E6D5B8]/70 text-xs">No images in portfolio.</div>
             )}
           </div>
