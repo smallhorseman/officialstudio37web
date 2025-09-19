@@ -17,24 +17,38 @@ const ArrowRight = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform">
     <line x1="5" y1="12" x2="19" y2="12"></line>
     <polyline points="12 5 19 12 12 19"></polyline>
-  </svg>
-);
+
+  </svg>);
 
 const MenuIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-  </svg>
-);
+
+  </svg>);
 
 const CloseIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-  </svg>
-);
+
+  </svg>);
+
+
+
+
+
+
+
 
 const MailIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
 );
+
+
+
+
+
+
+
 const PhoneIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
 );
@@ -98,179 +112,295 @@ export default function App() {
         .order('created_at', { ascending: false })
         .then(({ data, error }) => {
           if (error) setBlogError('Failed to load blog posts.');
-          else setBlogPosts(data || []);
-          setBlogLoading(false);
-        });
-    }
-  }, [currentPage]);
+          return (
+            <div className="py-20 md:py-28">
+              <div className="container mx-auto px-6">
+                <h2 className="text-4xl md:text-5xl font-display mb-10">Admin Dashboard</h2>
+                <div className="flex border-b border-white/20 mb-8 flex-wrap">
+                  <button onClick={() => setActiveTab('crm')} className={`py-2 px-6 text-lg ${activeTab === 'crm' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>CRM (Leads)</button>
+                  <button onClick={() => setActiveTab('cms')} className={`py-2 px-6 text-lg ${activeTab === 'cms' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>CMS (Content)</button>
+                  <button onClick={() => setActiveTab('blog')} className={`py-2 px-6 text-lg ${activeTab === 'blog' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Blog</button>
+                  <button onClick={() => setActiveTab('sitemap')} className={`py-2 px-6 text-lg ${activeTab === 'sitemap' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Site Map</button>
+                  <button onClick={() => setActiveTab('analytics')} className={`py-2 px-6 text-lg ${activeTab === 'analytics' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Analytics</button>
+                  <button onClick={() => setActiveTab('projects')} className={`py-2 px-6 text-lg ${activeTab === 'projects' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Projects</button>
+                </div>
+                {activeTab === 'crm' && <CrmSection leads={leads} updateLeadStatus={updateLeadStatus} />}
+                {activeTab === 'cms' && <CmsSection 
+                  content={content} 
+                  updateContent={updateContent} 
+                  portfolioImages={portfolioImages}
+                  addPortfolioImage={addPortfolioImage}
+                  deletePortfolioImage={deletePortfolioImage} 
+                />}
+                {activeTab === 'blog' && <BlogAdminSection 
+                  blogPosts={blogPosts}
+                  createBlogPost={createBlogPost}
+                  updateBlogPost={updateBlogPost}
+                  deleteBlogPost={deleteBlogPost}
+                  blogEdit={blogEdit}
+                  setBlogEdit={setBlogEdit}
+                  blogSaving={blogSaving}
+                  blogAdminError={blogAdminError}
+                />}
+                {activeTab === 'sitemap' && <SiteMapTab siteMapPage={siteMapPage} setSiteMapPage={setSiteMapPage} content={content} portfolioImages={portfolioImages} blogPosts={blogPosts} />}
+                {activeTab === 'analytics' && (
+                  <div className="bg-[#262626] p-8 rounded-lg grid md:grid-cols-3 gap-8">
+                    <div>
+                      <h4 className="text-xl font-display mb-4">Leads & Conversion</h4>
+                      <div className="text-4xl font-bold mb-2">{totalLeads}</div>
+                      <div className="text-[#E6D5B8]/70 mb-2">Total Leads</div>
+                      <div className="text-2xl font-bold mb-2">{conversionRate}%</div>
+                      <div className="text-[#E6D5B8]/70 mb-2">Conversion Rate (Booked)</div>
+                      <div className="text-lg font-bold mb-2">{mostPopularService}</div>
+                      <div className="text-[#E6D5B8]/70">Most Popular Service</div>
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-display mb-4">Content Stats</h4>
+                      <div className="flex flex-col gap-4">
+                        <div>
+                          <span className="text-3xl font-bold">{blogCount}</span>
+                          <span className="ml-2 text-[#E6D5B8]/70">Blog Posts</span>
+                        </div>
+                        <div>
+                          <span className="text-3xl font-bold">{portfolioCount}</span>
+                          <span className="ml-2 text-[#E6D5B8]/70">Portfolio Images</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-display mb-4">Potential Revenue</h4>
+                      <div className="text-4xl font-bold mb-2">${potentialRevenue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
+                      <div className="text-[#E6D5B8]/70 mb-2">Sum of all project opportunity values</div>
+                    </div>
+                  </div>
+                )}
+                {activeTab === 'projects' && (
+                  <ProjectsTab
+                    projects={projects}
+                    internalProjects={internalProjects}
+                    projectsLoading={projectsLoading}
+                    internalProjectsLoading={internalProjectsLoading}
+                    showProjectForm={showProjectForm}
+                    setShowProjectForm={setShowProjectForm}
+                    newProject={newProject}
+                    setNewProject={setNewProject}
+                    handleCreateProject={handleCreateProject}
+                    setSelectedProject={setSelectedProject}
+                    selectedProject={selectedProject}
+                    projectStages={projectStages}
+                  />
+                )}
+              </div>
+            </div>
+          );
+// ProjectsTab extracted for clarity
+function ProjectsTab({ projects, internalProjects, projectsLoading, internalProjectsLoading, showProjectForm, setShowProjectForm, newProject, setNewProject, handleCreateProject, setSelectedProject, selectedProject, projectStages }) {
+  return (
+    <div className="bg-[#262626] p-8 rounded-lg">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4">
+        <div>
+          <h4 className="text-xl font-display">Projects</h4>
+          <p className="text-xs text-[#E6D5B8]/70">Client projects and deliverables</p>
+        </div>
+        <div className="flex gap-2">
+          <button onClick={() => setShowProjectForm(f => !f)} className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">{showProjectForm ? 'Cancel' : 'New Project'}</button>
+          <button onClick={() => handleCreateProject({ preventDefault: () => {} }, true)} className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md">+ Internal Project</button>
+        </div>
+      </div>
+      {showProjectForm && (
+        <form onSubmit={e => handleCreateProject(e, false)} className="mb-8 grid md:grid-cols-2 gap-4">
+          <input type="text" value={newProject.name} onChange={e => setNewProject(p => ({ ...p, name: e.target.value }))} placeholder="Project Name" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" required />
+          <input type="text" value={newProject.client} onChange={e => setNewProject(p => ({ ...p, client: e.target.value }))} placeholder="Client Name" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
+          <input type="number" value={newProject.opportunity_amount} onChange={e => setNewProject(p => ({ ...p, opportunity_amount: e.target.value }))} placeholder="Opportunity Amount ($)" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
+          <select value={newProject.stage} onChange={e => setNewProject(p => ({ ...p, stage: e.target.value }))} className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3">
+            {projectStages.map(stage => <option key={stage}>{stage}</option>)}
+          </select>
+          <textarea value={newProject.notes} onChange={e => setNewProject(p => ({ ...p, notes: e.target.value }))} placeholder="Notes" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 md:col-span-2" />
+          <button type="submit" className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md md:col-span-2">Create Project</button>
+        </form>
+      )}
+      <div className="mb-10">
+        <h5 className="text-lg font-display mb-2">Internal Projects</h5>
+        {internalProjectsLoading ? (
+          <div className="text-[#E6D5B8]">Loading internal projects...</div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left">
+              <thead className="border-b border-white/10">
+                <tr>
+                  <th className="p-3">Name</th>
+                  <th className="p-3">Completion</th>
+                  <th className="p-3">Notes</th>
+                  <th className="p-3">Created</th>
+                  <th className="p-3">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {internalProjects.map(proj => (
+                  <tr key={proj.id} className="border-b border-white/10 last:border-b-0">
+                    <td className="p-3 font-bold">{proj.name}</td>
+                    <td className="p-3">
+                      <InternalProjectCompletion projectId={proj.id} />
+                    </td>
+                    <td className="p-3">{proj.notes}</td>
+                    <td className="p-3 text-xs">{proj.created_at ? new Date(proj.created_at).toLocaleDateString() : ''}</td>
+                    <td className="p-3">
+                      <button onClick={() => setSelectedProject(proj)} className="bg-blue-500 text-white px-3 py-1 rounded text-xs">View</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+      <div className="mb-10">
+        <h5 className="text-lg font-display mb-2">Client Projects</h5>
+        {projectsLoading ? (
+          <div className="text-[#E6D5B8]">Loading projects...</div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left">
+              <thead className="border-b border-white/10">
+                <tr>
+                  <th className="p-3">Name</th>
+                  <th className="p-3">Client</th>
+                  <th className="p-3">Amount</th>
+                  <th className="p-3">Stage</th>
+                  <th className="p-3">Notes</th>
+                  <th className="p-3">Created</th>
+                  <th className="p-3">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {projects.map(proj => (
+                  <tr key={proj.id} className="border-b border-white/10 last:border-b-0">
+                    <td className="p-3 font-bold">{proj.name}</td>
+                    <td className="p-3">{proj.client}</td>
+                    <td className="p-3">${proj.opportunity_amount?.toLocaleString?.() ?? ''}</td>
+                    <td className="p-3">{proj.stage}</td>
+                    <td className="p-3">{proj.notes}</td>
+                    <td className="p-3 text-xs">{proj.created_at ? new Date(proj.created_at).toLocaleDateString() : ''}</td>
+                    <td className="p-3">
+                      <button onClick={() => setSelectedProject(proj)} className="bg-blue-500 text-white px-3 py-1 rounded text-xs">View</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+      {/* Project Detail Modal */}
+      {selectedProject && (
+        <ProjectDetailModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
+    </div>
+  );
+}
 
-  // Blog CRUD functions
-  const createBlogPost = async (post) => {
-    setBlogSaving(true);
-    setBlogAdminError('');
-    const { data, error } = await supabase
-      .from('blog_posts')
-      .insert([{ ...post }])
-      .select();
-    setBlogSaving(false);
-    if (error) {
-      setBlogAdminError('Failed to create post.');
-      return;
-    }
-    if (data && data[0]) setBlogPosts(posts => [data[0], ...posts]);
-  };
-
-  const updateBlogPost = async (id, updates) => {
-    setBlogSaving(true);
-    setBlogAdminError('');
-    const { data, error } = await supabase
-      .from('blog_posts')
-      .update(updates)
-      .eq('id', id)
-      .select();
-    setBlogSaving(false);
-    if (error) {
-      setBlogAdminError('Failed to update post.');
-      return;
-    }
-    if (data && data[0]) setBlogPosts(posts => posts.map(p => p.id === id ? data[0] : p));
-  };
-
-  const deleteBlogPost = async (id) => {
-    setBlogSaving(true);
-    setBlogAdminError('');
-    const { error } = await supabase
-      .from('blog_posts')
-      .delete()
-      .eq('id', id);
-    setBlogSaving(false);
-    if (error) {
-      setBlogAdminError('Failed to delete post.');
-      return;
-    }
-    setBlogPosts(posts => posts.filter(p => p.id !== id));
-  };
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isPortfolioUnlocked, setIsPortfolioUnlocked] = useState(false);
-  
-  // --- CRM & CMS State (Simulated Backend) --- //
-  // In a real app, this data would come from a database like Firestore.
-  const [leads, setLeads] = useState([]);
-  const [leadsLoading, setLeadsLoading] = useState(false);
-  const [leadsError, setLeadsError] = useState('');
-  // --- Fetch Leads from Supabase --- //
-  useEffect(() => {
-    setLeadsLoading(true);
-    setLeadsError('');
-    supabase
-      .from('leads')
+// InternalProjectCompletion component
+function InternalProjectCompletion({ projectId }) {
+  const [tasks, setTasks] = React.useState([]);
+  React.useEffect(() => {
+    window.supabase
+      .from('project_todos')
       .select('*')
-      .order('created_at', { ascending: false })
-      .then(({ data, error }) => {
-        if (error) setLeadsError('Failed to load leads.');
-        else if (data) setLeads(data);
-        setLeadsLoading(false);
+      .eq('project_id', projectId)
+      .then(({ data }) => {
+        setTasks(data || []);
       });
-  }, []);
+  }, [projectId]);
+  const total = tasks.length;
+  const completed = tasks.filter(t => t.completed).length;
+  const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+  return (
+    <div className="w-32">
+      <div className="h-2 bg-gray-700 rounded-full overflow-hidden mb-1">
+        <div className="h-2 bg-green-500" style={{ width: `${percent}%` }}></div>
+      </div>
+      <div className="text-xs text-[#E6D5B8]">{percent}% complete</div>
+    </div>
+  );
+}
 
-  const [siteContent, setSiteContent] = useState({
-    about: {
-      title: '',
-      bio: ''
-    },
-    portfolioImages: []
-  });
-  const [portfolioLoading, setPortfolioLoading] = useState(false);
-  const [portfolioError, setPortfolioError] = useState('');
-  // --- Fetch Portfolio Images from Supabase --- //
-  useEffect(() => {
-    setPortfolioLoading(true);
-    setPortfolioError('');
-    supabase
-      .from('portfolio_images')
+// ProjectDetailModal component
+function ProjectDetailModal({ project, onClose }) {
+  const [todos, setTodos] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
+  const [newInternal, setNewInternal] = React.useState('');
+  const [newClient, setNewClient] = React.useState('');
+  React.useEffect(() => {
+    setLoading(true);
+    window.supabase
+      .from('project_todos')
       .select('*')
-      .order('created_at', { ascending: false })
-      .then(({ data, error }) => {
-        if (error) setPortfolioError('Failed to load portfolio images.');
-        else if (data) setSiteContent(prev => ({ ...prev, portfolioImages: data }));
-        setPortfolioLoading(false);
+      .eq('project_id', project.id)
+      .then(({ data }) => {
+        setTodos(data || []);
+        setLoading(false);
       });
-  }, []);
-  const [aboutLoading, setAboutLoading] = useState(false);
-  const [aboutError, setAboutError] = useState('');
-  // --- Fetch About Content from Supabase --- //
-  useEffect(() => {
-    setAboutLoading(true);
-    setAboutError('');
-    supabase
-      .from('site_content')
-      .select('content')
-      .eq('section', 'about')
-      .single()
-      .then(({ data, error }) => {
-        if (error) setAboutError('Failed to load about content.');
-        else if (data && data.content) setSiteContent(prev => ({ ...prev, about: data.content }));
-        setAboutLoading(false);
-      });
-  }, []);
+  }, [project.id]);
 
-  const handleNav = (page) => {
-    setCurrentPage(page);
-    setIsMenuOpen(false);
-    window.scrollTo(0, 0);
-  };
-  
-  // Add Lead to Supabase and local state
-  const addLead = async (lead) => {
-    const newLead = { ...lead, status: 'New' };
-    const { data, error } = await supabase
-      .from('leads')
-      .insert([newLead])
+  const addTodo = async (type) => {
+    const task = type === 'internal' ? newInternal : newClient;
+    if (!task) return;
+    const { data, error } = await window.supabase
+      .from('project_todos')
+      .insert([{ project_id: project.id, task, type }])
       .select();
-    if (!error && data && data[0]) {
-      setLeads(prevLeads => [data[0], ...prevLeads]);
-      setIsPortfolioUnlocked(true);
-    }
-  };
-
-  // Update Lead Status in Supabase and local state
-  const updateLeadStatus = async (id, status) => {
-    const { error } = await supabase
-      .from('leads')
-      .update({ status })
-      .eq('id', id);
     if (!error) {
-      setLeads(leads.map(lead => lead.id === id ? { ...lead, status } : lead));
+      setTodos(todos => [...todos, ...(data || [])]);
+      if (type === 'internal') setNewInternal('');
+      else setNewClient('');
     }
   };
 
-  // Update About Content in Supabase and local state
-  const updateSiteContent = async (section, key, value) => {
-    if (section === 'about') {
-      const newAbout = { ...siteContent.about, [key]: value };
-      setSiteContent(prev => ({ ...prev, about: newAbout }));
-      // Update in Supabase
-      await supabase
-        .from('site_content')
-        .update({ content: newAbout })
-        .eq('section', 'about');
-    }
-  };
-  
-  // Add Portfolio Image to Supabase and local state
-  const addPortfolioImage = async (newImage) => {
-    const { data, error } = await supabase
-      .from('portfolio_images')
-      .insert([{ ...newImage }])
-      .select();
-    if (!error && data && data[0]) {
-      setSiteContent(prev => ({
-        ...prev,
-        portfolioImages: [data[0], ...prev.portfolioImages]
-      }));
-    }
-  };
+  return (
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+      <div className="bg-[#222] p-8 rounded-lg w-full max-w-lg relative">
+        <button onClick={onClose} className="absolute top-2 right-2 text-white text-2xl">&times;</button>
+        <h3 className="text-2xl font-display mb-2">{project.name}</h3>
+        <div className="mb-4 text-[#E6D5B8]">{project.notes}</div>
+        <div className="mb-4">
+          <h4 className="font-bold mb-1">Internal Todos</h4>
+          <ul className="mb-2">
+            {todos.filter(t => t.type === 'internal').map(t => (
+              <li key={t.id} className="text-sm text-white flex items-center gap-2">
+                <span>{t.task}</span>
+                {t.completed && <span className="text-green-400">✓</span>}
+              </li>
+            ))}
+          </ul>
+          <div className="flex gap-2">
+            <input value={newInternal} onChange={e => setNewInternal(e.target.value)} placeholder="Add internal todo" className="bg-[#1a1a1a] border border-white/20 rounded-md py-1 px-2 text-sm" />
+            <button onClick={() => addTodo('internal')} className="bg-blue-500 text-white px-2 py-1 rounded text-xs">Add</button>
+          </div>
+        </div>
+        <div className="mb-4">
+          <h4 className="font-bold mb-1">Client Deliverables</h4>
+          <ul className="mb-2">
+            {todos.filter(t => t.type === 'client').map(t => (
+              <li key={t.id} className="text-sm text-white flex items-center gap-2">
+                <span>{t.task}</span>
+                {t.completed && <span className="text-green-400">✓</span>}
+              </li>
+            ))}
+          </ul>
+          <div className="flex gap-2">
+            <input value={newClient} onChange={e => setNewClient(e.target.value)} placeholder="Add client deliverable" className="bg-[#1a1a1a] border border-white/20 rounded-md py-1 px-2 text-sm" />
+            <button onClick={() => addTodo('client')} className="bg-blue-500 text-white px-2 py-1 rounded text-xs">Add</button>
+          </div>
+        </div>
+        {loading && <div className="text-[#E6D5B8]">Loading todos...</div>}
+      </div>
+
+    </div>
+  );
+}
 
   // Delete Portfolio Image from Supabase and local state
   const deletePortfolioImage = async (id) => {
@@ -389,9 +519,7 @@ export default function App() {
   );
 }
 
-
 // --- Page & Section Components --- //
-
 const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggleTheme }) => {
   const navLinks = [
   { page: 'home', label: 'Home' },
@@ -778,6 +906,8 @@ const AdminDashboard = ({
   const [siteMapPage, setSiteMapPage] = useState('home');
   const [projects, setProjects] = useState([]);
   const [projectsLoading, setProjectsLoading] = useState(false);
+  const [internalProjects, setInternalProjects] = useState([]);
+  const [internalProjectsLoading, setInternalProjectsLoading] = useState(false);
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [newProject, setNewProject] = useState({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '' });
   const projectStages = ['Inquiry', 'Proposal', 'Booked', 'In Progress', 'Delivered', 'Closed'];
@@ -787,17 +917,23 @@ const AdminDashboard = ({
     if (activeTab === 'projects') {
       setProjectsLoading(true);
       supabase.from('projects').select('*').order('created_at', { ascending: false }).then(({ data }) => {
-        setProjects(data || []);
+        setProjects((data || []).filter(p => !p.is_internal));
         setProjectsLoading(false);
+      });
+      setInternalProjectsLoading(true);
+      supabase.from('projects').select('*').eq('is_internal', true).order('created_at', { ascending: false }).then(({ data }) => {
+        setInternalProjects(data || []);
+        setInternalProjectsLoading(false);
       });
     }
   }, [activeTab]);
 
-  const handleCreateProject = async (e) => {
+  const handleCreateProject = async (e, isInternal = false) => {
     e.preventDefault();
-    const { data, error } = await supabase.from('projects').insert([{ ...newProject, opportunity_amount: parseFloat(newProject.opportunity_amount) || 0 }]).select();
+    const { data, error } = await supabase.from('projects').insert([{ ...newProject, is_internal: isInternal, opportunity_amount: parseFloat(newProject.opportunity_amount) || 0 }]).select();
     if (!error && data && data[0]) {
-      setProjects(p => [data[0], ...p]);
+      if (isInternal) setInternalProjects(p => [data[0], ...p]);
+      else setProjects(p => [data[0], ...p]);
       setShowProjectForm(false);
       setNewProject({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '' });
     }
@@ -880,12 +1016,18 @@ const AdminDashboard = ({
         )}
         {activeTab === 'projects' && (
           <div className="bg-[#262626] p-8 rounded-lg">
-            <div className="flex justify-between items-center mb-6">
-              <h4 className="text-xl font-display">Projects</h4>
-              <button onClick={() => setShowProjectForm(f => !f)} className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">{showProjectForm ? 'Cancel' : 'New Project'}</button>
+            <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4">
+              <div>
+                <h4 className="text-xl font-display">Projects</h4>
+                <p className="text-xs text-[#E6D5B8]/70">Client projects and deliverables</p>
+              </div>
+              <div className="flex gap-2">
+                <button onClick={() => setShowProjectForm(f => !f)} className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">{showProjectForm ? 'Cancel' : 'New Project'}</button>
+                <button onClick={() => handleCreateProject({ preventDefault: () => {} }, true)} className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md">+ Internal Project</button>
+              </div>
             </div>
             {showProjectForm && (
-              <form onSubmit={handleCreateProject} className="mb-8 grid md:grid-cols-2 gap-4">
+              <form onSubmit={e => handleCreateProject(e, false)} className="mb-8 grid md:grid-cols-2 gap-4">
                 <input type="text" value={newProject.name} onChange={e => setNewProject(p => ({ ...p, name: e.target.value }))} placeholder="Project Name" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" required />
                 <input type="text" value={newProject.client} onChange={e => setNewProject(p => ({ ...p, client: e.target.value }))} placeholder="Client Name" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
                 <input type="number" value={newProject.opportunity_amount} onChange={e => setNewProject(p => ({ ...p, opportunity_amount: e.target.value }))} placeholder="Opportunity Amount ($)" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
@@ -896,72 +1038,84 @@ const AdminDashboard = ({
                 <button type="submit" className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md md:col-span-2">Create Project</button>
               </form>
             )}
-            {projectsLoading ? (
-              <div className="text-[#E6D5B8]">Loading projects...</div>
-            ) : (
-              <div className="overflow-x-auto">
-                <table className="w-full text-left">
-                  <thead className="border-b border-white/10">
-                    <tr>
-                      <th className="p-3">Name</th>
-                      <th className="p-3">Client</th>
-                      <th className="p-3">Amount</th>
-                      <th className="p-3">Stage</th>
-                      <th className="p-3">Notes</th>
-                      <th className="p-3">Created</th>
-                      <th className="p-3">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {projects.map(proj => (
-                      <tr key={proj.id} className="border-b border-white/10 last:border-b-0">
-                        <td className="p-3 font-bold">{proj.name}</td>
-                        <td className="p-3">{proj.client}</td>
-                        <td className="p-3">${proj.opportunity_amount?.toLocaleString?.() ?? ''}</td>
-                        <td className="p-3">{proj.stage}</td>
-                        <td className="p-3">{proj.notes}</td>
-                        <td className="p-3 text-xs">{proj.created_at ? new Date(proj.created_at).toLocaleDateString() : ''}</td>
-                        <td className="p-3">
-                          <button onClick={() => setSelectedProject(proj)} className="bg-blue-500 text-white px-3 py-1 rounded text-xs">View</button>
-                        </td>
+            <div className="mb-10">
+              <h5 className="text-lg font-display mb-2">Internal Projects</h5>
+              {internalProjectsLoading ? (
+                <div className="text-[#E6D5B8]">Loading internal projects...</div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left">
+                    <thead className="border-b border-white/10">
+                      <tr>
+                        <th className="p-3">Name</th>
+                        <th className="p-3">Completion</th>
+                        <th className="p-3">Notes</th>
+                        <th className="p-3">Created</th>
+                        <th className="p-3">Actions</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-
+                    </thead>
+                    <tbody>
+                      {internalProjects.map(proj => (
+                        <tr key={proj.id} className="border-b border-white/10 last:border-b-0">
+                          <td className="p-3 font-bold">{proj.name}</td>
+                          <td className="p-3">
+                            <InternalProjectCompletion projectId={proj.id} />
+                          </td>
+                          <td className="p-3">{proj.notes}</td>
+                          <td className="p-3 text-xs">{proj.created_at ? new Date(proj.created_at).toLocaleDateString() : ''}</td>
+                          <td className="p-3">
+                            <button onClick={() => setSelectedProject(proj)} className="bg-blue-500 text-white px-3 py-1 rounded text-xs">View</button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+            <div className="mb-10">
+              <h5 className="text-lg font-display mb-2">Client Projects</h5>
+              {projectsLoading ? (
+                <div className="text-[#E6D5B8]">Loading projects...</div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left">
+                    <thead className="border-b border-white/10">
+                      <tr>
+                        <th className="p-3">Name</th>
+                        <th className="p-3">Client</th>
+                        <th className="p-3">Amount</th>
+                        <th className="p-3">Stage</th>
+                        <th className="p-3">Notes</th>
+                        <th className="p-3">Created</th>
+                        <th className="p-3">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {projects.map(proj => (
+                        <tr key={proj.id} className="border-b border-white/10 last:border-b-0">
+                          <td className="p-3 font-bold">{proj.name}</td>
+                          <td className="p-3">{proj.client}</td>
+                          <td className="p-3">${proj.opportunity_amount?.toLocaleString?.() ?? ''}</td>
+                          <td className="p-3">{proj.stage}</td>
+                          <td className="p-3">{proj.notes}</td>
+                          <td className="p-3 text-xs">{proj.created_at ? new Date(proj.created_at).toLocaleDateString() : ''}</td>
+                          <td className="p-3">
+                            <button onClick={() => setSelectedProject(proj)} className="bg-blue-500 text-white px-3 py-1 rounded text-xs">View</button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
             {/* Project Detail Modal */}
             {selectedProject && (
-              <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-                <div className="bg-[#232323] p-8 rounded-lg shadow-lg w-full max-w-2xl relative">
-                  <button onClick={() => setSelectedProject(null)} className="absolute top-2 right-2 text-white text-xl">&times;</button>
-                  <h4 className="text-2xl font-display mb-2">{selectedProject.name}</h4>
-                  <div className="mb-2 text-[#E6D5B8]/80">Client: {selectedProject.client || 'N/A'}</div>
-                  <div className="mb-2 text-[#E6D5B8]/80">Opportunity: ${selectedProject.opportunity_amount?.toLocaleString?.() ?? ''}</div>
-                  <div className="mb-2 text-[#E6D5B8]/80">Stage: {selectedProject.stage}</div>
-                  <div className="mb-4 text-[#E6D5B8]/80">Notes: {selectedProject.notes}</div>
-                  <h5 className="text-lg font-display mb-2 mt-4">Project Todo List</h5>
-                  <form onSubmit={handleAddTodo} className="flex gap-2 mb-4">
-                    <input type="text" value={newTodo} onChange={e => setNewTodo(e.target.value)} placeholder="Add a task..." className="flex-grow bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
-                    <button type="submit" className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">Add</button>
-                  </form>
-                  {todosLoading ? (
-                    <div className="text-[#E6D5B8]">Loading tasks...</div>
-                  ) : (
-                    <ul className="space-y-2">
-                      {projectTodos.map(todo => (
-                        <li key={todo.id} className="flex items-center gap-2 bg-[#1a1a1a] rounded p-2">
-                          <input type="checkbox" checked={!!todo.completed} onChange={() => handleToggleTodo(todo.id, todo.completed)} />
-                          <span className={todo.completed ? 'line-through text-[#E6D5B8]/50' : ''}>{todo.task}</span>
-                          <button onClick={() => handleDeleteTodo(todo.id)} className="ml-auto text-red-400 hover:text-red-600 text-xs">Delete</button>
-                        </li>
-                      ))}
-                      {projectTodos.length === 0 && <li className="text-[#E6D5B8]/60">No tasks yet.</li>}
-                    </ul>
-                  )}
-                </div>
-              </div>
+              <ProjectDetailModal
+                project={selectedProject}
+                onClose={() => setSelectedProject(null)}
+              />
             )}
           </div>
         )}
