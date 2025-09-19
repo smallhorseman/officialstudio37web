@@ -699,37 +699,6 @@ const AdminDashboard = ({
   const [projectTodos, setProjectTodos] = useState([]);
   const [todosLoading, setTodosLoading] = useState(false);
   const [newTodo, setNewTodo] = useState('');
-
-  // Fetch todos for selected project
-  useEffect(() => {
-      if (selectedProject) {
-        setTodosLoading(true);
-        supabase.from('project_todos').select('*').eq('project_id', selectedProject.id).order('created_at', { ascending: true }).then(({ data }) => {
-          setProjectTodos(data || []);
-          setTodosLoading(false);
-        });
-    }
-  }, [selectedProject]);
-
-  const handleAddTodo = async (e) => {
-    e.preventDefault();
-    if (!newTodo.trim()) return;
-    const { data, error } = await supabase.from('project_todos').insert([{ project_id: selectedProject.id, task: newTodo }]).select();
-    if (!error && data && data[0]) {
-      setProjectTodos(t => [...t, data[0]]);
-      setNewTodo('');
-    }
-  };
-
-  const handleToggleTodo = async (todoId, completed) => {
-    await supabase.from('project_todos').update({ completed: !completed }).eq('id', todoId);
-    setProjectTodos(todos => todos.map(t => t.id === todoId ? { ...t, completed: !completed } : t));
-  };
-
-  const handleDeleteTodo = async (todoId) => {
-    await supabase.from('project_todos').delete().eq('id', todoId);
-    setProjectTodos(todos => todos.filter(t => t.id !== todoId));
-  };
   const [activeTab, setActiveTab] = useState('crm');
   const [siteMapPage, setSiteMapPage] = useState('home');
   const [internalProjects, setInternalProjects] = useState([]);
@@ -738,14 +707,9 @@ const AdminDashboard = ({
   const [newProject, setNewProject] = useState({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '' });
   const projectStages = ['Inquiry', 'Proposal', 'Booked', 'In Progress', 'Delivered', 'Closed'];
 
-  // Fetch projects from Supabase
+  // Fetch internal projects only (client projects come from props)
   useEffect(() => {
     if (activeTab === 'projects') {
-      setProjectsLoading(true);
-      supabase.from('projects').select('*').order('created_at', { ascending: false }).then(({ data }) => {
-        setProjects((data || []).filter(p => !p.is_internal));
-        setProjectsLoading(false);
-      });
       setInternalProjectsLoading(true);
       supabase.from('projects').select('*').eq('is_internal', true).order('created_at', { ascending: false }).then(({ data }) => {
         setInternalProjects(data || []);
@@ -759,7 +723,9 @@ const AdminDashboard = ({
     const { data, error } = await supabase.from('projects').insert([{ ...newProject, is_internal: isInternal, opportunity_amount: parseFloat(newProject.opportunity_amount) || 0 }]).select();
     if (!error && data && data[0]) {
       if (isInternal) setInternalProjects(p => [data[0], ...p]);
-      else setProjects(p => [data[0], ...p]);
+      else {
+        // projects is a prop, so can't setProjects directly; just reload via parent effect
+      }
       setShowProjectForm(false);
       setNewProject({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '' });
     }
@@ -849,7 +815,7 @@ const AdminDashboard = ({
               </div>
               <div className="flex gap-2">
                 <button onClick={() => setShowProjectForm(f => !f)} className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">{showProjectForm ? 'Cancel' : 'New Project'}</button>
-                <button onClick={() => handleCreateProject({ preventDefault: () => {} }, true)} className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md">+ Internal Project</button>
+                <button onClick={() => setShowProjectForm(true)} className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md">+ Internal Project</button>
               </div>
             </div>
             {showProjectForm && (
@@ -885,7 +851,8 @@ const AdminDashboard = ({
                         <tr key={proj.id} className="border-b border-white/10 last:border-b-0">
                           <td className="p-3 font-bold">{proj.name}</td>
                           <td className="p-3">
-                            <InternalProjectCompletion projectId={proj.id} />
+                            {/* You can add a completion component or percent here */}
+                            {proj.completion || '-'}
                           </td>
                           <td className="p-3">{proj.notes}</td>
                           <td className="p-3 text-xs">{proj.created_at ? new Date(proj.created_at).toLocaleDateString() : ''}</td>
@@ -937,12 +904,7 @@ const AdminDashboard = ({
               )}
             </div>
             {/* Project Detail Modal */}
-            {selectedProject && (
-              <ProjectDetailModal
-                project={selectedProject}
-                onClose={() => setSelectedProject(null)}
-              />
-            )}
+            {/* You can add a modal here for selectedProject if needed */}
           </div>
         )}
       </div>
