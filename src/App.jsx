@@ -65,16 +65,16 @@ const Logo = ({ className }) => (
       <path d="M12 11.5C12.8284 11.5 13.5 10.8284 13.5 10C13.5 9.17157 12.8284 8.5 12 8.5C11.1716 8.5 10.5 9.17157 10.5 10C10.5 10.8284 11.1716 11.5 12 11.5Z" fill="currentColor"/>
       <line x1="6" y1="16" x2="18" y2="16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
     </svg>
-    <span className="text-2xl font-display font-bold text-white tracking-wider">
-      Studio37
-    </span>
   </div>
 );
+
 
 
 // --- Main Application Component --- //
 
 export default function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const handleNav = (page) => setCurrentPage(page);
   const [currentPage, setCurrentPage] = useState('home');
   // Dark/Light mode state
   const [theme, setTheme] = useState(() => {
@@ -522,21 +522,33 @@ function ProjectDetailModal({ project, onClose }) {
 // --- Page & Section Components --- //
 const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggleTheme }) => {
   const navLinks = [
-  { page: 'home', label: 'Home' },
-  { page: 'about', label: 'About' },
-  { page: 'services', label: 'Services' },
-  { page: 'portfolio', label: 'Portfolio' },
-  { page: 'blog', label: 'Blog' },
-  { page: 'contact', label: 'Contact' },
+    { page: 'home', label: 'Home' },
+    { page: 'about', label: 'About' },
+    { page: 'services', label: 'Services' },
+    { page: 'portfolio', label: 'Portfolio' },
+    { page: 'blog', label: 'Blog' },
+    { page: 'contact', label: 'Contact' },
+    { page: 'book', label: 'Book a Session', external: true, url: 'https://book.usesession.com/i/sbDooN5rcH' }
   ];
 
-  const NavLink = ({ page, label }) => (
-    <button 
-      onClick={() => navigate(page)} 
-      className={`px-4 py-2 text-sm uppercase tracking-widest transition-colors duration-300 ${currentPage === page ? 'text-white' : 'text-[#E6D5B8]/70 hover:text-white'}`}
-    >
-      {label}
-    </button>
+  const NavLink = ({ page, label, external, url }) => (
+    external ? (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`px-4 py-2 text-sm uppercase tracking-widest transition-colors duration-300 text-[#E6D5B8]/70 hover:text-white`}
+      >
+        {label}
+      </a>
+    ) : (
+      <button 
+        onClick={() => navigate(page)} 
+        className={`px-4 py-2 text-sm uppercase tracking-widest transition-colors duration-300 ${currentPage === page ? 'text-white' : 'text-[#E6D5B8]/70 hover:text-white'}`}
+      >
+        {label}
+      </button>
+    )
   );
 
   return (
