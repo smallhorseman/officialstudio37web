@@ -388,26 +388,26 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggl
   );
 
   return (
-    <header className="fixed top-0 left-0 w-full z-40 bg-[#181818] dark:bg-white/90 shadow-lg">
+    <header className="fixed top-0 left-0 w-full z-40 bg-[#181818] dark:bg-[#f7f5ef] shadow-lg">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <div className="flex items-center gap-4">
           <Logo />
-          <span className="font-display text-xl font-bold tracking-tight text-white dark:text-[#232323]">Studio37</span>
+          <span className="font-display text-xl font-bold tracking-tight text-white dark:text-[#3a2e1a]">Studio37</span>
         </div>
         <nav className="hidden md:flex gap-2 items-center">
           {navLinks.map(link => <NavLink key={link.page} {...link} />)}
         </nav>
         <div className="flex items-center gap-2">
-          <button onClick={toggleTheme} className="text-[#E6D5B8] dark:text-[#232323] text-xl px-2" aria-label="Toggle Theme">
+          <button onClick={toggleTheme} className="text-[#E6D5B8] dark:text-[#3a2e1a] text-xl px-2" aria-label="Toggle Theme">
             {theme === 'dark' ? '🌙' : '☀️'}
           </button>
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white dark:text-[#232323] md:hidden">
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white dark:text-[#3a2e1a] md:hidden">
             {isMenuOpen ? <span>&#10005;</span> : <span>&#9776;</span>}
           </button>
         </div>
       </div>
       {isMenuOpen && (
-        <div className="md:hidden bg-[#1a1a1a] dark:bg-white">
+        <div className="md:hidden bg-[#1a1a1a] dark:bg-[#f7f5ef]">
           <nav className="flex flex-col items-center py-4">
             {navLinks.map(link => <NavLink key={link.page} {...link} />)}
           </nav>
@@ -418,7 +418,16 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggl
           color: #fff !important;
         }
         .dark header, .dark header * {
-          color: #F7F7F7 !important;
+          color: #3a2e1a !important;
+        }
+        .dark header {
+          background-color: #f7f5ef !important;
+        }
+        @media (prefers-color-scheme: light) {
+          header, header * {
+            color: #3a2e1a !important;
+            background-color: #f7f5ef !important;
+          }
         }
       `}</style>
     </header>
