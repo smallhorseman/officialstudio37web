@@ -996,6 +996,9 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
   const [pages, setPages] = React.useState(defaultSiteMapPages);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState('');
+  const [editingPage, setEditingPage] = React.useState(null);
+  const [editForm, setEditForm] = React.useState({ title: '', content: '' });
+  const [saving, setSaving] = React.useState(false);
 
   // Load order from Supabase
   React.useEffect(() => {
@@ -1014,9 +1017,49 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
       });
   }, []);
 
+  // Load page content for editing
+  const handleEditPage = async (pageKey) => {
+    setEditingPage(pageKey);
+    setSaving(false);
+    // Simulate fetching content for the page (replace with your CMS logic as needed)
+    let title = '';
+    let contentMd = '';
+    if (pageKey === 'about') {
+      title = content.about.title;
+      contentMd = content.about.bio;
+    } else if (pageKey === 'services') {
+      title = 'Our Services';
+      contentMd = 'From comprehensive brand management to capturing your most precious personal moments.';
+    } else if (pageKey === 'home') {
+      title = 'Capture. Create. Captivate.';
+      contentMd = 'Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.';
+    } else if (pageKey === 'contact') {
+      title = 'Get In Touch';
+      contentMd = "Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.";
+    } else {
+      title = '';
+      contentMd = '';
+    }
+    setEditForm({ title, content: contentMd });
+  };
+
+  // Save page content (simulate CMS update)
+  const handleSavePage = async () => {
+    setSaving(true);
+    // Only About page is editable in DB for now
+    if (editingPage === 'about') {
+      await supabase.from('site_content').update({
+        about_title: editForm.title,
+        about_bio: editForm.content
+      }).eq('id', 1);
+    }
+    // Add logic for other pages if you store them in DB
+    setSaving(false);
+    setEditingPage(null);
+  };
+
   // Save order to Supabase
   const saveOrder = async (newPages) => {
-    // Update each row's order_index
     for (let i = 0; i < newPages.length; i++) {
       await supabase
         .from('site_map_order')
@@ -1060,6 +1103,16 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
                         >
                           {page.label}
                         </button>
+                        {/* Only allow editing for About, Home, Services, Contact for now */}
+                        {['about', 'home', 'services', 'contact'].includes(page.key) && (
+                          <button
+                            className="ml-1 text-xs px-2 py-1 bg-[#E6D5B8] text-[#1a1a1a] rounded hover:bg-[#e6d5b8cc] transition"
+                            onClick={() => handleEditPage(page.key)}
+                            type="button"
+                          >
+                            Edit
+                          </button>
+                        )}
                         {idx < pages.length - 1 && <span className="text-[#E6D5B8]">→</span>}
                       </div>
                     )}
@@ -1074,7 +1127,62 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
       <div className="md:w-2/3">
         <h4 className="text-xl font-display mb-4">Live Preview</h4>
         <div className="bg-[#181818] rounded-lg shadow-lg p-6 min-h-[300px]">
-          <SiteMapPreview page={siteMapPage} content={content} portfolioImages={portfolioImages} blogPosts={blogPosts} />
+          {editingPage ? (
+            <form
+              className="space-y-4"
+              onSubmit={e => {
+                e.preventDefault();
+                handleSavePage();
+              }}
+            >
+              <input
+                type="text"
+                value={editForm.title}
+                onChange={e => setEditForm(f => ({ ...f, title: e.target.value }))}
+                placeholder="Page Title"
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 font-bold"
+                required
+              />
+              <label className="block text-xs mb-1 text-[#E6D5B8]/70">Page Content (Markdown supported)</label>
+              <div className="grid md:grid-cols-2 gap-4">
+                <textarea
+                  value={editForm.content}
+                  onChange={e => setEditForm(f => ({ ...f, content: e.target.value }))}
+                  placeholder="Write your content in Markdown..."
+                  rows={10}
+                  className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 font-mono"
+                  required
+                />
+                <div className="bg-[#232323] border border-white/10 rounded-md p-3 overflow-auto min-h-[200px]">
+                  <div className="text-xs text-[#E6D5B8]/60 mb-1">Live Preview</div>
+                  <div className="prose prose-invert max-w-none text-[#E6D5B8]/90">
+                    <h2 className="font-display">{editForm.title}</h2>
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {editForm.content || 'Nothing to preview.'}
+                    </ReactMarkdown>
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <button
+                  type="submit"
+                  className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
+                  disabled={saving}
+                >
+                  {saving ? 'Saving...' : 'Save'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setEditingPage(null)}
+                  className="bg-gray-500 text-white py-2 px-4 rounded-md"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          ) : (
+            <SiteMapPreview page={siteMapPage} content={content} portfolioImages={portfolioImages} blogPosts={blogPosts} />
+          )}
         </div>
       </div>
     </div>
@@ -1337,6 +1445,64 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
                     {/* Placeholder for notes, can add modal or expand on click for mobile */}
                   </td>
                 </tr>
+                {openLeadId === lead.id && (
+                  <tr className="bg-[#1a1a1a]">
+                    <td colSpan="6" className="p-4">
+                      <div className="flex flex-col md:flex-row gap-4">
+                        <div className="flex-1">
+                          <h4 className="text-[#E6D5B8] font-bold text-sm mb-2">Notes</h4>
+                          {loadingNotes ? (
+                            <div className="text-[#E6D5B8] text-sm">Loading notes...</div>
+                          ) : (
+                            <div className="space-y-2">
+                              {notes[lead.id]?.map(note => (
+                                <div key={note.id} className="bg-[#262626] rounded-md p-3 text-sm">
+                                  <div className="flex justify-between text-[#E6D5B8]/70 mb-1">
+                                    <span>{note.status}</span>
+                                    <span>{new Date(note.created_at).toLocaleString()}</span>
+                                  </div>
+                                  <div className="text-white">{note.note}</div>
+                                </div>
+                              ))}
+                              {notes[lead.id]?.length === 0 && (
+                                <div className="text-[#E6D5B8]/70 text-sm">No notes yet.</div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex-none">
+                          <h4 className="text-[#E6D5B8] font-bold text-sm mb-2">Add Note</h4>
+                          <div className="flex flex-col gap-2">
+                            <select
+                              value={noteStatus}
+                              onChange={e => setNoteStatus(e.target.value)}
+                              className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#E6D5B8]"
+                            >
+                              <option value="">Select status</option>
+                              <option value="Info">Info</option>
+                              <option value="Question">Question</option>
+                              <option value="Lead">Lead</option>
+                              <option value="Client">Client</option>
+                            </select>
+                            <textarea
+                              value={noteInput}
+                              onChange={e => setNoteInput(e.target.value)}
+                              placeholder="Write your note here..."
+                              rows={3}
+                              className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#E6D5B8]"
+                            />
+                            <button
+                              onClick={() => handleAddNote(lead.id)}
+                              className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md text-sm transition-transform hover:scale-105"
+                            >
+                              {addingNote ? 'Adding...' : 'Add Note'}
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                )}
               </React.Fragment>
             ))}
           </tbody>
