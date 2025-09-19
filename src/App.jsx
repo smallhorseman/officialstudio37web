@@ -732,8 +732,6 @@ const AdminDashboard = ({
   };
   const [activeTab, setActiveTab] = useState('crm');
   const [siteMapPage, setSiteMapPage] = useState('home');
-  const [projects, setProjects] = useState([]);
-  const [projectsLoading, setProjectsLoading] = useState(false);
   const [internalProjects, setInternalProjects] = useState([]);
   const [internalProjectsLoading, setInternalProjectsLoading] = useState(false);
   const [showProjectForm, setShowProjectForm] = useState(false);
