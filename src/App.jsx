@@ -1412,7 +1412,7 @@ function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage
 }
 function Footer({ navigate }) {
   return (
-    <footer className="bg-[#111] text-white/50 py-12 relative">
+    <footer className="bg-[#111] text-[#E6D5B8] dark:text-[#232323] py-12 relative">
       {/* Floating CTA Button */}
       <a
         href="https://book.usesession.com/i/sbDooN5rcH"
@@ -1428,15 +1428,26 @@ function Footer({ navigate }) {
           <Logo />
         </div>
         <div className="flex justify-center gap-6 my-4">
-          <button onClick={() => navigate('home')} className="hover:text-white transition">Home</button>
-          <button onClick={() => navigate('about')} className="hover:text-white transition">About</button>
-          <button onClick={() => navigate('services')} className="hover:text-white transition">Services</button>
-          <button onClick={() => navigate('portfolio')} className="hover:text-white transition">Portfolio</button>
-          <button onClick={() => navigate('blog')} className="hover:text-white transition">Blog</button>
+          <button onClick={() => navigate('home')} className="hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">Home</button>
+          <button onClick={() => navigate('about')} className="hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">About</button>
+          <button onClick={() => navigate('services')} className="hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">Services</button>
+          <button onClick={() => navigate('portfolio')} className="hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">Portfolio</button>
+          <button onClick={() => navigate('blog')} className="hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">Blog</button>
         </div>
-        <p className="text-sm">&copy; {new Date().getFullYear()} Studio37 Photography & Content. All Rights Reserved.</p>
-               <button onClick={() => navigate('adminLogin')} className="text-xs mt-4 hover:text-white transition">Admin Access</button>
-           </div>
+        <p className="text-sm text-[#E6D5B8] dark:text-[#232323]">&copy; {new Date().getFullYear()} Studio37 Photography & Content. All Rights Reserved.</p>
+        <button onClick={() => navigate('adminLogin')} className="text-xs mt-4 hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">Admin Access</button>
+      </div>
+      <style>{`
+        footer, footer * {
+          color: #E6D5B8 !important;
+        }
+        .dark footer, .dark footer * {
+          color: #232323 !important;
+        }
+        .dark .hover\\:text-\\[\\#E6D5B8\\] {
+          color: #232323 !important;
+        }
+      `}</style>
     </footer>
   );
 }
