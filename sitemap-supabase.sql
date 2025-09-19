@@ -21,3 +21,10 @@ on conflict (page_key) do nothing;
 
 -- To fetch the sitemap in order:
 -- select * from site_map_order order by order_index asc;
+
+-- Remove about page editing from site_map_order if you want to manage About page content only in site_content table.
+-- Option 1: Remove About from site_map_order if About is only editable in site_content:
+delete from site_map_order where page_key = 'about';
+
+-- Option 2: If you want to keep About in the sitemap for navigation/order, but NOT edit its content here,
+-- just ensure your app only allows About content editing via the site_content table, not site_map_order.

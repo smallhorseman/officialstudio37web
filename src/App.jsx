@@ -985,7 +985,7 @@ const AdminDashboard = ({
 // --- Site Map Tab with Flowchart and Live Preview --- //
 const defaultSiteMapPages = [
   { key: 'home', label: 'Home' },
-  { key: 'about', label: 'About' },
+  // { key: 'about', label: 'About' }, // Removed from site_map_order for editing, but still in navigation
   { key: 'services', label: 'Services' },
   { key: 'portfolio', label: 'Portfolio' },
   { key: 'blog', label: 'Blog' },
@@ -1000,7 +1000,7 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
   const [editForm, setEditForm] = React.useState({ title: '', content: '' });
   const [saving, setSaving] = React.useState(false);
 
-  // Load order from Supabase
+  // Load order from Supabase, but skip 'about' since it's not in site_map_order anymore
   React.useEffect(() => {
     setLoading(true);
     setError('');
@@ -1011,7 +1011,8 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
       .then(({ data, error }) => {
         if (error) setError('Failed to load site map order.');
         else if (data && data.length > 0) {
-          setPages(data.map(row => ({ key: row.page_key, label: row.page_label })));
+          // Filter out 'about' if present
+          setPages(data.filter(row => row.page_key !== 'about').map(row => ({ key: row.page_key, label: row.page_label })));
         }
         setLoading(false);
       });
@@ -1103,8 +1104,8 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
                         >
                           {page.label}
                         </button>
-                        {/* Only allow editing for About, Home, Services, Contact for now */}
-                        {['about', 'home', 'services', 'contact'].includes(page.key) && (
+                        {/* Only allow editing for editablePages */}
+                        {editablePages.includes(page.key) && (
                           <button
                             className="ml-1 text-xs px-2 py-1 bg-[#E6D5B8] text-[#1a1a1a] rounded hover:bg-[#e6d5b8cc] transition"
                             onClick={() => handleEditPage(page.key)}
