@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -1300,7 +1300,7 @@ const BlogAdminSection = ({ blogPosts, createBlogPost, updateBlogPost, deleteBlo
           </div>
           <div className="flex-1">
             <label className="block text-xs mb-1 text-[#E6D5B8]/70">Category</label>
-            <select name="category" value={form.category} onChange={handleChange} className="w-full bg-[#1a1a] border border-white/20 rounded-md py-2 px-3">
+            <select name="category" value={form.category} onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3">
               <option value="">Select category</option>
               {categoryOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
             </select>
