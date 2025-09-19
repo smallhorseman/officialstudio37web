@@ -75,9 +75,10 @@ const Logo = ({ className }) => (
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const handleNav = (page) => setCurrentPage(page);
   const [currentPage, setCurrentPage] = useState('home');
-  // Dark/Light mode state
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  // --- Theme ---
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('theme') || 'dark';
@@ -91,66 +92,224 @@ export default function App() {
     }
   }, [theme]);
   const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
-  // Planner page override if ?planner=1 or pathname includes /planner
-  const urlParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
-  const isPlanner = (typeof window !== 'undefined' && (window.location.pathname.includes('planner') || urlParams?.get('planner')));
+
+  // --- Blog ---
   const [blogPosts, setBlogPosts] = useState([]);
   const [blogLoading, setBlogLoading] = useState(false);
   const [blogError, setBlogError] = useState('');
-  // Blog admin state
-  const [blogEdit, setBlogEdit] = useState(null); // {id, title, content, ...}
+
+  // --- Portfolio Unlock ---
+  const [portfolioUnlocked, setPortfolioUnlocked] = useState(false);
+  const [portfolioImages, setPortfolioImages] = useState([]);
+  const [portfolioLoading, setPortfolioLoading] = useState(false);
+
+  // --- Leads (CRM) ---
+  const [leads, setLeads] = useState([]);
+  const [leadsLoading, setLeadsLoading] = useState(false);
+
+  // --- Content (CMS) ---
+  const [siteContent, setSiteContent] = useState({ about: { title: '', bio: '' } });
+
+  // --- Projects ---
+  const [projects, setProjects] = useState([]);
+  const [projectsLoading, setProjectsLoading] = useState(false);
+
+  // --- Blog Admin ---
+  const [blogEdit, setBlogEdit] = useState(null);
   const [blogSaving, setBlogSaving] = useState(false);
   const [blogAdminError, setBlogAdminError] = useState('');
-  // --- Blog Fetch --- //
-  // Fetch blog posts (on blog page or admin dashboard)
+
+  // --- Floating Chat Bot ---
+  const [showChatBot, setShowChatBot] = useState(false);
+
+  // --- Fetch Blog Posts ---
   useEffect(() => {
-      if (currentPage === 'blog' || currentPage === 'adminDashboard') {
-        setBlogLoading(true);
-        setBlogError('');
-        supabase
-          .from('blog_posts')
-          .select('*')
-          .order('created_at', { ascending: false })
-          .then(({ data, error }) => {
-            if (error) setBlogError('Failed to load blog posts.');
-            else setBlogPosts(data || []);
-          });
+    if (currentPage === 'blog' || isAdmin) {
+      setBlogLoading(true);
+      setBlogError('');
+      supabase
+        .from('blog_posts')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .then(({ data, error }) => {
+          if (error) setBlogError('Failed to load blog posts.');
+          else setBlogPosts(data || []);
+          setBlogLoading(false);
+        });
     }
-  }, [currentPage]);
-  // --- Page Content Switcher --- //
+  }, [currentPage, isAdmin]);
+
+  // --- Fetch Portfolio Images ---
+  useEffect(() => {
+    if (currentPage === 'portfolio' || isAdmin) {
+      setPortfolioLoading(true);
+      supabase
+        .from('portfolio_images')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .then(({ data }) => {
+          setPortfolioImages(data || []);
+          setPortfolioLoading(false);
+        });
+    }
+  }, [currentPage, isAdmin]);
+
+  // --- Fetch Leads (CRM) ---
+  useEffect(() => {
+    if (isAdmin) {
+      setLeadsLoading(true);
+      supabase
+        .from('leads')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .then(({ data }) => {
+          setLeads(data || []);
+          setLeadsLoading(false);
+        });
+    }
+  }, [isAdmin]);
+
+  // --- Fetch Site Content (CMS) ---
+  useEffect(() => {
+    if (isAdmin) {
+      supabase
+        .from('site_content')
+        .select('*')
+        .then(({ data }) => {
+          if (data && data.length > 0) {
+            setSiteContent({ about: { title: data[0].about_title, bio: data[0].about_bio } });
+          }
+        });
+    }
+  }, [isAdmin]);
+
+  // --- Fetch Projects ---
+  useEffect(() => {
+    if (isAdmin) {
+      setProjectsLoading(true);
+      supabase
+        .from('projects')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .then(({ data }) => {
+          setProjects(data || []);
+          setProjectsLoading(false);
+        });
+    }
+  }, [isAdmin]);
+
+  // --- Portfolio Unlock Handler ---
+  async function handlePortfolioUnlock(formData) {
+    // Save lead to Supabase
+    await supabase.from('leads').insert([{
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      service: formData.service,
+      status: 'New'
+    }]);
+    setPortfolioUnlocked(true);
+  }
+
+  // --- Admin Login Handler ---
+  function handleAdminLogin() {
+    setIsAdmin(true);
+    setCurrentPage('adminDashboard');
+  }
+
+  // --- Navigation Handler ---
+  function handleNav(page) {
+    setCurrentPage(page);
+    if (page !== 'adminDashboard') setIsAdmin(false);
+  }
+
+  // --- Update Lead Status (CRM) ---
+  async function updateLeadStatus(leadId, status) {
+    await supabase.from('leads').update({ status }).eq('id', leadId);
+    setLeads(leads => leads.map(l => l.id === leadId ? { ...l, status } : l));
+  }
+
+  // --- Update Content (CMS) ---
+  async function updateContent(newContent) {
+    await supabase.from('site_content').update({
+      about_title: newContent.about.title,
+      about_bio: newContent.about.bio
+    }).eq('id', 1);
+    setSiteContent(newContent);
+  }
+
+  // --- Add/Delete Portfolio Image (CMS) ---
+  async function addPortfolioImage(image) {
+    const { data } = await supabase.from('portfolio_images').insert([image]).select();
+    if (data && data[0]) setPortfolioImages(imgs => [data[0], ...imgs]);
+  }
+  async function deletePortfolioImage(id) {
+    await supabase.from('portfolio_images').delete().eq('id', id);
+    setPortfolioImages(imgs => imgs.filter(img => img.id !== id));
+  }
+
+  // --- Blog Admin CRUD ---
+  async function createBlogPost(post) {
+    setBlogSaving(true);
+    const { data, error } = await supabase.from('blog_posts').insert([post]).select();
+    if (error) setBlogAdminError('Failed to create post.');
+    else setBlogPosts(posts => [data[0], ...posts]);
+    setBlogSaving(false);
+  }
+  async function updateBlogPost(id, post) {
+    setBlogSaving(true);
+    await supabase.from('blog_posts').update(post).eq('id', id);
+    setBlogPosts(posts => posts.map(p => p.id === id ? { ...p, ...post } : p));
+    setBlogSaving(false);
+  }
+  async function deleteBlogPost(id) {
+    await supabase.from('blog_posts').delete().eq('id', id);
+    setBlogPosts(posts => posts.filter(p => p.id !== id));
+  }
+
+  // --- Page Content Switcher ---
   function PageContent() {
     switch (currentPage) {
       case 'home': return <HomePage navigate={handleNav} />;
-      case 'about': return <AboutPage content={{ title: "About Us", bio: "We are Studio37..." }} />;
+      case 'about': return <AboutPage content={siteContent.about} />;
       case 'services': return <ServicesPage />;
-      case 'portfolio': return <PortfolioPage isUnlocked={true} onUnlock={() => {}} images={[]} />;
+      case 'portfolio': return (
+        <PortfolioPage
+          isUnlocked={portfolioUnlocked}
+          onUnlock={handlePortfolioUnlock}
+          images={portfolioImages}
+        />
+      );
       case 'blog': return <BlogPage posts={blogPosts} loading={blogLoading} error={blogError} />;
       case 'contact': return <ContactPage />;
-      case 'adminLogin': return <AdminLoginPage onLogin={() => { setIsAdmin(true); handleNav('adminDashboard'); }} />;
-      case 'adminDashboard': return isAdmin ? <AdminDashboard
-                                   leads={[]} // You may want to pass actual leads
-                                   updateLeadStatus={() => {}}
-                                   content={{ about: { title: "About", bio: "..." } }}
-                                   updateContent={() => {}}
-                                   portfolioImages={[]}
-                                   addPortfolioImage={() => {}}
-                                   deletePortfolioImage={() => {}}
-                                   blogPosts={blogPosts}
-                                   createBlogPost={() => {}}
-                                   updateBlogPost={() => {}}
-                                   deleteBlogPost={() => {}}
-                                   blogEdit={blogEdit}
-                                   setBlogEdit={setBlogEdit}
-                                   blogSaving={blogSaving}
-                                   blogAdminError={blogAdminError}
-                                 /> : <AdminLoginPage onLogin={() => { setIsAdmin(true); handleNav('adminDashboard'); }} />;
+      case 'adminLogin': return <AdminLoginPage onLogin={handleAdminLogin} />;
+      case 'adminDashboard':
+        return isAdmin ? (
+          <AdminDashboard
+            leads={leads}
+            updateLeadStatus={updateLeadStatus}
+            content={siteContent}
+            updateContent={updateContent}
+            portfolioImages={portfolioImages}
+            addPortfolioImage={addPortfolioImage}
+            deletePortfolioImage={deletePortfolioImage}
+            blogPosts={blogPosts}
+            createBlogPost={createBlogPost}
+            updateBlogPost={updateBlogPost}
+            deleteBlogPost={deleteBlogPost}
+            blogEdit={blogEdit}
+            setBlogEdit={setBlogEdit}
+            blogSaving={blogSaving}
+            blogAdminError={blogAdminError}
+            projects={projects}
+            projectsLoading={projectsLoading}
+          />
+        ) : <AdminLoginPage onLogin={handleAdminLogin} />;
       default: return <HomePage navigate={handleNav} />;
     }
   }
 
-  // Floating chat bot state
-  const [showChatBot, setShowChatBot] = useState(false);
-
+  // --- Render ---
   return (
     <div className={
       `min-h-screen font-sans antialiased transition-colors duration-300 ` +
@@ -158,41 +317,7 @@ export default function App() {
         ? 'bg-[#1a1a1a] text-[#E6D5B8]'
         : 'bg-white text-[#232323]')
     }>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3, .font-display { font-family: 'Playfair Display', serif; }
-        .polaroid {
-            background: #fff;
-            padding: 1rem;
-            padding-bottom: 3rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transform: rotate(-2deg);
-            transition: all 0.3s ease-in-out;
-        }
-        .polaroid:nth-child(2n) {
-            transform: rotate(2deg);
-        }
-        .polaroid:hover {
-            transform: scale(1.05) rotate(0deg);
-            z-index: 10;
-        }
-      `}</style>
-
-      <Header 
-        navigate={handleNav} 
-        isMenuOpen={isMenuOpen} 
-        setIsMenuOpen={setIsMenuOpen} 
-        currentPage={currentPage}
-        theme={theme}
-        toggleTheme={toggleTheme}
-      />
-      <main className="pt-20">
-        <PageContent />
-      </main>
-      <Footer navigate={handleNav} />
-
-      {/* Floating Chat Bot Button */}
+      {/* Chatbot Button is now global, not just homepage */}
       <button
         onClick={() => setShowChatBot(true)}
         className="fixed bottom-6 right-6 z-50 bg-[#E6D5B8] text-[#1a1a1a] dark:bg-[#232323] dark:text-[#E6D5B8] rounded-full shadow-lg p-4 flex items-center gap-2 hover:scale-105 transition-transform"
@@ -202,8 +327,6 @@ export default function App() {
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
         <span className="font-bold hidden md:inline">Plan My Shoot</span>
       </button>
-
-      {/* Floating Chat Bot Modal */}
       {showChatBot && (
         <div className="fixed inset-0 bg-black/40 flex items-end md:items-center justify-center z-[100]">
           <div className="bg-[#232323] dark:bg-white rounded-t-2xl md:rounded-lg shadow-2xl w-full max-w-md mx-auto p-0 md:p-0 relative animate-fadeInUp">
@@ -216,7 +339,18 @@ export default function App() {
           </div>
         </div>
       )}
-
+      <Header 
+        navigate={handleNav} 
+        isMenuOpen={isMenuOpen} 
+        setIsMenuOpen={setIsMenuOpen} 
+        currentPage={currentPage}
+        theme={theme}
+        toggleTheme={toggleTheme}
+      />
+      <main className="pt-20">
+        <PageContent />
+      </main>
+      <Footer navigate={handleNav} />
     </div>
   );
 }
@@ -559,7 +693,7 @@ const AdminLoginPage = ({ onLogin }) => {
 
 const AdminDashboard = ({
   leads, updateLeadStatus, content, updateContent, portfolioImages, addPortfolioImage, deletePortfolioImage,
-  blogPosts, createBlogPost, updateBlogPost, deleteBlogPost, blogEdit, setBlogEdit, blogSaving, blogAdminError
+  blogPosts, createBlogPost, updateBlogPost, deleteBlogPost, blogEdit, setBlogEdit, blogSaving, blogAdminError, projects, projectsLoading
 }) => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [projectTodos, setProjectTodos] = useState([]);
@@ -1175,7 +1309,6 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
     </div>
   );
 };
-
 
 
 // --- CmsSection (placeholder, implement as needed) --- //
