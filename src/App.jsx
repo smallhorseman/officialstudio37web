@@ -1489,8 +1489,21 @@ function Footer({ navigate }) {
         .dark footer, .dark footer * {
           color: #232323 !important;
         }
-        .dark .hover\\:text-\\[\\#E6D5B8\\] {
-          color: #232323 !important;
+        @media (prefers-color-scheme: light) {
+          footer, footer * {
+            color: #3a2e1a !important;
+            background-color: #f7f5ef !important;
+          }
+          .hover\\:text-\\[\\#E6D5B8\\]:hover {
+            color: #b89c6d !important;
+          }
+        }
+        .light footer, .light footer * {
+          color: #3a2e1a !important;
+          background-color: #f7f5ef !important;
+        }
+        .light .hover\\:text-\\[\\#E6D5B8\\]:hover {
+          color: #b89c6d !important;
         }
       `}</style>
     </footer>
