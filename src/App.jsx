@@ -1250,32 +1250,33 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
     <div>
       <h3 className="text-2xl font-display mb-6">Client Leads ({leads.length})</h3>
       <div className="bg-[#262626] rounded-lg shadow-lg overflow-x-auto">
-        <table className="w-full text-left">
+        <table className="w-full text-left text-xs md:text-sm">
           <thead className="border-b border-white/10">
             <tr>
-              <th className="p-4 uppercase text-sm font-bold tracking-wider">Name</th>
-              <th className="p-4 uppercase text-sm font-bold tracking-wider">Contact</th>
-              <th className="p-4 uppercase text-sm font-bold tracking-wider">Service</th>
-              <th className="p-4 uppercase text-sm font-bold tracking-wider">Status</th>
-              <th className="p-4 uppercase text-sm font-bold tracking-wider">Actions</th>
-              <th className="p-4 uppercase text-sm font-bold tracking-wider">Notes</th>
+              <th className="p-2 md:p-4 uppercase font-bold tracking-wider">Name</th>
+              <th className="p-2 md:p-4 uppercase font-bold tracking-wider">Contact</th>
+              <th className="p-2 md:p-4 uppercase font-bold tracking-wider">Service</th>
+              <th className="p-2 md:p-4 uppercase font-bold tracking-wider">Status</th>
+              <th className="p-2 md:p-4 uppercase font-bold tracking-wider">Actions</th>
+              {/* Hide notes column on small screens */}
+              <th className="p-2 md:p-4 uppercase font-bold tracking-wider hidden md:table-cell">Notes</th>
             </tr>
           </thead>
           <tbody>
             {leads.map(lead => (
               <React.Fragment key={lead.id}>
                 <tr className="border-b border-white/10 last:border-b-0">
-                  <td className="p-4">{lead.name}</td>
-                  <td className="p-4">
-                    <div className="text-sm">{lead.email}</div>
-                    {lead.phone && <div className="text-xs text-white/60">{lead.phone}</div>}
+                  <td className="p-2 md:p-4">{lead.name}</td>
+                  <td className="p-2 md:p-4">
+                    <div className="text-xs md:text-sm">{lead.email}</div>
+                    {lead.phone && <div className="text-[10px] md:text-xs text-white/60">{lead.phone}</div>}
                   </td>
-                  <td className="p-4">{lead.service || 'N/A'}</td>
-                  <td className="p-4">
+                  <td className="p-2 md:p-4">{lead.service || 'N/A'}</td>
+                  <td className="p-2 md:p-4">
                     <select 
                       value={lead.status} 
                       onChange={(e) => updateLeadStatus(lead.id, e.target.value)}
-                      className="bg-[#1a1a1a] border border-white/20 rounded-md py-1 px-2 focus:outline-none focus:ring-1 focus:ring-[#E6D5B8]"
+                      className="bg-[#1a1a1a] border border-white/20 rounded-md py-1 px-2 focus:outline-none focus:ring-1 focus:ring-[#E6D5B8] text-xs md:text-sm"
                     >
                       <option>New</option>
                       <option>Contacted</option>
@@ -1283,8 +1284,8 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
                       <option>Closed</option>
                     </select>
                   </td>
-                  <td className="p-4">
-                    <div className="flex items-center gap-4">
+                  <td className="p-2 md:p-4">
+                    <div className="flex items-center gap-2 md:gap-4">
                       <a href={`mailto:${lead.email}`} title="Email" className="text-[#E6D5B8] hover:text-white">
                         <MailIcon />
                       </a>
@@ -1300,12 +1301,31 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
                       )}
                     </div>
                   </td>
+                  {/* Hide notes column on small screens */}
+                  <td className="p-2 md:p-4 hidden md:table-cell">
+                    {/* Placeholder for notes, can add modal or expand on click for mobile */}
+                  </td>
                 </tr>
               </React.Fragment>
             ))}
           </tbody>
         </table>
       </div>
+      {/* Responsive tweaks for mobile */}
+      <style>{`
+        @media (max-width: 900px) {
+          table, thead, tbody, th, td, tr { font-size: 12px; }
+          th, td { padding: 0.5rem !important; }
+        }
+        @media (max-width: 600px) {
+          table, thead, tbody, th, td, tr { font-size: 11px; }
+          th, td { padding: 0.35rem !important; }
+        }
+        @media (max-width: 480px) {
+          table, thead, tbody, th, td, tr { font-size: 10px; }
+          th, td { padding: 0.2rem !important; }
+        }
+      `}</style>
     </div>
   );
 };
