@@ -5,11 +5,12 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Studio37 | Houston Photography & Content</title>
-    <!-- Use relative paths for Netlify compatibility -->
-    <script type="module" crossorigin src="assets/index-CWSmyDSU.js"></script>
-    <link rel="stylesheet" crossorigin href="assets/index-CEMl_nSC.css">
+    <!-- Let Vite inject assets at build time; remove hardcoded asset references -->
+    <!-- <script type="module" crossorigin src="assets/index-CWSmyDSU.js"></script> -->
+    <!-- <link rel="stylesheet" crossorigin href="assets/index-CEMl_nSC.css"> -->
   </head>
   <body>
     <div id="root"></div>
+    <!-- Vite will inject the correct JS/CSS here during build -->
   </body>
 </html>
