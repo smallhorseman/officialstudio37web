@@ -1,3 +1,4 @@
+
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -401,6 +402,8 @@ function ProjectDetailModal({ project, onClose }) {
 
     </div>
   );
+
+
 }
 
   // Delete Portfolio Image from Supabase and local state
@@ -1532,27 +1535,27 @@ function CmsSection(props) {
     </div>
   );
 }
-
-
 function Footer({ navigate }) {
   return (
     <footer className="bg-[#111] text-white/50 py-12">
       <div className="container mx-auto px-6 text-center">
         <div className="flex justify-center mb-4">
           <Logo />
+        </div>
+        <div className="flex justify-center gap-6 my-4">
+          <button onClick={() => navigate('home')} className="hover:text-white transition">Home</button>
+          <button onClick={() => navigate('about')} className="hover:text-white transition">About</button>
+          <button onClick={() => navigate('services')} className="hover:text-white transition">Services</button>
+          <button onClick={() => navigate('portfolio')} className="hover:text-white transition">Portfolio</button>
+          <button onClick={() => navigate('blog')} className="hover:text-white transition">Blog</button>
+        </div>
+        <p className="text-sm">&copy; {new Date().getFullYear()} Studio37 Photography & Content. All Rights Reserved.</p>
+        <button onClick={() => navigate('adminLogin')} className="text-xs mt-4 hover:text-white transition">Admin Access</button>
       </div>
-      <div className="flex justify-center gap-6 my-4">
-        <button onClick={() => navigate('home')} className="hover:text-white transition">Home</button>
-        <button onClick={() => navigate('about')} className="hover:text-white transition">About</button>
-        <button onClick={() => navigate('services')} className="hover:text-white transition">Services</button>
-        <button onClick={() => navigate('portfolio')} className="hover:text-white transition">Portfolio</button>
-        <button onClick={() => navigate('blog')} className="hover:text-white transition">Blog</button>
-      </div>
-      <p className="text-sm">&copy; {new Date().getFullYear()} Studio37 Photography & Content. All Rights Reserved.</p>
-      <button onClick={() => navigate('adminLogin')} className="text-xs mt-4 hover:text-white transition">Admin Access</button>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+}
+
 // --- Blog Page Component --- //
 function BlogPage({ posts, loading, error }) {
   return (
