@@ -1415,7 +1415,7 @@ function Footer({ navigate }) {
     <footer className="bg-[#111] text-white/50 py-12 relative">
       {/* Floating CTA Button */}
       <a
-        href="https://book.usesession.com/b/PVjYVG5frei"
+        href="https://book.usesession.com/i/sbDooN5rcH"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 bg-[#E6D5B8] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 transition-transform text-lg"
