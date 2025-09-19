@@ -1655,7 +1655,7 @@ function Footer({ navigate }) {
         href="https://book.usesession.com/i/sbDooN5rcH"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 left-6 z-50 bg-[#E6D5B8] text-black font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 transition-transform text-lg flex items-center justify-center"
+        className="fixed bottom-6 left-6 z-50 bg-[#E6D5B8] text-black dark:bg-[#E6D5B8] dark:text-black font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 transition-transform text-lg flex items-center justify-center"
         style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.25)' }}
       >
         <span className="block">Book a Session</span>
