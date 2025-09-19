@@ -1412,7 +1412,17 @@ function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage
 }
 function Footer({ navigate }) {
   return (
-    <footer className="bg-[#111] text-white/50 py-12">
+    <footer className="bg-[#111] text-white/50 py-12 relative">
+      {/* Floating CTA Button */}
+      <a
+        href="https://book.usesession.com/b/PVjYVG5frei"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 bg-[#E6D5B8] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 transition-transform text-lg"
+        style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.25)' }}
+      >
+        Book a Free Consultation
+      </a>
       <div className="container mx-auto px-6 text-center">
         <div className="flex justify-center mb-4">
           <Logo />
