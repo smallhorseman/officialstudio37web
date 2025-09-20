@@ -311,12 +311,7 @@ export default function App() {
 
   // --- Render ---
   return (
-    <div className={
-      `min-h-screen font-sans antialiased transition-colors duration-300 ` +
-      (theme === 'dark'
-        ? 'bg-[#1a1a1a] text-[#E6D5B8]'
-        : 'bg-white text-[#232323]')
-    }>
+    <div className="min-h-screen bg-gray-900 text-yellow-200 font-sans antialiased transition-colors duration-300">
       {/* Chatbot Button is now global, not just homepage */}
       <button
         onClick={() => setShowChatBot(true)}
