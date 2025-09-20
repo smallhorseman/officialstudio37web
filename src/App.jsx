@@ -743,7 +743,7 @@ const AdminLoginPage = ({ onLogin }) => {
   return (
     <div className="py-20 md:py-32 flex items-center justify-center">
       <div className="bg-[#262626] rounded-lg shadow-xl p-8 md:p-12 max-w-md w-full border border-white/10">
-        <h2 className="text-3xl font-display text-center text-white mb-8">Admin Login</h2>
+        <h2 className="text-3xl font-display text-center mb-8">Admin Login</h2>
         <form onSubmit={handleLogin} className="space-y-6">
           <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" required className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#E6D5B8]" />
           <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#E6D5B8]" />
@@ -1031,9 +1031,9 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
     } else if (pageKey === 'contact') {
       title = 'Get In Touch';
       contentMd = "Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.";
-    } else {
-      title = '';
-      contentMd = '';
+    } else if (pageKey === 'blog') {
+      title = 'Blog';
+      contentMd = 'Stories, tips, and behind-the-scenes from Studio37.';
     }
     setEditForm({ title, content: contentMd });
   };
@@ -1297,7 +1297,7 @@ const BlogAdminSection = ({ blogPosts, createBlogPost, updateBlogPost, deleteBlo
             <select name="category" value={form.category} onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3">
               <option value="">Select category</option>
               {categoryOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
-            </select>
+                       </select>
           </div>
           <div className="flex-1">
             <label className="block text-xs mb-1 text-[#E6D5B8]/70">Tags</label>
@@ -1523,204 +1523,107 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
 };
 
 
-// --- CmsSection (placeholder, implement as needed) --- //
+// --- CmsSection (now only allows editing sitemap pages except portfolio) --- //
 function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage, deletePortfolioImage }) {
-  const [aboutForm, setAboutForm] = useState(content.about);
+  // List of editable pages from sitemap (excluding 'portfolio')
+  const editablePages = [
+    { key: 'home', label: 'Home' },
+    { key: 'about', label: 'About' },
+    { key: 'services', label: 'Services' },
+    { key: 'contact', label: 'Contact' },
+    { key: 'blog', label: 'Blog' }
+  ];
+
+  const [selectedPage, setSelectedPage] = useState(editablePages[0].key);
+  const [form, setForm] = useState({ title: '', content: '' });
   const [saving, setSaving] = useState(false);
-  const [portfolioUrl, setPortfolioUrl] = useState('');
-  const [portfolioCategory, setPortfolioCategory] = useState('');
-  const [portfolioUploading, setPortfolioUploading] = useState(false);
 
   useEffect(() => {
-    setAboutForm(content.about);
-  }, [content]);
+    // Load content for selected page
+    let title = '';
+    let contentMd = '';
+    if (selectedPage === 'about') {
+      title = content.about.title;
+      contentMd = content.about.bio;
+    } else if (selectedPage === 'services') {
+      title = 'Our Services';
+      contentMd = 'From comprehensive brand management to capturing your most precious personal moments.';
+    } else if (selectedPage === 'home') {
+      title = 'Capture. Create. Captivate.';
+      contentMd = 'Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.';
+    } else if (selectedPage === 'contact') {
+      title = 'Get In Touch';
+      contentMd = "Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.";
+    } else if (selectedPage === 'blog') {
+      title = 'Blog';
+      contentMd = 'Stories, tips, and behind-the-scenes from Studio37.';
+    }
+    setForm({ title, content: contentMd });
+  }, [selectedPage, content]);
 
-  const handleAboutChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setAboutForm(f => ({ ...f, [name]: value }));
+    setForm(f => ({ ...f, [name]: value }));
   };
 
-  const handleAboutSave = async (e) => {
+  const handleSave = async (e) => {
     e.preventDefault();
     setSaving(true);
-    await updateContent({ ...content, about: aboutForm });
+    // Only About page is editable in DB for now
+    if (selectedPage === 'about') {
+      await updateContent({ ...content, about: { title: form.title, bio: form.content } });
+    }
+    // Add logic for other pages if you store them in DB
     setSaving(false);
-  };
-
-  const handlePortfolioAdd = async (e) => {
-    e.preventDefault();
-    if (!portfolioUrl) return;
-    setPortfolioUploading(true);
-    await addPortfolioImage({ url: portfolioUrl, category: portfolioCategory || 'Uncategorized' });
-    setPortfolioUrl('');
-    setPortfolioCategory('');
-    setPortfolioUploading(false);
   };
 
   return (
     <div>
       <h3 className="text-2xl font-display mb-6">Website Content</h3>
-      <div className="grid md:grid-cols-2 gap-8">
-        {/* About Page Editor */}
-        <form onSubmit={handleAboutSave} className="bg-[#262626] p-6 rounded-lg flex flex-col gap-4">
-          <h4 className="text-lg font-bold mb-2">Edit About Page</h4>
-          <input
-            name="title"
-            value={aboutForm.title}
-            onChange={handleAboutChange}
-            placeholder="About Title"
-            className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-            required
-          />
-          <textarea
-            name="bio"
-            value={aboutForm.bio}
-            onChange={handleAboutChange}
-            placeholder="About Bio"
-            rows={6}
-            className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-            required
-          />
+      <div className="mb-4 flex gap-2 flex-wrap">
+        {editablePages.map(page => (
           <button
-            type="submit"
-            className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md mt-2"
-            disabled={saving}
+            key={page.key}
+            onClick={() => setSelectedPage(page.key)}
+            className={`px-4 py-2 rounded-full font-bold transition-colors ${selectedPage === page.key ? 'bg-brand-yellow text-brand-dark' : 'bg-brand-accent text-brand-yellow hover:bg-brand-yellow/30'}`}
           >
-            {saving ? 'Saving...' : 'Save About'}
+            {page.label}
           </button>
-        </form>
-        {/* Portfolio Manager */}
-        <div className="bg-[#262626] p-6 rounded-lg">
-          <h4 className="text-lg font-bold mb-2">Portfolio Images</h4>
-          <form onSubmit={handlePortfolioAdd} className="flex flex-col gap-2 mb-4">
-            <input
-              type="url"
-              value={portfolioUrl}
-              onChange={e => setPortfolioUrl(e.target.value)}
-              placeholder="Image URL"
-              className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-              required
-            />
-            <input
-              type="text"
-              value={portfolioCategory}
-              onChange={e => setPortfolioCategory(e.target.value)}
-              placeholder="Category (optional)"
-              className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-            />
-            <button
-              type="submit"
-              className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
-              disabled={portfolioUploading}
-            >
-              {portfolioUploading ? 'Adding...' : 'Add Image'}
-            </button>
-          </form>
-          <div className="max-h-64 overflow-y-auto space-y-2">
-            {portfolioImages.map(img => (
-              <div key={img.id} className="flex items-center gap-2 bg-[#1a1a1a] rounded p-2">
-                <img src={img.url} alt={img.category} className="w-12 h-12 object-cover rounded" />
-                <div className="flex-1">
-                  <div className="text-xs text-white">{img.category}</div>
-                  <div className="text-xs text-[#E6D5B8]/70 break-all">{img.url}</div>
-                </div>
-                <button
-                  onClick={() => deletePortfolioImage(img.id)}
-                  className="bg-red-500 text-white px-2 py-1 rounded text-xs"
-                  title="Delete"
-                >
-                  Delete
-                </button>
-              </div>
-            ))}
-            {portfolioImages.length === 0 && (
-              <div className="text-[#E6D5B8]/70 text-xs">No images in portfolio.</div>
-            )}
-          </div>
-        </div>
+        ))}
       </div>
-    </div>
-  );
-}
-function Footer({ navigate }) {
-  return (
-    <footer className="bg-[#111] text-[#E6D5B8] dark:text-[#232323] py-12 relative">
-      {/* Floating CTA Button - now left side and renamed */}
-      <a
-        href="https://book.usesession.com/i/sbDooN5rcH"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 left-6 z-50 bg-[#E6D5B8] text-black font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 transition-transform text-lg flex items-center justify-center"
-        style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.25)' }}
-      >
-        <span className="block">Book a Session</span>
-      </a>
-      <div className="container mx-auto px-6 text-center">
-        <div className="flex justify-center mb-4">
-          <Logo />
-        </div>
-        <div className="flex justify-center gap-6 my-4">
-          <button onClick={() => navigate('home')} className="hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">Home</button>
-          <button onClick={() => navigate('about')} className="hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">About</button>
-          <button onClick={() => navigate('services')} className="hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">Services</button>
-          <button onClick={() => navigate('portfolio')} className="hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">Portfolio</button>
-          <button onClick={() => navigate('blog')} className="hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">Blog</button>
-        </div>
-        <p className="text-sm text-[#E6D5B8] dark:text-[#232323]">&copy; {new Date().getFullYear()} Studio37 Photography & Content. All Rights Reserved.</p>
-        <button onClick={() => navigate('adminLogin')} className="text-xs mt-4 hover:text-[#E6D5B8] dark:hover:text-[#232323] transition">Admin Access</button>
-      </div>
-      <style>{`
-        footer, footer * {
-          color: #E6D5B8 !important;
-        }
-        .dark footer, .dark footer * {
-          color: #232323 !important;
-        }
-        @media (prefers-color-scheme: light) {
-          footer, footer * {
-            color: #3a2e1a !important;
-            background-color: #f7f5ef !important;
-          }
-          .hover\\:text-\\[\\#E6D5B8\\]:hover {
-            color: #b89c6d !important;
-          }
-        }
-        .light footer, .light footer * {
-          color: #3a2e1a !important;
-          background-color: #f7f5ef !important;
-        }
-        .light .hover\\:text-\\[\\#E6D5B8\\]:hover {
-          color: #b89c6d !important;
-        }
-      `}</style>
-    </footer>
-  );
-}
-
-// --- Blog Page Component --- //
-function BlogPage({ posts, loading, error }) {
-  return (
-    <div className="py-20 md:py-28 min-h-[60vh]">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-display">Blog</h2>
-          <p className="text-lg text-[#E6D5B8]/70 mt-4 max-w-2xl mx-auto">Stories, tips, and behind-the-scenes from Studio37.</p>
-        </div>
-        {loading && <div className="text-center text-[#E6D5B8]">Loading...</div>}
-        {error && <div className="text-center text-red-400">{error}</div>}
-        {!loading && !error && posts.length === 0 && (
-          <div className="text-center text-[#E6D5B8]/70">No blog posts yet.</div>
-        )}
-        <div className="space-y-10 max-w-2xl mx-auto">
-          {posts.map(post => (
-            <article key={post.id} className="bg-[#262626] rounded-lg shadow-lg p-8 border border-white/10">
-              <h3 className="text-2xl font-display text-white mb-2">{post.title}</h3>
-              <div className="text-xs text-[#E6D5B8]/60 mb-4">{new Date(post.created_at).toLocaleDateString()}</div>
-              <div className="prose prose-invert max-w-none text-[#E6D5B8]/90">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content || ''}</ReactMarkdown>
-              </div>
-            </article>
-          ))}
+      <form onSubmit={handleSave} className="bg-[#262626] p-6 rounded-lg flex flex-col gap-4 max-w-2xl">
+        <input
+          name="title"
+          value={form.title}
+          onChange={handleChange}
+          placeholder="Page Title"
+          className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+          required
+        />
+        <textarea
+          name="content"
+          value={form.content}
+          onChange={handleChange}
+          placeholder="Page Content (Markdown supported)"
+          rows={8}
+          className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 font-mono"
+          required
+        />
+        <button
+          type="submit"
+          className="bg-brand-yellow text-brand-dark font-bold py-2 px-4 rounded-md mt-2"
+          disabled={saving}
+        >
+          {saving ? 'Saving...' : 'Save'}
+        </button>
+      </form>
+      <div className="bg-[#181818] border border-white/10 rounded-md p-3 overflow-auto min-h-[200px] mt-6 max-w-2xl">
+        <div className="text-xs text-[#E6D5B8]/60 mb-1">Live Preview</div>
+        <div className="prose prose-invert max-w-none text-[#E6D5B8]/90">
+          <h2 className="font-display">{form.title}</h2>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {form.content || 'Nothing to preview.'}
+          </ReactMarkdown>
         </div>
       </div>
     </div>
