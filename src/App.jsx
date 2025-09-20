@@ -1513,7 +1513,11 @@ function BlogAdminSection({
     e.preventDefault();
     await createBlogPost({
       ...newPost,
-      tags: newPost.tags.split(',').map(t => t.trim()),
+      tags: typeof newPost.tags === 'string'
+        ? newPost.tags.split(',').map(t => t.trim()).filter(Boolean)
+        : Array.isArray(newPost.tags)
+          ? newPost.tags
+          : [],
       publish_date: newPost.publish_date || new Date().toISOString()
     });
     setNewPost({
@@ -1532,7 +1536,17 @@ function BlogAdminSection({
 
   useEffect(() => {
     if (blogEdit) {
-      setEditForm(blogPosts.find(p => p.id === blogEdit) || null);
+      const post = blogPosts.find(p => p.id === blogEdit) || null;
+      if (post) {
+        setEditForm({
+          ...post,
+          tags: Array.isArray(post.tags)
+            ? post.tags.join(', ')
+            : (typeof post.tags === 'string' ? post.tags : '')
+        });
+      } else {
+        setEditForm(null);
+      }
     } else {
       setEditForm(null);
     }
@@ -1547,7 +1561,11 @@ function BlogAdminSection({
     e.preventDefault();
     await updateBlogPost(editForm.id, {
       ...editForm,
-      tags: editForm.tags.split(',').map(t => t.trim())
+      tags: typeof editForm.tags === 'string'
+        ? editForm.tags.split(',').map(t => t.trim()).filter(Boolean)
+        : Array.isArray(editForm.tags)
+          ? editForm.tags
+          : []
     });
     setBlogEdit(null);
   };
