@@ -1,9 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'class',
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
     extend: {
@@ -14,19 +13,20 @@ export default {
         'brand-accent': '#262626',
       },
       fontFamily: {
-        display: ['"Montserrat"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        sans: ['"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'pretty': '0 4px 32px 0 rgba(230,213,184,0.10), 0 1.5px 8px 0 rgba(0,0,0,0.10)'
+        pretty: '0 4px 32px 0 rgba(230,213,184,0.10), 0 1.5px 8px 0 rgba(0,0,0,0.10)'
       },
       borderRadius: {
-        'pretty': '1.5rem'
+        pretty: '1.5rem'
       }
     },
   },
   plugins: [
     require('@tailwindcss/typography'),
-    // Add more plugins as needed
   ],
+  darkMode: 'class',
+};
 }
