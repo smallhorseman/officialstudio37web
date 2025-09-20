@@ -1669,3 +1669,25 @@ function ErrorFallback({ message }) {
     </div>
   );
 }
+
+// --- Footer Component (add this at the end of the file) ---
+function Footer({ navigate }) {
+  return (
+    <footer className="bg-[#181818] dark:bg-[#f7f5ef] text-[#E6D5B8] dark:text-[#232323] py-8 mt-20">
+      <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-2">
+          <span className="font-display font-bold text-lg">Studio37</span>
+          <span className="text-xs">&copy; {new Date().getFullYear()}</span>
+        </div>
+        <nav className="flex gap-4">
+          <button onClick={() => navigate('home')} className="hover:underline">Home</button>
+          <button onClick={() => navigate('about')} className="hover:underline">About</button>
+          <button onClick={() => navigate('services')} className="hover:underline">Services</button>
+          <button onClick={() => navigate('portfolio')} className="hover:underline">Portfolio</button>
+          <button onClick={() => navigate('blog')} className="hover:underline">Blog</button>
+          <button onClick={() => navigate('contact')} className="hover:underline">Contact</button>
+        </nav>
+      </div>
+    </footer>
+  );
+}
