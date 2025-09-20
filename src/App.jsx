@@ -91,6 +91,9 @@ export default function App() {
       localStorage.setItem('theme', theme);
     }
   }, [theme]);
+  // Optionally, force dark theme only:
+  // useEffect(() => { document.documentElement.classList.add('dark'); }, []);
+  // const toggleTheme = () => {}; // Disable theme toggle if you want only dark
   const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
 
   // --- Blog ---
@@ -341,7 +344,7 @@ export default function App() {
 
   // --- Render ---
   return (
-    <div className="min-h-screen bg-gray-900 text-yellow-200 font-sans antialiased transition-colors duration-300">
+    <div className="min-h-screen bg-[#181818] text-[#E6D5B8] font-sans antialiased transition-colors duration-300">
       {/* Chatbot Button is now global, not just homepage */}
       <button
         onClick={() => setShowChatBot(true)}
@@ -418,7 +421,7 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggl
   );
 
   return (
-    <header className="fixed top-0 left-0 w-full z-40 bg-[#181818] dark:bg-[#f7f5ef] shadow-lg">
+    <header className="fixed top-0 left-0 w-full z-40 bg-[#232323] shadow-lg">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <div className="flex items-center gap-4">
           <Logo />
@@ -437,41 +440,13 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggl
         </div>
       </div>
       {isMenuOpen && (
-        <div className="md:hidden bg-[#1a1a1a] dark:bg-[#f7f5ef]">
+        <div className="md:hidden bg-[#232323]">
           <nav className="flex flex-col items-center py-4">
             {navLinks.map(link => <NavLink key={link.page} {...link} />)}
           </nav>
         </div>
       )}
-      <style>{`
-        header, header * {
-          color: #fff !important;
-        }
-        .dark header, .dark header * {
-          color: #3a2e1a !important;
-        }
-        .dark header {
-          background-color: #f7f5ef !important;
-        }
-        @media (prefers-color-scheme: light) {
-          header, header * {
-            color: #3a2e1a !important;
-            background-color: #f7f5ef !important;
-          }
-        }
-        /* Book a Session button override for dark mode */
-        .dark a[href*="book.usesession.com"] {
-          background: #E6D5B8 !important;
-          color: #232323 !important;
-          border-radius: 9999px !important;
-          font-weight: bold !important;
-          padding: 0.5rem 1.25rem !important;
-        }
-        .dark a[href*="book.usesession.com"]:hover {
-          background: #e6d5b8cc !important;
-          color: #232323 !important;
-        }
-      `}</style>
+      {/* Remove all dark: and prefers-color-scheme overrides */}
     </header>
   );
 };
@@ -762,8 +737,11 @@ const AdminLoginPage = ({ onLogin }) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // In a real app, this would be a secure API call.
-    if (username === 'admin' && password === 'studio37admin') {
+    // Fix: trim and lowercase for robustness
+    if (
+      username.trim().toLowerCase() === 'admin' &&
+      password.trim() === 'studio37admin'
+    ) {
       onLogin();
     } else {
       setError('Invalid username or password.');
@@ -772,13 +750,13 @@ const AdminLoginPage = ({ onLogin }) => {
 
   return (
     <div className="py-20 md:py-32 flex items-center justify-center">
-      <div className="bg-[#262626] rounded-lg shadow-xl p-8 md:p-12 max-w-md w-full border border-white/10">
+      <div className="bg-[#232323] rounded-lg shadow-xl p-8 md:p-12 max-w-md w-full border border-white/10">
         <h2 className="text-3xl font-display text-center mb-8">Admin Login</h2>
         <form onSubmit={handleLogin} className="space-y-6">
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" required className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#E6D5B8]" />
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#E6D5B8]" />
+          <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#E6D5B8]" />
+          <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#E6D5B8]" />
           {error && <p className="text-red-400 text-sm">{error}</p>}
-          <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#E6D5B8] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
+          <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#E6D5B8] text-[#232323] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
             Login <ArrowRight />
           </button>
         </form>
@@ -1309,7 +1287,7 @@ function ErrorFallback({ message }) {
 // --- Footer Component (add this at the end of the file) ---
 function Footer({ navigate }) {
   return (
-    <footer className="bg-[#181818] dark:bg-[#f7f5ef] text-[#E6D5B8] dark:text-[#232323] py-8 mt-20">
+    <footer className="bg-[#232323] text-[#E6D5B8] py-8 mt-20">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <span className="font-display font-bold text-lg">Studio37</span>
