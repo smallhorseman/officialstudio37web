@@ -1365,3 +1365,119 @@ function CrmSection({ leads, updateLeadStatus }) {
     </div>
   );
 }
+
+// --- CMS Section (Content & Portfolio Management) ---
+function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage, deletePortfolioImage }) {
+  const [aboutTitle, setAboutTitle] = useState(content.about.title || '');
+  const [aboutBio, setAboutBio] = useState(content.about.bio || '');
+  const [saving, setSaving] = useState(false);
+  const [imageUrl, setImageUrl] = useState('');
+  const [imageCategory, setImageCategory] = useState('');
+  const [imageCaption, setImageCaption] = useState('');
+  const [addingImage, setAddingImage] = useState(false);
+
+  const handleSaveAbout = async (e) => {
+    e.preventDefault();
+    setSaving(true);
+    await updateContent({ about: { title: aboutTitle, bio: aboutBio } });
+    setSaving(false);
+  };
+
+  const handleAddImage = async (e) => {
+    e.preventDefault();
+    setAddingImage(true);
+    await addPortfolioImage({
+      url: imageUrl,
+      category: imageCategory,
+      caption: imageCaption,
+      order_index: portfolioImages.length,
+      created_at: new Date().toISOString()
+    });
+    setImageUrl('');
+    setImageCategory('');
+    setImageCaption('');
+    setAddingImage(false);
+  };
+
+  return (
+    <div className="grid md:grid-cols-2 gap-8">
+      <div>
+        <h4 className="text-xl font-display mb-4">Edit About Content</h4>
+        <form onSubmit={handleSaveAbout} className="space-y-4">
+          <input
+            type="text"
+            value={aboutTitle}
+            onChange={e => setAboutTitle(e.target.value)}
+            placeholder="About Title"
+            className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 font-bold"
+            required
+          />
+          <textarea
+            value={aboutBio}
+            onChange={e => setAboutBio(e.target.value)}
+            placeholder="About Bio"
+            rows={6}
+            className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+            required
+          />
+          <button
+            type="submit"
+            className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
+            disabled={saving}
+          >
+            {saving ? 'Saving...' : 'Save'}
+          </button>
+        </form>
+      </div>
+      <div>
+        <h4 className="text-xl font-display mb-4">Portfolio Images</h4>
+        <form onSubmit={handleAddImage} className="flex flex-col gap-2 mb-4">
+          <input
+            type="url"
+            value={imageUrl}
+            onChange={e => setImageUrl(e.target.value)}
+            placeholder="Image URL"
+            className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+            required
+          />
+          <input
+            type="text"
+            value={imageCategory}
+            onChange={e => setImageCategory(e.target.value)}
+            placeholder="Category"
+            className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+          />
+          <input
+            type="text"
+            value={imageCaption}
+            onChange={e => setImageCaption(e.target.value)}
+            placeholder="Caption"
+            className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+          />
+          <button
+            type="submit"
+            className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
+            disabled={addingImage || !imageUrl}
+          >
+            {addingImage ? 'Adding...' : 'Add Image'}
+          </button>
+        </form>
+        <div className="grid grid-cols-2 gap-2 max-h-64 overflow-y-auto">
+          {portfolioImages.map(img => (
+            <div key={img.id} className="relative group">
+              <img src={img.url} alt={img.category} className="w-full h-24 object-cover rounded" />
+              <button
+                onClick={() => deletePortfolioImage(img.id)}
+                className="absolute top-1 right-1 bg-red-600 text-white text-xs px-2 py-1 rounded opacity-80 group-hover:opacity-100"
+                title="Delete"
+              >
+                &times;
+              </button>
+              <div className="text-xs text-[#F3E3C3]">{img.category}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
