@@ -1614,6 +1614,7 @@ function BlogAdminSection({
               <th className="p-3">Author</th>
               <th className="p-3">Date</th>
               <th className="p-3">Category</th>
+              <th className="p-3">Tags</th>
               <th className="p-3">Actions</th>
             </tr>
           </thead>
@@ -1624,6 +1625,13 @@ function BlogAdminSection({
                 <td className="p-3">{post.author}</td>
                 <td className="p-3 text-xs">{post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}</td>
                 <td className="p-3">{post.category}</td>
+                <td className="p-3">
+                  {
+                    Array.isArray(post.tags)
+                      ? post.tags.join(', ')
+                      : (typeof post.tags === 'string' ? post.tags : '')
+                  }
+                </td>
                 <td className="p-3 flex gap-2">
                   <button onClick={() => setBlogEdit(post.id)} className="bg-blue-500 text-white px-3 py-1 rounded text-xs">Edit</button>
                   <button onClick={() => deleteBlogPost(post.id)} className="bg-red-600 text-white px-3 py-1 rounded text-xs">Delete</button>
