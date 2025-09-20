@@ -6,6 +6,7 @@ import PhotoshootPlanner from './PhotoshootPlanner';
 import ConversationalPlanner from './ConversationalPlanner';
 import VirtualAgentPlanner from './VirtualAgentPlanner';
 import { createClient } from '@supabase/supabase-js';
+import { Routes, Route, useParams, useNavigate } from 'react-router-dom';
 // --- Supabase Setup --- //
 const SUPABASE_URL = 'https://sqfqlnodwjubacmaduzl.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZnFsbm9kd2p1YmFjbWFkdXpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzQ2ODUsImV4cCI6MjA3Mzc1MDY4NX0.OtEDSh5UCm8CxWufG_NBLDzgNFI3wnr-oAyaRib_4Mw';
@@ -378,9 +379,100 @@ export default function App() {
         onAdminLogin={() => setCurrentPage('adminLogin')}
       />
       <main className="pt-20">
-        <PageContent />
+        <Routes>
+          <Route path="/" element={<HomePage navigate={handleNav} />} />
+          <Route path="/about" element={<AboutPage content={siteContent.about} />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={
+            <PortfolioPage
+              isUnlocked={portfolioUnlocked}
+              onUnlock={handlePortfolioUnlock}
+              images={portfolioImages}
+            />
+          } />
+          <Route path="/blog" element={<BlogPage posts={blogPosts} loading={blogLoading} error={blogError} />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/adminLogin" element={<AdminLoginPage onLogin={handleAdminLogin} />} />
+          <Route path="/adminDashboard" element={
+            isAdmin ? (
+              <AdminDashboard
+                leads={leads}
+                updateLeadStatus={updateLeadStatus}
+                content={siteContent}
+                updateContent={updateContent}
+                portfolioImages={portfolioImages}
+                addPortfolioImage={addPortfolioImage}
+                deletePortfolioImage={deletePortfolioImage}
+                blogPosts={blogPosts}
+                createBlogPost={createBlogPost}
+                updateBlogPost={updateBlogPost}
+                deleteBlogPost={deleteBlogPost}
+                blogEdit={blogEdit}
+                setBlogEdit={setBlogEdit}
+                blogSaving={blogSaving}
+                blogAdminError={blogAdminError}
+                projects={projects}
+                projectsLoading={projectsLoading}
+              />
+            ) : <AdminLoginPage onLogin={handleAdminLogin} />
+          } />
+          {/* fallback: old page switcher for non-router navigation */}
+          <Route path="*" element={<HomePage navigate={handleNav} />} />
+        </Routes>
       </main>
       <Footer navigate={handleNav} />
+    </div>
+  );
+}
+
+// --- BlogPostPage: dynamic blog post by slug ---
+function BlogPostPage() {
+  const { slug } = useParams();
+  const [post, setPost] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState('');
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    setLoading(true);
+    setError('');
+    supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('slug', slug)
+      .single()
+      .then(({ data, error }) => {
+        if (error || !data) {
+          setError('Blog post not found.');
+          setPost(null);
+        } else {
+          setPost(data);
+        }
+        setLoading(false);
+      });
+  }, [slug]);
+
+  if (loading) return <div className="text-[#F3E3C3] text-center py-10">Loading...</div>;
+  if (error) return <div className="text-red-400 text-center py-10">{error}</div>;
+  if (!post) return null;
+
+  return (
+    <div className="py-20 md:py-28 bg-[#212121]">
+      <div className="container mx-auto px-6 max-w-3xl">
+        <button onClick={() => navigate('/blog')} className="text-[#F3E3C3] mb-4 hover:underline">&larr; Back to Blog</button>
+        <h1 className="text-4xl font-display mb-2 text-white">{post.title}</h1>
+        <div className="text-xs text-[#F3E3C3]/60 mb-4">{post.author} &middot; {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}</div>
+        <div className="text-[#F3E3C3]/80 mb-6">{post.excerpt}</div>
+        <div className="prose prose-invert max-w-none text-[#F3E3C3]/90">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {post.content || ''}
+          </ReactMarkdown>
+        </div>
+        <div className="mt-8 text-xs text-[#F3E3C3]/60">
+          Tags: {Array.isArray(post.tags) ? post.tags.join(', ') : (typeof post.tags === 'string' ? post.tags : '')}
+        </div>
+      </div>
     </div>
   );
 }
