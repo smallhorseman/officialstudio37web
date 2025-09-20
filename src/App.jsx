@@ -1315,3 +1315,53 @@ function Footer({ navigate }) {
     </footer>
   );
 }
+
+// --- CRM Section (Leads Table) ---
+function CrmSection({ leads, updateLeadStatus }) {
+  if (!leads || leads.length === 0) {
+    return <div className="text-[#F3E3C3]/70 py-8">No leads found.</div>;
+  }
+  const statuses = ['New', 'Contacted', 'Booked', 'Lost', 'Archived'];
+  return (
+    <div className="overflow-x-auto bg-[#262626] rounded-lg shadow-lg p-6">
+      <table className="w-full text-left">
+        <thead className="border-b border-white/10">
+          <tr>
+            <th className="p-3">Name</th>
+            <th className="p-3">Email</th>
+            <th className="p-3">Phone</th>
+            <th className="p-3">Service</th>
+            <th className="p-3">Status</th>
+            <th className="p-3">Created</th>
+            <th className="p-3">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {leads.map(lead => (
+            <tr key={lead.id} className="border-b border-white/10 last:border-b-0">
+              <td className="p-3 font-bold">{lead.name}</td>
+              <td className="p-3">{lead.email}</td>
+              <td className="p-3">{lead.phone}</td>
+              <td className="p-3">{lead.service}</td>
+              <td className="p-3">
+                <span className="px-2 py-1 rounded bg-[#F3E3C3]/10 text-[#F3E3C3]">{lead.status}</span>
+              </td>
+              <td className="p-3 text-xs">{lead.created_at ? new Date(lead.created_at).toLocaleDateString() : ''}</td>
+              <td className="p-3">
+                <select
+                  value={lead.status}
+                  onChange={e => updateLeadStatus(lead.id, e.target.value)}
+                  className="bg-[#181818] border border-white/20 rounded px-2 py-1 text-xs text-[#F3E3C3]"
+                >
+                  {statuses.map(s => (
+                    <option key={s} value={s}>{s}</option>
+                  ))}
+                </select>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
