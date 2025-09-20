@@ -171,17 +171,15 @@ export default function App() {
 
   // --- Fetch Site Content (CMS) ---
   useEffect(() => {
-    if (isAdmin) {
-      supabase
-        .from('site_content')
-        .select('*')
-        .then(({ data }) => {
-          if (data && data.length > 0) {
-            setSiteContent({ about: { title: data[0].about_title, bio: data[0].about_bio } });
-          }
-        });
-    }
-  }, [isAdmin]);
+    supabase
+      .from('site_content')
+      .select('*')
+      .then(({ data }) => {
+        if (data && data.length > 0) {
+          setSiteContent({ about: { title: data[0].about_title, bio: data[0].about_bio } });
+        }
+      });
+  }, []);
 
   // --- Fetch Projects ---
   useEffect(() => {
