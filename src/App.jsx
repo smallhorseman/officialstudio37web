@@ -129,11 +129,19 @@ export default function App() {
       setBlogError('');
       supabase
         .from('blog_posts')
-        .select('*')
-        .order('created_at', { ascending: false })
+        .select('id, title, publish_date, created_at, slug, excerpt, author, content, tags, category')
+        .order('publish_date', { ascending: false })
+        .limit(10)
         .then(({ data, error }) => {
-          if (error) setBlogError('Failed to load blog posts.');
-          else setBlogPosts(data || []);
+          if (error) {
+            setBlogError('Failed to load blog posts.');
+            setBlogPosts([]);
+          } else if (!data || !Array.isArray(data)) {
+            setBlogError('No blog posts found.');
+            setBlogPosts([]);
+          } else {
+            setBlogPosts(data);
+          }
           setBlogLoading(false);
         });
     }
@@ -145,10 +153,16 @@ export default function App() {
       setPortfolioLoading(true);
       supabase
         .from('portfolio_images')
-        .select('*')
+        .select('id, url, category, caption, created_at')
+        .order('order_index', { ascending: true })
         .order('created_at', { ascending: false })
-        .then(({ data }) => {
-          setPortfolioImages(data || []);
+        .limit(24)
+        .then(({ data, error }) => {
+          if (error) {
+            setPortfolioImages([]);
+          } else {
+            setPortfolioImages(data || []);
+          }
           setPortfolioLoading(false);
         });
     }
@@ -172,16 +186,34 @@ export default function App() {
   // --- Fetch Site Content (CMS) ---
   useEffect(() => {
     supabase
-      .from('site_content')
-      .select('*')
-      .then(({ data }) => {
-        if (data && data.length > 0) {
-          setSiteContent({ about: { title: data[0].about_title, bio: data[0].about_bio } });
+      .from('about')
+      .select('id, title, bio, created_at')
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .then(({ data, error }) => {
+        if (error || !data || !data[0]) {
+          setSiteContent({ about: { title: 'About', bio: 'Content not available.' } });
+        } else {
+          setSiteContent({ about: { title: data[0].title, bio: data[0].bio } });
         }
       });
   }, []);
 
-  // --- Fetch Projects ---
+  // --- Fetch Site Map Order ---
+  const [siteMapOrder, setSiteMapOrder] = useState([]);
+  useEffect(() => {
+    supabase
+      .from('site_map_order')
+      .select('id, page_key, page_label, order_index')
+      .order('order_index', { ascending: true })
+      .order('id', { ascending: true })
+      .limit(100)
+      .then(({ data, error }) => {
+        if (!error && Array.isArray(data)) setSiteMapOrder(data);
+      });
+  }, []);
+
+  // --- Projects ---
   useEffect(() => {
     if (isAdmin) {
       setProjectsLoading(true);
@@ -1295,7 +1327,7 @@ const BlogAdminSection = ({ blogPosts, createBlogPost, updateBlogPost, deleteBlo
             <select name="category" value={form.category} onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3">
               <option value="">Select category</option>
               {categoryOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
-                       </select>
+            </select>
           </div>
           <div className="flex-1">
             <label className="block text-xs mb-1 text-[#E6D5B8]/70">Tags</label>
@@ -1624,6 +1656,16 @@ function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage
           </ReactMarkdown>
         </div>
       </div>
+    </div>
+  );
+}
+
+// --- Error Fallback UI ---
+function ErrorFallback({ message }) {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-[40vh] text-center">
+      <h2 className="text-2xl font-bold text-red-400 mb-4">Something went wrong</h2>
+      <p className="text-[#E6D5B8]/80">{message || 'An unexpected error occurred. Please try again later.'}</p>
     </div>
   );
 }
