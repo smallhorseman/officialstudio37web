@@ -344,11 +344,11 @@ export default function App() {
 
   // --- Render ---
   return (
-    <div className="min-h-screen bg-[#181818] text-[#E6D5B8] font-sans antialiased transition-colors duration-300">
+    <div className="min-h-screen bg-[#181818] text-[#F3E3C3] font-sans antialiased transition-colors duration-300">
       {/* Chatbot Button is now global, not just homepage */}
       <button
         onClick={() => setShowChatBot(true)}
-        className="fixed bottom-6 right-6 z-50 bg-[#E6D5B8] text-[#1a1a1a] dark:bg-[#232323] dark:text-[#E6D5B8] rounded-full shadow-lg p-4 flex items-center gap-2 hover:scale-105 transition-transform"
+        className="fixed bottom-6 right-6 z-50 bg-[#F3E3C3] text-[#1a1a1a] rounded-full shadow-lg p-4 flex items-center gap-2 hover:scale-105 transition-transform"
         aria-label="Open Photoshoot Planner Chat Bot"
         style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.25)' }}
       >
@@ -374,6 +374,8 @@ export default function App() {
         currentPage={currentPage}
         theme={theme}
         toggleTheme={toggleTheme}
+        showAdminButton={currentPage !== 'adminDashboard'}
+        onAdminLogin={() => setCurrentPage('adminLogin')}
       />
       <main className="pt-20">
         <PageContent />
@@ -384,7 +386,7 @@ export default function App() {
 }
 
 // --- Page & Section Components --- //
-const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggleTheme }) => {
+const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggleTheme, showAdminButton, onAdminLogin }) => {
   const navLinks = [
     { page: 'home', label: 'Home' },
     { page: 'about', label: 'About' },
@@ -403,8 +405,7 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggl
         rel="noopener noreferrer"
         className={
           `px-4 py-2 text-sm uppercase tracking-widest transition-colors duration-300 
-          text-[#E6D5B8]/70 hover:text-white
-          dark:bg-[#E6D5B8] dark:text-[#232323] dark:font-bold dark:rounded-full dark:px-5 dark:py-2 dark:hover:bg-[#e6d5b8]/90 dark:hover:text-[#232323]`
+          text-[#F3E3C3]/70 hover:text-white`
         }
         style={label === 'Book a Session' ? { fontWeight: 'bold' } : {}}
       >
@@ -413,7 +414,7 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggl
     ) : (
       <button 
         onClick={() => navigate(page)} 
-        className={`px-4 py-2 text-sm uppercase tracking-widest transition-colors duration-300 ${currentPage === page ? 'text-white' : 'text-[#E6D5B8]/70 hover:text-white'}`}
+        className={`px-4 py-2 text-sm uppercase tracking-widest transition-colors duration-300 ${currentPage === page ? 'text-white' : 'text-[#F3E3C3]/70 hover:text-white'}`}
       >
         {label}
       </button>
@@ -425,16 +426,26 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggl
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <div className="flex items-center gap-4">
           <Logo />
-          <span className="font-display text-xl font-bold tracking-tight text-white dark:text-[#3a2e1a]">Studio37</span>
+          <span className="font-display text-xl font-bold tracking-tight text-white">Studio37</span>
         </div>
         <nav className="hidden md:flex gap-2 items-center">
           {navLinks.map(link => <NavLink key={link.page} {...link} />)}
         </nav>
         <div className="flex items-center gap-2">
-          <button onClick={toggleTheme} className="text-[#E6D5B8] dark:text-[#3a2e1a] text-xl px-2" aria-label="Toggle Theme">
+          <button onClick={toggleTheme} className="text-[#F3E3C3] text-xl px-2" aria-label="Toggle Theme">
             {theme === 'dark' ? '🌙' : '☀️'}
           </button>
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white dark:text-[#3a2e1a] md:hidden">
+          {showAdminButton && (
+            <button
+              onClick={onAdminLogin}
+              className="text-xs px-2 py-1 rounded bg-transparent text-[#F3E3C3]/60 hover:text-[#F3E3C3] border border-transparent hover:border-[#F3E3C3]/30 transition"
+              style={{ fontSize: '0.85rem' }}
+              aria-label="Admin Login"
+            >
+              Admin
+            </button>
+          )}
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white md:hidden">
             {isMenuOpen ? <span>&#10005;</span> : <span>&#9776;</span>}
           </button>
         </div>
@@ -446,7 +457,6 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggl
           </nav>
         </div>
       )}
-      {/* Remove all dark: and prefers-color-scheme overrides */}
     </header>
   );
 };
@@ -457,9 +467,9 @@ const HomePage = ({ navigate }) => (
     <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-0 pointer-events-none"></div>
     <div className="relative z-10">
       <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display mb-4 leading-tight break-words max-w-full">Capture. Create. Captivate.</h1>
-      <p className="text-base sm:text-lg md:text-xl max-w-xs sm:max-w-2xl mx-auto mb-8 text-[#E6D5B8]/80">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
+      <p className="text-base sm:text-lg md:text-xl max-w-xs sm:max-w-2xl mx-auto mb-8 text-[#F3E3C3]/80">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
       <div className="space-y-4 sm:space-x-4 flex flex-col sm:flex-row items-center justify-center w-full">
-        <button onClick={() => navigate('portfolio')} className="group inline-flex items-center bg-[#E6D5B8] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 w-full sm:w-auto">
+        <button onClick={() => navigate('portfolio')} className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 w-full sm:w-auto">
           View Our Work <ArrowRight />
         </button>
       </div>
@@ -473,7 +483,7 @@ const AboutPage = ({ content }) => (
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div className="order-2 md:order-1">
           <h2 className="text-4xl md:text-5xl font-display mb-6">{content.title || 'Loading...'}</h2>
-          <p className="text-lg text-[#E6D5B8]/80 leading-relaxed">{content.bio || ''}</p>
+          <p className="text-lg text-[#F3E3C3]/80 leading-relaxed">{content.bio || ''}</p>
         </div>
         <div className="order-1 md:order-2">
             <div className="polaroid mx-auto max-w-sm">
@@ -552,8 +562,8 @@ function ServiceCard({ name, description, price }) {
   return (
     <div className="bg-[#262626] rounded-lg shadow-lg p-6 flex flex-col items-start">
       <h4 className="text-xl font-display mb-2 text-white">{name}</h4>
-      <div className="text-[#E6D5B8]/80 mb-4">{description}</div>
-      {price && <div className="text-lg font-bold text-[#E6D5B8] mt-auto">{price}</div>}
+      <div className="text-[#F3E3C3]/80 mb-4">{description}</div>
+      {price && <div className="text-lg font-bold text-[#F3E3C3] mt-auto">{price}</div>}
     </div>
   );
 }
@@ -593,7 +603,7 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-display">Our Work</h2>
-          <p className="text-lg text-[#E6D5B8]/70 mt-4 max-w-2xl mx-auto">A curated selection of our favorite moments and projects.</p>
+          <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto">A curated selection of our favorite moments and projects.</p>
         </div>
         {!isUnlocked && <PortfolioGate onUnlock={onUnlock} />}
         {isUnlocked && (
@@ -603,7 +613,7 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
                 <button
                   key={cat}
                   onClick={() => setFilter(cat)}
-                  className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors ${filter === cat ? 'bg-[#E6D5B8] text-[#1a1a1a]' : 'bg-[#262626] hover:bg-[#333]'}`}
+                  className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors ${filter === cat ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] hover:bg-[#333]'}`}
                 >
                   {cat}
                 </button>
@@ -644,9 +654,9 @@ const PortfolioGate = ({ onUnlock }) => {
       return (
         <div className="text-center bg-[#262626] rounded-lg p-8 max-w-lg mx-auto relative">
           <h3 className="text-2xl font-display text-white mb-2">Thank You!</h3>
-          <p className="text-[#E6D5B8]/80">The portfolio is now unlocked. Check your email for a 10% off coupon!</p>
-          <p className="text-[#E6D5B8]/80 mt-4">Want to plan your shoot?{' '}
-            <button onClick={() => setShowPlanner(true)} className="underline text-[#E6D5B8]">Try our Conversational AI Planner</button>
+          <p className="text-[#F3E3C3]/80">The portfolio is now unlocked. Check your email for a 10% off coupon!</p>
+          <p className="text-[#F3E3C3]/80 mt-4">Want to plan your shoot?{' '}
+            <button onClick={() => setShowPlanner(true)} className="underline text-[#F3E3C3]">Try our Conversational AI Planner</button>
           </p>
           {showPlanner && (
             <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
@@ -663,12 +673,12 @@ const PortfolioGate = ({ onUnlock }) => {
   return (
     <div className="bg-[#262626] rounded-lg shadow-xl p-8 md:p-12 max-w-2xl mx-auto border border-white/10">
       <h3 className="text-2xl md:text-3xl font-display text-center text-white mb-2">Unlock the Portfolio</h3>
-      <p className="text-center text-[#E6D5B8]/70 mb-8">Submit your info to view our work and receive a 10% off coupon for your first service!</p>
+      <p className="text-center text-[#F3E3C3]/70 mb-8">Submit your info to view our work and receive a 10% off coupon for your first service!</p>
       <form onSubmit={handleSubmit} className="space-y-6">
-        <input type="text" name="name" placeholder="Your Name" required onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#E6D5B8]" />
-        <input type="email" name="email" placeholder="Your Email" required onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#E6D5B8]" />
-        <input type="tel" name="phone" placeholder="Your Phone (Optional)" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#E6D5B8]" />
-        <select name="service" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#E6D5B8]">
+        <input type="text" name="name" placeholder="Your Name" required onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+        <input type="email" name="email" placeholder="Your Email" required onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+        <input type="tel" name="phone" placeholder="Your Phone (Optional)" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+        <select name="service" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]">
             <option value="">Service of Interest (Optional)</option>
             <option>Director Package</option>
             <option>Producer Package</option>
@@ -676,7 +686,7 @@ const PortfolioGate = ({ onUnlock }) => {
             <option>Portrait</option>
             <option>Other</option>
         </select>
-        <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#E6D5B8] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
+        <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
           Unlock & Get Coupon <ArrowRight />
         </button>
       </form>
@@ -689,18 +699,18 @@ const ContactPage = () => (
         <div className="container mx-auto px-6">
             <div className="text-center mb-12">
                 <h2 className="text-4xl md:text-5xl font-display">Get In Touch</h2>
-                <p className="text-lg text-[#E6D5B8]/70 mt-4 max-w-2xl mx-auto">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
+                <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
             </div>
             <div className="grid md:grid-cols-2 gap-12 items-start">
                 <form className="space-y-6">
-                    <input type="text" placeholder="Your Name" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#E6D5B8]" />
-                    <input type="email" placeholder="Your Email" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#E6D5B8]" />
-                    <textarea placeholder="Your Message" rows="5" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#E6D5B8]"></textarea>
-                    <button type="submit" className="group inline-flex items-center bg-[#E6D5B8] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
+                    <input type="text" placeholder="Your Name" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+                    <input type="email" placeholder="Your Email" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+                    <textarea placeholder="Your Message" rows="5" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"></textarea>
+                    <button type="submit" className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
                         Send Message <ArrowRight />
                     </button>
                 </form>
-                <div className="text-[#E6D5B8]/80 space-y-6">
+                <div className="text-[#F3E3C3]/80 space-y-6">
                     <div>
                         <h3 className="text-xl font-display text-white">Contact Info</h3>
                         <p>Email: <a href="mailto:sales@studio37.cc" className="hover:text-white transition">sales@studio37.cc</a></p>
@@ -753,10 +763,10 @@ const AdminLoginPage = ({ onLogin }) => {
       <div className="bg-[#232323] rounded-lg shadow-xl p-8 md:p-12 max-w-md w-full border border-white/10">
         <h2 className="text-3xl font-display text-center mb-8">Admin Login</h2>
         <form onSubmit={handleLogin} className="space-y-6">
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#E6D5B8]" />
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#E6D5B8]" />
+          <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+          <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
           {error && <p className="text-red-400 text-sm">{error}</p>}
-          <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#E6D5B8] text-[#232323] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
+          <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#232323] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
             Login <ArrowRight />
           </button>
         </form>
@@ -823,12 +833,12 @@ const AdminDashboard = ({
       <div className="container mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-display mb-10">Admin Dashboard</h2>
         <div className="flex border-b border-white/20 mb-8 flex-wrap">
-          <button onClick={() => setActiveTab('crm')} className={`py-2 px-6 text-lg ${activeTab === 'crm' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>CRM (Leads)</button>
-          <button onClick={() => setActiveTab('cms')} className={`py-2 px-6 text-lg ${activeTab === 'cms' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>CMS (Content)</button>
-          <button onClick={() => setActiveTab('blog')} className={`py-2 px-6 text-lg ${activeTab === 'blog' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Blog</button>
-          <button onClick={() => setActiveTab('sitemap')} className={`py-2 px-6 text-lg ${activeTab === 'sitemap' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Site Map</button>
-          <button onClick={() => setActiveTab('analytics')} className={`py-2 px-6 text-lg ${activeTab === 'analytics' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Analytics</button>
-          <button onClick={() => setActiveTab('projects')} className={`py-2 px-6 text-lg ${activeTab === 'projects' ? 'text-white border-b-2 border-[#E6D5B8]' : 'text-white/50'}`}>Projects</button>
+          <button onClick={() => setActiveTab('crm')} className={`py-2 px-6 text-lg ${activeTab === 'crm' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>CRM (Leads)</button>
+          <button onClick={() => setActiveTab('cms')} className={`py-2 px-6 text-lg ${activeTab === 'cms' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>CMS (Content)</button>
+          <button onClick={() => setActiveTab('blog')} className={`py-2 px-6 text-lg ${activeTab === 'blog' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>Blog</button>
+          <button onClick={() => setActiveTab('sitemap')} className={`py-2 px-6 text-lg ${activeTab === 'sitemap' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>Site Map</button>
+          <button onClick={() => setActiveTab('analytics')} className={`py-2 px-6 text-lg ${activeTab === 'analytics' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>Analytics</button>
+          <button onClick={() => setActiveTab('projects')} className={`py-2 px-6 text-lg ${activeTab === 'projects' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>Projects</button>
         </div>
         {activeTab === 'crm' && <CrmSection leads={leads} updateLeadStatus={updateLeadStatus} />}
         {activeTab === 'cms' && <CmsSection 
@@ -854,29 +864,29 @@ const AdminDashboard = ({
             <div>
               <h4 className="text-xl font-display mb-4">Leads & Conversion</h4>
               <div className="text-4xl font-bold mb-2">{totalLeads}</div>
-              <div className="text-[#E6D5B8]/70 mb-2">Total Leads</div>
+              <div className="text-[#F3E3C3]/70 mb-2">Total Leads</div>
               <div className="text-2xl font-bold mb-2">{conversionRate}%</div>
-              <div className="text-[#E6D5B8]/70 mb-2">Conversion Rate (Booked)</div>
+              <div className="text-[#F3E3C3]/70 mb-2">Conversion Rate (Booked)</div>
               <div className="text-lg font-bold mb-2">{mostPopularService}</div>
-              <div className="text-[#E6D5B8]/70">Most Popular Service</div>
+              <div className="text-[#F3E3C3]/70">Most Popular Service</div>
             </div>
             <div>
               <h4 className="text-xl font-display mb-4">Content Stats</h4>
               <div className="flex flex-col gap-4">
                 <div>
                   <span className="text-3xl font-bold">{blogCount}</span>
-                  <span className="ml-2 text-[#E6D5B8]/70">Blog Posts</span>
+                  <span className="ml-2 text-[#F3E3C3]/70">Blog Posts</span>
                 </div>
                 <div>
                   <span className="text-3xl font-bold">{portfolioCount}</span>
-                  <span className="ml-2 text-[#E6D5B8]/70">Portfolio Images</span>
+                  <span className="ml-2 text-[#F3E3C3]/70">Portfolio Images</span>
                 </div>
               </div>
             </div>
             <div>
               <h4 className="text-xl font-display mb-4">Potential Revenue</h4>
               <div className="text-4xl font-bold mb-2">${potentialRevenue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
-              <div className="text-[#E6D5B8]/70 mb-2">Sum of all project opportunity values</div>
+              <div className="text-[#F3E3C3]/70 mb-2">Sum of all project opportunity values</div>
             </div>
           </div>
         )}
@@ -885,10 +895,10 @@ const AdminDashboard = ({
             <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4">
               <div>
                 <h4 className="text-xl font-display">Projects</h4>
-                <p className="text-xs text-[#E6D5B8]/70">Client projects and deliverables</p>
+                <p className="text-xs text-[#F3E3C3]/70">Client projects and deliverables</p>
               </div>
               <div className="flex gap-2">
-                <button onClick={() => setShowProjectForm(f => !f)} className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">{showProjectForm ? 'Cancel' : 'New Project'}</button>
+                <button onClick={() => setShowProjectForm(f => !f)} className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">{showProjectForm ? 'Cancel' : 'New Project'}</button>
                 <button onClick={() => setShowProjectForm(true)} className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md">+ Internal Project</button>
               </div>
             </div>
@@ -907,7 +917,7 @@ const AdminDashboard = ({
             <div className="mb-10">
               <h5 className="text-lg font-display mb-2">Internal Projects</h5>
               {internalProjectsLoading ? (
-                <div className="text-[#E6D5B8]">Loading internal projects...</div>
+                <div className="text-[#F3E3C3]">Loading internal projects...</div>
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full text-left">
@@ -943,7 +953,7 @@ const AdminDashboard = ({
             <div className="mb-10">
               <h5 className="text-lg font-display mb-2">Client Projects</h5>
               {projectsLoading ? (
-                <div className="text-[#E6D5B8]">Loading projects...</div>
+                <div className="text-[#F3E3C3]">Loading projects...</div>
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full text-left">
@@ -1080,7 +1090,7 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
     saveOrder(reordered);
   };
 
-  if (loading) return <div className="text-[#E6D5B8]">Loading site map...</div>;
+  if (loading) return <div className="text-[#F3E3C3]">Loading site map...</div>;
   if (error) return <div className="text-red-400">{error}</div>;
 
   return (
@@ -1102,21 +1112,21 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
                       >
                         <button
                           onClick={() => setSiteMapPage(page.key)}
-                          className={`px-4 py-2 rounded-full font-bold transition-colors ${siteMapPage === page.key ? 'bg-[#E6D5B8] text-[#1a1a1a]' : 'bg-[#262626] text-[#E6D5B8] hover:bg-[#E6D5B8]/30'}`}
+                          className={`px-4 py-2 rounded-full font-bold transition-colors ${siteMapPage === page.key ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3] hover:bg-[#F3E3C3]/30'}`}
                         >
                           {page.label}
                         </button>
                         {/* Only allow editing for About, Home, Services, Contact for now */}
                         {['about', 'home', 'services', 'contact'].includes(page.key) && (
                           <button
-                            className="ml-1 text-xs px-2 py-1 bg-[#E6D5B8] text-[#1a1a1a] rounded hover:bg-[#e6d5b8cc] transition"
+                            className="ml-1 text-xs px-2 py-1 bg-[#F3E3C3] text-[#1a1a1a] rounded hover:bg-[#f3e3c3cc] transition"
                             onClick={() => handleEditPage(page.key)}
                             type="button"
                           >
                             Edit
                           </button>
                         )}
-                        {idx < pages.length - 1 && <span className="text-[#E6D5B8]">→</span>}
+                        {idx < pages.length - 1 && <span className="text-[#F3E3C3]">→</span>}
                       </div>
                     )}
                   </Draggable>
@@ -1146,7 +1156,7 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
                 className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 font-bold"
                 required
               />
-              <label className="block text-xs mb-1 text-[#E6D5B8]/70">Page Content (Markdown supported)</label>
+              <label className="block text-xs mb-1 text-[#F3E3C3]/70">Page Content (Markdown supported)</label>
               <div className="grid md:grid-cols-2 gap-4">
                 <textarea
                   value={editForm.content}
@@ -1157,8 +1167,8 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
                   required
                 />
                 <div className="bg-[#232323] border border-white/10 rounded-md p-3 overflow-auto min-h-[200px]">
-                  <div className="text-xs text-[#E6D5B8]/60 mb-1">Live Preview</div>
-                  <div className="prose prose-invert max-w-none text-[#E6D5B8]/90">
+                  <div className="text-xs text-[#F3E3C3]/60 mb-1">Live Preview</div>
+                  <div className="prose prose-invert max-w-none text-[#F3E3C3]/90">
                     <h2 className="font-display">{editForm.title}</h2>
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>
                       {editForm.content || 'Nothing to preview.'}
@@ -1169,7 +1179,7 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
               <div className="flex gap-2">
                 <button
                   type="submit"
-                  className="bg-[#E6D5B8] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
+                  className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
                   disabled={saving}
                 >
                   {saving ? 'Saving...' : 'Save'}
@@ -1199,18 +1209,18 @@ const SiteMapPreview = ({ page, content, portfolioImages, blogPosts }) => {
       return (
         <div>
           <h1 className="text-3xl font-display mb-2">Capture. Create. Captivate.</h1>
-          <p className="text-[#E6D5B8]/80 mb-4">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
+          <p className="text-[#F3E3C3]/80 mb-4">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
         </div>
       );
     case 'about':
       return (
         <div>
           <h2 className="text-2xl font-display mb-2">{content.about.title}</h2>
-          <p className="text-[#E6D5B8]/80">{content.about.bio}</p>
+          <p className="text-[#F3E3C3]/80">{content.about.bio}</p>
         </div>
       );
     case 'services':
-      return <div><h2 className="text-2xl font-display mb-2">Our Services</h2><p className="text-[#E6D5B8]/80">From comprehensive brand management to capturing your most precious personal moments.</p></div>;
+      return <div><h2 className="text-2xl font-display mb-2">Our Services</h2><p className="text-[#F3E3C3]/80">From comprehensive brand management to capturing your most precious personal moments.</p></div>;
     case 'portfolio':
       return (
         <div>
@@ -1228,7 +1238,7 @@ const SiteMapPreview = ({ page, content, portfolioImages, blogPosts }) => {
           <h2 className="text-2xl font-display mb-2">Blog</h2>
           <ul className="list-disc ml-6">
             {blogPosts.slice(0, 3).map(post => (
-              <li key={post.id} className="text-[#E6D5B8]/80">{post.title}</li>
+              <li key={post.id} className="text-[#F3E3C3]/80">{post.title}</li>
             ))}
           </ul>
         </div>
@@ -1237,7 +1247,7 @@ const SiteMapPreview = ({ page, content, portfolioImages, blogPosts }) => {
       return (
         <div>
           <h2 className="text-2xl font-display mb-2">Get In Touch</h2>
-          <p className="text-[#E6D5B8]/80">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
+          <p className="text-[#F3E3C3]/80">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
         </div>
       );
     default:
@@ -1247,13 +1257,13 @@ const SiteMapPreview = ({ page, content, portfolioImages, blogPosts }) => {
 // --- BlogPage Component (add this before App or near other page components) ---
 function BlogPage({ posts, loading, error }) {
   if (loading) {
-    return <div className="text-[#E6D5B8] text-center py-10">Loading blog posts...</div>;
+    return <div className="text-[#F3E3C3] text-center py-10">Loading blog posts...</div>;
   }
   if (error) {
     return <div className="text-red-400 text-center py-10">{error}</div>;
   }
   if (!posts || posts.length === 0) {
-    return <div className="text-[#E6D5B8]/70 text-center py-10">No blog posts found.</div>;
+    return <div className="text-[#F3E3C3]/70 text-center py-10">No blog posts found.</div>;
   }
   return (
     <div className="py-20 md:py-28 bg-[#212121]">
@@ -1263,9 +1273,9 @@ function BlogPage({ posts, loading, error }) {
           {posts.map(post => (
             <div key={post.id} className="bg-[#262626] rounded-lg shadow-lg p-6 flex flex-col">
               <h3 className="text-2xl font-bold mb-2 text-white">{post.title}</h3>
-              <div className="text-xs text-[#E6D5B8]/60 mb-2">{post.author} &middot; {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}</div>
-              <div className="text-[#E6D5B8]/80 mb-4">{post.excerpt}</div>
-              <a href={`/blog/${post.slug}`} className="text-[#E6D5B8] hover:underline mt-auto">Read More</a>
+              <div className="text-xs text-[#F3E3C3]/60 mb-2">{post.author} &middot; {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}</div>
+              <div className="text-[#F3E3C3]/80 mb-4">{post.excerpt}</div>
+              <a href={`/blog/${post.slug}`} className="text-[#F3E3C3] hover:underline mt-auto">Read More</a>
             </div>
           ))}
         </div>
@@ -1279,7 +1289,7 @@ function ErrorFallback({ message }) {
   return (
     <div className="flex flex-col items-center justify-center min-h-[40vh] text-center">
       <h2 className="text-2xl font-bold text-red-400 mb-4">Something went wrong</h2>
-      <p className="text-[#E6D5B8]/80">{message || 'An unexpected error occurred. Please try again later.'}</p>
+      <p className="text-[#F3E3C3]/80">{message || 'An unexpected error occurred. Please try again later.'}</p>
     </div>
   );
 }
@@ -1287,7 +1297,7 @@ function ErrorFallback({ message }) {
 // --- Footer Component (add this at the end of the file) ---
 function Footer({ navigate }) {
   return (
-    <footer className="bg-[#232323] text-[#E6D5B8] py-8 mt-20">
+    <footer className="bg-[#232323] text-[#F3E3C3] py-8 mt-20">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <span className="font-display font-bold text-lg">Studio37</span>
