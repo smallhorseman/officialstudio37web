@@ -1,0 +1,28 @@
+/* ...existing code... */
+
+/* Replace -webkit-text-size-adjust with standard property */
+html {
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Replace -moz-columns with standard columns property */
+.columns-2 {
+  columns: 2;
+  column-gap: 1rem;
+}
+
+.sm\:columns-2 {
+  @media (min-width: 640px) {
+    columns: 2;
+    column-gap: 1rem;
+  }
+}
+
+/* Replace -moz-column-break-inside with standard property */
+.break-inside-avoid {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* ...existing code... */

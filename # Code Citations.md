@@ -1,1467 +1,3280 @@
 # Code Citations
 
-## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-public/
+.svg -->
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-public/
+.svg -->
 ```
 
 
-## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-public/sitemap.xml
+.svg -->
+<svg xmlns
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-public/sitemap.xml
+.svg -->
+<svg xmlns
 ```
 
 
-## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-public/sitemap.xml
-<?xml version
+.svg -->
+<svg xmlns
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-public/sitemap.xml
-<?xml version
+.svg -->
+<svg xmlns="http://www
 ```
 
 
 ## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-public/sitemap.xml
-<?xml version="1.0
+.svg -->
+<svg xmlns="http://www
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-public/sitemap.xml
-<?xml version="1.0
+.svg -->
+<svg xmlns="http://www
 ```
 
 
-## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF
+.svg -->
+<svg xmlns="http://www
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF
+.svg -->
+<svg xmlns="http://www.w3.
 ```
 
 
 ## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
+.svg -->
+<svg xmlns="http://www.w3.
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
+.svg -->
+<svg xmlns="http://www.w3.
 ```
 
 
-## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<url
+.svg -->
+<svg xmlns="http://www.w3.
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<url
+.svg -->
+<svg xmlns="http://www.w3.org/2000
 ```
 
 
 ## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="
+.svg -->
+<svg xmlns="http://www.w3.org/2000
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="
+.svg -->
+<svg xmlns="http://www.w3.org/2000
 ```
 
 
-## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.
+.svg -->
+<svg xmlns="http://www.w3.org/2000
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.
+.svg -->
+<svg xmlns="http://www.w3.org/2000
 ```
 
 
-## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.
+.svg -->
+<svg xmlns="http://www.w3.org/2000
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" view
 ```
 
 
 ## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" view
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" view
 ```
 
 
-## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" view
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" view
 ```
 
 
-## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" view
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 
 ```
 
 
 ## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 
 ```
 
 
-## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 
 ```
 
 
-## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
 ```
 
 
 ## License: MIT
-https://github.com/umbraco/UmbracoDocs/blob/d696034cfbad17bd82797d40c7591f75174225d1/13-release/umbraco-cms/tutorials/creating-an-xml-site-map.md
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
 ```
 
 
 ## License: unknown
-https://github.com/sdorra/sdorra.dev/blob/6036cde55f751d330f011145c5e9b541a44ba33c/content/posts/2022-11-15-sitemaps-with-appdir/index.mdx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-public/sitemap.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
 
 ```
-=
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
 ```
 
 
-## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
 
 ```
-=
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-= [
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
 ```
 
 
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill
+```
+
+
 ## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-= [
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-= [
-      {
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill
 ```
 
 
-## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
 
 ```
-= [
-      {
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
 
 ```
-= [
-      { name: '
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill
 ```
 
 
-## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-= [
-      { name: '
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-= [
-      { name: 'description', content:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke
 ```
 
 
 ## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-= [
-      { name: 'description', content:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke
 ```
 
 
-## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-= [
-      { name: 'description', content: description },
-      
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
 ## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
-## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
 ```
 
 
 ## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
 ```
 
 
-## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-
 ```
 
 
 ## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-
 ```
 
 
-## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-
 ```
 
 
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="
+```
+
+
 ## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="
 ```
 
 
-## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="
+```
 
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-
 ```
 
 
 ## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-
 ```
 
 
-## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="
 ```
 
 
 ## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="
 ```
 
 
-## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 ```
 
 
 ## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 ```
 
 
-## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+```
+
 
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      {
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle
 ```
 
 
 ## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      {
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      {
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: '
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle
 ```
 
 
-## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle
+```
+
 
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: '
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: '
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12"
 ```
 
 
 ## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12"
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12"
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url', content: canon
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12"
 ```
 
 
-## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12"
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12"
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url', content: canon
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12"
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url', content: canon
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12"
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url', content: canonicalUrl },
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12"
 ```
 
 
 ## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url', content: canonicalUrl },
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12"
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url', content: canonicalUrl },
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12"
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url', content: canonicalUrl },
-      { property:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12"
 ```
 
 
-## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12"
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12"
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url', content: canonicalUrl },
-      { property:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12"
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url', content: canonicalUrl },
-      { property:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12"
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url', content: canonicalUrl },
-      { property: 'og:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
 ```
 
 
 ## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url', content: canonicalUrl },
-      { property: 'og:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url', content: canonicalUrl },
-      { property: 'og:
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
 ```
 
 
 ## License: unknown
-https://github.com/rje4242/elcableamarillo.cc/blob/79fce7b34f115a8cfda6be3a08bde1d69ec35d16/components/Layout/Metas.vue
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url', content: canonicalUrl },
-      { property: 'og:type', content
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
 ```
 
 
-## License: MIT
-https://github.com/kidonng/saber-theme-aimer/blob/b36527b0eccf3d815d3b88bf85b48e23f5e66a55/utils/meta.js
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url', content: canonicalUrl },
-      { property: 'og:type', content
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
 ```
 
 
 ## License: unknown
-https://github.com/resenzhu/reactjs/blob/140d636f8fb0502992b0e1ae57df63816a95f75b/src/components/main/seo/seo.tsx
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
 
 ```
-= [
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: image },
-      { property: 'og:url', content: canonicalUrl },
-      { property: 'og:type', content
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-'
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-' },
-      {
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path
 ```
 
 
 ## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-' },
-      { name
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-' },
-      { name: 'twitter
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
 
 ```
-' },
-      { name: 'twitter:car
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
 
 ```
-' },
-      { name: 'twitter:card', content: 
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
 
 ```
-' },
-      { name: 'twitter:card', content: 'summary_large
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
 
 ```
-' },
-      { name: 'twitter:card', content: 'summary_large_image' },
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8
 ```
 
 
 ## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
 
 ```
-' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
 
 ```
-' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: title
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
 
 ```
-' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: title },
-      {
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
 
 ```
-' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: title },
-      { name: '
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
 
 ```
-' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: title },
-      { name: 'twitter:description',
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
 
 ```
-' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: title },
-      { name: 'twitter:description', content: description },
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: title },
-      { name: 'twitter:description', content: description },
-      { name
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8
 ```
 
 
-## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
 
 ```
-' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: title },
-      { name: 'twitter:description', content: description },
-      { name: 'twitter
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1
 ```
 
 
 ## License: MIT
-https://github.com/quran/quran.com-frontend/blob/e76ec4b88d7d40a87991dbc0a4b51e918482c5ba/src/config.js
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9"
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9"
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9"
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9"
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9"
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9"
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9"
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9"
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y
+```
+
+
+## License: unknown
+https://github.com/jsonpickle/jsonpickle.github.io/blob/faaad8df8c06792e26912939e442f52250f345bb/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y2=
+```
+
+
+## License: MIT
+https://github.com/elasticdog/elasticdog-com/blob/ad44f51da90a4beaee1fc7d9be4068b81fceac93/quartz/styles/callouts.scss
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y2=
+```
+
+
+## License: unknown
+https://github.com/python/peps/blob/b295ab338c02ef5b2dd2b6c63b892022df2339e5/pep_sphinx_extensions/pep_theme/templates/partials/icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y2=
+```
+
+
+## License: unknown
+https://github.com/sycom/TiddlyWiki-Plugins/blob/f45f969a5ff52fe199f7cb8c78a36a8cbc0a0757/files/dev/feather-icons.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y2=
+```
+
+
+## License: unknown
+https://github.com/novatorem/Website/blob/d768e7e6dddaef8389157fc68c11364fc898956e/src/lib/Home/About.svelte
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y2=
+```
+
+
+## License: Apache-2.0
+https://github.com/givanz/VvvebJs/blob/ac9cf73d7a8d2e11d6eebcfdc4f55d8183ed9ed3/resources/svg/icons/feather/index.html
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y2=
+```
+
+
+## License: unknown
+https://github.com/MarcelloTheArcane/nuxt-feather/blob/a0b81da6f63145101f4b51dc4dc0b251f538e769/icons/FeatherSmile.vue
+
+```
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y2=
+```
+
+
+## License: unknown
+https://github.com/Suandika12/PA2-Kel13/blob/ca563ee96ef81c5db3d0b5c8b92bb69bf9f870cc/api_numero_sada/resources/views/layouts/aside.blade.php
 
 ```
-' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: title },
-      { name: 'twitter:description', content: description },
-      { name: 'twitter:image'
+.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+  <line x1="9" y1="9" x2="9.01" y2="9"/>
+  <line x1="15" y1="9" x2="15.01" y2=
 ```
 
