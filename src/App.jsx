@@ -1345,7 +1345,7 @@ function CrmSection({ leads, updateLeadStatus }) {
     return <div className="text-[#F3E3C3]/70 py-8">No leads found.</div>;
   }
 
-  const statuses = ['New', 'Contacted', 'Booked', 'Lost', 'Archived'];
+  const statuses = ['New', 'Contacted', 'Booked', 'Won', 'Lost', 'Archived'];
 
   return (
     <div>
@@ -1553,7 +1553,7 @@ function ProjectsSection({ projects, projectsLoading }) {
   const [newTodo, setNewTodo] = useState('');
   const [showNewProjectForm, setShowNewProjectForm] = useState(false);
 
-  const stages = ['Inquiry', 'Proposal', 'Booked', 'In Progress', 'Completed', 'Cancelled'];
+  const stages = ['Inquiry', 'Proposal', 'Booked', 'In Progress', 'Completed', 'Won', 'Cancelled'];
 
   const fetchProjectTodos = async (projectId) => {
     try {
@@ -1696,8 +1696,9 @@ function ProjectsSection({ projects, projectsLoading }) {
             <div className="flex justify-between items-start mb-4">
               <h5 className="text-lg font-bold text-white">{project.name}</h5>
               <span className={`text-xs px-2 py-1 rounded ${
-                project.stage === 'Completed' ? 'bg-green-500/20 text-green-400' :
-                project.stage === 'In Progress' ? 'bg-blue-500/20 text-blue-400' :
+                project.stage === 'Won' ? 'bg-green-500/20 text-green-400' :
+                project.stage === 'Completed' ? 'bg-blue-500/20 text-blue-400' :
+                project.stage === 'In Progress' ? 'bg-purple-500/20 text-purple-400' :
                 project.stage === 'Cancelled' ? 'bg-red-500/20 text-red-400' :
                 'bg-[#F3E3C3]/10 text-[#F3E3C3]'
               }`}>
