@@ -105,7 +105,3 @@ const SEOHead = ({
 };
 
 export default SEOHead;
-  return null;
-};
-
-export default SEOHead;
