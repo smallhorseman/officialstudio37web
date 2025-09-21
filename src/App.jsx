@@ -5,8 +5,8 @@ import remarkGfm from 'remark-gfm';
 import PhotoshootPlanner from './PhotoshootPlanner';
 import ConversationalPlanner from './ConversationalPlanner';
 import VirtualAgentPlanner from './VirtualAgentPlanner';
-import { supabase } from './supabaseClient'; // <-- use shared instance
-import { Routes, Route, useParams, useNavigate, Link } from 'react-router-dom';
+import { supabase } from './supabaseClient';
+import { Routes, Route, useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 
 // --- Helper Components & Icons --- //
 
@@ -17,30 +17,12 @@ const ArrowRight = () => (
 
   </svg>);
 
-
-
-
-
-
-
-
-
-
-
-
-
 const MailIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
     <polyline points="22,6 12,13 2,6"></polyline>
   </svg>
 );
-
-
-
-
-
-
 
 const PhoneIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -66,14 +48,12 @@ const Logo = ({ className }) => (
   </div>
 );
 
-
-
 // --- Main Application Component --- //
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState('home');
   const [isAdmin, setIsAdmin] = useState(false);
+  const location = useLocation();
 
   // --- Theme ---
   const [theme, setTheme] = useState(() => {
@@ -124,7 +104,7 @@ export default function App() {
 
   // --- Fetch Blog Posts ---
   useEffect(() => {
-    if (currentPage === 'blog' || isAdmin) {
+    if (location.pathname === '/blog' || isAdmin) {
       setBlogLoading(true);
       setBlogError('');
       supabase
@@ -145,11 +125,11 @@ export default function App() {
           setBlogLoading(false);
         });
     }
-  }, [currentPage, isAdmin]);
+  }, [location.pathname, isAdmin]);
 
   // --- Fetch Portfolio Images ---
   useEffect(() => {
-    if (currentPage === 'portfolio' || isAdmin) {
+    if (location.pathname === '/portfolio' || isAdmin) {
       setPortfolioLoading(true);
       supabase
         .from('portfolio_images')
@@ -166,7 +146,7 @@ export default function App() {
           setPortfolioLoading(false);
         });
     }
-  }, [currentPage, isAdmin]);
+  }, [location.pathname, isAdmin]);
 
   // --- Fetch Leads (CRM) ---
   useEffect(() => {
@@ -244,13 +224,6 @@ export default function App() {
   // --- Admin Login Handler ---
   function handleAdminLogin() {
     setIsAdmin(true);
-    setCurrentPage('adminDashboard');
-  }
-
-  // --- Navigation Handler ---
-  function handleNav(page) {
-    setCurrentPage(page);
-    if (page !== 'adminDashboard') setIsAdmin(false);
   }
 
   // --- Update Lead Status (CRM) ---
@@ -297,52 +270,10 @@ export default function App() {
     setBlogPosts(posts => posts.filter(p => p.id !== id));
   }
 
-  // --- Page Content Switcher ---
-  function PageContent() {
-    switch (currentPage) {
-      case 'home': return <HomePage navigate={handleNav} />;
-      case 'about': return <AboutPage content={siteContent.about} />;
-      case 'services': return <ServicesPage />;
-      case 'portfolio': return (
-        <PortfolioPage
-          isUnlocked={portfolioUnlocked}
-          onUnlock={handlePortfolioUnlock}
-          images={portfolioImages}
-        />
-      );
-      case 'blog': return <BlogPage posts={blogPosts} loading={blogLoading} error={blogError} />;
-      case 'contact': return <ContactPage />;
-      case 'adminLogin': return <AdminLoginPage onLogin={handleAdminLogin} />;
-      case 'adminDashboard':
-        return isAdmin ? (
-          <AdminDashboard
-            leads={leads}
-            updateLeadStatus={updateLeadStatus}
-            content={siteContent}
-            updateContent={updateContent}
-            portfolioImages={portfolioImages}
-            addPortfolioImage={addPortfolioImage}
-            deletePortfolioImage={deletePortfolioImage}
-            blogPosts={blogPosts}
-            createBlogPost={createBlogPost}
-            updateBlogPost={updateBlogPost}
-            deleteBlogPost={deleteBlogPost}
-            blogEdit={blogEdit}
-            setBlogEdit={setBlogEdit}
-            blogSaving={blogSaving}
-            blogAdminError={blogAdminError}
-            projects={projects}
-            projectsLoading={projectsLoading}
-          />
-        ) : <AdminLoginPage onLogin={handleAdminLogin} />;
-      default: return <HomePage navigate={handleNav} />;
-    }
-  }
-
   // --- Render ---
   return (
     <div className="min-h-screen bg-[#181818] text-[#F3E3C3] font-sans antialiased transition-colors duration-300">
-      {/* Chatbot Button is now global, not just homepage */}
+      {/* Chatbot Button */}
       <button
         onClick={() => setShowChatBot(true)}
         className="fixed bottom-6 right-6 z-50 bg-[#F3E3C3] text-[#1a1a1a] rounded-full shadow-lg p-4 flex items-center gap-2 hover:scale-105 transition-transform"
@@ -365,18 +296,15 @@ export default function App() {
         </div>
       )}
       <Header 
-        navigate={handleNav} 
         isMenuOpen={isMenuOpen} 
-        setIsMenuOpen={setIsMenuOpen} 
-        currentPage={currentPage}
+        setIsMenuOpen={setIsMenuOpen}
         theme={theme}
         toggleTheme={toggleTheme}
-        showAdminButton={currentPage !== 'adminDashboard'}
-        onAdminLogin={() => setCurrentPage('adminLogin')}
+        showAdminButton={!location.pathname.includes('admin')}
       />
       <main className="pt-20">
         <Routes>
-          <Route path="/" element={<HomePage navigate={handleNav} />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage content={siteContent.about} />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/portfolio" element={
@@ -389,8 +317,8 @@ export default function App() {
           <Route path="/blog" element={<BlogPage posts={blogPosts} loading={blogLoading} error={blogError} />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/adminLogin" element={<AdminLoginPage onLogin={handleAdminLogin} />} />
-          <Route path="/adminDashboard" element={
+          <Route path="/admin" element={<AdminLoginPage onLogin={handleAdminLogin} />} />
+          <Route path="/admin/dashboard" element={
             isAdmin ? (
               <AdminDashboard
                 leads={leads}
@@ -413,11 +341,9 @@ export default function App() {
               />
             ) : <AdminLoginPage onLogin={handleAdminLogin} />
           } />
-          {/* fallback: old page switcher for non-router navigation */}
-          <Route path="*" element={<HomePage navigate={handleNav} />} />
         </Routes>
       </main>
-      <Footer navigate={handleNav} />
+      <Footer />
     </div>
   );
 }
@@ -474,14 +400,16 @@ function BlogPostPage() {
 }
 
 // --- Page & Section Components --- //
-const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggleTheme, showAdminButton, onAdminLogin }) => {
+const Header = ({ isMenuOpen, setIsMenuOpen, theme, toggleTheme, showAdminButton }) => {
+  const location = useLocation();
+  
   const navLinks = [
-    { page: 'home', label: 'Home' },
-    { page: 'about', label: 'About' },
-    { page: 'services', label: 'Services' },
-    { page: 'portfolio', label: 'Portfolio' },
-    { page: 'blog', label: 'Blog' },
-    { page: 'contact', label: 'Contact' },
+    { page: '/', label: 'Home' },
+    { page: '/about', label: 'About' },
+    { page: '/services', label: 'Services' },
+    { page: '/portfolio', label: 'Portfolio' },
+    { page: '/blog', label: 'Blog' },
+    { page: '/contact', label: 'Contact' },
     { page: 'book', label: 'Book a Session', external: true, url: 'https://book.usesession.com/i/sbDooN5rcH' }
   ];
 
@@ -491,31 +419,27 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggl
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className={
-          `px-4 py-2 text-sm uppercase tracking-widest transition-colors duration-300 
-          text-[#F3E3C3]/70 hover:text-white`
-        }
-        style={label === 'Book a Session' ? { fontWeight: 'bold' } : {}}
+        className="px-4 py-2 text-sm uppercase tracking-widest transition-colors duration-300 text-[#F3E3C3]/70 hover:text-white font-bold"
       >
         {label}
       </a>
     ) : (
-      <button 
-        onClick={() => navigate(page)} 
-        className={`px-4 py-2 text-sm uppercase tracking-widest transition-colors duration-300 ${currentPage === page ? 'text-white' : 'text-[#F3E3C3]/70 hover:text-white'}`}
+      <Link 
+        to={page}
+        className={`px-4 py-2 text-sm uppercase tracking-widest transition-colors duration-300 ${location.pathname === page ? 'text-white' : 'text-[#F3E3C3]/70 hover:text-white'}`}
       >
         {label}
-      </button>
+      </Link>
     )
   );
 
   return (
     <header className="fixed top-0 left-0 w-full z-40 bg-[#232323] shadow-lg">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <div className="flex items-center gap-4">
+        <Link to="/" className="flex items-center gap-4">
           <Logo />
           <span className="font-display text-xl font-bold tracking-tight text-white">Studio37</span>
-        </div>
+        </Link>
         <nav className="hidden md:flex gap-2 items-center">
           {navLinks.map(link => <NavLink key={link.page} {...link} />)}
         </nav>
@@ -524,14 +448,14 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggl
             {theme === 'dark' ? '🌙' : '☀️'}
           </button>
           {showAdminButton && (
-            <button
-              onClick={onAdminLogin}
+            <Link
+              to="/admin"
               className="text-xs px-2 py-1 rounded bg-transparent text-[#F3E3C3]/60 hover:text-[#F3E3C3] border border-transparent hover:border-[#F3E3C3]/30 transition"
               style={{ fontSize: '0.85rem' }}
               aria-label="Admin Login"
             >
               Admin
-            </button>
+            </Link>
           )}
           <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white md:hidden">
             {isMenuOpen ? <span>&#10005;</span> : <span>&#9776;</span>}
@@ -549,7 +473,7 @@ const Header = ({ navigate, isMenuOpen, setIsMenuOpen, currentPage, theme, toggl
   );
 };
 
-const HomePage = ({ navigate }) => (
+const HomePage = () => (
   <div className="relative h-screen flex items-center justify-center text-center text-white px-4 -mt-20">
     <img src="https://res.cloudinary.com/dmjxho2rl/image/upload/a_vflip/l_image:upload:My%20Brand:IMG_2115_mtuowt/c_scale,fl_relative,w_0.35/o_100/fl_layer_apply,g_north,x_0.03,y_0.04/v1758172510/A4B03835-ED8B-4FBB-A27E-1F2EE6CA1A18_1_105_c_gstgil.jpg" alt="Studio37 Hero" className="absolute inset-0 w-full h-full object-cover"/>
     <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-0 pointer-events-none"></div>
@@ -557,9 +481,9 @@ const HomePage = ({ navigate }) => (
       <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display mb-4 leading-tight break-words max-w-full">Capture. Create. Captivate.</h1>
       <p className="text-base sm:text-lg md:text-xl max-w-xs sm:max-w-2xl mx-auto mb-8 text-[#F3E3C3]/80">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
       <div className="space-y-4 sm:space-x-4 flex flex-col sm:flex-row items-center justify-center w-full">
-        <button onClick={() => navigate('portfolio')} className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 w-full sm:w-auto">
+        <Link to="/portfolio" className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 w-full sm:w-auto">
           View Our Work <ArrowRight />
-        </button>
+        </Link>
       </div>
     </div>
   </div>
@@ -832,15 +756,16 @@ const AdminLoginPage = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Fix: trim and lowercase for robustness
     if (
       username.trim().toLowerCase() === 'admin' &&
       password.trim() === 'studio37admin'
     ) {
       onLogin();
+      navigate('/admin/dashboard');
     } else {
       setError('Invalid username or password.');
     }
@@ -1384,7 +1309,7 @@ function ErrorFallback({ message }) {
 }
 
 // --- Footer Component (add this at the end of the file) ---
-function Footer({ navigate }) {
+function Footer() {
   return (
     <footer className="bg-[#232323] text-[#F3E3C3] py-8 mt-20">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -1393,12 +1318,12 @@ function Footer({ navigate }) {
           <span className="text-xs">&copy; {new Date().getFullYear()}</span>
         </div>
         <nav className="flex gap-4">
-          <button onClick={() => navigate('home')} className="hover:underline">Home</button>
-          <button onClick={() => navigate('about')} className="hover:underline">About</button>
-          <button onClick={() => navigate('services')} className="hover:underline">Services</button>
-          <button onClick={() => navigate('portfolio')} className="hover:underline">Portfolio</button>
-          <button onClick={() => navigate('blog')} className="hover:underline">Blog</button>
-          <button onClick={() => navigate('contact')} className="hover:underline">Contact</button>
+          <Link to="/" className="hover:underline">Home</Link>
+          <Link to="/about" className="hover:underline">About</Link>
+          <Link to="/services" className="hover:underline">Services</Link>
+          <Link to="/portfolio" className="hover:underline">Portfolio</Link>
+          <Link to="/blog" className="hover:underline">Blog</Link>
+          <Link to="/contact" className="hover:underline">Contact</Link>
         </nav>
       </div>
     </footer>
