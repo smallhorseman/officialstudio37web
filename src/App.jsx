@@ -1281,3 +1281,1177 @@ function SiteMapPreview({ page, content, portfolioImages, blogPosts }) {
       );
   }
 }
+
+// --- AdminDashboard Component (inline to avoid import issues) ---
+function AdminDashboard({
+  leads,
+  updateLeadStatus,
+  content,
+  portfolioImages,
+  addPortfolioImage,
+  deletePortfolioImage,
+  updatePortfolioImageOrder,
+  blogPosts,
+  createBlogPost,
+  updateBlogPost,
+  deleteBlogPost,
+  blogEdit,
+  setBlogEdit,
+  blogSaving,
+  blogAdminError,
+  projects,
+  projectsLoading
+}) {
+  const [activeTab, setActiveTab] = useState('crm');
+  const [siteMapPage, setSiteMapPage] = useState('home');
+
+  return (
+    <div className="py-20 md:py-28 bg-[#212121]">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-display">Admin Dashboard</h2>
+          <p className="text-lg text-[#F3E3C3]/70 mt-4">Manage your business operations</p>
+        </div>
+        
+        <div className="flex flex-wrap gap-2 justify-center mb-8">
+          {['crm', 'projects', 'cms', 'blog', 'sitemap', 'analytics'].map(tab => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors ${
+                activeTab === tab 
+                  ? 'bg-[#F3E3C3] text-[#1a1a1a]' 
+                  : 'bg-[#262626] hover:bg-[#333] text-[#F3E3C3]'
+              }`}
+            >
+              {tab.toUpperCase()}
+            </button>
+          ))}
+        </div>
+
+        <div className="bg-[#262626] rounded-lg shadow-lg p-6">
+          {activeTab === 'crm' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Customer Relationship Management</h3>
+              <CrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
+            </div>
+          )}
+
+          {activeTab === 'projects' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Project Management</h3>
+              <ProjectsSection projects={projects} projectsLoading={projectsLoading} />
+            </div>
+          )}
+          
+          {activeTab === 'cms' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Content Management</h3>
+              <CmsSection
+                portfolioImages={portfolioImages}
+                addPortfolioImage={addPortfolioImage}
+                deletePortfolioImage={deletePortfolioImage}
+                updatePortfolioImageOrder={updatePortfolioImageOrder}
+              />
+            </div>
+          )}
+          
+          {activeTab === 'blog' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Blog Management</h3>
+              <BlogAdminSection
+                blogPosts={blogPosts}
+                createBlogPost={createBlogPost}
+                updateBlogPost={updateBlogPost}
+                deleteBlogPost={deleteBlogPost}
+                blogEdit={blogEdit}
+                setBlogEdit={setBlogEdit}
+                blogSaving={blogSaving}
+                blogAdminError={blogAdminError}
+              />
+            </div>
+          )}
+
+          {activeTab === 'sitemap' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Site Map Editor</h3>
+              <SiteMapTab 
+                siteMapPage={siteMapPage} 
+                setSiteMapPage={setSiteMapPage} 
+                content={content}
+                portfolioImages={portfolioImages}
+                blogPosts={blogPosts}
+              />
+            </div>
+          )}
+
+          {activeTab === 'analytics' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Analytics Dashboard</h3>
+              <AnalyticsSection leads={leads} projects={projects} blogPosts={blogPosts} />
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// --- Enhanced CRM Section with Call/Text/Email buttons ---
+function CrmSection({ leads, updateLeadStatus }) {
+  const [selectedLead, setSelectedLead] = useState(null);
+  const [showLeadDetails, setShowLeadDetails] = useState(false);
+  const [newNote, setNewNote] = useState('');
+  const [leadNotes, setLeadNotes] = useState([]);
+  const [leadProjects, setLeadProjects] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchLeadNotes = async (leadId) => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('lead_notes')
+        .select('*')
+        .eq('lead_id', leadId)
+        .order('created_at', { ascending: false });
+      
+      if (!error) setLeadNotes(data || []);
+    } catch (err) {
+      console.error('Error fetching notes:', err);
+    }
+    setLoading(false);
+  };
+
+  const fetchLeadProjects = async (leadId) => {
+    try {
+      const { data } = await supabase
+        .from('projects')
+        .select('*')
+        .eq('lead_id', leadId)
+        .order('created_at', { ascending: false });
+      
+      setLeadProjects(data || []);
+    } catch (err) {
+      console.error('Error fetching projects:', err);
+    }
+  };
+
+  const addNote = async () => {
+    if (!newNote.trim() || !selectedLead) return;
+    try {
+      await supabase.from('lead_notes').insert([{
+        lead_id: selectedLead.id,
+        note: newNote,
+        status: 'Manual'
+      }]);
+      setNewNote('');
+      await fetchLeadNotes(selectedLead.id);
+    } catch (err) {
+      console.error('Error adding note:', err);
+    }
+  };
+
+  const openLeadDetails = (lead) => {
+    setSelectedLead(lead);
+    setShowLeadDetails(true);
+    fetchLeadNotes(lead.id);
+    fetchLeadProjects(lead.id);
+  };
+
+  if (!leads || leads.length === 0) {
+    return <div className="text-[#F3E3C3]/70 py-8">No leads found.</div>;
+  }
+
+  const statuses = ['New', 'Contacted', 'Booked', 'Won', 'Lost', 'Archived'];
+
+  return (
+    <div>
+      <div className="overflow-x-auto rounded-lg border border-white/10">
+        <table className="min-w-full divide-y divide-[#F3E3C3]/10">
+          <thead className="bg-[#181818]">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">
+                Name
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">
+                Email
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">
+                Phone
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">
+                Service
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">
+                Status
+              </th>
+              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-[#F3E3C3]/10">
+            {leads.map(lead => (
+              <tr key={lead.id} className="hover:bg-[#333] transition-colors">
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm font-medium text-[#F3E3C3]">{lead.name}</div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm text-[#F3E3C3]/70">{lead.email}</div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm text-[#F3E3C3]/70">{lead.phone}</div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm text-[#F3E3C3]/70">{lead.service}</div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm font-semibold text-[#F3E3C3]">
+                    {lead.status}
+                  </div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <button
+                    onClick={() => updateLeadStatus(lead.id, lead.status === 'Archived' ? 'New' : 'Archived')}
+                    className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${lead.status === 'Archived' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}
+                    aria-label={lead.status === 'Archived' ? 'Restore Lead' : 'Archive Lead'}
+                  >
+                    {lead.status === 'Archived' ? 'Restore' : 'Archive'}
+                  </button>
+                  <button
+                    onClick={() => openLeadDetails(lead)}
+                    className="ml-2 px-3 py-1 bg-[#F3E3C3] text-[#1a1a1a] rounded-full text-xs font-semibold transition-transform hover:scale-105"
+                    aria-label="View Lead Details"
+                  >
+                    View
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {showLeadDetails && selectedLead && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="bg-[#232323] rounded-lg shadow-lg max-w-md w-full p-6">
+            <button onClick={() => setShowLeadDetails(false)} className="absolute top-2 right-2 text-white text-xl">&times;</button>
+            <h3 className="text-lg font-display mb-4">Lead Details</h3>
+            <div className="text-sm text-[#F3E3C3]/80 mb-4">
+              <div><strong>Name:</strong> {selectedLead.name}</div>
+              <div><strong>Email:</strong> {selectedLead.email}</div>
+              <div><strong>Phone:</strong> {selectedLead.phone}</div>
+              <div><strong>Service:</strong> {selectedLead.service}</div>
+              <div><strong>Status:</strong> {selectedLead.status}</div>
+            </div>
+            <div className="mb-4">
+              <h4 className="font-semibold text-[#F3E3C3] mb-2">Notes</h4>
+              {loading && <div className="text-center text-[#F3E3C3]/70 py-2">Loading notes...</div>}
+              {!loading && leadNotes.length === 0 && <div className="text-[#F3E3C3]/70 py-2">No notes found for this lead.</div>}
+              <div className="space-y-2">
+                {leadNotes.map(note => (
+                  <div key={note.id} className="bg-[#181818] p-3 rounded-md">
+                    <div className="text-xs text-[#F3E3C3]/60 mb-1">{new Date(note.created_at).toLocaleString()}</div>
+                    <div className="text-[#F3E3C3]">{note.note}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="mb-4">
+              <h4 className="font-semibold text-[#F3E3C3] mb-2">Projects</h4>
+              {leadProjects.length === 0 && <div className="text-[#F3E3C3]/70 py-2">No projects found for this lead.</div>}
+              <div className="space-y-2">
+                {leadProjects.map(project => (
+                  <div key={project.id} className="bg-[#181818] p-3 rounded-md">
+                    <div className="text-sm font-semibold text-[#F3E3C3]">{project.name}</div>
+                    <div className="text-xs text-[#F3E3C3]/60 mb-1">{project.stage} &middot; ${project.opportunity_amount?.toLocaleString() || 'N/A'}</div>
+                    <div className="flex gap-2">
+                      <Link 
+                        to={`/admin/projects/${project.id}`}
+                        className="text-xs bg-[#F3E3C3] text-[#1a1a1a] rounded-full px-3 py-1 font-semibold transition-transform hover:scale-105"
+                        aria-label="Edit Project"
+                      >
+                        Edit
+                      </Link>
+                      <button
+                        onClick={() => {
+                          // Handle project delete
+                          supabase.from('projects').delete().eq('id', project.id).then(() => {
+                            setLeadProjects(proj => proj.filter(p => p.id !== project.id));
+                          });
+                        }}
+                        className="text-xs bg-red-500 text-white rounded-full px-3 py-1 font-semibold transition-transform hover:scale-105"
+                        aria-label="Delete Project"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => {
+                  // Call or text lead
+                  const phoneNumber = selectedLead.phone.replace(/\D/g, '');
+                  if (phoneNumber) {
+                    window.open(`tel:${phoneNumber}`);
+                  }
+                }}
+                className="flex-1 bg-green-500 text-white rounded-full px-4 py-2 font-semibold transition-transform hover:scale-105"
+                aria-label="Call Lead"
+              >
+                <PhoneIcon className="w-5 h-5 inline-block mr-2" /> Call
+              </button>
+              <button
+                onClick={() => {
+                  // Send SMS to lead
+                  const phoneNumber = selectedLead.phone.replace(/\D/g, '');
+                  if (phoneNumber) {
+                    window.open(`sms:${phoneNumber}`);
+                  }
+                }}
+                className="flex-1 bg-blue-500 text-white rounded-full px-4 py-2 font-semibold transition-transform hover:scale-105"
+                aria-label="Text Lead"
+              >
+                <SmsIcon className="w-5 h-5 inline-block mr-2" /> Text
+              </button>
+              <button
+                onClick={() => {
+                  // Send email to lead
+                  window.open(`mailto:${selectedLead.email}`);
+                }}
+                className="flex-1 bg-red-500 text-white rounded-full px-4 py-2 font-semibold transition-transform hover:scale-105"
+                aria-label="Email Lead"
+              >
+                <MailIcon className="w-5 h-5 inline-block mr-2" /> Email
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// --- Projects Section with Todo Lists ---
+function ProjectsSection({ projects, projectsLoading }) {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [showProjectDetails, setShowProjectDetails] = useState(false);
+  const [newTask, setNewTask] = useState('');
+  const [projectTasks, setProjectTasks] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchProjectTasks = async (projectId) => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('project_tasks')
+        .select('*')
+        .eq('project_id', projectId)
+        .order('created_at', { ascending: false });
+      
+      if (!error) setProjectTasks(data || []);
+    } catch (err) {
+      console.error('Error fetching tasks:', err);
+    }
+    setLoading(false);
+  };
+
+  const addTask = async () => {
+    if (!newTask.trim() || !selectedProject) return;
+    try {
+      await supabase.from('project_tasks').insert([{
+        project_id: selectedProject.id,
+        task: newTask,
+        completed: false
+      }]);
+      setNewTask('');
+      await fetchProjectTasks(selectedProject.id);
+    } catch (err) {
+      console.error('Error adding task:', err);
+    }
+  };
+
+  const openProjectDetails = (project) => {
+    setSelectedProject(project);
+    setShowProjectDetails(true);
+    fetchProjectTasks(project.id);
+  };
+
+  if (!projects || projects.length === 0) {
+    return <div className="text-[#F3E3C3]/70 py-8">No projects found.</div>;
+  }
+
+  return (
+    <div>
+      <div className="overflow-x-auto rounded-lg border border-white/10">
+        <table className="min-w-full divide-y divide-[#F3E3C3]/10">
+          <thead className="bg-[#181818]">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">
+                Project Name
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">
+                Client
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">
+                Status
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">
+                Stage
+              </th>
+              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-[#F3E3C3]/10">
+            {projects.map(project => (
+              <tr key={project.id} className="hover:bg-[#333] transition-colors">
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm font-medium text-[#F3E3C3]">{project.name}</div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm text-[#F3E3C3]/70">{project.client_name || 'N/A'}</div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm font-semibold text-[#F3E3C3]">
+                    {project.status}
+                  </div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm text-[#F3E3C3]/70">{project.stage}</div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <button
+                    onClick={() => openProjectDetails(project)}
+                    className="ml-2 px-3 py-1 bg-[#F3E3C3] text-[#1a1a1a] rounded-full text-xs font-semibold transition-transform hover:scale-105"
+                    aria-label="View Project Details"
+                  >
+                    View
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {showProjectDetails && selectedProject && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="bg-[#232323] rounded-lg shadow-lg max-w-md w-full p-6">
+            <button onClick={() => setShowProjectDetails(false)} className="absolute top-2 right-2 text-white text-xl">&times;</button>
+            <h3 className="text-lg font-display mb-4">Project Details</h3>
+            <div className="text-sm text-[#F3E3C3]/80 mb-4">
+              <div><strong>Project Name:</strong> {selectedProject.name}</div>
+              <div><strong>Client:</strong> {selectedProject.client_name || 'N/A'}</div>
+              <div><strong>Status:</strong> {selectedProject.status}</div>
+              <div><strong>Stage:</strong> {selectedProject.stage}</div>
+              <div><strong>Opportunity Amount:</strong> ${selectedProject.opportunity_amount?.toLocaleString() || 'N/A'}</div>
+            </div>
+            <div className="mb-4">
+              <h4 className="font-semibold text-[#F3E3C3] mb-2">Tasks</h4>
+              {loading && <div className="text-center text-[#F3E3C3]/70 py-2">Loading tasks...</div>}
+              {!loading && projectTasks.length === 0 && <div className="text-[#F3E3C3]/70 py-2">No tasks found for this project.</div>}
+              <div className="space-y-2">
+                {projectTasks.map(task => (
+                  <div key={task.id} className="bg-[#181818] p-3 rounded-md flex justify-between items-center">
+                    <div className="text-[#F3E3C3]">{task.task}</div>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => {
+                          // Toggle task completion
+                          supabase.from('project_tasks').update({ completed: !task.completed }).eq('id', task.id).then(() => {
+                            setProjectTasks(tsk => tsk.map(t => t.id === task.id ? { ...t, completed: !t.completed } : t));
+                          });
+                        }}
+                        className={`text-xs rounded-full px-3 py-1 font-semibold transition-all ${task.completed ? 'bg-red-500 text-white' : 'bg-green-500 text-white'}`}
+                        aria-label={task.completed ? 'Mark task as incomplete' : 'Mark task as complete'}
+                      >
+                        {task.completed ? 'Undo' : 'Complete'}
+                      </button>
+                      <button
+                        onClick={() => {
+                          // Handle task delete
+                          supabase.from('project_tasks').delete().eq('id', task.id).then(() => {
+                            setProjectTasks(tsk => tsk.filter(t => t.id !== task.id));
+                          });
+                        }}
+                        className="text-xs bg-red-500 text-white rounded-full px-3 py-1 font-semibold transition-transform hover:scale-105"
+                        aria-label="Delete Task"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => {
+                  // Call client
+                  const phoneNumber = selectedProject.client_phone?.replace(/\D/g, '');
+                  if (phoneNumber) {
+                    window.open(`tel:${phoneNumber}`);
+                  }
+                }}
+                className="flex-1 bg-green-500 text-white rounded-full px-4 py-2 font-semibold transition-transform hover:scale-105"
+                aria-label="Call Client"
+              >
+                <PhoneIcon className="w-5 h-5 inline-block mr-2" /> Call Client
+              </button>
+              <button
+                onClick={() => {
+                  // Send SMS to client
+                  const phoneNumber = selectedProject.client_phone?.replace(/\D/g, '');
+                  if (phoneNumber) {
+                    window.open(`sms:${phoneNumber}`);
+                  }
+                }}
+                className="flex-1 bg-blue-500 text-white rounded-full px-4 py-2 font-semibold transition-transform hover:scale-105"
+                aria-label="Text Client"
+              >
+                <SmsIcon className="w-5 h-5 inline-block mr-2" /> Text Client
+              </button>
+              <button
+                onClick={() => {
+                  // Send email to client
+                  window.open(`mailto:${selectedProject.client_email}`);
+                }}
+                className="flex-1 bg-red-500 text-white rounded-full px-4 py-2 font-semibold transition-transform hover:scale-105"
+                aria-label="Email Client"
+              >
+                <MailIcon className="w-5 h-5 inline-block mr-2" /> Email Client
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// --- CMS Section ---
+function CmsSection({ portfolioImages, addPortfolioImage, deletePortfolioImage, updatePortfolioImageOrder }) {
+  const [newImage, setNewImage] = useState({ url: '', category: '', caption: '' });
+  const [imageFile, setImageFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+
+  const handleImageChange = (e) => {
+    const { name, value } = e.target;
+    setNewImage(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageFile(file);
+      setNewImage(prev => ({ ...prev, url: URL.createObjectURL(file) }));
+    }
+  };
+
+  const handleAddImage = async () => {
+    if (!newImage.url || !newImage.category) return;
+    setUploading(true);
+
+    // Upload image to Supabase Storage
+    const fileExt = imageFile.name.split('.').pop();
+    const fileName = `portfolio_images/${Date.now()}.${fileExt}`;
+    const { data: uploadData, error: uploadError } = await supabase.storage.from('images').upload(fileName, imageFile);
+
+    if (uploadError) {
+      console.error('Error uploading image:', uploadError);
+      setUploading(false);
+      return;
+    }
+
+    // Get public URL of the uploaded image
+    const { publicURL, error: urlError } = supabase.storage.from('images').getPublicUrl(fileName);
+
+    if (urlError) {
+      console.error('Error getting public URL:', urlError);
+      setUploading(false);
+      return;
+    }
+
+    // Add image record to the database
+    await addPortfolioImage({ ...newImage, url: publicURL });
+
+    setNewImage({ url: '', category: '', caption: '' });
+    setImageFile(null);
+    setUploading(false);
+  };
+
+  return (
+    <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="bg-[#262626] rounded-lg p-6">
+          <h3 className="text-xl font-display mb-4">Add New Image</h3>
+          <div className="space-y-4">
+            <input 
+              type="text" 
+              name="caption"
+              value={newImage.caption}
+              onChange={handleImageChange}
+              placeholder="Image Caption" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+            />
+            <select 
+              name="category"
+              value={newImage.category}
+              onChange={handleImageChange}
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+            >
+              <option value="">Select Category</option>
+              <option value="Portraits">Portraits</option>
+              <option value="Events">Events</option>
+              <option value="Weddings">Weddings</option>
+              <option value="Commercial">Commercial</option>
+            </select>
+            <div className="flex gap-4">
+              <input 
+                type="file" 
+                onChange={handleFileChange}
+                className="hidden"
+                id="image-upload"
+              />
+              <label 
+                htmlFor="image-upload" 
+                className="flex-1 cursor-pointer bg-[#F3E3C3] text-[#1a1a1a] rounded-md py-3 px-4 text-center font-semibold transition-transform hover:scale-105"
+              >
+                {imageFile ? 'Image Selected' : 'Upload Image'}
+              </label>
+              <button
+                onClick={handleAddImage}
+                className="flex-1 bg-green-500 text-white rounded-md py-3 px-4 font-semibold transition-transform hover:scale-105"
+                disabled={uploading}
+                aria-label="Add Image"
+              >
+                {uploading ? 'Uploading...' : 'Add Image'}
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="bg-[#262626] rounded-lg p-6">
+          <h3 className="text-xl font-display mb-4">Current Images</h3>
+          <div className="grid grid-cols-2 gap-4">
+            {portfolioImages.map(img => (
+              <div key={img.id} className="relative group">
+                <OptimizedImage
+                  src={img.url}
+                  alt={img.caption}
+                  className="w-full h-32 object-cover rounded-lg shadow-md group-hover:opacity-90 transition-opacity"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button
+                    onClick={() => deletePortfolioImage(img.id)}
+                    className="text-white text-xs font-semibold rounded-full px-3 py-1 bg-red-500 hover:bg-red-600 transition"
+                    aria-label="Delete Image"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// --- Blog Admin Section ---
+function BlogAdminSection({ 
+  blogPosts, 
+  createBlogPost, 
+  updateBlogPost, 
+  deleteBlogPost, 
+  blogEdit, 
+  setBlogEdit, 
+  blogSaving, 
+  blogAdminError 
+}) {
+  const [newPost, setNewPost] = useState({ title: '', content: '', excerpt: '', tags: '', category: '' });
+  const [editingPost, setEditingPost] = useState(null);
+
+  const handlePostChange = (e) => {
+    const { name, value } = e.target;
+    setNewPost(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleCreatePost = async () => {
+    if (!newPost.title || !newPost.content) return;
+    await createBlogPost({ ...newPost, publish_date: new Date() });
+    setNewPost({ title: '', content: '', excerpt: '', tags: '', category: '' });
+  };
+
+  const handleEditPost = (post) => {
+    setEditingPost(post);
+    setNewPost({ title: post.title, content: post.content, excerpt: post.excerpt, tags: post.tags, category: post.category });
+  };
+
+  const handleUpdatePost = async () => {
+    if (!editingPost || !newPost.title || !newPost.content) return;
+    await updateBlogPost(editingPost.id, { ...newPost });
+    setEditingPost(null);
+    setNewPost({ title: '', content: '', excerpt: '', tags: '', category: '' });
+  };
+
+  return (
+    <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="bg-[#262626] rounded-lg p-6">
+          <h3 className="text-xl font-display mb-4">Create New Post</h3>
+          <div className="space-y-4">
+            <input 
+              type="text" 
+              name="title"
+              value={newPost.title}
+              onChange={handlePostChange}
+              placeholder="Post Title" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              required
+            />
+            <textarea 
+              name="content"
+              value={newPost.content}
+              onChange={handlePostChange}
+              placeholder="Post Content" 
+              rows="6" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              required
+            />
+            <input 
+              type="text" 
+              name="excerpt"
+              value={newPost.excerpt}
+              onChange={handlePostChange}
+              placeholder="Post Excerpt" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+            />
+            <input 
+              type="text" 
+              name="tags"
+              value={newPost.tags}
+              onChange={handlePostChange}
+              placeholder="Post Tags (comma separated)" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+            />
+            <select 
+              name="category"
+              value={newPost.category}
+              onChange={handlePostChange}
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+            >
+              <option value="">Select Category</option>
+              <option value="Photography">Photography</option>
+              <option value="Behind the Scenes">Behind the Scenes</option>
+              <option value="Tips and Tricks">Tips and Tricks</option>
+              <option value="Equipment Reviews">Equipment Reviews</option>
+            </select>
+            <button
+              onClick={handleCreatePost}
+              className="w-full bg-[#F3E3C3] text-[#1a1a1a] rounded-md py-3 px-4 font-semibold transition-transform hover:scale-105"
+              aria-label="Create Post"
+            >
+              Create Post
+            </button>
+          </div>
+        </div>
+        <div className="bg-[#262626] rounded-lg p-6">
+          <h3 className="text-xl font-display mb-4">Edit Post</h3>
+          <div className="space-y-4">
+            {blogEdit ? (
+              <>
+                <input 
+                  type="text" 
+                  name="title"
+                  value={newPost.title}
+                  onChange={handlePostChange}
+                  placeholder="Post Title" 
+                  className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                  required
+                />
+                <textarea 
+                  name="content"
+                  value={newPost.content}
+                  onChange={handlePostChange}
+                  placeholder="Post Content" 
+                  rows="6" 
+                  className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                  required
+                />
+                <input 
+                  type="text" 
+                  name="excerpt"
+                  value={newPost.excerpt}
+                  onChange={handlePostChange}
+                  placeholder="Post Excerpt" 
+                  className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                />
+                <input 
+                  type="text" 
+                  name="tags"
+                  value={newPost.tags}
+                  onChange={handlePostChange}
+                  placeholder="Post Tags (comma separated)" 
+                  className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                />
+                <select 
+                  name="category"
+                  value={newPost.category}
+                  onChange={handlePostChange}
+                  className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                >
+                  <option value="">Select Category</option>
+                  <option value="Photography">Photography</option>
+                  <option value="Behind the Scenes">Behind the Scenes</option>
+                  <option value="Tips and Tricks">Tips and Tricks</option>
+                  <option value="Equipment Reviews">Equipment Reviews</option>
+                </select>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleUpdatePost}
+                    className="flex-1 bg-green-500 text-white rounded-md py-3 px-4 font-semibold transition-transform hover:scale-105"
+                    aria-label="Update Post"
+                  >
+                    {blogSaving ? 'Updating...' : 'Update Post'}
+                  </button>
+                  <button
+                    onClick={() => setBlogEdit(null)}
+                    className="flex-1 bg-red-500 text-white rounded-md py-3 px-4 font-semibold transition-transform hover:scale-105"
+                    aria-label="Cancel Edit"
+                  >
+                    Cancel
+                  </button>
+                </div>
+                {blogAdminError && <div className="text-red-400 text-sm mt-2">{blogAdminError}</div>}
+              </>
+            ) : (
+              <div className="text-[#F3E3C3]/70 py-4 text-center">Select a post to edit</div>
+            )}
+          </div>
+        </div>
+      </div>
+      <div className="mt-8">
+        <h3 className="text-2xl font-display mb-4">All Blog Posts</h3>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {blogPosts.map(post => (
+            <div key={post.id} className="bg-[#262626] rounded-lg shadow-lg overflow-hidden">
+              <div className="p-6">
+                <h4 className="text-xl font-display text-white mb-2">
+                  <Link to={`/blog/${post.slug}`} className="hover:text-[#F3E3C3] transition">
+                    {post.title}
+                  </Link>
+                </h4>
+                <div className="text-xs text-[#F3E3C3]/60 mb-3">
+                  {post.author} &middot; {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}
+                </div>
+                <p className="text-[#F3E3C3]/80 mb-4">{post.excerpt}</p>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => handleEditPost(post)}
+                    className="flex-1 bg-[#F3E3C3] text-[#1a1a1a] rounded-md py-2 px-4 text-sm font-semibold transition-transform hover:scale-105"
+                    aria-label="Edit Post"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => deleteBlogPost(post.id)}
+                    className="flex-1 bg-red-500 text-white rounded-md py-2 px-4 text-sm font-semibold transition-transform hover:scale-105"
+                    aria-label="Delete Post"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- Site Map Tab ---
+const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blogPosts }) => {
+  const [pageContent, setPageContent] = useState('');
+
+  useEffect(() => {
+    // Update page content based on selected page
+    switch (siteMapPage) {
+      case 'home':
+        setPageContent('Welcome to Studio37, your destination for professional photography and content strategy in Houston, TX.');
+        break;
+      case 'about':
+        setPageContent(content.about?.bio || 'About content not available.');
+        break;
+      case 'services':
+        setPageContent('Explore our photography services, including portraits, events, weddings, and commercial photography.');
+        break;
+      case 'portfolio':
+        setPageContent('Check out our portfolio showcasing recent work in various photography styles.');
+        break;
+      case 'blog':
+        setPageContent('Read our latest blog posts for photography tips, behind-the-scenes insights, and studio news.');
+        break;
+      case 'contact':
+        setPageContent('Get in touch with us to book a session or inquire about our services.');
+        break;
+      default:
+        setPageContent('');
+    }
+  }, [siteMapPage, content]);
+
+  return (
+    <div>
+      <div className="flex gap-4 mb-6">
+        <button
+          onClick={() => setSiteMapPage('home')}
+          className={`flex-1 px-4 py-2 rounded-md font-semibold transition-all ${siteMapPage === 'home' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3] hover:bg-[#333]'}`}
+        >
+          Home
+        </button>
+        <button
+          onClick={() => setSiteMapPage('about')}
+          className={`flex-1 px-4 py-2 rounded-md font-semibold transition-all ${siteMapPage === 'about' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3] hover:bg-[#333]'}`}
+        >
+          About
+        </button>
+        <button
+          onClick={() => setSiteMapPage('services')}
+          className={`flex-1 px-4 py-2 rounded-md font-semibold transition-all ${siteMapPage === 'services' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3] hover:bg-[#333]'}`}
+        >
+          Services
+        </button>
+        <button
+          onClick={() => setSiteMapPage('portfolio')}
+          className={`flex-1 px-4 py-2 rounded-md font-semibold transition-all ${siteMapPage === 'portfolio' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3] hover:bg-[#333]'}`}
+        >
+          Portfolio
+        </button>
+        <button
+          onClick={() => setSiteMapPage('blog')}
+          className={`flex-1 px-4 py-2 rounded-md font-semibold transition-all ${siteMapPage === 'blog' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3] hover:bg-[#333]'}`}
+        >
+          Blog
+        </button>
+        <button
+          onClick={() => setSiteMapPage('contact')}
+          className={`flex-1 px-4 py-2 rounded-md font-semibold transition-all ${siteMapPage === 'contact' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3] hover:bg-[#333]'}`}
+        >
+          Contact
+        </button>
+      </div>
+      <div className="bg-[#262626] rounded-lg p-6">
+        <h3 className="text-lg font-bold mb-4">{siteMapPage.charAt(0).toUpperCase() + siteMapPage.slice(1)} Page Content</h3>
+        <div className="text-sm text-[#F3E3C3]/80">
+          {pageContent}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- Enhanced Analytics Section with Win Rates ---
+function AnalyticsSection({ leads, projects, blogPosts }) {
+  const totalLeads = leads?.length || 0;
+  const totalProjects = projects?.length || 0;
+  const totalBlogPosts = blogPosts?.length || 0;
+  
+  const leadsByStatus = leads?.reduce((acc, lead) => {
+    acc[lead.status] = (acc[lead.status] || 0) + 1;
+    return acc;
+  }, {}) || {};
+
+  const projectsByStage = projects?.reduce((acc, project) => {
+    acc[project.stage] = (acc[project.stage] || 0) + 1;
+    return acc;
+  }, {}) || {};
+
+  const totalRevenue = projects?.reduce((sum, project) => {
+    return sum + (project.opportunity_amount || 0);
+  }, 0) || 0;
+
+  // Calculate win rates
+  const wonLeads = leadsByStatus['Won'] || 0;
+  const lostLeads = leadsByStatus['Lost'] || 0;
+  const closedLeads = wonLeads + lostLeads;
+  const leadWinRate = closedLeads > 0 ? ((wonLeads / closedLeads) * 100).toFixed(1) : 0;
+
+  const wonProjects = projectsByStage['Won'] || 0;
+  const cancelledProjects = projectsByStage['Cancelled'] || 0;
+  const closedProjects = wonProjects + cancelledProjects;
+  const projectWinRate = closedProjects > 0 ? ((wonProjects / closedProjects) * 100).toFixed(1) : 0;
+
+  // Calculate won revenue
+  const wonRevenue = projects?.reduce((sum, project) => {
+    return project.stage === 'Won' ? sum + (project.opportunity_amount || 0) : sum;
+  }, 0) || 0;
+
+  // Calculate conversion funnel
+  const newLeads = leadsByStatus['New'] || 0;
+  const contactedLeads = leadsByStatus['Contacted'] || 0;
+  const bookedLeads = leadsByStatus['Booked'] || 0;
+
+  return (
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Overview Card */}
+      <div className="bg-[#232323] rounded-lg p-6">
+        <h4 className="text-lg font-bold mb-4">Overview</h4>
+        <div className="space-y-3">
+          <div className="flex justify-between">
+            <span>Total Leads:</span>
+            <span className="font-bold text-[#F3E3C3]">{totalLeads}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Total Projects:</span>
+            <span className="font-bold text-[#F3E3C3]">{totalProjects}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Blog Posts:</span>
+            <span className="font-bold text-[#F3E3C3]">{totalBlogPosts}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Total Revenue:</span>
+            <span className="font-bold text-green-400">${totalRevenue.toLocaleString()}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Win Rates & Revenue Card */}
+      <div className="bg-[#232323] rounded-lg p-6">
+        <h4 className="text-lg font-bold mb-4">Performance Metrics</h4>
+        <div className="space-y-3">
+          <div className="flex justify-between">
+            <span>Lead Win Rate:</span>
+            <span className={`font-bold ${parseFloat(leadWinRate) >= 50 ? 'text-green-400' : parseFloat(leadWinRate) >= 25 ? 'text-yellow-400' : 'text-red-400'}`}>
+              {leadWinRate}%
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span>Project Win Rate:</span>
+            <span className={`font-bold ${parseFloat(projectWinRate) >= 50 ? 'text-green-400' : parseFloat(projectWinRate) >= 25 ? 'text-yellow-400' : 'text-red-400'}`}>
+              {projectWinRate}%
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span>Won Revenue:</span>
+            <span className="font-bold text-green-400">${wonRevenue.toLocaleString()}</span>
+          </div>
+          <div className="flex justify-between text-sm">
+            <span>Won Leads:</span>
+            <span className="text-green-400">{wonLeads}/{closedLeads}</span>
+          </div>
+          <div className="flex justify-between text-sm">
+            <span>Won Projects:</span>
+            <span className="text-green-400">{wonProjects}/{closedProjects}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Conversion Funnel Card */}
+      <div className="bg-[#232323] rounded-lg p-6">
+        <h4 className="text-lg font-bold mb-4">Lead Funnel</h4>
+        <div className="space-y-3">
+          <div className="flex justify-between">
+            <span>New:</span>
+            <span className="font-bold text-blue-400">{newLeads}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Contacted:</span>
+            <span className="font-bold text-purple-400">{contactedLeads}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Booked:</span>
+            <span className="font-bold text-yellow-400">{bookedLeads}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Won:</span>
+            <span className="font-bold text-green-400">{wonLeads}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Lost:</span>
+            <span className="font-bold text-red-400">{lostLeads}</span>
+          </div>
+          <div className="pt-2 border-t border-white/10">
+            <div className="flex justify-between text-sm">
+              <span>Conversion Rate:</span>
+              <span className="text-[#F3E3C3]">
+                {totalLeads > 0 ? ((wonLeads / totalLeads) * 100).toFixed(1) : 0}%
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ...existing analytics cards... */}
+    </div>
+  );
+}
+
+// --- Portfolio Gate Component ---
+const PortfolioGate = ({ onUnlock }) => {
+  const [formData, setFormData] = useState({ name: '', email: '', service: '', phone: '' });
+  const [submitted, setSubmitted] = useState(false);
+  const [showPlanner, setShowPlanner] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.name && formData.email) {
+      onUnlock(formData);
+      setSubmitted(true);
+    }
+  };
+
+  if (submitted) {
+    return (
+      <div className="text-center bg-[#262626] rounded-lg p-8 max-w-lg mx-auto relative">
+        <h3 className="text-2xl font-display text-white mb-2">Thank You!</h3>
+        <p className="text-[#F3E3C3]/80">The portfolio is now unlocked. Check your email for a 10% off coupon!</p>
+        <p className="text-[#F3E3C3]/80 mt-4">Want to plan your shoot?{' '}
+          <button onClick={() => setShowPlanner(true)} className="underline text-[#F3E3C3]">Try our Conversational AI Planner</button>
+        </p>
+        {showPlanner && (
+          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+            <div className="bg-[#232323] rounded-lg shadow-lg max-w-md w-full relative">
+              <button onClick={() => setShowPlanner(false)} className="absolute top-2 right-2 text-white text-xl">&times;</button>
+              <ConversationalPlanner email={formData.email} onComplete={() => {}} />
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-[#262626] rounded-lg shadow-xl p-8 md:p-12 max-w-2xl mx-auto border border-white/10">
+      <h3 className="text-2xl md:text-3xl font-display text-center text-white mb-2">Unlock the Portfolio</h3>
+      <p className="text-center text-[#F3E3C3]/70 mb-8">Submit your info to view our work and receive a 10% off coupon for your first service!</p>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <input type="text" name="name" placeholder="Your Name" required onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+        <input type="email" name="email" placeholder="Your Email" required onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+        <input type="tel" name="phone" placeholder="Your Phone (Optional)" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+        <select name="service" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]">
+          <option value="">Service of Interest (Optional)</option>
+          <option>Director Package</option>
+          <option>Producer Package</option>
+          <option>Wedding</option>
+          <option>Portrait</option>
+          <option>Other</option>
+        </select>
+        <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
+          Unlock & Get Coupon <ArrowRight />
+        </button>
+      </form>
+    </div>
+  );
+}
