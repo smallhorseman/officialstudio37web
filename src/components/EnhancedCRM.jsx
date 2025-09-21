@@ -1,6 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
 
+const PhoneIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+  </svg>
+);
+
+const SmsIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+  </svg>
+);
+
+const MailIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+    <polyline points="22,6 12,13 2,6"></polyline>
+  </svg>
+);
+
 export function EnhancedCrmSection({ leads, updateLeadStatus }) {
   const [selectedLead, setSelectedLead] = useState(null);
   const [showLeadDetails, setShowLeadDetails] = useState(false);
@@ -62,19 +81,6 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
     }
   };
 
-  const updateNote = async (noteId, updates) => {
-    try {
-      await supabase
-        .from('lead_notes')
-        .update(updates)
-        .eq('id', noteId);
-      
-      await fetchLeadNotes(selectedLead.id);
-    } catch (err) {
-      console.error('Error updating note:', err);
-    }
-  };
-
   const deleteNote = async (noteId) => {
     try {
       await supabase
@@ -116,7 +122,7 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
 
   return (
     <div>
-      {/* Existing table code... */}
+      {/* Leads Table */}
       <div className="overflow-x-auto rounded-lg border border-white/10">
         <table className="min-w-full divide-y divide-[#F3E3C3]/10">
           <thead className="bg-[#181818]">
@@ -212,21 +218,21 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
                     <div className="space-y-2">
                       <button
                         onClick={() => window.open(`tel:${selectedLead.phone?.replace(/\D/g, '')}`)}
-                        className="w-full bg-green-500 text-white rounded-md py-2 px-3 text-sm font-semibold"
+                        className="w-full bg-green-500 text-white rounded-md py-2 px-3 text-sm font-semibold flex items-center justify-center gap-2"
                       >
-                        📞 Call
+                        <PhoneIcon /> Call
                       </button>
                       <button
                         onClick={() => window.open(`sms:${selectedLead.phone?.replace(/\D/g, '')}`)}
-                        className="w-full bg-blue-500 text-white rounded-md py-2 px-3 text-sm font-semibold"
+                        className="w-full bg-blue-500 text-white rounded-md py-2 px-3 text-sm font-semibold flex items-center justify-center gap-2"
                       >
-                        💬 Text
+                        <SmsIcon /> Text
                       </button>
                       <button
                         onClick={() => window.open(`mailto:${selectedLead.email}`)}
-                        className="w-full bg-red-500 text-white rounded-md py-2 px-3 text-sm font-semibold"
+                        className="w-full bg-red-500 text-white rounded-md py-2 px-3 text-sm font-semibold flex items-center justify-center gap-2"
                       >
-                        ✉️ Email
+                        <MailIcon /> Email
                       </button>
                     </div>
                   </div>
@@ -325,12 +331,6 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
                             )}
                           </div>
                           <div className="flex gap-1">
-                            <button
-                              onClick={() => setEditingNote(note.id)}
-                              className="text-xs text-[#F3E3C3]/60 hover:text-[#F3E3C3]"
-                            >
-                              Edit
-                            </button>
                             <button
                               onClick={() => deleteNote(note.id)}
                               className="text-xs text-red-400 hover:text-red-300"

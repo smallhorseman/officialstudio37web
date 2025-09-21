@@ -2,6 +2,37 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { supabase } from '../supabaseClient';
 
+const OptimizedImage = ({ src, alt, className, loading = "lazy", ...props }) => {
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
+
+  return (
+    <div className={`relative ${className}`}>
+      {!loaded && !error && (
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse rounded flex items-center justify-center">
+          <div className="w-8 h-8 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      )}
+      <img
+        src={src}
+        alt={alt}
+        className={`${className} transition-all duration-500 ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+        onLoad={() => setLoaded(true)}
+        onError={() => setError(true)}
+        loading={loading}
+        {...props}
+      />
+      {error && (
+        <div className="absolute inset-0 bg-gray-800 flex items-center justify-center text-gray-400 text-sm rounded">
+          <div className="text-center p-4">
+            <p>Image unavailable</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 export function EnhancedCmsSection({ 
   portfolioImages, 
   addPortfolioImage, 
@@ -94,41 +125,6 @@ export function EnhancedCmsSection({
     }
   };
 
-  const handleBulkAction = async () => {
-    if (!bulkAction || selectedImages.size === 0) return;
-    
-    const imageIds = Array.from(selectedImages);
-    
-    try {
-      switch (bulkAction) {
-        case 'delete':
-          await Promise.all(imageIds.map(id => deletePortfolioImage(id)));
-          break;
-        case 'feature':
-          await Promise.all(imageIds.map(id => 
-            supabase.from('portfolio_images').update({ is_featured: true }).eq('id', id)
-          ));
-          break;
-        case 'unfeature':
-          await Promise.all(imageIds.map(id => 
-            supabase.from('portfolio_images').update({ is_featured: false }).eq('id', id)
-          ));
-          break;
-        default:
-          if (categories.includes(bulkAction)) {
-            await Promise.all(imageIds.map(id => 
-              supabase.from('portfolio_images').update({ category: bulkAction }).eq('id', id)
-            ));
-          }
-      }
-      
-      setSelectedImages(new Set());
-      setBulkAction('');
-    } catch (error) {
-      console.error('Bulk action error:', error);
-    }
-  };
-
   const handleImageSelect = (imageId) => {
     const newSelected = new Set(selectedImages);
     if (newSelected.has(imageId)) {
@@ -137,19 +133,6 @@ export function EnhancedCmsSection({
       newSelected.add(imageId);
     }
     setSelectedImages(newSelected);
-  };
-
-  const handleDragEnd = (result) => {
-    if (!result.destination) return;
-    
-    const items = Array.from(filteredAndSortedImages);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
-    
-    // Update order in database
-    items.forEach((item, index) => {
-      updatePortfolioImageOrder(item.id, index, item.category);
-    });
   };
 
   return (
@@ -201,25 +184,14 @@ export function EnhancedCmsSection({
             <span className="text-sm text-[#F3E3C3]/70">
               {selectedImages.size} selected
             </span>
-            <select
-              value={bulkAction}
-              onChange={(e) => setBulkAction(e.target.value)}
-              className="bg-[#262626] border border-white/20 rounded px-3 py-2 text-sm"
-            >
-              <option value="">Bulk Actions...</option>
-              <option value="delete">Delete</option>
-              <option value="feature">Mark as Featured</option>
-              <option value="unfeature">Remove Featured</option>
-              {categories.map(cat => (
-                <option key={cat} value={cat}>Move to {cat}</option>
-              ))}
-            </select>
             <button
-              onClick={handleBulkAction}
-              disabled={!bulkAction}
-              className="bg-red-500 text-white px-3 py-2 rounded text-sm font-semibold disabled:opacity-50"
+              onClick={() => {
+                selectedImages.forEach(id => deletePortfolioImage(id));
+                setSelectedImages(new Set());
+              }}
+              className="bg-red-500 text-white px-3 py-2 rounded text-sm font-semibold"
             >
-              Apply
+              Delete Selected
             </button>
           </div>
         )}
@@ -292,18 +264,6 @@ export function EnhancedCmsSection({
               />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
-                Tags (comma separated)
-              </label>
-              <input
-                type="text"
-                onChange={(e) => handleTagsChange(e.target.value)}
-                placeholder="wedding, outdoor, portrait, vintage..."
-                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm"
-              />
-            </div>
-
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
@@ -321,11 +281,10 @@ export function EnhancedCmsSection({
             {newImage.url && (
               <div className="border border-white/20 rounded-lg p-3">
                 <p className="text-xs text-[#F3E3C3]/70 mb-2">Preview:</p>
-                <img
+                <OptimizedImage
                   src={newImage.url}
                   alt="Preview"
                   className="w-full h-32 object-cover rounded"
-                  onError={() => handleImageChange('url', '')}
                 />
               </div>
             )}
@@ -356,84 +315,67 @@ export function EnhancedCmsSection({
             </div>
 
             {view === 'grid' ? (
-              <DragDropContext onDragEnd={handleDragEnd}>
-                <Droppable droppableId="images" direction="horizontal">
-                  {(provided) => (
-                    <div
-                      {...provided.droppableProps}
-                      ref={provided.innerRef}
-                      className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-                    >
-                      {filteredAndSortedImages.map((img, index) => (
-                        <Draggable key={img.id} draggableId={img.id.toString()} index={index}>
-                          {(provided, snapshot) => (
-                            <div
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              className={`relative group cursor-pointer ${
-                                selectedImages.has(img.id) ? 'ring-2 ring-[#F3E3C3]' : ''
-                              } ${snapshot.isDragging ? 'opacity-50' : ''}`}
-                            >
-                              <div className="aspect-square relative">
-                                <img
-                                  src={img.url}
-                                  alt={img.alt_text || img.caption}
-                                  className="w-full h-full object-cover rounded-lg shadow-md"
-                                  onClick={() => setPreviewImage(img)}
-                                />
-                                
-                                {img.is_featured && (
-                                  <div className="absolute top-2 left-2 bg-yellow-500 text-black text-xs px-2 py-1 rounded">
-                                    ⭐ Featured
-                                  </div>
-                                )}
-                                
-                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
-                                  <div className="flex gap-2">
-                                    <button
-                                      onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleImageSelect(img.id);
-                                      }}
-                                      className={`p-2 rounded ${
-                                        selectedImages.has(img.id) 
-                                          ? 'bg-[#F3E3C3] text-[#1a1a1a]' 
-                                          : 'bg-white/20 text-white'
-                                      }`}
-                                    >
-                                      ✓
-                                    </button>
-                                    <button
-                                      onClick={(e) => {
-                                        e.stopPropagation();
-                                        deletePortfolioImage(img.id);
-                                      }}
-                                      className="p-2 bg-red-500 text-white rounded hover:bg-red-600"
-                                    >
-                                      🗑️
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                              
-                              <div className="mt-2">
-                                <p className="text-xs text-[#F3E3C3]/80 truncate">
-                                  {img.caption || 'No caption'}
-                                </p>
-                                <p className="text-xs text-[#F3E3C3]/60">
-                                  {img.category}
-                                </p>
-                              </div>
-                            </div>
-                          )}
-                        </Draggable>
-                      ))}
-                      {provided.placeholder}
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {filteredAndSortedImages.map((img) => (
+                  <div
+                    key={img.id}
+                    className={`relative group cursor-pointer ${
+                      selectedImages.has(img.id) ? 'ring-2 ring-[#F3E3C3]' : ''
+                    }`}
+                  >
+                    <div className="aspect-square relative">
+                      <OptimizedImage
+                        src={img.url}
+                        alt={img.alt_text || img.caption}
+                        className="w-full h-full object-cover rounded-lg shadow-md"
+                        onClick={() => setPreviewImage(img)}
+                      />
+                      
+                      {img.is_featured && (
+                        <div className="absolute top-2 left-2 bg-yellow-500 text-black text-xs px-2 py-1 rounded">
+                          ⭐ Featured
+                        </div>
+                      )}
+                      
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                        <div className="flex gap-2">
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleImageSelect(img.id);
+                            }}
+                            className={`p-2 rounded ${
+                              selectedImages.has(img.id) 
+                                ? 'bg-[#F3E3C3] text-[#1a1a1a]' 
+                                : 'bg-white/20 text-white'
+                            }`}
+                          >
+                            ✓
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              deletePortfolioImage(img.id);
+                            }}
+                            className="p-2 bg-red-500 text-white rounded hover:bg-red-600"
+                          >
+                            🗑️
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                  )}
-                </Droppable>
-              </DragDropContext>
+                    
+                    <div className="mt-2">
+                      <p className="text-xs text-[#F3E3C3]/80 truncate">
+                        {img.caption || 'No caption'}
+                      </p>
+                      <p className="text-xs text-[#F3E3C3]/60">
+                        {img.category}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             ) : (
               /* List View */
               <div className="space-y-2">
@@ -446,7 +388,7 @@ export function EnhancedCmsSection({
                       className="rounded"
                     />
                     
-                    <img
+                    <OptimizedImage
                       src={img.url}
                       alt={img.alt_text || img.caption}
                       className="w-16 h-16 object-cover rounded"
@@ -467,11 +409,6 @@ export function EnhancedCmsSection({
                       <div className="text-sm text-[#F3E3C3]/60">
                         {img.category} • {new Date(img.created_at).toLocaleDateString()}
                       </div>
-                      {img.tags && img.tags.length > 0 && (
-                        <div className="text-xs text-[#F3E3C3]/40 mt-1">
-                          Tags: {img.tags.join(', ')}
-                        </div>
-                      )}
                     </div>
                     
                     <button
@@ -499,6 +436,69 @@ export function EnhancedCmsSection({
                   onClick={() => setPreviewImage(null)}
                   className="text-white text-xl hover:text-red-400"
                 >
+                  &times;
+                </button>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <OptimizedImage
+                    src={previewImage.url}
+                    alt={previewImage.alt_text || previewImage.caption}
+                    className="w-full rounded-lg"
+                  />
+                </div>
+                
+                <div className="space-y-3">
+                  <div>
+                    <label className="text-sm font-medium text-[#F3E3C3]/80">Caption</label>
+                    <p className="text-[#F3E3C3]">{previewImage.caption || 'No caption'}</p>
+                  </div>
+                  
+                  <div>
+                    <label className="text-sm font-medium text-[#F3E3C3]/80">Category</label>
+                    <p className="text-[#F3E3C3]">{previewImage.category}</p>
+                  </div>
+                  
+                  <div>
+                    <label className="text-sm font-medium text-[#F3E3C3]/80">Alt Text</label>
+                    <p className="text-[#F3E3C3]">{previewImage.alt_text || 'No alt text'}</p>
+                  </div>
+                  
+                  <div>
+                    <label className="text-sm font-medium text-[#F3E3C3]/80">Added</label>
+                    <p className="text-[#F3E3C3]">{new Date(previewImage.created_at).toLocaleString()}</p>
+                  </div>
+                  
+                  <div className="flex gap-2 pt-4">
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(previewImage.url);
+                        alert('URL copied to clipboard!');
+                      }}
+                      className="bg-[#F3E3C3] text-[#1a1a1a] px-3 py-2 rounded text-sm font-semibold"
+                    >
+                      Copy URL
+                    </button>
+                    <button
+                      onClick={() => {
+                        deletePortfolioImage(previewImage.id);
+                        setPreviewImage(null);
+                      }}
+                      className="bg-red-500 text-white px-3 py-2 rounded text-sm font-semibold"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
                   &times;
                 </button>
               </div>
