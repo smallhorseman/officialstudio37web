@@ -1330,57 +1330,382 @@ function Footer() {
   );
 }
 
-// --- CRM Section (Leads Table) ---
+// --- CRM Section (Enhanced Leads Table with Actions, Notes, Contact History) ---
 function CrmSection({ leads, updateLeadStatus }) {
+  const [selectedLead, setSelectedLead] = useState(null);
+  const [showNotes, setShowNotes] = useState(false);
+  const [showContactHistory, setShowContactHistory] = useState(false);
+  const [newNote, setNewNote] = useState('');
+  const [newContact, setNewContact] = useState({ type: 'email', subject: '', message: '' });
+  const [leadNotes, setLeadNotes] = useState([]);
+  const [contactHistory, setContactHistory] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchLeadNotes = async (leadId) => {
+    setLoading(true);
+    const { data } = await supabase
+      .from('lead_notes')
+      .select('*')
+      .eq('lead_id', leadId)
+      .order('created_at', { ascending: false });
+    setLeadNotes(data || []);
+    setLoading(false);
+  };
+
+  const fetchContactHistory = async (leadId) => {
+    setLoading(true);
+    const { data } = await supabase
+      .from('contact_history')
+      .select('*')
+      .eq('lead_id', leadId)
+      .order('created_at', { ascending: false });
+    setContactHistory(data || []);
+    setLoading(false);
+  };
+
+  const addNote = async () => {
+    if (!newNote.trim() || !selectedLead) return;
+    await supabase.from('lead_notes').insert([{
+      lead_id: selectedLead.id,
+      note: newNote,
+      status: 'Manual'
+    }]);
+    setNewNote('');
+    fetchLeadNotes(selectedLead.id);
+  };
+
+  const addContactEntry = async () => {
+    if (!newContact.subject.trim() || !selectedLead) return;
+    await supabase.from('contact_history').insert([{
+      lead_id: selectedLead.id,
+      contact_type: newContact.type,
+      subject: newContact.subject,
+      message: newContact.message,
+      status: 'Sent'
+    }]);
+    setNewContact({ type: 'email', subject: '', message: '' });
+    fetchContactHistory(selectedLead.id);
+  };
+
+  const openLeadDetails = (lead) => {
+    setSelectedLead(lead);
+    fetchLeadNotes(lead.id);
+    fetchContactHistory(lead.id);
+  };
+
   if (!leads || leads.length === 0) {
     return <div className="text-[#F3E3C3]/70 py-8">No leads found.</div>;
   }
+
   const statuses = ['New', 'Contacted', 'Booked', 'Lost', 'Archived'];
+
   return (
-    <div className="overflow-x-auto bg-[#262626] rounded-lg shadow-lg p-6">
-      <table className="w-full text-left">
-        <thead className="border-b border-white/10">
-          <tr>
-            <th className="p-3">Name</th>
-            <th className="p-3">Email</th>
-            <th className="p-3">Phone</th>
-            <th className="p-3">Service</th>
-            <th className="p-3">Status</th>
-            <th className="p-3">Created</th>
-            <th className="p-3">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {leads.map(lead => (
-            <tr key={lead.id} className="border-b border-white/10 last:border-b-0">
-              <td className="p-3 font-bold">{lead.name}</td>
-              <td className="p-3">{lead.email}</td>
-              <td className="p-3">{lead.phone}</td>
-              <td className="p-3">{lead.service}</td>
-              <td className="p-3">
-                <span className="px-2 py-1 rounded bg-[#F3E3C3]/10 text-[#F3E3C3]">{lead.status}</span>
-              </td>
-              <td className="p-3 text-xs">{lead.created_at ? new Date(lead.created_at).toLocaleDateString() : ''}</td>
-              <td className="p-3">
-                <select
-                  value={lead.status}
-                  onChange={e => updateLeadStatus(lead.id, e.target.value)}
-                  className="bg-[#181818] border border-white/20 rounded px-2 py-1 text-xs text-[#F3E3C3]"
-                >
-                  {statuses.map(s => (
-                    <option key={s} value={s}>{s}</option>
-                  ))}
-                </select>
-              </td>
+    <div>
+      <div className="overflow-x-auto bg-[#262626] rounded-lg shadow-lg p-6 mb-6">
+        <table className="w-full text-left">
+          <thead className="border-b border-white/10">
+            <tr>
+              <th className="p-3">Name</th>
+              <th className="p-3">Email</th>
+              <th className="p-3">Phone</th>
+              <th className="p-3">Service</th>
+              <th className="p-3">Status</th>
+              <th className="p-3">Created</th>
+              <th className="p-3">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {leads.map(lead => (
+              <tr key={lead.id} className="border-b border-white/10 last:border-b-0">
+                <td className="p-3 font-bold">{lead.name}</td>
+                <td className="p-3">
+                  <a href={`mailto:${lead.email}`} className="text-[#F3E3C3] hover:underline">
+                    {lead.email}
+                  </a>
+                </td>
+                <td className="p-3">
+                  {lead.phone && (
+                    <a href={`tel:${lead.phone}`} className="text-[#F3E3C3] hover:underline">
+                      {lead.phone}
+                    </a>
+                  )}
+                </td>
+                <td className="p-3">{lead.service}</td>
+                <td className="p-3">
+                  <span className="px-2 py-1 rounded bg-[#F3E3C3]/10 text-[#F3E3C3]">{lead.status}</span>
+                </td>
+                <td className="p-3 text-xs">{lead.created_at ? new Date(lead.created_at).toLocaleDateString() : ''}</td>
+                <td className="p-3">
+                  <div className="flex gap-2 flex-wrap">
+                    <select
+                      value={lead.status}
+                      onChange={e => updateLeadStatus(lead.id, e.target.value)}
+                      className="bg-[#181818] border border-white/20 rounded px-2 py-1 text-xs text-[#F3E3C3]"
+                    >
+                      {statuses.map(s => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                    <button
+                      onClick={() => openLeadDetails(lead)}
+                      className="bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600"
+                    >
+                      Details
+                    </button>
+                    <button
+                      onClick={() => {
+                        setSelectedLead(lead);
+                        setShowNotes(true);
+                        fetchLeadNotes(lead.id);
+                      }}
+                      className="bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600"
+                    >
+                      Notes
+                    </button>
+                    <button
+                      onClick={() => {
+                        setSelectedLead(lead);
+                        setShowContactHistory(true);
+                        fetchContactHistory(lead.id);
+                      }}
+                      className="bg-purple-500 text-white px-3 py-1 rounded text-xs hover:bg-purple-600"
+                    >
+                      Contact
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Lead Details Modal */}
+      {selectedLead && !showNotes && !showContactHistory && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-2xl font-display text-white">{selectedLead.name} - Lead Details</h3>
+              <button
+                onClick={() => setSelectedLead(null)}
+                className="text-white text-2xl hover:text-gray-300"
+              >
+                &times;
+              </button>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="text-lg font-bold mb-3">Contact Information</h4>
+                <div className="space-y-2 text-[#F3E3C3]/80">
+                  <p><strong>Email:</strong> <a href={`mailto:${selectedLead.email}`} className="text-[#F3E3C3] hover:underline">{selectedLead.email}</a></p>
+                  <p><strong>Phone:</strong> {selectedLead.phone ? <a href={`tel:${selectedLead.phone}`} className="text-[#F3E3C3] hover:underline">{selectedLead.phone}</a> : 'Not provided'}</p>
+                  <p><strong>Service:</strong> {selectedLead.service || 'Not specified'}</p>
+                  <p><strong>Status:</strong> {selectedLead.status}</p>
+                  <p><strong>Created:</strong> {selectedLead.created_at ? new Date(selectedLead.created_at).toLocaleDateString() : ''}</p>
+                </div>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-bold mb-3">Quick Actions</h4>
+                <div className="space-y-2">
+                  <button
+                    onClick={() => {
+                      setShowNotes(true);
+                      fetchLeadNotes(selectedLead.id);
+                    }}
+                    className="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+                  >
+                    View/Add Notes
+                  </button>
+                  <button
+                    onClick={() => {
+                      setShowContactHistory(true);
+                      fetchContactHistory(selectedLead.id);
+                    }}
+                    className="w-full bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600"
+                  >
+                    Contact History
+                  </button>
+                  <a
+                    href={`mailto:${selectedLead.email}?subject=Studio37 Follow-up`}
+                    className="block w-full bg-[#F3E3C3] text-[#1a1a1a] py-2 px-4 rounded text-center font-bold hover:bg-[#f3e3c3cc]"
+                  >
+                    Send Email
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6">
+              <h4 className="text-lg font-bold mb-3">Recent Notes</h4>
+              <div className="bg-[#181818] rounded p-4 max-h-40 overflow-y-auto">
+                {loading ? (
+                  <p className="text-[#F3E3C3]/70">Loading notes...</p>
+                ) : leadNotes.length > 0 ? (
+                  leadNotes.slice(0, 3).map(note => (
+                    <div key={note.id} className="mb-2 pb-2 border-b border-white/10 last:border-b-0">
+                      <p className="text-[#F3E3C3]/90">{note.note}</p>
+                      <p className="text-xs text-[#F3E3C3]/60 mt-1">
+                        {note.created_at ? new Date(note.created_at).toLocaleDateString() : ''}
+                      </p>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-[#F3E3C3]/70">No notes yet</p>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Notes Modal */}
+      {showNotes && selectedLead && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-display text-white">Notes for {selectedLead.name}</h3>
+              <button
+                onClick={() => setShowNotes(false)}
+                className="text-white text-2xl hover:text-gray-300"
+              >
+                &times;
+              </button>
+            </div>
+            
+            <div className="mb-4">
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={newNote}
+                  onChange={e => setNewNote(e.target.value)}
+                  placeholder="Add a note..."
+                  className="flex-1 bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+                />
+                <button
+                  onClick={addNote}
+                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                  disabled={!newNote.trim()}
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+
+            <div className="space-y-3 max-h-96 overflow-y-auto">
+              {loading ? (
+                <p className="text-[#F3E3C3]/70">Loading notes...</p>
+              ) : leadNotes.length > 0 ? (
+                leadNotes.map(note => (
+                  <div key={note.id} className="bg-[#181818] rounded p-3">
+                    <p className="text-[#F3E3C3]/90">{note.note}</p>
+                    <div className="flex justify-between items-center mt-2">
+                      <span className="text-xs text-[#F3E3C3]/60">
+                        {note.created_at ? new Date(note.created_at).toLocaleDateString() : ''}
+                      </span>
+                      <span className="text-xs px-2 py-1 bg-[#F3E3C3]/10 rounded">
+                        {note.status}
+                      </span>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-[#F3E3C3]/70">No notes yet</p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Contact History Modal */}
+      {showContactHistory && selectedLead && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-3xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-display text-white">Contact History for {selectedLead.name}</h3>
+              <button
+                onClick={() => setShowContactHistory(false)}
+                className="text-white text-2xl hover:text-gray-300"
+              >
+                &times;
+              </button>
+            </div>
+            
+            <div className="mb-6 bg-[#181818] rounded p-4">
+              <h4 className="text-lg font-bold mb-3">Log New Contact</h4>
+              <div className="grid md:grid-cols-2 gap-4">
+                <select
+                  value={newContact.type}
+                  onChange={e => setNewContact(c => ({ ...c, type: e.target.value }))}
+                  className="bg-[#262626] border border-white/20 rounded-md py-2 px-3"
+                >
+                  <option value="email">Email</option>
+                  <option value="phone">Phone Call</option>
+                  <option value="text">Text Message</option>
+                  <option value="meeting">Meeting</option>
+                </select>
+                <input
+                  type="text"
+                  value={newContact.subject}
+                  onChange={e => setNewContact(c => ({ ...c, subject: e.target.value }))}
+                  placeholder="Subject/Topic"
+                  className="bg-[#262626] border border-white/20 rounded-md py-2 px-3"
+                />
+              </div>
+              <textarea
+                value={newContact.message}
+                onChange={e => setNewContact(c => ({ ...c, message: e.target.value }))}
+                placeholder="Contact details/message..."
+                rows={3}
+                className="w-full mt-3 bg-[#262626] border border-white/20 rounded-md py-2 px-3"
+              />
+              <button
+                onClick={addContactEntry}
+                className="mt-3 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600"
+                disabled={!newContact.subject.trim()}
+              >
+                Log Contact
+              </button>
+            </div>
+
+            <div className="space-y-3 max-h-96 overflow-y-auto">
+              {loading ? (
+                <p className="text-[#F3E3C3]/70">Loading contact history...</p>
+              ) : contactHistory.length > 0 ? (
+                contactHistory.map(contact => (
+                  <div key={contact.id} className="bg-[#181818] rounded p-3">
+                    <div className="flex justify-between items-start mb-2">
+                      <h5 className="font-bold text-[#F3E3C3]">{contact.subject}</h5>
+                      <span className="text-xs px-2 py-1 bg-[#F3E3C3]/10 rounded">
+                        {contact.contact_type}
+                      </span>
+                    </div>
+                    {contact.message && (
+                      <p className="text-[#F3E3C3]/80 mb-2">{contact.message}</p>
+                    )}
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs text-[#F3E3C3]/60">
+                        {contact.created_at ? new Date(contact.created_at).toLocaleDateString() : ''}
+                      </span>
+                      <span className="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded">
+                        {contact.status}
+                      </span>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-[#F3E3C3]/70">No contact history yet</p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-// --- CMS Section (Content & Portfolio Management) ---
+// --- Enhanced CMS Section (Content & Portfolio Management with Previews) ---
 function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage, deletePortfolioImage }) {
   const [aboutTitle, setAboutTitle] = useState(content.about.title || '');
   const [aboutBio, setAboutBio] = useState(content.about.bio || '');
@@ -1389,6 +1714,8 @@ function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage
   const [imageCategory, setImageCategory] = useState('');
   const [imageCaption, setImageCaption] = useState('');
   const [addingImage, setAddingImage] = useState(false);
+  const [showPortfolioPreview, setShowPortfolioPreview] = useState(false);
+  const [previewMode, setPreviewMode] = useState('about');
 
   const handleSaveAbout = async (e) => {
     e.preventDefault();
@@ -1414,247 +1741,190 @@ function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage
   };
 
   return (
-    <div className="grid md:grid-cols-2 gap-8">
-      <div>
-        <h4 className="text-xl font-display mb-4">Edit About Content</h4>
-        <form onSubmit={handleSaveAbout} className="space-y-4">
-          <input
-            type="text"
-            value={aboutTitle}
-            onChange={e => setAboutTitle(e.target.value)}
-            placeholder="About Title"
-            className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 font-bold"
-            required
-          />
-          <textarea
-            value={aboutBio}
-            onChange={e => setAboutBio(e.target.value)}
-            placeholder="About Bio"
-            rows={6}
-            className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-            required
-          />
-          <button
-            type="submit"
-            className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
-            disabled={saving}
-          >
-            {saving ? 'Saving...' : 'Save'}
-          </button>
-        </form>
+    <div>
+      <div className="grid md:grid-cols-2 gap-8 mb-8">
+        <div>
+          <div className="flex justify-between items-center mb-4">
+            <h4 className="text-xl font-display">Edit About Content</h4>
+            <button
+              onClick={() => setPreviewMode('about')}
+              className="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600"
+            >
+              Preview
+            </button>
+          </div>
+          <form onSubmit={handleSaveAbout} className="space-y-4">
+            <input
+              type="text"
+              value={aboutTitle}
+              onChange={e => setAboutTitle(e.target.value)}
+              placeholder="About Title"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 font-bold"
+              required
+            />
+            <textarea
+              value={aboutBio}
+              onChange={e => setAboutBio(e.target.value)}
+              placeholder="About Bio (Markdown supported)"
+              rows={8}
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 font-mono"
+              required
+            />
+            <button
+              type="submit"
+              className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
+              disabled={saving}
+            >
+              {saving ? 'Saving...' : 'Save'}
+            </button>
+          </form>
+        </div>
+
+        <div>
+          <div className="flex justify-between items-center mb-4">
+            <h4 className="text-xl font-display">Portfolio Images</h4>
+            <button
+              onClick={() => setShowPortfolioPreview(true)}
+              className="bg-purple-500 text-white px-3 py-1 rounded text-sm hover:bg-purple-600"
+            >
+              Preview Gallery
+            </button>
+          </div>
+          <form onSubmit={handleAddImage} className="flex flex-col gap-2 mb-4">
+            <input
+              type="url"
+              value={imageUrl}
+              onChange={e => setImageUrl(e.target.value)}
+              placeholder="Image URL"
+              className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+              required
+            />
+            <input
+              type="text"
+              value={imageCategory}
+              onChange={e => setImageCategory(e.target.value)}
+              placeholder="Category"
+              className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+            />
+            <input
+              type="text"
+              value={imageCaption}
+              onChange={e => setImageCaption(e.target.value)}
+              placeholder="Caption"
+              className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+            />
+            <button
+              type="submit"
+              className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
+              disabled={addingImage || !imageUrl}
+            >
+              {addingImage ? 'Adding...' : 'Add Image'}
+            </button>
+          </form>
+          <div className="grid grid-cols-3 gap-2 max-h-64 overflow-y-auto">
+            {portfolioImages.map(img => (
+              <div key={img.id} className="relative group">
+                <img src={img.url} alt={img.category} className="w-full h-20 object-cover rounded" />
+                <button
+                  onClick={() => deletePortfolioImage(img.id)}
+                  className="absolute top-1 right-1 bg-red-600 text-white text-xs px-1 py-1 rounded opacity-80 group-hover:opacity-100"
+                  title="Delete"
+                >
+                  &times;
+                </button>
+                <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 rounded-b">
+                  {img.category}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      <div>
-        <h4 className="text-xl font-display mb-4">Portfolio Images</h4>
-        <form onSubmit={handleAddImage} className="flex flex-col gap-2 mb-4">
-          <input
-            type="url"
-            value={imageUrl}
-            onChange={e => setImageUrl(e.target.value)}
-            placeholder="Image URL"
-            className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-            required
-          />
-          <input
-            type="text"
-            value={imageCategory}
-            onChange={e => setImageCategory(e.target.value)}
-            placeholder="Category"
-            className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-          />
-          <input
-            type="text"
-            value={imageCaption}
-            onChange={e => setImageCaption(e.target.value)}
-            placeholder="Caption"
-            className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-          />
+
+      {/* Live Preview Section */}
+      <div className="bg-[#181818] rounded-lg p-6">
+        <div className="flex gap-4 mb-4">
           <button
-            type="submit"
-            className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
-            disabled={addingImage || !imageUrl}
+            onClick={() => setPreviewMode('about')}
+            className={`px-4 py-2 rounded ${previewMode === 'about' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3]'}`}
           >
-            {addingImage ? 'Adding...' : 'Add Image'}
+            About Preview
           </button>
-        </form>
-        <div className="grid grid-cols-2 gap-2 max-h-64 overflow-y-auto">
-          {portfolioImages.map(img => (
-            <div key={img.id} className="relative group">
-              <img src={img.url} alt={img.category} className="w-full h-24 object-cover rounded" />
+          <button
+            onClick={() => setPreviewMode('portfolio')}
+            className={`px-4 py-2 rounded ${previewMode === 'portfolio' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3]'}`}
+          >
+            Portfolio Preview
+          </button>
+        </div>
+
+        <div className="bg-[#232323] rounded p-4 min-h-[200px]">
+          {previewMode === 'about' ? (
+            <div>
+              <h2 className="text-2xl font-display mb-4 text-white">{aboutTitle || 'About Title'}</h2>
+              <div className="prose prose-invert max-w-none text-[#F3E3C3]/90">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {aboutBio || 'About content will appear here...'}
+                </ReactMarkdown>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <h2 className="text-2xl font-display mb-4 text-white">Portfolio Gallery</h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {portfolioImages.slice(0, 8).map(img => (
+                  <div key={img.id} className="relative group">
+                    <img src={img.url} alt={img.category} className="w-full h-32 object-cover rounded" />
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                      <span className="text-white text-sm">{img.category}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {portfolioImages.length > 8 && (
+                <p className="text-[#F3E3C3]/70 text-center mt-4">
+                  +{portfolioImages.length - 8} more images
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Portfolio Preview Modal */}
+      {showPortfolioPreview && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-6xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-2xl font-display text-white">Portfolio Gallery Preview</h3>
               <button
-                onClick={() => deletePortfolioImage(img.id)}
-                className="absolute top-1 right-1 bg-red-600 text-white text-xs px-2 py-1 rounded opacity-80 group-hover:opacity-100"
-                title="Delete"
+                onClick={() => setShowPortfolioPreview(false)}
+                className="text-white text-2xl hover:text-gray-300"
               >
                 &times;
               </button>
-              <div className="text-xs text-[#F3E3C3]">{img.category}</div>
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// --- Blog Admin Section (Blog CRUD for Admin) ---
-function BlogAdminSection({
-  blogPosts,
-  createBlogPost,
-  updateBlogPost,
-  deleteBlogPost,
-  blogEdit,
-  setBlogEdit,
-  blogSaving,
-  blogAdminError
-}) {
-  const [newPost, setNewPost] = useState({
-    title: '',
-    slug: '',
-    excerpt: '',
-    content: '',
-    author: '',
-    publish_date: '',
-    tags: '',
-    category: ''
-  });
-
-  const handleNewChange = e => {
-    const { name, value } = e.target;
-    setNewPost(p => ({ ...p, [name]: value }));
-  };
-
-  const handleCreate = async e => {
-    e.preventDefault();
-    await createBlogPost({
-      ...newPost,
-      tags: typeof newPost.tags === 'string'
-        ? newPost.tags.split(',').map(t => t.trim()).filter(Boolean)
-        : Array.isArray(newPost.tags)
-          ? newPost.tags
-          : [],
-      publish_date: newPost.publish_date || new Date().toISOString()
-    });
-    setNewPost({
-      title: '',
-      slug: '',
-      excerpt: '',
-      content: '',
-      author: '',
-      publish_date: '',
-      tags: '',
-      category: ''
-    });
-  };
-
-  const [editForm, setEditForm] = useState(null);
-
-  useEffect(() => {
-    if (blogEdit) {
-      const post = blogPosts.find(p => p.id === blogEdit) || null;
-      if (post) {
-        setEditForm({
-          ...post,
-          tags: Array.isArray(post.tags)
-            ? post.tags.join(', ')
-            : (typeof post.tags === 'string' ? post.tags : '')
-        });
-      } else {
-        setEditForm(null);
-      }
-    } else {
-      setEditForm(null);
-    }
-  }, [blogEdit, blogPosts]);
-
-  const handleEditChange = e => {
-    const { name, value } = e.target;
-    setEditForm(f => ({ ...f, [name]: value }));
-  };
-
-  const handleUpdate = async e => {
-    e.preventDefault();
-    await updateBlogPost(editForm.id, {
-      ...editForm,
-      tags: typeof editForm.tags === 'string'
-        ? editForm.tags.split(',').map(t => t.trim()).filter(Boolean)
-        : Array.isArray(editForm.tags)
-          ? editForm.tags
-          : []
-    });
-    setBlogEdit(null);
-  };
-
-  if (blogSaving) {
-    return <div className="text-[#F3E3C3] py-8">Saving...</div>;
-  }
-
-  return (
-    <div>
-      <h4 className="text-xl font-display mb-4">Blog Posts</h4>
-      {blogAdminError && <div className="text-red-400 mb-2">{blogAdminError}</div>}
-      {editForm ? (
-        <form onSubmit={handleUpdate} className="space-y-2 mb-8 bg-[#232323] p-4 rounded">
-          <input name="title" value={editForm.title} onChange={handleEditChange} placeholder="Title" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
-          <input name="slug" value={editForm.slug} onChange={handleEditChange} placeholder="Slug" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
-          <input name="author" value={editForm.author} onChange={handleEditChange} placeholder="Author" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <input name="publish_date" value={editForm.publish_date} onChange={handleEditChange} placeholder="Publish Date" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" type="date" />
-          <input name="category" value={editForm.category} onChange={handleEditChange} placeholder="Category" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <input name="tags" value={editForm.tags} onChange={handleEditChange} placeholder="Tags (comma separated)" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <textarea name="excerpt" value={editForm.excerpt} onChange={handleEditChange} placeholder="Excerpt" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <textarea name="content" value={editForm.content} onChange={handleEditChange} placeholder="Content (Markdown supported)" rows={6} className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <div className="flex gap-2">
-            <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">Save</button>
-            <button type="button" onClick={() => setBlogEdit(null)} className="bg-gray-500 text-white py-2 px-4 rounded-md">Cancel</button>
+            
+            <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+              {portfolioImages.map(img => (
+                <div key={img.id} className="break-inside-avoid group relative">
+                  <img src={img.url} alt={img.category} className="w-full rounded-lg shadow-lg hover:opacity-90 transition-opacity" />
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-between p-3">
+                    <span className="text-white text-sm bg-black/50 px-2 py-1 rounded self-start">
+                      {img.category}
+                    </span>
+                    {img.caption && (
+                      <span className="text-white text-xs bg-black/50 px-2 py-1 rounded">
+                        {img.caption}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </form>
-      ) : (
-        <form onSubmit={handleCreate} className="space-y-2 mb-8 bg-[#232323] p-4 rounded">
-          <input name="title" value={newPost.title} onChange={handleNewChange} placeholder="Title" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
-          <input name="slug" value={newPost.slug} onChange={handleNewChange} placeholder="Slug" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
-          <input name="author" value={newPost.author} onChange={handleNewChange} placeholder="Author" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <input name="publish_date" value={newPost.publish_date} onChange={handleNewChange} placeholder="Publish Date" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" type="date" />
-          <input name="category" value={newPost.category} onChange={handleNewChange} placeholder="Category" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <input name="tags" value={newPost.tags} onChange={handleNewChange} placeholder="Tags (comma separated)" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <textarea name="excerpt" value={newPost.excerpt} onChange={handleNewChange} placeholder="Excerpt" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <textarea name="content" value={newPost.content} onChange={handleNewChange} placeholder="Content (Markdown supported)" rows={6} className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">Create Post</button>
-        </form>
+        </div>
       )}
-      <div className="overflow-x-auto">
-        <table className="w-full text-left">
-          <thead className="border-b border-white/10">
-            <tr>
-              <th className="p-3">Title</th>
-              <th className="p-3">Author</th>
-              <th className="p-3">Date</th>
-              <th className="p-3">Category</th>
-              <th className="p-3">Tags</th>
-              <th className="p-3">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {blogPosts.map(post => (
-              <tr key={post.id} className="border-b border-white/10 last:border-b-0">
-                <td className="p-3 font-bold">{post.title}</td>
-                <td className="p-3">{post.author}</td>
-                <td className="p-3 text-xs">{post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}</td>
-                <td className="p-3">{post.category}</td>
-                <td className="p-3">
-                  {
-                    Array.isArray(post.tags)
-                      ? post.tags.join(', ')
-                      : (typeof post.tags === 'string' ? post.tags : '')
-                  }
-                </td>
-                <td className="p-3 flex gap-2">
-                  <button onClick={() => setBlogEdit(post.id)} className="bg-blue-500 text-white px-3 py-1 rounded text-xs">Edit</button>
-                  <button onClick={() => deleteBlogPost(post.id)} className="bg-red-600 text-white px-3 py-1 rounded text-xs">Delete</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
     </div>
   );
 }
