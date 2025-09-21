@@ -24,18 +24,8 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
   const [selectedLead, setSelectedLead] = useState(null);
   const [showLeadDetails, setShowLeadDetails] = useState(false);
   const [leadNotes, setLeadNotes] = useState([]);
-  const [leadProjects, setLeadProjects] = useState([]);
   const [loading, setLoading] = useState(false);
-  
-  // Note management
-  const [newNote, setNewNote] = useState({
-    note: '',
-    note_type: 'manual',
-    priority: 'normal',
-    follow_up_date: ''
-  });
-  const [editingNote, setEditingNote] = useState(null);
-  const [filterNotes, setFilterNotes] = useState('all');
+  const [newNote, setNewNote] = useState('');
 
   const fetchLeadNotes = async (leadId) => {
     setLoading(true);
@@ -54,59 +44,20 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
   };
 
   const addNote = async () => {
-    if (!newNote.note.trim() || !selectedLead) return;
+    if (!newNote.trim() || !selectedLead) return;
     
     try {
-      const noteData = {
+      await supabase.from('lead_notes').insert([{
         lead_id: selectedLead.id,
-        note: newNote.note,
-        note_type: newNote.note_type,
-        priority: newNote.priority,
-        follow_up_date: newNote.follow_up_date || null,
-        status: 'Active'
-      };
-
-      await supabase.from('lead_notes').insert([noteData]);
-      
-      setNewNote({
-        note: '',
+        note: newNote,
         note_type: 'manual',
-        priority: 'normal',
-        follow_up_date: ''
-      });
+        status: 'Active'
+      }]);
       
+      setNewNote('');
       await fetchLeadNotes(selectedLead.id);
     } catch (err) {
       console.error('Error adding note:', err);
-    }
-  };
-
-  const deleteNote = async (noteId) => {
-    try {
-      await supabase
-        .from('lead_notes')
-        .delete()
-        .eq('id', noteId);
-      
-      await fetchLeadNotes(selectedLead.id);
-    } catch (err) {
-      console.error('Error deleting note:', err);
-    }
-  };
-
-  const filteredNotes = leadNotes.filter(note => {
-    if (filterNotes === 'all') return true;
-    if (filterNotes === 'follow-up') return note.follow_up_date && new Date(note.follow_up_date) > new Date();
-    if (filterNotes === 'high-priority') return note.priority === 'high';
-    return note.note_type === filterNotes;
-  });
-
-  const getPriorityColor = (priority) => {
-    switch (priority) {
-      case 'high': return 'text-red-400';
-      case 'medium': return 'text-yellow-400';
-      case 'low': return 'text-green-400';
-      default: return 'text-[#F3E3C3]';
     }
   };
 
@@ -173,10 +124,10 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
         </table>
       </div>
 
-      {/* Enhanced Lead Details Modal */}
+      {/* Lead Details Modal */}
       {showLeadDetails && selectedLead && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-          <div className="bg-[#232323] rounded-lg shadow-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
+          <div className="bg-[#232323] rounded-lg shadow-lg max-w-2xl w-full max-h-[90vh] overflow-hidden">
             <div className="flex justify-between items-center p-6 border-b border-white/10">
               <h3 className="text-lg font-display">Lead Details: {selectedLead.name}</h3>
               <button 
@@ -187,36 +138,85 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
               </button>
             </div>
             
-            <div className="flex h-[calc(90vh-80px)]">
-              {/* Lead Info Sidebar */}
-              <div className="w-1/3 p-6 border-r border-white/10 overflow-y-auto">
-                <div className="space-y-4">
-                  <div>
-                    <label className="text-xs text-[#F3E3C3]/60 uppercase">Name</label>
-                    <div className="text-[#F3E3C3]">{selectedLead.name}</div>
-                  </div>
-                  <div>
-                    <label className="text-xs text-[#F3E3C3]/60 uppercase">Email</label>
-                    <div className="text-[#F3E3C3]">{selectedLead.email}</div>
-                  </div>
-                  <div>
-                    <label className="text-xs text-[#F3E3C3]/60 uppercase">Phone</label>
-                    <div className="text-[#F3E3C3]">{selectedLead.phone}</div>
-                  </div>
-                  <div>
-                    <label className="text-xs text-[#F3E3C3]/60 uppercase">Service</label>
-                    <div className="text-[#F3E3C3]">{selectedLead.service}</div>
-                  </div>
-                  <div>
-                    <label className="text-xs text-[#F3E3C3]/60 uppercase">Status</label>
-                    <div className="text-[#F3E3C3]">{selectedLead.status}</div>
+            <div className="p-6 max-h-[70vh] overflow-y-auto">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="text-sm font-semibold text-[#F3E3C3] mb-3">Contact Information</h4>
+                  <div className="space-y-2 text-sm">
+                    <div><span className="text-[#F3E3C3]/60">Email:</span> {selectedLead.email}</div>
+                    <div><span className="text-[#F3E3C3]/60">Phone:</span> {selectedLead.phone}</div>
+                    <div><span className="text-[#F3E3C3]/60">Service:</span> {selectedLead.service}</div>
+                    <div><span className="text-[#F3E3C3]/60">Status:</span> {selectedLead.status}</div>
                   </div>
                   
-                  {/* Quick Actions */}
-                  <div className="pt-4 border-t border-white/10">
+                  <div className="mt-4">
                     <h4 className="text-sm font-semibold text-[#F3E3C3] mb-3">Quick Actions</h4>
-                    <div className="space-y-2">
+                    <div className="flex gap-2">
                       <button
+                        onClick={() => window.open(`tel:${selectedLead.phone?.replace(/\D/g, '')}`)}
+                        className="flex items-center gap-1 bg-green-500 text-white rounded px-3 py-1 text-xs"
+                      >
+                        <PhoneIcon /> Call
+                      </button>
+                      <button
+                        onClick={() => window.open(`sms:${selectedLead.phone?.replace(/\D/g, '')}`)}
+                        className="flex items-center gap-1 bg-blue-500 text-white rounded px-3 py-1 text-xs"
+                      >
+                        <SmsIcon /> Text
+                      </button>
+                      <button
+                        onClick={() => window.open(`mailto:${selectedLead.email}`)}
+                        className="flex items-center gap-1 bg-red-500 text-white rounded px-3 py-1 text-xs"
+                      >
+                        <MailIcon /> Email
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-semibold text-[#F3E3C3] mb-3">Notes</h4>
+                  
+                  <div className="mb-3">
+                    <textarea
+                      value={newNote}
+                      onChange={(e) => setNewNote(e.target.value)}
+                      placeholder="Add a note..."
+                      className="w-full bg-[#181818] border border-white/20 rounded p-2 text-sm"
+                      rows="2"
+                    />
+                    <button
+                      onClick={addNote}
+                      disabled={!newNote.trim()}
+                      className="mt-2 bg-[#F3E3C3] text-[#1a1a1a] rounded px-3 py-1 text-xs font-semibold disabled:opacity-50"
+                    >
+                      Add Note
+                    </button>
+                  </div>
+
+                  <div className="space-y-2 max-h-48 overflow-y-auto">
+                    {loading && <div className="text-center text-[#F3E3C3]/70 py-2">Loading notes...</div>}
+                    {!loading && leadNotes.length === 0 && (
+                      <div className="text-[#F3E3C3]/70 py-2 text-center text-sm">No notes found.</div>
+                    )}
+                    {leadNotes.map(note => (
+                      <div key={note.id} className="bg-[#181818] rounded p-3">
+                        <div className="text-xs text-[#F3E3C3]/60 mb-1">
+                          {new Date(note.created_at).toLocaleDateString()}
+                        </div>
+                        <div className="text-[#F3E3C3] text-sm">{note.note}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
                         onClick={() => window.open(`tel:${selectedLead.phone?.replace(/\D/g, '')}`)}
                         className="w-full bg-green-500 text-white rounded-md py-2 px-3 text-sm font-semibold flex items-center justify-center gap-2"
                       >

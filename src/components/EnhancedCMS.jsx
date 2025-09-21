@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import React, { useState, useMemo } from 'react';
 import { supabase } from '../supabaseClient';
 
 const OptimizedImage = ({ src, alt, className, loading = "lazy", ...props }) => {
@@ -39,162 +38,66 @@ export function EnhancedCmsSection({
   deletePortfolioImage, 
   updatePortfolioImageOrder 
 }) {
-  const [view, setView] = useState('grid');
   const [filter, setFilter] = useState('all');
-  const [sortBy, setSortBy] = useState('created_at');
-  const [selectedImages, setSelectedImages] = useState(new Set());
   const [newImage, setNewImage] = useState({
     url: '',
     category: '',
     caption: '',
-    alt_text: '',
-    tags: [],
-    is_featured: false
+    alt_text: ''
   });
-  const [bulkAction, setBulkAction] = useState('');
-  const [previewImage, setPreviewImage] = useState(null);
-  const [cloudinaryUrl, setCloudinaryUrl] = useState('');
+  const [uploading, setUploading] = useState(false);
 
-  const categories = ['Portraits', 'Events', 'Weddings', 'Commercial', 'Personal'];
+  const categories = ['Portraits', 'Events', 'Weddings', 'Commercial'];
   
-  const filteredAndSortedImages = useMemo(() => {
-    let filtered = portfolioImages;
-    
-    if (filter !== 'all') {
-      filtered = filtered.filter(img => img.category === filter);
-    }
-    
-    return filtered.sort((a, b) => {
-      switch (sortBy) {
-        case 'created_at':
-          return new Date(b.created_at) - new Date(a.created_at);
-        case 'category':
-          return a.category.localeCompare(b.category);
-        case 'caption':
-          return (a.caption || '').localeCompare(b.caption || '');
-        case 'featured':
-          return b.is_featured - a.is_featured;
-        default:
-          return 0;
-      }
-    });
-  }, [portfolioImages, filter, sortBy]);
+  const filteredImages = useMemo(() => {
+    if (filter === 'all') return portfolioImages;
+    return portfolioImages.filter(img => img.category === filter);
+  }, [portfolioImages, filter]);
 
   const handleImageChange = (field, value) => {
     setNewImage(prev => ({ ...prev, [field]: value }));
-  };
-
-  const handleTagsChange = (tagsString) => {
-    const tags = tagsString.split(',').map(tag => tag.trim()).filter(Boolean);
-    setNewImage(prev => ({ ...prev, tags }));
   };
 
   const validateCloudinaryUrl = (url) => {
     return url.includes('cloudinary.com') || url.includes('res.cloudinary.com');
   };
 
-  const extractCloudinaryInfo = (url) => {
-    const match = url.match(/\/v\d+\/(.+)\./);
-    return match ? match[1] : null;
-  };
-
   const handleAddImage = async () => {
     if (!newImage.url || !newImage.category) return;
     
+    setUploading(true);
     try {
-      const imageData = {
-        ...newImage,
-        cloudinary_public_id: validateCloudinaryUrl(newImage.url) 
-          ? extractCloudinaryInfo(newImage.url) 
-          : null
-      };
-      
-      await addPortfolioImage(imageData);
-      
+      await addPortfolioImage(newImage);
       setNewImage({
         url: '',
         category: '',
         caption: '',
-        alt_text: '',
-        tags: [],
-        is_featured: false
+        alt_text: ''
       });
-      setCloudinaryUrl('');
     } catch (error) {
       console.error('Error adding image:', error);
     }
-  };
-
-  const handleImageSelect = (imageId) => {
-    const newSelected = new Set(selectedImages);
-    if (newSelected.has(imageId)) {
-      newSelected.delete(imageId);
-    } else {
-      newSelected.add(imageId);
-    }
-    setSelectedImages(newSelected);
+    setUploading(false);
   };
 
   return (
     <div className="space-y-6">
-      {/* Controls Bar */}
-      <div className="flex flex-wrap gap-4 items-center justify-between bg-[#181818] rounded-lg p-4">
-        <div className="flex gap-2">
-          <select
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            className="bg-[#262626] border border-white/20 rounded px-3 py-2 text-sm"
-          >
-            <option value="all">All Categories</option>
-            {categories.map(cat => (
-              <option key={cat} value={cat}>{cat}</option>
-            ))}
-          </select>
-          
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-            className="bg-[#262626] border border-white/20 rounded px-3 py-2 text-sm"
-          >
-            <option value="created_at">Date Added</option>
-            <option value="category">Category</option>
-            <option value="caption">Caption</option>
-            <option value="featured">Featured First</option>
-          </select>
-          
-          <div className="flex border border-white/20 rounded overflow-hidden">
-            <button
-              onClick={() => setView('grid')}
-              className={`px-3 py-2 text-sm ${view === 'grid' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626]'}`}
-            >
-              Grid
-            </button>
-            <button
-              onClick={() => setView('list')}
-              className={`px-3 py-2 text-sm ${view === 'list' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626]'}`}
-            >
-              List
-            </button>
-          </div>
+      {/* Controls */}
+      <div className="flex gap-4 items-center justify-between bg-[#181818] rounded-lg p-4">
+        <select
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          className="bg-[#262626] border border-white/20 rounded px-3 py-2 text-sm"
+        >
+          <option value="all">All Categories</option>
+          {categories.map(cat => (
+            <option key={cat} value={cat}>{cat}</option>
+          ))}
+        </select>
+        
+        <div className="text-sm text-[#F3E3C3]/70">
+          {filteredImages.length} images
         </div>
-
-        {/* Bulk Actions */}
-        {selectedImages.size > 0 && (
-          <div className="flex gap-2 items-center">
-            <span className="text-sm text-[#F3E3C3]/70">
-              {selectedImages.size} selected
-            </span>
-            <button
-              onClick={() => {
-                selectedImages.forEach(id => deletePortfolioImage(id));
-                setSelectedImages(new Set());
-              }}
-              className="bg-red-500 text-white px-3 py-2 rounded text-sm font-semibold"
-            >
-              Delete Selected
-            </button>
-          </div>
-        )}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -204,19 +107,16 @@ export function EnhancedCmsSection({
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
-                Cloudinary URL
+                Image URL
               </label>
               <input
                 type="url"
-                value={cloudinaryUrl}
-                onChange={(e) => {
-                  setCloudinaryUrl(e.target.value);
-                  handleImageChange('url', e.target.value);
-                }}
+                value={newImage.url}
+                onChange={(e) => handleImageChange('url', e.target.value)}
                 placeholder="https://res.cloudinary.com/..."
                 className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm"
               />
-              {cloudinaryUrl && !validateCloudinaryUrl(cloudinaryUrl) && (
+              {newImage.url && !validateCloudinaryUrl(newImage.url) && (
                 <p className="text-red-400 text-xs mt-1">Please enter a valid Cloudinary URL</p>
               )}
             </div>
@@ -239,6 +139,106 @@ export function EnhancedCmsSection({
             </div>
 
             <div>
+              <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
+                Caption
+              </label>
+              <textarea
+                value={newImage.caption}
+                onChange={(e) => handleImageChange('caption', e.target.value)}
+                placeholder="Image caption..."
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm"
+                rows="3"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
+                Alt Text (SEO)
+              </label>
+              <input
+                type="text"
+                value={newImage.alt_text}
+                onChange={(e) => handleImageChange('alt_text', e.target.value)}
+                placeholder="Descriptive alt text..."
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm"
+              />
+            </div>
+
+            {/* Preview */}
+            {newImage.url && (
+              <div className="border border-white/20 rounded-lg p-3">
+                <p className="text-xs text-[#F3E3C3]/70 mb-2">Preview:</p>
+                <OptimizedImage
+                  src={newImage.url}
+                  alt="Preview"
+                  className="w-full h-32 object-cover rounded"
+                />
+              </div>
+            )}
+
+            <button
+              onClick={handleAddImage}
+              disabled={!newImage.url || !newImage.category || !validateCloudinaryUrl(newImage.url) || uploading}
+              className="w-full bg-[#F3E3C3] text-[#1a1a1a] rounded-md py-2 px-4 font-semibold transition-transform hover:scale-105 disabled:opacity-50 disabled:transform-none"
+            >
+              {uploading ? 'Adding...' : 'Add Image'}
+            </button>
+          </div>
+        </div>
+
+        {/* Images Display */}
+        <div className="lg:col-span-2">
+          <div className="bg-[#262626] rounded-lg p-6">
+            <h3 className="text-xl font-display mb-4">
+              Portfolio Images ({filteredImages.length})
+            </h3>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {filteredImages.map((img) => (
+                <div key={img.id} className="relative group">
+                  <div className="aspect-square relative">
+                    <OptimizedImage
+                      src={img.url}
+                      alt={img.alt_text || img.caption}
+                      className="w-full h-full object-cover rounded-lg shadow-md"
+                    />
+                    
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                      <button
+                        onClick={() => deletePortfolioImage(img.id)}
+                        className="bg-red-500 text-white rounded p-2 hover:bg-red-600 transition-colors"
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <polyline points="3,6 5,6 21,6"></polyline>
+                          <path d="m19,6v14a2,2 0 0,1-2,2H7a2,2 0 0,1-2-2V6m3,0V4a2,2 0 0,1,2-2h4a2,2 0 0,1,2,2v2"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-2">
+                    <p className="text-xs text-[#F3E3C3]/80 truncate">
+                      {img.caption || 'No caption'}
+                    </p>
+                    <p className="text-xs text-[#F3E3C3]/60">
+                      {img.category}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {filteredImages.length === 0 && (
+              <div className="text-center text-[#F3E3C3]/70 py-12">
+                No images found for the selected category.
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
               <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
                 Caption
               </label>
