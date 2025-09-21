@@ -3,14 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Studio37</title>
+    <meta name="description" content="Studio37 - Professional photography and content strategy for brands in Houston, TX. Vintage heart, modern vision." />
+    <meta name="keywords" content="photography, Houston, portrait, wedding, commercial, content strategy, Studio37" />
+    <meta name="author" content="Studio37" />
+    <title>Studio37 - Photography & Content Strategy | Houston, TX</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <script type="module" crossorigin src="/assets/index-7n-iEMj0.js"></script>
+    <link rel="canonical" href="https://www.studio37.cc" />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/assets/index-tGPVCFHw.js" as="script" />
+    <link rel="preload" href="/assets/index-CpJ9NWoR.css" as="style" />
+    
+    <!-- Remove any external tracking scripts that might be injecting optuno.com resources -->
+    <script>
+      // Block external resource loading from optuno.com
+      if (typeof MutationObserver !== 'undefined') {
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            mutation.addedNodes.forEach(function(node) {
+              if (node.tagName === 'SCRIPT' || node.tagName === 'LINK') {
+                if (node.src && node.src.includes('optuno.com')) {
+                  node.remove();
+                }
+                if (node.href && node.href.includes('optuno.com')) {
+                  node.remove();
+                }
+              }
+            });
+          });
+        });
+        observer.observe(document.head, { childList: true, subtree: true });
+      }
+    </script>
+    
+    <script type="module" crossorigin src="/assets/index-tGPVCFHw.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/vendor-B1sUnLqs.js">
-    <link rel="modulepreload" crossorigin href="/assets/router-B67qUrsN.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-BgLsTyci.css">
+    <link rel="modulepreload" crossorigin href="/assets/router-DsxFZw4n.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CpJ9NWoR.css">
   </head>
   <body>
     <div id="root"></div>
+    
+    <!-- Prevent external script injection -->
+    <script>
+      // Additional security to prevent external resource loading
+      if (typeof window !== 'undefined') {
+        const originalAppendChild = Element.prototype.appendChild;
+        Element.prototype.appendChild = function(child) {
+          if (child.tagName === 'SCRIPT' || child.tagName === 'LINK') {
+            const src = child.src || child.href || '';
+            if (src.includes('optuno.com') || src.includes('external-tracker')) {
+              console.warn('Blocked external resource:', src);
+              return child;
+            }
+          }
+          return originalAppendChild.call(this, child);
+        };
+      }
+    </script>
   </body>
 </html>
