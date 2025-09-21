@@ -2417,3 +2417,294 @@ function BlogAdminSection({
     </div>
   );
 }
+
+// --- Enhanced Contact Page with Text Option ---
+const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+    contactMethod: 'email'
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+    
+    // Save contact submission to Supabase
+    await supabase.from('leads').insert([{
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      service: 'Contact Form',
+      status: 'New'
+    }]);
+
+    // Add note with contact details
+    const { data: leadData } = await supabase
+      .from('leads')
+      .select('id')
+      .eq('email', formData.email)
+      .order('created_at', { ascending: false })
+      .limit(1);
+
+    if (leadData && leadData[0]) {
+      await supabase.from('lead_notes').insert([{
+        lead_id: leadData[0].id,
+        note: `Contact Form: Preferred contact: ${formData.contactMethod}. Message: ${formData.message}`,
+        status: 'Contact Form'
+      }]);
+    }
+
+    setSending(false);
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <div className="py-20 md:py-28 bg-[#212121]">
+        <div className="container mx-auto px-6 text-center">
+          <div className="bg-[#262626] rounded-lg p-8 max-w-md mx-auto">
+            <h2 className="text-3xl font-display text-white mb-4">Thank You!</h2>
+            <p className="text-[#F3E3C3]/80">We've received your message and will get back to you soon!</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="py-20 md:py-28 bg-[#212121]">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-display">Get In Touch</h2>
+          <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <input 
+              type="text" 
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+              required 
+            />
+            <input 
+              type="email" 
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Your Email" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+              required 
+            />
+            <input 
+              type="tel" 
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Your Phone (Optional)" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+            />
+            <div>
+              <label className="block text-sm font-medium text-[#F3E3C3] mb-2">Preferred Contact Method</label>
+              <select 
+                name="contactMethod"
+                value={formData.contactMethod}
+                onChange={handleChange}
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              >
+                <option value="email">Email</option>
+                <option value="phone">Phone Call</option>
+                <option value="text">Text Message</option>
+              </select>
+            </div>
+            <textarea 
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Your Message" 
+              rows="5" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              required
+            />
+            <button 
+              type="submit" 
+              className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105"
+              disabled={sending}
+            >
+              {sending ? 'Sending...' : 'Send Message'} <ArrowRight />
+            </button>
+          </form>
+          <div className="text-[#F3E3C3]/80 space-y-6">
+            <div>
+              <h3 className="text-xl font-display text-white">Contact Info</h3>
+              <p>Email: <a href="mailto:sales@studio37.cc" className="hover:text-white transition">sales@studio37.cc</a></p>
+              <p>Phone: <a href="tel:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
+              <p>Text: <a href="sms:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
+            </div>
+            <div>
+              <h3 className="text-xl font-display text-white">Location</h3>
+              <p>Serving the Greater Houston Area</p>
+              <p>Based near Porter, TX 77362</p>
+            </div>
+            <div className="mt-4">
+              <iframe
+                title="Map of Houston"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111049.9644254322!2d-95.469384!3d29.817478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b8b1b8b1b8b1%3A0x8b1b8b1b8b1b8b1b!2sHouston%2C%20TX!5e0!3m2!1sen!2sus!4v1631910000000!5m2!1sen!2sus"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-lg shadow-lg w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- Enhanced CMS Section (Portfolio Management Only) ---
+function CmsSection({ portfolioImages, addPortfolioImage, deletePortfolioImage }) {
+  const [imageUrl, setImageUrl] = useState('');
+  const [imageCategory, setImageCategory] = useState('');
+  const [imageCaption, setImageCaption] = useState('');
+  const [addingImage, setAddingImage] = useState(false);
+  const [showPortfolioPreview, setShowPortfolioPreview] = useState(false);
+
+  const handleAddImage = async (e) => {
+    e.preventDefault();
+    setAddingImage(true);
+    await addPortfolioImage({
+      url: imageUrl,
+      category: imageCategory,
+      caption: imageCaption,
+      order_index: portfolioImages.length,
+      created_at: new Date().toISOString()
+    });
+    setImageUrl('');
+    setImageCategory('');
+    setImageCaption('');
+    setAddingImage(false);
+  };
+
+  return (
+    <div>
+      <h4 className="text-xl font-display mb-6">Portfolio Management</h4>
+      
+      <div className="grid md:grid-cols-2 gap-8 mb-8">
+        <div>
+          <div className="flex justify-between items-center mb-4">
+            <h5 className="text-lg font-bold">Add New Image</h5>
+            <button
+              onClick={() => setShowPortfolioPreview(true)}
+              className="bg-purple-500 text-white px-3 py-1 rounded text-sm hover:bg-purple-600"
+            >
+              Preview Gallery
+            </button>
+          </div>
+          <form onSubmit={handleAddImage} className="space-y-4">
+            <input
+              type="url"
+              value={imageUrl}
+              onChange={e => setImageUrl(e.target.value)}
+              placeholder="Image URL"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+              required
+            />
+            <input
+              type="text"
+              value={imageCategory}
+              onChange={e => setImageCategory(e.target.value)}
+              placeholder="Category"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+            />
+            <input
+              type="text"
+              value={imageCaption}
+              onChange={e => setImageCaption(e.target.value)}
+              placeholder="Caption"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+            />
+            <button
+              type="submit"
+              className="w-full bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
+              disabled={addingImage || !imageUrl}
+            >
+              {addingImage ? 'Adding...' : 'Add Image'}
+            </button>
+          </form>
+        </div>
+
+        <div>
+          <h5 className="text-lg font-bold mb-4">Current Images ({portfolioImages.length})</h5>
+          <div className="grid grid-cols-3 gap-2 max-h-80 overflow-y-auto">
+            {portfolioImages.map(img => (
+              <div key={img.id} className="relative group">
+                <img src={img.url} alt={img.category} className="w-full h-20 object-cover rounded" />
+                <button
+                  onClick={() => deletePortfolioImage(img.id)}
+                  className="absolute top-1 right-1 bg-red-600 text-white text-xs px-1 py-1 rounded opacity-80 group-hover:opacity-100"
+                  title="Delete"
+                >
+                  &times;
+                </button>
+                <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 rounded-b truncate">
+                  {img.category || 'No category'}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Portfolio Preview Modal */}
+      {showPortfolioPreview && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-6xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-2xl font-display text-white">Portfolio Gallery Preview</h3>
+              <button
+                onClick={() => setShowPortfolioPreview(false)}
+                className="text-white text-2xl hover:text-gray-300"
+              >
+                &times;
+              </button>
+            </div>
+            
+            <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+              {portfolioImages.map(img => (
+                <div key={img.id} className="break-inside-avoid group relative">
+                  <img src={img.url} alt={img.category} className="w-full rounded-lg shadow-lg hover:opacity-90 transition-opacity" />
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-between p-3">
+                    <span className="text-white text-sm bg-black/50 px-2 py-1 rounded self-start">
+                      {img.category || 'No category'}
+                    </span>
+                    {img.caption && (
+                      <span className="text-white text-xs bg-black/50 px-2 py-1 rounded">
+                        {img.caption}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

@@ -1,215 +1,289 @@
 # Code Citations
 
 ## License: unknown
-https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-```
-
-
-## License: unknown
-https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
-
-```
--->
+" fill="none" xmlns
 ```
 
 
 ## License: unknown
-https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html
+" fill="none" xmlns="http://www.w3.
 ```
 
 
 ## License: unknown
-https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html
+" fill="none" xmlns="http://www.w3.org/2000/svg">
 ```
 
 
 ## License: unknown
-https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html lang="en">
-  
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4
 ```
 
 
 ## License: unknown
-https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html lang="en">
-  
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 5
 ```
 
 
 ## License: unknown
-https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 5C
 ```
 
 
 ## License: unknown
-https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 5C4 4
 ```
 
 
 ## License: unknown
-https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 5C4 4.44772 4.44772
 ```
 
 
 ## License: unknown
-https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 5C4 4.44772 4.44772 4 5 4H19
 ```
 
 
 ## License: unknown
-https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 
 ```
 
 
 ## License: unknown
-https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20
 ```
 
 
 ## License: unknown
-https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V
 ```
 
 
 ## License: unknown
-https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V19C20 19.5523
 ```
 
 
 ## License: unknown
-https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V19C20 19.5523 19.5523 20 
 ```
 
 
 ## License: unknown
-https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V19C20 19.5523 19.5523 20 19 20H5C4.
 ```
 
 
 ## License: unknown
-https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V19C20 19.5523 19.5523 20 19 20H5C4.44772 20 4 19
 ```
 
 
 ## License: unknown
-https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
 
 ```
--->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V19C20 19.5523 19.5523 20 19 20H5C4.44772 20 4 19.5523 4 19V
+```
+
+
+## License: unknown
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
+
+```
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V19C20 19.5523 19.5523 20 19 20H5C4.44772 20 4 19.5523 4 19V5Z" stroke
+```
+
+
+## License: unknown
+https://github.com/mavcycyan/selarl/blob/34a5c7ce4ca36e89f4c7e3b705a4afcb05eaa9c3/wp-content/plugins/instagram-feed-pro/inc/pro/class-sbi-display-elements-pro.php
+
+```
+" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V19C20 19.5523 19.5523 20 19 20H5C4.44772 20 4 19.5523 4 19V5Z" stroke="
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.5 13.
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.5 13.5 10.8284 13
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.5 13.5 10.8284 13.5 10
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.5 13.5 10.8284 13.5 10C13.5 9.17
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.5 13.5 10.8284 13.5 10C13.5 9.17157 12.8284 8
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.5 13.5 10.8284 13.5 10C13.5 9.17157 12.8284 8.5 12 8.5
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.5 13.5 10.8284 13.5 10C13.5 9.17157 12.8284 8.5 12 8.5C11.1716 8.
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.5 13.5 10.8284 13.5 10C13.5 9.17157 12.8284 8.5 12 8.5C11.1716 8.5 10.5 9.
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.5 13.5 10.8284 13.5 10C13.5 9.17157 12.8284 8.5 12 8.5C11.1716 8.5 10.5 9.17157 10.5 10
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.5 13.5 10.8284 13.5 10C13.5 9.17157 12.8284 8.5 12 8.5C11.1716 8.5 10.5 9.17157 10.5 10C10.
 ```
 
