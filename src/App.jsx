@@ -511,22 +511,6 @@ const Header = ({ isMenuOpen, setIsMenuOpen, theme, toggleTheme, showAdminButton
   );
 };
 
-const HomePage = () => (
-  <div className="relative h-screen flex items-center justify-center text-center text-white px-4 -mt-20">
-    <img src="https://res.cloudinary.com/dmjxho2rl/image/upload/a_vflip/l_image:upload:My%20Brand:IMG_2115_mtuowt/c_scale,fl_relative,w_0.35/o_100/fl_layer_apply,g_north,x_0.03,y_0.04/v1758172510/A4B03835-ED8B-4FBB-A27E-1F2EE6CA1A18_1_105_c_gstgil.jpg" alt="Studio37 Hero" className="absolute inset-0 w-full h-full object-cover"/>
-    <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-0 pointer-events-none"></div>
-    <div className="relative z-10">
-      <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display mb-4 leading-tight break-words max-w-full">Capture. Create. Captivate.</h1>
-      <p className="text-base sm:text-lg md:text-xl max-w-xs sm:max-w-2xl mx-auto mb-8 text-[#F3E3C3]/80">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
-      <div className="space-y-4 sm:space-x-4 flex flex-col sm:flex-row items-center justify-center w-full">
-        <Link to="/portfolio" className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 w-full sm:w-auto">
-          View Our Work <ArrowRight />
-        </Link>
-      </div>
-    </div>
-  </div>
-);
-
 const AboutPage = ({ content }) => (
   <div className="py-20 md:py-32 bg-[#212121]">
     <div className="container mx-auto px-6">
@@ -655,17 +639,22 @@ const ServicesPage = () => (
 // Optimize portfolio images with lazy loading and intersection observer
 const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
   const [filter, setFilter] = useState('All');
+  const [imageLoadErrors, setImageLoadErrors] = useState(new Set());
   
   // Memoize filtered images
   const filteredImages = useMemo(() => {
-    const categories = ['All', ...new Set(images.map(img => img.category))];
-    return filter === 'All' ? images : images.filter(img => img.category === filter);
-  }, [images, filter]);
+    const validImages = images.filter(img => img.url && !imageLoadErrors.has(img.id));
+    return filter === 'All' ? validImages : validImages.filter(img => img.category === filter);
+  }, [images, filter, imageLoadErrors]);
 
   const categories = useMemo(() => 
-    ['All', ...new Set(images.map(img => img.category))], 
-    [images]
+    ['All', ...new Set(images.filter(img => !imageLoadErrors.has(img.id)).map(img => img.category))], 
+    [images, imageLoadErrors]
   );
+
+  const handleImageError = useCallback((imageId) => {
+    setImageLoadErrors(prev => new Set([...prev, imageId]));
+  }, []);
 
   return (
     <div className="py-20 md:py-28">
@@ -695,9 +684,11 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
                     src={img.url} 
                     alt={img.caption || `${img.category} photography`} 
                     className="w-full rounded-lg shadow-lg hover:opacity-90 transition-opacity"
+                    loading="lazy"
+                    onError={() => handleImageError(img.id)}
                   />
                   {img.caption && (
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/75 backdrop-blur-sm p-3 rounded-b-lg">
+                    <div className="absolute bottom-0 left-0 right-0 bg-black/75 backdrop-blur-sm p-3 rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity">
                       <p className="text-[#F3E3C3]/75 text-sm font-serif italic leading-relaxed">
                         {img.caption}
                       </p>
@@ -706,6 +697,14 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
                 </div>
               ))}
             </div>
+            {filteredImages.length === 0 && (
+              <div className="text-center text-[#F3E3C3]/70 py-12">
+                {imageLoadErrors.size > 0 ? 
+                  'Some images failed to load. Please refresh the page.' : 
+                  'No images available in this category.'
+                }
+              </div>
+            )}
           </>
         )}
       </div>
@@ -713,113 +712,107 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
   );
 };
 
-// Add missing Footer component
-const Footer = () => (
-  <footer className="bg-[#232323] text-[#F3E3C3] py-12">
-    <div className="container mx-auto px-6">
-      <div className="grid md:grid-cols-3 gap-8">
-        <div>
-          <div className="flex items-center gap-4 mb-4">
-            <Logo />
-            <span className="font-display text-xl font-bold tracking-tight text-white">Studio37</span>
-          </div>
-          <p className="text-[#F3E3C3]/70">
-            Vintage heart, modern vision. Full-service photography and content strategy.
-          </p>
+// --- Optimized Image Component with better error handling and loading ---
+const OptimizedImage = ({ src, alt, className, loading = "lazy", ...props }) => {
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+  const maxRetries = 2;
+
+  // Optimize Cloudinary URLs
+  const optimizeCloudinaryUrl = (url) => {
+    if (!url || !url.includes('cloudinary.com')) return url;
+    
+    // Add automatic format and quality optimization
+    const optimizedUrl = url.replace('/upload/', '/upload/f_auto,q_auto:good,w_auto:breakpoints,c_scale/');
+    return optimizedUrl;
+  };
+
+  const handleImageError = () => {
+    if (retryCount < maxRetries) {
+      setRetryCount(prev => prev + 1);
+      setError(false);
+      setLoaded(false);
+      // Retry after a short delay
+      setTimeout(() => {
+        const img = new Image();
+        img.onload = () => setLoaded(true);
+        img.onerror = () => setError(true);
+        img.src = optimizeCloudinaryUrl(src);
+      }, 1000 * (retryCount + 1));
+    } else {
+      setError(true);
+    }
+  };
+
+  const optimizedSrc = optimizeCloudinaryUrl(src);
+
+  return (
+    <div className={`relative ${className}`}>
+      {!loaded && !error && (
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse rounded flex items-center justify-center">
+          <div className="w-8 h-8 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin"></div>
         </div>
-        <div>
-          <h4 className="font-display text-lg mb-4">Quick Links</h4>
-          <div className="space-y-2">
-            <Link to="/about" className="block text-[#F3E3C3]/70 hover:text-white transition">About</Link>
-            <Link to="/services" className="block text-[#F3E3C3]/70 hover:text-white transition">Services</Link>
-            <Link to="/portfolio" className="block text-[#F3E3C3]/70 hover:text-white transition">Portfolio</Link>
-            <Link to="/blog" className="block text-[#F3E3C3]/70 hover:text-white transition">Blog</Link>
-            <Link to="/contact" className="block text-[#F3E3C3]/70 hover:text-white transition">Contact</Link>
+      )}
+      <img
+        src={optimizedSrc}
+        alt={alt}
+        className={`${className} transition-all duration-500 ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+        onLoad={() => setLoaded(true)}
+        onError={handleImageError}
+        loading={loading}
+        decoding="async"
+        crossOrigin="anonymous"
+        {...props}
+      />
+      {error && (
+        <div className="absolute inset-0 bg-gray-800 flex items-center justify-center text-gray-400 text-sm rounded">
+          <div className="text-center p-4">
+            <svg className="w-12 h-12 mx-auto mb-2 opacity-50" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+            </svg>
+            <p>Image unavailable</p>
+            {retryCount > 0 && <p className="text-xs mt-1">Retried {retryCount}x</p>}
           </div>
         </div>
-        <div>
-          <h4 className="font-display text-lg mb-4">Contact Info</h4>
-          <div className="space-y-2 text-[#F3E3C3]/70">
-            <p>Email: sales@studio37.cc</p>
-            <p>Phone: (832) 713-9944</p>
-            <p>Serving Greater Houston Area</p>
-          </div>
+      )}
+    </div>
+  );
+};
+
+// --- Enhanced HomePage with optimized hero image ---
+const HomePage = () => {
+  const [heroImageLoaded, setHeroImageLoaded] = useState(false);
+  
+  const heroImageUrl = "https://res.cloudinary.com/dmjxho2rl/image/upload/f_auto,q_auto:good,w_auto:breakpoints,c_scale/a_vflip/l_image:upload:My%20Brand:IMG_2115_mtuowt/c_scale,fl_relative,w_0.35/o_100/fl_layer_apply,g_north,x_0.03,y_0.04/v1758172510/A4B03835-ED8B-4FBB-A27E-1F2EE6CA1A18_1_105_c_gstgil.jpg";
+
+  return (
+    <div className="relative h-screen flex items-center justify-center text-center text-white px-4 -mt-20">
+      {!heroImageLoaded && (
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black animate-pulse"></div>
+      )}
+      <img 
+        src={heroImageUrl} 
+        alt="Studio37 Hero" 
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${heroImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+        onLoad={() => setHeroImageLoaded(true)}
+        loading="eager"
+        decoding="async"
+        crossOrigin="anonymous"
+      />
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-0 pointer-events-none"></div>
+      <div className="relative z-10">
+        <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display mb-4 leading-tight break-words max-w-full">Capture. Create. Captivate.</h1>
+        <p className="text-base sm:text-lg md:text-xl max-w-xs sm:max-w-2xl mx-auto mb-8 text-[#F3E3C3]/80">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
+        <div className="space-y-4 sm:space-x-4 flex flex-col sm:flex-row items-center justify-center w-full">
+          <Link to="/portfolio" className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 w-full sm:w-auto">
+            View Our Work <ArrowRight />
+          </Link>
         </div>
-      </div>
-      <div className="border-t border-white/10 mt-8 pt-8 text-center text-[#F3E3C3]/60">
-        <p>&copy; 2024 Studio37. All rights reserved.</p>
       </div>
     </div>
-  </footer>
-);
-
-// --- Site Map Preview ---
-function SiteMapPreview({ page, content, portfolioImages, blogPosts }) {
-  switch (page) {
-    case 'about':
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">{content.about?.title || 'About Us'}</h3>
-          <div className="text-[#F3E3C3]/80">
-            {content.about?.bio ? (
-              <ReactMarkdown remarkPlugins={[remarkGfm]} className="prose prose-sm prose-invert max-w-none">
-                {content.about.bio}
-              </ReactMarkdown>
-            ) : (
-              <p>About content...</p>
-            )}
-          </div>
-        </div>
-      );
-    case 'portfolio':
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">Portfolio</h3>
-          <div className="grid grid-cols-3 gap-2">
-            {portfolioImages?.slice(0, 6).map(img => (
-              <div key={img.id} className="relative">
-                <img 
-                  src={img.url} 
-                  alt={img.category} 
-                  className="w-full h-16 object-cover rounded" 
-                />
-                {img.caption && (
-                  <div className="absolute bottom-0 left-0 right-0 bg-black/75 p-1 rounded-b text-xs">
-                    <p className="text-[#F3E3C3]/75 font-vintage-text italic leading-relaxed">
-                      {img.caption}
-                    </p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-[#F3E3C3]/60 mt-2">{portfolioImages?.length || 0} images</p>
-        </div>
-      );
-    case 'blog':
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">Blog</h3>
-          <div className="space-y-2">
-            {blogPosts?.slice(0, 3).map(post => (
-              <div key={post.id} className="bg-[#181818] p-2 rounded text-xs">
-                <div className="font-bold">{post.title}</div>
-                <div className="text-[#F3E3C3]/60">{post.excerpt?.substring(0, 60)}...</div>
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-[#F3E3C3]/60 mt-2">{blogPosts?.length || 0} posts</p>
-        </div>
-      );
-    default:
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">{page.charAt(0).toUpperCase() + page.slice(1)}</h3>
-          <p className="text-[#F3E3C3]/70">Preview for {page} page...</p>
-        </div>
-      );
-  }
-}
+  );
+};
 
 // --- Error Boundary Component ---
 const ErrorBoundary = ({ children, fallback }) => {
@@ -2458,33 +2451,6 @@ function AnalyticsSection({ leads, projects, blogPosts }) {
           ))}
         </div>
       </div>
-    </div>
-  );
-};
-
-const OptimizedImage = ({ src, alt, className, ...props }) => {
-  const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState(false);
-
-  return (
-    <div className={`relative ${className}`}>
-      {!loaded && !error && (
-        <div className="absolute inset-0 bg-gray-300 animate-pulse rounded" />
-      )}
-      <img
-        src={src}
-        alt={alt}
-        className={`${className} transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
-        onLoad={() => setLoaded(true)}
-        onError={() => setError(true)}
-        loading="lazy"
-        {...props}
-      />
-      {error && (
-        <div className="absolute inset-0 bg-gray-200 flex items-center justify-center text-gray-500 text-sm">
-          Failed to load image
-        </div>
-      )}
     </div>
   );
 };
