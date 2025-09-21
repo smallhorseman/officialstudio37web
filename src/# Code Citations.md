@@ -1,80 +1,215 @@
 # Code Citations
 
 ## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
 
 ```
->
-            <tr>
-              
+-->
 ```
 
 
 ## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
 
 ```
->
-            <tr>
-              <th className="p
+-->
 ```
 
 
 ## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
 
 ```
->
-            <tr>
-              <th className="p-3">Name</th>
-              <th
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="p-3">Name</th>
-              <th className="p-3">Email
+-->
+<!DOCTYPE html>
+<html
 ```
 
 
 ## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
 
 ```
->
-            <tr>
-              <th className="p-3">Name</th>
-              <th className="p-3">Email</th>
-              <th className
+-->
+<!DOCTYPE html>
+<html
 ```
 
 
 ## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
 
 ```
->
-            <tr>
-              <th className="p-3">Name</th>
-              <th className="p-3">Email</th>
-              <th className="p-3">Phone</th
+-->
+<!DOCTYPE html>
+<html lang="en">
+  
 ```
 
 
 ## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
 
 ```
->
-            <tr>
-              <th className="p-3">Name</th>
-              <th className="p-3">Email</th>
-              <th className="p-3">Phone</th>
-              <th className="p
+-->
+<!DOCTYPE html>
+<html lang="en">
+  
+```
+
+
+## License: unknown
+https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
+
+```
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset
+```
+
+
+## License: unknown
+https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
+
+```
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset
+```
+
+
+## License: unknown
+https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
+
+```
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+```
+
+
+## License: unknown
+https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
+
+```
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+```
+
+
+## License: unknown
+https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
+
+```
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="
+```
+
+
+## License: unknown
+https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
+
+```
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="
+```
+
+
+## License: unknown
+https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
+
+```
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-
+```
+
+
+## License: unknown
+https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
+
+```
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-
+```
+
+
+## License: unknown
+https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
+
+```
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+```
+
+
+## License: unknown
+https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
+
+```
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+```
+
+
+## License: unknown
+https://github.com/Tesserex/C--MegaMan-Engine/blob/24bd1535f2dd8f1121086cdc5e3a9c9809f8f240/docs/docs/scripting/sprite.html
+
+```
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+```
+
+
+## License: unknown
+https://github.com/mozilla/gecko-dev/blob/c76a5a14048507dbdea07eafb56deefc05befe55/browser/components/backup/content/debug.html
+
+```
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
 ```
 
