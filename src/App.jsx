@@ -1911,4 +1911,338 @@ const AdminDashboard = ({
   );
 };
 
+// --- Enhanced Contact Page with Text Option ---
+const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+    contactMethod: 'email'
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+    
+    // Save contact submission to Supabase
+    await supabase.from('leads').insert([{
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      service: 'Contact Form',
+      status: 'New'
+    }]);
+
+    // Add note with contact details
+    const { data: leadData } = await supabase
+      .from('leads')
+      .select('id')
+      .eq('email', formData.email)
+      .order('created_at', { ascending: false })
+      .limit(1);
+
+    if (leadData && leadData[0]) {
+      await supabase.from('lead_notes').insert([{
+        lead_id: leadData[0].id,
+        note: `Contact Form: Preferred contact: ${formData.contactMethod}. Message: ${formData.message}`,
+        status: 'Contact Form'
+      }]);
+    }
+
+    setSending(false);
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <div className="py-20 md:py-28 bg-[#212121]">
+        <div className="container mx-auto px-6 text-center">
+          <div className="bg-[#262626] rounded-lg p-8 max-w-md mx-auto">
+            <h2 className="text-3xl font-display text-white mb-4">Thank You!</h2>
+            <p className="text-[#F3E3C3]/80">We've received your message and will get back to you soon!</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="py-20 md:py-28 bg-[#212121]">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-display">Get In Touch</h2>
+          <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <input 
+              type="text" 
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+              required 
+            />
+            <input 
+              type="email" 
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Your Email" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+              required 
+            />
+            <input 
+              type="tel" 
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Your Phone (Optional)" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+            />
+            <div>
+              <label className="block text-sm font-medium text-[#F3E3C3] mb-2">Preferred Contact Method</label>
+              <select 
+                name="contactMethod"
+                value={formData.contactMethod}
+                onChange={handleChange}
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              >
+                <option value="email">Email</option>
+                <option value="phone">Phone Call</option>
+                <option value="text">Text Message</option>
+              </select>
+            </div>
+            <textarea 
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Your Message" 
+              rows="5" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              required
+            />
+            <button 
+              type="submit" 
+              className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105"
+              disabled={sending}
+            >
+              {sending ? 'Sending...' : 'Send Message'} <ArrowRight />
+            </button>
+          </form>
+          <div className="text-[#F3E3C3]/80 space-y-6">
+            <div>
+              <h3 className="text-xl font-display text-white">Contact Info</h3>
+              <p>Email: <a href="mailto:sales@studio37.cc" className="hover:text-white transition">sales@studio37.cc</a></p>
+              <p>Phone: <a href="tel:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
+              <p>Text: <a href="sms:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
+            </div>
+            <div>
+              <h3 className="text-xl font-display text-white">Location</h3>
+              <p>Serving the Greater Houston Area</p>
+              <p>Based near Porter, TX 77362</p>
+            </div>
+            <div className="mt-4">
+              <iframe
+                title="Map of Houston"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111049.9644254322!2d-95.469384!3d29.817478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b8b1b8b1b8b1%3A0x8b1b8b1b8b1b8b1b!2sHouston%2C%20TX!5e0!3m2!1sen!2sus!4v1631910000000!5m2!1sen!2sus"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-lg shadow-lg w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- Blog Admin Section (Fixed) ---
+function BlogAdminSection({
+  blogPosts,
+  createBlogPost,
+  updateBlogPost,
+  deleteBlogPost,
+  blogEdit,
+  setBlogEdit,
+  blogSaving,
+  blogAdminError
+}) {
+  const [newPost, setNewPost] = useState({
+    title: '',
+    slug: '',
+    excerpt: '',
+    content: '',
+    author: '',
+    publish_date: '',
+    tags: '',
+    category: ''
+  });
+
+  const handleNewChange = e => {
+    const { name, value } = e.target;
+    setNewPost(p => ({ ...p, [name]: value }));
+  };
+
+  const handleCreate = async e => {
+    e.preventDefault();
+    await createBlogPost({
+      ...newPost,
+      tags: typeof newPost.tags === 'string'
+        ? newPost.tags.split(',').map(t => t.trim()).filter(Boolean)
+        : Array.isArray(newPost.tags)
+          ? newPost.tags
+          : [],
+      publish_date: newPost.publish_date || new Date().toISOString()
+    });
+    setNewPost({
+      title: '',
+      slug: '',
+      excerpt: '',
+      content: '',
+      author: '',
+      publish_date: '',
+      tags: '',
+      category: ''
+    });
+  };
+
+  const [editForm, setEditForm] = useState(null);
+
+  useEffect(() => {
+    if (blogEdit) {
+      const post = blogPosts.find(p => p.id === blogEdit) || null;
+      if (post) {
+        setEditForm({
+          ...post,
+          tags: Array.isArray(post.tags)
+            ? post.tags.join(', ')
+            : (typeof post.tags === 'string' ? post.tags : '')
+        });
+      } else {
+        setEditForm(null);
+      }
+    } else {
+      setEditForm(null);
+    }
+  }, [blogEdit, blogPosts]);
+
+  const handleEditChange = e => {
+    const { name, value } = e.target;
+    setEditForm(f => ({ ...f, [name]: value }));
+  };
+
+  const handleUpdate = async e => {
+    e.preventDefault();
+    await updateBlogPost(editForm.id, {
+      ...editForm,
+      tags: typeof editForm.tags === 'string'
+        ? editForm.tags.split(',').map(t => t.trim()).filter(Boolean)
+        : Array.isArray(editForm.tags)
+          ? editForm.tags
+          : []
+    });
+    setBlogEdit(null);
+  };
+
+  if (blogSaving) {
+    return <div className="text-[#F3E3C3] py-8">Saving...</div>;
+  }
+
+  return (
+    <div>
+      <h4 className="text-xl font-display mb-4">Blog Posts</h4>
+      {blogAdminError && <div className="bg-red-500/20 border border-red-500 text-red-400 px-4 py-2 rounded mb-4">{blogAdminError}</div>}
+      
+      {editForm ? (
+        <form onSubmit={handleUpdate} className="space-y-4 mb-8 bg-[#232323] p-6 rounded">
+          <h5 className="text-lg font-bold mb-4">Edit Post</h5>
+          <input name="title" value={editForm.title} onChange={handleEditChange} placeholder="Title" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
+          <input name="slug" value={editForm.slug} onChange={handleEditChange} placeholder="Slug" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
+          <div className="grid md:grid-cols-2 gap-4">
+            <input name="author" value={editForm.author} onChange={handleEditChange} placeholder="Author" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+            <input name="publish_date" value={editForm.publish_date} onChange={handleEditChange} placeholder="Publish Date" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" type="date" />
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <input name="category" value={editForm.category} onChange={handleEditChange} placeholder="Category" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+            <input name="tags" value={editForm.tags} onChange={handleEditChange} placeholder="Tags (comma separated)" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          </div>
+          <textarea name="excerpt" value={editForm.excerpt} onChange={handleEditChange} placeholder="Excerpt" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" rows={2} />
+          <textarea name="content" value={editForm.content} onChange={handleEditChange} placeholder="Content (Markdown supported)" rows={8} className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <div className="flex gap-2">
+            <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md" disabled={blogSaving}>
+              {blogSaving ? 'Saving...' : 'Save Changes'}
+            </button>
+            <button type="button" onClick={() => setBlogEdit(null)} className="bg-gray-500 text-white py-2 px-4 rounded-md">Cancel</button>
+          </div>
+        </form>
+      ) : (
+        <form onSubmit={handleCreate} className="space-y-4 mb-8 bg-[#232323] p-6 rounded">
+          <h5 className="text-lg font-bold mb-4">Create New Post</h5>
+          <input name="title" value={newPost.title} onChange={handleNewChange} placeholder="Title" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
+          <input name="slug" value={newPost.slug} onChange={handleNewChange} placeholder="Slug" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
+          <div className="grid md:grid-cols-2 gap-4">
+            <input name="author" value={newPost.author} onChange={handleNewChange} placeholder="Author" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+            <input name="publish_date" value={newPost.publish_date} onChange={handleNewChange} placeholder="Publish Date" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" type="date" />
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <input name="category" value={newPost.category} onChange={handleNewChange} placeholder="Category" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+            <input name="tags" value={newPost.tags} onChange={handleNewChange} placeholder="Tags (comma separated)" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          </div>
+          <textarea name="excerpt" value={newPost.excerpt} onChange={handleNewChange} placeholder="Excerpt" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" rows={2} />
+          <textarea name="content" value={newPost.content} onChange={handleNewChange} placeholder="Content (Markdown supported)" rows={8} className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md" disabled={blogSaving}>
+            {blogSaving ? 'Creating...' : 'Create Post'}
+          </button>
+        </form>
+      )}
+      
+      <div className="overflow-x-auto">
+        <table className="w-full text-left">
+          <thead className="border-b border-white/10">
+            <tr>
+              <th className="p-3">Title</th>
+              <th className="p-3">Author</th>
+              <th className="p-3">Date</th>
+              <th className="p-3">Category</th>
+              <th className="p-3">Tags</th>
+              <th className="p-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {blogPosts.map(post => (
+              <tr key={post.id} className="border-b border-white/10 last:border-b-0">
+                <td className="p-3 font-bold">{post.title}</td>
+                <td className="p-3">{post.author}</td>
+                <td className="p-3 text-xs">{post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}</td>
+                <td className="p-3">{post.category}</td>
+                <td className="p-3">
+                  {Array.isArray(post.tags) ? post.tags.join(', ') : (typeof post.tags === 'string' ? post.tags : '')}
+                </td>
+                <td className="p-3 flex gap-2">
+                  <button onClick={() => setBlogEdit(post.id)} className="bg-blue-500 text-white px-3 py-1 rounded text-xs">Edit</button>
+                  <button onClick={() => deleteBlogPost(post.id)} className="bg-red-600 text-white px-3 py-1 rounded text-xs">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 // ...existing code for other components...
