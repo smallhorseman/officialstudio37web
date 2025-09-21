@@ -890,3 +890,622 @@ function ErrorFallback({ message }) {
     </div>
   );
 }
+
+// --- Enhanced Contact Page with Text Option ---
+const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+    contactMethod: 'email'
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+    
+    // Save contact submission to Supabase
+    await supabase.from('leads').insert([{
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      service: 'Contact Form',
+      status: 'New'
+    }]);
+
+    // Add note with contact details
+    const { data: leadData } = await supabase
+      .from('leads')
+      .select('id')
+      .eq('email', formData.email)
+      .order('created_at', { ascending: false })
+      .limit(1);
+
+    if (leadData && leadData[0]) {
+      await supabase.from('lead_notes').insert([{
+        lead_id: leadData[0].id,
+        note: `Contact Form: Preferred contact: ${formData.contactMethod}. Message: ${formData.message}`,
+        status: 'Contact Form'
+      }]);
+    }
+
+    setSending(false);
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <div className="py-20 md:py-28 bg-[#212121]">
+        <div className="container mx-auto px-6 text-center">
+          <div className="bg-[#262626] rounded-lg p-8 max-w-md mx-auto">
+            <h2 className="text-3xl font-display text-white mb-4">Thank You!</h2>
+            <p className="text-[#F3E3C3]/80">We've received your message and will get back to you soon!</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="py-20 md:py-28 bg-[#212121]">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-display">Get In Touch</h2>
+          <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <input 
+              type="text" 
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+              required 
+            />
+            <input 
+              type="email" 
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Your Email" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+              required 
+            />
+            <input 
+              type="tel" 
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Your Phone (Optional)" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+            />
+            <div>
+              <label className="block text-sm font-medium text-[#F3E3C3] mb-2">Preferred Contact Method</label>
+              <select 
+                name="contactMethod"
+                value={formData.contactMethod}
+                onChange={handleChange}
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              >
+                <option value="email">Email</option>
+                <option value="phone">Phone Call</option>
+                <option value="text">Text Message</option>
+              </select>
+            </div>
+            <textarea 
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Your Message" 
+              rows="5" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              required
+            />
+            <button 
+              type="submit" 
+              className="group inline-flex items-center justify-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105"
+              disabled={sending}
+            >
+              {sending ? 'Sending...' : 'Send Message'} <ArrowRight />
+            </button>
+          </form>
+          <div className="text-[#F3E3C3]/80 space-y-6">
+            <div>
+              <h3 className="text-xl font-display text-white">Contact Info</h3>
+              <p>Email: <a href="mailto:sales@studio37.cc" className="hover:text-white transition">sales@studio37.cc</a></p>
+              <p>Phone: <a href="tel:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
+              <p>Text: <a href="sms:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
+            </div>
+            <div>
+              <h3 className="text-xl font-display text-white">Location</h3>
+              <p>Serving the Greater Houston Area</p>
+              <p>Based near Porter, TX 77362</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- BlogPage Component ---
+function BlogPage({ posts, loading, error }) {
+  if (loading) {
+    return <div className="text-[#F3E3C3] text-center py-10">Loading blog posts...</div>;
+  }
+  if (error) {
+    return <div className="text-red-400 text-center py-10">{error}</div>;
+  }
+  if (!posts || posts.length === 0) {
+    return <div className="text-[#F3E3C3]/70 text-center py-10">No blog posts found.</div>;
+  }
+  return (
+    <div className="py-20 md:py-28 bg-[#212121]">
+      <div className="container mx-auto px-6">
+        <h2 className="text-4xl md:text-5xl font-display mb-10">Blog</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map(post => (
+            <div key={post.id} className="bg-[#262626] rounded-lg shadow-lg p-6 flex flex-col">
+              <h3 className="text-2xl font-bold mb-2 text-white">{post.title}</h3>
+              <div className="text-xs text-[#F3E3C3]/60 mb-2">{post.author} &middot; {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}</div>
+              <div className="text-[#F3E3C3]/80 mb-4">{post.excerpt}</div>
+              <Link to={`/blog/${post.slug}`} className="text-[#F3E3C3] hover:underline mt-auto">Read More</Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// --- Footer Component ---
+function Footer() {
+  return (
+    <footer className="bg-[#232323] text-[#F3E3C3] py-8 mt-20">
+      <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-2">
+          <span className="font-display font-bold text-lg">Studio37</span>
+          <span className="text-xs">&copy; {new Date().getFullYear()}</span>
+        </div>
+        <nav className="flex gap-4">
+          <Link to="/" className="hover:underline">Home</Link>
+          <Link to="/about" className="hover:underline">About</Link>
+          <Link to="/services" className="hover:underline">Services</Link>
+          <Link to="/portfolio" className="hover:underline">Portfolio</Link>
+          <Link to="/blog" className="hover:underline">Blog</Link>
+          <Link to="/contact" className="hover:underline">Contact</Link>
+        </nav>
+      </div>
+    </footer>
+  );
+}
+
+// --- Enhanced CRM Section with Project Integration ---
+function CrmSection({ leads, updateLeadStatus }) {
+  const [selectedLead, setSelectedLead] = useState(null);
+  const [showNotes, setShowNotes] = useState(false);
+  const [showLeadDetails, setShowLeadDetails] = useState(false);
+  const [newNote, setNewNote] = useState('');
+  const [leadNotes, setLeadNotes] = useState([]);
+  const [contactHistory, setContactHistory] = useState([]);
+  const [leadProjects, setLeadProjects] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const fetchLeadNotes = async (leadId) => {
+    setLoading(true);
+    setError('');
+    try {
+      const { data, error } = await supabase
+        .from('lead_notes')
+        .select('*')
+        .eq('lead_id', leadId)
+        .order('created_at', { ascending: false });
+      
+      if (error) {
+        console.error('Error fetching lead notes:', error);
+        setError('Failed to load notes');
+        setLeadNotes([]);
+      } else {
+        setLeadNotes(data || []);
+      }
+    } catch (err) {
+      console.error('Exception fetching lead notes:', err);
+      setError('Failed to load notes');
+      setLeadNotes([]);
+    }
+    setLoading(false);
+  };
+
+  const addNote = async () => {
+    if (!newNote.trim() || !selectedLead) return;
+    setLoading(true);
+    try {
+      const { error } = await supabase.from('lead_notes').insert([{
+        lead_id: selectedLead.id,
+        note: newNote,
+        status: 'Manual'
+      }]);
+      
+      if (error) {
+        console.error('Error adding note:', error);
+        setError('Failed to add note: ' + error.message);
+      } else {
+        setNewNote('');
+        await fetchLeadNotes(selectedLead.id);
+        setError('');
+      }
+    } catch (err) {
+      console.error('Exception adding note:', err);
+      setError('Failed to add note');
+    }
+    setLoading(false);
+  };
+
+  const openLeadDetails = (lead) => {
+    setSelectedLead(lead);
+    setShowLeadDetails(true);
+    setError('');
+    fetchLeadNotes(lead.id);
+  };
+
+  if (!leads || leads.length === 0) {
+    return <div className="text-[#F3E3C3]/70 py-8">No leads found.</div>;
+  }
+
+  const statuses = ['New', 'Contacted', 'Booked', 'Lost', 'Archived'];
+
+  return (
+    <div>
+      {error && (
+        <div className="bg-red-500/20 border border-red-500 text-red-400 px-4 py-2 rounded mb-4">
+          {error}
+          <button onClick={() => setError('')} className="ml-2 text-red-200 hover:text-white">✕</button>
+        </div>
+      )}
+      
+      <div className="overflow-x-auto bg-[#262626] rounded-lg shadow-lg p-6 mb-6">
+        <table className="w-full text-left">
+          <thead className="border-b border-white/10">
+            <tr>
+              <th className="p-3">Name</th>
+              <th className="p-3">Email</th>
+              <th className="p-3">Phone</th>
+              <th className="p-3">Service</th>
+              <th className="p-3">Status</th>
+              <th className="p-3">Created</th>
+              <th className="p-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {leads.map(lead => (
+              <tr key={lead.id} className="border-b border-white/10 last:border-b-0">
+                <td className="p-3 font-bold">{lead.name}</td>
+                <td className="p-3">
+                  <a href={`mailto:${lead.email}`} className="text-[#F3E3C3] hover:underline">
+                    {lead.email}
+                  </a>
+                </td>
+                <td className="p-3">
+                  {lead.phone ? (
+                    <div className="flex items-center gap-2">
+                      <a href={`tel:${lead.phone}`} className="text-[#F3E3C3] hover:underline">
+                        {lead.phone}
+                      </a>
+                    </div>
+                  ) : (
+                    <span className="text-gray-500">No phone</span>
+                  )}
+                </td>
+                <td className="p-3">{lead.service}</td>
+                <td className="p-3">
+                  <span className="px-2 py-1 rounded bg-[#F3E3C3]/10 text-[#F3E3C3]">{lead.status}</span>
+                </td>
+                <td className="p-3 text-xs">{lead.created_at ? new Date(lead.created_at).toLocaleDateString() : ''}</td>
+                <td className="p-3">
+                  <div className="flex gap-1 flex-wrap">
+                    <select
+                      value={lead.status}
+                      onChange={e => updateLeadStatus(lead.id, e.target.value)}
+                      className="bg-[#181818] border border-white/20 rounded px-2 py-1 text-xs text-[#F3E3C3]"
+                    >
+                      {statuses.map(s => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                    <button
+                      onClick={() => openLeadDetails(lead)}
+                      className="bg-blue-500 text-white px-2 py-1 rounded text-xs"
+                      title="View Details"
+                    >
+                      👁️
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Lead Details Modal */}
+      {showLeadDetails && selectedLead && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-display text-white">Lead Details - {selectedLead.name}</h3>
+              <button
+                onClick={() => {
+                  setShowLeadDetails(false);
+                  setSelectedLead(null);
+                  setError('');
+                }}
+                className="text-white text-2xl hover:text-gray-300"
+              >
+                &times;
+              </button>
+            </div>
+            
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-lg font-bold mb-3">Contact Information</h4>
+                <div className="space-y-2 text-[#F3E3C3]/80">
+                  <p><strong>Email:</strong> <a href={`mailto:${selectedLead.email}`} className="text-[#F3E3C3] hover:underline">{selectedLead.email}</a></p>
+                  <p><strong>Phone:</strong> {selectedLead.phone || 'Not provided'}</p>
+                  <p><strong>Service:</strong> {selectedLead.service || 'Not specified'}</p>
+                  <p><strong>Status:</strong> <span className="px-2 py-1 rounded bg-[#F3E3C3]/10 text-[#F3E3C3]">{selectedLead.status}</span></p>
+                  <p><strong>Created:</strong> {selectedLead.created_at ? new Date(selectedLead.created_at).toLocaleDateString() : ''}</p>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">Notes</h4>
+                <div className="mb-4">
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={newNote}
+                      onChange={e => setNewNote(e.target.value)}
+                      placeholder="Add a note..."
+                      className="flex-1 bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+                      onKeyPress={e => e.key === 'Enter' && addNote()}
+                    />
+                    <button
+                      onClick={addNote}
+                      className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                      disabled={!newNote.trim() || loading}
+                    >
+                      {loading ? 'Adding...' : 'Add'}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="space-y-3 max-h-64 overflow-y-auto">
+                  {loading ? (
+                    <p className="text-[#F3E3C3]/70">Loading notes...</p>
+                  ) : leadNotes.length > 0 ? (
+                    leadNotes.map(note => (
+                      <div key={note.id} className="bg-[#181818] rounded p-3">
+                        <p className="text-[#F3E3C3]/90">{note.note}</p>
+                        <div className="flex justify-between items-center mt-2">
+                          <span className="text-xs text-[#F3E3C3]/60">
+                            {note.created_at ? new Date(note.created_at).toLocaleDateString() : ''}
+                          </span>
+                          <span className="text-xs px-2 py-1 bg-[#F3E3C3]/10 rounded">
+                            {note.status}
+                          </span>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-[#F3E3C3]/70">No notes yet. Add one above!</p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// --- Enhanced CMS Section (Portfolio Management Only) ---
+function CmsSection({ portfolioImages, addPortfolioImage, deletePortfolioImage }) {
+  const [imageUrl, setImageUrl] = useState('');
+  const [imageCategory, setImageCategory] = useState('');
+  const [imageCaption, setImageCaption] = useState('');
+  const [addingImage, setAddingImage] = useState(false);
+
+  const handleAddImage = async (e) => {
+    e.preventDefault();
+    setAddingImage(true);
+    await addPortfolioImage({
+      url: imageUrl,
+      category: imageCategory,
+      caption: imageCaption,
+      order_index: portfolioImages.length,
+      created_at: new Date().toISOString()
+    });
+    setImageUrl('');
+    setImageCategory('');
+    setImageCaption('');
+    setAddingImage(false);
+  };
+
+  return (
+    <div>
+      <h4 className="text-xl font-display mb-6">Portfolio Management</h4>
+      
+      <div className="grid md:grid-cols-2 gap-8 mb-8">
+        <div>
+          <h5 className="text-lg font-bold mb-4">Add New Image</h5>
+          <form onSubmit={handleAddImage} className="space-y-4">
+            <input
+              type="url"
+              value={imageUrl}
+              onChange={e => setImageUrl(e.target.value)}
+              placeholder="Image URL"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+              required
+            />
+            <input
+              type="text"
+              value={imageCategory}
+              onChange={e => setImageCategory(e.target.value)}
+              placeholder="Category"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+            />
+            <input
+              type="text"
+              value={imageCaption}
+              onChange={e => setImageCaption(e.target.value)}
+              placeholder="Caption"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+            />
+            <button
+              type="submit"
+              className="w-full bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
+              disabled={addingImage || !imageUrl}
+            >
+              {addingImage ? 'Adding...' : 'Add Image'}
+            </button>
+          </form>
+        </div>
+
+        <div>
+          <h5 className="text-lg font-bold mb-4">Current Images ({portfolioImages.length})</h5>
+          <div className="grid grid-cols-3 gap-2 max-h-80 overflow-y-auto">
+            {portfolioImages.map(img => (
+              <div key={img.id} className="relative group">
+                <img src={img.url} alt={img.category} className="w-full h-20 object-cover rounded" />
+                <button
+                  onClick={() => deletePortfolioImage(img.id)}
+                  className="absolute top-1 right-1 bg-red-600 text-white text-xs px-1 py-1 rounded opacity-80 group-hover:opacity-100"
+                  title="Delete"
+                >
+                  &times;
+                </button>
+                <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 rounded-b truncate">
+                  {img.category || 'No category'}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// --- Enhanced Blog Admin Section ---
+function BlogAdminSection({
+  blogPosts,
+  createBlogPost,
+  updateBlogPost,
+  deleteBlogPost,
+  blogEdit,
+  setBlogEdit,
+  blogSaving,
+  blogAdminError
+}) {
+  const [newPost, setNewPost] = useState({
+    title: '',
+    slug: '',
+    excerpt: '',
+    content: '',
+    author: '',
+    publish_date: '',
+    tags: '',
+    category: ''
+  });
+
+  const handleNewChange = e => {
+    const { name, value } = e.target;
+    setNewPost(p => ({ ...p, [name]: value }));
+  };
+
+  const handleCreate = async e => {
+    e.preventDefault();
+    await createBlogPost({
+      ...newPost,
+      tags: typeof newPost.tags === 'string'
+        ? newPost.tags.split(',').map(t => t.trim()).filter(Boolean)
+        : Array.isArray(newPost.tags)
+          ? newPost.tags
+          : [],
+      publish_date: newPost.publish_date || new Date().toISOString().split('T')[0]
+    });
+    setNewPost({
+      title: '',
+      slug: '',
+      excerpt: '',
+      content: '',
+      author: '',
+      publish_date: '',
+      tags: '',
+      category: ''
+    });
+  };
+
+  return (
+    <div>
+      <h4 className="text-xl font-display mb-4">Blog Posts</h4>
+      {blogAdminError && <div className="bg-red-500/20 border border-red-500 text-red-400 px-4 py-2 rounded mb-4">{blogAdminError}</div>}
+      
+      <form onSubmit={handleCreate} className="space-y-4 mb-8 bg-[#232323] p-6 rounded">
+        <h5 className="text-lg font-bold mb-4">Create New Post</h5>
+        <input name="title" value={newPost.title} onChange={handleNewChange} placeholder="Title" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
+        <input name="slug" value={newPost.slug} onChange={handleNewChange} placeholder="Slug" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
+        <div className="grid md:grid-cols-2 gap-4">
+          <input name="author" value={newPost.author} onChange={handleNewChange} placeholder="Author" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <input name="publish_date" value={newPost.publish_date} onChange={handleNewChange} placeholder="Publish Date" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" type="date" />
+        </div>
+        <div className="grid md:grid-cols-2 gap-4">
+          <input name="category" value={newPost.category} onChange={handleNewChange} placeholder="Category" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <input name="tags" value={newPost.tags} onChange={handleNewChange} placeholder="Tags (comma separated)" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+        </div>
+        <textarea name="excerpt" value={newPost.excerpt} onChange={handleNewChange} placeholder="Excerpt" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" rows={2} />
+        <textarea name="content" value={newPost.content} onChange={handleNewChange} placeholder="Content (Markdown supported)" rows={8} className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+        <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md" disabled={blogSaving}>
+          {blogSaving ? 'Creating...' : 'Create Post'}
+        </button>
+      </form>
+      
+      <div className="overflow-x-auto">
+        <table className="w-full text-left">
+          <thead className="border-b border-white/10">
+            <tr>
+              <th className="p-3">Title</th>
+              <th className="p-3">Author</th>
+              <th className="p-3">Date</th>
+              <th className="p-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {blogPosts.map(post => (
+              <tr key={post.id} className="border-b border-white/10 last:border-b-0">
+                <td className="p-3 font-bold">{post.title}</td>
+                <td className="p-3">{post.author}</td>
+                <td className="p-3 text-xs">{post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}</td>
+                <td className="p-3 flex gap-2">
+                  <button onClick={() => setBlogEdit(post.id)} className="bg-blue-500 text-white px-3 py-1 rounded text-xs">Edit</button>
+                  <button onClick={() => deleteBlogPost(post.id)} className="bg-red-600 text-white px-3 py-1 rounded text-xs">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
