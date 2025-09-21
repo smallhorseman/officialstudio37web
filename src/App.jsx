@@ -1,5 +1,5 @@
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, Suspense, lazy } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import PhotoshootPlanner from './PhotoshootPlanner';
@@ -49,6 +49,9 @@ const Logo = ({ className }) => (
 );
 
 // --- Main Application Component --- //
+
+const AdminDashboard = lazy(() => import('./components/AdminDashboard'));
+const BlogAdminSection = lazy(() => import('./components/BlogAdminSection'));
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -304,79 +307,83 @@ export default function App() {
 
   // --- Render ---
   return (
-    <div className="min-h-screen bg-[#181818] text-[#F3E3C3] font-sans antialiased transition-colors duration-300">
-      {/* Chatbot Button */}
-      <button
-        onClick={() => setShowChatBot(true)}
-        className="fixed bottom-6 right-6 z-50 bg-[#F3E3C3] text-[#1a1a1a] rounded-full shadow-lg p-4 flex items-center gap-2 hover:scale-105 transition-transform"
-        aria-label="Open Photoshoot Planner Chat Bot"
-        style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.25)' }}
-      >
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-        <span className="font-bold hidden md:inline">Plan My Shoot</span>
-      </button>
-      {showChatBot && (
-        <div className="fixed inset-0 bg-black/40 flex items-end md:items-center justify-center z-[100]">
-          <div className="bg-[#232323] dark:bg-white rounded-t-2xl md:rounded-lg shadow-2xl w-full max-w-md mx-auto p-0 md:p-0 relative animate-fadeInUp">
-            <button onClick={() => setShowChatBot(false)} className="absolute top-2 right-4 text-white dark:text-black text-2xl">&times;</button>
-            <div className="p-4 border-b border-white/10 flex items-center gap-2">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-              <span className="font-display text-lg font-bold">Photoshoot Planner</span>
+    <ErrorBoundary>
+      <div className="min-h-screen bg-[#181818] text-[#F3E3C3] font-sans antialiased transition-colors duration-300">
+        {/* Chatbot Button */}
+        <button
+          onClick={() => setShowChatBot(true)}
+          className="fixed bottom-6 right-6 z-50 bg-[#F3E3C3] text-[#1a1a1a] rounded-full shadow-lg p-4 flex items-center gap-2 hover:scale-105 transition-transform"
+          aria-label="Open Photoshoot Planner Chat Bot"
+          style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.25)' }}
+        >
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          <span className="font-bold hidden md:inline">Plan My Shoot</span>
+        </button>
+        {showChatBot && (
+          <div className="fixed inset-0 bg-black/40 flex items-end md:items-center justify-center z-[100]">
+            <div className="bg-[#232323] dark:bg-white rounded-t-2xl md:rounded-lg shadow-2xl w-full max-w-md mx-auto p-0 md:p-0 relative animate-fadeInUp">
+              <button onClick={() => setShowChatBot(false)} className="absolute top-2 right-4 text-white dark:text-black text-2xl">&times;</button>
+              <div className="p-4 border-b border-white/10 flex items-center gap-2">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                <span className="font-display text-lg font-bold">Photoshoot Planner</span>
+              </div>
+              <VirtualAgentPlanner />
             </div>
-            <VirtualAgentPlanner />
           </div>
-        </div>
-      )}
-      <Header 
-        isMenuOpen={isMenuOpen} 
-        setIsMenuOpen={setIsMenuOpen}
-        theme={theme}
-        toggleTheme={toggleTheme}
-        showAdminButton={!location.pathname.includes('admin')}
-      />
-      <main className="pt-20">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage content={siteContent.about} />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/portfolio" element={
-            <PortfolioPage
-              isUnlocked={portfolioUnlocked}
-              onUnlock={handlePortfolioUnlock}
-              images={portfolioImages}
-            />
-          } />
-          <Route path="/blog" element={<BlogPage posts={blogPosts} loading={blogLoading} error={blogError} />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/admin" element={<AdminLoginPage onLogin={handleAdminLogin} />} />
-          <Route path="/admin/dashboard" element={
-            isAdmin ? (
-              <AdminDashboard
-                leads={leads}
-                updateLeadStatus={updateLeadStatus}
-                content={siteContent}
-                portfolioImages={portfolioImages}
-                addPortfolioImage={addPortfolioImage}
-                deletePortfolioImage={deletePortfolioImage}
-                updatePortfolioImageOrder={updatePortfolioImageOrder}
-                blogPosts={blogPosts}
-                createBlogPost={createBlogPost}
-                updateBlogPost={updateBlogPost}
-                deleteBlogPost={deleteBlogPost}
-                blogEdit={blogEdit}
-                setBlogEdit={setBlogEdit}
-                blogSaving={blogSaving}
-                blogAdminError={blogAdminError}
-                projects={projects}
-                projectsLoading={projectsLoading}
+        )}
+        <Header 
+          isMenuOpen={isMenuOpen} 
+          setIsMenuOpen={setIsMenuOpen}
+          theme={theme}
+          toggleTheme={toggleTheme}
+          showAdminButton={!location.pathname.includes('admin')}
+        />
+        <main className="pt-20">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage content={siteContent.about} />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/portfolio" element={
+              <MemoizedPortfolioPage
+                isUnlocked={portfolioUnlocked}
+                onUnlock={handlePortfolioUnlock}
+                images={portfolioImages}
               />
-            ) : <AdminLoginPage onLogin={handleAdminLogin} />
-          } />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+            } />
+            <Route path="/blog" element={<BlogPage posts={blogPosts} loading={blogLoading} error={blogError} />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/admin" element={<AdminLoginPage onLogin={handleAdminLogin} />} />
+            <Route path="/admin/dashboard" element={
+              isAdmin ? (
+                <Suspense fallback={<div className="text-center py-20">Loading admin dashboard...</div>}>
+                  <AdminDashboard
+                    leads={leads}
+                    updateLeadStatus={updateLeadStatus}
+                    content={siteContent}
+                    portfolioImages={portfolioImages}
+                    addPortfolioImage={addPortfolioImage}
+                    deletePortfolioImage={deletePortfolioImage}
+                    updatePortfolioImageOrder={updatePortfolioImageOrder}
+                    blogPosts={blogPosts}
+                    createBlogPost={createBlogPost}
+                    updateBlogPost={updateBlogPost}
+                    deleteBlogPost={deleteBlogPost}
+                    blogEdit={blogEdit}
+                    setBlogEdit={setBlogEdit}
+                    blogSaving={blogSaving}
+                    blogAdminError={blogAdminError}
+                    projects={projects}
+                    projectsLoading={projectsLoading}
+                  />
+                </Suspense>
+              ) : <AdminLoginPage onLogin={handleAdminLogin} />
+            } />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </ErrorBoundary>
   );
 }
 
@@ -646,10 +653,20 @@ const ServicesPage = () => (
   </div>
 );
 
+// Optimize portfolio images with lazy loading and intersection observer
 const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
   const [filter, setFilter] = useState('All');
-  const categories = ['All', ...new Set(images.map(img => img.category))];
-  const filteredImages = filter === 'All' ? images : images.filter(img => img.category === filter);
+  
+  // Memoize filtered images
+  const filteredImages = useMemo(() => {
+    const categories = ['All', ...new Set(images.map(img => img.category))];
+    return filter === 'All' ? images : images.filter(img => img.category === filter);
+  }, [images, filter]);
+
+  const categories = useMemo(() => 
+    ['All', ...new Set(images.map(img => img.category))], 
+    [images]
+  );
 
   return (
     <div className="py-20 md:py-28">
@@ -675,10 +692,10 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
             <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6">
               {filteredImages.map(img => (
                 <div key={img.id} className="break-inside-avoid relative group">
-                  <img 
+                  <OptimizedImage
                     src={img.url} 
                     alt={img.caption || `${img.category} photography`} 
-                    className="w-full rounded-lg shadow-lg hover:opacity-90 transition-opacity" 
+                    className="w-full rounded-lg shadow-lg hover:opacity-90 transition-opacity"
                   />
                   {img.caption && (
                     <div className="absolute bottom-0 left-0 right-0 bg-black/75 backdrop-blur-sm p-3 rounded-b-lg">
@@ -696,6 +713,42 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
     </div>
   );
 };
+
+// Add performance monitoring and error boundaries
+const ErrorBoundary = ({ children, fallback }) => {
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    const handleError = (error) => {
+      console.error('Application error:', error);
+      setHasError(true);
+    };
+    
+    window.addEventListener('error', handleError);
+    return () => window.removeEventListener('error', handleError);
+  }, []);
+
+  if (hasError) {
+    return fallback || (
+      <div className="min-h-screen flex items-center justify-center bg-[#181818] text-[#F3E3C3]">
+        <div className="text-center">
+          <h2 className="text-2xl font-display mb-4">Something went wrong</h2>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded"
+          >
+            Refresh Page
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return children;
+};
+
+// --- Memoized components for performance ---
+const MemoizedPortfolioPage = React.memo(PortfolioPage);
 
 const PortfolioGate = ({ onUnlock }) => {
   const [formData, setFormData] = useState({ name: '', email: '', service: '', phone: '' });
@@ -715,23 +768,23 @@ const PortfolioGate = ({ onUnlock }) => {
   };
 
   if (submitted) {
-      return (
-        <div className="text-center bg-[#262626] rounded-lg p-8 max-w-lg mx-auto relative">
-          <h3 className="text-2xl font-display text-white mb-2">Thank You!</h3>
-          <p className="text-[#F3E3C3]/80">The portfolio is now unlocked. Check your email for a 10% off coupon!</p>
-          <p className="text-[#F3E3C3]/80 mt-4">Want to plan your shoot?{' '}
-            <button onClick={() => setShowPlanner(true)} className="underline text-[#F3E3C3]">Try our Conversational AI Planner</button>
-          </p>
-          {showPlanner && (
-            <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-              <div className="bg-[#232323] rounded-lg shadow-lg max-w-md w-full relative">
-                <button onClick={() => setShowPlanner(false)} className="absolute top-2 right-2 text-white text-xl">&times;</button>
-                <ConversationalPlanner email={formData.email} onComplete={() => {}} />
-              </div>
+    return (
+      <div className="text-center bg-[#262626] rounded-lg p-8 max-w-lg mx-auto relative">
+        <h3 className="text-2xl font-display text-white mb-2">Thank You!</h3>
+        <p className="text-[#F3E3C3]/80">The portfolio is now unlocked. Check your email for a 10% off coupon!</p>
+        <p className="text-[#F3E3C3]/80 mt-4">Want to plan your shoot?{' '}
+          <button onClick={() => setShowPlanner(true)} className="underline text-[#F3E3C3]">Try our Conversational AI Planner</button>
+        </p>
+        {showPlanner && (
+          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+            <div className="bg-[#232323] rounded-lg shadow-lg max-w-md w-full relative">
+              <button onClick={() => setShowPlanner(false)} className="absolute top-2 right-2 text-white text-xl">&times;</button>
+              <ConversationalPlanner email={formData.email} onComplete={() => {}} />
             </div>
-          )}
-        </div>
-      );
+          </div>
+        )}
+      </div>
+    );
   }
 
   return (
@@ -743,12 +796,12 @@ const PortfolioGate = ({ onUnlock }) => {
         <input type="email" name="email" placeholder="Your Email" required onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
         <input type="tel" name="phone" placeholder="Your Phone (Optional)" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
         <select name="service" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]">
-            <option value="">Service of Interest (Optional)</option>
-            <option>Director Package</option>
-            <option>Producer Package</option>
-            <option>Wedding</option>
-            <option>Portrait</option>
-            <option>Other</option>
+          <option value="">Service of Interest (Optional)</option>
+          <option>Director Package</option>
+          <option>Producer Package</option>
+          <option>Wedding</option>
+          <option>Portrait</option>
+          <option>Other</option>
         </select>
         <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
           Unlock & Get Coupon <ArrowRight />
@@ -940,949 +993,6 @@ const AdminLoginPage = ({ onLogin }) => {
   );
 };
 
-// --- AdminDashboard Component ---
-function AdminDashboard({
-  leads,
-  updateLeadStatus,
-  content,
-  portfolioImages,
-  addPortfolioImage,
-  deletePortfolioImage,
-  updatePortfolioImageOrder,
-  blogPosts,
-  createBlogPost,
-  updateBlogPost,
-  deleteBlogPost,
-  blogEdit,
-  setBlogEdit,
-  blogSaving,
-  blogAdminError,
-  projects,
-  projectsLoading
-}) {
-  const [activeTab, setActiveTab] = useState('crm');
-  const [siteMapPage, setSiteMapPage] = useState('home');
-
-  return (
-    <div className="py-20 md:py-28 bg-[#212121]">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-display">Admin Dashboard</h2>
-          <p className="text-lg text-[#F3E3C3]/70 mt-4">Manage your business operations</p>
-        </div>
-        
-        <div className="flex flex-wrap gap-2 justify-center mb-8">
-          {['crm', 'projects', 'cms', 'blog', 'sitemap', 'analytics'].map(tab => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors ${
-                activeTab === tab 
-                  ? 'bg-[#F3E3C3] text-[#1a1a1a]' 
-                  : 'bg-[#262626] hover:bg-[#333] text-[#F3E3C3]'
-              }`}
-            >
-              {tab.toUpperCase()}
-            </button>
-          ))}
-        </div>
-
-        <div className="bg-[#262626] rounded-lg shadow-lg p-6">
-          {activeTab === 'crm' && (
-            <div>
-              <h3 className="text-2xl font-display mb-6">Customer Relationship Management</h3>
-              <CrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
-            </div>
-          )}
-
-          {activeTab === 'projects' && (
-            <div>
-              <h3 className="text-2xl font-display mb-6">Project Management</h3>
-              <ProjectsSection projects={projects} projectsLoading={projectsLoading} />
-            </div>
-          )}
-          
-          {activeTab === 'cms' && (
-            <div>
-              <h3 className="text-2xl font-display mb-6">Content Management</h3>
-              <CmsSection
-                portfolioImages={portfolioImages}
-                addPortfolioImage={addPortfolioImage}
-                deletePortfolioImage={deletePortfolioImage}
-                updatePortfolioImageOrder={updatePortfolioImageOrder}
-              />
-            </div>
-          )}
-          
-          {activeTab === 'blog' && (
-            <div>
-              <h3 className="text-2xl font-display mb-6">Blog Management</h3>
-              <BlogAdminSection
-                blogPosts={blogPosts}
-                createBlogPost={createBlogPost}
-                updateBlogPost={updateBlogPost}
-                deleteBlogPost={deleteBlogPost}
-                blogEdit={blogEdit}
-                setBlogEdit={setBlogEdit}
-                blogSaving={blogSaving}
-                blogAdminError={blogAdminError}
-              />
-            </div>
-          )}
-
-          {activeTab === 'sitemap' && (
-            <div>
-              <h3 className="text-2xl font-display mb-6">Site Map Editor</h3>
-              <SiteMapTab 
-                siteMapPage={siteMapPage} 
-                setSiteMapPage={setSiteMapPage} 
-                content={content}
-                portfolioImages={portfolioImages}
-                blogPosts={blogPosts}
-              />
-            </div>
-          )}
-
-          {activeTab === 'analytics' && (
-            <div>
-              <h3 className="text-2xl font-display mb-6">Analytics Dashboard</h3>
-              <AnalyticsSection leads={leads} projects={projects} blogPosts={blogPosts} />
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// --- Enhanced CRM Section with Call/Text/Email buttons ---
-function CrmSection({ leads, updateLeadStatus }) {
-  const [selectedLead, setSelectedLead] = useState(null);
-  const [showLeadDetails, setShowLeadDetails] = useState(false);
-  const [newNote, setNewNote] = useState('');
-  const [leadNotes, setLeadNotes] = useState([]);
-  const [leadProjects, setLeadProjects] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const fetchLeadNotes = async (leadId) => {
-    setLoading(true);
-    try {
-      const { data, error } = await supabase
-        .from('lead_notes')
-        .select('*')
-        .eq('lead_id', leadId)
-        .order('created_at', { ascending: false });
-      
-      if (!error) setLeadNotes(data || []);
-    } catch (err) {
-      console.error('Error fetching notes:', err);
-    }
-    setLoading(false);
-  };
-
-  const fetchLeadProjects = async (leadId) => {
-    try {
-      const { data } = await supabase
-        .from('projects')
-        .select('*')
-        .eq('lead_id', leadId)
-        .order('created_at', { ascending: false });
-      
-      setLeadProjects(data || []);
-    } catch (err) {
-      console.error('Error fetching projects:', err);
-    }
-  };
-
-  const addNote = async () => {
-    if (!newNote.trim() || !selectedLead) return;
-    try {
-      await supabase.from('lead_notes').insert([{
-        lead_id: selectedLead.id,
-        note: newNote,
-        status: 'Manual'
-      }]);
-      setNewNote('');
-      await fetchLeadNotes(selectedLead.id);
-    } catch (err) {
-      console.error('Error adding note:', err);
-    }
-  };
-
-  const openLeadDetails = (lead) => {
-    setSelectedLead(lead);
-    setShowLeadDetails(true);
-    fetchLeadNotes(lead.id);
-    fetchLeadProjects(lead.id);
-  };
-
-  if (!leads || leads.length === 0) {
-    return <div className="text-[#F3E3C3]/70 py-8">No leads found.</div>;
-  }
-
-  const statuses = ['New', 'Contacted', 'Booked', 'Lost', 'Archived'];
-
-  return (
-    <div>
-      <div className="overflow-x-auto bg-[#262626] rounded-lg shadow-lg p-6 mb-6">
-        <table className="w-full text-left">
-          <thead className="border-b border-white/10">
-            <tr>
-              <th className="p-3">Name</th>
-              <th className="p-3">Email</th>
-              <th className="p-3">Phone</th>
-              <th className="p-3">Service</th>
-              <th className="p-3">Status</th>
-              <th className="p-3">Created</th>
-              <th className="p-3">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {leads.map(lead => (
-              <tr key={lead.id} className="border-b border-white/10 last:border-b-0">
-                <td className="p-3 font-bold">{lead.name}</td>
-                <td className="p-3">
-                  <div className="flex items-center gap-2">
-                    <a href={`mailto:${lead.email}`} className="text-[#F3E3C3] hover:underline">
-                      {lead.email}
-                    </a>
-                    <a href={`mailto:${lead.email}?subject=Studio37 Follow-up`} className="text-blue-400 hover:text-blue-300" title="Send Email">
-                      <MailIcon />
-                    </a>
-                  </div>
-                </td>
-                <td className="p-3">
-                  {lead.phone ? (
-                    <div className="flex items-center gap-2">
-                      <span className="text-[#F3E3C3]">{lead.phone}</span>
-                      <a href={`tel:${lead.phone}`} className="text-green-400 hover:text-green-300" title="Call">
-                        <PhoneIcon />
-                      </a>
-                      <a href={`sms:${lead.phone}`} className="text-purple-400 hover:text-purple-300" title="Text">
-                        <SmsIcon />
-                      </a>
-                    </div>
-                  ) : (
-                    <span className="text-gray-500">No phone</span>
-                  )}
-                </td>
-                <td className="p-3">{lead.service}</td>
-                <td className="p-3">
-                  <span className="px-2 py-1 rounded bg-[#F3E3C3]/10 text-[#F3E3C3]">{lead.status}</span>
-                </td>
-                <td className="p-3 text-xs">{lead.created_at ? new Date(lead.created_at).toLocaleDateString() : ''}</td>
-                <td className="p-3">
-                  <div className="flex gap-1 flex-wrap">
-                    <select
-                      value={lead.status}
-                      onChange={e => updateLeadStatus(lead.id, e.target.value)}
-                      className="bg-[#181818] border border-white/20 rounded px-2 py-1 text-xs text-[#F3E3C3]"
-                    >
-                      {statuses.map(s => (
-                        <option key={s} value={s}>{s}</option>
-                      ))}
-                    </select>
-                    <button
-                      onClick={() => openLeadDetails(lead)}
-                      className="bg-blue-500 text-white px-2 py-1 rounded text-xs"
-                      title="View Details"
-                    >
-                      👁️
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Enhanced Lead Details Modal with Projects */}
-      {showLeadDetails && selectedLead && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-6xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-2xl font-display text-white">{selectedLead.name} - Lead Details</h3>
-              <button
-                onClick={() => setShowLeadDetails(false)}
-                className="text-white text-2xl hover:text-gray-300"
-              >
-                &times;
-              </button>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-6">
-              <div>
-                <h4 className="text-lg font-bold mb-3">Contact Information</h4>
-                <div className="space-y-2 text-[#F3E3C3]/80">
-                  <p><strong>Email:</strong> <a href={`mailto:${selectedLead.email}`} className="text-[#F3E3C3] hover:underline">{selectedLead.email}</a></p>
-                  <p><strong>Phone:</strong> {selectedLead.phone || 'Not provided'}</p>
-                  <p><strong>Service:</strong> {selectedLead.service || 'Not specified'}</p>
-                  <p><strong>Status:</strong> <span className="px-2 py-1 rounded bg-[#F3E3C3]/10 text-[#F3E3C3]">{selectedLead.status}</span></p>
-                  <p><strong>Created:</strong> {selectedLead.created_at ? new Date(selectedLead.created_at).toLocaleDateString() : ''}</p>
-                </div>
-                
-                <div className="mt-4 flex gap-2">
-                  <a href={`mailto:${selectedLead.email}?subject=Studio37 Follow-up`} className="bg-blue-500 text-white p-2 rounded" title="Email">
-                    <MailIcon />
-                  </a>
-                  {selectedLead.phone && (
-                    <>
-                      <a href={`tel:${selectedLead.phone}`} className="bg-green-500 text-white p-2 rounded" title="Call">
-                        <PhoneIcon />
-                      </a>
-                      <a href={`sms:${selectedLead.phone}`} className="bg-purple-500 text-white p-2 rounded" title="Text">
-                        <SmsIcon />
-                      </a>
-                    </>
-                  )}
-                </div>
-              </div>
-
-              <div>
-                <h4 className="text-lg font-bold mb-3">Projects ({leadProjects.length})</h4>
-                <div className="bg-[#181818] rounded p-4 max-h-64 overflow-y-auto">
-                  {leadProjects.length > 0 ? (
-                    leadProjects.map(project => (
-                      <div key={project.id} className="mb-3 pb-3 border-b border-white/10 last:border-b-0">
-                        <div className="flex justify-between items-start mb-1">
-                          <h6 className="font-bold text-[#F3E3C3] text-sm">{project.name}</h6>
-                          <span className="text-xs px-2 py-1 bg-[#F3E3C3]/10 rounded">
-                            {project.stage}
-                          </span>
-                        </div>
-                        {project.client && (
-                          <p className="text-[#F3E3C3]/70 text-xs">Client: {project.client}</p>
-                        )}
-                        {project.opportunity_amount > 0 && (
-                          <p className="text-green-400 text-xs font-bold">
-                            ${project.opportunity_amount.toLocaleString()}
-                          </p>
-                        )}
-                      </div>
-                    ))
-                  ) : (
-                    <p className="text-[#F3E3C3]/70">No projects yet</p>
-                  )}
-                </div>
-              </div>
-
-              <div>
-                <h4 className="text-lg font-bold mb-3">Notes</h4>
-                <div className="mb-4">
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      value={newNote}
-                      onChange={e => setNewNote(e.target.value)}
-                      placeholder="Add a note..."
-                      className="flex-1 bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-                      onKeyPress={e => e.key === 'Enter' && addNote()}
-                    />
-                    <button
-                      onClick={addNote}
-                      className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-                      disabled={!newNote.trim() || loading}
-                    >
-                      Add
-                    </button>
-                  </div>
-                </div>
-
-                <div className="space-y-3 max-h-40 overflow-y-auto">
-                  {leadNotes.map(note => (
-                    <div key={note.id} className="bg-[#181818] rounded p-3">
-                      <p className="text-[#F3E3C3]/90">{note.note}</p>
-                      <div className="flex justify-between items-center mt-2">
-                        <span className="text-xs text-[#F3E3C3]/60">
-                          {note.created_at ? new Date(note.created_at).toLocaleDateString() : ''}
-                        </span>
-                        <span className="text-xs px-2 py-1 bg-[#F3E3C3]/10 rounded">
-                          {note.status}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// --- Projects Section with Todo Lists ---
-function ProjectsSection({ projects, projectsLoading }) {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [showProjectDetails, setShowProjectDetails] = useState(false);
-  const [newProject, setNewProject] = useState({
-    name: '',
-    client: '',
-    stage: 'Inquiry',
-    opportunity_amount: '',
-    notes: ''
-  });
-  const [projectTodos, setProjectTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState('');
-  const [showNewProjectForm, setShowNewProjectForm] = useState(false);
-
-  const stages = ['Inquiry', 'Proposal', 'Booked', 'In Progress', 'Completed', 'Cancelled'];
-
-  const fetchProjectTodos = async (projectId) => {
-    try {
-      const { data } = await supabase
-        .from('project_todos')
-        .select('*')
-        .eq('project_id', projectId)
-        .order('completed', { ascending: true })
-        .order('created_at', { ascending: false });
-      
-      setProjectTodos(data || []);
-    } catch (err) {
-      console.error('Error fetching todos:', err);
-    }
-  };
-
-  const addTodo = async () => {
-    if (!newTodo.trim() || !selectedProject) return;
-    try {
-      await supabase.from('project_todos').insert([{
-        project_id: selectedProject.id,
-        task: newTodo,
-        completed: false
-      }]);
-      setNewTodo('');
-      await fetchProjectTodos(selectedProject.id);
-    } catch (err) {
-      console.error('Error adding todo:', err);
-    }
-  };
-
-  const toggleTodo = async (todoId, completed) => {
-    try {
-      await supabase.from('project_todos').update({ completed }).eq('id', todoId);
-      await fetchProjectTodos(selectedProject.id);
-    } catch (err) {
-      console.error('Error updating todo:', err);
-    }
-  };
-
-  const createProject = async (e) => {
-    e.preventDefault();
-    try {
-      await supabase.from('projects').insert([{
-        ...newProject,
-        opportunity_amount: parseFloat(newProject.opportunity_amount) || 0
-      }]);
-      setNewProject({ name: '', client: '', stage: 'Inquiry', opportunity_amount: '', notes: '' });
-      setShowNewProjectForm(false);
-      // Refresh projects would happen via parent component
-    } catch (err) {
-      console.error('Error creating project:', err);
-    }
-  };
-
-  const openProjectDetails = (project) => {
-    setSelectedProject(project);
-    setShowProjectDetails(true);
-    fetchProjectTodos(project.id);
-  };
-
-  if (projectsLoading) {
-    return <div className="text-[#F3E3C3] py-8">Loading projects...</div>;
-  }
-
-  return (
-    <div>
-      <div className="flex justify-between items-center mb-6">
-        <h4 className="text-xl font-display">Projects ({projects?.length || 0})</h4>
-        <button
-          onClick={() => setShowNewProjectForm(true)}
-          className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
-        >
-          Add Project
-        </button>
-      </div>
-
-      {/* New Project Form */}
-      {showNewProjectForm && (
-        <form onSubmit={createProject} className="bg-[#232323] p-6 rounded mb-6">
-          <h5 className="text-lg font-bold mb-4">Create New Project</h5>
-          <div className="grid md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              value={newProject.name}
-              onChange={e => setNewProject(p => ({ ...p, name: e.target.value }))}
-              placeholder="Project Name"
-              className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-              required
-            />
-            <input
-              type="text"
-              value={newProject.client}
-              onChange={e => setNewProject(p => ({ ...p, client: e.target.value }))}
-              placeholder="Client Name"
-              className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-            />
-            <select
-              value={newProject.stage}
-              onChange={e => setNewProject(p => ({ ...p, stage: e.target.value }))}
-              className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-            >
-              {stages.map(stage => (
-                <option key={stage} value={stage}>{stage}</option>
-              ))}
-            </select>
-            <input
-              type="number"
-              value={newProject.opportunity_amount}
-              onChange={e => setNewProject(p => ({ ...p, opportunity_amount: e.target.value }))}
-              placeholder="Opportunity Amount"
-              className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-            />
-          </div>
-          <textarea
-            value={newProject.notes}
-            onChange={e => setNewProject(p => ({ ...p, notes: e.target.value }))}
-            placeholder="Project Notes"
-            className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3 mt-4"
-            rows={3}
-          />
-          <div className="flex gap-2 mt-4">
-            <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">
-              Create Project
-            </button>
-            <button 
-              type="button" 
-              onClick={() => setShowNewProjectForm(false)}
-              className="bg-gray-500 text-white py-2 px-4 rounded-md"
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
-      )}
-
-      {/* Projects List */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects?.map(project => (
-          <div key={project.id} className="bg-[#232323] rounded-lg p-6">
-            <div className="flex justify-between items-start mb-4">
-              <h5 className="text-lg font-bold text-white">{project.name}</h5>
-              <span className={`text-xs px-2 py-1 rounded ${
-                project.stage === 'Completed' ? 'bg-green-500/20 text-green-400' :
-                project.stage === 'In Progress' ? 'bg-blue-500/20 text-blue-400' :
-                project.stage === 'Cancelled' ? 'bg-red-500/20 text-red-400' :
-                'bg-[#F3E3C3]/10 text-[#F3E3C3]'
-              }`}>
-                {project.stage}
-              </span>
-            </div>
-            
-            {project.client && (
-              <p className="text-[#F3E3C3]/70 text-sm mb-2">Client: {project.client}</p>
-            )}
-            
-            {project.opportunity_amount > 0 && (
-              <p className="text-green-400 font-bold mb-2">
-                ${project.opportunity_amount.toLocaleString()}
-              </p>
-            )}
-            
-            {project.notes && (
-              <p className="text-[#F3E3C3]/60 text-sm mb-4">{project.notes}</p>
-            )}
-            
-            <button
-              onClick={() => openProjectDetails(project)}
-              className="w-full bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
-            >
-              View Details & Todos
-            </button>
-          </div>
-        ))}
-      </div>
-
-      {/* Project Details Modal with Todos */}
-      {showProjectDetails && selectedProject && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-2xl font-display text-white">{selectedProject.name}</h3>
-              <button
-                onClick={() => setShowProjectDetails(false)}
-                className="text-white text-2xl hover:text-gray-300"
-              >
-                &times;
-              </button>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-lg font-bold mb-3">Project Details</h4>
-                <div className="space-y-2 text-[#F3E3C3]/80">
-                  <p><strong>Client:</strong> {selectedProject.client || 'Not specified'}</p>
-                  <p><strong>Stage:</strong> <span className="px-2 py-1 rounded bg-[#F3E3C3]/10 text-[#F3E3C3]">{selectedProject.stage}</span></p>
-                  <p><strong>Value:</strong> {selectedProject.opportunity_amount > 0 ? `$${selectedProject.opportunity_amount.toLocaleString()}` : 'Not specified'}</p>
-                  <p><strong>Created:</strong> {selectedProject.created_at ? new Date(selectedProject.created_at).toLocaleDateString() : ''}</p>
-                  {selectedProject.notes && (
-                    <div>
-                      <strong>Notes:</strong>
-                      <p className="mt-1 p-3 bg-[#181818] rounded">{selectedProject.notes}</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div>
-                <h4 className="text-lg font-bold mb-3">Todo List</h4>
-                
-                <div className="mb-4">
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      value={newTodo}
-                      onChange={e => setNewTodo(e.target.value)}
-                      placeholder="Add a todo..."
-                      className="flex-1 bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-                      onKeyPress={e => e.key === 'Enter' && addTodo()}
-                    />
-                    <button
-                      onClick={addTodo}
-                      className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-                      disabled={!newTodo.trim()}
-                    >
-                      Add
-                    </button>
-                  </div>
-                </div>
-
-                <div className="space-y-2 max-h-64 overflow-y-auto">
-                  {projectTodos.map(todo => (
-                    <div key={todo.id} className="flex items-center gap-3 p-3 bg-[#181818] rounded">
-                      <input
-                        type="checkbox"
-                        checked={todo.completed}
-                        onChange={e => toggleTodo(todo.id, e.target.checked)}
-                        className="w-4 h-4"
-                      />
-                      <span className={`flex-1 ${todo.completed ? 'line-through text-[#F3E3C3]/50' : 'text-[#F3E3C3]'}`}>
-                        {todo.task}
-                      </span>
-                    </div>
-                  ))}
-                  {projectTodos.length === 0 && (
-                    <p className="text-[#F3E3C3]/70 text-center py-4">No todos yet. Add one above!</p>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// --- Site Map Tab ---
-const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blogPosts }) => {
-  const [pages, setPages] = useState([
-    { key: 'home', label: 'Home' },
-    { key: 'about', label: 'About' },
-    { key: 'services', label: 'Services' },
-    { key: 'portfolio', label: 'Portfolio' },
-    { key: 'blog', label: 'Blog' },
-    { key: 'contact', label: 'Contact' },
-  ]);
-  const [editingPage, setEditingPage] = useState(null);
-  const [editForm, setEditForm] = useState({ title: '', content: '' });
-  const [saving, setSaving] = useState(false);
-  const [saveSuccess, setSaveSuccess] = useState(false);
-  const [saveError, setSaveError] = useState('');
-
-  const handleEditPage = (pageKey) => {
-    setEditingPage(pageKey);
-    setSaveError('');
-    setSaveSuccess(false);
-    
-    // Load content based on page
-    let title = '', contentMd = '';
-    switch (pageKey) {
-      case 'about':
-        title = content.about?.title || 'About Us';
-        contentMd = content.about?.bio || '';
-        break;
-      case 'home':
-        title = 'Capture. Create. Captivate.';
-        contentMd = 'Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.';
-        break;
-      default:
-        title = pageKey.charAt(0).toUpperCase() + pageKey.slice(1);
-        contentMd = `Content for ${pageKey} page.`;
-    }
-    setEditForm({ title, content: contentMd });
-  };
-
-  const handleSaveChanges = async () => {
-    setSaving(true);
-    setSaveError('');
-    setSaveSuccess(false);
-
-    try {
-      if (editingPage === 'about') {
-        // Check if about record exists
-        const { data: existingData } = await supabase
-          .from('about')
-          .select('id')
-          .limit(1);
-
-        if (existingData && existingData.length > 0) {
-          // Update existing record
-          const { error } = await supabase
-            .from('about')
-            .update({
-              title: editForm.title,
-              bio: editForm.content
-            })
-            .eq('id', existingData[0].id);
-
-          if (error) throw error;
-        } else {
-          // Insert new record
-          const { error } = await supabase
-            .from('about')
-            .insert([{
-              title: editForm.title,
-              bio: editForm.content
-            }]);
-
-          if (error) throw error;
-        }
-
-        setSaveSuccess(true);
-        // Close modal after 1 second
-        setTimeout(() => {
-          setEditingPage(null);
-          setSaveSuccess(false);
-          // Trigger a refresh of the content
-          window.location.reload();
-        }, 1000);
-      } else {
-        // For other pages, you might want to create additional tables
-        // For now, just show a message
-        setSaveError(`Saving for ${editingPage} page is not yet implemented. Only About page editing is currently supported.`);
-      }
-    } catch (error) {
-      console.error('Error saving page content:', error);
-      setSaveError(`Failed to save changes: ${error.message}`);
-    } finally {
-      setSaving(false);
-    }
-  };
-
-  return (
-    <div className="grid md:grid-cols-2 gap-8">
-      <div>
-        <h4 className="text-xl font-bold mb-4">Site Structure</h4>
-        <div className="space-y-2">
-          {pages.map(page => (
-            <div key={page.key} className="flex items-center justify-between p-3 bg-[#232323] rounded">
-              <div>
-                <button
-                  onClick={() => setSiteMapPage(page.key)}
-                  className={`font-bold ${siteMapPage === page.key ? 'text-[#F3E3C3]' : 'text-[#F3E3C3]/70'}`}
-                >
-                  {page.label}
-                </button>
-              </div>
-              <button
-                onClick={() => handleEditPage(page.key)}
-                className="bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600"
-                disabled={saving}
-              >
-                Edit
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-      
-      <div>
-        <h4 className="text-xl font-bold mb-4">Live Preview</h4>
-        <div className="p-4 bg-[#232323] rounded min-h-64">
-          <SiteMapPreview 
-            page={siteMapPage} 
-            content={content}
-            portfolioImages={portfolioImages}
-            blogPosts={blogPosts}
-          />
-        </div>
-      </div>
-
-      {/* Edit Modal */}
-      {editingPage && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-2xl w-full mx-4">
-            <h3 className="text-xl font-display text-white mb-4">
-              Edit {editingPage.charAt(0).toUpperCase() + editingPage.slice(1)} Page
-            </h3>
-            
-            {/* Success Message */}
-            {saveSuccess && (
-              <div className="bg-green-500/20 text-green-400 p-3 rounded mb-4">
-                ✓ Changes saved successfully! Refreshing...
-              </div>
-            )}
-            
-            {/* Error Message */}
-            {saveError && (
-              <div className="bg-red-500/20 text-red-400 p-3 rounded mb-4">
-                {saveError}
-              </div>
-            )}
-            
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
-                  Page Title
-                </label>
-                <input
-                  type="text"
-                  value={editForm.title}
-                  onChange={e => setEditForm(f => ({ ...f, title: e.target.value }))}
-                  placeholder="Page Title"
-                  className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3]"
-                  disabled={saving}
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
-                  Page Content (Markdown supported)
-                </label>
-                <textarea
-                  value={editForm.content}
-                  onChange={e => setEditForm(f => ({ ...f, content: e.target.value }))}
-                  placeholder="Page Content (Markdown supported)"
-                  rows={8}
-                  className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3]"
-                  disabled={saving}
-                />
-              </div>
-              
-              {editingPage === 'about' && (
-                <div className="bg-blue-500/20 text-blue-300 p-3 rounded text-sm">
-                  <strong>Note:</strong> Changes to the About page will be saved to your database and will appear immediately on your live site.
-                </div>
-              )}
-              
-              {editingPage !== 'about' && (
-                <div className="bg-yellow-500/20 text-yellow-300 p-3 rounded text-sm">
-                  <strong>Note:</strong> Currently, only the About page can be edited and saved. Other pages require additional database setup.
-                </div>
-              )}
-            </div>
-            
-            <div className="flex gap-2 mt-6">
-              <button 
-                onClick={handleSaveChanges}
-                className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md hover:bg-[#F3E3C3]/90 transition disabled:opacity-50"
-                disabled={saving || !editForm.title.trim()}
-              >
-                {saving ? 'Saving...' : 'Save Changes'}
-              </button>
-              <button 
-                onClick={() => setEditingPage(null)}
-                className="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition"
-                disabled={saving}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-// --- Analytics Section ---
-function AnalyticsSection({ leads, projects, blogPosts }) {
-  const totalLeads = leads?.length || 0;
-  const totalProjects = projects?.length || 0;
-  const totalBlogPosts = blogPosts?.length || 0;
-  
-  const leadsByStatus = leads?.reduce((acc, lead) => {
-    acc[lead.status] = (acc[lead.status] || 0) + 1;
-    return acc;
-  }, {}) || {};
-
-  const projectsByStage = projects?.reduce((acc, project) => {
-    acc[project.stage] = (acc[project.stage] || 0) + 1;
-    return acc;
-  }, {}) || {};
-
-  const totalRevenue = projects?.reduce((sum, project) => {
-    return sum + (project.opportunity_amount || 0);
-  }, 0) || 0;
-
-  return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {/* Summary Cards */}
-      <div className="bg-[#232323] rounded-lg p-6">
-        <h4 className="text-lg font-bold mb-4">Overview</h4>
-        <div className="space-y-3">
-          <div className="flex justify-between">
-            <span>Total Leads:</span>
-            <span className="font-bold text-[#F3E3C3]">{totalLeads}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Total Projects:</span>
-            <span className="font-bold text-[#F3E3C3]">{totalProjects}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Blog Posts:</span>
-            <span className="font-bold text-[#F3E3C3]">{totalBlogPosts}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Total Revenue:</span>
-            <span className="font-bold text-green-400">${totalRevenue.toLocaleString()}</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Leads by Status */}
-      <div className="bg-[#232323] rounded-lg p-6">
-        <h4 className="text-lg font-bold mb-4">Leads by Status</h4>
-        <div className="space-y-2">
-          {Object.entries(leadsByStatus).map(([status, count]) => (
-            <div key={status} className="flex justify-between">
-              <span>{status}:</span>
-              <span className="font-bold text-[#F3E3C3]">{count}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Projects by Stage */}
-      <div className="bg-[#232323] rounded-lg p-6">
-        <h4 className="text-lg font-bold mb-4">Projects by Stage</h4>
-        <div className="space-y-2">
-          {Object.entries(projectsByStage).map(([stage, count]) => (
-            <div key={stage} className="flex justify-between">
-              <span>{stage}:</span>
-              <span className="font-bold text-[#F3E3C3]">{count}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 // --- Add missing BlogPage component ---
 const BlogPage = ({ posts, loading, error }) => {
   if (loading) {
@@ -1994,466 +1104,3 @@ const Footer = () => (
     </div>
   </footer>
 );
-
-// --- Add missing CmsSection component ---
-function CmsSection({ portfolioImages, addPortfolioImage, deletePortfolioImage, updatePortfolioImageOrder }) {
-  const [newImage, setNewImage] = useState({ url: '', category: '', caption: '' });
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  
-  // Get unique categories for filtering
-  const categories = ['All', ...new Set(portfolioImages?.map(img => img.category) || [])];
-  const filteredImages = selectedCategory === 'All' 
-    ? portfolioImages 
-    : portfolioImages?.filter(img => img.category === selectedCategory);
-
-  const handleAddImage = async (e) => {
-    e.preventDefault();
-    if (newImage.url && newImage.category) {
-      await addPortfolioImage(newImage);
-      setNewImage({ url: '', category: '', caption: '' });
-    }
-  };
-
-  const handleDragEnd = async (result) => {
-    if (!result.destination) return;
-
-    const items = Array.from(filteredImages);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
-
-    // Update order_index for each item in the new order
-    const updates = items.map((item, index) => 
-      updatePortfolioImageOrder(item.id, index, item.category)
-    );
-    
-    await Promise.all(updates);
-  };
-
-  return (
-    <div className="space-y-6">
-      <div>
-        <h4 className="text-xl font-bold mb-4">Add Portfolio Image</h4>
-        <form onSubmit={handleAddImage} className="grid md:grid-cols-3 gap-4">
-          <input
-            type="url"
-            value={newImage.url}
-            onChange={e => setNewImage(img => ({ ...img, url: e.target.value }))}
-            placeholder="Image URL"
-            className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-            required
-          />
-          <input
-            type="text"
-            value={newImage.category}
-            onChange={e => setNewImage(img => ({ ...img, category: e.target.value }))}
-            placeholder="Category"
-            className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-            required
-          />
-          <input
-            type="text"
-            value={newImage.caption}
-            onChange={e => setNewImage(img => ({ ...img, caption: e.target.value }))}
-            placeholder="Caption (optional)"
-            className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-          />
-          <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">
-            Add Image
-          </button>
-        </form>
-      </div>
-      
-      <div>
-        <div className="flex justify-between items-center mb-4">
-          <h4 className="text-xl font-bold">Portfolio Images ({portfolioImages?.length || 0})</h4>
-          <div className="flex gap-2">
-            <label className="text-sm font-medium text-[#F3E3C3]">Filter by category:</label>
-            <select
-              value={selectedCategory}
-              onChange={e => setSelectedCategory(e.target.value)}
-              className="bg-[#181818] border border-white/20 rounded-md py-1 px-2 text-sm"
-            >
-              {categories.map(cat => (
-                <option key={cat} value={cat}>{cat}</option>
-              ))}
-            </select>
-          </div>
-        </div>
-        
-        <div className="mb-4 p-3 bg-blue-500/20 text-blue-300 rounded text-sm">
-          <strong>💡 Tip:</strong> Drag and drop images to reorder them. The order will be saved automatically and reflected on your portfolio page.
-        </div>
-
-        <DragDropContext onDragEnd={handleDragEnd}>
-          <Droppable droppableId="portfolio-images">
-            {(provided, snapshot) => (
-              <div
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                className={`grid md:grid-cols-2 lg:grid-cols-3 gap-4 ${
-                  snapshot.isDraggingOver ? 'bg-blue-500/5 rounded-lg p-2' : ''
-                }`}
-              >
-                {filteredImages?.map((img, index) => (
-                  <Draggable key={img.id} draggableId={img.id.toString()} index={index}>
-                    {(provided, snapshot) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        className={`bg-[#232323] rounded p-4 relative group ${
-                          snapshot.isDragging ? 'rotate-2 shadow-2xl z-50' : ''
-                        } transition-transform hover:scale-105`}
-                      >
-                        <div
-                          {...provided.dragHandleProps}
-                          className="absolute top-2 right-2 cursor-grab active:cursor-grabbing bg-[#F3E3C3] text-[#1a1a1a] rounded p-1 opacity-0 group-hover:opacity-100 transition-opacity"
-                          title="Drag to reorder"
-                        >
-                          ⋮⋮
-                        </div>
-                        
-                        <div className="relative">
-                          <img 
-                            src={img.url} 
-                            alt={img.caption || img.category} 
-                            className="w-full h-32 object-cover rounded mb-2" 
-                          />
-                          {img.caption && (
-                            <div className="absolute bottom-0 left-0 right-0 bg-black/75 p-2 rounded-b text-xs">
-                              <p className="text-[#F3E3C3]/75 font-vintage-text italic leading-relaxed">
-                                {img.caption}
-                              </p>
-                            </div>
-                          )}
-                        </div>
-                        
-                        <div className="space-y-2">
-                          <p className="text-sm text-[#F3E3C3]/80">
-                            <strong>Category:</strong> {img.category}
-                          </p>
-                          <p className="text-xs text-[#F3E3C3]/60">
-                            <strong>Order:</strong> {img.order_index || 0}
-                          </p>
-                          {img.caption && (
-                            <p className="text-xs text-[#F3E3C3]/60">
-                              <strong>Caption:</strong> {img.caption}
-                            </p>
-                          )}
-                        </div>
-                        
-                        <button
-                          onClick={() => deletePortfolioImage(img.id)}
-                          className="bg-red-500 text-white px-2 py-1 rounded text-xs mt-3 w-full hover:bg-red-600 transition-colors"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
-        
-        {(!filteredImages || filteredImages.length === 0) && (
-          <div className="text-center text-[#F3E3C3]/70 py-8">
-            No images found for "{selectedCategory}" category.
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// --- Add missing BlogAdminSection component ---
-function BlogAdminSection({ 
-  blogPosts, 
-  createBlogPost, 
-  updateBlogPost, 
-  deleteBlogPost, 
-  blogEdit, 
-  setBlogEdit, 
-  blogSaving, 
-  blogAdminError 
-}) {
-  const [newPost, setNewPost] = useState({
-    title: '',
-    slug: '',
-    excerpt: '',
-    content: '',
-    author: 'Studio37',
-    category: '',
-    tags: '',
-    publish_date: new Date().toISOString().split('T')[0]
-  });
-
-  const handleCreatePost = async (e) => {
-    e.preventDefault();
-    const tagsArray = newPost.tags.split(',').map(tag => tag.trim()).filter(tag => tag);
-    await createBlogPost({ ...newPost, tags: tagsArray });
-    setNewPost({
-      title: '',
-      slug: '',
-      excerpt: '',
-      content: '',
-      author: 'Studio37',
-      category: '',
-      tags: '',
-      publish_date: new Date().toISOString().split('T')[0]
-    });
-  };
-
-  const handleUpdatePost = async (e) => {
-    e.preventDefault();
-    if (blogEdit) {
-      const tagsArray = blogEdit.tags.split(',').map(tag => tag.trim()).filter(tag => tag);
-      await updateBlogPost(blogEdit.id, { ...blogEdit, tags: tagsArray });
-      setBlogEdit(null);
-    }
-  };
-
-  return (
-    <div className="space-y-6">
-      {blogAdminError && (
-        <div className="bg-red-500/20 text-red-400 p-4 rounded">{blogAdminError}</div>
-      )}
-      
-      <div>
-        <h4 className="text-xl font-bold mb-4">Create New Blog Post</h4>
-        <form onSubmit={handleCreatePost} className="space-y-4">
-          <div className="grid md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              value={newPost.title}
-              onChange={e => setNewPost(p => ({ ...p, title: e.target.value }))}
-              placeholder="Post Title"
-              className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-              required
-            />
-            <input
-              type="text"
-              value={newPost.slug}
-              onChange={e => setNewPost(p => ({ ...p, slug: e.target.value }))}
-              placeholder="URL Slug"
-              className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-              required
-            />
-          </div>
-          <textarea
-            value={newPost.excerpt}
-            onChange={e => setNewPost(p => ({ ...p, excerpt: e.target.value }))}
-            placeholder="Post Excerpt"
-            className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-            rows={2}
-          />
-          <textarea
-            value={newPost.content}
-            onChange={e => setNewPost(p => ({ ...p, content: e.target.value }))}
-            placeholder="Post Content (Markdown supported)"
-            className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-            rows={8}
-          />
-          <div className="grid md:grid-cols-3 gap-4">
-            <input
-              type="text"
-              value={newPost.category}
-              onChange={e => setNewPost(p => ({ ...p, category: e.target.value }))}
-              placeholder="Category"
-              className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-            />
-            <input
-              type="text"
-              value={newPost.tags}
-              onChange={e => setNewPost(p => ({ ...p, tags: e.target.value }))}
-              placeholder="Tags (comma separated)"
-              className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-            />
-            <input
-              type="date"
-              value={newPost.publish_date}
-              onChange={e => setNewPost(p => ({ ...p, publish_date: e.target.value }))}
-              className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-            />
-          </div>
-          <button 
-            type="submit" 
-            className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
-            disabled={blogSaving}
-          >
-            {blogSaving ? 'Creating...' : 'Create Post'}
-          </button>
-        </form>
-      </div>
-
-      <div>
-        <h4 className="text-xl font-bold mb-4">Existing Blog Posts</h4>
-        <div className="space-y-4">
-          {blogPosts?.map(post => (
-            <div key={post.id} className="bg-[#232323] rounded p-4">
-              <div className="flex justify-between items-start mb-2">
-                <h5 className="font-bold text-white">{post.title}</h5>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setBlogEdit(post)}
-                    className="bg-blue-500 text-white px-2 py-1 rounded text-xs"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => deleteBlogPost(post.id)}
-                    className="bg-red-500 text-white px-2 py-1 rounded text-xs"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-              <p className="text-[#F3E3C3]/80 text-sm">{post.excerpt}</p>
-              <div className="text-xs text-[#F3E3C3]/60 mt-2">
-                {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''} | {post.category}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Edit Modal */}
-      {blogEdit && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <h3 className="text-xl font-display text-white mb-4">Edit Blog Post</h3>
-            <form onSubmit={handleUpdatePost} className="space-y-4">
-              <input
-                type="text"
-                value={blogEdit.title || ''}
-                onChange={e => setBlogEdit(p => ({ ...p, title: e.target.value }))}
-                placeholder="Post Title"
-                className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-              />
-              <textarea
-                value={blogEdit.content || ''}
-                onChange={e => setBlogEdit(p => ({ ...p, content: e.target.value }))}
-                placeholder="Post Content"
-                className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-                rows={12}
-              />
-              <div className="flex gap-2 mt-4">
-                <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">
-                  Update Post
-                </button>
-                <button 
-                  type="button" 
-                  onClick={() => setBlogEdit(null)}
-                  className="bg-gray-500 text-white py-2 px-4 rounded-md"
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// --- Add missing SiteMapPreview component ---
-function SiteMapPreview({ page, content, portfolioImages, blogPosts }) {
-  switch (page) {
-    case 'about':
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">{content.about?.title || 'About Us'}</h3>
-          <div className="text-[#F3E3C3]/80">
-            {content.about?.bio ? (
-              <ReactMarkdown remarkPlugins={[remarkGfm]} className="prose prose-sm prose-invert max-w-none">
-                {content.about.bio}
-              </ReactMarkdown>
-            ) : (
-              <p>About content...</p>
-            )}
-          </div>
-        </div>
-      );
-    case 'portfolio':
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">Portfolio</h3>
-          <div className="grid grid-cols-3 gap-2">
-            {portfolioImages?.slice(0, 6).map(img => (
-              <div key={img.id} className="relative">
-                <img 
-                  src={img.url} 
-                  alt={img.category} 
-                  className="w-full h-16 object-cover rounded" 
-                />
-                {img.caption && (
-                  <div className="absolute bottom-0 left-0 right-0 bg-black/75 p-1 rounded-b text-xs">
-                    <p className="text-[#F3E3C3]/75 font-vintage-text italic leading-relaxed">
-                      {img.caption}
-                    </p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-[#F3E3C3]/60 mt-2">{portfolioImages?.length || 0} images</p>
-        </div>
-      );
-    case 'blog':
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">Blog</h3>
-          <div className="space-y-2">
-            {blogPosts?.slice(0, 3).map(post => (
-              <div key={post.id} className="text-sm">
-                <div className="font-semibold">{post.title}</div>
-                <div className="text-[#F3E3C3]/60 text-xs">{post.excerpt}</div>
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-[#F3E3C3]/60 mt-2">{blogPosts?.length || 0} posts</p>
-        </div>
-      );
-    case 'home':
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">Capture. Create. Captivate.</h3>
-          <p className="text-[#F3E3C3]/80 text-sm">
-            Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.
-          </p>
-        </div>
-      );
-    case 'services':
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">Our Services</h3>
-          <div className="text-[#F3E3C3]/80 text-sm space-y-1">
-            <p>• Content & Marketing Packages</p>
-            <p>• Portrait Sessions</p>
-            <p>• Event Coverage</p>
-            <p>• Wedding & Engagement</p>
-          </div>
-        </div>
-      );
-    case 'contact':
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">Get In Touch</h3>
-          <div className="text-[#F3E3C3]/80 text-sm space-y-1">
-            <p>📧 sales@studio37.cc</p>
-            <p>📞 (832) 713-9944</p>
-            <p>📍 Greater Houston Area</p>
-          </div>
-        </div>
-      );
-    default:
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">{page.charAt(0).toUpperCase() + page.slice(1)}</h3>
-          <p className="text-[#F3E3C3]/80">Preview for {page} page...</p>
-        </div>
-      );
-  }
-}

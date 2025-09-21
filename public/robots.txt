@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Allow crawling of images
+Allow: /assets/
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.webp
+
+# Disallow admin areas
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://www.studio37.cc/sitemap.xml
