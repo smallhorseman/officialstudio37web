@@ -438,6 +438,42 @@ function BlogPostPage() {
   );
 }
 
+// --- Error Boundary Component ---
+const ErrorBoundary = ({ children, fallback }) => {
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    const handleError = (error) => {
+      console.error('Application error:', error);
+      setHasError(true);
+    };
+    
+    window.addEventListener('error', handleError);
+    return () => window.removeEventListener('error', handleError);
+  }, []);
+
+  if (hasError) {
+    return fallback || (
+      <div className="min-h-screen flex items-center justify-center bg-[#181818] text-[#F3E3C3]">
+        <div className="text-center">
+          <h2 className="text-2xl font-display mb-4">Something went wrong</h2>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded"
+          >
+            Refresh Page
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return children;
+};
+
+// --- Memoized components for performance ---
+const MemoizedPortfolioPage = React.memo(PortfolioPage);
+
 // --- Page & Section Components --- //
 const Header = ({ isMenuOpen, setIsMenuOpen, theme, toggleTheme, showAdminButton }) => {
   const location = useLocation();
