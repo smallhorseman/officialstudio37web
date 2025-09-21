@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,6 +8,13 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    },
     rollupOptions: {
       output: {
         manualChunks: {
@@ -24,25 +31,7 @@ export default defineConfig({
   },
   preview: {
     port: 3000
-  }
-});
-    // Optimize assets
-    assetsDir: 'assets',
-    // Enable compression
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    }
   },
-  // Optimize development server
-  server: {
-    port: 3000,
-    open: true
-  },
-  // Enable CSS code splitting
   css: {
     modules: {
       localsConvention: 'camelCase'
