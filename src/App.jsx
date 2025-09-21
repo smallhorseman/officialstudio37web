@@ -1928,7 +1928,7 @@ function CmsSection({ portfolioImages, addPortfolioImage, deletePortfolioImage, 
                             className="w-full h-32 object-cover rounded mb-2" 
                           />
                           {img.caption && (
-                            <div className="absolute bottom-0 left-0 right-0 bg-black/75 p-2 rounded-b text-xs">
+                            <div className="absolute bottom-0 left-0 right-0 bg-black/75 p-1 rounded-b text-xs">
                               <p className="text-[#F3E3C3]/75 font-vintage-text italic leading-relaxed">
                                 {img.caption}
                               </p>
@@ -2384,73 +2384,111 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
   );
 };
 
-// --- Analytics Section ---
-function AnalyticsSection({ leads, projects, blogPosts }) {
-  const totalLeads = leads?.length || 0;
-  const totalProjects = projects?.length || 0;
-  const totalBlogPosts = blogPosts?.length || 0;
-  
-  const leadsByStatus = leads?.reduce((acc, lead) => {
-    acc[lead.status] = (acc[lead.status] || 0) + 1;
-    return acc;
-  }, {}) || {};
-
-  const projectsByStage = projects?.reduce((acc, project) => {
-    acc[project.stage] = (acc[project.stage] || 0) + 1;
-    return acc;
-  }, {}) || {};
-
-  const totalRevenue = projects?.reduce((sum, project) => {
-    return sum + (project.opportunity_amount || 0);
-  }, 0) || 0;
-
-  return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div className="bg-[#232323] rounded-lg p-6">
-        <h4 className="text-lg font-bold mb-4">Overview</h4>
-        <div className="space-y-3">
-          <div className="flex justify-between">
-            <span>Total Leads:</span>
-            <span className="font-bold text-[#F3E3C3]">{totalLeads}</span>
+// --- Footer component ---
+const Footer = () => (
+  <footer className="bg-[#232323] text-[#F3E3C3] py-12">
+    <div className="container mx-auto px-6">
+      <div className="grid md:grid-cols-3 gap-8">
+        <div>
+          <div className="flex items-center gap-4 mb-4">
+            <Logo />
+            <span className="font-display text-xl font-bold tracking-tight text-white">Studio37</span>
           </div>
-          <div className="flex justify-between">
-            <span>Total Projects:</span>
-            <span className="font-bold text-[#F3E3C3]">{totalProjects}</span>
+          <p className="text-[#F3E3C3]/70">
+            Vintage heart, modern vision. Full-service photography and content strategy.
+          </p>
+        </div>
+        <div>
+          <h4 className="font-display text-lg mb-4">Quick Links</h4>
+          <div className="space-y-2">
+            <Link to="/about" className="block text-[#F3E3C3]/70 hover:text-white transition">About</Link>
+            <Link to="/services" className="block text-[#F3E3C3]/70 hover:text-white transition">Services</Link>
+            <Link to="/portfolio" className="block text-[#F3E3C3]/70 hover:text-white transition">Portfolio</Link>
+            <Link to="/blog" className="block text-[#F3E3C3]/70 hover:text-white transition">Blog</Link>
+            <Link to="/contact" className="block text-[#F3E3C3]/70 hover:text-white transition">Contact</Link>
           </div>
-          <div className="flex justify-between">
-            <span>Blog Posts:</span>
-            <span className="font-bold text-[#F3E3C3]">{totalBlogPosts}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Total Revenue:</span>
-            <span className="font-bold text-green-400">${totalRevenue.toLocaleString()}</span>
+        </div>
+        <div>
+          <h4 className="font-display text-lg mb-4">Contact Info</h4>
+          <div className="space-y-2 text-[#F3E3C3]/70">
+            <p>Email: sales@studio37.cc</p>
+            <p>Phone: (832) 713-9944</p>
+            <p>Serving Greater Houston Area</p>
           </div>
         </div>
       </div>
-
-      <div className="bg-[#232323] rounded-lg p-6">
-        <h4 className="text-lg font-bold mb-4">Leads by Status</h4>
-        <div className="space-y-2">
-          {Object.entries(leadsByStatus).map(([status, count]) => (
-            <div key={status} className="flex justify-between">
-              <span>{status}:</span>
-              <span className="font-bold text-[#F3E3C3]">{count}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="bg-[#232323] rounded-lg p-6">
-        <h4 className="text-lg font-bold mb-4">Projects by Stage</h4>
-        <div className="space-y-2">
-          {Object.entries(projectsByStage).map(([stage, count]) => (
-            <div key={stage} className="flex justify-between">
-              <span>{stage}:</span>
-              <span className="font-bold text-[#F3E3C3]">{count}</span>
-            </div>
-          ))}
-        </div>
+      <div className="border-t border-white/10 mt-8 pt-8 text-center text-[#F3E3C3]/60">
+        <p>&copy; 2024 Studio37. All rights reserved.</p>
       </div>
     </div>
-  );
-};
+  </footer>
+);
+
+// --- Site Map Preview ---
+function SiteMapPreview({ page, content, portfolioImages, blogPosts }) {
+  switch (page) {
+    case 'about':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">{content.about?.title || 'About Us'}</h3>
+          <div className="text-[#F3E3C3]/80">
+            {content.about?.bio ? (
+              <ReactMarkdown remarkPlugins={[remarkGfm]} className="prose prose-sm prose-invert max-w-none">
+                {content.about.bio}
+              </ReactMarkdown>
+            ) : (
+              <p>About content...</p>
+            )}
+          </div>
+        </div>
+      );
+    case 'portfolio':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">Portfolio</h3>
+          <div className="grid grid-cols-3 gap-2">
+            {portfolioImages?.slice(0, 6).map(img => (
+              <div key={img.id} className="relative">
+                <OptimizedImage 
+                  src={img.url} 
+                  alt={img.category} 
+                  className="w-full h-16 object-cover rounded" 
+                  loading="lazy"
+                />
+                {img.caption && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/75 p-1 rounded-b text-xs">
+                    <p className="text-[#F3E3C3]/75 font-vintage-text italic leading-relaxed">
+                      {img.caption}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-[#F3E3C3]/60 mt-2">{portfolioImages?.length || 0} images</p>
+        </div>
+      );
+    case 'blog':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">Blog</h3>
+          <div className="space-y-2">
+            {blogPosts?.slice(0, 3).map(post => (
+              <div key={post.id} className="bg-[#181818] p-2 rounded text-xs">
+                <div className="font-bold">{post.title}</div>
+                <div className="text-[#F3E3C3]/60">{post.excerpt?.substring(0, 60)}...</div>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-[#F3E3C3]/60 mt-2">{blogPosts?.length || 0} posts</p>
+        </div>
+      );
+    default:
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">{page.charAt(0).toUpperCase() + page.slice(1)}</h3>
+          <p className="text-[#F3E3C3]/70">Preview for {page} page...</p>
+        </div>
+      );
+  }
+}
