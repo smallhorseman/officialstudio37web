@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm';
 import PhotoshootPlanner from './PhotoshootPlanner';
 import ConversationalPlanner from './VirtualAgentPlanner';
 import VirtualAgentPlanner from './VirtualAgentPlanner';
+import SEOHead from './components/SEOHead';
 import { supabase } from './supabaseClient';
 import { Routes, Route, useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 
@@ -512,31 +513,38 @@ const Header = ({ isMenuOpen, setIsMenuOpen, theme, toggleTheme, showAdminButton
 };
 
 const AboutPage = ({ content }) => (
-  <div className="py-20 md:py-32 bg-[#212121]">
-    <div className="container mx-auto px-6">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div className="order-2 md:order-1">
-          <h2 className="text-4xl md:text-5xl font-display mb-6">{content.title || 'About Studio37'}</h2>
-          <div className="text-lg text-[#F3E3C3]/80 leading-relaxed">
-            {content.bio ? (
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {content.bio}
-              </ReactMarkdown>
-            ) : (
-              <p>Loading content...</p>
-            )}
+  <>
+    <SEOHead 
+      title="About Studio37 - Professional Photography Team in Houston, TX"
+      description="Meet the Studio37 team. Professional photographers and content strategists serving Houston and surrounding areas with vintage-inspired, modern photography."
+      keywords="about Studio37, Houston photographers, photography team, professional photography Houston"
+    />
+    <div className="py-20 md:py-32 bg-[#212121]">
+      <div className="container mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="order-2 md:order-1">
+            <h2 className="text-4xl md:text-5xl font-display mb-6">{content.title || 'About Studio37'}</h2>
+            <div className="text-lg text-[#F3E3C3]/80 leading-relaxed">
+              {content.bio ? (
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {content.bio}
+                </ReactMarkdown>
+              ) : (
+                <p>Loading content...</p>
+              )}
+            </div>
           </div>
-        </div>
-        <div className="order-1 md:order-2">
-          {/* CMS-driven image will be added when available */}
-          <div className="bg-[#262626] rounded-lg p-8 text-center">
-            <h3 className="text-xl font-display text-white mb-4">Studio37 Team</h3>
-            <p className="text-[#F3E3C3]/70">Professional photography and content strategy from Houston, TX</p>
+          <div className="order-1 md:order-2">
+            {/* CMS-driven image will be added when available */}
+            <div className="bg-[#262626] rounded-lg p-8 text-center">
+              <h3 className="text-xl font-display text-white mb-4">Studio37 Team</h3>
+              <p className="text-[#F3E3C3]/70">Professional photography and content strategy from Houston, TX</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </>
 );
 
 
@@ -612,28 +620,35 @@ function ServiceCard({ name, description, price }) {
 }
 
 const ServicesPage = () => (
-  <div className="py-20 md:py-28">
-    <div className="container mx-auto px-6">
-      <section id="pro-packages" className="mb-20">
-        <h3 className="text-3xl font-display text-center mb-10">Content & Marketing Packages</h3>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {proPackages.map(p => <ServiceCard key={p.name} {...p} />)}
-        </div>
-      </section>
-      <section id="personal-packages" className="mb-20">
-        <h3 className="text-3xl font-display text-center mb-10">Portrait Packages</h3>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {personalPackages.map(p => <ServiceCard key={p.name} {...p} />)}
-        </div>
-      </section>
-      <section id="other-services">
-        <h3 className="text-3xl font-display text-center mb-10">Additional Creative & Event Services</h3>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {otherServices.map(s => <ServiceCard key={s.name} {...s} />)}
-        </div>
-      </section>
+  <>
+    <SEOHead 
+      title="Photography Services - Studio37 Houston | Portraits, Weddings, Events"
+      description="Professional photography services in Houston: Director Package ($2000+), Producer Package ($1200+), portraits ($75+), weddings, events. Full-service content strategy."
+      keywords="photography services Houston, wedding photographer Houston, portrait photography, event photography, content strategy"
+    />
+    <div className="py-20 md:py-28">
+      <div className="container mx-auto px-6">
+        <section id="pro-packages" className="mb-20">
+          <h3 className="text-3xl font-display text-center mb-10">Content & Marketing Packages</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {proPackages.map(p => <ServiceCard key={p.name} {...p} />)}
+          </div>
+        </section>
+        <section id="personal-packages" className="mb-20">
+          <h3 className="text-3xl font-display text-center mb-10">Portrait Packages</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {personalPackages.map(p => <ServiceCard key={p.name} {...p} />)}
+          </div>
+        </section>
+        <section id="other-services">
+          <h3 className="text-3xl font-display text-center mb-10">Additional Creative & Event Services</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {otherServices.map(s => <ServiceCard key={s.name} {...s} />)}
+          </div>
+        </section>
+      </div>
     </div>
-  </div>
+  </>
 );
 
 // Optimize portfolio images with lazy loading and intersection observer
@@ -657,58 +672,65 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
   }, []);
 
   return (
-    <div className="py-20 md:py-28">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-display">Our Work</h2>
-          <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">A curated selection of our favorite moments and projects.</p>
-        </div>
-        {!isUnlocked && <PortfolioGate onUnlock={onUnlock} />}
-        {isUnlocked && (
-          <>
-            <div className="flex flex-wrap gap-2 justify-center mb-8">
-              {categories.map(cat => (
-                <button
-                  key={cat}
-                  onClick={() => setFilter(cat)}
-                  className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors ${filter === cat ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] hover:bg-[#333]'}`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-            <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6">
-              {filteredImages.map(img => (
-                <div key={img.id} className="break-inside-avoid relative group">
-                  <OptimizedImage
-                    src={img.url} 
-                    alt={img.caption || `${img.category} photography`} 
-                    className="w-full rounded-lg shadow-lg hover:opacity-90 transition-opacity"
-                    loading="lazy"
-                    onError={() => handleImageError(img.id)}
-                  />
-                  {img.caption && (
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/75 backdrop-blur-sm p-3 rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity">
-                      <p className="text-[#F3E3C3]/75 text-sm font-serif italic leading-relaxed">
-                        {img.caption}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-            {filteredImages.length === 0 && (
-              <div className="text-center text-[#F3E3C3]/70 py-12">
-                {imageLoadErrors.size > 0 ? 
-                  'Some images failed to load. Please refresh the page.' : 
-                  'No images available in this category.'
-                }
+    <>
+      <SEOHead 
+        title="Photography Portfolio - Studio37 Houston | Professional Work Gallery"
+        description="View Studio37's photography portfolio showcasing professional work in Houston, TX. Portraits, weddings, events, and commercial photography."
+        keywords="photography portfolio Houston, professional photography gallery, Studio37 work, Houston photographer portfolio"
+      />
+      <div className="py-20 md:py-28">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-display">Our Work</h2>
+            <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">A curated selection of our favorite moments and projects.</p>
+          </div>
+          {!isUnlocked && <PortfolioGate onUnlock={onUnlock} />}
+          {isUnlocked && (
+            <>
+              <div className="flex flex-wrap gap-2 justify-center mb-8">
+                {categories.map(cat => (
+                  <button
+                    key={cat}
+                    onClick={() => setFilter(cat)}
+                    className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors ${filter === cat ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] hover:bg-[#333]'}`}
+                  >
+                    {cat}
+                  </button>
+                ))}
               </div>
-            )}
-          </>
-        )}
+              <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6">
+                {filteredImages.map(img => (
+                  <div key={img.id} className="break-inside-avoid relative group">
+                    <OptimizedImage
+                      src={img.url} 
+                      alt={img.caption || `${img.category} photography`} 
+                      className="w-full rounded-lg shadow-lg hover:opacity-90 transition-opacity"
+                      loading="lazy"
+                      onError={() => handleImageError(img.id)}
+                    />
+                    {img.caption && (
+                      <div className="absolute bottom-0 left-0 right-0 bg-black/75 backdrop-blur-sm p-3 rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                        <p className="text-[#F3E3C3]/75 text-sm font-serif italic leading-relaxed">
+                          {img.caption}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+              {filteredImages.length === 0 && (
+                <div className="text-center text-[#F3E3C3]/70 py-12">
+                  {imageLoadErrors.size > 0 ? 
+                    'Some images failed to load. Please refresh the page.' : 
+                    'No images available in this category.'
+                  }
+                </div>
+              )}
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -784,130 +806,47 @@ const OptimizedImage = ({ src, alt, className, loading = "lazy", ...props }) => 
 const HomePage = () => {
   const [heroImageLoaded, setHeroImageLoaded] = useState(false);
   
-  const heroImageUrl = "https://res.cloudinary.com/dmjxho2rl/image/upload/f_auto,q_auto:good,w_auto:breakpoints,c_scale/a_vflip/l_image:upload:My%20Brand:IMG_2115_mtuowt/c_scale,fl_relative,w_0.35/o_100/fl_layer_apply,g_north,x_0.03,y_0.04/v1758172510/A4B03835-ED8B-4FBB-A27E-1F2EE6CA1A18_1_105_c_gstgil.jpg";
+  // Fixed hero image URL with proper encoding
+  const heroImageUrl = "https://res.cloudinary.com/dmjxho2rl/image/upload/f_auto,q_auto:good,w_auto:breakpoints,c_scale/v1758172510/A4B03835-ED8B-4FBB-A27E-1F2EE6CA1A18_1_105_c_gstgil.jpg";
 
   return (
-    <div className="relative h-screen flex items-center justify-center text-center text-white px-4 -mt-20">
-      {!heroImageLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black animate-pulse"></div>
-      )}
-      <img 
-        src={heroImageUrl} 
-        alt="Studio37 Hero" 
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${heroImageLoaded ? 'opacity-100' : 'opacity-0'}`}
-        onLoad={() => setHeroImageLoaded(true)}
-        loading="eager"
-        decoding="async"
-        crossOrigin="anonymous"
+    <>
+      <SEOHead 
+        title="Studio37 - Professional Photography & Content Strategy in Houston, TX"
+        description="Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX."
+        keywords="photography Houston, professional photographer Houston, content strategy, portraits, weddings, events, brand photography"
+        image="https://www.studio37.cc/og-image.jpg"
       />
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-0 pointer-events-none"></div>
-      <div className="relative z-10">
-        <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display mb-4 leading-tight break-words max-w-full">Capture. Create. Captivate.</h1>
-        <p className="text-base sm:text-lg md:text-xl max-w-xs sm:max-w-2xl mx-auto mb-8 text-[#F3E3C3]/80">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
-        <div className="space-y-4 sm:space-x-4 flex flex-col sm:flex-row items-center justify-center w-full">
-          <Link to="/portfolio" className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 w-full sm:w-auto">
-            View Our Work <ArrowRight />
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// --- Error Boundary Component ---
-const ErrorBoundary = ({ children, fallback }) => {
-  const [hasError, setHasError] = useState(false);
-
-  useEffect(() => {
-    const handleError = (error) => {
-      console.error('Application error:', error);
-      setHasError(true);
-    };
-    
-    window.addEventListener('error', handleError);
-    return () => window.removeEventListener('error', handleError);
-  }, []);
-
-  if (hasError) {
-    return fallback || (
-      <div className="min-h-screen flex items-center justify-center bg-[#181818] text-[#F3E3C3]">
-        <div className="text-center">
-          <h2 className="text-2xl font-display mb-4">Something went wrong</h2>
-          <button 
-            onClick={() => window.location.reload()} 
-            className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded"
-          >
-            Refresh Page
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  return children;
-};
-
-// --- Memoized components for performance ---
-const MemoizedPortfolioPage = React.memo(PortfolioPage);
-
-const PortfolioGate = ({ onUnlock }) => {
-  const [formData, setFormData] = useState({ name: '', email: '', service: '', phone: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const [showPlanner, setShowPlanner] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.name && formData.email) {
-      onUnlock(formData);
-      setSubmitted(true);
-    }
-  };
-
-  if (submitted) {
-    return (
-      <div className="text-center bg-[#262626] rounded-lg p-8 max-w-lg mx-auto relative">
-        <h3 className="text-2xl font-display text-white mb-2">Thank You!</h3>
-        <p className="text-[#F3E3C3]/80">The portfolio is now unlocked. Check your email for a 10% off coupon!</p>
-        <p className="text-[#F3E3C3]/80 mt-4">Want to plan your shoot?{' '}
-          <button onClick={() => setShowPlanner(true)} className="underline text-[#F3E3C3]">Try our Conversational AI Planner</button>
-        </p>
-        {showPlanner && (
-          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-            <div className="bg-[#232323] rounded-lg shadow-lg max-w-md w-full relative">
-              <button onClick={() => setShowPlanner(false)} className="absolute top-2 right-2 text-white text-xl">&times;</button>
-              <ConversationalPlanner email={formData.email} onComplete={() => {}} />
-            </div>
-          </div>
+      <div className="relative h-screen flex items-center justify-center text-center text-white px-4 -mt-20">
+        {!heroImageLoaded && (
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black animate-pulse"></div>
         )}
+        <img 
+          src={heroImageUrl} 
+          alt="Studio37 Professional Photography - Houston TX" 
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${heroImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setHeroImageLoaded(true)}
+          onError={() => {
+            console.error('Hero image failed to load');
+            // Fallback to gradient background
+            setHeroImageLoaded(false);
+          }}
+          loading="eager"
+          decoding="async"
+          crossOrigin="anonymous"
+        />
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-0 pointer-events-none"></div>
+        <div className="relative z-10">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display mb-4 leading-tight break-words max-w-full">Capture. Create. Captivate.</h1>
+          <p className="text-base sm:text-lg md:text-xl max-w-xs sm:max-w-2xl mx-auto mb-8 text-[#F3E3C3]/80">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
+          <div className="space-y-4 sm:space-x-4 flex flex-col sm:flex-row items-center justify-center w-full">
+            <Link to="/portfolio" className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 w-full sm:w-auto">
+              View Our Work <ArrowRight />
+            </Link>
+          </div>
+        </div>
       </div>
-    );
-  }
-
-  return (
-    <div className="bg-[#262626] rounded-lg shadow-xl p-8 md:p-12 max-w-2xl mx-auto border border-white/10">
-      <h3 className="text-2xl md:text-3xl font-display text-center text-white mb-2">Unlock the Portfolio</h3>
-      <p className="text-center text-[#F3E3C3]/70 mb-8">Submit your info to view our work and receive a 10% off coupon for your first service!</p>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <input type="text" name="name" placeholder="Your Name" required onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
-        <input type="email" name="email" placeholder="Your Email" required onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
-        <input type="tel" name="phone" placeholder="Your Phone (Optional)" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
-        <select name="service" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]">
-          <option value="">Service of Interest (Optional)</option>
-          <option>Director Package</option>
-          <option>Producer Package</option>
-          <option>Wedding</option>
-          <option>Portrait</option>
-          <option>Other</option>
-        </select>
-        <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
-          Unlock & Get Coupon <ArrowRight />
-        </button>
-      </form>
-    </div>
+    </>
   );
 };
 
@@ -961,98 +900,111 @@ const ContactPage = () => {
 
   if (submitted) {
     return (
-      <div className="py-20 md:py-28 bg-[#212121]">
-        <div className="container mx-auto px-6 text-center">
-          <div className="bg-[#262626] rounded-lg p-8 max-w-md mx-auto">
-            <h2 className="text-3xl font-display text-white mb-4">Thank You!</h2>
-            <p className="text-[#F3E3C3]/80">We've received your message and will get back to you soon!</p>
+      <>
+        <SEOHead 
+          title="Thank You - Message Sent | Studio37 Houston Photography"
+          description="Thank you for contacting Studio37. We'll get back to you soon about your photography needs in Houston, TX."
+        />
+        <div className="py-20 md:py-28 bg-[#212121]">
+          <div className="container mx-auto px-6 text-center">
+            <div className="bg-[#262626] rounded-lg p-8 max-w-md mx-auto">
+              <h2 className="text-3xl font-display text-white mb-4">Thank You!</h2>
+              <p className="text-[#F3E3C3]/80">We've received your message and will get back to you soon!</p>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
   return (
-    <div className="py-20 md:py-28 bg-[#212121]">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-display">Get In Touch</h2>
-          <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
-        </div>
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <input 
-              type="text" 
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Your Name" 
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
-              required 
-            />
-            <input 
-              type="email" 
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Your Email" 
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
-              required 
-            />
-            <input 
-              type="tel" 
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="Your Phone (Optional)" 
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
-            />
-            <div>
-              <label className="block text-sm font-medium text-[#F3E3C3] mb-2">Preferred Contact Method</label>
-              <select 
-                name="contactMethod"
-                value={formData.contactMethod}
+    <>
+      <SEOHead 
+        title="Contact Studio37 - Houston Photography | Get Your Quote Today"
+        description="Contact Studio37 for professional photography services in Houston, TX. Call (832) 713-9944 or email sales@studio37.cc. Serving Greater Houston Area."
+        keywords="contact Houston photographer, Studio37 contact, Houston photography quote, professional photographer Houston TX"
+      />
+      <div className="py-20 md:py-28 bg-[#212121]">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-display">Get In Touch</h2>
+            <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <input 
+                type="text" 
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
+                placeholder="Your Name" 
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+                required 
+              />
+              <input 
+                type="email" 
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Your Email" 
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+                required 
+              />
+              <input 
+                type="tel" 
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="Your Phone (Optional)" 
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+              />
+              <div>
+                <label className="block text-sm font-medium text-[#F3E3C3] mb-2">Preferred Contact Method</label>
+                <select 
+                  name="contactMethod"
+                  value={formData.contactMethod}
+                  onChange={handleChange}
+                  className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                >
+                  <option value="email">Email</option>
+                  <option value="phone">Phone Call</option>
+                  <option value="text">Text Message</option>
+                </select>
+              </div>
+              <textarea 
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Your Message" 
+                rows="5" 
                 className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                required
+              />
+              <button 
+                type="submit" 
+                className="group inline-flex items-center justify-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105"
+                disabled={sending}
               >
-                <option value="email">Email</option>
-                <option value="phone">Phone Call</option>
-                <option value="text">Text Message</option>
-              </select>
-            </div>
-            <textarea 
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Your Message" 
-              rows="5" 
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
-              required
-            />
-            <button 
-              type="submit" 
-              className="group inline-flex items-center justify-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105"
-              disabled={sending}
-            >
-              {sending ? 'Sending...' : 'Send Message'} <ArrowRight />
-            </button>
-          </form>
-          <div className="text-[#F3E3C3]/80 space-y-6">
-            <div>
-              <h3 className="text-xl font-display text-white">Contact Info</h3>
-              <p>Email: <a href="mailto:sales@studio37.cc" className="hover:text-white transition">sales@studio37.cc</a></p>
-              <p>Phone: <a href="tel:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
-              <p>Text: <a href="sms:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
-            </div>
-            <div>
-              <h3 className="text-xl font-display text-white">Location</h3>
-              <p>Serving the Greater Houston Area</p>
-              <p>Based near Porter, TX 77362</p>
+                {sending ? 'Sending...' : 'Send Message'} <ArrowRight />
+              </button>
+            </form>
+            <div className="text-[#F3E3C3]/80 space-y-6">
+              <div>
+                <h3 className="text-xl font-display text-white">Contact Info</h3>
+                <p>Email: <a href="mailto:sales@studio37.cc" className="hover:text-white transition">sales@studio37.cc</a></p>
+                <p>Phone: <a href="tel:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
+                <p>Text: <a href="sms:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
+              </div>
+              <div>
+                <h3 className="text-xl font-display text-white">Location</h3>
+                <p>Serving the Greater Houston Area</p>
+                <p>Based near Porter, TX 77362</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -1097,71 +1049,91 @@ const AdminLoginPage = ({ onLogin }) => {
 const BlogPage = ({ posts, loading, error }) => {
   if (loading) {
     return (
-      <div className="py-20 md:py-28 bg-[#212121]">
-        <div className="container mx-auto px-6">
-          <div className="text-center">
-            <h2 className="text-4xl md:text-5xl font-display mb-8">Blog</h2>
-            <div className="text-[#F3E3C3] py-10">Loading blog posts...</div>
+      <>
+        <SEOHead 
+          title="Photography Blog - Studio37 Houston | Tips, Insights & Stories"
+          description="Photography tips, behind-the-scenes insights, and creative stories from Studio37's professional photographers in Houston, TX."
+          keywords="photography blog, photography tips Houston, behind the scenes, photography insights"
+        />
+        <div className="py-20 md:py-28 bg-[#212121]">
+          <div className="container mx-auto px-6">
+            <div className="text-center">
+              <h2 className="text-4xl md:text-5xl font-display mb-8">Blog</h2>
+              <div className="text-[#F3E3C3] py-10">Loading blog posts...</div>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
   if (error) {
     return (
-      <div className="py-20 md:py-28 bg-[#212121]">
-        <div className="container mx-auto px-6">
-          <div className="text-center">
-            <h2 className="text-4xl md:text-5xl font-display mb-8">Blog</h2>
-            <div className="text-red-400 py-10">{error}</div>
+      <>
+        <SEOHead 
+          title="Photography Blog - Studio37 Houston"
+          description="Photography blog from Studio37 in Houston, TX."
+        />
+        <div className="py-20 md:py-28 bg-[#212121]">
+          <div className="container mx-auto px-6">
+            <div className="text-center">
+              <h2 className="text-4xl md:text-5xl font-display mb-8">Blog</h2>
+              <div className="text-red-400 py-10">{error}</div>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
   return (
-    <div className="py-20 md:py-28 bg-[#212121]">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-display">Blog</h2>
-          <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">
-            Insights, tips, and stories from behind the lens.
-          </p>
-        </div>
-        
-        {posts && posts.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map(post => (
-              <article key={post.id} className="bg-[#262626] rounded-lg shadow-lg overflow-hidden">
-                <div className="p-6">
-                  <h3 className="text-xl font-display text-white mb-2">
-                    <Link to={`/blog/${post.slug}`} className="hover:text-[#F3E3C3] transition">
-                      {post.title}
+    <>
+      <SEOHead 
+        title="Photography Blog - Studio37 Houston | Tips, Insights & Stories"
+        description="Photography tips, behind-the-scenes insights, and creative stories from Studio37's professional photographers in Houston, TX."
+        keywords="photography blog, photography tips Houston, behind the scenes, photography insights"
+      />
+      <div className="py-20 md:py-28 bg-[#212121]">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-display">Blog</h2>
+            <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">
+              Insights, tips, and stories from behind the lens.
+            </p>
+          </div>
+          
+          {posts && posts.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts.map(post => (
+                <article key={post.id} className="bg-[#262626] rounded-lg shadow-lg overflow-hidden">
+                  <div className="p-6">
+                    <h3 className="text-xl font-display text-white mb-2">
+                      <Link to={`/blog/${post.slug}`} className="hover:text-[#F3E3C3] transition">
+                        {post.title}
+                      </Link>
+                    </h3>
+                    <div className="text-xs text-[#F3E3C3]/60 mb-3">
+                      {post.author} &middot; {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}
+                    </div>
+                    <p className="text-[#F3E3C3]/80 mb-4">{post.excerpt}</p>
+                    <Link 
+                      to={`/blog/${post.slug}`}
+                      className="inline-flex items-center text-[#F3E3C3] hover:text-white transition group"
+                    >
+                      Read More <ArrowRight />
                     </Link>
-                  </h3>
-                  <div className="text-xs text-[#F3E3C3]/60 mb-3">
-                    {post.author} &middot; {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}
                   </div>
-                  <p className="text-[#F3E3C3]/80 mb-4">{post.excerpt}</p>
-                  <Link 
-                    to={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-[#F3E3C3] hover:text-white transition group"
-                  >
-                    Read More <ArrowRight />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center text-[#F3E3C3]/70 py-10">
-            No blog posts available yet.
-          </div>
-        )}
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center text-[#F3E3C3]/70 py-10">
+              No blog posts available yet.
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
