@@ -1,489 +1,257 @@
 # Code Citations
 
 ## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+https://github.com/Sophocoles/SC_Spring_2023/blob/1d8d5c3c1d2a0a9516def550fe1d697c253808b7/StreetCard/React/streetcard/src/archive/tutorial-code/provider_app/react/pages/LoginPage.js
 
 ```
-useState
-```
-
-
-## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
-
-```
-useState
+({
 ```
 
 
 ## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+https://github.com/arunpatilgithub/my-library/blob/5b2947c18d51b0801c3d3f4bdf409f82f41e919d/src/Login.js
 
 ```
-useState(false);
-```
-
-
-## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
-
-```
-useState(false);
+({
 ```
 
 
 ## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+https://github.com/Sophocoles/SC_Spring_2023/blob/1d8d5c3c1d2a0a9516def550fe1d697c253808b7/StreetCard/React/streetcard/src/archive/tutorial-code/provider_app/react/pages/LoginPage.js
 
 ```
-useState(false);
-
-  const handleChange
-```
-
-
-## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
-
-```
-useState(false);
-
-  const handleChange
+({ onLogin }) => {
+  const
 ```
 
 
 ## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+https://github.com/arunpatilgithub/my-library/blob/5b2947c18d51b0801c3d3f4bdf409f82f41e919d/src/Login.js
 
 ```
-useState(false);
-
-  const handleChange = (e
-```
-
-
-## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
-
-```
-useState(false);
-
-  const handleChange = (e
+({ onLogin }) => {
+  const
 ```
 
 
 ## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+https://github.com/Sophocoles/SC_Spring_2023/blob/1d8d5c3c1d2a0a9516def550fe1d697c253808b7/StreetCard/React/streetcard/src/archive/tutorial-code/provider_app/react/pages/LoginPage.js
 
 ```
-useState(false);
-
-  const handleChange = (e) => {
-```
-
-
-## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
-
-```
-useState(false);
-
-  const handleChange = (e) => {
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
 ```
 
 
 ## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+https://github.com/arunpatilgithub/my-library/blob/5b2947c18d51b0801c3d3f4bdf409f82f41e919d/src/Login.js
 
 ```
-useState(false);
-
-  const handleChange = (e) => {
-    set
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
 ```
 
 
 ## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+https://github.com/Sophocoles/SC_Spring_2023/blob/1d8d5c3c1d2a0a9516def550fe1d697c253808b7/StreetCard/React/streetcard/src/archive/tutorial-code/provider_app/react/pages/LoginPage.js
 
 ```
-useState(false);
-
-  const handleChange = (e) => {
-    set
-```
-
-
-## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPasswor
 ```
 
 
 ## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+https://github.com/arunpatilgithub/my-library/blob/5b2947c18d51b0801c3d3f4bdf409f82f41e919d/src/Login.js
 
 ```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({
-```
-
-
-## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData,
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPasswor
 ```
 
 
 ## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+https://github.com/Sophocoles/SC_Spring_2023/blob/1d8d5c3c1d2a0a9516def550fe1d697c253808b7/StreetCard/React/streetcard/src/archive/tutorial-code/provider_app/react/pages/LoginPage.js
 
 ```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData,
-```
-
-
-## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const
 ```
 
 
 ## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+https://github.com/arunpatilgithub/my-library/blob/5b2947c18d51b0801c3d3f4bdf409f82f41e919d/src/Login.js
 
 ```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target
-```
-
-
-## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const
 ```
 
 
 ## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+https://github.com/Sophocoles/SC_Spring_2023/blob/1d8d5c3c1d2a0a9516def550fe1d697c253808b7/StreetCard/React/streetcard/src/archive/tutorial-code/provider_app/react/pages/LoginPage.js
 
 ```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e
-```
-
-
-## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState
 ```
 
 
 ## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+https://github.com/arunpatilgithub/my-library/blob/5b2947c18d51b0801c3d3f4bdf409f82f41e919d/src/Login.js
 
 ```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value
-```
-
-
-## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState
 ```
 
 
 ## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+https://github.com/Sophocoles/SC_Spring_2023/blob/1d8d5c3c1d2a0a9516def550fe1d697c253808b7/StreetCard/React/streetcard/src/archive/tutorial-code/provider_app/react/pages/LoginPage.js
 
 ```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-```
-
-
-## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handle
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate
 ```
 
 
 ## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+https://github.com/arunpatilgithub/my-library/blob/5b2947c18d51b0801c3d3f4bdf409f82f41e919d/src/Login.js
 
 ```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handle
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate
 ```
 
 
 ## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+https://github.com/Sophocoles/SC_Spring_2023/blob/1d8d5c3c1d2a0a9516def550fe1d697c253808b7/StreetCard/React/streetcard/src/archive/tutorial-code/provider_app/react/pages/LoginPage.js
 
 ```
-useState(false);
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (
-```
-
-
-## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (
+  const
 ```
 
 
 ## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+https://github.com/arunpatilgithub/my-library/blob/5b2947c18d51b0801c3d3f4bdf409f82f41e919d/src/Login.js
 
 ```
-useState(false);
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-```
-
-
-## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
+  const
 ```
 
 
 ## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+https://github.com/Sophocoles/SC_Spring_2023/blob/1d8d5c3c1d2a0a9516def550fe1d697c253808b7/StreetCard/React/streetcard/src/archive/tutorial-code/provider_app/react/pages/LoginPage.js
 
 ```
-useState(false);
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleLogin
+```
 
-  const handleSubmit = (e) => {
+
+## License: unknown
+https://github.com/arunpatilgithub/my-library/blob/5b2947c18d51b0801c3d3f4bdf409f82f41e919d/src/Login.js
+
+```
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogin
+```
+
+
+## License: unknown
+https://github.com/Sophocoles/SC_Spring_2023/blob/1d8d5c3c1d2a0a9516def550fe1d697c253808b7/StreetCard/React/streetcard/src/archive/tutorial-code/provider_app/react/pages/LoginPage.js
+
+```
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
     e.
 ```
 
 
 ## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+https://github.com/arunpatilgithub/my-library/blob/5b2947c18d51b0801c3d3f4bdf409f82f41e919d/src/Login.js
 
 ```
-useState(false);
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.
 ```
 
 
 ## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+https://github.com/Sophocoles/SC_Spring_2023/blob/1d8d5c3c1d2a0a9516def550fe1d697c253808b7/StreetCard/React/streetcard/src/archive/tutorial-code/provider_app/react/pages/LoginPage.js
 
 ```
-useState(false);
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-```
-
-
-## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleLogin = (e) => {
+    e.preventDefault(
 ```
 
 
 ## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+https://github.com/arunpatilgithub/my-library/blob/5b2947c18d51b0801c3d3f4bdf409f82f41e919d/src/Login.js
 
 ```
-useState(false);
+({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (form
-```
-
-
-## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (form
-```
-
-
-## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.name &&
-```
-
-
-## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.name &&
-```
-
-
-## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.name && formData.
-```
-
-
-## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.name && formData.
+  const handleLogin = (e) => {
+    e.preventDefault(
 ```
 
