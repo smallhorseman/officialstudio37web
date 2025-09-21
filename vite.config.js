@@ -20,6 +20,12 @@ export default defineConfig({
     alias: {
       '@': '/src'
     }
+  },
+  server: {
+    historyApiFallback: true
+  },
+  preview: {
+    historyApiFallback: true
   }
 });
 
