@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
+    assetsDir: 'assets',
     sourcemap: false,
     rollupOptions: {
       output: {
@@ -25,7 +26,6 @@ export default defineConfig({
     port: 3000
   }
 });
-    sourcemap: true,
     // Optimize assets
     assetsDir: 'assets',
     // Enable compression
