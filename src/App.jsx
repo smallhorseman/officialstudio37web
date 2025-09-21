@@ -705,8 +705,152 @@ const PortfolioGate = ({ onUnlock }) => {
   );
 };
 
-/* Removed duplicate ContactPage definition to resolve redeclaration error. */
+const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+    contactMethod: 'email'
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+    
+    // Save contact submission to Supabase
+    await supabase.from('leads').insert([{
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      service: 'Contact Form',
+      status: 'New'
+    }]);
+
+    // Add note with contact details
+    const { data: leadData } = await supabase
+      .from('leads')
+      .select('id')
+      .eq('email', formData.email)
+      .order('created_at', { ascending: false })
+      .limit(1);
+
+    if (leadData && leadData[0]) {
+      await supabase.from('lead_notes').insert([{
+        lead_id: leadData[0].id,
+        note: `Contact Form: Preferred contact: ${formData.contactMethod}. Message: ${formData.message}`,
+        status: 'Contact Form'
+      }]);
+    }
+
+    setSending(false);
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <div className="py-20 md:py-28 bg-[#212121]">
+        <div className="container mx-auto px-6 text-center">
+          <div className="bg-[#262626] rounded-lg p-8 max-w-md mx-auto">
+            <h2 className="text-3xl font-display text-white mb-4">Thank You!</h2>
+            <p className="text-[#F3E3C3]/80">We've received your message and will get back to you soon!</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="py-20 md:py-28 bg-[#212121]">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-display">Get In Touch</h2>
+          <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <input 
+              type="text" 
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+              required 
+            />
+            <input 
+              type="email" 
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Your Email" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+              required 
+            />
+            <input 
+              type="tel" 
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Your Phone (Optional)" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+            />
+            <div>
+              <label className="block text-sm font-medium text-[#F3E3C3] mb-2">Preferred Contact Method</label>
+              <select 
+                name="contactMethod"
+                value={formData.contactMethod}
+                onChange={handleChange}
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              >
+                <option value="email">Email</option>
+                <option value="phone">Phone Call</option>
+                <option value="text">Text Message</option>
+              </select>
+            </div>
+            <textarea 
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Your Message" 
+              rows="5" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              required
+            />
+            <button 
+              type="submit" 
+              className="group inline-flex items-center justify-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105"
+              disabled={sending}
+            >
+              {sending ? 'Sending...' : 'Send Message'} <ArrowRight />
+            </button>
+          </form>
+          <div className="text-[#F3E3C3]/80 space-y-6">
+            <div>
+              <h3 className="text-xl font-display text-white">Contact Info</h3>
+              <p>Email: <a href="mailto:sales@studio37.cc" className="hover:text-white transition">sales@studio37.cc</a></p>
+              <p>Phone: <a href="tel:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
+              <p>Text: <a href="sms:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
+            </div>
+            <div>
+              <h3 className="text-xl font-display text-white">Location</h3>
+              <p>Serving the Greater Houston Area</p>
+              <p>Based near Porter, TX 77362</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- Admin Login Page ---
 const AdminLoginPage = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
