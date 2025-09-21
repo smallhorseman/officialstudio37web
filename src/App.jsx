@@ -420,267 +420,91 @@ const ErrorBoundary = ({ children, fallback }) => {
   return children;
 };
 
-// --- OptimizedImage Component ---
-const OptimizedImage = ({ src, alt, className, loading = "lazy", ...props }) => {
-  const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState(false);
-  const [retryCount, setRetryCount] = useState(0);
-  const maxRetries = 2;
+// --- BlogPostPage: dynamic blog post by slug ---
+function BlogPostPage() {
+  const { slug } = useParams();
+  const [post, setPost] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState('');
+  const navigate = useNavigate();
 
-  // Optimize Cloudinary URLs
-  const optimizeCloudinaryUrl = (url) => {
-    if (!url || !url.includes('cloudinary.com')) return url;
-    
-    // Add automatic format and quality optimization
-    const optimizedUrl = url.replace('/upload/', '/upload/f_auto,q_auto:good,w_auto:breakpoints,c_scale/');
-    return optimizedUrl;
-  };
+  React.useEffect(() => {
+    setLoading(true);
+    setError('');
+    supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('slug', slug)
+      .single()
+      .then(({ data, error }) => {
+        if (error || !data) {
+          setError('Blog post not found.');
+          setPost(null);
+        } else {
+          setPost(data);
+        }
+        setLoading(false);
+      });
+  }, [slug]);
 
-  const handleImageError = () => {
-    if (retryCount < maxRetries) {
-      setRetryCount(prev => prev + 1);
-      setError(false);
-      setLoaded(false);
-      // Retry after a short delay
-      setTimeout(() => {
-        const img = new Image();
-        img.onload = () => setLoaded(true);
-        img.onerror = () => setError(true);
-        img.src = optimizeCloudinaryUrl(src);
-      }, 1000 * (retryCount + 1));
-    } else {
-      setError(true);
-    }
-  };
-
-  const optimizedSrc = optimizeCloudinaryUrl(src);
+  if (loading) return <div className="text-[#F3E3C3] text-center py-10">Loading...</div>;
+  if (error) return <div className="text-red-400 text-center py-10">{error}</div>;
+  if (!post) return null;
 
   return (
-    <div className={`relative ${className}`}>
-      {!loaded && !error && (
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse rounded flex items-center justify-center">
-          <div className="w-8 h-8 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin"></div>
+    <div className="py-20 md:py-28 bg-[#212121]">
+      <div className="container mx-auto px-6 max-w-3xl">
+        <button onClick={() => navigate('/blog')} className="text-[#F3E3C3] mb-4 hover:underline">&larr; Back to Blog</button>
+        <h1 className="text-4xl font-display mb-2 text-white">{post.title}</h1>
+        <div className="text-xs text-[#F3E3C3]/60 mb-4">{post.author} &middot; {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}</div>
+        <div className="text-[#F3E3C3]/80 mb-6">{post.excerpt}</div>
+        <div className="prose prose-invert max-w-none text-[#F3E3C3]/90">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {post.content || ''}
+          </ReactMarkdown>
         </div>
-      )}
-      <img
-        src={optimizedSrc}
-        alt={alt}
-        className={`${className} transition-all duration-500 ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-        onLoad={() => setLoaded(true)}
-        onError={handleImageError}
-        loading={loading}
-        decoding="async"
-        crossOrigin="anonymous"
-        {...props}
-      />
-      {error && (
-        <div className="absolute inset-0 bg-gray-800 flex items-center justify-center text-gray-400 text-sm rounded">
-          <div className="text-center p-4">
-            <svg className="w-12 h-12 mx-auto mb-2 opacity-50" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-            </svg>
-            <p>Image unavailable</p>
-            {retryCount > 0 && <p className="text-xs mt-1">Retried {retryCount}x</p>}
-          </div>
+        <div className="mt-8 text-xs text-[#F3E3C3]/60">
+          Tags: {Array.isArray(post.tags) ? post.tags.join(', ') : (typeof post.tags === 'string' ? post.tags : '')}
         </div>
-      )}
+      </div>
     </div>
   );
-};
+}
 
-// --- Portfolio Gate Component ---
-const PortfolioGate = ({ onUnlock }) => {
-  const [formData, setFormData] = useState({ name: '', email: '', service: '', phone: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const [showPlanner, setShowPlanner] = useState(false);
+// --- Admin Login Page ---
+const AdminLoginPage = ({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    if (formData.name && formData.email) {
-      onUnlock(formData);
-      setSubmitted(true);
+    if (
+      username.trim().toLowerCase() === 'admin' &&
+      password.trim() === 'studio37admin'
+    ) {
+      onLogin();
+      navigate('/admin/dashboard');
+    } else {
+      setError('Invalid username or password.');
     }
   };
 
-  if (submitted) {
-    return (
-      <div className="text-center bg-[#262626] rounded-lg p-8 max-w-lg mx-auto relative">
-        <h3 className="text-2xl font-display text-white mb-2">Thank You!</h3>
-        <p className="text-[#F3E3C3]/80">The portfolio is now unlocked. Check your email for a 10% off coupon!</p>
-        <p className="text-[#F3E3C3]/80 mt-4">Want to plan your shoot?{' '}
-          <button onClick={() => setShowPlanner(true)} className="underline text-[#F3E3C3]">Try our Conversational AI Planner</button>
-        </p>
-        {showPlanner && (
-          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-            <div className="bg-[#232323] rounded-lg shadow-lg max-w-md w-full relative">
-              <button onClick={() => setShowPlanner(false)} className="absolute top-2 right-2 text-white text-xl">&times;</button>
-              <ConversationalPlanner email={formData.email} onComplete={() => {}} />
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
-
   return (
-    <div className="bg-[#262626] rounded-lg shadow-xl p-8 md:p-12 max-w-2xl mx-auto border border-white/10">
-      <h3 className="text-2xl md:text-3xl font-display text-center text-white mb-2">Unlock the Portfolio</h3>
-      <p className="text-center text-[#F3E3C3]/70 mb-8">Submit your info to view our work and receive a 10% off coupon for your first service!</p>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <input type="text" name="name" placeholder="Your Name" required onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
-        <input type="email" name="email" placeholder="Your Email" required onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
-        <input type="tel" name="phone" placeholder="Your Phone (Optional)" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
-        <select name="service" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]">
-          <option value="">Service of Interest (Optional)</option>
-          <option>Director Package</option>
-          <option>Producer Package</option>
-          <option>Wedding</option>
-          <option>Portrait</option>
-          <option>Other</option>
-        </select>
-        <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
-          Unlock & Get Coupon <ArrowRight />
-        </button>
-      </form>
+    <div className="py-20 md:py-32 flex items-center justify-center">
+      <div className="bg-[#232323] rounded-lg shadow-xl p-8 md:p-12 max-w-md w-full border border-white/10">
+        <h2 className="text-3xl font-display text-center mb-8">Admin Login</h2>
+        <form onSubmit={handleLogin} className="space-y-6">
+          <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+          <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+          {error && <p className="text-red-400 text-sm">{error}</p>}
+          <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#232323] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
+            Login <ArrowRight />
+          </button>
+        </form>
+      </div>
     </div>
-  );
-};
-
-// --- Portfolio Page Component ---
-const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
-  const [filter, setFilter] = useState('All');
-  const [imageLoadErrors, setImageLoadErrors] = useState(new Set());
-  
-  // Memoize filtered images
-  const filteredImages = useMemo(() => {
-    const validImages = images.filter(img => img.url && !imageLoadErrors.has(img.id));
-    return filter === 'All' ? validImages : validImages.filter(img => img.category === filter);
-  }, [images, filter, imageLoadErrors]);
-
-  const categories = useMemo(() => 
-    ['All', ...new Set(images.filter(img => !imageLoadErrors.has(img.id)).map(img => img.category))], 
-    [images, imageLoadErrors]
-  );
-
-  const handleImageError = useCallback((imageId) => {
-    setImageLoadErrors(prev => new Set([...prev, imageId]));
-  }, []);
-
-  return (
-    <>
-      <SEOHead 
-        title="Photography Portfolio - Studio37 Houston | Professional Work Gallery"
-        description="View Studio37's photography portfolio showcasing professional work in Houston, TX. Portraits, weddings, events, and commercial photography."
-        keywords="photography portfolio Houston, professional photography gallery, Studio37 work, Houston photographer portfolio"
-      />
-      <div className="py-20 md:py-28">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-display">Our Work</h2>
-            <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">A curated selection of our favorite moments and projects.</p>
-          </div>
-          {!isUnlocked && <PortfolioGate onUnlock={onUnlock} />}
-          {isUnlocked && (
-            <>
-              <div className="flex flex-wrap gap-2 justify-center mb-8">
-                {categories.map(cat => (
-                  <button
-                    key={cat}
-                    onClick={() => setFilter(cat)}
-                    className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors ${filter === cat ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] hover:bg-[#333]'}`}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
-              <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6">
-                {filteredImages.map(img => (
-                  <div key={img.id} className="break-inside-avoid relative group">
-                    <OptimizedImage
-                      src={img.url} 
-                      alt={img.caption || `${img.category} photography`} 
-                      className="w-full rounded-lg shadow-lg hover:opacity-90 transition-opacity"
-                      loading="lazy"
-                      onError={() => handleImageError(img.id)}
-                    />
-                    {img.caption && (
-                      <div className="absolute bottom-0 left-0 right-0 bg-black/75 backdrop-blur-sm p-3 rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity">
-                        <p className="text-[#F3E3C3]/75 text-sm font-serif italic leading-relaxed">
-                          {img.caption}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-              {filteredImages.length === 0 && (
-                <div className="text-center text-[#F3E3C3]/70 py-12">
-                  {imageLoadErrors.size > 0 ? 
-                    'Some images failed to load. Please refresh the page.' : 
-                    'No images available in this category.'
-                  }
-                </div>
-              )}
-            </>
-          )}
-        </div>
-      </div>
-    </>
-  );
-};
-
-// --- Memoized components for performance ---
-const MemoizedPortfolioPage = React.memo(PortfolioPage);
-
-// --- Enhanced HomePage with optimized hero image ---
-const HomePage = () => {
-  const [heroImageLoaded, setHeroImageLoaded] = useState(false);
-  
-  // Fixed hero image URL with proper encoding
-  const heroImageUrl = "https://res.cloudinary.com/dmjxho2rl/image/upload/f_auto,q_auto:good,w_auto:breakpoints,c_scale/v1758172510/A4B03835-ED8B-4FBB-A27E-1F2EE6CA1A18_1_105_c_gstgil.jpg";
-
-  return (
-    <>
-      <SEOHead 
-        title="Studio37 - Professional Photography & Content Strategy in Houston, TX"
-        description="Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX."
-        keywords="photography Houston, professional photographer Houston, content strategy, portraits, weddings, events, brand photography"
-        image="https://www.studio37.cc/og-image.jpg"
-      />
-      <div className="relative h-screen flex items-center justify-center text-center text-white px-4 -mt-20">
-        {!heroImageLoaded && (
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black animate-pulse"></div>
-        )}
-        <img 
-          src={heroImageUrl} 
-          alt="Studio37 Professional Photography - Houston TX" 
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${heroImageLoaded ? 'opacity-100' : 'opacity-0'}`}
-          onLoad={() => setHeroImageLoaded(true)}
-          onError={() => {
-            console.error('Hero image failed to load');
-            // Fallback to gradient background
-            setHeroImageLoaded(false);
-          }}
-          loading="eager"
-          decoding="async"
-          crossOrigin="anonymous"
-        />
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-0 pointer-events-none"></div>
-        <div className="relative z-10">
-          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display mb-4 leading-tight break-words max-w-full">Capture. Create. Captivate.</h1>
-          <p className="text-base sm:text-lg md:text-xl max-w-xs sm:max-w-2xl mx-auto mb-8 text-[#F3E3C3]/80">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
-          <div className="space-y-4 sm:space-x-4 flex flex-col sm:flex-row items-center justify-center w-full">
-            <Link to="/portfolio" className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 w-full sm:w-auto">
-              View Our Work <ArrowRight />
-            </Link>
-          </div>
-        </div>
-      </div>
-    </>
   );
 };
 
@@ -1018,25 +842,12 @@ const HomePage = () => {
         />
         <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-0 pointer-events-none"></div>
         <div className="relative z-10">
-          <h1 className="text-3xl xs:text-4xl sm
-                disabled={sending}
-              >
-                {sending ? 'Sending...' : 'Send Message'} <ArrowRight />
-              </button>
-            </form>
-            <div className="text-[#F3E3C3]/80 space-y-6">
-              <div>
-                <h3 className="text-xl font-display text-white">Contact Info</h3>
-                <p>Email: <a href="mailto:sales@studio37.cc" className="hover:text-white transition">sales@studio37.cc</a></p>
-                <p>Phone: <a href="tel:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
-                <p>Text: <a href="sms:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
-              </div>
-              <div>
-                <h3 className="text-xl font-display text-white">Location</h3>
-                <p>Serving the Greater Houston Area</p>
-                <p>Based near Porter, TX 77362</p>
-              </div>
-            </div>
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display mb-4 leading-tight break-words max-w-full">Capture. Create. Captivate.</h1>
+          <p className="text-base sm:text-lg md:text-xl max-w-xs sm:max-w-2xl mx-auto mb-8 text-[#F3E3C3]/80">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
+          <div className="space-y-4 sm:space-x-4 flex flex-col sm:flex-row items-center justify-center w-full">
+            <Link to="/portfolio" className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 w-full sm:w-auto">
+              View Our Work <ArrowRight />
+            </Link>
           </div>
         </div>
       </div>
@@ -1044,242 +855,134 @@ const HomePage = () => {
   );
 };
 
-// --- Admin Login Page ---
-const AdminLoginPage = ({ onLogin }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+// --- OptimizedImage Component ---
+const OptimizedImage = ({ src, alt, className, loading = "lazy", ...props }) => {
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+  const maxRetries = 2;
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if (
-      username.trim().toLowerCase() === 'admin' &&
-      password.trim() === 'studio37admin'
-    ) {
-      onLogin();
-      navigate('/admin/dashboard');
+  // Optimize Cloudinary URLs
+  const optimizeCloudinaryUrl = (url) => {
+    if (!url || !url.includes('cloudinary.com')) return url;
+    
+    // Add automatic format and quality optimization
+    const optimizedUrl = url.replace('/upload/', '/upload/f_auto,q_auto:good,w_auto:breakpoints,c_scale/');
+    return optimizedUrl;
+  };
+
+  const handleImageError = () => {
+    if (retryCount < maxRetries) {
+      setRetryCount(prev => prev + 1);
+      setError(false);
+      setLoaded(false);
+      // Retry after a short delay
+      setTimeout(() => {
+        const img = new Image();
+        img.onload = () => setLoaded(true);
+        img.onerror = () => setError(true);
+        img.src = optimizeCloudinaryUrl(src);
+      }, 1000 * (retryCount + 1));
     } else {
-      setError('Invalid username or password.');
+      setError(true);
     }
   };
 
-  return (
-    <div className="py-20 md:py-32 flex items-center justify-center">
-      <div className="bg-[#232323] rounded-lg shadow-xl p-8 md:p-12 max-w-md w-full border border-white/10">
-        <h2 className="text-3xl font-display text-center mb-8">Admin Login</h2>
-        <form onSubmit={handleLogin} className="space-y-6">
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
-          {error && <p className="text-red-400 text-sm">{error}</p>}
-          <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#232323] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
-            Login <ArrowRight />
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-};
-
-// --- Add missing BlogPage component ---
-const BlogPage = ({ posts, loading, error }) => {
-  if (loading) {
-    return (
-      <>
-        <SEOHead 
-          title="Photography Blog - Studio37 Houston | Tips, Insights & Stories"
-          description="Photography tips, behind-the-scenes insights, and creative stories from Studio37's professional photographers in Houston, TX."
-          keywords="photography blog, photography tips Houston, behind the scenes, photography insights"
-        />
-        <div className="py-20 md:py-28 bg-[#212121]">
-          <div className="container mx-auto px-6">
-            <div className="text-center">
-              <h2 className="text-4xl md:text-5xl font-display mb-8">Blog</h2>
-              <div className="text-[#F3E3C3] py-10">Loading blog posts...</div>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
-
-  if (error) {
-    return (
-      <>
-        <SEOHead 
-          title="Photography Blog - Studio37 Houston"
-          description="Photography blog from Studio37 in Houston, TX."
-        />
-        <div className="py-20 md:py-28 bg-[#212121]">
-          <div className="container mx-auto px-6">
-            <div className="text-center">
-              <h2 className="text-4xl md:text-5xl font-display mb-8">Blog</h2>
-              <div className="text-red-400 py-10">{error}</div>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
+  const optimizedSrc = optimizeCloudinaryUrl(src);
 
   return (
-    <>
-      <SEOHead 
-        title="Photography Blog - Studio37 Houston | Tips, Insights & Stories"
-        description="Photography tips, behind-the-scenes insights, and creative stories from Studio37's professional photographers in Houston, TX."
-        keywords="photography blog, photography tips Houston, behind the scenes, photography insights"
+    <div className={`relative ${className}`}>
+      {!loaded && !error && (
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse rounded flex items-center justify-center">
+          <div className="w-8 h-8 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      )}
+      <img
+        src={optimizedSrc}
+        alt={alt}
+        className={`${className} transition-all duration-500 ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+        onLoad={() => setLoaded(true)}
+        onError={handleImageError}
+        loading={loading}
+        decoding="async"
+        crossOrigin="anonymous"
+        {...props}
       />
-      <div className="py-20 md:py-28 bg-[#212121]">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-display">Blog</h2>
-            <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">
-              Insights, tips, and stories from behind the lens.
-            </p>
+      {error && (
+        <div className="absolute inset-0 bg-gray-800 flex items-center justify-center text-gray-400 text-sm rounded">
+          <div className="text-center p-4">
+            <svg className="w-12 h-12 mx-auto mb-2 opacity-50" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+            </svg>
+            <p>Image unavailable</p>
+            {retryCount > 0 && <p className="text-xs mt-1">Retried {retryCount}x</p>}
           </div>
-          
-          {posts && posts.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map(post => (
-                <article key={post.id} className="bg-[#262626] rounded-lg shadow-lg overflow-hidden">
-                  <div className="p-6">
-                    <h3 className="text-xl font-display text-white mb-2">
-                      <Link to={`/blog/${post.slug}`} className="hover:text-[#F3E3C3] transition">
-                        {post.title}
-                      </Link>
-                    </h3>
-                    <div className="text-xs text-[#F3E3C3]/60 mb-3">
-                      {post.author} &middot; {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}
-                    </div>
-                    <p className="text-[#F3E3C3]/80 mb-4">{post.excerpt}</p>
-                    <Link 
-                      to={`/blog/${post.slug}`}
-                      className="inline-flex items-center text-[#F3E3C3] hover:text-white transition group"
-                    >
-                      Read More <ArrowRight />
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center text-[#F3E3C3]/70 py-10">
-              No blog posts available yet.
-            </div>
-          )}
         </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 };
 
-// --- Footer component ---
-const Footer = () => (
-  <footer className="bg-[#232323] text-[#F3E3C3] py-12">
-    <div className="container mx-auto px-6">
-      <div className="grid md:grid-cols-3 gap-8">
-        <div>
-          <div className="flex items-center gap-4 mb-4">
-            <Logo />
-            <span className="font-display text-xl font-bold tracking-tight text-white">Studio37</span>
-          </div>
-          <p className="text-[#F3E3C3]/70">
-            Vintage heart, modern vision. Full-service photography and content strategy.
-          </p>
-        </div>
-        <div>
-          <h4 className="font-display text-lg mb-4">Quick Links</h4>
-          <div className="space-y-2">
-            <Link to="/about" className="block text-[#F3E3C3]/70 hover:text-white transition">About</Link>
-            <Link to="/services" className="block text-[#F3E3C3]/70 hover:text-white transition">Services</Link>
-            <Link to="/portfolio" className="block text-[#F3E3C3]/70 hover:text-white transition">Portfolio</Link>
-            <Link to="/blog" className="block text-[#F3E3C3]/70 hover:text-white transition">Blog</Link>
-            <Link to="/contact" className="block text-[#F3E3C3]/70 hover:text-white transition">Contact</Link>
-          </div>
-        </div>
-        <div>
-          <h4 className="font-display text-lg mb-4">Contact Info</h4>
-          <div className="space-y-2 text-[#F3E3C3]/70">
-            <p>Email: sales@studio37.cc</p>
-            <p>Phone: (832) 713-9944</p>
-            <p>Serving Greater Houston Area</p>
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-white/10 mt-8 pt-8 text-center text-[#F3E3C3]/60">
-        <p>&copy; 2024 Studio37. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-);
+// --- Portfolio Gate Component ---
+const PortfolioGate = ({ onUnlock }) => {
+  const [formData, setFormData] = useState({ name: '', email: '', service: '', phone: '' });
+  const [submitted, setSubmitted] = useState(false);
+  const [showPlanner, setShowPlanner] = useState(false);
 
-// --- Site Map Preview ---
-function SiteMapPreview({ page, content, portfolioImages, blogPosts }) {
-  switch (page) {
-    case 'about':
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">{content.about?.title || 'About Us'}</h3>
-          <div className="text-[#F3E3C3]/80">
-            {content.about?.bio ? (
-              <ReactMarkdown remarkPlugins={[remarkGfm]} className="prose prose-sm prose-invert max-w-none">
-                {content.about.bio}
-              </ReactMarkdown>
-            ) : (
-              <p>About content...</p>
-            )}
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.name && formData.email) {
+      onUnlock(formData);
+      setSubmitted(true);
+    }
+  };
+
+  if (submitted) {
+    return (
+      <div className="text-center bg-[#262626] rounded-lg p-8 max-w-lg mx-auto relative">
+        <h3 className="text-2xl font-display text-white mb-2">Thank You!</h3>
+        <p className="text-[#F3E3C3]/80">The portfolio is now unlocked. Check your email for a 10% off coupon!</p>
+        <p className="text-[#F3E3C3]/80 mt-4">Want to plan your shoot?{' '}
+          <button onClick={() => setShowPlanner(true)} className="underline text-[#F3E3C3]">Try our Conversational AI Planner</button>
+        </p>
+        {showPlanner && (
+          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+            <div className="bg-[#232323] rounded-lg shadow-lg max-w-md w-full relative">
+              <button onClick={() => setShowPlanner(false)} className="absolute top-2 right-2 text-white text-xl">&times;</button>
+              <ConversationalPlanner email={formData.email} onComplete={() => {}} />
+            </div>
           </div>
-        </div>
-      );
-    case 'portfolio':
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">Portfolio</h3>
-          <div className="grid grid-cols-3 gap-2">
-            {portfolioImages?.slice(0, 6).map(img => (
-              <div key={img.id} className="relative">
-                <OptimizedImage 
-                  src={img.url} 
-                  alt={img.category} 
-                  className="w-full h-16 object-cover rounded" 
-                  loading="lazy"
-                />
-                {img.caption && (
-                  <div className="absolute bottom-0 left-0 right-0 bg-black/75 p-1 rounded-b text-xs">
-                    <p className="text-[#F3E3C3]/75 font-vintage-text italic leading-relaxed">
-                      {img.caption}
-                    </p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-[#F3E3C3]/60 mt-2">{portfolioImages?.length || 0} images</p>
-        </div>
-      );
-    case 'blog':
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">Blog</h3>
-          <div className="space-y-2">
-            {blogPosts?.slice(0, 3).map(post => (
-              <div key={post.id} className="bg-[#181818] p-2 rounded text-xs">
-                <div className="font-bold">{post.title}</div>
-                <div className="text-[#F3E3C3]/60">{post.excerpt?.substring(0, 60)}...</div>
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-[#F3E3C3]/60 mt-2">{blogPosts?.length || 0} posts</p>
-        </div>
-      );
-    default:
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">{page.charAt(0).toUpperCase() + page.slice(1)}</h3>
-          <p className="text-[#F3E3C3]/70">Preview for {page} page...</p>
-        </div>
-      );
+        )}
+      </div>
+    );
   }
+
+  return (
+    <div className="bg-[#262626] rounded-lg shadow-xl p-8 md:p-12 max-w-2xl mx-auto border border-white/10">
+      <h3 className="text-2xl md:text-3xl font-display text-center text-white mb-2">Unlock the Portfolio</h3>
+      <p className="text-center text-[#F3E3C3]/70 mb-8">Submit your info to view our work and receive a 10% off coupon for your first service!</p>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <input type="text" name="name" placeholder="Your Name" required onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+        <input type="email" name="email" placeholder="Your Email" required onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+        <input type="tel" name="phone" placeholder="Your Phone (Optional)" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+        <select name="service" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]">
+          <option value="">Service of Interest (Optional)</option>
+          <option>Director Package</option>
+          <option>Producer Package</option>
+          <option>Wedding</option>
+          <option>Portrait</option>
+          <option>Other</option>
+        </select>
+        <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
+          Unlock & Get Coupon <ArrowRight />
+        </button>
+      </form>
+    </div>
+  );
 }
 
 // --- AdminDashboard Component (inline to avoid import issues) ---
@@ -2177,85 +1880,74 @@ function BlogAdminSection({
   );
 };
 
-// --- Site Map Tab ---
-const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blogPosts }) => {
-  const [pageContent, setPageContent] = useState('');
-
-  useEffect(() => {
-    // Update page content based on selected page
-    switch (siteMapPage) {
-      case 'home':
-        setPageContent('Welcome to Studio37, your destination for professional photography and content strategy in Houston, TX.');
-        break;
-      case 'about':
-        setPageContent(content.about?.bio || 'About content not available.');
-        break;
-      case 'services':
-        setPageContent('Explore our photography services, including portraits, events, weddings, and commercial photography.');
-        break;
-      case 'portfolio':
-        setPageContent('Check out our portfolio showcasing recent work in various photography styles.');
-        break;
-      case 'blog':
-        setPageContent('Read our latest blog posts for photography tips, behind-the-scenes insights, and studio news.');
-        break;
-      case 'contact':
-        setPageContent('Get in touch with us to book a session or inquire about our services.');
-        break;
-      default:
-        setPageContent('');
-    }
-  }, [siteMapPage, content]);
-
-  return (
-    <div>
-      <div className="flex gap-4 mb-6">
-        <button
-          onClick={() => setSiteMapPage('home')}
-          className={`flex-1 px-4 py-2 rounded-md font-semibold transition-all ${siteMapPage === 'home' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3] hover:bg-[#333]'}`}
-        >
-          Home
-        </button>
-        <button
-          onClick={() => setSiteMapPage('about')}
-          className={`flex-1 px-4 py-2 rounded-md font-semibold transition-all ${siteMapPage === 'about' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3] hover:bg-[#333]'}`}
-        >
-          About
-        </button>
-        <button
-          onClick={() => setSiteMapPage('services')}
-          className={`flex-1 px-4 py-2 rounded-md font-semibold transition-all ${siteMapPage === 'services' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3] hover:bg-[#333]'}`}
-        >
-          Services
-        </button>
-        <button
-          onClick={() => setSiteMapPage('portfolio')}
-          className={`flex-1 px-4 py-2 rounded-md font-semibold transition-all ${siteMapPage === 'portfolio' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3] hover:bg-[#333]'}`}
-        >
-          Portfolio
-        </button>
-        <button
-          onClick={() => setSiteMapPage('blog')}
-          className={`flex-1 px-4 py-2 rounded-md font-semibold transition-all ${siteMapPage === 'blog' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3] hover:bg-[#333]'}`}
-        >
-          Blog
-        </button>
-        <button
-          onClick={() => setSiteMapPage('contact')}
-          className={`flex-1 px-4 py-2 rounded-md font-semibold transition-all ${siteMapPage === 'contact' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3] hover:bg-[#333]'}`}
-        >
-          Contact
-        </button>
-      </div>
-      <div className="bg-[#262626] rounded-lg p-6">
-        <h3 className="text-lg font-bold mb-4">{siteMapPage.charAt(0).toUpperCase() + siteMapPage.slice(1)} Page Content</h3>
-        <div className="text-sm text-[#F3E3C3]/80">
-          {pageContent}
+// --- Site Map Preview ---
+function SiteMapPreview({ page, content, portfolioImages, blogPosts }) {
+  switch (page) {
+    case 'about':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">{content.about?.title || 'About Us'}</h3>
+          <div className="text-[#F3E3C3]/80">
+            {content.about?.bio ? (
+              <ReactMarkdown remarkPlugins={[remarkGfm]} className="prose prose-sm prose-invert max-w-none">
+                {content.about.bio}
+              </ReactMarkdown>
+            ) : (
+              <p>About content...</p>
+            )}
+          </div>
         </div>
-      </div>
-    </div>
-  );
-};
+      );
+    case 'portfolio':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">Portfolio</h3>
+          <div className="grid grid-cols-3 gap-2">
+            {portfolioImages?.slice(0, 6).map(img => (
+              <div key={img.id} className="relative">
+                <OptimizedImage 
+                  src={img.url} 
+                  alt={img.category} 
+                  className="w-full h-16 object-cover rounded" 
+                  loading="lazy"
+                />
+                {img.caption && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/75 p-1 rounded-b text-xs">
+                    <p className="text-[#F3E3C3]/75 font-vintage-text italic leading-relaxed">
+                      {img.caption}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-[#F3E3C3]/60 mt-2">{portfolioImages?.length || 0} images</p>
+        </div>
+      );
+    case 'blog':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">Blog</h3>
+          <div className="space-y-2">
+            {blogPosts?.slice(0, 3).map(post => (
+              <div key={post.id} className="bg-[#181818] p-2 rounded text-xs">
+                <div className="font-bold">{post.title}</div>
+                <div className="text-[#F3E3C3]/60">{post.excerpt?.substring(0, 60)}...</div>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-[#F3E3C3]/60 mt-2">{blogPosts?.length || 0} posts</p>
+        </div>
+      );
+    default:
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">{page.charAt(0).toUpperCase() + page.slice(1)}</h3>
+          <p className="text-[#F3E3C3]/70">Preview for {page} page...</p>
+        </div>
+      );
+  }
+}
 
 // --- Enhanced Analytics Section with Win Rates ---
 function AnalyticsSection({ leads, projects, blogPosts }) {
@@ -2388,8 +2080,6 @@ function AnalyticsSection({ leads, projects, blogPosts }) {
           </div>
         </div>
       </div>
-
-      {/* ...existing analytics cards... */}
     </div>
   );
 }
