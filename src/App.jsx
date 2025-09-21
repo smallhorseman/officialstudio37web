@@ -763,6 +763,7 @@ function AdminDashboard({
   projectsLoading
 }) {
   const [activeTab, setActiveTab] = useState('crm');
+  const [siteMapPage, setSiteMapPage] = useState('home');
 
   return (
     <div className="py-20 md:py-28 bg-[#212121]">
@@ -773,7 +774,7 @@ function AdminDashboard({
         </div>
         
         <div className="flex flex-wrap gap-2 justify-center mb-8">
-          {['crm', 'cms', 'blog'].map(tab => (
+          {['crm', 'projects', 'cms', 'blog', 'sitemap', 'analytics'].map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -793,6 +794,13 @@ function AdminDashboard({
             <div>
               <h3 className="text-2xl font-display mb-6">Customer Relationship Management</h3>
               <CrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
+            </div>
+          )}
+
+          {activeTab === 'projects' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Project Management</h3>
+              <ProjectsSection projects={projects} projectsLoading={projectsLoading} />
             </div>
           )}
           
@@ -822,288 +830,44 @@ function AdminDashboard({
               />
             </div>
           )}
-        </div>
-      </div>
-    </div>
-  );
-}
 
-// --- Live Preview Renderer for Each Page ---
-const SiteMapPreview = ({ page, content, portfolioImages, blogPosts }) => {
-  switch (page) {
-    case 'home':
-      return (
-        <div>
-          <h1 className="text-3xl font-display mb-2">Capture. Create. Captivate.</h1>
-          <p className="text-[#F3E3C3]/80 mb-4">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
-        </div>
-      );
-    case 'about':
-      return (
-        <div>
-          <h2 className="text-2xl font-display mb-2">{content.about.title}</h2>
-          <p className="text-[#F3E3C3]/80">{content.about.bio}</p>
-        </div>
-      );
-    case 'services':
-      return <div><h2 className="text-2xl font-display mb-2">Our Services</h2><p className="text-[#F3E3C3]/80">From comprehensive brand management to capturing your most precious personal moments.</p></div>;
-    case 'portfolio':
-      return (
-        <div>
-          <h2 className="text-2xl font-display mb-2">Our Work</h2>
-          <div className="flex flex-wrap gap-2">
-            {portfolioImages.slice(0, 4).map(img => (
-              <img key={img.id} src={img.url} alt={img.category} className="w-20 h-20 object-cover rounded" />
-            ))}
-          </div>
-        </div>
-      );
-    case 'blog':
-      return (
-        <div>
-          <h2 className="text-2xl font-display mb-2">Blog</h2>
-          <ul className="list-disc ml-6">
-            {blogPosts.slice(0, 3).map(post => (
-              <li key={post.id} className="text-[#F3E3C3]/80">{post.title}</li>
-            ))}
-          </ul>
-        </div>
-      );
-    case 'contact':
-      return (
-        <div>
-          <h2 className="text-2xl font-display mb-2">Get In Touch</h2>
-          <p className="text-[#F3E3C3]/80">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
-        </div>
-      );
-    default:
-      return null;
-  }
-};
-
-// --- Error Fallback UI ---
-function ErrorFallback({ message }) {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-[40vh] text-center">
-      <h2 className="text-2xl font-bold text-red-400 mb-4">Something went wrong</h2>
-      <p className="text-[#F3E3C3]/80">{message || 'An unexpected error occurred. Please try again later.'}</p>
-    </div>
-  );
-}
-
-// --- Enhanced Contact Page with Text Option ---
-const ContactPage = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-    contactMethod: 'email'
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [sending, setSending] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSending(true);
-    
-    // Save contact submission to Supabase
-    await supabase.from('leads').insert([{
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      service: 'Contact Form',
-      status: 'New'
-    }]);
-
-    // Add note with contact details
-    const { data: leadData } = await supabase
-      .from('leads')
-      .select('id')
-      .eq('email', formData.email)
-      .order('created_at', { ascending: false })
-      .limit(1);
-
-    if (leadData && leadData[0]) {
-      await supabase.from('lead_notes').insert([{
-        lead_id: leadData[0].id,
-        note: `Contact Form: Preferred contact: ${formData.contactMethod}. Message: ${formData.message}`,
-        status: 'Contact Form'
-      }]);
-    }
-
-    setSending(false);
-    setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <div className="py-20 md:py-28 bg-[#212121]">
-        <div className="container mx-auto px-6 text-center">
-          <div className="bg-[#262626] rounded-lg p-8 max-w-md mx-auto">
-            <h2 className="text-3xl font-display text-white mb-4">Thank You!</h2>
-            <p className="text-[#F3E3C3]/80">We've received your message and will get back to you soon!</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="py-20 md:py-28 bg-[#212121]">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-display">Get In Touch</h2>
-          <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
-        </div>
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <input 
-              type="text" 
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Your Name" 
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
-              required 
-            />
-            <input 
-              type="email" 
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Your Email" 
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
-              required 
-            />
-            <input 
-              type="tel" 
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="Your Phone (Optional)" 
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
-            />
+          {activeTab === 'sitemap' && (
             <div>
-              <label className="block text-sm font-medium text-[#F3E3C3] mb-2">Preferred Contact Method</label>
-              <select 
-                name="contactMethod"
-                value={formData.contactMethod}
-                onChange={handleChange}
-                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
-              >
-                <option value="email">Email</option>
-                <option value="phone">Phone Call</option>
-                <option value="text">Text Message</option>
-              </select>
+              <h3 className="text-2xl font-display mb-6">Site Map Editor</h3>
+              <SiteMapTab 
+                siteMapPage={siteMapPage} 
+                setSiteMapPage={setSiteMapPage} 
+                content={content}
+                portfolioImages={portfolioImages}
+                blogPosts={blogPosts}
+              />
             </div>
-            <textarea 
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Your Message" 
-              rows="5" 
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
-              required
-            />
-            <button 
-              type="submit" 
-              className="group inline-flex items-center justify-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105"
-              disabled={sending}
-            >
-              {sending ? 'Sending...' : 'Send Message'} <ArrowRight />
-            </button>
-          </form>
-          <div className="text-[#F3E3C3]/80 space-y-6">
-            <div>
-              <h3 className="text-xl font-display text-white">Contact Info</h3>
-              <p>Email: <a href="mailto:sales@studio37.cc" className="hover:text-white transition">sales@studio37.cc</a></p>
-              <p>Phone: <a href="tel:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
-              <p>Text: <a href="sms:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
-            </div>
-            <div>
-              <h3 className="text-xl font-display text-white">Location</h3>
-              <p>Serving the Greater Houston Area</p>
-              <p>Based near Porter, TX 77362</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+          )}
 
-// --- BlogPage Component ---
-function BlogPage({ posts, loading, error }) {
-  if (loading) {
-    return <div className="text-[#F3E3C3] text-center py-10">Loading blog posts...</div>;
-  }
-  if (error) {
-    return <div className="text-red-400 text-center py-10">{error}</div>;
-  }
-  if (!posts || posts.length === 0) {
-    return <div className="text-[#F3E3C3]/70 text-center py-10">No blog posts found.</div>;
-  }
-  return (
-    <div className="py-20 md:py-28 bg-[#212121]">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-display mb-10">Blog</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map(post => (
-            <div key={post.id} className="bg-[#262626] rounded-lg shadow-lg p-6 flex flex-col">
-              <h3 className="text-2xl font-bold mb-2 text-white">{post.title}</h3>
-              <div className="text-xs text-[#F3E3C3]/60 mb-2">{post.author} &middot; {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}</div>
-              <div className="text-[#F3E3C3]/80 mb-4">{post.excerpt}</div>
-              <Link to={`/blog/${post.slug}`} className="text-[#F3E3C3] hover:underline mt-auto">Read More</Link>
+          {activeTab === 'analytics' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Analytics Dashboard</h3>
+              <AnalyticsSection leads={leads} projects={projects} blogPosts={blogPosts} />
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-// --- Footer Component ---
-function Footer() {
-  return (
-    <footer className="bg-[#232323] text-[#F3E3C3] py-8 mt-20">
-      <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
-          <span className="font-display font-bold text-lg">Studio37</span>
-          <span className="text-xs">&copy; {new Date().getFullYear()}</span>
-        </div>
-        <nav className="flex gap-4">
-          <Link to="/" className="hover:underline">Home</Link>
-          <Link to="/about" className="hover:underline">About</Link>
-          <Link to="/services" className="hover:underline">Services</Link>
-          <Link to="/portfolio" className="hover:underline">Portfolio</Link>
-          <Link to="/blog" className="hover:underline">Blog</Link>
-          <Link to="/contact" className="hover:underline">Contact</Link>
-        </nav>
-      </div>
-    </footer>
-  );
-}
-
-// --- Enhanced CRM Section with Project Integration ---
+// --- Enhanced CRM Section with Call/Text/Email buttons ---
 function CrmSection({ leads, updateLeadStatus }) {
   const [selectedLead, setSelectedLead] = useState(null);
-  const [showNotes, setShowNotes] = useState(false);
   const [showLeadDetails, setShowLeadDetails] = useState(false);
   const [newNote, setNewNote] = useState('');
   const [leadNotes, setLeadNotes] = useState([]);
-  const [contactHistory, setContactHistory] = useState([]);
   const [leadProjects, setLeadProjects] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const fetchLeadNotes = async (leadId) => {
     setLoading(true);
-    setError('');
     try {
       const { data, error } = await supabase
         .from('lead_notes')
@@ -1111,51 +875,47 @@ function CrmSection({ leads, updateLeadStatus }) {
         .eq('lead_id', leadId)
         .order('created_at', { ascending: false });
       
-      if (error) {
-        console.error('Error fetching lead notes:', error);
-        setError('Failed to load notes');
-        setLeadNotes([]);
-      } else {
-        setLeadNotes(data || []);
-      }
+      if (!error) setLeadNotes(data || []);
     } catch (err) {
-      console.error('Exception fetching lead notes:', err);
-      setError('Failed to load notes');
-      setLeadNotes([]);
+      console.error('Error fetching notes:', err);
     }
     setLoading(false);
   };
 
+  const fetchLeadProjects = async (leadId) => {
+    try {
+      const { data } = await supabase
+        .from('projects')
+        .select('*')
+        .eq('lead_id', leadId)
+        .order('created_at', { ascending: false });
+      
+      setLeadProjects(data || []);
+    } catch (err) {
+      console.error('Error fetching projects:', err);
+    }
+  };
+
   const addNote = async () => {
     if (!newNote.trim() || !selectedLead) return;
-    setLoading(true);
     try {
-      const { error } = await supabase.from('lead_notes').insert([{
+      await supabase.from('lead_notes').insert([{
         lead_id: selectedLead.id,
         note: newNote,
         status: 'Manual'
       }]);
-      
-      if (error) {
-        console.error('Error adding note:', error);
-        setError('Failed to add note: ' + error.message);
-      } else {
-        setNewNote('');
-        await fetchLeadNotes(selectedLead.id);
-        setError('');
-      }
+      setNewNote('');
+      await fetchLeadNotes(selectedLead.id);
     } catch (err) {
-      console.error('Exception adding note:', err);
-      setError('Failed to add note');
+      console.error('Error adding note:', err);
     }
-    setLoading(false);
   };
 
   const openLeadDetails = (lead) => {
     setSelectedLead(lead);
     setShowLeadDetails(true);
-    setError('');
     fetchLeadNotes(lead.id);
+    fetchLeadProjects(lead.id);
   };
 
   if (!leads || leads.length === 0) {
@@ -1166,13 +926,6 @@ function CrmSection({ leads, updateLeadStatus }) {
 
   return (
     <div>
-      {error && (
-        <div className="bg-red-500/20 border border-red-500 text-red-400 px-4 py-2 rounded mb-4">
-          {error}
-          <button onClick={() => setError('')} className="ml-2 text-red-200 hover:text-white">✕</button>
-        </div>
-      )}
-      
       <div className="overflow-x-auto bg-[#262626] rounded-lg shadow-lg p-6 mb-6">
         <table className="w-full text-left">
           <thead className="border-b border-white/10">
@@ -1191,15 +944,24 @@ function CrmSection({ leads, updateLeadStatus }) {
               <tr key={lead.id} className="border-b border-white/10 last:border-b-0">
                 <td className="p-3 font-bold">{lead.name}</td>
                 <td className="p-3">
-                  <a href={`mailto:${lead.email}`} className="text-[#F3E3C3] hover:underline">
-                    {lead.email}
-                  </a>
+                  <div className="flex items-center gap-2">
+                    <a href={`mailto:${lead.email}`} className="text-[#F3E3C3] hover:underline">
+                      {lead.email}
+                    </a>
+                    <a href={`mailto:${lead.email}?subject=Studio37 Follow-up`} className="text-blue-400 hover:text-blue-300" title="Send Email">
+                      <MailIcon />
+                    </a>
+                  </div>
                 </td>
                 <td className="p-3">
                   {lead.phone ? (
                     <div className="flex items-center gap-2">
-                      <a href={`tel:${lead.phone}`} className="text-[#F3E3C3] hover:underline">
-                        {lead.phone}
+                      <span className="text-[#F3E3C3]">{lead.phone}</span>
+                      <a href={`tel:${lead.phone}`} className="text-green-400 hover:text-green-300" title="Call">
+                        <PhoneIcon />
+                      </a>
+                      <a href={`sms:${lead.phone}`} className="text-purple-400 hover:text-purple-300" title="Text">
+                        <SmsIcon />
                       </a>
                     </div>
                   ) : (
@@ -1237,25 +999,21 @@ function CrmSection({ leads, updateLeadStatus }) {
         </table>
       </div>
 
-      {/* Lead Details Modal */}
+      {/* Enhanced Lead Details Modal with Projects */}
       {showLeadDetails && selectedLead && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-6xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-display text-white">Lead Details - {selectedLead.name}</h3>
+              <h3 className="text-2xl font-display text-white">{selectedLead.name} - Lead Details</h3>
               <button
-                onClick={() => {
-                  setShowLeadDetails(false);
-                  setSelectedLead(null);
-                  setError('');
-                }}
+                onClick={() => setShowLeadDetails(false)}
                 className="text-white text-2xl hover:text-gray-300"
               >
                 &times;
               </button>
             </div>
             
-            <div className="space-y-4">
+            <div className="grid md:grid-cols-3 gap-6">
               <div>
                 <h4 className="text-lg font-bold mb-3">Contact Information</h4>
                 <div className="space-y-2 text-[#F3E3C3]/80">
@@ -1264,6 +1022,50 @@ function CrmSection({ leads, updateLeadStatus }) {
                   <p><strong>Service:</strong> {selectedLead.service || 'Not specified'}</p>
                   <p><strong>Status:</strong> <span className="px-2 py-1 rounded bg-[#F3E3C3]/10 text-[#F3E3C3]">{selectedLead.status}</span></p>
                   <p><strong>Created:</strong> {selectedLead.created_at ? new Date(selectedLead.created_at).toLocaleDateString() : ''}</p>
+                </div>
+                
+                <div className="mt-4 flex gap-2">
+                  <a href={`mailto:${selectedLead.email}?subject=Studio37 Follow-up`} className="bg-blue-500 text-white p-2 rounded" title="Email">
+                    <MailIcon />
+                  </a>
+                  {selectedLead.phone && (
+                    <>
+                      <a href={`tel:${selectedLead.phone}`} className="bg-green-500 text-white p-2 rounded" title="Call">
+                        <PhoneIcon />
+                      </a>
+                      <a href={`sms:${selectedLead.phone}`} className="bg-purple-500 text-white p-2 rounded" title="Text">
+                        <SmsIcon />
+                      </a>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">Projects ({leadProjects.length})</h4>
+                <div className="bg-[#181818] rounded p-4 max-h-64 overflow-y-auto">
+                  {leadProjects.length > 0 ? (
+                    leadProjects.map(project => (
+                      <div key={project.id} className="mb-3 pb-3 border-b border-white/10 last:border-b-0">
+                        <div className="flex justify-between items-start mb-1">
+                          <h6 className="font-bold text-[#F3E3C3] text-sm">{project.name}</h6>
+                          <span className="text-xs px-2 py-1 bg-[#F3E3C3]/10 rounded">
+                            {project.stage}
+                          </span>
+                        </div>
+                        {project.client && (
+                          <p className="text-[#F3E3C3]/70 text-xs">Client: {project.client}</p>
+                        )}
+                        {project.opportunity_amount > 0 && (
+                          <p className="text-green-400 text-xs font-bold">
+                            ${project.opportunity_amount.toLocaleString()}
+                          </p>
+                        )}
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-[#F3E3C3]/70">No projects yet</p>
+                  )}
                 </div>
               </div>
 
@@ -1284,30 +1086,297 @@ function CrmSection({ leads, updateLeadStatus }) {
                       className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
                       disabled={!newNote.trim() || loading}
                     >
-                      {loading ? 'Adding...' : 'Add'}
+                      Add
                     </button>
                   </div>
                 </div>
 
-                <div className="space-y-3 max-h-64 overflow-y-auto">
-                  {loading ? (
-                    <p className="text-[#F3E3C3]/70">Loading notes...</p>
-                  ) : leadNotes.length > 0 ? (
-                    leadNotes.map(note => (
-                      <div key={note.id} className="bg-[#181818] rounded p-3">
-                        <p className="text-[#F3E3C3]/90">{note.note}</p>
-                        <div className="flex justify-between items-center mt-2">
-                          <span className="text-xs text-[#F3E3C3]/60">
-                            {note.created_at ? new Date(note.created_at).toLocaleDateString() : ''}
-                          </span>
-                          <span className="text-xs px-2 py-1 bg-[#F3E3C3]/10 rounded">
-                            {note.status}
-                          </span>
-                        </div>
+                <div className="space-y-3 max-h-40 overflow-y-auto">
+                  {leadNotes.map(note => (
+                    <div key={note.id} className="bg-[#181818] rounded p-3">
+                      <p className="text-[#F3E3C3]/90">{note.note}</p>
+                      <div className="flex justify-between items-center mt-2">
+                        <span className="text-xs text-[#F3E3C3]/60">
+                          {note.created_at ? new Date(note.created_at).toLocaleDateString() : ''}
+                        </span>
+                        <span className="text-xs px-2 py-1 bg-[#F3E3C3]/10 rounded">
+                          {note.status}
+                        </span>
                       </div>
-                    ))
-                  ) : (
-                    <p className="text-[#F3E3C3]/70">No notes yet. Add one above!</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// --- Projects Section with Todo Lists ---
+function ProjectsSection({ projects, projectsLoading }) {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [showProjectDetails, setShowProjectDetails] = useState(false);
+  const [newProject, setNewProject] = useState({
+    name: '',
+    client: '',
+    stage: 'Inquiry',
+    opportunity_amount: '',
+    notes: ''
+  });
+  const [projectTodos, setProjectTodos] = useState([]);
+  const [newTodo, setNewTodo] = useState('');
+  const [showNewProjectForm, setShowNewProjectForm] = useState(false);
+
+  const stages = ['Inquiry', 'Proposal', 'Booked', 'In Progress', 'Completed', 'Cancelled'];
+
+  const fetchProjectTodos = async (projectId) => {
+    try {
+      const { data } = await supabase
+        .from('project_todos')
+        .select('*')
+        .eq('project_id', projectId)
+        .order('completed', { ascending: true })
+        .order('created_at', { ascending: false });
+      
+      setProjectTodos(data || []);
+    } catch (err) {
+      console.error('Error fetching todos:', err);
+    }
+  };
+
+  const addTodo = async () => {
+    if (!newTodo.trim() || !selectedProject) return;
+    try {
+      await supabase.from('project_todos').insert([{
+        project_id: selectedProject.id,
+        task: newTodo,
+        completed: false
+      }]);
+      setNewTodo('');
+      await fetchProjectTodos(selectedProject.id);
+    } catch (err) {
+      console.error('Error adding todo:', err);
+    }
+  };
+
+  const toggleTodo = async (todoId, completed) => {
+    try {
+      await supabase.from('project_todos').update({ completed }).eq('id', todoId);
+      await fetchProjectTodos(selectedProject.id);
+    } catch (err) {
+      console.error('Error updating todo:', err);
+    }
+  };
+
+  const createProject = async (e) => {
+    e.preventDefault();
+    try {
+      await supabase.from('projects').insert([{
+        ...newProject,
+        opportunity_amount: parseFloat(newProject.opportunity_amount) || 0
+      }]);
+      setNewProject({ name: '', client: '', stage: 'Inquiry', opportunity_amount: '', notes: '' });
+      setShowNewProjectForm(false);
+      // Refresh projects would happen via parent component
+    } catch (err) {
+      console.error('Error creating project:', err);
+    }
+  };
+
+  const openProjectDetails = (project) => {
+    setSelectedProject(project);
+    setShowProjectDetails(true);
+    fetchProjectTodos(project.id);
+  };
+
+  if (projectsLoading) {
+    return <div className="text-[#F3E3C3] py-8">Loading projects...</div>;
+  }
+
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-6">
+        <h4 className="text-xl font-display">Projects ({projects?.length || 0})</h4>
+        <button
+          onClick={() => setShowNewProjectForm(true)}
+          className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
+        >
+          Add Project
+        </button>
+      </div>
+
+      {/* New Project Form */}
+      {showNewProjectForm && (
+        <form onSubmit={createProject} className="bg-[#232323] p-6 rounded mb-6">
+          <h5 className="text-lg font-bold mb-4">Create New Project</h5>
+          <div className="grid md:grid-cols-2 gap-4">
+            <input
+              type="text"
+              value={newProject.name}
+              onChange={e => setNewProject(p => ({ ...p, name: e.target.value }))}
+              placeholder="Project Name"
+              className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+              required
+            />
+            <input
+              type="text"
+              value={newProject.client}
+              onChange={e => setNewProject(p => ({ ...p, client: e.target.value }))}
+              placeholder="Client Name"
+              className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+            />
+            <select
+              value={newProject.stage}
+              onChange={e => setNewProject(p => ({ ...p, stage: e.target.value }))}
+              className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+            >
+              {stages.map(stage => (
+                <option key={stage} value={stage}>{stage}</option>
+              ))}
+            </select>
+            <input
+              type="number"
+              value={newProject.opportunity_amount}
+              onChange={e => setNewProject(p => ({ ...p, opportunity_amount: e.target.value }))}
+              placeholder="Opportunity Amount"
+              className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+            />
+          </div>
+          <textarea
+            value={newProject.notes}
+            onChange={e => setNewProject(p => ({ ...p, notes: e.target.value }))}
+            placeholder="Project Notes"
+            className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3 mt-4"
+            rows={3}
+          />
+          <div className="flex gap-2 mt-4">
+            <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">
+              Create Project
+            </button>
+            <button 
+              type="button" 
+              onClick={() => setShowNewProjectForm(false)}
+              className="bg-gray-500 text-white py-2 px-4 rounded-md"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      )}
+
+      {/* Projects List */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects?.map(project => (
+          <div key={project.id} className="bg-[#232323] rounded-lg p-6">
+            <div className="flex justify-between items-start mb-4">
+              <h5 className="text-lg font-bold text-white">{project.name}</h5>
+              <span className={`text-xs px-2 py-1 rounded ${
+                project.stage === 'Completed' ? 'bg-green-500/20 text-green-400' :
+                project.stage === 'In Progress' ? 'bg-blue-500/20 text-blue-400' :
+                project.stage === 'Cancelled' ? 'bg-red-500/20 text-red-400' :
+                'bg-[#F3E3C3]/10 text-[#F3E3C3]'
+              }`}>
+                {project.stage}
+              </span>
+            </div>
+            
+            {project.client && (
+              <p className="text-[#F3E3C3]/70 text-sm mb-2">Client: {project.client}</p>
+            )}
+            
+            {project.opportunity_amount > 0 && (
+              <p className="text-green-400 font-bold mb-2">
+                ${project.opportunity_amount.toLocaleString()}
+              </p>
+            )}
+            
+            {project.notes && (
+              <p className="text-[#F3E3C3]/60 text-sm mb-4">{project.notes}</p>
+            )}
+            
+            <button
+              onClick={() => openProjectDetails(project)}
+              className="w-full bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
+            >
+              View Details & Todos
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* Project Details Modal with Todos */}
+      {showProjectDetails && selectedProject && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-2xl font-display text-white">{selectedProject.name}</h3>
+              <button
+                onClick={() => setShowProjectDetails(false)}
+                className="text-white text-2xl hover:text-gray-300"
+              >
+                &times;
+              </button>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="text-lg font-bold mb-3">Project Details</h4>
+                <div className="space-y-2 text-[#F3E3C3]/80">
+                  <p><strong>Client:</strong> {selectedProject.client || 'Not specified'}</p>
+                  <p><strong>Stage:</strong> <span className="px-2 py-1 rounded bg-[#F3E3C3]/10 text-[#F3E3C3]">{selectedProject.stage}</span></p>
+                  <p><strong>Value:</strong> {selectedProject.opportunity_amount > 0 ? `$${selectedProject.opportunity_amount.toLocaleString()}` : 'Not specified'}</p>
+                  <p><strong>Created:</strong> {selectedProject.created_at ? new Date(selectedProject.created_at).toLocaleDateString() : ''}</p>
+                  {selectedProject.notes && (
+                    <div>
+                      <strong>Notes:</strong>
+                      <p className="mt-1 p-3 bg-[#181818] rounded">{selectedProject.notes}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">Todo List</h4>
+                
+                <div className="mb-4">
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={newTodo}
+                      onChange={e => setNewTodo(e.target.value)}
+                      placeholder="Add a todo..."
+                      className="flex-1 bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+                      onKeyPress={e => e.key === 'Enter' && addTodo()}
+                    />
+                    <button
+                      onClick={addTodo}
+                      className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                      disabled={!newTodo.trim()}
+                    >
+                      Add
+                    </button>
+                  </div>
+                </div>
+
+                <div className="space-y-2 max-h-64 overflow-y-auto">
+                  {projectTodos.map(todo => (
+                    <div key={todo.id} className="flex items-center gap-3 p-3 bg-[#181818] rounded">
+                      <input
+                        type="checkbox"
+                        checked={todo.completed}
+                        onChange={e => toggleTodo(todo.id, e.target.checked)}
+                        className="w-4 h-4"
+                      />
+                      <span className={`flex-1 ${todo.completed ? 'line-through text-[#F3E3C3]/50' : 'text-[#F3E3C3]'}`}>
+                        {todo.task}
+                      </span>
+                    </div>
+                  ))}
+                  {projectTodos.length === 0 && (
+                    <p className="text-[#F3E3C3]/70 text-center py-4">No todos yet. Add one above!</p>
                   )}
                 </div>
               </div>
@@ -1319,192 +1388,185 @@ function CrmSection({ leads, updateLeadStatus }) {
   );
 }
 
-// --- Enhanced CMS Section (Portfolio Management Only) ---
-function CmsSection({ portfolioImages, addPortfolioImage, deletePortfolioImage }) {
-  const [imageUrl, setImageUrl] = useState('');
-  const [imageCategory, setImageCategory] = useState('');
-  const [imageCaption, setImageCaption] = useState('');
-  const [addingImage, setAddingImage] = useState(false);
+// --- Site Map Tab ---
+const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blogPosts }) => {
+  const [pages, setPages] = useState([
+    { key: 'home', label: 'Home' },
+    { key: 'about', label: 'About' },
+    { key: 'services', label: 'Services' },
+    { key: 'portfolio', label: 'Portfolio' },
+    { key: 'blog', label: 'Blog' },
+    { key: 'contact', label: 'Contact' },
+  ]);
+  const [editingPage, setEditingPage] = useState(null);
+  const [editForm, setEditForm] = useState({ title: '', content: '' });
 
-  const handleAddImage = async (e) => {
-    e.preventDefault();
-    setAddingImage(true);
-    await addPortfolioImage({
-      url: imageUrl,
-      category: imageCategory,
-      caption: imageCaption,
-      order_index: portfolioImages.length,
-      created_at: new Date().toISOString()
-    });
-    setImageUrl('');
-    setImageCategory('');
-    setImageCaption('');
-    setAddingImage(false);
+  const handleEditPage = (pageKey) => {
+    setEditingPage(pageKey);
+    // Load content based on page
+    let title = '', contentMd = '';
+    switch (pageKey) {
+      case 'about':
+        title = content.about?.title || 'About Us';
+        contentMd = content.about?.bio || '';
+        break;
+      case 'home':
+        title = 'Capture. Create. Captivate.';
+        contentMd = 'Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.';
+        break;
+      default:
+        title = pageKey.charAt(0).toUpperCase() + pageKey.slice(1);
+        contentMd = `Content for ${pageKey} page.`;
+    }
+    setEditForm({ title, content: contentMd });
   };
 
   return (
-    <div>
-      <h4 className="text-xl font-display mb-6">Portfolio Management</h4>
-      
-      <div className="grid md:grid-cols-2 gap-8 mb-8">
-        <div>
-          <h5 className="text-lg font-bold mb-4">Add New Image</h5>
-          <form onSubmit={handleAddImage} className="space-y-4">
-            <input
-              type="url"
-              value={imageUrl}
-              onChange={e => setImageUrl(e.target.value)}
-              placeholder="Image URL"
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-              required
-            />
-            <input
-              type="text"
-              value={imageCategory}
-              onChange={e => setImageCategory(e.target.value)}
-              placeholder="Category"
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-            />
-            <input
-              type="text"
-              value={imageCaption}
-              onChange={e => setImageCaption(e.target.value)}
-              placeholder="Caption"
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-            />
-            <button
-              type="submit"
-              className="w-full bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
-              disabled={addingImage || !imageUrl}
-            >
-              {addingImage ? 'Adding...' : 'Add Image'}
-            </button>
-          </form>
-        </div>
-
-        <div>
-          <h5 className="text-lg font-bold mb-4">Current Images ({portfolioImages.length})</h5>
-          <div className="grid grid-cols-3 gap-2 max-h-80 overflow-y-auto">
-            {portfolioImages.map(img => (
-              <div key={img.id} className="relative group">
-                <img src={img.url} alt={img.category} className="w-full h-20 object-cover rounded" />
+    <div className="grid md:grid-cols-2 gap-8">
+      <div>
+        <h4 className="text-xl font-bold mb-4">Site Structure</h4>
+        <div className="space-y-2">
+          {pages.map(page => (
+            <div key={page.key} className="flex items-center justify-between p-3 bg-[#232323] rounded">
+              <div>
                 <button
-                  onClick={() => deletePortfolioImage(img.id)}
-                  className="absolute top-1 right-1 bg-red-600 text-white text-xs px-1 py-1 rounded opacity-80 group-hover:opacity-100"
-                  title="Delete"
+                  onClick={() => setSiteMapPage(page.key)}
+                  className={`font-bold ${siteMapPage === page.key ? 'text-[#F3E3C3]' : 'text-[#F3E3C3]/70'}`}
                 >
-                  &times;
+                  {page.label}
                 </button>
-                <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 rounded-b truncate">
-                  {img.category || 'No category'}
-                </div>
               </div>
-            ))}
+              <button
+                onClick={() => handleEditPage(page.key)}
+                className="bg-blue-500 text-white px-3 py-1 rounded text-xs"
+              >
+                Edit
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <div>
+        <h4 className="text-xl font-bold mb-4">Live Preview</h4>
+        <div className="p-4 bg-[#232323] rounded min-h-64">
+          <SiteMapPreview 
+            page={siteMapPage} 
+            content={content}
+            portfolioImages={portfolioImages}
+            blogPosts={blogPosts}
+          />
+        </div>
+      </div>
+
+      {/* Edit Modal */}
+      {editingPage && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-2xl w-full mx-4">
+            <h3 className="text-xl font-display text-white mb-4">Edit {editingPage} Page</h3>
+            <div className="space-y-4">
+              <input
+                type="text"
+                value={editForm.title}
+                onChange={e => setEditForm(f => ({ ...f, title: e.target.value }))}
+                placeholder="Page Title"
+                className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+              />
+              <textarea
+                value={editForm.content}
+                onChange={e => setEditForm(f => ({ ...f, content: e.target.value }))}
+                placeholder="Page Content (Markdown supported)"
+                rows={8}
+                className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+              />
+            </div>
+            <div className="flex gap-2 mt-4">
+              <button className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">
+                Save Changes
+              </button>
+              <button 
+                onClick={() => setEditingPage(null)}
+                className="bg-gray-500 text-white py-2 px-4 rounded-md"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// --- Analytics Section ---
+function AnalyticsSection({ leads, projects, blogPosts }) {
+  const totalLeads = leads?.length || 0;
+  const totalProjects = projects?.length || 0;
+  const totalBlogPosts = blogPosts?.length || 0;
+  
+  const leadsByStatus = leads?.reduce((acc, lead) => {
+    acc[lead.status] = (acc[lead.status] || 0) + 1;
+    return acc;
+  }, {}) || {};
+
+  const projectsByStage = projects?.reduce((acc, project) => {
+    acc[project.stage] = (acc[project.stage] || 0) + 1;
+    return acc;
+  }, {}) || {};
+
+  const totalRevenue = projects?.reduce((sum, project) => {
+    return sum + (project.opportunity_amount || 0);
+  }, 0) || 0;
+
+  return (
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Summary Cards */}
+      <div className="bg-[#232323] rounded-lg p-6">
+        <h4 className="text-lg font-bold mb-4">Overview</h4>
+        <div className="space-y-3">
+          <div className="flex justify-between">
+            <span>Total Leads:</span>
+            <span className="font-bold text-[#F3E3C3]">{totalLeads}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Total Projects:</span>
+            <span className="font-bold text-[#F3E3C3]">{totalProjects}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Blog Posts:</span>
+            <span className="font-bold text-[#F3E3C3]">{totalBlogPosts}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Total Revenue:</span>
+            <span className="font-bold text-green-400">${totalRevenue.toLocaleString()}</span>
           </div>
         </div>
       </div>
-    </div>
-  );
-}
 
-// --- Enhanced Blog Admin Section ---
-function BlogAdminSection({
-  blogPosts,
-  createBlogPost,
-  updateBlogPost,
-  deleteBlogPost,
-  blogEdit,
-  setBlogEdit,
-  blogSaving,
-  blogAdminError
-}) {
-  const [newPost, setNewPost] = useState({
-    title: '',
-    slug: '',
-    excerpt: '',
-    content: '',
-    author: '',
-    publish_date: '',
-    tags: '',
-    category: ''
-  });
-
-  const handleNewChange = e => {
-    const { name, value } = e.target;
-    setNewPost(p => ({ ...p, [name]: value }));
-  };
-
-  const handleCreate = async e => {
-    e.preventDefault();
-    await createBlogPost({
-      ...newPost,
-      tags: typeof newPost.tags === 'string'
-        ? newPost.tags.split(',').map(t => t.trim()).filter(Boolean)
-        : Array.isArray(newPost.tags)
-          ? newPost.tags
-          : [],
-      publish_date: newPost.publish_date || new Date().toISOString().split('T')[0]
-    });
-    setNewPost({
-      title: '',
-      slug: '',
-      excerpt: '',
-      content: '',
-      author: '',
-      publish_date: '',
-      tags: '',
-      category: ''
-    });
-  };
-
-  return (
-    <div>
-      <h4 className="text-xl font-display mb-4">Blog Posts</h4>
-      {blogAdminError && <div className="bg-red-500/20 border border-red-500 text-red-400 px-4 py-2 rounded mb-4">{blogAdminError}</div>}
-      
-      <form onSubmit={handleCreate} className="space-y-4 mb-8 bg-[#232323] p-6 rounded">
-        <h5 className="text-lg font-bold mb-4">Create New Post</h5>
-        <input name="title" value={newPost.title} onChange={handleNewChange} placeholder="Title" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
-        <input name="slug" value={newPost.slug} onChange={handleNewChange} placeholder="Slug" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
-        <div className="grid md:grid-cols-2 gap-4">
-          <input name="author" value={newPost.author} onChange={handleNewChange} placeholder="Author" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <input name="publish_date" value={newPost.publish_date} onChange={handleNewChange} placeholder="Publish Date" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" type="date" />
+      {/* Leads by Status */}
+      <div className="bg-[#232323] rounded-lg p-6">
+        <h4 className="text-lg font-bold mb-4">Leads by Status</h4>
+        <div className="space-y-2">
+          {Object.entries(leadsByStatus).map(([status, count]) => (
+            <div key={status} className="flex justify-between">
+              <span>{status}:</span>
+              <span className="font-bold text-[#F3E3C3]">{count}</span>
+            </div>
+          ))}
         </div>
-        <div className="grid md:grid-cols-2 gap-4">
-          <input name="category" value={newPost.category} onChange={handleNewChange} placeholder="Category" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <input name="tags" value={newPost.tags} onChange={handleNewChange} placeholder="Tags (comma separated)" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+      </div>
+
+      {/* Projects by Stage */}
+      <div className="bg-[#232323] rounded-lg p-6">
+        <h4 className="text-lg font-bold mb-4">Projects by Stage</h4>
+        <div className="space-y-2">
+          {Object.entries(projectsByStage).map(([stage, count]) => (
+            <div key={stage} className="flex justify-between">
+              <span>{stage}:</span>
+              <span className="font-bold text-[#F3E3C3]">{count}</span>
+            </div>
+          ))}
         </div>
-        <textarea name="excerpt" value={newPost.excerpt} onChange={handleNewChange} placeholder="Excerpt" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" rows={2} />
-        <textarea name="content" value={newPost.content} onChange={handleNewChange} placeholder="Content (Markdown supported)" rows={8} className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-        <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md" disabled={blogSaving}>
-          {blogSaving ? 'Creating...' : 'Create Post'}
-        </button>
-      </form>
-      
-      <div className="overflow-x-auto">
-        <table className="w-full text-left">
-          <thead className="border-b border-white/10">
-            <tr>
-              <th className="p-3">Title</th>
-              <th className="p-3">Author</th>
-              <th className="p-3">Date</th>
-              <th className="p-3">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {blogPosts.map(post => (
-              <tr key={post.id} className="border-b border-white/10 last:border-b-0">
-                <td className="p-3 font-bold">{post.title}</td>
-                <td className="p-3">{post.author}</td>
-                <td className="p-3 text-xs">{post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}</td>
-                <td className="p-3 flex gap-2">
-                  <button onClick={() => setBlogEdit(post.id)} className="bg-blue-500 text-white px-3 py-1 rounded text-xs">Edit</button>
-                  <button onClick={() => deleteBlogPost(post.id)} className="bg-red-600 text-white px-3 py-1 rounded text-xs">Delete</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
     </div>
   );
