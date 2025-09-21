@@ -1091,12 +1091,14 @@ function Footer() {
   );
 }
 
-// --- Enhanced CRM Section (Leads Table with Actions, Notes, Contact History) ---
+// --- Enhanced CRM Section with SMS and improved functionality ---
 function CrmSection({ leads, updateLeadStatus }) {
   const [selectedLead, setSelectedLead] = useState(null);
   const [showNotes, setShowNotes] = useState(false);
   const [showContactHistory, setShowContactHistory] = useState(false);
+  const [showSmsModal, setShowSmsModal] = useState(false);
   const [newNote, setNewNote] = useState('');
+  const [smsMessage, setSmsMessage] = useState('');
   const [newContact, setNewContact] = useState({ type: 'email', subject: '', message: '' });
   const [leadNotes, setLeadNotes] = useState([]);
   const [contactHistory, setContactHistory] = useState([]);
@@ -1155,6 +1157,7 @@ function CrmSection({ leads, updateLeadStatus }) {
 
   const addNote = async () => {
     if (!newNote.trim() || !selectedLead) return;
+    setLoading(true);
     try {
       const { error } = await supabase.from('lead_notes').insert([{
         lead_id: selectedLead.id,
@@ -1164,15 +1167,47 @@ function CrmSection({ leads, updateLeadStatus }) {
       
       if (error) {
         console.error('Error adding note:', error);
-        setError('Failed to add note');
+        setError('Failed to add note: ' + error.message);
       } else {
         setNewNote('');
-        fetchLeadNotes(selectedLead.id);
+        await fetchLeadNotes(selectedLead.id);
+        setError(''); // Clear any previous errors
       }
     } catch (err) {
       console.error('Exception adding note:', err);
       setError('Failed to add note');
     }
+    setLoading(false);
+  };
+
+  const sendSms = (lead) => {
+    if (!lead.phone) {
+      alert('No phone number available for this lead');
+      return;
+    }
+    setSelectedLead(lead);
+    setShowSmsModal(true);
+    setSmsMessage(`Hi ${lead.name}, this is Studio37. `);
+  };
+
+  const handleSendSms = () => {
+    if (!selectedLead || !selectedLead.phone || !smsMessage.trim()) return;
+    
+    // Open SMS app with pre-filled message
+    const smsUrl = `sms:${selectedLead.phone}?body=${encodeURIComponent(smsMessage)}`;
+    window.open(smsUrl, '_blank');
+    
+    // Log the SMS in contact history
+    supabase.from('contact_history').insert([{
+      lead_id: selectedLead.id,
+      contact_type: 'text',
+      subject: 'SMS Sent',
+      message: smsMessage,
+      status: 'Sent'
+    }]);
+    
+    setShowSmsModal(false);
+    setSmsMessage('');
   };
 
   const addContactEntry = async () => {
@@ -1217,6 +1252,7 @@ function CrmSection({ leads, updateLeadStatus }) {
       {error && (
         <div className="bg-red-500/20 border border-red-500 text-red-400 px-4 py-2 rounded mb-4">
           {error}
+          <button onClick={() => setError('')} className="ml-2 text-red-200 hover:text-white">✕</button>
         </div>
       )}
       
@@ -1243,10 +1279,21 @@ function CrmSection({ leads, updateLeadStatus }) {
                   </a>
                 </td>
                 <td className="p-3">
-                  {lead.phone && (
-                    <a href={`tel:${lead.phone}`} className="text-[#F3E3C3] hover:underline">
-                      {lead.phone}
-                    </a>
+                  {lead.phone ? (
+                    <div className="flex items-center gap-2">
+                      <a href={`tel:${lead.phone}`} className="text-[#F3E3C3] hover:underline">
+                        {lead.phone}
+                      </a>
+                      <button
+                        onClick={() => sendSms(lead)}
+                        className="text-blue-400 hover:text-blue-300 text-sm"
+                        title="Send SMS"
+                      >
+                        💬
+                      </button>
+                    </div>
+                  ) : (
+                    <span className="text-gray-500">No phone</span>
                   )}
                 </td>
                 <td className="p-3">{lead.service}</td>
@@ -1255,7 +1302,7 @@ function CrmSection({ leads, updateLeadStatus }) {
                 </td>
                 <td className="p-3 text-xs">{lead.created_at ? new Date(lead.created_at).toLocaleDateString() : ''}</td>
                 <td className="p-3">
-                  <div className="flex gap-2 flex-wrap">
+                  <div className="flex gap-1 flex-wrap">
                     <select
                       value={lead.status}
                       onChange={e => updateLeadStatus(lead.id, e.target.value)}
@@ -1267,9 +1314,10 @@ function CrmSection({ leads, updateLeadStatus }) {
                     </select>
                     <button
                       onClick={() => openLeadDetails(lead)}
-                      className="bg-blue-500 text-white px-3 py-1 rounded text-xs"
+                      className="bg-blue-500 text-white px-2 py-1 rounded text-xs"
+                      title="View Details"
                     >
-                      Details
+                      👁️
                     </button>
                     <button
                       onClick={() => {
@@ -1278,21 +1326,27 @@ function CrmSection({ leads, updateLeadStatus }) {
                         setError('');
                         fetchLeadNotes(lead.id);
                       }}
-                      className="bg-green-500 text-white px-3 py-1 rounded text-xs"
+                      className="bg-green-500 text-white px-2 py-1 rounded text-xs"
+                      title="Notes"
                     >
-                      Notes
+                      📝
                     </button>
-                    <button
-                      onClick={() => {
-                        setSelectedLead(lead);
-                        setShowContactHistory(true);
-                        setError('');
-                        fetchContactHistory(lead.id);
-                      }}
-                      className="bg-purple-500 text-white px-3 py-1 rounded text-xs"
+                    <a
+                      href={`mailto:${lead.email}?subject=Studio37 Follow-up`}
+                      className="bg-purple-500 text-white px-2 py-1 rounded text-xs hover:bg-purple-600"
+                      title="Email"
                     >
-                      Contact
-                    </button>
+                      📧
+                    </a>
+                    {lead.phone && (
+                      <button
+                        onClick={() => sendSms(lead)}
+                        className="bg-blue-400 text-white px-2 py-1 rounded text-xs hover:bg-blue-500"
+                        title="Send SMS"
+                      >
+                        💬
+                      </button>
+                    )}
                   </div>
                 </td>
               </tr>
@@ -1301,87 +1355,60 @@ function CrmSection({ leads, updateLeadStatus }) {
         </table>
       </div>
 
-      {/* Lead Details Modal */}
-      {selectedLead && !showNotes && !showContactHistory && (
+      {/* SMS Modal */}
+      {showSmsModal && selectedLead && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-md w-full mx-4">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-2xl font-display text-white">{selectedLead.name} - Lead Details</h3>
+              <h3 className="text-xl font-display text-white">Send SMS to {selectedLead.name}</h3>
               <button
-                onClick={() => setSelectedLead(null)}
+                onClick={() => {
+                  setShowSmsModal(false);
+                  setSmsMessage('');
+                }}
                 className="text-white text-2xl hover:text-gray-300"
               >
                 &times;
               </button>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-lg font-bold mb-3">Contact Information</h4>
-                <div className="space-y-2 text-[#F3E3C3]/80">
-                  <p><strong>Email:</strong> <a href={`mailto:${selectedLead.email}`} className="text-[#F3E3C3] hover:underline">{selectedLead.email}</a></p>
-                  <p><strong>Phone:</strong> {selectedLead.phone ? <a href={`tel:${selectedLead.phone}`} className="text-[#F3E3C3] hover:underline">{selectedLead.phone}</a> : 'Not provided'}</p>
-                  <p><strong>Service:</strong> {selectedLead.service || 'Not specified'}</p>
-                  <p><strong>Status:</strong> {selectedLead.status}</p>
-                  <p><strong>Created:</strong> {selectedLead.created_at ? new Date(selectedLead.created_at).toLocaleDateString() : ''}</p>
-                </div>
-              </div>
-              
-              <div>
-                <h4 className="text-lg font-bold mb-3">Quick Actions</h4>
-                <div className="space-y-2">
-                  <button
-                    onClick={() => {
-                      setShowNotes(true);
-                      fetchLeadNotes(selectedLead.id);
-                    }}
-                    className="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
-                  >
-                    View/Add Notes
-                  </button>
-                  <button
-                    onClick={() => {
-                      setShowContactHistory(true);
-                      fetchContactHistory(selectedLead.id);
-                    }}
-                    className="w-full bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600"
-                  >
-                    Contact History
-                  </button>
-                  <a
-                    href={`mailto:${selectedLead.email}?subject=Studio37 Follow-up`}
-                    className="block w-full bg-[#F3E3C3] text-[#1a1a1a] py-2 px-4 rounded text-center font-bold hover:bg-[#f3e3c3cc]"
-                  >
-                    Send Email
-                  </a>
-                </div>
+            <div className="mb-4">
+              <p className="text-[#F3E3C3]/80 mb-2">Phone: {selectedLead.phone}</p>
+              <textarea
+                value={smsMessage}
+                onChange={e => setSmsMessage(e.target.value)}
+                placeholder="Type your message..."
+                rows={4}
+                className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+              />
+              <div className="text-xs text-[#F3E3C3]/60 mt-1">
+                {smsMessage.length}/160 characters
               </div>
             </div>
-
-            <div className="mt-6">
-              <h4 className="text-lg font-bold mb-3">Recent Notes</h4>
-              <div className="bg-[#181818] rounded p-4 max-h-40 overflow-y-auto">
-                {loading ? (
-                  <p className="text-[#F3E3C3]/70">Loading notes...</p>
-                ) : leadNotes.length > 0 ? (
-                  leadNotes.slice(0, 3).map(note => (
-                    <div key={note.id} className="mb-2 pb-2 border-b border-white/10 last:border-b-0">
-                      <p className="text-[#F3E3C3]/90">{note.note}</p>
-                      <p className="text-xs text-[#F3E3C3]/60 mt-1">
-                        {note.created_at ? new Date(note.created_at).toLocaleDateString() : ''}
-                      </p>
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-[#F3E3C3]/70">No notes yet</p>
-                )}
-              </div>
+            
+            <div className="flex gap-2">
+              <button
+                onClick={handleSendSms}
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                disabled={!smsMessage.trim()}
+              >
+                Send SMS
+              </button>
+              <button
+                onClick={() => {
+                  setShowSmsModal(false);
+                  setSmsMessage('');
+                }}
+                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Notes Modal */}
+      {/* Notes Modal - Fixed */}
       {showNotes && selectedLead && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
@@ -1412,6 +1439,7 @@ function CrmSection({ leads, updateLeadStatus }) {
                   onChange={e => setNewNote(e.target.value)}
                   placeholder="Add a note..."
                   className="flex-1 bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+                  onKeyPress={e => e.key === 'Enter' && addNote()}
                 />
                 <button
                   onClick={addNote}
@@ -1441,7 +1469,7 @@ function CrmSection({ leads, updateLeadStatus }) {
                   </div>
                 ))
               ) : (
-                <p className="text-[#F3E3C3]/70">No notes yet</p>
+                <p className="text-[#F3E3C3]/70">No notes yet. Add one above!</p>
               )}
             </div>
           </div>
@@ -1689,9 +1717,8 @@ const AdminDashboard = ({
   const [todosLoading, setTodosLoading] = useState(false);
   const [newTodo, setNewTodo] = useState('');
   const [activeTab, setActiveTab] = useState('crm');
-  const [siteMapPage, setSiteMapPage] = useState('home');
-  const [internalProjects, setInternalProjects] = useState([]);
-  const [internalProjectsLoading, setInternalProjectsLoading] = useState(false);
+  const [allProjects, setAllProjects] = useState([]); // New state for all projects
+  const [allProjectsLoading, setAllProjectsLoading] = useState(false);
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [newProject, setNewProject] = useState({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '' });
   const projectStages = ['Inquiry', 'Proposal', 'Booked', 'In Progress', 'Delivered', 'Closed'];
@@ -1704,6 +1731,27 @@ const AdminDashboard = ({
         setInternalProjects(data || []);
         setInternalProjectsLoading(false);
       });
+    }
+  }, [activeTab]);
+
+  // Fetch ALL projects when projects tab is active
+  useEffect(() => {
+    if (activeTab === 'projects') {
+      setAllProjectsLoading(true);
+      supabase
+        .from('projects')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .then(({ data, error }) => {
+          if (error) {
+            console.error('Error fetching projects:', error);
+            setAllProjects([]);
+          } else {
+            console.log('Fetched projects:', data); // Debug log
+            setAllProjects(data || []);
+          }
+          setAllProjectsLoading(false);
+        });
     }
   }, [activeTab]);
 
@@ -1797,6 +1845,7 @@ const AdminDashboard = ({
               <div>
                 <h4 className="text-xl font-display">Project Management</h4>
                 <p className="text-xs text-[#F3E3C3]/70">Manage client projects and internal tasks</p>
+                <p className="text-xs text-[#F3E3C3]/60">Total projects in database: {allProjects.length}</p>
               </div>
               <div className="flex gap-2">
                 <button onClick={() => setShowProjectForm('client')} className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">+ Client Project</button>
@@ -1804,108 +1853,77 @@ const AdminDashboard = ({
               </div>
             </div>
             
-            {showProjectForm && (
-              <form onSubmit={e => handleCreateProject(e, showProjectForm === 'internal')} className="mb-8 bg-[#181818] p-4 rounded grid md:grid-cols-2 gap-4">
-                <h5 className="md:col-span-2 text-lg font-bold mb-2">
-                  Create {showProjectForm === 'internal' ? 'Internal' : 'Client'} Project
-                </h5>
-                <input 
-                  type="text" 
-                  value={newProject.name} 
-                  onChange={e => setNewProject(p => ({ ...p, name: e.target.value }))} 
-                  placeholder="Project Name" 
-                  className="bg-[#262626] border border-white/20 rounded-md py-2 px-3" 
-                  required 
-                />
-                {showProjectForm === 'client' && (
-                  <input 
-                    type="text" 
-                    value={newProject.client} 
-                    onChange={e => setNewProject(p => ({ ...p, client: e.target.value }))} 
-                    placeholder="Client Name" 
-                    className="bg-[#262626] border border-white/20 rounded-md py-2 px-3" 
-                  />
-                )}
-                {showProjectForm === 'client' && (
-                  <input 
-                    type="number" 
-                    value={newProject.opportunity_amount} 
-                    onChange={e => setNewProject(p => ({ ...p, opportunity_amount: e.target.value }))} 
-                    placeholder="Opportunity Amount ($)" 
-                    className="bg-[#262626] border border-white/20 rounded-md py-2 px-3" 
-                  />
-                )}
-                <select 
-                  value={newProject.stage} 
-                  onChange={e => setNewProject(p => ({ ...p, stage: e.target.value }))} 
-                  className="bg-[#262626] border border-white/20 rounded-md py-2 px-3"
-                >
-                  {projectStages.map(stage => <option key={stage}>{stage}</option>)}
-                </select>
-                <textarea 
-                  value={newProject.notes} 
-                  onChange={e => setNewProject(p => ({ ...p, notes: e.target.value }))} 
-                  placeholder="Notes" 
-                  className="bg-[#262626] border border-white/20 rounded-md py-2 px-3 md:col-span-2" 
-                />
-                <div className="md:col-span-2 flex gap-2">
-                  <button type="submit" className="bg-green-500 text-white font-bold py-2 px-4 rounded-md">Create Project</button>
-                  <button type="button" onClick={() => setShowProjectForm(false)} className="bg-gray-500 text-white py-2 px-4 rounded-md">Cancel</button>
-                </div>
-              </form>
+            {/* Debug info */}
+            {allProjectsLoading && (
+              <div className="text-[#F3E3C3] mb-4">Loading all projects...</div>
+            )}
+            
+            {!allProjectsLoading && allProjects.length === 0 && (
+              <div className="bg-[#181818] p-4 rounded mb-4">
+                <p className="text-[#F3E3C3]/70">No projects found in database.</p>
+                <p className="text-xs text-[#F3E3C3]/60">Create a new project above to get started.</p>
+              </div>
             )}
 
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h5 className="text-lg font-display mb-4">Client Projects ({projects.filter(p => !p.is_internal).length})</h5>
-                {projectsLoading ? (
-                  <div className="text-[#F3E3C3]">Loading projects...</div>
-                ) : (
-                  <div className="space-y-3 max-h-96 overflow-y-auto">
-                    {projects.filter(p => !p.is_internal).map(proj => (
-                      <div key={proj.id} className="bg-[#181818] rounded p-3">
-                        <div className="flex justify-between items-start mb-2">
-                          <h6 className="font-bold text-[#F3E3C3]">{proj.name}</h6>
-                          <span className="text-xs px-2 py-1 bg-[#F3E3C3]/10 rounded">{proj.stage}</span>
-                        </div>
-                        <p className="text-sm text-[#F3E3C3]/70">{proj.client}</p>
-                        {proj.opportunity_amount > 0 && (
-                          <p className="text-sm font-bold text-green-400">${proj.opportunity_amount?.toLocaleString?.()}</p>
-                        )}
-                        <p className="text-xs text-[#F3E3C3]/60 mt-2">{proj.notes}</p>
-                        <p className="text-xs text-[#F3E3C3]/40 mt-1">
-                          {proj.created_at ? new Date(proj.created_at).toLocaleDateString() : ''}
-                        </p>
+                <h5 className="text-lg font-display mb-4">
+                  Client Projects ({allProjects.filter(p => !p.is_internal).length})
+                </h5>
+                <div className="space-y-3 max-h-96 overflow-y-auto">
+                  {allProjects.filter(p => !p.is_internal).map(proj => (
+                    <div key={proj.id} className="bg-[#181818] rounded p-3">
+                      <div className="flex justify-between items-start mb-2">
+                        <h6 className="font-bold text-[#F3E3C3]">{proj.name}</h6>
+                        <span className="text-xs px-2 py-1 bg-[#F3E3C3]/10 rounded">{proj.stage}</span>
                       </div>
-                    ))}
-                  </div>
-                )}
+                      <p className="text-sm text-[#F3E3C3]/70">{proj.client}</p>
+                      {proj.opportunity_amount > 0 && (
+                        <p className="text-sm font-bold text-green-400">
+                          ${proj.opportunity_amount?.toLocaleString?.()}
+                        </p>
+                      )}
+                      <p className="text-xs text-[#F3E3C3]/60 mt-2">{proj.notes}</p>
+                      <p className="text-xs text-[#F3E3C3]/40 mt-1">
+                        {proj.created_at ? new Date(proj.created_at).toLocaleDateString() : ''}
+                      </p>
+                    </div>
+                  ))}
+                  {allProjects.filter(p => !p.is_internal).length === 0 && (
+                    <p className="text-[#F3E3C3]/60 text-center py-4">No client projects yet.</p>
+                  )}
+                </div>
               </div>
 
               <div>
-                <h5 className="text-lg font-display mb-4">Internal Projects ({internalProjects.length})</h5>
-                {internalProjectsLoading ? (
-                  <div className="text-[#F3E3C3]">Loading internal projects...</div>
-                ) : (
-                  <div className="space-y-3 max-h-96 overflow-y-auto">
-                    {internalProjects.map(proj => (
-                      <div key={proj.id} className="bg-[#181818] rounded p-3">
-                        <div className="flex justify-between items-start mb-2">
-                          <h6 className="font-bold text-[#F3E3C3]">{proj.name}</h6>
-                          <span className="text-xs px-2 py-1 bg-blue-500/20 text-blue-400 rounded">Internal</span>
-                        </div>
-                        <p className="text-xs text-[#F3E3C3]/60">{proj.notes}</p>
-                        <p className="text-xs text-[#F3E3C3]/40 mt-1">
-                          {proj.created_at ? new Date(proj.created_at).toLocaleDateString() : ''}
-                        </p>
+                <h5 className="text-lg font-display mb-4">
+                  Internal Projects ({allProjects.filter(p => p.is_internal).length})
+                </h5>
+                <div className="space-y-3 max-h-96 overflow-y-auto">
+                  {allProjects.filter(p => p.is_internal).map(proj => (
+                    <div key={proj.id} className="bg-[#181818] rounded p-3">
+                      <div className="flex justify-between items-start mb-2">
+                        <h6 className="font-bold text-[#F3E3C3]">{proj.name}</h6>
+                        <span className="text-xs px-2 py-1 bg-blue-500/20 text-blue-400 rounded">
+                          Internal
+                        </span>
                       </div>
-                    ))}
-                  </div>
-                )}
+                      <p className="text-xs text-[#F3E3C3]/60">{proj.notes}</p>
+                      <p className="text-xs text-[#F3E3C3]/40 mt-1">
+                        {proj.created_at ? new Date(proj.created_at).toLocaleDateString() : ''}
+                      </p>
+                    </div>
+                  ))}
+                  {allProjects.filter(p => p.is_internal).length === 0 && (
+                    <p className="text-[#F3E3C3]/60 text-center py-4">No internal projects yet.</p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         )}
+        
+        {/* ...existing other tabs... */}
       </div>
     </div>
   );
