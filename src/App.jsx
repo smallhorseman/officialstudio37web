@@ -2335,3 +2335,43 @@ function AnalyticsSection({ leads, projects, blogPosts }) {
     </div>
   );
 }
+
+// --- Footer component (declare before use) ---
+const Footer = () => (
+  <footer className="bg-[#232323] text-[#F3E3C3] py-12">
+    <div className="container mx-auto px-6">
+      <div className="grid md:grid-cols-3 gap-8">
+        <div>
+          <div className="flex items-center gap-4 mb-4">
+            <Logo />
+            <span className="font-display text-xl font-bold tracking-tight text-white">Studio37</span>
+          </div>
+          <p className="text-[#F3E3C3]/70">
+            Vintage heart, modern vision. Full-service photography and content strategy.
+          </p>
+        </div>
+        <div>
+          <h4 className="font-display text-lg mb-4">Quick Links</h4>
+          <div className="space-y-2">
+            <Link to="/about" className="block text-[#F3E3C3]/70 hover:text-white transition">About</Link>
+            <Link to="/services" className="block text-[#F3E3C3]/70 hover:text-white transition">Services</Link>
+            <Link to="/portfolio" className="block text-[#F3E3C3]/70 hover:text-white transition">Portfolio</Link>
+            <Link to="/blog" className="block text-[#F3E3C3]/70 hover:text-white transition">Blog</Link>
+            <Link to="/contact" className="block text-[#F3E3C3]/70 hover:text-white transition">Contact</Link>
+          </div>
+        </div>
+        <div>
+          <h4 className="font-display text-lg mb-4">Contact Info</h4>
+          <div className="space-y-2 text-[#F3E3C3]/70">
+            <p>Email: sales@studio37.cc</p>
+            <p>Phone: (832) 713-9944</p>
+            <p>Serving Greater Houston Area</p>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/10 mt-8 pt-8 text-center text-[#F3E3C3]/60">
+        <p>&copy; 2024 Studio37. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+);
