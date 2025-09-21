@@ -493,14 +493,23 @@ const AboutPage = ({ content }) => (
     <div className="container mx-auto px-6">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div className="order-2 md:order-1">
-          <h2 className="text-4xl md:text-5xl font-display mb-6">{content.title || 'Loading...'}</h2>
-          <p className="text-lg text-[#F3E3C3]/80 leading-relaxed">{content.bio || ''}</p>
+          <h2 className="text-4xl md:text-5xl font-display mb-6">{content.title || 'About Studio37'}</h2>
+          <div className="text-lg text-[#F3E3C3]/80 leading-relaxed">
+            {content.bio ? (
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {content.bio}
+              </ReactMarkdown>
+            ) : (
+              <p>Loading content...</p>
+            )}
+          </div>
         </div>
         <div className="order-1 md:order-2">
-            <div className="polaroid mx-auto max-w-sm">
-                <img src="https://placehold.co/500x500/cccccc/333333?text=Christian+%26+Caittie" alt="Christian and Caittie" className="w-full" />
-                <p className="text-center text-black font-display text-lg mt-4">The Studio37 Team</p>
-            </div>
+          {/* CMS-driven image will be added when available */}
+          <div className="bg-[#262626] rounded-lg p-8 text-center">
+            <h3 className="text-xl font-display text-white mb-4">Studio37 Team</h3>
+            <p className="text-[#F3E3C3]/70">Professional photography and content strategy from Houston, TX</p>
+          </div>
         </div>
       </div>
     </div>
