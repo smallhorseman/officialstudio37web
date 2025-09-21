@@ -36,9 +36,14 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
         .eq('lead_id', leadId)
         .order('created_at', { ascending: false });
       
-      if (!error) setLeadNotes(data || []);
+      if (!error && data) {
+        setLeadNotes(data);
+      } else {
+        setLeadNotes([]);
+      }
     } catch (err) {
       console.error('Error fetching notes:', err);
+      setLeadNotes([]);
     }
     setLoading(false);
   };
@@ -47,15 +52,18 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
     if (!newNote.trim() || !selectedLead) return;
     
     try {
-      await supabase.from('lead_notes').insert([{
+      const { error } = await supabase.from('lead_notes').insert([{
         lead_id: selectedLead.id,
         note: newNote,
         note_type: 'manual',
+        priority: 'normal',
         status: 'Active'
       }]);
       
-      setNewNote('');
-      await fetchLeadNotes(selectedLead.id);
+      if (!error) {
+        setNewNote('');
+        await fetchLeadNotes(selectedLead.id);
+      }
     } catch (err) {
       console.error('Error adding note:', err);
     }
@@ -96,10 +104,10 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
                   <div className="text-sm text-[#F3E3C3]/70">{lead.email}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-[#F3E3C3]/70">{lead.phone}</div>
+                  <div className="text-sm text-[#F3E3C3]/70">{lead.phone || 'N/A'}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-[#F3E3C3]/70">{lead.service}</div>
+                  <div className="text-sm text-[#F3E3C3]/70">{lead.service || 'N/A'}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm font-semibold text-[#F3E3C3]">{lead.status}</div>
@@ -107,13 +115,17 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <button
                     onClick={() => updateLeadStatus(lead.id, lead.status === 'Archived' ? 'New' : 'Archived')}
-                    className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${lead.status === 'Archived' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}
+                    className={`px-3 py-1 rounded-full text-xs font-semibold transition-all mr-2 ${
+                      lead.status === 'Archived' 
+                        ? 'bg-green-500 text-white hover:bg-green-600' 
+                        : 'bg-red-500 text-white hover:bg-red-600'
+                    }`}
                   >
                     {lead.status === 'Archived' ? 'Restore' : 'Archive'}
                   </button>
                   <button
                     onClick={() => openLeadDetails(lead)}
-                    className="ml-2 px-3 py-1 bg-[#F3E3C3] text-[#1a1a1a] rounded-full text-xs font-semibold transition-transform hover:scale-105"
+                    className="px-3 py-1 bg-[#F3E3C3] text-[#1a1a1a] rounded-full text-xs font-semibold transition-transform hover:scale-105"
                   >
                     View
                   </button>
@@ -127,84 +139,148 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
       {/* Lead Details Modal */}
       {showLeadDetails && selectedLead && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-          <div className="bg-[#232323] rounded-lg shadow-lg max-w-2xl w-full max-h-[90vh] overflow-hidden">
+          <div className="bg-[#232323] rounded-lg shadow-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
             <div className="flex justify-between items-center p-6 border-b border-white/10">
               <h3 className="text-lg font-display">Lead Details: {selectedLead.name}</h3>
               <button 
                 onClick={() => setShowLeadDetails(false)} 
-                className="text-white text-xl hover:text-red-400"
+                className="text-white text-xl hover:text-red-400 transition-colors"
               >
                 &times;
               </button>
             </div>
             
-            <div className="p-6 max-h-[70vh] overflow-y-auto">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="text-sm font-semibold text-[#F3E3C3] mb-3">Contact Information</h4>
-                  <div className="space-y-2 text-sm">
-                    <div><span className="text-[#F3E3C3]/60">Email:</span> {selectedLead.email}</div>
-                    <div><span className="text-[#F3E3C3]/60">Phone:</span> {selectedLead.phone}</div>
-                    <div><span className="text-[#F3E3C3]/60">Service:</span> {selectedLead.service}</div>
-                    <div><span className="text-[#F3E3C3]/60">Status:</span> {selectedLead.status}</div>
+            <div className="flex h-[calc(90vh-80px)]">
+              {/* Lead Info Sidebar */}
+              <div className="w-1/3 p-6 border-r border-white/10 overflow-y-auto">
+                <div className="space-y-4">
+                  <div>
+                    <label className="text-xs text-[#F3E3C3]/60 uppercase font-semibold">Name</label>
+                    <div className="text-[#F3E3C3]">{selectedLead.name}</div>
+                  </div>
+                  <div>
+                    <label className="text-xs text-[#F3E3C3]/60 uppercase font-semibold">Email</label>
+                    <div className="text-[#F3E3C3]">{selectedLead.email}</div>
+                  </div>
+                  <div>
+                    <label className="text-xs text-[#F3E3C3]/60 uppercase font-semibold">Phone</label>
+                    <div className="text-[#F3E3C3]">{selectedLead.phone || 'Not provided'}</div>
+                  </div>
+                  <div>
+                    <label className="text-xs text-[#F3E3C3]/60 uppercase font-semibold">Service</label>
+                    <div className="text-[#F3E3C3]">{selectedLead.service || 'Not specified'}</div>
+                  </div>
+                  <div>
+                    <label className="text-xs text-[#F3E3C3]/60 uppercase font-semibold">Status</label>
+                    <div className="text-[#F3E3C3]">{selectedLead.status}</div>
+                  </div>
+                  <div>
+                    <label className="text-xs text-[#F3E3C3]/60 uppercase font-semibold">Created</label>
+                    <div className="text-[#F3E3C3]">{new Date(selectedLead.created_at).toLocaleDateString()}</div>
                   </div>
                   
-                  <div className="mt-4">
+                  {/* Quick Actions */}
+                  <div className="pt-4 border-t border-white/10">
                     <h4 className="text-sm font-semibold text-[#F3E3C3] mb-3">Quick Actions</h4>
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => window.open(`tel:${selectedLead.phone?.replace(/\D/g, '')}`)}
-                        className="flex items-center gap-1 bg-green-500 text-white rounded px-3 py-1 text-xs"
-                      >
-                        <PhoneIcon /> Call
-                      </button>
-                      <button
-                        onClick={() => window.open(`sms:${selectedLead.phone?.replace(/\D/g, '')}`)}
-                        className="flex items-center gap-1 bg-blue-500 text-white rounded px-3 py-1 text-xs"
-                      >
-                        <SmsIcon /> Text
-                      </button>
+                    <div className="space-y-2">
+                      {selectedLead.phone && (
+                        <button
+                          onClick={() => window.open(`tel:${selectedLead.phone.replace(/\D/g, '')}`)}
+                          className="w-full bg-green-500 text-white rounded-md py-2 px-3 text-sm font-semibold flex items-center justify-center gap-2 hover:bg-green-600 transition-colors"
+                        >
+                          <PhoneIcon />
+                          Call
+                        </button>
+                      )}
+                      {selectedLead.phone && (
+                        <button
+                          onClick={() => window.open(`sms:${selectedLead.phone.replace(/\D/g, '')}`)}
+                          className="w-full bg-blue-500 text-white rounded-md py-2 px-3 text-sm font-semibold flex items-center justify-center gap-2 hover:bg-blue-600 transition-colors"
+                        >
+                          <SmsIcon />
+                          Text
+                        </button>
+                      )}
                       <button
                         onClick={() => window.open(`mailto:${selectedLead.email}`)}
-                        className="flex items-center gap-1 bg-red-500 text-white rounded px-3 py-1 text-xs"
+                        className="w-full bg-red-500 text-white rounded-md py-2 px-3 text-sm font-semibold flex items-center justify-center gap-2 hover:bg-red-600 transition-colors"
                       >
-                        <MailIcon /> Email
+                        <MailIcon />
+                        Email
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Notes Section */}
+              <div className="flex-1 flex flex-col">
+                <div className="p-6 border-b border-white/10">
+                  <h4 className="font-semibold text-[#F3E3C3] mb-4">Notes</h4>
+
+                  {/* Add Note Form */}
+                  <div className="bg-[#181818] rounded-lg p-4 mb-4">
+                    <textarea
+                      value={newNote}
+                      onChange={(e) => setNewNote(e.target.value)}
+                      placeholder="Add a note..."
+                      className="w-full bg-transparent border-none resize-none focus:outline-none text-[#F3E3C3] text-sm placeholder-[#F3E3C3]/50"
+                      rows="3"
+                    />
+                    <div className="flex justify-end mt-3">
+                      <button
+                        onClick={addNote}
+                        disabled={!newNote.trim()}
+                        className="bg-[#F3E3C3] text-[#1a1a1a] rounded px-3 py-1 text-xs font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#E6D5B8] transition-colors"
+                      >
+                        Add Note
                       </button>
                     </div>
                   </div>
                 </div>
 
-                <div>
-                  <h4 className="text-sm font-semibold text-[#F3E3C3] mb-3">Notes</h4>
+                {/* Notes List */}
+                <div className="flex-1 overflow-y-auto p-6">
+                  {loading && (
+                    <div className="text-center text-[#F3E3C3]/70 py-4">
+                      <div className="w-6 h-6 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+                      Loading notes...
+                    </div>
+                  )}
                   
-                  <div className="mb-3">
-                    <textarea
-                      value={newNote}
-                      onChange={(e) => setNewNote(e.target.value)}
-                      placeholder="Add a note..."
-                      className="w-full bg-[#181818] border border-white/20 rounded p-2 text-sm"
-                      rows="2"
-                    />
-                    <button
-                      onClick={addNote}
-                      disabled={!newNote.trim()}
-                      className="mt-2 bg-[#F3E3C3] text-[#1a1a1a] rounded px-3 py-1 text-xs font-semibold disabled:opacity-50"
-                    >
-                      Add Note
-                    </button>
-                  </div>
-
-                  <div className="space-y-2 max-h-48 overflow-y-auto">
-                    {loading && <div className="text-center text-[#F3E3C3]/70 py-2">Loading notes...</div>}
-                    {!loading && leadNotes.length === 0 && (
-                      <div className="text-[#F3E3C3]/70 py-2 text-center text-sm">No notes found.</div>
-                    )}
+                  {!loading && leadNotes.length === 0 && (
+                    <div className="text-[#F3E3C3]/70 py-4 text-center text-sm">
+                      No notes found. Add the first note above.
+                    </div>
+                  )}
+                  
+                  <div className="space-y-3">
                     {leadNotes.map(note => (
-                      <div key={note.id} className="bg-[#181818] rounded p-3">
-                        <div className="text-xs text-[#F3E3C3]/60 mb-1">
-                          {new Date(note.created_at).toLocaleDateString()}
+                      <div key={note.id} className="bg-[#181818] rounded-lg p-4">
+                        <div className="flex justify-between items-start mb-2">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs text-[#F3E3C3]/60 uppercase font-medium">
+                              {note.note_type || 'manual'}
+                            </span>
+                            {note.priority && note.priority !== 'normal' && (
+                              <span className={`text-xs px-2 py-1 rounded ${
+                                note.priority === 'high' ? 'bg-red-500 text-white' :
+                                note.priority === 'medium' ? 'bg-yellow-500 text-black' :
+                                'bg-green-500 text-white'
+                              }`}>
+                                {note.priority}
+                              </span>
+                            )}
+                          </div>
                         </div>
-                        <div className="text-[#F3E3C3] text-sm">{note.note}</div>
+                        
+                        <div className="text-[#F3E3C3] text-sm mb-2 leading-relaxed">
+                          {note.note}
+                        </div>
+                        
+                        <div className="text-xs text-[#F3E3C3]/40">
+                          {new Date(note.created_at).toLocaleString()}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -217,82 +293,6 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
     </div>
   );
 }
-                        onClick={() => window.open(`tel:${selectedLead.phone?.replace(/\D/g, '')}`)}
-                        className="w-full bg-green-500 text-white rounded-md py-2 px-3 text-sm font-semibold flex items-center justify-center gap-2"
-                      >
-                        <PhoneIcon /> Call
-                      </button>
-                      <button
-                        onClick={() => window.open(`sms:${selectedLead.phone?.replace(/\D/g, '')}`)}
-                        className="w-full bg-blue-500 text-white rounded-md py-2 px-3 text-sm font-semibold flex items-center justify-center gap-2"
-                      >
-                        <SmsIcon /> Text
-                      </button>
-                      <button
-                        onClick={() => window.open(`mailto:${selectedLead.email}`)}
-                        className="w-full bg-red-500 text-white rounded-md py-2 px-3 text-sm font-semibold flex items-center justify-center gap-2"
-                      >
-                        <MailIcon /> Email
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Notes Section */}
-              <div className="flex-1 flex flex-col">
-                <div className="p-6 border-b border-white/10">
-                  <div className="flex justify-between items-center mb-4">
-                    <h4 className="font-semibold text-[#F3E3C3]">Notes & Follow-ups</h4>
-                    <select 
-                      value={filterNotes} 
-                      onChange={(e) => setFilterNotes(e.target.value)}
-                      className="bg-[#181818] border border-white/20 rounded px-2 py-1 text-xs"
-                    >
-                      <option value="all">All Notes</option>
-                      <option value="manual">Manual</option>
-                      <option value="system">System</option>
-                      <option value="follow-up">Follow-ups</option>
-                      <option value="high-priority">High Priority</option>
-                    </select>
-                  </div>
-
-                  {/* Add Note Form */}
-                  <div className="bg-[#181818] rounded-lg p-4 mb-4">
-                    <textarea
-                      value={newNote.note}
-                      onChange={(e) => setNewNote({...newNote, note: e.target.value})}
-                      placeholder="Add a note..."
-                      className="w-full bg-transparent border-none resize-none focus:outline-none text-[#F3E3C3] text-sm"
-                      rows="3"
-                    />
-                    
-                    <div className="flex gap-2 mt-3">
-                      <select
-                        value={newNote.note_type}
-                        onChange={(e) => setNewNote({...newNote, note_type: e.target.value})}
-                        className="bg-[#262626] border border-white/20 rounded px-2 py-1 text-xs"
-                      >
-                        <option value="manual">Manual</option>
-                        <option value="call">Call Note</option>
-                        <option value="email">Email Note</option>
-                        <option value="meeting">Meeting</option>
-                      </select>
-                      
-                      <select
-                        value={newNote.priority}
-                        onChange={(e) => setNewNote({...newNote, priority: e.target.value})}
-                        className="bg-[#262626] border border-white/20 rounded px-2 py-1 text-xs"
-                      >
-                        <option value="low">Low</option>
-                        <option value="normal">Normal</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
-                      </select>
-                      
-                      <input
-                        type="datetime-local"
-                        value={newNote.follow_up_date}
                         onChange={(e) => setNewNote({...newNote, follow_up_date: e.target.value})}
                         className="bg-[#262626] border border-white/20 rounded px-2 py-1 text-xs"
                         placeholder="Follow-up date"
