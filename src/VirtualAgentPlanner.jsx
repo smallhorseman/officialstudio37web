@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { supabase } from './supabaseClient'; // <-- create this shared file
 
 const steps = [
   { key: 'greet', prompt: "Hi! I'm your Studio37 virtual agent. Would you like to plan your photoshoot?", type: 'greet' },
@@ -44,11 +45,6 @@ export default function VirtualAgentPlanner({ onComplete }) {
     } else {
       setSaving(true);
       // Save to Supabase: create lead, project, and note
-      const { createClient } = await import('@supabase/supabase-js');
-      const supabase = createClient(
-        'https://sqfqlnodwjubacmaduzl.supabase.co',
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZnFsbm9kd2p1YmFjbWFkdXpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzQ2ODUsImV4cCI6MjA3Mzc1MDY4NX0.OtEDSh5UCm8CxWufG_NBLDzgNFI3wnr-oAyaRib_4Mw'
-      );
       // 1. Create lead
       const { data: leadData, error: leadError } = await supabase.from('leads').insert([
         {
@@ -138,11 +134,6 @@ export default function VirtualAgentPlanner({ onComplete }) {
       setStep(steps.length);
       return;
     }
-    const { createClient } = await import('@supabase/supabase-js');
-    const supabase = createClient(
-      'https://sqfqlnodwjubacmaduzl.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZnFsbm9kd2p1YmFjbWFkdXpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzQ2ODUsImV4cCI6MjA3Mzc1MDY4NX0.OtEDSh5UCm8CxWufG_NBLDzgNFI3wnr-oAyaRib_4Mw'
-    );
     await supabase.from('lead_notes').insert([{ lead_id: leadId, note: input, status: 'Update' }]);
     setMessages(msgs => [...msgs, { from: 'user', text: input }, { from: 'bot', text: 'Note added! What next? (add note, add todo, update info, done)' }]);
     setInput('');
@@ -157,11 +148,6 @@ export default function VirtualAgentPlanner({ onComplete }) {
       setStep(steps.length);
       return;
     }
-    const { createClient } = await import('@supabase/supabase-js');
-    const supabase = createClient(
-      'https://sqfqlnodwjubacmaduzl.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZnFsbm9kd2p1YmFjbWFkdXpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzQ2ODUsImV4cCI6MjA3Mzc1MDY4NX0.OtEDSh5UCm8CxWufG_NBLDzgNFI3wnr-oAyaRib_4Mw'
-    );
     await supabase.from('project_todos').insert([{ project_id: projectId, task: input }]);
     setMessages(msgs => [...msgs, { from: 'user', text: input }, { from: 'bot', text: 'Todo added! What next? (add note, add todo, update info, done)' }]);
     setInput('');
@@ -185,11 +171,6 @@ export default function VirtualAgentPlanner({ onComplete }) {
       setStep(steps.length);
       return;
     }
-    const { createClient } = await import('@supabase/supabase-js');
-    const supabase = createClient(
-      'https://sqfqlnodwjubacmaduzl.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZnFsbm9kd2p1YmFjbWFkdXpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzQ2ODUsImV4cCI6MjA3Mzc1MDY4NX0.OtEDSh5UCm8CxWufG_NBLDzgNFI3wnr-oAyaRib_4Mw'
-    );
     await supabase.from('leads').update({ [postField]: input }).eq('id', leadId);
     setMessages(msgs => [...msgs, { from: 'user', text: input }, { from: 'bot', text: `${postField} updated! What next? (add note, add todo, update info, done)` }]);
     setInput('');

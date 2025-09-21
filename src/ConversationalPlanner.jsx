@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { supabase } from './supabaseClient'; // <-- create this shared file
 
 const questions = [
   { key: 'date', prompt: 'What date are you considering for your photoshoot?' },
@@ -26,11 +27,6 @@ export default function ConversationalPlanner({ email, onComplete }) {
     } else {
       setSaving(true);
       // Save to Supabase
-      const { createClient } = await import('@supabase/supabase-js');
-      const supabase = createClient(
-        'https://sqfqlnodwjubacmaduzl.supabase.co',
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZnFsbm9kd2p1YmFjbWFkdXpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzQ2ODUsImV4cCI6MjA3Mzc1MDY4NX0.OtEDSh5UCm8CxWufG_NBLDzgNFI3wnr-oAyaRib_4Mw'
-      );
       await supabase.from('photoshoot_plans').insert([{ ...answers, [key]: input }]);
       setSaving(false);
       setSubmitted(true);
