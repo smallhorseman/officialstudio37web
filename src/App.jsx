@@ -1553,9 +1553,15 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
   ]);
   const [editingPage, setEditingPage] = useState(null);
   const [editForm, setEditForm] = useState({ title: '', content: '' });
+  const [saving, setSaving] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState(false);
+  const [saveError, setSaveError] = useState('');
 
   const handleEditPage = (pageKey) => {
     setEditingPage(pageKey);
+    setSaveError('');
+    setSaveSuccess(false);
+    
     // Load content based on page
     let title = '', contentMd = '';
     switch (pageKey) {
@@ -1572,6 +1578,63 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
         contentMd = `Content for ${pageKey} page.`;
     }
     setEditForm({ title, content: contentMd });
+  };
+
+  const handleSaveChanges = async () => {
+    setSaving(true);
+    setSaveError('');
+    setSaveSuccess(false);
+
+    try {
+      if (editingPage === 'about') {
+        // Check if about record exists
+        const { data: existingData } = await supabase
+          .from('about')
+          .select('id')
+          .limit(1);
+
+        if (existingData && existingData.length > 0) {
+          // Update existing record
+          const { error } = await supabase
+            .from('about')
+            .update({
+              title: editForm.title,
+              bio: editForm.content
+            })
+            .eq('id', existingData[0].id);
+
+          if (error) throw error;
+        } else {
+          // Insert new record
+          const { error } = await supabase
+            .from('about')
+            .insert([{
+              title: editForm.title,
+              bio: editForm.content
+            }]);
+
+          if (error) throw error;
+        }
+
+        setSaveSuccess(true);
+        // Close modal after 1 second
+        setTimeout(() => {
+          setEditingPage(null);
+          setSaveSuccess(false);
+          // Trigger a refresh of the content
+          window.location.reload();
+        }, 1000);
+      } else {
+        // For other pages, you might want to create additional tables
+        // For now, just show a message
+        setSaveError(`Saving for ${editingPage} page is not yet implemented. Only About page editing is currently supported.`);
+      }
+    } catch (error) {
+      console.error('Error saving page content:', error);
+      setSaveError(`Failed to save changes: ${error.message}`);
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
@@ -1591,7 +1654,8 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
               </div>
               <button
                 onClick={() => handleEditPage(page.key)}
-                className="bg-blue-500 text-white px-3 py-1 rounded text-xs"
+                className="bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600"
+                disabled={saving}
               >
                 Edit
               </button>
@@ -1616,30 +1680,78 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
       {editingPage && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-2xl w-full mx-4">
-            <h3 className="text-xl font-display text-white mb-4">Edit {editingPage} Page</h3>
+            <h3 className="text-xl font-display text-white mb-4">
+              Edit {editingPage.charAt(0).toUpperCase() + editingPage.slice(1)} Page
+            </h3>
+            
+            {/* Success Message */}
+            {saveSuccess && (
+              <div className="bg-green-500/20 text-green-400 p-3 rounded mb-4">
+                ✓ Changes saved successfully! Refreshing...
+              </div>
+            )}
+            
+            {/* Error Message */}
+            {saveError && (
+              <div className="bg-red-500/20 text-red-400 p-3 rounded mb-4">
+                {saveError}
+              </div>
+            )}
+            
             <div className="space-y-4">
-              <input
-                type="text"
-                value={editForm.title}
-                onChange={e => setEditForm(f => ({ ...f, title: e.target.value }))}
-                placeholder="Page Title"
-                className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-              />
-              <textarea
-                value={editForm.content}
-                onChange={e => setEditForm(f => ({ ...f, content: e.target.value }))}
-                placeholder="Page Content (Markdown supported)"
-                rows={8}
-                className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-              />
+              <div>
+                <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
+                  Page Title
+                </label>
+                <input
+                  type="text"
+                  value={editForm.title}
+                  onChange={e => setEditForm(f => ({ ...f, title: e.target.value }))}
+                  placeholder="Page Title"
+                  className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3]"
+                  disabled={saving}
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
+                  Page Content (Markdown supported)
+                </label>
+                <textarea
+                  value={editForm.content}
+                  onChange={e => setEditForm(f => ({ ...f, content: e.target.value }))}
+                  placeholder="Page Content (Markdown supported)"
+                  rows={8}
+                  className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3]"
+                  disabled={saving}
+                />
+              </div>
+              
+              {editingPage === 'about' && (
+                <div className="bg-blue-500/20 text-blue-300 p-3 rounded text-sm">
+                  <strong>Note:</strong> Changes to the About page will be saved to your database and will appear immediately on your live site.
+                </div>
+              )}
+              
+              {editingPage !== 'about' && (
+                <div className="bg-yellow-500/20 text-yellow-300 p-3 rounded text-sm">
+                  <strong>Note:</strong> Currently, only the About page can be edited and saved. Other pages require additional database setup.
+                </div>
+              )}
             </div>
-            <div className="flex gap-2 mt-4">
-              <button className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">
-                Save Changes
+            
+            <div className="flex gap-2 mt-6">
+              <button 
+                onClick={handleSaveChanges}
+                className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md hover:bg-[#F3E3C3]/90 transition disabled:opacity-50"
+                disabled={saving || !editForm.title.trim()}
+              >
+                {saving ? 'Saving...' : 'Save Changes'}
               </button>
               <button 
                 onClick={() => setEditingPage(null)}
-                className="bg-gray-500 text-white py-2 px-4 rounded-md"
+                className="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition"
+                disabled={saving}
               >
                 Cancel
               </button>
@@ -1758,7 +1870,7 @@ const BlogPage = ({ posts, loading, error }) => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-display">Blog</h2>
-          <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto">
+          <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">
             Insights, tips, and stories from behind the lens.
           </p>
         </div>
@@ -2094,7 +2206,7 @@ function BlogAdminSection({
       )}
     </div>
   );
-}
+};
 
 // --- Add missing SiteMapPreview component ---
 function SiteMapPreview({ page, content, portfolioImages, blogPosts }) {
