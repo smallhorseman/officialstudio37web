@@ -1225,7 +1225,7 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
                       onError={() => handleImageError(img.id)}
                     />
                     {img.caption && (
-                      <div className="absolute bottom-0 left-0 right-0 bg-black/75 backdrop-blur-sm p-3 rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                      <div className="absolute bottom-0 left-0 right-0 bg-black/75 backdrop-blur-sm p-3 rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity">
                         <p className="text-[#F3E3C3]/75 text-sm font-serif italic leading-relaxed">
                           {img.caption}
                         </p>
@@ -1301,7 +1301,7 @@ function AdminDashboard({
 
         <div className="bg-[#262626] rounded-lg shadow-lg p-6">
           {activeTab === 'crm' && (
-            <div></div>
+            <div>
               <h3 className="text-2xl font-display mb-6">Customer Relationship Management</h3>
               <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
             </div>
