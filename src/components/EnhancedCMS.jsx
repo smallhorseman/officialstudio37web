@@ -425,152 +425,89 @@ export function EnhancedCmsSection({
         </div>
       </div>
 
-      {/* Image Preview Modal */}
-      {previewImage && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-          <div className="bg-[#232323] rounded-lg max-w-4xl max-h-[90vh] overflow-auto">
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-display">Image Details</h3>
-                <button
-                  onClick={() => setPreviewImage(null)}
-                  className="text-white text-xl hover:text-red-400"
-                >
-                  &times;
-                </button>
+{/* Image Preview Modal */}
+{previewImage && (
+  <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+    <div className="bg-[#232323] rounded-lg max-w-4xl max-h-[90vh] overflow-auto">
+      <div className="p-6">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-lg font-display">Image Details</h3>
+          <button
+            onClick={() => setPreviewImage(null)}
+            className="text-white text-xl hover:text-red-400"
+          >
+            &times;
+          </button>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <OptimizedImage
+              src={previewImage.url}
+              alt={previewImage.alt_text || previewImage.caption}
+              className="w-full rounded-lg"
+            />
+          </div>
+          
+          <div className="space-y-3">
+            <div>
+              <label className="text-sm font-medium text-[#F3E3C3]/80">Caption</label>
+              <p className="text-[#F3E3C3]">{previewImage.caption || 'No caption'}</p>
+            </div>
+            
+            <div>
+              <label className="text-sm font-medium text-[#F3E3C3]/80">Category</label>
+              <p className="text-[#F3E3C3]">{previewImage.category}</p>
+            </div>
+            
+            <div>
+              <label className="text-sm font-medium text-[#F3E3C3]/80">Alt Text</label>
+              <p className="text-[#F3E3C3]">{previewImage.alt_text || 'No alt text'}</p>
+            </div>
+            
+            {previewImage.tags && previewImage.tags.length > 0 && (
+              <div>
+                <label className="text-sm font-medium text-[#F3E3C3]/80">Tags</label>
+                <p className="text-[#F3E3C3]">{previewImage.tags.join(', ')}</p>
               </div>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <OptimizedImage
-                    src={previewImage.url}
-                    alt={previewImage.alt_text || previewImage.caption}
-                    className="w-full rounded-lg"
-                  />
-                </div>
-                
-                <div className="space-y-3">
-                  <div>
-                    <label className="text-sm font-medium text-[#F3E3C3]/80">Caption</label>
-                    <p className="text-[#F3E3C3]">{previewImage.caption || 'No caption'}</p>
-                  </div>
-                  
-                  <div>
-                    <label className="text-sm font-medium text-[#F3E3C3]/80">Category</label>
-                    <p className="text-[#F3E3C3]">{previewImage.category}</p>
-                  </div>
-                  
-                  <div>
-                    <label className="text-sm font-medium text-[#F3E3C3]/80">Alt Text</label>
-                    <p className="text-[#F3E3C3]">{previewImage.alt_text || 'No alt text'}</p>
-                  </div>
-                  
-                  <div>
-                    <label className="text-sm font-medium text-[#F3E3C3]/80">Added</label>
-                    <p className="text-[#F3E3C3]">{new Date(previewImage.created_at).toLocaleString()}</p>
-                  </div>
-                  
-                  <div className="flex gap-2 pt-4">
-                    <button
-                      onClick={() => {
-                        navigator.clipboard.writeText(previewImage.url);
-                        alert('URL copied to clipboard!');
-                      }}
-                      className="bg-[#F3E3C3] text-[#1a1a1a] px-3 py-2 rounded text-sm font-semibold"
-                    >
-                      Copy URL
-                    </button>
-                    <button
-                      onClick={() => {
-                        deletePortfolioImage(previewImage.id);
-                        setPreviewImage(null);
-                      }}
-                      className="bg-red-500 text-white px-3 py-2 rounded text-sm font-semibold"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              </div>
+            )}
+            
+            <div>
+              <label className="text-sm font-medium text-[#F3E3C3]/80">Added</label>
+              <p className="text-[#F3E3C3]">{new Date(previewImage.created_at).toLocaleString()}</p>
+            </div>
+            
+            <div>
+              <label className="text-sm font-medium text-[#F3E3C3]/80">URL</label>
+              <p className="text-[#F3E3C3]/60 text-xs break-all">{previewImage.url}</p>
+            </div>
+            
+            <div className="flex gap-2 pt-4">
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(previewImage.url);
+                  alert('URL copied to clipboard!');
+                }}
+                className="bg-[#F3E3C3] text-[#1a1a1a] px-3 py-2 rounded text-sm font-semibold"
+              >
+                Copy URL
+              </button>
+              <button
+                onClick={() => {
+                  deletePortfolioImage(previewImage.id);
+                  setPreviewImage(null);
+                }}
+                className="bg-red-500 text-white px-3 py-2 rounded text-sm font-semibold"
+              >
+                Delete
+              </button>
             </div>
           </div>
         </div>
-      )}
+      </div>
     </div>
-  );
-}
-                  &times;
-                </button>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <img
-                    src={previewImage.url}
-                    alt={previewImage.alt_text || previewImage.caption}
-                    className="w-full rounded-lg"
-                  />
-                </div>
-                
-                <div className="space-y-3">
-                  <div>
-                    <label className="text-sm font-medium text-[#F3E3C3]/80">Caption</label>
-                    <p className="text-[#F3E3C3]">{previewImage.caption || 'No caption'}</p>
-                  </div>
-                  
-                  <div>
-                    <label className="text-sm font-medium text-[#F3E3C3]/80">Category</label>
-                    <p className="text-[#F3E3C3]">{previewImage.category}</p>
-                  </div>
-                  
-                  <div>
-                    <label className="text-sm font-medium text-[#F3E3C3]/80">Alt Text</label>
-                    <p className="text-[#F3E3C3]">{previewImage.alt_text || 'No alt text'}</p>
-                  </div>
-                  
-                  {previewImage.tags && previewImage.tags.length > 0 && (
-                    <div>
-                      <label className="text-sm font-medium text-[#F3E3C3]/80">Tags</label>
-                      <p className="text-[#F3E3C3]">{previewImage.tags.join(', ')}</p>
-                    </div>
-                  )}
-                  
-                  <div>
-                    <label className="text-sm font-medium text-[#F3E3C3]/80">Added</label>
-                    <p className="text-[#F3E3C3]">{new Date(previewImage.created_at).toLocaleString()}</p>
-                  </div>
-                  
-                  <div>
-                    <label className="text-sm font-medium text-[#F3E3C3]/80">URL</label>
-                    <p className="text-[#F3E3C3]/60 text-xs break-all">{previewImage.url}</p>
-                  </div>
-                  
-                  <div className="flex gap-2 pt-4">
-                    <button
-                      onClick={() => {
-                        navigator.clipboard.writeText(previewImage.url);
-                        alert('URL copied to clipboard!');
-                      }}
-                      className="bg-[#F3E3C3] text-[#1a1a1a] px-3 py-2 rounded text-sm font-semibold"
-                    >
-                      Copy URL
-                    </button>
-                    <button
-                      onClick={() => {
-                        deletePortfolioImage(previewImage.id);
-                        setPreviewImage(null);
-                      }}
-                      className="bg-red-500 text-white px-3 py-2 rounded text-sm font-semibold"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+  </div>
+)}
     </div>
   );
 }
