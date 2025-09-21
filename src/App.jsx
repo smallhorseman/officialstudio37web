@@ -713,7 +713,115 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
   );
 };
 
-// Add performance monitoring and error boundaries
+// Add missing Footer component
+const Footer = () => (
+  <footer className="bg-[#232323] text-[#F3E3C3] py-12">
+    <div className="container mx-auto px-6">
+      <div className="grid md:grid-cols-3 gap-8">
+        <div>
+          <div className="flex items-center gap-4 mb-4">
+            <Logo />
+            <span className="font-display text-xl font-bold tracking-tight text-white">Studio37</span>
+          </div>
+          <p className="text-[#F3E3C3]/70">
+            Vintage heart, modern vision. Full-service photography and content strategy.
+          </p>
+        </div>
+        <div>
+          <h4 className="font-display text-lg mb-4">Quick Links</h4>
+          <div className="space-y-2">
+            <Link to="/about" className="block text-[#F3E3C3]/70 hover:text-white transition">About</Link>
+            <Link to="/services" className="block text-[#F3E3C3]/70 hover:text-white transition">Services</Link>
+            <Link to="/portfolio" className="block text-[#F3E3C3]/70 hover:text-white transition">Portfolio</Link>
+            <Link to="/blog" className="block text-[#F3E3C3]/70 hover:text-white transition">Blog</Link>
+            <Link to="/contact" className="block text-[#F3E3C3]/70 hover:text-white transition">Contact</Link>
+          </div>
+        </div>
+        <div>
+          <h4 className="font-display text-lg mb-4">Contact Info</h4>
+          <div className="space-y-2 text-[#F3E3C3]/70">
+            <p>Email: sales@studio37.cc</p>
+            <p>Phone: (832) 713-9944</p>
+            <p>Serving Greater Houston Area</p>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/10 mt-8 pt-8 text-center text-[#F3E3C3]/60">
+        <p>&copy; 2024 Studio37. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+);
+
+// --- Site Map Preview ---
+function SiteMapPreview({ page, content, portfolioImages, blogPosts }) {
+  switch (page) {
+    case 'about':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">{content.about?.title || 'About Us'}</h3>
+          <div className="text-[#F3E3C3]/80">
+            {content.about?.bio ? (
+              <ReactMarkdown remarkPlugins={[remarkGfm]} className="prose prose-sm prose-invert max-w-none">
+                {content.about.bio}
+              </ReactMarkdown>
+            ) : (
+              <p>About content...</p>
+            )}
+          </div>
+        </div>
+      );
+    case 'portfolio':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">Portfolio</h3>
+          <div className="grid grid-cols-3 gap-2">
+            {portfolioImages?.slice(0, 6).map(img => (
+              <div key={img.id} className="relative">
+                <img 
+                  src={img.url} 
+                  alt={img.category} 
+                  className="w-full h-16 object-cover rounded" 
+                />
+                {img.caption && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/75 p-1 rounded-b text-xs">
+                    <p className="text-[#F3E3C3]/75 font-vintage-text italic leading-relaxed">
+                      {img.caption}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-[#F3E3C3]/60 mt-2">{portfolioImages?.length || 0} images</p>
+        </div>
+      );
+    case 'blog':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">Blog</h3>
+          <div className="space-y-2">
+            {blogPosts?.slice(0, 3).map(post => (
+              <div key={post.id} className="bg-[#181818] p-2 rounded text-xs">
+                <div className="font-bold">{post.title}</div>
+                <div className="text-[#F3E3C3]/60">{post.excerpt?.substring(0, 60)}...</div>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-[#F3E3C3]/60 mt-2">{blogPosts?.length || 0} posts</p>
+        </div>
+      );
+    default:
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">{page.charAt(0).toUpperCase() + page.slice(1)}</h3>
+          <p className="text-[#F3E3C3]/70">Preview for {page} page...</p>
+        </div>
+      );
+  }
+}
+
+// --- Error Boundary Component ---
 const ErrorBoundary = ({ children, fallback }) => {
   const [hasError, setHasError] = useState(false);
 
@@ -2051,7 +2159,7 @@ function BlogAdminSection({
                 className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
                 rows={12}
               />
-              <div className="flex gap-2 mt-4">
+              <div className="flex gap-2 mt-6">
                 <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">
                   Update Post
                 </button>
