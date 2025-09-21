@@ -1,4 +1,4 @@
-// Image optimization utilities
+    // Image optimization utilities
 
 export const optimizeCloudinaryUrl = (url, options = {}) => {
   if (!url || !url.includes('cloudinary.com')) return url;
