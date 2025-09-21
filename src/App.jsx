@@ -608,11 +608,765 @@ const Header = ({ isMenuOpen, setIsMenuOpen, theme, toggleTheme, showAdminButton
                         Admin
                       </Link>
                     )}
-                    <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-[#F3E3C3] text-xl px-2" aria-label="Toggle Menu">
-                      ☰
-                    </button>
+                    <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white md:hidden">
+            {isMenuOpen ? <span>&#10005;</span> : <span>&#9776;</span>}
+          </button>
+        </div>
+      </div>
+      {isMenuOpen && (
+        <div className="md:hidden bg-[#232323]">
+          <nav className="flex flex-col items-center py-4">
+            {navLinks.map(link => <NavLink key={link.page} {...link} />)}
+          </nav>
+        </div>
+      )}
+    </header>
+  );
+};
+
+// --- HomePage Component ---
+const HomePage = () => {
+  const [heroImageLoaded, setHeroImageLoaded] = useState(false);
+  
+  const heroImageUrl = "https://res.cloudinary.com/dmjxho2rl/image/upload/f_auto,q_auto:good,w_auto:breakpoints,c_scale/v1758172510/A4B03835-ED8B-4FBB-A27E-1F2EE6CA1A18_1_105_c_gstgil.jpg";
+
+  return (
+    <>
+      <SEOHead 
+        title="Studio37 - Professional Photography & Content Strategy in Houston, TX"
+        description="Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX."
+        keywords="photography Houston, professional photographer Houston, content strategy, portraits, weddings, events, brand photography"
+        image="https://www.studio37.cc/og-image.jpg"
+      />
+      <div className="relative h-screen flex items-center justify-center text-center text-white px-4 -mt-20">
+        {!heroImageLoaded && (
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black animate-pulse"></div>
+        )}
+        <img 
+          src={heroImageUrl} 
+          alt="Studio37 Professional Photography - Houston TX" 
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${heroImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setHeroImageLoaded(true)}
+          onError={() => {
+            console.error('Hero image failed to load');
+            setHeroImageLoaded(false);
+          }}
+          loading="eager"
+          decoding="async"
+          crossOrigin="anonymous"
+        />
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-0 pointer-events-none"></div>
+        <div className="relative z-10">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display mb-4 leading-tight break-words max-w-full">Capture. Create. Captivate.</h1>
+          <p className="text-base sm:text-lg md:text-xl max-w-xs sm:max-w-2xl mx-auto mb-8 text-[#F3E3C3]/80">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
+          <div className="space-y-4 sm:space-x-4 flex flex-col sm:flex-row items-center justify-center w-full">
+            <Link to="/portfolio" className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 w-full sm:w-auto">
+              View Our Work <ArrowRight />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+// --- Contact Page ---
+const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+    contactMethod: 'email'
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+    
+    const { error } = await supabase.from('leads').insert([{
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      service: 'Contact Form',
+      status: 'New'
+    }]);
+
+    if (!error) {
+      const { data: leadData } = await supabase
+        .from('leads')
+        .select('id')
+        .eq('email', formData.email)
+        .order('created_at', { ascending: false })
+        .limit(1);
+
+      if (leadData && leadData[0]) {
+        await supabase.from('lead_notes').insert([{
+          lead_id: leadData[0].id,
+          note: `Contact Form: Preferred contact: ${formData.contactMethod}. Message: ${formData.message}`,
+          status: 'Contact Form'
+        }]);
+      }
+    }
+
+    setSending(false);
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <>
+        <SEOHead 
+          title="Thank You - Message Sent | Studio37 Houston Photography"
+          description="Thank you for contacting Studio37. We'll get back to you soon about your photography needs in Houston, TX."
+        />
+        <div className="py-20 md:py-28 bg-[#212121]">
+          <div className="container mx-auto px-6 text-center">
+            <div className="bg-[#262626] rounded-lg p-8 max-w-md mx-auto">
+              <h2 className="text-3xl font-display text-white mb-4">Thank You!</h2>
+              <p className="text-[#F3E3C3]/80">We've received your message and will get back to you soon!</p>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <SEOHead 
+        title="Contact Studio37 - Houston Photography | Get Your Quote Today"
+        description="Contact Studio37 for professional photography services in Houston, TX. Call (832) 713-9944 or email sales@studio37.cc. Serving Greater Houston Area."
+        keywords="contact Houston photographer, Studio37 contact, Houston photography quote, professional photographer Houston TX"
+      />
+      <div className="py-20 md:py-28 bg-[#212121]">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-display">Get In Touch</h2>
+            <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <input 
+                type="text" 
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your Name" 
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+                required 
+              />
+              <input 
+                type="email" 
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Your Email" 
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+                required 
+              />
+              <input 
+                type="tel" 
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="Your Phone (Optional)" 
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+              />
+              <div>
+                <label className="block text-sm font-medium text-[#F3E3C3] mb-2">Preferred Contact Method</label>
+                <select 
+                  name="contactMethod"
+                  value={formData.contactMethod}
+                  onChange={handleChange}
+                  className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                >
+                  <option value="email">Email</option>
+                  <option value="phone">Phone Call</option>
+                  <option value="text">Text Message</option>
+                </select>
+              </div>
+              <textarea 
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Your Message" 
+                rows="5" 
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                required
+              />
+              <button 
+                type="submit" 
+                className="group inline-flex items-center justify-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105"
+                disabled={sending}
+              >
+                {sending ? 'Sending...' : 'Send Message'} <ArrowRight />
+              </button>
+            </form>
+            <div className="text-[#F3E3C3]/80 space-y-6">
+              <div>
+                <h3 className="text-xl font-display text-white">Contact Info</h3>
+                <p>Email: <a href="mailto:sales@studio37.cc" className="hover:text-white transition">sales@studio37.cc</a></p>
+                <p>Phone: <a href="tel:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
+                <p>Text: <a href="sms:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
+              </div>
+              <div>
+                <h3 className="text-xl font-display text-white">Location</h3>
+                <p>Serving the Greater Houston Area</p>
+                <p>Based near Porter, TX 77362</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+// --- Blog Page ---
+const BlogPage = ({ posts, loading, error }) => {
+  if (loading) {
+    return (
+      <>
+        <SEOHead 
+          title="Photography Blog - Studio37 Houston | Tips, Insights & Stories"
+          description="Photography tips, behind-the-scenes insights, and creative stories from Studio37's professional photographers in Houston, TX."
+          keywords="photography blog, photography tips Houston, behind the scenes, photography insights"
+        />
+        <div className="py-20 md:py-28 bg-[#212121]">
+          <div className="container mx-auto px-6">
+            <div className="text-center">
+              <h2 className="text-4xl md:text-5xl font-display mb-8">Blog</h2>
+              <div className="text-[#F3E3C3] py-10">Loading blog posts...</div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <SEOHead 
+          title="Photography Blog - Studio37 Houston"
+          description="Photography blog from Studio37 in Houston, TX."
+        />
+        <div className="py-20 md:py-28 bg-[#212121]">
+          <div className="container mx-auto px-6">
+            <div className="text-center">
+              <h2 className="text-4xl md:text-5xl font-display mb-8">Blog</h2>
+              <div className="text-red-400 py-10">{error}</div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <SEOHead 
+        title="Photography Blog - Studio37 Houston | Tips, Insights & Stories"
+        description="Photography tips, behind-the-scenes insights, and creative stories from Studio37's professional photographers in Houston, TX."
+        keywords="photography blog, photography tips Houston, behind the scenes, photography insights"
+      />
+      <div className="py-20 md:py-28 bg-[#212121]">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-display">Blog</h2>
+            <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">
+              Insights, tips, and stories from behind the lens.
+            </p>
+          </div>
+          
+          {posts && posts.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts.map(post => (
+                <article key={post.id} className="bg-[#262626] rounded-lg shadow-lg overflow-hidden">
+                  <div className="p-6">
+                    <h3 className="text-xl font-display text-white mb-2">
+                      <Link to={`/blog/${post.slug}`} className="hover:text-[#F3E3C3] transition">
+                        {post.title}
+                      </Link>
+                    </h3>
+                    <div className="text-xs text-[#F3E3C3]/60 mb-3">
+                      {post.author} &middot; {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}
+                    </div>
+                    <p className="text-[#F3E3C3]/80 mb-4">{post.excerpt}</p>
+                    <Link 
+                      to={`/blog/${post.slug}`}
+                      className="inline-flex items-center text-[#F3E3C3] hover:text-white transition group"
+                    >
+                      Read More <ArrowRight />
+                    </Link>
                   </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center text-[#F3E3C3]/70 py-10">
+              No blog posts available yet.
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
+};
+
+// --- BlogPostPage: dynamic blog post by slug ---
+function BlogPostPage() {
+  const { slug } = useParams();
+  const [post, setPost] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState('');
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    setLoading(true);
+    setError('');
+    supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('slug', slug)
+      .single()
+      .then(({ data, error }) => {
+        if (error || !data) {
+          setError('Blog post not found.');
+          setPost(null);
+        } else {
+          setPost(data);
+        }
+        setLoading(false);
+      });
+  }, [slug]);
+
+  if (loading) return <div className="text-[#F3E3C3] text-center py-10">Loading...</div>;
+  if (error) return <div className="text-red-400 text-center py-10">{error}</div>;
+  if (!post) return null;
+
+  return (
+    <div className="py-20 md:py-28 bg-[#212121]">
+      <div className="container mx-auto px-6 max-w-3xl">
+        <button onClick={() => navigate('/blog')} className="text-[#F3E3C3] mb-4 hover:underline">&larr; Back to Blog</button>
+        <h1 className="text-4xl font-display mb-2 text-white">{post.title}</h1>
+        <div className="text-xs text-[#F3E3C3]/60 mb-4">{post.author} &middot; {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}</div>
+        <div className="text-[#F3E3C3]/80 mb-6">{post.excerpt}</div>
+        <div className="prose prose-invert max-w-none text-[#F3E3C3]/90">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {post.content || ''}
+          </ReactMarkdown>
+        </div>
+        <div className="mt-8 text-xs text-[#F3E3C3]/60">
+          Tags: {Array.isArray(post.tags) ? post.tags.join(', ') : (typeof post.tags === 'string' ? post.tags : '')}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// --- Admin Login Page ---
+const AdminLoginPage = ({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (
+      username.trim().toLowerCase() === 'admin' &&
+      password.trim() === 'studio37admin'
+    ) {
+      onLogin();
+      navigate('/admin/dashboard');
+    } else {
+      setError('Invalid username or password.');
+    }
+  };
+
+  return (
+    <div className="py-20 md:py-32 flex items-center justify-center">
+      <div className="bg-[#232323] rounded-lg shadow-xl p-8 md:p-12 max-w-md w-full border border-white/10">
+        <h2 className="text-3xl font-display text-center mb-8">Admin Login</h2>
+        <form onSubmit={handleLogin} className="space-y-6">
+          <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+          <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+          {error && <p className="text-red-400 text-sm">{error}</p>}
+          <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#232323] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
+            Login <ArrowRight />
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+// --- AboutPage Component ---
+const AboutPage = ({ content }) => (
+  <>
+    <SEOHead 
+      title="About Studio37 - Professional Photography Team in Houston, TX"
+      description="Meet the Studio37 team. Professional photographers and content strategists serving Houston and surrounding areas with vintage-inspired, modern photography."
+      keywords="about Studio37, Houston photographers, photography team, professional photography Houston"
+    />
+    <div className="py-20 md:py-32 bg-[#212121]">
+      <div className="container mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="order-2 md:order-1">
+            <h2 className="text-4xl md:text-5xl font-display mb-6">{content.title || 'About Studio37'}</h2>
+            <div className="text-lg text-[#F3E3C3]/80 leading-relaxed">
+              {content.bio ? (
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {content.bio}
+                </ReactMarkdown>
+              ) : (
+                <p>Loading content...</p>
+              )}
+            </div>
+          </div>
+          <div className="order-1 md:order-2">
+            <div className="bg-[#262626] rounded-lg p-8 text-center">
+              <h3 className="text-xl font-display text-white mb-4">Studio37 Team</h3>
+              <p className="text-[#F3E3C3]/70">Professional photography and content strategy from Houston, TX</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </>
+);
+
+// --- ServicesPage Component ---
+const proPackages = [
+  {
+    name: "Director Package",
+    description: "Our most comprehensive package for brands and businesses. Includes full content strategy, creative direction, multi-location photo/video shoots, and post-production. Ideal for campaigns, launches, and ongoing brand storytelling.",
+    price: "$2,000+"
+  },
+  {
+    name: "Producer Package",
+    description: "Perfect for small businesses and creators. Includes a half-day photo/video shoot, creative planning, and a set of edited images and short-form video content for social media and web.",
+    price: "$1,200+"
+  },
+  {
+    name: "Brand Builder",
+    description: "A focused session for new businesses or rebrands. Includes headshots, team photos, and product or location images, plus a content strategy consult.",
+    price: "$750+"
+  },
+  {
+    name: "Content Day",
+    description: "A quick, high-impact shoot for monthly content refreshes. Includes up to 2 hours on-site, 20 edited images, and 2 short video clips.",
+    price: "$500+"
+  }
+];
+
+const personalPackages = [
+  {
+    name: "Mini Reel",
+    description: "A quick 15-minute session for individuals or couples. Includes 15 edited photos, a free 1-minute movie reel of your shoot, and a complimentary Polaroid print.",
+    price: "$75"
+  },
+  {
+    name: "Full Episode",
+    description: "A 30-minute session for individuals, couples, or small families. Includes 30 edited photos, a free 1-minute movie reel of your shoot, and a complimentary Polaroid print.",
+    price: "$150"
+  },
+  {
+    name: "Movie Premier",
+    description: "A deluxe 60-minute session for couples, families, or creative portraits. Includes 60 edited photos, a free 1-minute movie reel of your shoot, and a complimentary Polaroid print.",
+    price: "$300"
+  }
+];
+
+const otherServices = [
+  {
+    name: "Event Coverage",
+    description: "Professional photography for events, parties, and gatherings. Includes candid and group shots, with fast turnaround on edited images.",
+    price: "$500+"
+  },
+  {
+    name: "Wedding & Engagement",
+    description: "Custom packages for weddings and engagements. Includes planning consult, full-day coverage, and a highlight movie reel.",
+    price: "Contact for Quote"
+  },
+  {
+    name: "Real Estate & Architecture",
+    description: "High-quality images and video for real estate listings, Airbnbs, and architectural projects. Includes drone options.",
+    price: "$250+"
+  }
+];
+
+function ServiceCard({ name, description, price }) {
+  return (
+    <div className="bg-[#262626] rounded-lg shadow-lg p-6 flex flex-col items-start">
+      <h4 className="text-xl font-display mb-2 text-white">{name}</h4>
+      <div className="text-[#F3E3C3]/80 mb-4">{description}</div>
+      {price && <div className="text-lg font-bold text-[#F3E3C3] mt-auto">{price}</div>}
+    </div>
+  );
+}
+
+const ServicesPage = () => (
+  <>
+    <SEOHead 
+      title="Photography Services - Studio37 Houston | Portraits, Weddings, Events"
+      description="Professional photography services in Houston: Director Package ($2000+), Producer Package ($1200+), portraits ($75+), weddings, events. Full-service content strategy."
+      keywords="photography services Houston, wedding photographer Houston, portrait photography, event photography, content strategy"
+    />
+    <div className="py-20 md:py-28">
+      <div className="container mx-auto px-6">
+        <section id="pro-packages" className="mb-20">
+          <h3 className="text-3xl font-display text-center mb-10">Content & Marketing Packages</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {proPackages.map(p => <ServiceCard key={p.name} {...p} />)}
+          </div>
+        </section>
+        <section id="personal-packages" className="mb-20">
+          <h3 className="text-3xl font-display text-center mb-10">Portrait Packages</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {personalPackages.map(p => <ServiceCard key={p.name} {...p} />)}
+          </div>
+        </section>
+        <section id="other-services">
+          <h3 className="text-3xl font-display text-center mb-10">Additional Creative & Event Services</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {otherServices.map(s => <ServiceCard key={s.name} {...s} />)}
+          </div>
+        </section>
+      </div>
+    </div>
+  </>
+);
+
+// --- PortfolioPage Component ---
+const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
+  const [filter, setFilter] = useState('All');
+  const [imageLoadErrors, setImageLoadErrors] = useState(new Set());
+  const [loadedImages, setLoadedImages] = useState(new Set());
+
+  const filteredImages = useMemo(() => {
+    const validImages = images.filter(img => img.url && !imageLoadErrors.has(img.id));
+    return filter === 'All' ? validImages : validImages.filter(img => img.category === filter);
+  }, [images, filter, imageLoadErrors]);
+
+  const categories = useMemo(() => 
+    ['All', ...new Set(images.filter(img => !imageLoadErrors.has(img.id)).map(img => img.category))], 
+    [images, imageLoadErrors]
+  );
+
+  const handleImageError = useCallback((imageId) => {
+    setImageLoadErrors(prev => new Set([...prev, imageId]));
+  }, []);
+
+  // --- Lazy loading and virtualization ---
+  const visibleImages = useMemo(() => {
+    return filteredImages.slice(0, 20); // Load only first 20
+  }, [filteredImages]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const imgId = entry.target.dataset.imageId;
+            setLoadedImages(prev => new Set([...prev, imgId]));
+          }
+        });
+      },
+      { rootMargin: '50px' }
+    );
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <>
+      <SEOHead 
+        title="Photography Portfolio - Studio37 Houston | Professional Work Gallery"
+        description="View Studio37's photography portfolio showcasing professional work in Houston, TX. Portraits, weddings, events, and commercial photography."
+        keywords="photography portfolio Houston, professional photography gallery, Studio37 work, Houston photographer portfolio"
+      />
+      <div className="py-20 md:py-28">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-display">Our Work</h2>
+            <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">A curated selection of our favorite moments and projects.</p>
+          </div>
+          {!isUnlocked && <PortfolioGate onUnlock={onUnlock} />}
+          {isUnlocked && (
+            <>
+              <div className="flex flex-wrap gap-2 justify-center mb-8">
+                {categories.map(cat => (
+                  <button
+                    key={cat}
+                    onClick={() => setFilter(cat)}
+                    className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors ${filter === cat ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] hover:bg-[#333]'}`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+              <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6">
+                {visibleImages.map(img => (
+                  <div key={img.id} className="break-inside-avoid relative group">
+                    <OptimizedImage
+                      src={img.url} 
+                      alt={img.caption || `${img.category} photography`} 
+                      className="w-full rounded-lg shadow-lg hover:opacity-90 transition-opacity"
+                      loading="lazy"
+                      onError={() => handleImageError(img.id)}
+                    />
+                    {img.caption && (
+                      <div className="absolute bottom-0 left-0 right-0 bg-black/75 backdrop-blur-sm p-3 rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <p className="text-[#F3E3C3]/75 text-sm font-serif italic leading-relaxed">
+                          {img.caption}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+              {filteredImages.length === 0 && (
+                <div className="text-center text-[#F3E3C3]/70 py-12">
+                  {imageLoadErrors.size > 0 ? 
+                    'Some images failed to load. Please refresh the page.' : 
+                    'No images available in this category.'
+                  }
                 </div>
-              </header>
-            );
-          };
+              )}
+            </>
+          )}
+        </div>
+      </div>
+    </>
+  );
+};
+
+// --- Memoized components for performance ---
+const MemoizedPortfolioPage = React.memo(PortfolioPage);
+
+// --- AdminDashboard Component (inline to avoid import issues) ---
+function AdminDashboard({
+  leads,
+  updateLeadStatus,
+  content,
+  portfolioImages,
+  addPortfolioImage,
+  deletePortfolioImage,
+  updatePortfolioImageOrder,
+  blogPosts,
+  createBlogPost,
+  updateBlogPost,
+  deleteBlogPost,
+  blogEdit,
+  setBlogEdit,
+  blogSaving,
+  blogAdminError,
+  projects,
+  projectsLoading
+}) {
+  const [activeTab, setActiveTab] = useState('crm');
+
+  return (
+    <div className="py-20 md:py-28 bg-[#212121]">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-display">Admin Dashboard</h2>
+          <p className="text-lg text-[#F3E3C3]/70 mt-4">Manage your business operations</p>
+        </div>
+        
+        <div className="flex flex-wrap gap-2 justify-center mb-8">
+          {['crm', 'cms', 'blog'].map(tab => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors ${
+                activeTab === tab 
+                  ? 'bg-[#F3E3C3] text-[#1a1a1a]' 
+                  : 'bg-[#262626] hover:bg-[#333] text-[#F3E3C3]'
+              }`}
+            >
+              {tab.toUpperCase()}
+            </button>
+          ))}
+        </div>
+
+        <div className="bg-[#262626] rounded-lg shadow-lg p-6">
+          {activeTab === 'crm' && (
+            <div></div>
+              <h3 className="text-2xl font-display mb-6">Customer Relationship Management</h3>
+              <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
+            </div>
+          )}
+          
+          {activeTab === 'cms' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Content Management</h3>
+              <EnhancedCmsSection
+                portfolioImages={portfolioImages}
+                addPortfolioImage={addPortfolioImage}
+                deletePortfolioImage={deletePortfolioImage}
+                updatePortfolioImageOrder={updatePortfolioImageOrder}
+              />
+            </div>
+          )}
+          
+          {activeTab === 'blog' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Blog Management</h3>
+              <div className="text-[#F3E3C3]/70 py-8">Blog admin coming soon...</div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// --- Footer component ---
+const Footer = () => (
+  <footer className="bg-[#232323] text-[#F3E3C3] py-12">
+    <div className="container mx-auto px-6">
+      <div className="grid md:grid-cols-3 gap-8">
+        <div>
+          <div className="flex items-center gap-4 mb-4">
+            <Logo />
+            <span className="font-display text-xl font-bold tracking-tight text-white">Studio37</span>
+          </div>
+          <p className="text-[#F3E3C3]/70">
+            Vintage heart, modern vision. Full-service photography and content strategy.
+          </p>
+        </div>
+        <div>
+          <h4 className="font-display text-lg mb-4">Quick Links</h4>
+          <div className="space-y-2">
+            <Link to="/about" className="block text-[#F3E3C3]/70 hover:text-white transition">About</Link>
+            <Link to="/services" className="block text-[#F3E3C3]/70 hover:text-white transition">Services</Link>
+            <Link to="/portfolio" className="block text-[#F3E3C3]/70 hover:text-white transition">Portfolio</Link>
+            <Link to="/blog" className="block text-[#F3E3C3]/70 hover:text-white transition">Blog</Link>
+            <Link to="/contact" className="block text-[#F3E3C3]/70 hover:text-white transition">Contact</Link>
+          </div>
+        </div>
+        <div>
+          <h4 className="font-display text-lg mb-4">Contact Info</h4>
+          <div className="space-y-2 text-[#F3E3C3]/70">
+            <p>Email: sales@studio37.cc</p>
+            <p>Phone: (832) 713-9944</p>
+            <p>Serving Greater Houston Area</p>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/10 mt-8 pt-8 text-center text-[#F3E3C3]/60">
+        <p>&copy; 2024 Studio37. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+);
