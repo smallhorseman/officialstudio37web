@@ -5,12 +5,8 @@ import remarkGfm from 'remark-gfm';
 import PhotoshootPlanner from './PhotoshootPlanner';
 import ConversationalPlanner from './ConversationalPlanner';
 import VirtualAgentPlanner from './VirtualAgentPlanner';
-import { createClient } from '@supabase/supabase-js';
-import { Routes, Route, useParams, useNavigate } from 'react-router-dom';
-// --- Supabase Setup --- //
-const SUPABASE_URL = 'https://sqfqlnodwjubacmaduzl.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZnFsbm9kd2p1YmFjbWFkdXpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzQ2ODUsImV4cCI6MjA3Mzc1MDY4NX0.OtEDSh5UCm8CxWufG_NBLDzgNFI3wnr-oAyaRib_4Mw';
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+import { supabase } from './supabaseClient'; // <-- use shared instance
+import { Routes, Route, useParams, useNavigate, Link } from 'react-router-dom';
 
 // --- Helper Components & Icons --- //
 
@@ -1367,7 +1363,8 @@ function BlogPage({ posts, loading, error }) {
               <h3 className="text-2xl font-bold mb-2 text-white">{post.title}</h3>
               <div className="text-xs text-[#F3E3C3]/60 mb-2">{post.author} &middot; {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}</div>
               <div className="text-[#F3E3C3]/80 mb-4">{post.excerpt}</div>
-              <a href={`/blog/${post.slug}`} className="text-[#F3E3C3] hover:underline mt-auto">Read More</a>
+              {/* Use Link for internal navigation */}
+              <Link to={`/blog/${post.slug}`} className="text-[#F3E3C3] hover:underline mt-auto">Read More</Link>
             </div>
           ))}
         </div>
