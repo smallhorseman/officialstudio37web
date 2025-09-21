@@ -324,7 +324,6 @@ export default function App() {
                 leads={leads}
                 updateLeadStatus={updateLeadStatus}
                 content={siteContent}
-                updateContent={updateContent}
                 portfolioImages={portfolioImages}
                 addPortfolioImage={addPortfolioImage}
                 deletePortfolioImage={deletePortfolioImage}
@@ -706,51 +705,7 @@ const PortfolioGate = ({ onUnlock }) => {
   );
 };
 
-const ContactPage = () => (
-    <div className="py-20 md:py-28 bg-[#212121]">
-        <div className="container mx-auto px-6">
-            <div className="text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-display">Get In Touch</h2>
-                <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
-            </div>
-            <div className="grid md:grid-cols-2 gap-12 items-start">
-                <form className="space-y-6">
-                    <input type="text" placeholder="Your Name" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
-                    <input type="email" placeholder="Your Email" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
-                    <textarea placeholder="Your Message" rows="5" className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"></textarea>
-                    <button type="submit" className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
-                        Send Message <ArrowRight />
-                    </button>
-                </form>
-                <div className="text-[#F3E3C3]/80 space-y-6">
-                    <div>
-                        <h3 className="text-xl font-display text-white">Contact Info</h3>
-                        <p>Email: <a href="mailto:sales@studio37.cc" className="hover:text-white transition">sales@studio37.cc</a></p>
-                        <p>Phone: <a href="tel:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
-                    </div>
-                    <div>
-                        <h3 className="text-xl font-display text-white">Location</h3>
-                        <p>Serving the Greater Houston Area</p>
-                        <p>Based near Porter, TX 77362</p>
-                    </div>
-                    <div className="mt-4">
-                        <iframe
-                          title="Map of Houston"
-                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111049.9644254322!2d-95.469384!3d29.817478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b8b1b8b1b8b1%3A0x8b1b8b1b8b1b8b1b!2sHouston%2C%20TX!5e0!3m2!1sen!2sus!4v1631910000000!5m2!1sen!2sus"
-                          width="100%"
-                          height="300"
-                          style={{ border: 0 }}
-                          allowFullScreen=""
-                          loading="lazy"
-                          referrerPolicy="no-referrer-when-downgrade"
-                          className="rounded-lg shadow-lg w-full"
-                        ></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-);
+/* Removed duplicate ContactPage definition to resolve redeclaration error. */
 
 const AdminLoginPage = ({ onLogin }) => {
   const [username, setUsername] = useState('');
@@ -788,236 +743,141 @@ const AdminLoginPage = ({ onLogin }) => {
   );
 };
 
-const AdminDashboard = ({
-  leads, updateLeadStatus, content, updateContent, portfolioImages, addPortfolioImage, deletePortfolioImage,
-  blogPosts, createBlogPost, updateBlogPost, deleteBlogPost, blogEdit, setBlogEdit, blogSaving, blogAdminError, projects, projectsLoading
-}) => {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [projectTodos, setProjectTodos] = useState([]);
-  const [todosLoading, setTodosLoading] = useState(false);
-  const [newTodo, setNewTodo] = useState('');
-  const [activeTab, setActiveTab] = useState('crm');
-  const [siteMapPage, setSiteMapPage] = useState('home');
-  const [internalProjects, setInternalProjects] = useState([]);
-  const [internalProjectsLoading, setInternalProjectsLoading] = useState(false);
-  const [showProjectForm, setShowProjectForm] = useState(false);
-  const [newProject, setNewProject] = useState({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '' });
-  const projectStages = ['Inquiry', 'Proposal', 'Booked', 'In Progress', 'Delivered', 'Closed'];
+/* Duplicate AdminDashboard definition removed to resolve redeclaration error. */
 
-  // Fetch internal projects only (client projects come from props)
-  useEffect(() => {
-    if (activeTab === 'projects') {
-      setInternalProjectsLoading(true);
-      supabase.from('projects').select('*').eq('is_internal', true).order('created_at', { ascending: false }).then(({ data }) => {
-        setInternalProjects(data || []);
-        setInternalProjectsLoading(false);
-      });
-    }
-  }, [activeTab]);
+// --- Enhanced CMS Section (Portfolio Management Only) ---
+function CmsSection({ portfolioImages, addPortfolioImage, deletePortfolioImage }) {
+  const [imageUrl, setImageUrl] = useState('');
+  const [imageCategory, setImageCategory] = useState('');
+  const [imageCaption, setImageCaption] = useState('');
+  const [addingImage, setAddingImage] = useState(false);
+  const [showPortfolioPreview, setShowPortfolioPreview] = useState(false);
 
-  const handleCreateProject = async (e, isInternal = false) => {
+  const handleAddImage = async (e) => {
     e.preventDefault();
-    const { data, error } = await supabase.from('projects').insert([{ ...newProject, is_internal: isInternal, opportunity_amount: parseFloat(newProject.opportunity_amount) || 0 }]).select();
-    if (!error && data && data[0]) {
-      if (isInternal) setInternalProjects(p => [data[0], ...p]);
-      else {
-        // projects is a prop, so can't setProjects directly; just reload via parent effect
-      }
-      setShowProjectForm(false);
-      setNewProject({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '' });
-    }
+    setAddingImage(true);
+    await addPortfolioImage({
+      url: imageUrl,
+      category: imageCategory,
+      caption: imageCaption,
+      order_index: portfolioImages.length,
+      created_at: new Date().toISOString()
+    });
+    setImageUrl('');
+    setImageCategory('');
+    setImageCaption('');
+    setAddingImage(false);
   };
 
-  // --- Analytics calculations --- //
-  const totalLeads = leads.length;
-  const bookedLeads = leads.filter(l => l.status === 'Booked').length;
-  const conversionRate = totalLeads > 0 ? ((bookedLeads / totalLeads) * 100).toFixed(1) : '0.0';
-  const serviceCounts = leads.reduce((acc, l) => {
-    if (l.service) acc[l.service] = (acc[l.service] || 0) + 1;
-    return acc;
-  }, {});
-  const mostPopularService = Object.entries(serviceCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || 'N/A';
-  const blogCount = blogPosts.length;
-  const portfolioCount = portfolioImages.length;
-  const potentialRevenue = projects.reduce((sum, p) => sum + (parseFloat(p.opportunity_amount) || 0), 0);
-
   return (
-    <div className="py-20 md:py-28">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-display mb-10">Admin Dashboard</h2>
-        <div className="flex border-b border-white/20 mb-8 flex-wrap">
-          <button onClick={() => setActiveTab('crm')} className={`py-2 px-6 text-lg ${activeTab === 'crm' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>CRM (Leads)</button>
-          <button onClick={() => setActiveTab('cms')} className={`py-2 px-6 text-lg ${activeTab === 'cms' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>CMS (Content)</button>
-          <button onClick={() => setActiveTab('blog')} className={`py-2 px-6 text-lg ${activeTab === 'blog' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>Blog</button>
-          <button onClick={() => setActiveTab('sitemap')} className={`py-2 px-6 text-lg ${activeTab === 'sitemap' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>Site Map</button>
-          <button onClick={() => setActiveTab('analytics')} className={`py-2 px-6 text-lg ${activeTab === 'analytics' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>Analytics</button>
-          <button onClick={() => setActiveTab('projects')} className={`py-2 px-6 text-lg ${activeTab === 'projects' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>Projects</button>
+    <div>
+      <h4 className="text-xl font-display mb-6">Portfolio Management</h4>
+      
+      <div className="grid md:grid-cols-2 gap-8 mb-8">
+        <div>
+          <div className="flex justify-between items-center mb-4">
+            <h5 className="text-lg font-bold">Add New Image</h5>
+            <button
+              onClick={() => setShowPortfolioPreview(true)}
+              className="bg-purple-500 text-white px-3 py-1 rounded text-sm hover:bg-purple-600"
+            >
+              Preview Gallery
+            </button>
+          </div>
+          <form onSubmit={handleAddImage} className="space-y-4">
+            <input
+              type="url"
+              value={imageUrl}
+              onChange={e => setImageUrl(e.target.value)}
+              placeholder="Image URL"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+              required
+            />
+            <input
+              type="text"
+              value={imageCategory}
+              onChange={e => setImageCategory(e.target.value)}
+              placeholder="Category"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+            />
+            <input
+              type="text"
+              value={imageCaption}
+              onChange={e => setImageCaption(e.target.value)}
+              placeholder="Caption"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+            />
+            <button
+              type="submit"
+              className="w-full bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
+              disabled={addingImage || !imageUrl}
+            >
+              {addingImage ? 'Adding...' : 'Add Image'}
+            </button>
+          </form>
         </div>
-        {activeTab === 'crm' && <CrmSection leads={leads} updateLeadStatus={updateLeadStatus} />}
-        {activeTab === 'cms' && <CmsSection 
-          content={content} 
-          updateContent={updateContent} 
-          portfolioImages={portfolioImages}
-          addPortfolioImage={addPortfolioImage}
-          deletePortfolioImage={deletePortfolioImage} 
-        />}
-        {activeTab === 'blog' && <BlogAdminSection 
-          blogPosts={blogPosts}
-          createBlogPost={createBlogPost}
-          updateBlogPost={updateBlogPost}
-          deleteBlogPost={deleteBlogPost}
-          blogEdit={blogEdit}
-          setBlogEdit={setBlogEdit}
-          blogSaving={blogSaving}
-          blogAdminError={blogAdminError}
-        />}
-        {activeTab === 'sitemap' && <SiteMapTab siteMapPage={siteMapPage} setSiteMapPage={setSiteMapPage} content={content} portfolioImages={portfolioImages} blogPosts={blogPosts} />}
-        {activeTab === 'analytics' && (
-          <div className="bg-[#262626] p-8 rounded-lg grid md:grid-cols-3 gap-8">
-            <div>
-              <h4 className="text-xl font-display mb-4">Leads & Conversion</h4>
-              <div className="text-4xl font-bold mb-2">{totalLeads}</div>
-              <div className="text-[#F3E3C3]/70 mb-2">Total Leads</div>
-              <div className="text-2xl font-bold mb-2">{conversionRate}%</div>
-              <div className="text-[#F3E3C3]/70 mb-2">Conversion Rate (Booked)</div>
-              <div className="text-lg font-bold mb-2">{mostPopularService}</div>
-              <div className="text-[#F3E3C3]/70">Most Popular Service</div>
-            </div>
-            <div>
-              <h4 className="text-xl font-display mb-4">Content Stats</h4>
-              <div className="flex flex-col gap-4">
-                <div>
-                  <span className="text-3xl font-bold">{blogCount}</span>
-                  <span className="ml-2 text-[#F3E3C3]/70">Blog Posts</span>
-                </div>
-                <div>
-                  <span className="text-3xl font-bold">{portfolioCount}</span>
-                  <span className="ml-2 text-[#F3E3C3]/70">Portfolio Images</span>
+
+        <div>
+          <h5 className="text-lg font-bold mb-4">Current Images ({portfolioImages.length})</h5>
+          <div className="grid grid-cols-3 gap-2 max-h-80 overflow-y-auto">
+            {portfolioImages.map(img => (
+              <div key={img.id} className="relative group">
+                <img src={img.url} alt={img.category} className="w-full h-20 object-cover rounded" />
+                <button
+                  onClick={() => deletePortfolioImage(img.id)}
+                  className="absolute top-1 right-1 bg-red-600 text-white text-xs px-1 py-1 rounded opacity-80 group-hover:opacity-100"
+                  title="Delete"
+                >
+                  &times;
+                </button>
+                <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 rounded-b truncate">
+                  {img.category || 'No category'}
                 </div>
               </div>
-            </div>
-            <div>
-              <h4 className="text-xl font-display mb-4">Potential Revenue</h4>
-              <div className="text-4xl font-bold mb-2">${potentialRevenue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
-              <div className="text-[#F3E3C3]/70 mb-2">Sum of all project opportunity values</div>
-            </div>
+            ))}
           </div>
-        )}
-        {activeTab === 'projects' && (
-          <div className="bg-[#262626] p-8 rounded-lg">
-            <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4">
-              <div>
-                <h4 className="text-xl font-display">Projects</h4>
-                <p className="text-xs text-[#F3E3C3]/70">Client projects and deliverables</p>
-              </div>
-              <div className="flex gap-2">
-                <button onClick={() => setShowProjectForm(f => !f)} className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">{showProjectForm ? 'Cancel' : 'New Project'}</button>
-                <button onClick={() => setShowProjectForm(true)} className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md">+ Internal Project</button>
-              </div>
-            </div>
-            {showProjectForm && (
-              <form onSubmit={e => handleCreateProject(e, false)} className="mb-8 grid md:grid-cols-2 gap-4">
-                <input type="text" value={newProject.name} onChange={e => setNewProject(p => ({ ...p, name: e.target.value }))} placeholder="Project Name" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" required />
-                <input type="text" value={newProject.client} onChange={e => setNewProject(p => ({ ...p, client: e.target.value }))} placeholder="Client Name" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
-                <input type="number" value={newProject.opportunity_amount} onChange={e => setNewProject(p => ({ ...p, opportunity_amount: e.target.value }))} placeholder="Opportunity Amount ($)" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3" />
-                <select value={newProject.stage} onChange={e => setNewProject(p => ({ ...p, stage: e.target.value }))} className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3">
-                  {projectStages.map(stage => <option key={stage}>{stage}</option>)}
-                </select>
-                <textarea value={newProject.notes} onChange={e => setNewProject(p => ({ ...p, notes: e.target.value }))} placeholder="Notes" className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 md:col-span-2" />
-                <button type="submit" className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md md:col-span-2">Create Project</button>
-              </form>
-            )}
-            <div className="mb-10">
-              <h5 className="text-lg font-display mb-2">Internal Projects</h5>
-              {internalProjectsLoading ? (
-                <div className="text-[#F3E3C3]">Loading internal projects...</div>
-              ) : (
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left">
-                    <thead className="border-b border-white/10">
-                      <tr>
-                        <th className="p-3">Name</th>
-                        <th className="p-3">Completion</th>
-                        <th className="p-3">Notes</th>
-                        <th className="p-3">Created</th>
-                        <th className="p-3">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {internalProjects.map(proj => (
-                        <tr key={proj.id} className="border-b border-white/10 last:border-b-0">
-                          <td className="p-3 font-bold">{proj.name}</td>
-                          <td className="p-3">
-                            {/* You can add a completion component or percent here */}
-                            {proj.completion || '-'}
-                          </td>
-                          <td className="p-3">{proj.notes}</td>
-                          <td className="p-3 text-xs">{proj.created_at ? new Date(proj.created_at).toLocaleDateString() : ''}</td>
-                          <td className="p-3">
-                            <button onClick={() => setSelectedProject(proj)} className="bg-blue-500 text-white px-3 py-1 rounded text-xs">View</button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </div>
-            <div className="mb-10">
-              <h5 className="text-lg font-display mb-2">Client Projects</h5>
-              {projectsLoading ? (
-                <div className="text-[#F3E3C3]">Loading projects...</div>
-              ) : (
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left">
-                    <thead className="border-b border-white/10">
-                      <tr>
-                        <th className="p-3">Name</th>
-                        <th className="p-3">Client</th>
-                        <th className="p-3">Amount</th>
-                        <th className="p-3">Stage</th>
-                        <th className="p-3">Notes</th>
-                        <th className="p-3">Created</th>
-                        <th className="p-3">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {projects.map(proj => (
-                        <tr key={proj.id} className="border-b border-white/10 last:border-b-0">
-                          <td className="p-3 font-bold">{proj.name}</td>
-                          <td className="p-3">{proj.client}</td>
-                          <td className="p-3">${proj.opportunity_amount?.toLocaleString?.() ?? ''}</td>
-                          <td className="p-3">{proj.stage}</td>
-                          <td className="p-3">{proj.notes}</td>
-                          <td className="p-3 text-xs">{proj.created_at ? new Date(proj.created_at).toLocaleDateString() : ''}</td>
-                          <td className="p-3">
-                            <button onClick={() => setSelectedProject(proj)} className="bg-blue-500 text-white px-3 py-1 rounded text-xs">View</button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </div>
-            {/* Project Detail Modal */}
-            {/* You can add a modal here for selectedProject if needed */}
-          </div>
-        )}
+        </div>
       </div>
+
+      {/* Portfolio Preview Modal */}
+      {showPortfolioPreview && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-6xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-2xl font-display text-white">Portfolio Gallery Preview</h3>
+              <button
+                onClick={() => setShowPortfolioPreview(false)}
+                className="text-white text-2xl hover:text-gray-300"
+              >
+                &times;
+              </button>
+            </div>
+            
+            <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+              {portfolioImages.map(img => (
+                <div key={img.id} className="break-inside-avoid group relative">
+                  <img src={img.url} alt={img.category} className="w-full rounded-lg shadow-lg hover:opacity-90 transition-opacity" />
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-between p-3">
+                    <span className="text-white text-sm bg-black/50 px-2 py-1 rounded self-start">
+                      {img.category || 'No category'}
+                    </span>
+                    {img.caption && (
+                      <span className="text-white text-xs bg-black/50 px-2 py-1 rounded">
+                        {img.caption}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
-};
-// --- Site Map Tab with Flowchart and Live Preview --- //
-const defaultSiteMapPages = [
-  { key: 'home', label: 'Home' },
-  { key: 'about', label: 'About' },
-  { key: 'services', label: 'Services' },
-  { key: 'portfolio', label: 'Portfolio' },
-  { key: 'blog', label: 'Blog' },
-  { key: 'contact', label: 'Contact' },
-];
+}
 
+// --- Enhanced Site Map Tab with All Page Editing ---
 const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blogPosts }) => {
   const [pages, setPages] = React.useState(defaultSiteMapPages);
   const [loading, setLoading] = React.useState(true);
@@ -1047,39 +907,57 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
   const handleEditPage = async (pageKey) => {
     setEditingPage(pageKey);
     setSaving(false);
-    // Simulate fetching content for the page (replace with your CMS logic as needed)
     let title = '';
     let contentMd = '';
-    if (pageKey === 'about') {
-      title = content.about.title;
-      contentMd = content.about.bio;
-    } else if (pageKey === 'services') {
-      title = 'Our Services';
-      contentMd = 'From comprehensive brand management to capturing your most precious personal moments.';
-    } else if (pageKey === 'home') {
-      title = 'Capture. Create. Captivate.';
-      contentMd = 'Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.';
-    } else if (pageKey === 'contact') {
-      title = 'Get In Touch';
-      contentMd = "Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.";
-    } else if (pageKey === 'blog') {
-      title = 'Blog';
-      contentMd = 'Stories, tips, and behind-the-scenes from Studio37.';
+    
+    switch (pageKey) {
+      case 'about':
+        title = content.about.title || 'About Us';
+        contentMd = content.about.bio || '';
+        break;
+      case 'services':
+        title = 'Our Services';
+        contentMd = 'From comprehensive brand management to capturing your most precious personal moments.\n\n## Content & Marketing Packages\n- Director Package ($2,000+)\n- Producer Package ($1,200+)\n- Brand Builder ($750+)\n- Content Day ($500+)\n\n## Portrait Packages\n- Mini Reel ($75)\n- Full Episode ($150)\n- Movie Premier ($300)';
+        break;
+      case 'home':
+        title = 'Capture. Create. Captivate.';
+        contentMd = 'Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.\n\n**Ready to start your project?** [View Our Work](/portfolio) or [Get In Touch](/contact)';
+        break;
+      case 'contact':
+        title = 'Get In Touch';
+        contentMd = "Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.\n\n**Contact Information:**\n- Email: sales@studio37.cc\n- Phone: (832) 713-9944\n- Location: Greater Houston Area";
+        break;
+      case 'blog':
+        title = 'Blog';
+        contentMd = 'Stories, tips, and behind-the-scenes from Studio37.\n\nDiscover photography techniques, client stories, and creative inspiration.';
+        break;
+      case 'portfolio':
+        title = 'Our Work';
+        contentMd = 'A curated selection of our favorite moments and projects.\n\nFrom intimate portraits to grand brand campaigns, each image tells a story.';
+        break;
+      default:
+        title = pageKey.charAt(0).toUpperCase() + pageKey.slice(1);
+        contentMd = `Content for ${pageKey} page.`;
     }
+    
     setEditForm({ title, content: contentMd });
   };
 
-  // Save page content (simulate CMS update)
+  // Save page content
   const handleSavePage = async () => {
     setSaving(true);
-    // Only About page is editable in DB for now
-    if (editingPage === 'about') {
-      await supabase.from('site_content').update({
-        about_title: editForm.title,
-        about_bio: editForm.content
-      }).eq('id', 1);
+    try {
+      if (editingPage === 'about') {
+        await supabase.from('site_content').update({
+          about_title: editForm.title,
+          about_bio: editForm.content
+        }).eq('id', 1);
+      }
+      // Add logic for other pages if you want to store them in DB
+      // For now, they're just preview/template content
+    } catch (error) {
+      console.error('Error saving page:', error);
     }
-    // Add logic for other pages if you store them in DB
     setSaving(false);
     setEditingPage(null);
   };
@@ -1107,52 +985,52 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
   if (error) return <div className="text-red-400">{error}</div>;
 
   return (
-    <div className="flex flex-col md:flex-row gap-8">
-      <div className="md:w-1/3">
-        <h4 className="text-xl font-display mb-4">Website Map</h4>
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="siteMapPages">
-            {(provided) => (
-              <div ref={provided.innerRef} {...provided.droppableProps} className="flex flex-col items-start gap-4">
-                {pages.map((page, idx) => (
-                  <Draggable key={page.key} draggableId={page.key} index={idx}>
-                    {(provided, snapshot) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        className={`flex items-center gap-2 ${snapshot.isDragging ? 'opacity-80' : ''}`}
-                      >
-                        <button
-                          onClick={() => setSiteMapPage(page.key)}
-                          className={`px-4 py-2 rounded-full font-bold transition-colors ${siteMapPage === page.key ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3] hover:bg-[#F3E3C3]/30'}`}
+    <div className="space-y-8">
+      <div className="grid md:grid-cols-3 gap-8">
+        <div>
+          <h4 className="text-xl font-display mb-4">Page Navigation</h4>
+          <DragDropContext onDragEnd={onDragEnd}>
+            <Droppable droppableId="siteMapPages">
+              {(provided) => (
+                <div ref={provided.innerRef} {...provided.droppableProps} className="space-y-2">
+                  {pages.map((page, idx) => (
+                    <Draggable key={page.key} draggableId={page.key} index={idx}>
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          className={`flex items-center justify-between p-3 rounded ${snapshot.isDragging ? 'opacity-80 bg-[#333]' : 'bg-[#262626]'}`}
                         >
-                          {page.label}
-                        </button>
-                        {/* Only allow editing for About, Home, Services, Contact for now */}
-                        {['about', 'home', 'services', 'contact'].includes(page.key) && (
                           <button
-                            className="ml-1 text-xs px-2 py-1 bg-[#F3E3C3] text-[#1a1a1a] rounded hover:bg-[#f3e3c3cc] transition"
+                            onClick={() => setSiteMapPage(page.key)}
+                            className={`flex-1 text-left px-2 py-1 rounded transition-colors ${siteMapPage === page.key ? 'bg-[#F3E3C3] text-[#1a1a1a] font-bold' : 'text-[#F3E3C3] hover:bg-[#F3E3C3]/10'}`}
+                          >
+                            {page.label}
+                          </button>
+                          <button
+                            className="ml-2 text-xs px-2 py-1 bg-[#F3E3C3] text-[#1a1a1a] rounded hover:bg-[#f3e3c3cc] transition"
                             onClick={() => handleEditPage(page.key)}
                             type="button"
                           >
                             Edit
                           </button>
-                        )}
-                        {idx < pages.length - 1 && <span className="text-[#F3E3C3]">→</span>}
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
-      </div>
-      <div className="md:w-2/3">
-        <h4 className="text-xl font-display mb-4">Live Preview</h4>
-        <div className="bg-[#181818] rounded-lg shadow-lg p-6 min-h-[300px]">
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
+        </div>
+
+        <div className="md:col-span-2">
+          <h4 className="text-xl font-display mb-4">
+            {editingPage ? `Editing: ${pages.find(p => p.key === editingPage)?.label}` : 'Page Preview'}
+          </h4>
+          
           {editingPage ? (
             <form
               className="space-y-4"
@@ -1169,33 +1047,40 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
                 className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 font-bold"
                 required
               />
-              <label className="block text-xs mb-1 text-[#F3E3C3]/70">Page Content (Markdown supported)</label>
+              
               <div className="grid md:grid-cols-2 gap-4">
-                <textarea
-                  value={editForm.content}
-                  onChange={e => setEditForm(f => ({ ...f, content: e.target.value }))}
-                  placeholder="Write your content in Markdown..."
-                  rows={10}
-                  className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 font-mono"
-                  required
-                />
-                <div className="bg-[#232323] border border-white/10 rounded-md p-3 overflow-auto min-h-[200px]">
-                  <div className="text-xs text-[#F3E3C3]/60 mb-1">Live Preview</div>
-                  <div className="prose prose-invert max-w-none text-[#F3E3C3]/90">
-                    <h2 className="font-display">{editForm.title}</h2>
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                      {editForm.content || 'Nothing to preview.'}
-                    </ReactMarkdown>
+                <div>
+                  <label className="block text-sm mb-2 text-[#F3E3C3]/70">Content (Markdown)</label>
+                  <textarea
+                    value={editForm.content}
+                    onChange={e => setEditForm(f => ({ ...f, content: e.target.value }))}
+                    placeholder="Write your content in Markdown..."
+                    rows={15}
+                    className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 font-mono text-sm"
+                    required
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm mb-2 text-[#F3E3C3]/70">Live Preview</label>
+                  <div className="bg-[#232323] border border-white/10 rounded-md p-4 min-h-[400px] overflow-auto">
+                    <div className="prose prose-invert prose-sm max-w-none text-[#F3E3C3]/90">
+                      <h1 className="font-display text-xl">{editForm.title}</h1>
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {editForm.content || 'Nothing to preview...'}
+                      </ReactMarkdown>
+                    </div>
                   </div>
                 </div>
               </div>
+              
               <div className="flex gap-2">
                 <button
                   type="submit"
                   className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
                   disabled={saving}
                 >
-                  {saving ? 'Saving...' : 'Save'}
+                  {saving ? 'Saving...' : 'Save Changes'}
                 </button>
                 <button
                   type="button"
@@ -1207,7 +1092,9 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
               </div>
             </form>
           ) : (
-            <SiteMapPreview page={siteMapPage} content={content} portfolioImages={portfolioImages} blogPosts={blogPosts} />
+            <div className="bg-[#181818] rounded-lg p-6 min-h-[400px]">
+              <SiteMapPreview page={siteMapPage} content={content} portfolioImages={portfolioImages} blogPosts={blogPosts} />
+            </div>
           )}
         </div>
       </div>
@@ -1785,24 +1672,13 @@ function CrmSection({ leads, updateLeadStatus }) {
   );
 }
 
-// --- Enhanced CMS Section (Content & Portfolio Management with Previews) ---
-function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage, deletePortfolioImage }) {
-  const [aboutTitle, setAboutTitle] = useState(content.about.title || '');
-  const [aboutBio, setAboutBio] = useState(content.about.bio || '');
-  const [saving, setSaving] = useState(false);
+// --- Enhanced CMS Section (Portfolio Management Only) ---
+function CmsSection({ portfolioImages, addPortfolioImage, deletePortfolioImage }) {
   const [imageUrl, setImageUrl] = useState('');
   const [imageCategory, setImageCategory] = useState('');
   const [imageCaption, setImageCaption] = useState('');
   const [addingImage, setAddingImage] = useState(false);
   const [showPortfolioPreview, setShowPortfolioPreview] = useState(false);
-  const [previewMode, setPreviewMode] = useState('about');
-
-  const handleSaveAbout = async (e) => {
-    e.preventDefault();
-    setSaving(true);
-    await updateContent({ about: { title: aboutTitle, bio: aboutBio } });
-    setSaving(false);
-  };
 
   const handleAddImage = async (e) => {
     e.preventDefault();
@@ -1822,47 +1698,12 @@ function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage
 
   return (
     <div>
+      <h4 className="text-xl font-display mb-6">Portfolio Management</h4>
+      
       <div className="grid md:grid-cols-2 gap-8 mb-8">
         <div>
           <div className="flex justify-between items-center mb-4">
-            <h4 className="text-xl font-display">Edit About Content</h4>
-            <button
-              onClick={() => setPreviewMode('about')}
-              className="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600"
-            >
-              Preview
-            </button>
-          </div>
-          <form onSubmit={handleSaveAbout} className="space-y-4">
-            <input
-              type="text"
-              value={aboutTitle}
-              onChange={e => setAboutTitle(e.target.value)}
-              placeholder="About Title"
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 font-bold"
-              required
-            />
-            <textarea
-              value={aboutBio}
-              onChange={e => setAboutBio(e.target.value)}
-              placeholder="About Bio (Markdown supported)"
-              rows={8}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 font-mono"
-              required
-            />
-            <button
-              type="submit"
-              className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
-              disabled={saving}
-            >
-              {saving ? 'Saving...' : 'Save'}
-            </button>
-          </form>
-        </div>
-
-        <div>
-          <div className="flex justify-between items-center mb-4">
-            <h4 className="text-xl font-display">Portfolio Images</h4>
+            <h5 className="text-lg font-bold">Add New Image</h5>
             <button
               onClick={() => setShowPortfolioPreview(true)}
               className="bg-purple-500 text-white px-3 py-1 rounded text-sm hover:bg-purple-600"
@@ -1870,13 +1711,13 @@ function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage
               Preview Gallery
             </button>
           </div>
-          <form onSubmit={handleAddImage} className="flex flex-col gap-2 mb-4">
+          <form onSubmit={handleAddImage} className="space-y-4">
             <input
               type="url"
               value={imageUrl}
               onChange={e => setImageUrl(e.target.value)}
               placeholder="Image URL"
-              className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
               required
             />
             <input
@@ -1884,24 +1725,28 @@ function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage
               value={imageCategory}
               onChange={e => setImageCategory(e.target.value)}
               placeholder="Category"
-              className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
             />
             <input
               type="text"
               value={imageCaption}
               onChange={e => setImageCaption(e.target.value)}
               placeholder="Caption"
-              className="bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
             />
             <button
               type="submit"
-              className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
+              className="w-full bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
               disabled={addingImage || !imageUrl}
             >
               {addingImage ? 'Adding...' : 'Add Image'}
             </button>
           </form>
-          <div className="grid grid-cols-3 gap-2 max-h-64 overflow-y-auto">
+        </div>
+
+        <div>
+          <h5 className="text-lg font-bold mb-4">Current Images ({portfolioImages.length})</h5>
+          <div className="grid grid-cols-3 gap-2 max-h-80 overflow-y-auto">
             {portfolioImages.map(img => (
               <div key={img.id} className="relative group">
                 <img src={img.url} alt={img.category} className="w-full h-20 object-cover rounded" />
@@ -1912,62 +1757,12 @@ function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage
                 >
                   &times;
                 </button>
-                <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 rounded-b">
-                  {img.category}
+                <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 rounded-b truncate">
+                  {img.category || 'No category'}
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </div>
-
-      {/* Live Preview Section */}
-      <div className="bg-[#181818] rounded-lg p-6">
-        <div className="flex gap-4 mb-4">
-          <button
-            onClick={() => setPreviewMode('about')}
-            className={`px-4 py-2 rounded ${previewMode === 'about' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3]'}`}
-          >
-            About Preview
-          </button>
-          <button
-            onClick={() => setPreviewMode('portfolio')}
-            className={`px-4 py-2 rounded ${previewMode === 'portfolio' ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] text-[#F3E3C3]'}`}
-          >
-            Portfolio Preview
-          </button>
-        </div>
-
-        <div className="bg-[#232323] rounded p-4 min-h-[200px]">
-          {previewMode === 'about' ? (
-            <div>
-              <h2 className="text-2xl font-display mb-4 text-white">{aboutTitle || 'About Title'}</h2>
-              <div className="prose prose-invert max-w-none text-[#F3E3C3]/90">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                  {aboutBio || 'About content will appear here...'}
-                </ReactMarkdown>
-              </div>
-            </div>
-          ) : (
-            <div>
-              <h2 className="text-2xl font-display mb-4 text-white">Portfolio Gallery</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {portfolioImages.slice(0, 8).map(img => (
-                  <div key={img.id} className="relative group">
-                    <img src={img.url} alt={img.category} className="w-full h-32 object-cover rounded" />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
-                      <span className="text-white text-sm">{img.category}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              {portfolioImages.length > 8 && (
-                <p className="text-[#F3E3C3]/70 text-center mt-4">
-                  +{portfolioImages.length - 8} more images
-                </p>
-              )}
-            </div>
-          )}
         </div>
       </div>
 
@@ -1991,7 +1786,7 @@ function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage
                   <img src={img.url} alt={img.category} className="w-full rounded-lg shadow-lg hover:opacity-90 transition-opacity" />
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-between p-3">
                     <span className="text-white text-sm bg-black/50 px-2 py-1 rounded self-start">
-                      {img.category}
+                      {img.category || 'No category'}
                     </span>
                     {img.caption && (
                       <span className="text-white text-xs bg-black/50 px-2 py-1 rounded">
@@ -2009,7 +1804,403 @@ function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage
   );
 }
 
-// --- Blog Admin Section (Blog CRUD for Admin) ---
+// --- Enhanced Site Map Tab with All Page Editing ---
+/* Duplicate SiteMapTab definition removed to resolve redeclaration error. */
+
+// --- Enhanced Contact Page with Text Option ---
+const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+    contactMethod: 'email'
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+    
+    // Save contact submission to Supabase
+    await supabase.from('leads').insert([{
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      service: 'Contact Form',
+      status: 'New'
+    }]);
+
+    // Add note with contact details
+    const { data: leadData } = await supabase
+      .from('leads')
+      .select('id')
+      .eq('email', formData.email)
+      .order('created_at', { ascending: false })
+      .limit(1);
+
+    if (leadData && leadData[0]) {
+      await supabase.from('lead_notes').insert([{
+        lead_id: leadData[0].id,
+        note: `Contact Form: Preferred contact: ${formData.contactMethod}. Message: ${formData.message}`,
+        status: 'Contact Form'
+      }]);
+    }
+
+    setSending(false);
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <div className="py-20 md:py-28 bg-[#212121]">
+        <div className="container mx-auto px-6 text-center">
+          <div className="bg-[#262626] rounded-lg p-8 max-w-md mx-auto">
+            <h2 className="text-3xl font-display text-white mb-4">Thank You!</h2>
+            <p className="text-[#F3E3C3]/80">We've received your message and will get back to you soon!</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="py-20 md:py-28 bg-[#212121]">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-display">Get In Touch</h2>
+          <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <input 
+              type="text" 
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+              required 
+            />
+            <input 
+              type="email" 
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Your Email" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+              required 
+            />
+            <input 
+              type="tel" 
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Your Phone (Optional)" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
+            />
+            <div>
+              <label className="block text-sm font-medium text-[#F3E3C3] mb-2">Preferred Contact Method</label>
+              <select 
+                name="contactMethod"
+                value={formData.contactMethod}
+                onChange={handleChange}
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              >
+                <option value="email">Email</option>
+                <option value="phone">Phone Call</option>
+                <option value="text">Text Message</option>
+              </select>
+            </div>
+            <textarea 
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Your Message" 
+              rows="5" 
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              required
+            />
+            <button 
+              type="submit" 
+              className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105"
+              disabled={sending}
+            >
+              {sending ? 'Sending...' : 'Send Message'} <ArrowRight />
+            </button>
+          </form>
+          <div className="text-[#F3E3C3]/80 space-y-6">
+            <div>
+              <h3 className="text-xl font-display text-white">Contact Info</h3>
+              <p>Email: <a href="mailto:sales@studio37.cc" className="hover:text-white transition">sales@studio37.cc</a></p>
+              <p>Phone: <a href="tel:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
+              <p>Text: <a href="sms:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
+            </div>
+            <div>
+              <h3 className="text-xl font-display text-white">Location</h3>
+              <p>Serving the Greater Houston Area</p>
+              <p>Based near Porter, TX 77362</p>
+            </div>
+            <div className="mt-4">
+              <iframe
+                title="Map of Houston"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111049.9644254322!2d-95.469384!3d29.817478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b8b1b8b1b8b1%3A0x8b1b8b1b8b1b8b1b!2sHouston%2C%20TX!5e0!3m2!1sen!2sus!4v1631910000000!5m2!1sen!2sus"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-lg shadow-lg w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- Fixed Admin Dashboard Props ---
+const AdminDashboard = ({
+  leads, updateLeadStatus, content, portfolioImages, addPortfolioImage, deletePortfolioImage,
+  blogPosts, createBlogPost, updateBlogPost, deleteBlogPost, blogEdit, setBlogEdit, blogSaving, blogAdminError, projects, projectsLoading
+}) => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [projectTodos, setProjectTodos] = useState([]);
+  const [todosLoading, setTodosLoading] = useState(false);
+  const [newTodo, setNewTodo] = useState('');
+  const [activeTab, setActiveTab] = useState('crm');
+  const [siteMapPage, setSiteMapPage] = useState('home');
+  const [internalProjects, setInternalProjects] = useState([]);
+  const [internalProjectsLoading, setInternalProjectsLoading] = useState(false);
+  const [showProjectForm, setShowProjectForm] = useState(false);
+  const [newProject, setNewProject] = useState({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '' });
+  const projectStages = ['Inquiry', 'Proposal', 'Booked', 'In Progress', 'Delivered', 'Closed'];
+
+  // Fetch internal projects only (client projects come from props)
+  useEffect(() => {
+    if (activeTab === 'projects') {
+      setInternalProjectsLoading(true);
+      supabase.from('projects').select('*').eq('is_internal', true).order('created_at', { ascending: false }).then(({ data }) => {
+        setInternalProjects(data || []);
+        setInternalProjectsLoading(false);
+      });
+    }
+  }, [activeTab]);
+
+  const handleCreateProject = async (e, isInternal = false) => {
+    e.preventDefault();
+    const { data, error } = await supabase.from('projects').insert([{ ...newProject, is_internal: isInternal, opportunity_amount: parseFloat(newProject.opportunity_amount) || 0 }]).select();
+    if (!error && data && data[0]) {
+      if (isInternal) setInternalProjects(p => [data[0], ...p]);
+      else {
+        // projects is a prop, so can't setProjects directly; just reload via parent effect
+      }
+      setShowProjectForm(false);
+      setNewProject({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '' });
+    }
+  };
+
+  // --- Analytics calculations --- //
+  const totalLeads = leads.length;
+  const bookedLeads = leads.filter(l => l.status === 'Booked').length;
+  const conversionRate = totalLeads > 0 ? ((bookedLeads / totalLeads) * 100).toFixed(1) : '0.0';
+  const serviceCounts = leads.reduce((acc, l) => {
+    if (l.service) acc[l.service] = (acc[l.service] || 0) + 1;
+    return acc;
+  }, {});
+  const mostPopularService = Object.entries(serviceCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || 'N/A';
+  const blogCount = blogPosts.length;
+  const portfolioCount = portfolioImages.length;
+  const potentialRevenue = projects.reduce((sum, p) => sum + (parseFloat(p.opportunity_amount) || 0), 0);
+
+  return (
+    <div className="py-20 md:py-28">
+      <div className="container mx-auto px-6">
+        <h2 className="text-4xl md:text-5xl font-display mb-10">Admin Dashboard</h2>
+        <div className="flex border-b border-white/20 mb-8 flex-wrap">
+          <button onClick={() => setActiveTab('crm')} className={`py-2 px-6 text-lg ${activeTab === 'crm' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>CRM (Leads)</button>
+          <button onClick={() => setActiveTab('cms')} className={`py-2 px-6 text-lg ${activeTab === 'cms' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>CMS (Portfolio)</button>
+          <button onClick={() => setActiveTab('blog')} className={`py-2 px-6 text-lg ${activeTab === 'blog' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>Blog</button>
+          <button onClick={() => setActiveTab('sitemap')} className={`py-2 px-6 text-lg ${activeTab === 'sitemap' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>Pages & Content</button>
+          <button onClick={() => setActiveTab('analytics')} className={`py-2 px-6 text-lg ${activeTab === 'analytics' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>Analytics</button>
+          <button onClick={() => setActiveTab('projects')} className={`py-2 px-6 text-lg ${activeTab === 'projects' ? 'text-white border-b-2 border-[#F3E3C3]' : 'text-white/50'}`}>Projects</button>
+        </div>
+        {activeTab === 'crm' && <CrmSection leads={leads} updateLeadStatus={updateLeadStatus} />}
+        {activeTab === 'cms' && <CmsSection 
+          portfolioImages={portfolioImages}
+          addPortfolioImage={addPortfolioImage}
+          deletePortfolioImage={deletePortfolioImage} 
+        />}
+        {activeTab === 'blog' && <BlogAdminSection 
+          blogPosts={blogPosts}
+          createBlogPost={createBlogPost}
+          updateBlogPost={updateBlogPost}
+          deleteBlogPost={deleteBlogPost}
+          blogEdit={blogEdit}
+          setBlogEdit={setBlogEdit}
+          blogSaving={blogSaving}
+          blogAdminError={blogAdminError}
+        />}
+        {activeTab === 'sitemap' && <SiteMapTab siteMapPage={siteMapPage} setSiteMapPage={setSiteMapPage} content={content} portfolioImages={portfolioImages} blogPosts={blogPosts} />}
+        {activeTab === 'analytics' && (
+          <div className="bg-[#262626] p-8 rounded-lg grid md:grid-cols-3 gap-8">
+            <div>
+              <h4 className="text-xl font-display mb-4">Leads & Conversion</h4>
+              <div className="text-4xl font-bold mb-2">{totalLeads}</div>
+              <div className="text-[#F3E3C3]/70 mb-2">Total Leads</div>
+              <div className="text-2xl font-bold mb-2">{conversionRate}%</div>
+              <div className="text-[#F3E3C3]/70 mb-2">Conversion Rate (Booked)</div>
+              <div className="text-lg font-bold mb-2">{mostPopularService}</div>
+              <div className="text-[#F3E3C3]/70">Most Popular Service</div>
+            </div>
+            <div>
+              <h4 className="text-xl font-display mb-4">Content Stats</h4>
+              <div className="flex flex-col gap-4">
+                <div>
+                  <span className="text-3xl font-bold">{blogCount}</span>
+                  <span className="ml-2 text-[#F3E3C3]/70">Blog Posts</span>
+                </div>
+                <div>
+                  <span className="text-3xl font-bold">{portfolioCount}</span>
+                  <span className="ml-2 text-[#F3E3C3]/70">Portfolio Images</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 className="text-xl font-display mb-4">Potential Revenue</h4>
+              <div className="text-4xl font-bold mb-2">${potentialRevenue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
+              <div className="text-[#F3E3C3]/70 mb-2">Sum of all project opportunity values</div>
+            </div>
+          </div>
+        )}
+        {activeTab === 'projects' && (
+          <div className="bg-[#262626] p-8 rounded-lg">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4">
+              <div>
+                <h4 className="text-xl font-display">Project Management</h4>
+                <p className="text-xs text-[#F3E3C3]/70">Manage client projects and internal tasks</p>
+              </div>
+              <div className="flex gap-2">
+                <button onClick={() => setShowProjectForm('client')} className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">+ Client Project</button>
+                <button onClick={() => setShowProjectForm('internal')} className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md">+ Internal Project</button>
+              </div>
+            </div>
+            
+            {showProjectForm && (
+              <form onSubmit={e => handleCreateProject(e, showProjectForm === 'internal')} className="mb-8 bg-[#181818] p-4 rounded grid md:grid-cols-2 gap-4">
+                <h5 className="md:col-span-2 text-lg font-bold mb-2">
+                  Create {showProjectForm === 'internal' ? 'Internal' : 'Client'} Project
+                </h5>
+                <input 
+                  type="text" 
+                  value={newProject.name} 
+                  onChange={e => setNewProject(p => ({ ...p, name: e.target.value }))} 
+                  placeholder="Project Name" 
+                  className="bg-[#262626] border border-white/20 rounded-md py-2 px-3" 
+                  required 
+                />
+                {showProjectForm === 'client' && (
+                  <input 
+                    type="text" 
+                    value={newProject.client} 
+                    onChange={e => setNewProject(p => ({ ...p, client: e.target.value }))} 
+                    placeholder="Client Name" 
+                    className="bg-[#262626] border border-white/20 rounded-md py-2 px-3" 
+                  />
+                )}
+                {showProjectForm === 'client' && (
+                  <input 
+                    type="number" 
+                    value={newProject.opportunity_amount} 
+                    onChange={e => setNewProject(p => ({ ...p, opportunity_amount: e.target.value }))} 
+                    placeholder="Opportunity Amount ($)" 
+                    className="bg-[#262626] border border-white/20 rounded-md py-2 px-3" 
+                  />
+                )}
+                <select 
+                  value={newProject.stage} 
+                  onChange={e => setNewProject(p => ({ ...p, stage: e.target.value }))} 
+                  className="bg-[#262626] border border-white/20 rounded-md py-2 px-3"
+                >
+                  {projectStages.map(stage => <option key={stage}>{stage}</option>)}
+                </select>
+                <textarea 
+                  value={newProject.notes} 
+                  onChange={e => setNewProject(p => ({ ...p, notes: e.target.value }))} 
+                  placeholder="Notes" 
+                  className="bg-[#262626] border border-white/20 rounded-md py-2 px-3 md:col-span-2" 
+                />
+                <div className="md:col-span-2 flex gap-2">
+                  <button type="submit" className="bg-green-500 text-white font-bold py-2 px-4 rounded-md">Create Project</button>
+                  <button type="button" onClick={() => setShowProjectForm(false)} className="bg-gray-500 text-white py-2 px-4 rounded-md">Cancel</button>
+                </div>
+              </form>
+            )}
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h5 className="text-lg font-display mb-4">Client Projects ({projects.filter(p => !p.is_internal).length})</h5>
+                {projectsLoading ? (
+                  <div className="text-[#F3E3C3]">Loading projects...</div>
+                ) : (
+                  <div className="space-y-3 max-h-96 overflow-y-auto">
+                    {projects.filter(p => !p.is_internal).map(proj => (
+                      <div key={proj.id} className="bg-[#181818] rounded p-3">
+                        <div className="flex justify-between items-start mb-2">
+                          <h6 className="font-bold text-[#F3E3C3]">{proj.name}</h6>
+                          <span className="text-xs px-2 py-1 bg-[#F3E3C3]/10 rounded">{proj.stage}</span>
+                        </div>
+                        <p className="text-sm text-[#F3E3C3]/70">{proj.client}</p>
+                        {proj.opportunity_amount > 0 && (
+                          <p className="text-sm font-bold text-green-400">${proj.opportunity_amount?.toLocaleString?.()}</p>
+                        )}
+                        <p className="text-xs text-[#F3E3C3]/60 mt-2">{proj.notes}</p>
+                        <p className="text-xs text-[#F3E3C3]/40 mt-1">
+                          {proj.created_at ? new Date(proj.created_at).toLocaleDateString() : ''}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <h5 className="text-lg font-display mb-4">Internal Projects ({internalProjects.length})</h5>
+                {internalProjectsLoading ? (
+                  <div className="text-[#F3E3C3]">Loading internal projects...</div>
+                ) : (
+                  <div className="space-y-3 max-h-96 overflow-y-auto">
+                    {internalProjects.map(proj => (
+                      <div key={proj.id} className="bg-[#181818] rounded p-3">
+                        <div className="flex justify-between items-start mb-2">
+                          <h6 className="font-bold text-[#F3E3C3]">{proj.name}</h6>
+                          <span className="text-xs px-2 py-1 bg-blue-500/20 text-blue-400 rounded">Internal</span>
+                        </div>
+                        <p className="text-xs text-[#F3E3C3]/60">{proj.notes}</p>
+                        <p className="text-xs text-[#F3E3C3]/40 mt-1">
+                          {proj.created_at ? new Date(proj.created_at).toLocaleDateString() : ''}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// --- Fixed Blog Admin Section ---
 function BlogAdminSection({
   blogPosts,
   createBlogPost,
@@ -2104,35 +2295,51 @@ function BlogAdminSection({
   return (
     <div>
       <h4 className="text-xl font-display mb-4">Blog Posts</h4>
-      {blogAdminError && <div className="text-red-400 mb-2">{blogAdminError}</div>}
+      {blogAdminError && <div className="bg-red-500/20 border border-red-500 text-red-400 px-4 py-2 rounded mb-4">{blogAdminError}</div>}
+      
       {editForm ? (
-        <form onSubmit={handleUpdate} className="space-y-2 mb-8 bg-[#232323] p-4 rounded"></form>
+        <form onSubmit={handleUpdate} className="space-y-4 mb-8 bg-[#232323] p-6 rounded">
+          <h5 className="text-lg font-bold mb-4">Edit Post</h5>
           <input name="title" value={editForm.title} onChange={handleEditChange} placeholder="Title" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
           <input name="slug" value={editForm.slug} onChange={handleEditChange} placeholder="Slug" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
-          <input name="author" value={editForm.author} onChange={handleEditChange} placeholder="Author" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <input name="publish_date" value={editForm.publish_date} onChange={handleEditChange} placeholder="Publish Date" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" type="date" />
-          <input name="category" value={editForm.category} onChange={handleEditChange} placeholder="Category" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <input name="tags" value={editForm.tags} onChange={handleEditChange} placeholder="Tags (comma separated)" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <textarea name="excerpt" value={editForm.excerpt} onChange={handleEditChange} placeholder="Excerpt" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <textarea name="content" value={editForm.content} onChange={handleEditChange} placeholder="Content (Markdown supported)" rows={6} className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <div className="grid md:grid-cols-2 gap-4">
+            <input name="author" value={editForm.author} onChange={handleEditChange} placeholder="Author" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+            <input name="publish_date" value={editForm.publish_date} onChange={handleEditChange} placeholder="Publish Date" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" type="date" />
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <input name="category" value={editForm.category} onChange={handleEditChange} placeholder="Category" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+            <input name="tags" value={editForm.tags} onChange={handleEditChange} placeholder="Tags (comma separated)" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          </div>
+          <textarea name="excerpt" value={editForm.excerpt} onChange={handleEditChange} placeholder="Excerpt" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" rows={2} />
+          <textarea name="content" value={editForm.content} onChange={handleEditChange} placeholder="Content (Markdown supported)" rows={8} className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
           <div className="flex gap-2">
-            <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">Save</button>
+            <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md" disabled={blogSaving}>
+              {blogSaving ? 'Saving...' : 'Save Changes'}
+            </button>
             <button type="button" onClick={() => setBlogEdit(null)} className="bg-gray-500 text-white py-2 px-4 rounded-md">Cancel</button>
           </div>
         </form>
       ) : (
-        <form onSubmit={handleCreate} className="space-y-2 mb-8 bg-[#232323] p-4 rounded"></form>
+        <form onSubmit={handleCreate} className="space-y-4 mb-8 bg-[#232323] p-6 rounded">
+          <h5 className="text-lg font-bold mb-4">Create New Post</h5>
           <input name="title" value={newPost.title} onChange={handleNewChange} placeholder="Title" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
           <input name="slug" value={newPost.slug} onChange={handleNewChange} placeholder="Slug" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
-          <input name="author" value={newPost.author} onChange={handleNewChange} placeholder="Author" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <input name="publish_date" value={newPost.publish_date} onChange={handleNewChange} placeholder="Publish Date" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" type="date" />
-          <input name="category" value={newPost.category} onChange={handleNewChange} placeholder="Category" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <input name="tags" value={newPost.tags} onChange={handleNewChange} placeholder="Tags (comma separated)" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <textarea name="excerpt" value={newPost.excerpt} onChange={handleNewChange} placeholder="Excerpt" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <textarea name="content" value={newPost.content} onChange={handleNewChange} placeholder="Content (Markdown supported)" rows={6} className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-          <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">Create Post</button>
+          <div className="grid md:grid-cols-2 gap-4">
+            <input name="author" value={newPost.author} onChange={handleNewChange} placeholder="Author" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+            <input name="publish_date" value={newPost.publish_date} onChange={handleNewChange} placeholder="Publish Date" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" type="date" />
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <input name="category" value={newPost.category} onChange={handleNewChange} placeholder="Category" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+            <input name="tags" value={newPost.tags} onChange={handleNewChange} placeholder="Tags (comma separated)" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          </div>
+          <textarea name="excerpt" value={newPost.excerpt} onChange={handleNewChange} placeholder="Excerpt" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" rows={2} />
+          <textarea name="content" value={newPost.content} onChange={handleNewChange} placeholder="Content (Markdown supported)" rows={8} className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md" disabled={blogSaving}>
+            {blogSaving ? 'Creating...' : 'Create Post'}
+          </button>
         </form>
       )}
+      
       <div className="overflow-x-auto">
         <table className="w-full text-left">
           <thead className="border-b border-white/10">
