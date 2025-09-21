@@ -1,1 +1,78 @@
+# Dependencies
 node_modules
+/.pnp
+.pnp.js
+
+# Production build
+/dist
+/build
+
+# Development
+.vite
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ESLint cache
+.eslintcache
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+
+# Netlify
+.netlify
+
+# Local Netlify folder
+.netlify/
+
+# Bundle analyzer report
+stats.html
+
+# Temporary folders
+tmp/
+temp/

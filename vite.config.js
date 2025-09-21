@@ -1,30 +1,30 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { visualizer } from 'rollup-plugin-visualizer';
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    visualizer({
-      filename: 'dist/stats.html',
-      open: true,
-      gzipSize: true
-    })
-  ],
+  plugins: [react()],
   build: {
-    // Optimize bundle size
+    outDir: 'dist',
+    sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom'],
-          router: ['react-router-dom'],
-          supabase: ['@supabase/supabase-js'],
-          dnd: ['react-beautiful-dnd'],
-          markdown: ['react-markdown', 'remark-gfm']
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          ui: ['react-beautiful-dnd', 'react-markdown', 'remark-gfm'],
+          supabase: ['@supabase/supabase-js']
         }
       }
-    },
-    // Enable source maps for production debugging
+    }
+  },
+  server: {
+    port: 3000,
+    open: true
+  },
+  preview: {
+    port: 3000
+  }
+});
     sourcemap: true,
     // Optimize assets
     assetsDir: 'assets',
