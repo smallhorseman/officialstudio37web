@@ -1783,6 +1783,27 @@ const AdminDashboard = ({
   });
   const projectStages = ['Inquiry', 'Proposal', 'Booked', 'In Progress', 'Delivered', 'Closed'];
 
+  // Fetch ALL projects when projects tab is active
+  useEffect(() => {
+    if (activeTab === 'projects') {
+      setAllProjectsLoading(true);
+      supabase
+        .from('projects')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .then(({ data, error }) => {
+          if (error) {
+            console.error('Error fetching projects:', error);
+            setAllProjects([]);
+          } else {
+            console.log('Fetched projects:', data);
+            setAllProjects(data || []);
+          }
+          setAllProjectsLoading(false);
+        });
+    }
+  }, [activeTab]);
+
   // Fetch project notes
   const fetchProjectNotes = async (projectId) => {
     setProjectNotesLoading(true);
@@ -1848,7 +1869,31 @@ const AdminDashboard = ({
     }
   };
 
-  // --- Analytics calculations
+  const handleCreateProject = async (e, isInternal = false) => {
+    e.preventDefault();
+    const projectData = { 
+      ...newProject, 
+      is_internal: isInternal, 
+      opportunity_amount: parseFloat(newProject.opportunity_amount) || 0 
+    };
+    
+    // Only add lead_id if it's provided and not empty
+    if (newProject.lead_id && newProject.lead_id.trim()) {
+      projectData.lead_id = parseInt(newProject.lead_id);
+    }
+    
+    const { data, error } = await supabase.from('projects').insert([projectData]).select();
+    
+    if (!error && data && data[0]) {
+      setAllProjects(p => [data[0], ...p]);
+      setShowProjectForm(false);
+      setNewProject({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '', lead_id: '' });
+    } else if (error) {
+      console.error('Error creating project:', error);
+    }
+  };
+
+  // Analytics calculations
   const totalLeads = leads.length;
   const bookedLeads = leads.filter(l => l.status === 'Booked').length;
   const conversionRate = totalLeads > 0 ? ((bookedLeads / totalLeads) * 100).toFixed(1) : '0.0';
@@ -2000,6 +2045,18 @@ const AdminDashboard = ({
               </form>
             )}
             
+            {/* Debug info */}
+            {allProjectsLoading && (
+              <div className="text-[#F3E3C3] mb-4">Loading all projects...</div>
+            )}
+            
+            {!allProjectsLoading && allProjects.length === 0 && (
+              <div className="bg-[#181818] p-4 rounded mb-4">
+                <p className="text-[#F3E3C3]/70">No projects found in database.</p>
+                <p className="text-xs text-[#F3E3C3]/60">Create a new project above to get started.</p>
+              </div>
+            )}
+
             {/* Enhanced Projects List */}
             <div className="grid md:grid-cols-2 gap-8">
               <div>
@@ -2179,7 +2236,7 @@ const AdminDashboard = ({
   );
 };
 
-// --- Fix Blog Admin Section ---
+// --- Enhanced Blog Admin Section ---
 function BlogAdminSection({
   blogPosts,
   createBlogPost,
