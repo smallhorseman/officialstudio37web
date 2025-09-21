@@ -1146,7 +1146,8 @@ const ServicesPage = () => (
 const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
   const [filter, setFilter] = useState('All');
   const [imageLoadErrors, setImageLoadErrors] = useState(new Set());
-  
+  const [loadedImages, setLoadedImages] = useState(new Set());
+
   const filteredImages = useMemo(() => {
     const validImages = images.filter(img => img.url && !imageLoadErrors.has(img.id));
     return filter === 'All' ? validImages : validImages.filter(img => img.category === filter);
@@ -1159,6 +1160,27 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
 
   const handleImageError = useCallback((imageId) => {
     setImageLoadErrors(prev => new Set([...prev, imageId]));
+  }, []);
+
+  // --- Lazy loading and virtualization ---
+  const visibleImages = useMemo(() => {
+    return filteredImages.slice(0, 20); // Load only first 20
+  }, [filteredImages]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const imgId = entry.target.dataset.imageId;
+            setLoadedImages(prev => new Set([...prev, imgId]));
+          }
+        });
+      },
+      { rootMargin: '50px' }
+    );
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -1189,7 +1211,7 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
                 ))}
               </div>
               <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6">
-                {filteredImages.map(img => (
+                {visibleImages.map(img => (
                   <div key={img.id} className="break-inside-avoid relative group">
                     <OptimizedImage
                       src={img.url} 
@@ -1226,6 +1248,9 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
 
 // --- Memoized components for performance ---
 const MemoizedPortfolioPage = React.memo(PortfolioPage);
+const MemoizedCrmSection = React.memo(CrmSection);
+const MemoizedAnalyticsSection = React.memo(AnalyticsSection);
+const MemoizedPortfolioGate = React.memo(PortfolioGate);
 
 // --- AdminDashboard Component (inline to avoid import issues) ---
 function AdminDashboard({
