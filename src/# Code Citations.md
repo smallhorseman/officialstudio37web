@@ -1,498 +1,607 @@
 # Code Citations
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
 
 ```
-="current
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="current
+useState
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
 
 ```
-="currentColor" viewBox="0 0
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0
+useState
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
 
 ```
-="currentColor" viewBox="0 0 20
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20
+useState(false);
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fill
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fill
+useState(false);
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="
-```
+useState(false);
 
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="
+  const
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4
-```
+useState(false);
 
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4
+  const
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3
-```
+useState(false);
 
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3
+  const handleChange = (
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00
-```
+useState(false);
 
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00
+  const handleChange = (
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-
-```
+useState(false);
 
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-
+  const handleChange = (e
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 
-```
+useState(false);
 
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 
+  const handleChange = (e
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h
-```
+useState(false);
 
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h
+  const handleChange = (e) => {
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 
-```
+useState(false);
 
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 
+  const handleChange = (e) => {
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 
-```
+useState(false);
 
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 
+  const handleChange = (e) => {
+    set
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-
-```
+useState(false);
 
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-
+  const handleChange = (e) => {
+    set
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12
-```
+useState(false);
 
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12
+  const handleChange = (e) => {
+    setFormData({ ...
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H
-```
+useState(false);
 
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H
+  const handleChange = (e) => {
+    setFormData({ ...
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 
-```
+useState(false);
 
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 
-```
+useState(false);
 
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="eveno
-```
+useState(false);
 
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="eveno
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-            </svg
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.
 ```
 
 
 ## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-            </svg
-```
+useState(false);
 
-
-## License: MIT
-https://github.com/aqrun/aqrun.github.io/blob/4bdf46c310df8a741f88816c656529940eeb02da/themes/abridge/netlify.toml
-
-```
-[headers
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.
 ```
 
 
-## License: MIT
-https://github.com/aqrun/aqrun.github.io/blob/4bdf46c310df8a741f88816c656529940eeb02da/themes/abridge/netlify.toml
+## License: unknown
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
 
 ```
-[headers]]
-  for = "/*"
-```
+useState(false);
 
-
-## License: MIT
-https://github.com/aqrun/aqrun.github.io/blob/4bdf46c310df8a741f88816c656529940eeb02da/themes/abridge/netlify.toml
-
-```
-[headers]]
-  for = "/*"
-  [
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.
 ```
 
 
-## License: MIT
-https://github.com/aqrun/aqrun.github.io/blob/4bdf46c310df8a741f88816c656529940eeb02da/themes/abridge/netlify.toml
+## License: unknown
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
 
 ```
-[headers]]
-  for = "/*"
-  [headers.values]
-    X-
-```
+useState(false);
 
-
-## License: MIT
-https://github.com/aqrun/aqrun.github.io/blob/4bdf46c310df8a741f88816c656529940eeb02da/themes/abridge/netlify.toml
-
-```
-[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 ```
 
 
-## License: MIT
-https://github.com/aqrun/aqrun.github.io/blob/4bdf46c310df8a741f88816c656529940eeb02da/themes/abridge/netlify.toml
+## License: unknown
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
 
 ```
-[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-
-```
+useState(false);
 
-
-## License: MIT
-https://github.com/aqrun/aqrun.github.io/blob/4bdf46c310df8a741f88816c656529940eeb02da/themes/abridge/netlify.toml
-
-```
-[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 ```
 
 
-## License: MIT
-https://github.com/aqrun/aqrun.github.io/blob/4bdf46c310df8a741f88816c656529940eeb02da/themes/abridge/netlify.toml
+## License: unknown
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
 
 ```
-[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    X-XSS-Protection
-```
+useState(false);
 
-
-## License: MIT
-https://github.com/aqrun/aqrun.github.io/blob/4bdf46c310df8a741f88816c656529940eeb02da/themes/abridge/netlify.toml
-
-```
-[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 ```
 
 
-## License: MIT
-https://github.com/aqrun/aqrun.github.io/blob/4bdf46c310df8a741f88816c656529940eeb02da/themes/abridge/netlify.toml
+## License: unknown
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
 
 ```
-[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
-    Referrer-Policy =
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 ```
 
 
-## License: MIT
-https://github.com/aqrun/aqrun.github.io/blob/4bdf46c310df8a741f88816c656529940eeb02da/themes/abridge/netlify.toml
+## License: unknown
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
 
 ```
-[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
-    Referrer-Policy = "strict-origin-when-cross
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubm
 ```
 
 
-## License: MIT
-https://github.com/aqrun/aqrun.github.io/blob/4bdf46c310df8a741f88816c656529940eeb02da/themes/abridge/netlify.toml
+## License: unknown
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
 
 ```
-[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
-    Referrer-Policy = "strict-origin-when-cross-origin
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubm
+```
+
+
+## License: unknown
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e
+```
+
+
+## License: unknown
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e
+```
+
+
+## License: unknown
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+```
+
+
+## License: unknown
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+```
+
+
+## License: unknown
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault
+```
+
+
+## License: unknown
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault
+```
+
+
+## License: unknown
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if
+```
+
+
+## License: unknown
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if
+```
+
+
+## License: unknown
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.
+```
+
+
+## License: unknown
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.
+```
+
+
+## License: unknown
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.name && formData
+```
+
+
+## License: unknown
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.name && formData
+```
+
+
+## License: unknown
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.name && formData.
+```
+
+
+## License: unknown
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.name && formData.
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.5 13.
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.5 13.5 10.
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.5 13.5 10.8284 13
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.5 13.5 10.8284 13.5 10
+```
+
+
+## License: unknown
+https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+
+```
+<path d="M12 11.5C12.8284 11.5 13.5 10.8284 13.5 10C13.5
 ```
 
