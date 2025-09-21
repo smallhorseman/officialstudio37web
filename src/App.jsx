@@ -243,12 +243,44 @@ export default function App() {
 
   // --- Add/Delete Portfolio Image (CMS) ---
   async function addPortfolioImage(image) {
-    const { data } = await supabase.from('portfolio_images').insert([image]).select();
-    if (data && data[0]) setPortfolioImages(imgs => [data[0], ...imgs]);
+    // Get the highest order_index for the category
+    const { data: existingImages } = await supabase
+      .from('portfolio_images')
+      .select('order_index')
+      .eq('category', image.category)
+      .order('order_index', { ascending: false })
+      .limit(1);
+    
+    const nextOrderIndex = existingImages && existingImages[0] ? existingImages[0].order_index + 1 : 0;
+    
+    const { data } = await supabase
+      .from('portfolio_images')
+      .insert([{ ...image, order_index: nextOrderIndex }])
+      .select();
+    
+    if (data && data[0]) setPortfolioImages(imgs => [...imgs, data[0]]);
   }
   async function deletePortfolioImage(id) {
     await supabase.from('portfolio_images').delete().eq('id', id);
     setPortfolioImages(imgs => imgs.filter(img => img.id !== id));
+  }
+
+  // --- Update Portfolio Image Order ---
+  async function updatePortfolioImageOrder(imageId, newOrderIndex, category) {
+    await supabase
+      .from('portfolio_images')
+      .update({ order_index: newOrderIndex })
+      .eq('id', imageId);
+    
+    // Refresh the images to reflect new order
+    const { data } = await supabase
+      .from('portfolio_images')
+      .select('id, url, category, caption, created_at, order_index')
+      .order('order_index', { ascending: true })
+      .order('created_at', { ascending: false })
+      .limit(24);
+    
+    if (data) setPortfolioImages(data);
   }
 
   // --- Blog Admin CRUD ---
@@ -327,6 +359,7 @@ export default function App() {
                 portfolioImages={portfolioImages}
                 addPortfolioImage={addPortfolioImage}
                 deletePortfolioImage={deletePortfolioImage}
+                updatePortfolioImageOrder={updatePortfolioImageOrder}
                 blogPosts={blogPosts}
                 createBlogPost={createBlogPost}
                 updateBlogPost={updateBlogPost}
@@ -641,8 +674,19 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
             </div>
             <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6">
               {filteredImages.map(img => (
-                <div key={img.id} className="break-inside-avoid">
-                  <img src={img.url} alt={`${img.category} photography`} className="w-full rounded-lg shadow-lg hover:opacity-90 transition-opacity" />
+                <div key={img.id} className="break-inside-avoid relative group">
+                  <img 
+                    src={img.url} 
+                    alt={img.caption || `${img.category} photography`} 
+                    className="w-full rounded-lg shadow-lg hover:opacity-90 transition-opacity" 
+                  />
+                  {img.caption && (
+                    <div className="absolute bottom-0 left-0 right-0 bg-black/75 backdrop-blur-sm p-3 rounded-b-lg">
+                      <p className="text-[#F3E3C3]/75 text-sm font-serif italic leading-relaxed">
+                        {img.caption}
+                      </p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -904,6 +948,7 @@ function AdminDashboard({
   portfolioImages,
   addPortfolioImage,
   deletePortfolioImage,
+  updatePortfolioImageOrder,
   blogPosts,
   createBlogPost,
   updateBlogPost,
@@ -964,6 +1009,7 @@ function AdminDashboard({
                 portfolioImages={portfolioImages}
                 addPortfolioImage={addPortfolioImage}
                 deletePortfolioImage={deletePortfolioImage}
+                updatePortfolioImageOrder={updatePortfolioImageOrder}
               />
             </div>
           )}
@@ -1950,8 +1996,15 @@ const Footer = () => (
 );
 
 // --- Add missing CmsSection component ---
-function CmsSection({ portfolioImages, addPortfolioImage, deletePortfolioImage }) {
+function CmsSection({ portfolioImages, addPortfolioImage, deletePortfolioImage, updatePortfolioImageOrder }) {
   const [newImage, setNewImage] = useState({ url: '', category: '', caption: '' });
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  
+  // Get unique categories for filtering
+  const categories = ['All', ...new Set(portfolioImages?.map(img => img.category) || [])];
+  const filteredImages = selectedCategory === 'All' 
+    ? portfolioImages 
+    : portfolioImages?.filter(img => img.category === selectedCategory);
 
   const handleAddImage = async (e) => {
     e.preventDefault();
@@ -1959,6 +2012,21 @@ function CmsSection({ portfolioImages, addPortfolioImage, deletePortfolioImage }
       await addPortfolioImage(newImage);
       setNewImage({ url: '', category: '', caption: '' });
     }
+  };
+
+  const handleDragEnd = async (result) => {
+    if (!result.destination) return;
+
+    const items = Array.from(filteredImages);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    // Update order_index for each item in the new order
+    const updates = items.map((item, index) => 
+      updatePortfolioImageOrder(item.id, index, item.category)
+    );
+    
+    await Promise.all(updates);
   };
 
   return (
@@ -1996,261 +2064,105 @@ function CmsSection({ portfolioImages, addPortfolioImage, deletePortfolioImage }
       </div>
       
       <div>
-        <h4 className="text-xl font-bold mb-4">Portfolio Images ({portfolioImages?.length || 0})</h4>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {portfolioImages?.map(img => (
-            <div key={img.id} className="bg-[#232323] rounded p-4">
-              <img src={img.url} alt={img.caption || img.category} className="w-full h-32 object-cover rounded mb-2" />
-              <p className="text-sm text-[#F3E3C3]/80">Category: {img.category}</p>
-              {img.caption && <p className="text-xs text-[#F3E3C3]/60">{img.caption}</p>}
-              <button
-                onClick={() => deletePortfolioImage(img.id)}
-                className="bg-red-500 text-white px-2 py-1 rounded text-xs mt-2"
+        <div className="flex justify-between items-center mb-4">
+          <h4 className="text-xl font-bold">Portfolio Images ({portfolioImages?.length || 0})</h4>
+          <div className="flex gap-2">
+            <label className="text-sm font-medium text-[#F3E3C3]">Filter by category:</label>
+            <select
+              value={selectedCategory}
+              onChange={e => setSelectedCategory(e.target.value)}
+              className="bg-[#181818] border border-white/20 rounded-md py-1 px-2 text-sm"
+            >
+              {categories.map(cat => (
+                <option key={cat} value={cat}>{cat}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+        
+        <div className="mb-4 p-3 bg-blue-500/20 text-blue-300 rounded text-sm">
+          <strong>💡 Tip:</strong> Drag and drop images to reorder them. The order will be saved automatically and reflected on your portfolio page.
+        </div>
+
+        <DragDropContext onDragEnd={handleDragEnd}>
+          <Droppable droppableId="portfolio-images">
+            {(provided, snapshot) => (
+              <div
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+                className={`grid md:grid-cols-2 lg:grid-cols-3 gap-4 ${
+                  snapshot.isDraggingOver ? 'bg-blue-500/5 rounded-lg p-2' : ''
+                }`}
               >
-                Delete
-              </button>
-            </div>
-          ))}
-        </div>
+                {filteredImages?.map((img, index) => (
+                  <Draggable key={img.id} draggableId={img.id.toString()} index={index}>
+                    {(provided, snapshot) => (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        className={`bg-[#232323] rounded p-4 relative group ${
+                          snapshot.isDragging ? 'rotate-2 shadow-2xl z-50' : ''
+                        } transition-transform hover:scale-105`}
+                      >
+                        <div
+                          {...provided.dragHandleProps}
+                          className="absolute top-2 right-2 cursor-grab active:cursor-grabbing bg-[#F3E3C3] text-[#1a1a1a] rounded p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                          title="Drag to reorder"
+                        >
+                          ⋮⋮
+                        </div>
+                        
+                        <div className="relative">
+                          <img 
+                            src={img.url} 
+                            alt={img.caption || img.category} 
+                            className="w-full h-32 object-cover rounded mb-2" 
+                          />
+                          {img.caption && (
+                            <div className="absolute bottom-2 left-2 right-2 bg-black/75 backdrop-blur-sm p-2 rounded">
+                              <p className="text-[#F3E3C3]/75 text-xs font-serif italic leading-relaxed">
+                                {img.caption}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                        
+                        <div className="space-y-2">
+                          <p className="text-sm text-[#F3E3C3]/80">
+                            <strong>Category:</strong> {img.category}
+                          </p>
+                          <p className="text-xs text-[#F3E3C3]/60">
+                            <strong>Order:</strong> {img.order_index || 0}
+                          </p>
+                          {img.caption && (
+                            <p className="text-xs text-[#F3E3C3]/60">
+                              <strong>Caption:</strong> {img.caption}
+                            </p>
+                          )}
+                        </div>
+                        
+                        <button
+                          onClick={() => deletePortfolioImage(img.id)}
+                          className="bg-red-500 text-white px-2 py-1 rounded text-xs mt-3 w-full hover:bg-red-600 transition-colors"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+        
+        {(!filteredImages || filteredImages.length === 0) && (
+          <div className="text-center text-[#F3E3C3]/70 py-8">
+            No images found for "{selectedCategory}" category.
+          </div>
+        )}
       </div>
     </div>
   );
-}
-
-// --- Add missing BlogAdminSection component ---
-function BlogAdminSection({ 
-  blogPosts, 
-  createBlogPost, 
-  updateBlogPost, 
-  deleteBlogPost, 
-  blogEdit, 
-  setBlogEdit, 
-  blogSaving, 
-  blogAdminError 
-}) {
-  const [newPost, setNewPost] = useState({
-    title: '',
-    slug: '',
-    excerpt: '',
-    content: '',
-    author: 'Studio37',
-    category: '',
-    tags: '',
-    publish_date: new Date().toISOString().split('T')[0]
-  });
-
-  const handleCreatePost = async (e) => {
-    e.preventDefault();
-    const tagsArray = newPost.tags.split(',').map(tag => tag.trim()).filter(tag => tag);
-    await createBlogPost({ ...newPost, tags: tagsArray });
-    setNewPost({
-      title: '',
-      slug: '',
-      excerpt: '',
-      content: '',
-      author: 'Studio37',
-      category: '',
-      tags: '',
-      publish_date: new Date().toISOString().split('T')[0]
-    });
-  };
-
-  const handleUpdatePost = async (e) => {
-    e.preventDefault();
-    if (blogEdit) {
-      const tagsArray = blogEdit.tags.split(',').map(tag => tag.trim()).filter(tag => tag);
-      await updateBlogPost(blogEdit.id, { ...blogEdit, tags: tagsArray });
-      setBlogEdit(null);
-    }
-  };
-
-  return (
-    <div className="space-y-6">
-      {blogAdminError && (
-        <div className="bg-red-500/20 text-red-400 p-4 rounded">{blogAdminError}</div>
-      )}
-      
-      <div>
-        <h4 className="text-xl font-bold mb-4">Create New Blog Post</h4>
-        <form onSubmit={handleCreatePost} className="space-y-4">
-          <div className="grid md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              value={newPost.title}
-              onChange={e => setNewPost(p => ({ ...p, title: e.target.value }))}
-              placeholder="Post Title"
-              className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-              required
-            />
-            <input
-              type="text"
-              value={newPost.slug}
-              onChange={e => setNewPost(p => ({ ...p, slug: e.target.value }))}
-              placeholder="URL Slug"
-              className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-              required
-            />
-          </div>
-          <textarea
-            value={newPost.excerpt}
-            onChange={e => setNewPost(p => ({ ...p, excerpt: e.target.value }))}
-            placeholder="Post Excerpt"
-            className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-            rows={2}
-          />
-          <textarea
-            value={newPost.content}
-            onChange={e => setNewPost(p => ({ ...p, content: e.target.value }))}
-            placeholder="Post Content (Markdown supported)"
-            className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-            rows={8}
-          />
-          <div className="grid md:grid-cols-3 gap-4">
-            <input
-              type="text"
-              value={newPost.category}
-              onChange={e => setNewPost(p => ({ ...p, category: e.target.value }))}
-              placeholder="Category"
-              className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-            />
-            <input
-              type="text"
-              value={newPost.tags}
-              onChange={e => setNewPost(p => ({ ...p, tags: e.target.value }))}
-              placeholder="Tags (comma separated)"
-              className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-            />
-            <input
-              type="date"
-              value={newPost.publish_date}
-              onChange={e => setNewPost(p => ({ ...p, publish_date: e.target.value }))}
-              className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-            />
-          </div>
-          <button 
-            type="submit" 
-            className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
-            disabled={blogSaving}
-          >
-            {blogSaving ? 'Creating...' : 'Create Post'}
-          </button>
-        </form>
-      </div>
-
-      <div>
-        <h4 className="text-xl font-bold mb-4">Existing Blog Posts</h4>
-        <div className="space-y-4">
-          {blogPosts?.map(post => (
-            <div key={post.id} className="bg-[#232323] rounded p-4">
-              <div className="flex justify-between items-start mb-2">
-                <h5 className="font-bold text-white">{post.title}</h5>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setBlogEdit(post)}
-                    className="bg-blue-500 text-white px-2 py-1 rounded text-xs"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => deleteBlogPost(post.id)}
-                    className="bg-red-500 text-white px-2 py-1 rounded text-xs"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-              <p className="text-[#F3E3C3]/80 text-sm">{post.excerpt}</p>
-              <div className="text-xs text-[#F3E3C3]/60 mt-2">
-                {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''} | {post.category}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Edit Modal */}
-      {blogEdit && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <h3 className="text-xl font-display text-white mb-4">Edit Blog Post</h3>
-            <form onSubmit={handleUpdatePost} className="space-y-4">
-              <input
-                type="text"
-                value={blogEdit.title || ''}
-                onChange={e => setBlogEdit(p => ({ ...p, title: e.target.value }))}
-                placeholder="Post Title"
-                className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-              />
-              <textarea
-                value={blogEdit.content || ''}
-                onChange={e => setBlogEdit(p => ({ ...p, content: e.target.value }))}
-                placeholder="Post Content"
-                className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
-                rows={12}
-              />
-              <div className="flex gap-2 mt-4">
-                <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">
-                  Update Post
-                </button>
-                <button 
-                  type="button" 
-                  onClick={() => setBlogEdit(null)}
-                  className="bg-gray-500 text-white py-2 px-4 rounded-md"
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-// --- Add missing SiteMapPreview component ---
-function SiteMapPreview({ page, content, portfolioImages, blogPosts }) {
-  switch (page) {
-    case 'about':
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">{content.about?.title || 'About Us'}</h3>
-          <p className="text-[#F3E3C3]/80">{content.about?.bio || 'About content...'}</p>
-        </div>
-      );
-    case 'portfolio':
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">Portfolio</h3>
-          <div className="grid grid-cols-3 gap-2">
-            {portfolioImages?.slice(0, 6).map(img => (
-              <img key={img.id} src={img.url} alt={img.category} className="w-full h-16 object-cover rounded" />
-            ))}
-          </div>
-          <p className="text-xs text-[#F3E3C3]/60 mt-2">{portfolioImages?.length || 0} images</p>
-        </div>
-      );
-    case 'blog':
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">Blog</h3>
-          <div className="space-y-2">
-            {blogPosts?.slice(0, 3).map(post => (
-              <div key={post.id} className="text-sm">
-                <div className="font-semibold">{post.title}</div>
-                <div className="text-[#F3E3C3]/60 text-xs">{post.excerpt}</div>
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-[#F3E3C3]/60 mt-2">{blogPosts?.length || 0} posts</p>
-        </div>
-      );
-    default:
-      return (
-        <div>
-          <h3 className="text-lg font-bold mb-2">{page.charAt(0).toUpperCase() + page.slice(1)}</h3>
-          <p className="text-[#F3E3C3]/80">Preview for {page} page...</p>
-        </div>
-      );
-  }
 }
