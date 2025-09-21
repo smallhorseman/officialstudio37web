@@ -1330,7 +1330,7 @@ function Footer() {
   );
 }
 
-// --- CRM Section (Enhanced Leads Table with Actions, Notes, Contact History) ---
+// --- Enhanced CRM Section (Leads Table with Actions, Notes, Contact History) ---
 function CrmSection({ leads, updateLeadStatus }) {
   const [selectedLead, setSelectedLead] = useState(null);
   const [showNotes, setShowNotes] = useState(false);
@@ -1340,55 +1340,107 @@ function CrmSection({ leads, updateLeadStatus }) {
   const [leadNotes, setLeadNotes] = useState([]);
   const [contactHistory, setContactHistory] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const fetchLeadNotes = async (leadId) => {
     setLoading(true);
-    const { data } = await supabase
-      .from('lead_notes')
-      .select('*')
-      .eq('lead_id', leadId)
-      .order('created_at', { ascending: false });
-    setLeadNotes(data || []);
+    setError('');
+    try {
+      const { data, error } = await supabase
+        .from('lead_notes')
+        .select('*')
+        .eq('lead_id', leadId)
+        .order('created_at', { ascending: false });
+      
+      if (error) {
+        console.error('Error fetching lead notes:', error);
+        setError('Failed to load notes');
+        setLeadNotes([]);
+      } else {
+        setLeadNotes(data || []);
+      }
+    } catch (err) {
+      console.error('Exception fetching lead notes:', err);
+      setError('Failed to load notes');
+      setLeadNotes([]);
+    }
     setLoading(false);
   };
 
   const fetchContactHistory = async (leadId) => {
     setLoading(true);
-    const { data } = await supabase
-      .from('contact_history')
-      .select('*')
-      .eq('lead_id', leadId)
-      .order('created_at', { ascending: false });
-    setContactHistory(data || []);
+    setError('');
+    try {
+      const { data, error } = await supabase
+        .from('contact_history')
+        .select('*')
+        .eq('lead_id', leadId)
+        .order('created_at', { ascending: false });
+      
+      if (error) {
+        console.error('Error fetching contact history:', error);
+        setError('Failed to load contact history');
+        setContactHistory([]);
+      } else {
+        setContactHistory(data || []);
+      }
+    } catch (err) {
+      console.error('Exception fetching contact history:', err);
+      setError('Failed to load contact history');
+      setContactHistory([]);
+    }
     setLoading(false);
   };
 
   const addNote = async () => {
     if (!newNote.trim() || !selectedLead) return;
-    await supabase.from('lead_notes').insert([{
-      lead_id: selectedLead.id,
-      note: newNote,
-      status: 'Manual'
-    }]);
-    setNewNote('');
-    fetchLeadNotes(selectedLead.id);
+    try {
+      const { error } = await supabase.from('lead_notes').insert([{
+        lead_id: selectedLead.id,
+        note: newNote,
+        status: 'Manual'
+      }]);
+      
+      if (error) {
+        console.error('Error adding note:', error);
+        setError('Failed to add note');
+      } else {
+        setNewNote('');
+        fetchLeadNotes(selectedLead.id);
+      }
+    } catch (err) {
+      console.error('Exception adding note:', err);
+      setError('Failed to add note');
+    }
   };
 
   const addContactEntry = async () => {
     if (!newContact.subject.trim() || !selectedLead) return;
-    await supabase.from('contact_history').insert([{
-      lead_id: selectedLead.id,
-      contact_type: newContact.type,
-      subject: newContact.subject,
-      message: newContact.message,
-      status: 'Sent'
-    }]);
-    setNewContact({ type: 'email', subject: '', message: '' });
-    fetchContactHistory(selectedLead.id);
+    try {
+      const { error } = await supabase.from('contact_history').insert([{
+        lead_id: selectedLead.id,
+        contact_type: newContact.type,
+        subject: newContact.subject,
+        message: newContact.message,
+        status: 'Sent'
+      }]);
+      
+      if (error) {
+        console.error('Error adding contact entry:', error);
+        setError('Failed to log contact');
+      } else {
+        setNewContact({ type: 'email', subject: '', message: '' });
+        fetchContactHistory(selectedLead.id);
+      }
+    } catch (err) {
+      console.error('Exception adding contact entry:', err);
+      setError('Failed to log contact');
+    }
   };
 
   const openLeadDetails = (lead) => {
     setSelectedLead(lead);
+    setError('');
     fetchLeadNotes(lead.id);
     fetchContactHistory(lead.id);
   };
@@ -1401,6 +1453,12 @@ function CrmSection({ leads, updateLeadStatus }) {
 
   return (
     <div>
+      {error && (
+        <div className="bg-red-500/20 border border-red-500 text-red-400 px-4 py-2 rounded mb-4">
+          {error}
+        </div>
+      )}
+      
       <div className="overflow-x-auto bg-[#262626] rounded-lg shadow-lg p-6 mb-6">
         <table className="w-full text-left">
           <thead className="border-b border-white/10">
@@ -1456,6 +1514,7 @@ function CrmSection({ leads, updateLeadStatus }) {
                       onClick={() => {
                         setSelectedLead(lead);
                         setShowNotes(true);
+                        setError('');
                         fetchLeadNotes(lead.id);
                       }}
                       className="bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600"
@@ -1466,6 +1525,7 @@ function CrmSection({ leads, updateLeadStatus }) {
                       onClick={() => {
                         setSelectedLead(lead);
                         setShowContactHistory(true);
+                        setError('');
                         fetchContactHistory(lead.id);
                       }}
                       className="bg-purple-500 text-white px-3 py-1 rounded text-xs hover:bg-purple-600"
@@ -1567,12 +1627,21 @@ function CrmSection({ leads, updateLeadStatus }) {
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-xl font-display text-white">Notes for {selectedLead.name}</h3>
               <button
-                onClick={() => setShowNotes(false)}
+                onClick={() => {
+                  setShowNotes(false);
+                  setError('');
+                }}
                 className="text-white text-2xl hover:text-gray-300"
               >
                 &times;
               </button>
             </div>
+            
+            {error && (
+              <div className="bg-red-500/20 border border-red-500 text-red-400 px-3 py-2 rounded mb-4 text-sm">
+                {error}
+              </div>
+            )}
             
             <div className="mb-4">
               <div className="flex gap-2">
@@ -1586,9 +1655,9 @@ function CrmSection({ leads, updateLeadStatus }) {
                 <button
                   onClick={addNote}
                   className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-                  disabled={!newNote.trim()}
+                  disabled={!newNote.trim() || loading}
                 >
-                  Add
+                  {loading ? 'Adding...' : 'Add'}
                 </button>
               </div>
             </div>
@@ -1625,12 +1694,21 @@ function CrmSection({ leads, updateLeadStatus }) {
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-xl font-display text-white">Contact History for {selectedLead.name}</h3>
               <button
-                onClick={() => setShowContactHistory(false)}
+                onClick={() => {
+                  setShowContactHistory(false);
+                  setError('');
+                }}
                 className="text-white text-2xl hover:text-gray-300"
               >
                 &times;
               </button>
             </div>
+            
+            {error && (
+              <div className="bg-red-500/20 border border-red-500 text-red-400 px-3 py-2 rounded mb-4 text-sm">
+                {error}
+              </div>
+            )}
             
             <div className="mb-6 bg-[#181818] rounded p-4">
               <h4 className="text-lg font-bold mb-3">Log New Contact</h4>
@@ -1663,9 +1741,9 @@ function CrmSection({ leads, updateLeadStatus }) {
               <button
                 onClick={addContactEntry}
                 className="mt-3 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600"
-                disabled={!newContact.subject.trim()}
+                disabled={!newContact.subject.trim() || loading}
               >
-                Log Contact
+                {loading ? 'Logging...' : 'Log Contact'}
               </button>
             </div>
 
@@ -1701,6 +1779,8 @@ function CrmSection({ leads, updateLeadStatus }) {
           </div>
         </div>
       )}
+
+      {/* ...existing lead details modal code... */}
     </div>
   );
 }
