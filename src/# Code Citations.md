@@ -38,7 +38,7 @@ https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167
 ```
 useState(false);
 
-  const
+  const handleChange
 ```
 
 
@@ -48,27 +48,7 @@ https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b26
 ```
 useState(false);
 
-  const
-```
-
-
-## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
-
-```
-useState(false);
-
-  const handleChange = (
-```
-
-
-## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
-
-```
-useState(false);
-
-  const handleChange = (
+  const handleChange
 ```
 
 
@@ -511,97 +491,187 @@ useState(false);
 
 
 ## License: unknown
-https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
 
 ```
-<path
-```
-
-
-## License: unknown
-https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
-
-```
-<path d="M12
+>
+            
 ```
 
 
 ## License: unknown
-https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
 
 ```
-<path d="M12 11
-```
-
-
-## License: unknown
-https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
-
-```
-<path d="M12 11.
+>
+            <tr>
+              
 ```
 
 
 ## License: unknown
-https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
 
 ```
-<path d="M12 11.5C12.
-```
-
-
-## License: unknown
-https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
-
-```
-<path d="M12 11.5C12.8
+>
+            <tr>
+              <th className="
 ```
 
 
 ## License: unknown
-https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
 
 ```
-<path d="M12 11.5C12.8284 11.
-```
-
-
-## License: unknown
-https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
-
-```
-<path d="M12 11.5C12.8284 11.5 13.
+>
+            <tr>
+              <th className="p
 ```
 
 
 ## License: unknown
-https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
 
 ```
-<path d="M12 11.5C12.8284 11.5 13.5 10.
-```
-
-
-## License: unknown
-https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
-
-```
-<path d="M12 11.5C12.8284 11.5 13.5 10.8284 13
+>
+            <tr>
+              <th className="p-3
 ```
 
 
 ## License: unknown
-https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
 
 ```
-<path d="M12 11.5C12.8284 11.5 13.5 10.8284 13.5 10
+>
+            <tr>
+              <th className="p-3">
 ```
 
 
 ## License: unknown
-https://github.com/kamrade/ui-kit/blob/d41bc8ddd08ee7cf95f8816ec996b06cdfe1c7a2/src/modules/shared/icon-base/icons.js
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
 
 ```
-<path d="M12 11.5C12.8284 11.5 13.5 10.8284 13.5 10C13.5
+>
+            <tr>
+              <th className="p-3">Name
+```
+
+
+## License: unknown
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+
+```
+>
+            <tr>
+              <th className="p-3">Name</th>
+```
+
+
+## License: unknown
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+
+```
+>
+            <tr>
+              <th className="p-3">Name</th>
+              <th className
+```
+
+
+## License: unknown
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+
+```
+>
+            <tr>
+              <th className="p-3">Name</th>
+              <th className="p-3
+```
+
+
+## License: unknown
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+
+```
+>
+            <tr>
+              <th className="p-3">Name</th>
+              <th className="p-3">Email</th
+```
+
+
+## License: unknown
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+
+```
+>
+            <tr>
+              <th className="p-3">Name</th>
+              <th className="p-3">Email</th>
+              
+```
+
+
+## License: unknown
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+
+```
+>
+            <tr>
+              <th className="p-3">Name</th>
+              <th className="p-3">Email</th>
+              <th className="p
+```
+
+
+## License: unknown
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+
+```
+>
+            <tr>
+              <th className="p-3">Name</th>
+              <th className="p-3">Email</th>
+              <th className="p-3">Phone
+```
+
+
+## License: unknown
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+
+```
+>
+            <tr>
+              <th className="p-3">Name</th>
+              <th className="p-3">Email</th>
+              <th className="p-3">Phone</th>
+```
+
+
+## License: unknown
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+
+```
+>
+            <tr>
+              <th className="p-3">Name</th>
+              <th className="p-3">Email</th>
+              <th className="p-3">Phone</th>
+              <th className
+```
+
+
+## License: unknown
+https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
+
+```
+>
+            <tr>
+              <th className="p-3">Name</th>
+              <th className="p-3">Email</th>
+              <th className="p-3">Phone</th>
+              <th className="p
 ```
 
