@@ -1303,7 +1303,7 @@ function AdminDashboard({
           {activeTab === 'crm' && (
             <div>
               <h3 className="text-2xl font-display mb-6">Customer Relationship Management</h3>
-              <CrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
+              <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
             </div>
           )}
 
@@ -1317,7 +1317,7 @@ function AdminDashboard({
           {activeTab === 'cms' && (
             <div>
               <h3 className="text-2xl font-display mb-6">Content Management</h3>
-              <CmsSection
+              <EnhancedCmsSection
                 portfolioImages={portfolioImages}
                 addPortfolioImage={addPortfolioImage}
                 deletePortfolioImage={deletePortfolioImage}
