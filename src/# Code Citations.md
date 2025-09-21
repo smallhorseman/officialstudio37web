@@ -121,7 +121,7 @@ https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167
 useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...
+    setFormData({
 ```
 
 
@@ -132,7 +132,7 @@ https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b26
 useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...
+    setFormData({
 ```
 
 
@@ -143,7 +143,7 @@ https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167
 useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [
+    setFormData({ ...formData,
 ```
 
 
@@ -154,7 +154,7 @@ https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b26
 useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [
+    setFormData({ ...formData,
 ```
 
 
@@ -165,7 +165,7 @@ https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167
 useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.
+    setFormData({ ...formData, [e.target
 ```
 
 
@@ -176,7 +176,7 @@ https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b26
 useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.
+    setFormData({ ...formData, [e.target
 ```
 
 
@@ -187,7 +187,7 @@ https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167
 useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.
+    setFormData({ ...formData, [e.target.name]: e
 ```
 
 
@@ -198,7 +198,7 @@ https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b26
 useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.
+    setFormData({ ...formData, [e.target.name]: e
 ```
 
 
@@ -209,7 +209,7 @@ https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167
 useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value
 ```
 
 
@@ -220,31 +220,7 @@ https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b26
 useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-```
-
-
-## License: unknown
-https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-```
-
-
-## License: unknown
-https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
-
-```
-useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    setFormData({ ...formData, [e.target.name]: e.target.value
 ```
 
 
@@ -257,8 +233,6 @@ useState(false);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const handleSubm
 ```
 
 
@@ -271,8 +245,6 @@ useState(false);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const handleSubm
 ```
 
 
@@ -286,7 +258,7 @@ useState(false);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e
+  const handle
 ```
 
 
@@ -300,7 +272,7 @@ useState(false);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e
+  const handle
 ```
 
 
@@ -314,7 +286,7 @@ useState(false);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (
 ```
 
 
@@ -328,7 +300,7 @@ useState(false);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (
 ```
 
 
@@ -343,7 +315,6 @@ useState(false);
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault
 ```
 
 
@@ -358,7 +329,6 @@ useState(false);
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault
 ```
 
 
@@ -373,8 +343,7 @@ useState(false);
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if
+    e.
 ```
 
 
@@ -389,8 +358,7 @@ useState(false);
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if
+    e.
 ```
 
 
@@ -406,7 +374,6 @@ useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.
 ```
 
 
@@ -422,7 +389,6 @@ useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.
 ```
 
 
@@ -438,7 +404,7 @@ useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.name && formData
+    if (form
 ```
 
 
@@ -454,7 +420,39 @@ useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.name && formData
+    if (form
+```
+
+
+## License: unknown
+https://github.com/Amraaa/AmraDev1/blob/ebc5a427a4678b5cda4919a5ead9a4879dd55167/client/src/components/profile-forms/AddEducation.js
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.name &&
+```
+
+
+## License: unknown
+https://github.com/Needforock2/react-preentrega2-daniel-machado/blob/fc6abdf2b266127f791e2366d46e586ce946fdf7/src/components/SignInForm/SignInForm.jsx
+
+```
+useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.name &&
 ```
 
 
@@ -487,191 +485,5 @@ useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.name && formData.
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="p
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="p-3
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="p-3">
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="p-3">Name
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="p-3">Name</th>
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="p-3">Name</th>
-              <th className
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="p-3">Name</th>
-              <th className="p-3
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="p-3">Name</th>
-              <th className="p-3">Email</th
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="p-3">Name</th>
-              <th className="p-3">Email</th>
-              
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="p-3">Name</th>
-              <th className="p-3">Email</th>
-              <th className="p
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="p-3">Name</th>
-              <th className="p-3">Email</th>
-              <th className="p-3">Phone
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="p-3">Name</th>
-              <th className="p-3">Email</th>
-              <th className="p-3">Phone</th>
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="p-3">Name</th>
-              <th className="p-3">Email</th>
-              <th className="p-3">Phone</th>
-              <th className
-```
-
-
-## License: unknown
-https://github.com/juniorEdris/sample_crud_task/blob/0ca0e6dc5883bb4c8b298d63e154a1861b92b911/Components/TableSection.js
-
-```
->
-            <tr>
-              <th className="p-3">Name</th>
-              <th className="p-3">Email</th>
-              <th className="p-3">Phone</th>
-              <th className="p
 ```
 
