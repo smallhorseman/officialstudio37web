@@ -743,7 +743,7 @@ const AdminLoginPage = ({ onLogin }) => {
   );
 };
 
-// --- Site Map Tab with Flowchart and Live Preview --- //
+// --- Site Map Tab with Flowchart and Live Preview (SINGLE DECLARATION) ---
 const defaultSiteMapPages = [
   { key: 'home', label: 'Home' },
   { key: 'about', label: 'About' },
@@ -828,8 +828,6 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
           about_bio: editForm.content
         }).eq('id', 1);
       }
-      // Add logic for other pages if you want to store them in DB
-      // For now, they're just preview/template content
     } catch (error) {
       console.error('Error saving page:', error);
     }
@@ -977,7 +975,7 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
   );
 };
 
-// --- Live Preview Renderer for Each Page --- //
+// --- Live Preview Renderer for Each Page (SINGLE DECLARATION) ---
 const SiteMapPreview = ({ page, content, portfolioImages, blogPosts }) => {
   switch (page) {
     case 'home':
@@ -1029,6 +1027,7 @@ const SiteMapPreview = ({ page, content, portfolioImages, blogPosts }) => {
       return null;
   }
 };
+
 // --- BlogPage Component (add this before App or near other page components) ---
 function BlogPage({ posts, loading, error }) {
   if (loading) {
@@ -1755,8 +1754,6 @@ const SiteMapTab = ({ siteMapPage, setSiteMapPage, content, portfolioImages, blo
           about_bio: editForm.content
         }).eq('id', 1);
       }
-      // Add logic for other pages if you want to store them in DB
-      // For now, they're just preview/template content
     } catch (error) {
       console.error('Error saving page:', error);
     }
