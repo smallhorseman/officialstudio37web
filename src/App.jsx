@@ -2119,8 +2119,8 @@ function CmsSection({ portfolioImages, addPortfolioImage, deletePortfolioImage, 
                             className="w-full h-32 object-cover rounded mb-2" 
                           />
                           {img.caption && (
-                            <div className="absolute bottom-2 left-2 right-2 bg-black/75 backdrop-blur-sm p-2 rounded">
-                              <p className="text-[#F3E3C3]/75 text-xs font-serif italic leading-relaxed">
+                            <div className="absolute bottom-0 left-0 right-0 bg-black/75 p-2 rounded-b text-xs">
+                              <p className="text-[#F3E3C3]/75 font-vintage-text italic leading-relaxed">
                                 {img.caption}
                               </p>
                             </div>
@@ -2165,4 +2165,295 @@ function CmsSection({ portfolioImages, addPortfolioImage, deletePortfolioImage, 
       </div>
     </div>
   );
+}
+
+// --- Add missing BlogAdminSection component ---
+function BlogAdminSection({ 
+  blogPosts, 
+  createBlogPost, 
+  updateBlogPost, 
+  deleteBlogPost, 
+  blogEdit, 
+  setBlogEdit, 
+  blogSaving, 
+  blogAdminError 
+}) {
+  const [newPost, setNewPost] = useState({
+    title: '',
+    slug: '',
+    excerpt: '',
+    content: '',
+    author: 'Studio37',
+    category: '',
+    tags: '',
+    publish_date: new Date().toISOString().split('T')[0]
+  });
+
+  const handleCreatePost = async (e) => {
+    e.preventDefault();
+    const tagsArray = newPost.tags.split(',').map(tag => tag.trim()).filter(tag => tag);
+    await createBlogPost({ ...newPost, tags: tagsArray });
+    setNewPost({
+      title: '',
+      slug: '',
+      excerpt: '',
+      content: '',
+      author: 'Studio37',
+      category: '',
+      tags: '',
+      publish_date: new Date().toISOString().split('T')[0]
+    });
+  };
+
+  const handleUpdatePost = async (e) => {
+    e.preventDefault();
+    if (blogEdit) {
+      const tagsArray = blogEdit.tags.split(',').map(tag => tag.trim()).filter(tag => tag);
+      await updateBlogPost(blogEdit.id, { ...blogEdit, tags: tagsArray });
+      setBlogEdit(null);
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      {blogAdminError && (
+        <div className="bg-red-500/20 text-red-400 p-4 rounded">{blogAdminError}</div>
+      )}
+      
+      <div>
+        <h4 className="text-xl font-bold mb-4">Create New Blog Post</h4>
+        <form onSubmit={handleCreatePost} className="space-y-4">
+          <div className="grid md:grid-cols-2 gap-4">
+            <input
+              type="text"
+              value={newPost.title}
+              onChange={e => setNewPost(p => ({ ...p, title: e.target.value }))}
+              placeholder="Post Title"
+              className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+              required
+            />
+            <input
+              type="text"
+              value={newPost.slug}
+              onChange={e => setNewPost(p => ({ ...p, slug: e.target.value }))}
+              placeholder="URL Slug"
+              className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+              required
+            />
+          </div>
+          <textarea
+            value={newPost.excerpt}
+            onChange={e => setNewPost(p => ({ ...p, excerpt: e.target.value }))}
+            placeholder="Post Excerpt"
+            className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+            rows={2}
+          />
+          <textarea
+            value={newPost.content}
+            onChange={e => setNewPost(p => ({ ...p, content: e.target.value }))}
+            placeholder="Post Content (Markdown supported)"
+            className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+            rows={8}
+          />
+          <div className="grid md:grid-cols-3 gap-4">
+            <input
+              type="text"
+              value={newPost.category}
+              onChange={e => setNewPost(p => ({ ...p, category: e.target.value }))}
+              placeholder="Category"
+              className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+            />
+            <input
+              type="text"
+              value={newPost.tags}
+              onChange={e => setNewPost(p => ({ ...p, tags: e.target.value }))}
+              placeholder="Tags (comma separated)"
+              className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+            />
+            <input
+              type="date"
+              value={newPost.publish_date}
+              onChange={e => setNewPost(p => ({ ...p, publish_date: e.target.value }))}
+              className="bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+            />
+          </div>
+          <button 
+            type="submit" 
+            className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
+            disabled={blogSaving}
+          >
+            {blogSaving ? 'Creating...' : 'Create Post'}
+          </button>
+        </form>
+      </div>
+
+      <div>
+        <h4 className="text-xl font-bold mb-4">Existing Blog Posts</h4>
+        <div className="space-y-4">
+          {blogPosts?.map(post => (
+            <div key={post.id} className="bg-[#232323] rounded p-4">
+              <div className="flex justify-between items-start mb-2">
+                <h5 className="font-bold text-white">{post.title}</h5>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setBlogEdit(post)}
+                    className="bg-blue-500 text-white px-2 py-1 rounded text-xs"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => deleteBlogPost(post.id)}
+                    className="bg-red-500 text-white px-2 py-1 rounded text-xs"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+              <p className="text-[#F3E3C3]/80 text-sm">{post.excerpt}</p>
+              <div className="text-xs text-[#F3E3C3]/60 mt-2">
+                {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''} | {post.category}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Edit Modal */}
+      {blogEdit && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <h3 className="text-xl font-display text-white mb-4">Edit Blog Post</h3>
+            <form onSubmit={handleUpdatePost} className="space-y-4">
+              <input
+                type="text"
+                value={blogEdit.title || ''}
+                onChange={e => setBlogEdit(p => ({ ...p, title: e.target.value }))}
+                placeholder="Post Title"
+                className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+              />
+              <textarea
+                value={blogEdit.content || ''}
+                onChange={e => setBlogEdit(p => ({ ...p, content: e.target.value }))}
+                placeholder="Post Content"
+                className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+                rows={12}
+              />
+              <div className="flex gap-2 mt-4">
+                <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">
+                  Update Post
+                </button>
+                <button 
+                  type="button" 
+                  onClick={() => setBlogEdit(null)}
+                  className="bg-gray-500 text-white py-2 px-4 rounded-md"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// --- Add missing SiteMapPreview component ---
+function SiteMapPreview({ page, content, portfolioImages, blogPosts }) {
+  switch (page) {
+    case 'about':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">{content.about?.title || 'About Us'}</h3>
+          <div className="text-[#F3E3C3]/80">
+            {content.about?.bio ? (
+              <ReactMarkdown remarkPlugins={[remarkGfm]} className="prose prose-sm prose-invert max-w-none">
+                {content.about.bio}
+              </ReactMarkdown>
+            ) : (
+              <p>About content...</p>
+            )}
+          </div>
+        </div>
+      );
+    case 'portfolio':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">Portfolio</h3>
+          <div className="grid grid-cols-3 gap-2">
+            {portfolioImages?.slice(0, 6).map(img => (
+              <div key={img.id} className="relative">
+                <img 
+                  src={img.url} 
+                  alt={img.category} 
+                  className="w-full h-16 object-cover rounded" 
+                />
+                {img.caption && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/75 p-1 rounded-b text-xs">
+                    <p className="text-[#F3E3C3]/75 font-vintage-text italic leading-relaxed">
+                      {img.caption}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-[#F3E3C3]/60 mt-2">{portfolioImages?.length || 0} images</p>
+        </div>
+      );
+    case 'blog':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">Blog</h3>
+          <div className="space-y-2">
+            {blogPosts?.slice(0, 3).map(post => (
+              <div key={post.id} className="text-sm">
+                <div className="font-semibold">{post.title}</div>
+                <div className="text-[#F3E3C3]/60 text-xs">{post.excerpt}</div>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-[#F3E3C3]/60 mt-2">{blogPosts?.length || 0} posts</p>
+        </div>
+      );
+    case 'home':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">Capture. Create. Captivate.</h3>
+          <p className="text-[#F3E3C3]/80 text-sm">
+            Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.
+          </p>
+        </div>
+      );
+    case 'services':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">Our Services</h3>
+          <div className="text-[#F3E3C3]/80 text-sm space-y-1">
+            <p>• Content & Marketing Packages</p>
+            <p>• Portrait Sessions</p>
+            <p>• Event Coverage</p>
+            <p>• Wedding & Engagement</p>
+          </div>
+        </div>
+      );
+    case 'contact':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">Get In Touch</h3>
+          <div className="text-[#F3E3C3]/80 text-sm space-y-1">
+            <p>📧 sales@studio37.cc</p>
+            <p>📞 (832) 713-9944</p>
+            <p>📍 Greater Houston Area</p>
+          </div>
+        </div>
+      );
+    default:
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">{page.charAt(0).toUpperCase() + page.slice(1)}</h3>
+          <p className="text-[#F3E3C3]/80">Preview for {page} page...</p>
+        </div>
+      );
+  }
 }
