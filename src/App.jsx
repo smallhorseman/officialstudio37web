@@ -1717,7 +1717,10 @@ const AdminDashboard = ({
   const [todosLoading, setTodosLoading] = useState(false);
   const [newTodo, setNewTodo] = useState('');
   const [activeTab, setActiveTab] = useState('crm');
-  const [allProjects, setAllProjects] = useState([]); // New state for all projects
+  const [siteMapPage, setSiteMapPage] = useState('home'); // Add missing state
+  const [internalProjects, setInternalProjects] = useState([]); // Add missing state
+  const [internalProjectsLoading, setInternalProjectsLoading] = useState(false); // Add missing state
+  const [allProjects, setAllProjects] = useState([]);
   const [allProjectsLoading, setAllProjectsLoading] = useState(false);
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [newProject, setNewProject] = useState({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '' });
@@ -1757,11 +1760,22 @@ const AdminDashboard = ({
 
   const handleCreateProject = async (e, isInternal = false) => {
     e.preventDefault();
-    const { data, error } = await supabase.from('projects').insert([{ ...newProject, is_internal: isInternal, opportunity_amount: parseFloat(newProject.opportunity_amount) || 0 }]).select();
+    const { data, error } = await supabase.from('projects').insert([{ 
+      ...newProject, 
+      is_internal: isInternal, 
+      opportunity_amount: parseFloat(newProject.opportunity_amount) || 0 
+    }]).select();
+    
     if (!error && data && data[0]) {
-      if (isInternal) setInternalProjects(p => [data[0], ...p]);
+      if (isInternal) {
+        setInternalProjects(p => [data[0], ...p]);
+      }
+      // Refresh all projects list
+      setAllProjects(p => [data[0], ...p]);
       setShowProjectForm(false);
       setNewProject({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '' });
+    } else if (error) {
+      console.error('Error creating project:', error);
     }
   };
 
@@ -1852,6 +1866,58 @@ const AdminDashboard = ({
                 <button onClick={() => setShowProjectForm('internal')} className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md">+ Internal Project</button>
               </div>
             </div>
+            
+            {/* Project Creation Form */}
+            {showProjectForm && (
+              <form onSubmit={e => handleCreateProject(e, showProjectForm === 'internal')} className="mb-8 bg-[#181818] p-4 rounded grid md:grid-cols-2 gap-4">
+                <h5 className="md:col-span-2 text-lg font-bold mb-2">
+                  Create {showProjectForm === 'internal' ? 'Internal' : 'Client'} Project
+                </h5>
+                <input 
+                  type="text" 
+                  value={newProject.name} 
+                  onChange={e => setNewProject(p => ({ ...p, name: e.target.value }))} 
+                  placeholder="Project Name" 
+                  className="bg-[#262626] border border-white/20 rounded-md py-2 px-3" 
+                  required 
+                />
+                {showProjectForm === 'client' && (
+                  <input 
+                    type="text" 
+                    value={newProject.client} 
+                    onChange={e => setNewProject(p => ({ ...p, client: e.target.value }))} 
+                    placeholder="Client Name" 
+                    className="bg-[#262626] border border-white/20 rounded-md py-2 px-3" 
+                  />
+                )}
+                {showProjectForm === 'client' && (
+                  <input 
+                    type="number" 
+                    value={newProject.opportunity_amount} 
+                    onChange={e => setNewProject(p => ({ ...p, opportunity_amount: e.target.value }))} 
+                    placeholder="Opportunity Amount ($)" 
+                    className="bg-[#262626] border border-white/20 rounded-md py-2 px-3" 
+                  />
+                )}
+                <select 
+                  value={newProject.stage} 
+                  onChange={e => setNewProject(p => ({ ...p, stage: e.target.value }))} 
+                  className="bg-[#262626] border border-white/20 rounded-md py-2 px-3"
+                >
+                  {projectStages.map(stage => <option key={stage}>{stage}</option>)}
+                </select>
+                <textarea 
+                  value={newProject.notes} 
+                  onChange={e => setNewProject(p => ({ ...p, notes: e.target.value }))} 
+                  placeholder="Notes" 
+                  className="bg-[#262626] border border-white/20 rounded-md py-2 px-3 md:col-span-2" 
+                />
+                <div className="md:col-span-2 flex gap-2">
+                  <button type="submit" className="bg-green-500 text-white font-bold py-2 px-4 rounded-md">Create Project</button>
+                  <button type="button" onClick={() => setShowProjectForm(false)} className="bg-gray-500 text-white py-2 px-4 rounded-md">Cancel</button>
+                </div>
+              </form>
+            )}
             
             {/* Debug info */}
             {allProjectsLoading && (
