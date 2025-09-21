@@ -50,8 +50,9 @@ const Logo = ({ className }) => (
 
 // --- Main Application Component --- //
 
-const AdminDashboard = lazy(() => import('./components/AdminDashboard'));
-const BlogAdminSection = lazy(() => import('./components/BlogAdminSection'));
+// Remove the lazy imports that are causing the build error
+// const AdminDashboard = lazy(() => import('./components/AdminDashboard'));
+// const BlogAdminSection = lazy(() => import('./components/BlogAdminSection'));
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -356,27 +357,25 @@ export default function App() {
             <Route path="/admin" element={<AdminLoginPage onLogin={handleAdminLogin} />} />
             <Route path="/admin/dashboard" element={
               isAdmin ? (
-                <Suspense fallback={<div className="text-center py-20">Loading admin dashboard...</div>}>
-                  <AdminDashboard
-                    leads={leads}
-                    updateLeadStatus={updateLeadStatus}
-                    content={siteContent}
-                    portfolioImages={portfolioImages}
-                    addPortfolioImage={addPortfolioImage}
-                    deletePortfolioImage={deletePortfolioImage}
-                    updatePortfolioImageOrder={updatePortfolioImageOrder}
-                    blogPosts={blogPosts}
-                    createBlogPost={createBlogPost}
-                    updateBlogPost={updateBlogPost}
-                    deleteBlogPost={deleteBlogPost}
-                    blogEdit={blogEdit}
-                    setBlogEdit={setBlogEdit}
-                    blogSaving={blogSaving}
-                    blogAdminError={blogAdminError}
-                    projects={projects}
-                    projectsLoading={projectsLoading}
-                  />
-                </Suspense>
+                <AdminDashboard
+                  leads={leads}
+                  updateLeadStatus={updateLeadStatus}
+                  content={siteContent}
+                  portfolioImages={portfolioImages}
+                  addPortfolioImage={addPortfolioImage}
+                  deletePortfolioImage={deletePortfolioImage}
+                  updatePortfolioImageOrder={updatePortfolioImageOrder}
+                  blogPosts={blogPosts}
+                  createBlogPost={createBlogPost}
+                  updateBlogPost={updateBlogPost}
+                  deleteBlogPost={deleteBlogPost}
+                  blogEdit={blogEdit}
+                  setBlogEdit={setBlogEdit}
+                  blogSaving={blogSaving}
+                  blogAdminError={blogAdminError}
+                  projects={projects}
+                  projectsLoading={projectsLoading}
+                />
               ) : <AdminLoginPage onLogin={handleAdminLogin} />
             } />
           </Routes>
@@ -1131,3 +1130,186 @@ const OptimizedImage = ({ src, alt, className, ...props }) => {
     </div>
   );
 };
+
+// --- AdminDashboard Component (inline to avoid import issues) ---
+function AdminDashboard({
+  leads,
+  updateLeadStatus,
+  content,
+  portfolioImages,
+  addPortfolioImage,
+  deletePortfolioImage,
+  updatePortfolioImageOrder,
+  blogPosts,
+  createBlogPost,
+  updateBlogPost,
+  deleteBlogPost,
+  blogEdit,
+  setBlogEdit,
+  blogSaving,
+  blogAdminError,
+  projects,
+  projectsLoading
+}) {
+  const [activeTab, setActiveTab] = useState('crm');
+  const [siteMapPage, setSiteMapPage] = useState('home');
+
+  return (
+    <div className="py-20 md:py-28 bg-[#212121]">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-display">Admin Dashboard</h2>
+          <p className="text-lg text-[#F3E3C3]/70 mt-4">Manage your business operations</p>
+        </div>
+        
+        <div className="flex flex-wrap gap-2 justify-center mb-8">
+          {['crm', 'projects', 'cms', 'blog', 'sitemap', 'analytics'].map(tab => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors ${
+                activeTab === tab 
+                  ? 'bg-[#F3E3C3] text-[#1a1a1a]' 
+                  : 'bg-[#262626] hover:bg-[#333] text-[#F3E3C3]'
+              }`}
+            >
+              {tab.toUpperCase()}
+            </button>
+          ))}
+        </div>
+
+        <div className="bg-[#262626] rounded-lg shadow-lg p-6">
+          {activeTab === 'crm' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Customer Relationship Management</h3>
+              <CrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
+            </div>
+          )}
+
+          {activeTab === 'projects' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Project Management</h3>
+              <ProjectsSection projects={projects} projectsLoading={projectsLoading} />
+            </div>
+          )}
+          
+          {activeTab === 'cms' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Content Management</h3>
+              <CmsSection
+                portfolioImages={portfolioImages}
+                addPortfolioImage={addPortfolioImage}
+                deletePortfolioImage={deletePortfolioImage}
+                updatePortfolioImageOrder={updatePortfolioImageOrder}
+              />
+            </div>
+          )}
+          
+          {activeTab === 'blog' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Blog Management</h3>
+              <BlogAdminSection
+                blogPosts={blogPosts}
+                createBlogPost={createBlogPost}
+                updateBlogPost={updateBlogPost}
+                deleteBlogPost={deleteBlogPost}
+                blogEdit={blogEdit}
+                setBlogEdit={setBlogEdit}
+                blogSaving={blogSaving}
+                blogAdminError={blogAdminError}
+              />
+            </div>
+          )}
+
+          {activeTab === 'sitemap' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Site Map Editor</h3>
+              <SiteMapTab 
+                siteMapPage={siteMapPage} 
+                setSiteMapPage={setSiteMapPage} 
+                content={content}
+                portfolioImages={portfolioImages}
+                blogPosts={blogPosts}
+              />
+            </div>
+          )}
+
+          {activeTab === 'analytics' && (
+            <div>
+              <h3 className="text-2xl font-display mb-6">Analytics Dashboard</h3>
+              <AnalyticsSection leads={leads} projects={projects} blogPosts={blogPosts} />
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// --- Site Map Preview ---
+function SiteMapPreview({ page, content, portfolioImages, blogPosts }) {
+  switch (page) {
+    case 'about':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">{content.about?.title || 'About Us'}</h3>
+          <div className="text-[#F3E3C3]/80">
+            {content.about?.bio ? (
+              <ReactMarkdown remarkPlugins={[remarkGfm]} className="prose prose-sm prose-invert max-w-none">
+                {content.about.bio}
+              </ReactMarkdown>
+            ) : (
+              <p>About content...</p>
+            )}
+          </div>
+        </div>
+      );
+    case 'portfolio':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">Portfolio</h3>
+          <div className="grid grid-cols-3 gap-2">
+            {portfolioImages?.slice(0, 6).map(img => (
+              <div key={img.id} className="relative">
+                <img 
+                  src={img.url} 
+                  alt={img.category} 
+                  className="w-full h-16 object-cover rounded" 
+                />
+                {img.caption && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/75 p-1 rounded-b text-xs">
+                    <p className="text-[#F3E3C3]/75 font-vintage-text italic leading-relaxed">
+                      {img.caption}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-[#F3E3C3]/60 mt-2">{portfolioImages?.length || 0} images</p>
+        </div>
+      );
+    case 'blog':
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">Blog</h3>
+          <div className="space-y-2">
+            {blogPosts?.slice(0, 3).map(post => (
+              <div key={post.id} className="bg-[#181818] p-2 rounded text-xs">
+                <div className="font-bold">{post.title}</div>
+                <div className="text-[#F3E3C3]/60">{post.excerpt?.substring(0, 60)}...</div>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-[#F3E3C3]/60 mt-2">{blogPosts?.length || 0} posts</p>
+        </div>
+      );
+    default:
+      return (
+        <div>
+          <h3 className="text-lg font-bold mb-2">{page.charAt(0).toUpperCase() + page.slice(1)}</h3>
+          <p className="text-[#F3E3C3]/70">Preview for {page} page...</p>
+        </div>
+      );
+  }
+}
