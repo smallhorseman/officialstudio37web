@@ -615,7 +615,7 @@ const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-display">Our Work</h2>
-          <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto">A curated selection of our favorite moments and projects.</p>
+          <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">A curated selection of our favorite moments and projects.</p>
         </div>
         {!isUnlocked && <PortfolioGate onUnlock={onUnlock} />}
         {isUnlocked && (
@@ -1506,7 +1506,7 @@ function CrmSection({ leads, updateLeadStatus }) {
                     </select>
                     <button
                       onClick={() => openLeadDetails(lead)}
-                      className="bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600"
+                      className="bg-blue-500 text-white px-3 py-1 rounded text-xs"
                     >
                       Details
                     </button>
@@ -1517,7 +1517,7 @@ function CrmSection({ leads, updateLeadStatus }) {
                         setError('');
                         fetchLeadNotes(lead.id);
                       }}
-                      className="bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600"
+                      className="bg-green-500 text-white px-3 py-1 rounded text-xs"
                     >
                       Notes
                     </button>
@@ -1528,7 +1528,7 @@ function CrmSection({ leads, updateLeadStatus }) {
                         setError('');
                         fetchContactHistory(lead.id);
                       }}
-                      className="bg-purple-500 text-white px-3 py-1 rounded text-xs hover:bg-purple-600"
+                      className="bg-purple-500 text-white px-3 py-1 rounded text-xs"
                     >
                       Contact
                     </button>
@@ -2005,6 +2005,169 @@ function CmsSection({ content, updateContent, portfolioImages, addPortfolioImage
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+// --- Blog Admin Section (Blog CRUD for Admin) ---
+function BlogAdminSection({
+  blogPosts,
+  createBlogPost,
+  updateBlogPost,
+  deleteBlogPost,
+  blogEdit,
+  setBlogEdit,
+  blogSaving,
+  blogAdminError
+}) {
+  const [newPost, setNewPost] = useState({
+    title: '',
+    slug: '',
+    excerpt: '',
+    content: '',
+    author: '',
+    publish_date: '',
+    tags: '',
+    category: ''
+  });
+
+  const handleNewChange = e => {
+    const { name, value } = e.target;
+    setNewPost(p => ({ ...p, [name]: value }));
+  };
+
+  const handleCreate = async e => {
+    e.preventDefault();
+    await createBlogPost({
+      ...newPost,
+      tags: typeof newPost.tags === 'string'
+        ? newPost.tags.split(',').map(t => t.trim()).filter(Boolean)
+        : Array.isArray(newPost.tags)
+          ? newPost.tags
+          : [],
+      publish_date: newPost.publish_date || new Date().toISOString()
+    });
+    setNewPost({
+      title: '',
+      slug: '',
+      excerpt: '',
+      content: '',
+      author: '',
+      publish_date: '',
+      tags: '',
+      category: ''
+    });
+  };
+
+  const [editForm, setEditForm] = useState(null);
+
+  useEffect(() => {
+    if (blogEdit) {
+      const post = blogPosts.find(p => p.id === blogEdit) || null;
+      if (post) {
+        setEditForm({
+          ...post,
+          tags: Array.isArray(post.tags)
+            ? post.tags.join(', ')
+            : (typeof post.tags === 'string' ? post.tags : '')
+        });
+      } else {
+        setEditForm(null);
+      }
+    } else {
+      setEditForm(null);
+    }
+  }, [blogEdit, blogPosts]);
+
+  const handleEditChange = e => {
+    const { name, value } = e.target;
+    setEditForm(f => ({ ...f, [name]: value }));
+  };
+
+  const handleUpdate = async e => {
+    e.preventDefault();
+    await updateBlogPost(editForm.id, {
+      ...editForm,
+      tags: typeof editForm.tags === 'string'
+        ? editForm.tags.split(',').map(t => t.trim()).filter(Boolean)
+        : Array.isArray(editForm.tags)
+          ? editForm.tags
+          : []
+    });
+    setBlogEdit(null);
+  };
+
+  if (blogSaving) {
+    return <div className="text-[#F3E3C3] py-8">Saving...</div>;
+  }
+
+  return (
+    <div>
+      <h4 className="text-xl font-display mb-4">Blog Posts</h4>
+      {blogAdminError && <div className="text-red-400 mb-2">{blogAdminError}</div>}
+      {editForm ? (
+        <form onSubmit={handleUpdate} className="space-y-2 mb-8 bg-[#232323] p-4 rounded"></form>
+          <input name="title" value={editForm.title} onChange={handleEditChange} placeholder="Title" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
+          <input name="slug" value={editForm.slug} onChange={handleEditChange} placeholder="Slug" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
+          <input name="author" value={editForm.author} onChange={handleEditChange} placeholder="Author" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <input name="publish_date" value={editForm.publish_date} onChange={handleEditChange} placeholder="Publish Date" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" type="date" />
+          <input name="category" value={editForm.category} onChange={handleEditChange} placeholder="Category" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <input name="tags" value={editForm.tags} onChange={handleEditChange} placeholder="Tags (comma separated)" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <textarea name="excerpt" value={editForm.excerpt} onChange={handleEditChange} placeholder="Excerpt" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <textarea name="content" value={editForm.content} onChange={handleEditChange} placeholder="Content (Markdown supported)" rows={6} className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <div className="flex gap-2">
+            <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">Save</button>
+            <button type="button" onClick={() => setBlogEdit(null)} className="bg-gray-500 text-white py-2 px-4 rounded-md">Cancel</button>
+          </div>
+        </form>
+      ) : (
+        <form onSubmit={handleCreate} className="space-y-2 mb-8 bg-[#232323] p-4 rounded"></form>
+          <input name="title" value={newPost.title} onChange={handleNewChange} placeholder="Title" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
+          <input name="slug" value={newPost.slug} onChange={handleNewChange} placeholder="Slug" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
+          <input name="author" value={newPost.author} onChange={handleNewChange} placeholder="Author" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <input name="publish_date" value={newPost.publish_date} onChange={handleNewChange} placeholder="Publish Date" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" type="date" />
+          <input name="category" value={newPost.category} onChange={handleNewChange} placeholder="Category" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <input name="tags" value={newPost.tags} onChange={handleNewChange} placeholder="Tags (comma separated)" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <textarea name="excerpt" value={newPost.excerpt} onChange={handleNewChange} placeholder="Excerpt" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <textarea name="content" value={newPost.content} onChange={handleNewChange} placeholder="Content (Markdown supported)" rows={6} className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md">Create Post</button>
+        </form>
+      )}
+      <div className="overflow-x-auto">
+        <table className="w-full text-left">
+          <thead className="border-b border-white/10">
+            <tr>
+              <th className="p-3">Title</th>
+              <th className="p-3">Author</th>
+              <th className="p-3">Date</th>
+              <th className="p-3">Category</th>
+              <th className="p-3">Tags</th>
+              <th className="p-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {blogPosts.map(post => (
+              <tr key={post.id} className="border-b border-white/10 last:border-b-0">
+                <td className="p-3 font-bold">{post.title}</td>
+                <td className="p-3">{post.author}</td>
+                <td className="p-3 text-xs">{post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}</td>
+                <td className="p-3">{post.category}</td>
+                <td className="p-3">
+                  {
+                    Array.isArray(post.tags)
+                      ? post.tags.join(', ')
+                      : (typeof post.tags === 'string' ? post.tags : '')
+                  }
+                </td>
+                <td className="p-3 flex gap-2">
+                  <button onClick={() => setBlogEdit(post.id)} className="bg-blue-500 text-white px-3 py-1 rounded text-xs">Edit</button>
+                  <button onClick={() => deleteBlogPost(post.id)} className="bg-red-600 text-white px-3 py-1 rounded text-xs">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
