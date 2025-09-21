@@ -1091,7 +1091,7 @@ function Footer() {
   );
 }
 
-// --- Enhanced CRM Section with SMS and improved functionality ---
+// --- Enhanced CRM Section with Project Integration ---
 function CrmSection({ leads, updateLeadStatus }) {
   const [selectedLead, setSelectedLead] = useState(null);
   const [showNotes, setShowNotes] = useState(false);
@@ -1103,6 +1103,7 @@ function CrmSection({ leads, updateLeadStatus }) {
   const [newContact, setNewContact] = useState({ type: 'email', subject: '', message: '' });
   const [leadNotes, setLeadNotes] = useState([]);
   const [contactHistory, setContactHistory] = useState([]);
+  const [leadProjects, setLeadProjects] = useState([]); // Add this for lead projects
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -1154,6 +1155,27 @@ function CrmSection({ leads, updateLeadStatus }) {
       setContactHistory([]);
     }
     setLoading(false);
+  };
+
+  // Add function to fetch lead projects
+  const fetchLeadProjects = async (leadId) => {
+    try {
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .eq('lead_id', leadId)
+        .order('created_at', { ascending: false });
+      
+      if (error) {
+        console.error('Error fetching lead projects:', error);
+        setLeadProjects([]);
+      } else {
+        setLeadProjects(data || []);
+      }
+    } catch (err) {
+      console.error('Exception fetching lead projects:', err);
+      setLeadProjects([]);
+    }
   };
 
   const addNote = async () => {
@@ -1241,6 +1263,7 @@ function CrmSection({ leads, updateLeadStatus }) {
     setError('');
     fetchLeadNotes(lead.id);
     fetchContactHistory(lead.id);
+    fetchLeadProjects(lead.id); // Add this line
   };
 
   if (!leads || leads.length === 0) {
@@ -1357,10 +1380,10 @@ function CrmSection({ leads, updateLeadStatus }) {
         </table>
       </div>
 
-      {/* Lead Details Modal */}
+      {/* Enhanced Lead Details Modal with Projects */}
       {showLeadDetails && selectedLead && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-6xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-2xl font-display text-white">{selectedLead.name} - Lead Details</h3>
               <button
@@ -1375,7 +1398,7 @@ function CrmSection({ leads, updateLeadStatus }) {
               </button>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-3 gap-6">
               <div>
                 <h4 className="text-lg font-bold mb-3">Contact Information</h4>
                 <div className="space-y-2 text-[#F3E3C3]/80">
@@ -1429,53 +1452,89 @@ function CrmSection({ leads, updateLeadStatus }) {
                   )}
                 </div>
               </div>
-            </div>
 
-            <div className="mt-6">
-              <h4 className="text-lg font-bold mb-3">Recent Notes ({leadNotes.length})</h4>
-              <div className="bg-[#181818] rounded p-4 max-h-40 overflow-y-auto">
-                {loading ? (
-                  <p className="text-[#F3E3C3]/70">Loading notes...</p>
-                ) : leadNotes.length > 0 ? (
-                  leadNotes.slice(0, 3).map(note => (
-                    <div key={note.id} className="mb-2 pb-2 border-b border-white/10 last:border-b-0">
-                      <p className="text-[#F3E3C3]/90">{note.note}</p>
-                      <p className="text-xs text-[#F3E3C3]/60 mt-1">
-                        {note.created_at ? new Date(note.created_at).toLocaleDateString() : ''} - {note.status}
-                      </p>
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-[#F3E3C3]/70">No notes yet</p>
-                )}
+              <div>
+                <h4 className="text-lg font-bold mb-3">Projects ({leadProjects.length})</h4>
+                <div className="bg-[#181818] rounded p-4 max-h-64 overflow-y-auto">
+                  {leadProjects.length > 0 ? (
+                    leadProjects.map(project => (
+                      <div key={project.id} className="mb-3 pb-3 border-b border-white/10 last:border-b-0">
+                        <div className="flex justify-between items-start mb-1">
+                          <h6 className="font-bold text-[#F3E3C3] text-sm">{project.name}</h6>
+                          <span className="text-xs px-2 py-1 bg-[#F3E3C3]/10 rounded">
+                            {project.stage}
+                          </span>
+                        </div>
+                        {project.client && (
+                          <p className="text-[#F3E3C3]/70 text-xs">Client: {project.client}</p>
+                        )}
+                        {project.opportunity_amount > 0 && (
+                          <p className="text-green-400 text-xs font-bold">
+                            ${project.opportunity_amount.toLocaleString()}
+                          </p>
+                        )}
+                        {project.notes && (
+                          <p className="text-[#F3E3C3]/60 text-xs mt-1">{project.notes}</p>
+                        )}
+                        <p className="text-[#F3E3C3]/40 text-xs mt-1">
+                          {project.created_at ? new Date(project.created_at).toLocaleDateString() : ''}
+                        </p>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-[#F3E3C3]/70">No projects yet</p>
+                  )}
+                </div>
               </div>
             </div>
 
-            <div className="mt-6">
-              <h4 className="text-lg font-bold mb-3">Recent Contact History ({contactHistory.length})</h4>
-              <div className="bg-[#181818] rounded p-4 max-h-40 overflow-y-auto">
-                {loading ? (
-                  <p className="text-[#F3E3C3]/70">Loading contact history...</p>
-                ) : contactHistory.length > 0 ? (
-                  contactHistory.slice(0, 3).map(contact => (
-                    <div key={contact.id} className="mb-2 pb-2 border-b border-white/10 last:border-b-0">
-                      <div className="flex justify-between items-start">
-                        <h6 className="font-bold text-[#F3E3C3] text-sm">{contact.subject}</h6>
-                        <span className="text-xs px-2 py-1 bg-[#F3E3C3]/10 rounded">
-                          {contact.contact_type}
-                        </span>
+            <div className="mt-6 grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="text-lg font-bold mb-3">Recent Notes ({leadNotes.length})</h4>
+                <div className="bg-[#181818] rounded p-4 max-h-40 overflow-y-auto">
+                  {loading ? (
+                    <p className="text-[#F3E3C3]/70">Loading notes...</p>
+                  ) : leadNotes.length > 0 ? (
+                    leadNotes.slice(0, 3).map(note => (
+                      <div key={note.id} className="mb-2 pb-2 border-b border-white/10 last:border-b-0">
+                        <p className="text-[#F3E3C3]/90">{note.note}</p>
+                        <p className="text-xs text-[#F3E3C3]/60 mt-1">
+                          {note.created_at ? new Date(note.created_at).toLocaleDateString() : ''} - {note.status}
+                        </p>
                       </div>
-                      {contact.message && (
-                        <p className="text-[#F3E3C3]/80 text-sm mt-1">{contact.message}</p>
-                      )}
-                      <p className="text-xs text-[#F3E3C3]/60 mt-1">
-                        {contact.created_at ? new Date(contact.created_at).toLocaleDateString() : ''}
-                      </p>
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-[#F3E3C3]/70">No contact history yet</p>
-                )}
+                    ))
+                  ) : (
+                    <p className="text-[#F3E3C3]/70">No notes yet</p>
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">Recent Contact History ({contactHistory.length})</h4>
+                <div className="bg-[#181818] rounded p-4 max-h-40 overflow-y-auto">
+                  {loading ? (
+                    <p className="text-[#F3E3C3]/70">Loading contact history...</p>
+                  ) : contactHistory.length > 0 ? (
+                    contactHistory.slice(0, 3).map(contact => (
+                      <div key={contact.id} className="mb-2 pb-2 border-b border-white/10 last:border-b-0">
+                        <div className="flex justify-between items-start">
+                          <h6 className="font-bold text-[#F3E3C3] text-sm">{contact.subject}</h6>
+                          <span className="text-xs px-2 py-1 bg-[#F3E3C3]/10 rounded">
+                            {contact.contact_type}
+                          </span>
+                        </div>
+                        {contact.message && (
+                          <p className="text-[#F3E3C3]/80 text-sm mt-1">{contact.message}</p>
+                        )}
+                        <p className="text-xs text-[#F3E3C3]/60 mt-1">
+                          {contact.created_at ? new Date(contact.created_at).toLocaleDateString() : ''}
+                        </p>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-[#F3E3C3]/70">No contact history yet</p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -1699,423 +1758,97 @@ function CrmSection({ leads, updateLeadStatus }) {
   );
 }
 
-// --- Error Boundary Wrapper (for handling errors in the entire app) ---
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, errorMessage: '' };
-  }
-
-  static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
-    return { hasError: true, errorMessage: error.message };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    // You can also log the error to an error reporting service
-    console.error('ErrorBoundary caught an error', error, errorInfo);
-  }
-
-  handleReset = () => {
-    // Reset the error boundary
-    this.setState({ hasError: false, errorMessage: '' });
-  };
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div className="min-h-screen flex items-center justify-center bg-[#181818] text-[#F3E3C3]">
-          <div className="text-center">
-            <h1 className="text-4xl font-display mb-4">Oops! Something went wrong.</h1>
-            <p className="text-lg mb-8">{this.state.errorMessage}</p>
-            <button
-              onClick={this.handleReset}
-              className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-6 rounded-full shadow-lg transition-transform hover:scale-105"
-            >
-              Try Again
-            </button>
-          </div>
-        </div>
-      );
-    }
-
-    return this.props.children; 
-  }
-}
-
-// --- Wrapping the App component with ErrorBoundary ---
-export function Root() {
-  return (
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
-  );
-}
-
-// --- Enhanced Contact Page with Text Option ---
-const ContactPage = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-    contactMethod: 'email'
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [sending, setSending] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSending(true);
-    
-    // Save contact submission to Supabase
-    await supabase.from('leads').insert([{
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      service: 'Contact Form',
-      status: 'New'
-    }]);
-
-    // Add note with contact details
-    const { data: leadData } = await supabase
-      .from('leads')
-      .select('id')
-      .eq('email', formData.email)
-      .order('created_at', { ascending: false })
-      .limit(1);
-
-    if (leadData && leadData[0]) {
-      await supabase.from('lead_notes').insert([{
-        lead_id: leadData[0].id,
-        note: `Contact Form: Preferred contact: ${formData.contactMethod}. Message: ${formData.message}`,
-        status: 'Contact Form'
-      }]);
-    }
-
-    setSending(false);
-    setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <div className="py-20 md:py-28 bg-[#212121]">
-        <div className="container mx-auto px-6 text-center">
-          <div className="bg-[#262626] rounded-lg p-8 max-w-md mx-auto">
-            <h2 className="text-3xl font-display text-white mb-4">Thank You!</h2>
-            <p className="text-[#F3E3C3]/80">We've received your message and will get back to you soon!</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="py-20 md:py-28 bg-[#212121]">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-display">Get In Touch</h2>
-          <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
-        </div>
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <input 
-              type="text" 
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Your Name" 
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
-              required 
-            />
-            <input 
-              type="email" 
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Your Email" 
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
-              required 
-            />
-            <input 
-              type="tel" 
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="Your Phone (Optional)" 
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
-            />
-            <div>
-              <label className="block text-sm font-medium text-[#F3E3C3] mb-2">Preferred Contact Method</label>
-              <select 
-                name="contactMethod"
-                value={formData.contactMethod}
-                onChange={handleChange}
-                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
-              >
-                <option value="email">Email</option>
-                <option value="phone">Phone Call</option>
-                <option value="text">Text Message</option>
-              </select>
-            </div>
-            <textarea 
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Your Message" 
-              rows="5" 
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
-              required
-            />
-            <button 
-              type="submit" 
-              className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105"
-              disabled={sending}
-            >
-              {sending ? 'Sending...' : 'Send Message'} <ArrowRight />
-            </button>
-          </form>
-          <div className="text-[#F3E3C3]/80 space-y-6">
-            <div>
-              <h3 className="text-xl font-display text-white">Contact Info</h3>
-              <p>Email: <a href="mailto:sales@studio37.cc" className="hover:text-white transition">sales@studio37.cc</a></p>
-              <p>Phone: <a href="tel:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
-              <p>Text: <a href="sms:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
-            </div>
-            <div>
-              <h3 className="text-xl font-display text-white">Location</h3>
-              <p>Serving the Greater Houston Area</p>
-              <p>Based near Porter, TX 77362</p>
-            </div>
-            <div className="mt-4">
-              <iframe
-                title="Map of Houston"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111049.9644254322!2d-95.469384!3d29.817478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b8b1b8b1b8b1%3A0x8b1b8b1b8b1b8b1b!2sHouston%2C%20TX!5e0!3m2!1sen!2sus!4v1631910000000!5m2!1sen!2sus"
-                width="100%"
-                height="300"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-lg shadow-lg w-full"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// --- Enhanced CMS Section (Portfolio Management Only) ---
-function CmsSection({ portfolioImages, addPortfolioImage, deletePortfolioImage }) {
-  const [imageUrl, setImageUrl] = useState('');
-  const [imageCategory, setImageCategory] = useState('');
-  const [imageCaption, setImageCaption] = useState('');
-  const [addingImage, setAddingImage] = useState(false);
-  const [showPortfolioPreview, setShowPortfolioPreview] = useState(false);
-
-  const handleAddImage = async (e) => {
-    e.preventDefault();
-    setAddingImage(true);
-    await addPortfolioImage({
-      url: imageUrl,
-      category: imageCategory,
-      caption: imageCaption,
-      order_index: portfolioImages.length,
-      created_at: new Date().toISOString()
-    });
-    setImageUrl('');
-    setImageCategory('');
-    setImageCaption('');
-    setAddingImage(false);
-  };
-
-  return (
-    <div>
-      <h4 className="text-xl font-display mb-6">Portfolio Management</h4>
-      
-      <div className="grid md:grid-cols-2 gap-8 mb-8">
-        <div>
-          <div className="flex justify-between items-center mb-4">
-            <h5 className="text-lg font-bold">Add New Image</h5>
-            <button
-              onClick={() => setShowPortfolioPreview(true)}
-              className="bg-purple-500 text-white px-3 py-1 rounded text-sm hover:bg-purple-600"
-            >
-              Preview Gallery
-            </button>
-          </div>
-          <form onSubmit={handleAddImage} className="space-y-4">
-            <input
-              type="url"
-              value={imageUrl}
-              onChange={e => setImageUrl(e.target.value)}
-              placeholder="Image URL"
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-              required
-            />
-            <input
-              type="text"
-              value={imageCategory}
-              onChange={e => setImageCategory(e.target.value)}
-              placeholder="Category"
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-            />
-            <input
-              type="text"
-              value={imageCaption}
-              onChange={e => setImageCaption(e.target.value)}
-              placeholder="Caption"
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3"
-            />
-            <button
-              type="submit"
-              className="w-full bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md"
-              disabled={addingImage || !imageUrl}
-            >
-              {addingImage ? 'Adding...' : 'Add Image'}
-            </button>
-          </form>
-        </div>
-
-        <div>
-          <h5 className="text-lg font-bold mb-4">Current Images ({portfolioImages.length})</h5>
-          <div className="grid grid-cols-3 gap-2 max-h-80 overflow-y-auto">
-            {portfolioImages.map(img => (
-              <div key={img.id} className="relative group">
-                <img src={img.url} alt={img.category} className="w-full h-20 object-cover rounded" />
-                <button
-                  onClick={() => deletePortfolioImage(img.id)}
-                  className="absolute top-1 right-1 bg-red-600 text-white text-xs px-1 py-1 rounded opacity-80 group-hover:opacity-100"
-                  title="Delete"
-                >
-                  &times;
-                </button>
-                <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 rounded-b truncate">
-                  {img.category || 'No category'}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Portfolio Preview Modal */}
-      {showPortfolioPreview && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
-          <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-6xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-2xl font-display text-white">Portfolio Gallery Preview</h3>
-              <button
-                onClick={() => setShowPortfolioPreview(false)}
-                className="text-white text-2xl hover:text-gray-300"
-              >
-                &times;
-              </button>
-            </div>
-            
-            <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-              {portfolioImages.map(img => (
-                <div key={img.id} className="break-inside-avoid group relative">
-                  <img src={img.url} alt={img.category} className="w-full rounded-lg shadow-lg hover:opacity-90 transition-opacity" />
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-between p-3">
-                    <span className="text-white text-sm bg-black/50 px-2 py-1 rounded self-start">
-                      {img.category || 'No category'}
-                    </span>
-                    {img.caption && (
-                      <span className="text-white text-xs bg-black/50 px-2 py-1 rounded">
-                        {img.caption}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// --- Admin Dashboard Component ---
+// --- Enhanced Admin Dashboard with Project Details ---
 const AdminDashboard = ({
   leads, updateLeadStatus, content, portfolioImages, addPortfolioImage, deletePortfolioImage,
   blogPosts, createBlogPost, updateBlogPost, deleteBlogPost, blogEdit, setBlogEdit, blogSaving, blogAdminError, projects, projectsLoading
 }) => {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [projectTodos, setProjectTodos] = useState([]);
-  const [todosLoading, setTodosLoading] = useState(false);
-  const [newTodo, setNewTodo] = useState('');
+  const [showProjectDetails, setShowProjectDetails] = useState(false);
+  const [projectNotes, setProjectNotes] = useState([]);
+  const [newProjectNote, setNewProjectNote] = useState('');
+  const [projectNotesLoading, setProjectNotesLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('crm');
   const [siteMapPage, setSiteMapPage] = useState('home');
-  const [internalProjects, setInternalProjects] = useState([]);
-  const [internalProjectsLoading, setInternalProjectsLoading] = useState(false);
   const [allProjects, setAllProjects] = useState([]);
   const [allProjectsLoading, setAllProjectsLoading] = useState(false);
   const [showProjectForm, setShowProjectForm] = useState(false);
-  const [newProject, setNewProject] = useState({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '' });
+  const [newProject, setNewProject] = useState({ 
+    name: '', 
+    client: '', 
+    opportunity_amount: '', 
+    stage: 'Inquiry', 
+    notes: '',
+    lead_id: '' // Add lead_id field
+  });
   const projectStages = ['Inquiry', 'Proposal', 'Booked', 'In Progress', 'Delivered', 'Closed'];
 
-  // Fetch internal projects only (client projects come from props)
-  useEffect(() => {
-    if (activeTab === 'projects') {
-      setInternalProjectsLoading(true);
-      supabase.from('projects').select('*').eq('is_internal', true).order('created_at', { ascending: false }).then(({ data }) => {
-        setInternalProjects(data || []);
-        setInternalProjectsLoading(false);
-      });
-    }
-  }, [activeTab]);
-
-  // Fetch ALL projects when projects tab is active
-  useEffect(() => {
-    if (activeTab === 'projects') {
-      setAllProjectsLoading(true);
-      supabase
-        .from('projects')
+  // Fetch project notes
+  const fetchProjectNotes = async (projectId) => {
+    setProjectNotesLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('project_notes')
         .select('*')
-        .order('created_at', { ascending: false })
-        .then(({ data, error }) => {
-          if (error) {
-            console.error('Error fetching projects:', error);
-            setAllProjects([]);
-          } else {
-            console.log('Fetched projects:', data);
-            setAllProjects(data || []);
-          }
-          setAllProjectsLoading(false);
-        });
-    }
-  }, [activeTab]);
-
-  const handleCreateProject = async (e, isInternal = false) => {
-    e.preventDefault();
-    const { data, error } = await supabase.from('projects').insert([{ 
-      ...newProject, 
-      is_internal: isInternal, 
-      opportunity_amount: parseFloat(newProject.opportunity_amount) || 0 
-    }]).select();
-    
-    if (!error && data && data[0]) {
-      if (isInternal) {
-        setInternalProjects(p => [data[0], ...p]);
+        .eq('project_id', projectId)
+        .order('created_at', { ascending: false });
+      
+      if (error) {
+        console.error('Error fetching project notes:', error);
+        setProjectNotes([]);
+      } else {
+        setProjectNotes(data || []);
       }
-      // Refresh all projects list
-      setAllProjects(p => [data[0], ...p]);
-      setShowProjectForm(false);
-      setNewProject({ name: '', client: '', opportunity_amount: '', stage: 'Inquiry', notes: '' });
-    } else if (error) {
-      console.error('Error creating project:', error);
+    } catch (err) {
+      console.error('Exception fetching project notes:', err);
+      setProjectNotes([]);
+    }
+    setProjectNotesLoading(false);
+  };
+
+  // Add project note
+  const addProjectNote = async () => {
+    if (!newProjectNote.trim() || !selectedProject) return;
+    try {
+      const { error } = await supabase.from('project_notes').insert([{
+        project_id: selectedProject.id,
+        note: newProjectNote,
+        created_at: new Date().toISOString()
+      }]);
+      
+      if (error) {
+        console.error('Error adding project note:', error);
+      } else {
+        setNewProjectNote('');
+        await fetchProjectNotes(selectedProject.id);
+      }
+    } catch (err) {
+      console.error('Exception adding project note:', err);
     }
   };
 
-  // Analytics calculations
+  // Open project details
+  const openProjectDetails = (project) => {
+    setSelectedProject(project);
+    setShowProjectDetails(true);
+    fetchProjectNotes(project.id);
+  };
+
+  // Update project status/stage
+  const updateProjectStage = async (projectId, stage) => {
+    try {
+      await supabase.from('projects').update({ stage }).eq('id', projectId);
+      // Refresh projects list
+      const updatedProjects = allProjects.map(p => 
+        p.id === projectId ? { ...p, stage } : p
+      );
+      setAllProjects(updatedProjects);
+    } catch (err) {
+      console.error('Error updating project stage:', err);
+    }
+  };
+
+  // --- Analytics calculations
   const totalLeads = leads.length;
   const bookedLeads = leads.filter(l => l.status === 'Booked').length;
   const conversionRate = totalLeads > 0 ? ((bookedLeads / totalLeads) * 100).toFixed(1) : '0.0';
@@ -2203,7 +1936,7 @@ const AdminDashboard = ({
               </div>
             </div>
             
-            {/* Project Creation Form */}
+            {/* Enhanced Project Creation Form */}
             {showProjectForm && (
               <form onSubmit={e => handleCreateProject(e, showProjectForm === 'internal')} className="mb-8 bg-[#181818] p-4 rounded grid md:grid-cols-2 gap-4">
                 <h5 className="md:col-span-2 text-lg font-bold mb-2">
@@ -2242,6 +1975,18 @@ const AdminDashboard = ({
                 >
                   {projectStages.map(stage => <option key={stage}>{stage}</option>)}
                 </select>
+                {showProjectForm === 'client' && (
+                  <select 
+                    value={newProject.lead_id} 
+                    onChange={e => setNewProject(p => ({ ...p, lead_id: e.target.value }))} 
+                    className="bg-[#262626] border border-white/20 rounded-md py-2 px-3"
+                  >
+                    <option value="">Connect to Lead (Optional)</option>
+                    {leads.map(lead => (
+                      <option key={lead.id} value={lead.id}>{lead.name} - {lead.email}</option>
+                    ))}
+                  </select>
+                )}
                 <textarea 
                   value={newProject.notes} 
                   onChange={e => setNewProject(p => ({ ...p, notes: e.target.value }))} 
@@ -2255,18 +2000,7 @@ const AdminDashboard = ({
               </form>
             )}
             
-            {/* Debug info */}
-            {allProjectsLoading && (
-              <div className="text-[#F3E3C3] mb-4">Loading all projects...</div>
-            )}
-            
-            {!allProjectsLoading && allProjects.length === 0 && (
-              <div className="bg-[#181818] p-4 rounded mb-4">
-                <p className="text-[#F3E3C3]/70">No projects found in database.</p>
-                <p className="text-xs text-[#F3E3C3]/60">Create a new project above to get started.</p>
-              </div>
-            )}
-
+            {/* Enhanced Projects List */}
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h5 className="text-lg font-display mb-4">
@@ -2274,15 +2008,37 @@ const AdminDashboard = ({
                 </h5>
                 <div className="space-y-3 max-h-96 overflow-y-auto">
                   {allProjects.filter(p => !p.is_internal).map(proj => (
-                    <div key={proj.id} className="bg-[#181818] rounded p-3">
+                    <div key={proj.id} className="bg-[#181818] rounded p-4">
                       <div className="flex justify-between items-start mb-2">
                         <h6 className="font-bold text-[#F3E3C3]">{proj.name}</h6>
-                        <span className="text-xs px-2 py-1 bg-[#F3E3C3]/10 rounded">{proj.stage}</span>
+                        <div className="flex gap-1">
+                          <select
+                            value={proj.stage}
+                            onChange={e => updateProjectStage(proj.id, e.target.value)}
+                            className="bg-[#262626] border border-white/20 rounded px-2 py-1 text-xs text-[#F3E3C3]"
+                          >
+                            {projectStages.map(stage => (
+                              <option key={stage} value={stage}>{stage}</option>
+                            ))}
+                          </select>
+                          <button
+                            onClick={() => openProjectDetails(proj)}
+                            className="bg-blue-500 text-white px-2 py-1 rounded text-xs"
+                            title="View Details"
+                          >
+                            👁️
+                          </button>
+                        </div>
                       </div>
                       <p className="text-sm text-[#F3E3C3]/70">{proj.client}</p>
                       {proj.opportunity_amount > 0 && (
                         <p className="text-sm font-bold text-green-400">
                           ${proj.opportunity_amount?.toLocaleString?.()}
+                        </p>
+                      )}
+                      {proj.lead_id && (
+                        <p className="text-xs text-blue-400">
+                          Connected to Lead: {leads.find(l => l.id === proj.lead_id)?.name || 'Unknown'}
                         </p>
                       )}
                       <p className="text-xs text-[#F3E3C3]/60 mt-2">{proj.notes}</p>
@@ -2303,12 +2059,21 @@ const AdminDashboard = ({
                 </h5>
                 <div className="space-y-3 max-h-96 overflow-y-auto">
                   {allProjects.filter(p => p.is_internal).map(proj => (
-                    <div key={proj.id} className="bg-[#181818] rounded p-3">
+                    <div key={proj.id} className="bg-[#181818] rounded p-4">
                       <div className="flex justify-between items-start mb-2">
                         <h6 className="font-bold text-[#F3E3C3]">{proj.name}</h6>
-                        <span className="text-xs px-2 py-1 bg-blue-500/20 text-blue-400 rounded">
-                          Internal
-                        </span>
+                        <div className="flex gap-1">
+                          <span className="text-xs px-2 py-1 bg-blue-500/20 text-blue-400 rounded">
+                            Internal
+                          </span>
+                          <button
+                            onClick={() => openProjectDetails(proj)}
+                            className="bg-blue-500 text-white px-2 py-1 rounded text-xs"
+                            title="View Details"
+                          >
+                            👁️
+                          </button>
+                        </div>
                       </div>
                       <p className="text-xs text-[#F3E3C3]/60">{proj.notes}</p>
                       <p className="text-xs text-[#F3E3C3]/40 mt-1">
@@ -2324,12 +2089,97 @@ const AdminDashboard = ({
             </div>
           </div>
         )}
+
+        {/* Project Details Modal */}
+        {showProjectDetails && selectedProject && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+            <div className="bg-[#232323] rounded-lg shadow-xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-2xl font-display text-white">{selectedProject.name} - Project Details</h3>
+                <button
+                  onClick={() => {
+                    setShowProjectDetails(false);
+                    setSelectedProject(null);
+                  }}
+                  className="text-white text-2xl hover:text-gray-300"
+                >
+                  &times;
+                </button>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="text-lg font-bold mb-3">Project Information</h4>
+                  <div className="space-y-2 text-[#F3E3C3]/80">
+                    <p><strong>Name:</strong> {selectedProject.name}</p>
+                    {selectedProject.client && <p><strong>Client:</strong> {selectedProject.client}</p>}
+                    <p><strong>Stage:</strong> <span className="px-2 py-1 rounded bg-[#F3E3C3]/10">{selectedProject.stage}</span></p>
+                    {selectedProject.opportunity_amount > 0 && (
+                      <p><strong>Value:</strong> <span className="text-green-400 font-bold">${selectedProject.opportunity_amount.toLocaleString()}</span></p>
+                    )}
+                    <p><strong>Type:</strong> {selectedProject.is_internal ? 'Internal' : 'Client'}</p>
+                    {selectedProject.lead_id && (
+                      <p><strong>Connected Lead:</strong> {leads.find(l => l.id === selectedProject.lead_id)?.name || 'Unknown'}</p>
+                    )}
+                    <p><strong>Created:</strong> {selectedProject.created_at ? new Date(selectedProject.created_at).toLocaleDateString() : ''}</p>
+                    {selectedProject.notes && (
+                      <div>
+                        <strong>Description:</strong>
+                        <p className="bg-[#181818] p-2 rounded mt-1">{selectedProject.notes}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-bold mb-3">Project Notes</h4>
+                  <div className="mb-4">
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        value={newProjectNote}
+                        onChange={e => setNewProjectNote(e.target.value)}
+                        placeholder="Add a project note..."
+                        className="flex-1 bg-[#181818] border border-white/20 rounded-md py-2 px-3"
+                        onKeyPress={e => e.key === 'Enter' && addProjectNote()}
+                      />
+                      <button
+                        onClick={addProjectNote}
+                        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                        disabled={!newProjectNote.trim() || projectNotesLoading}
+                      >
+                        {projectNotesLoading ? 'Adding...' : 'Add'}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 max-h-80 overflow-y-auto">
+                    {projectNotesLoading ? (
+                      <p className="text-[#F3E3C3]/70">Loading notes...</p>
+                    ) : projectNotes.length > 0 ? (
+                      projectNotes.map(note => (
+                        <div key={note.id} className="bg-[#181818] rounded p-3">
+                          <p className="text-[#F3E3C3]/90">{note.note}</p>
+                          <p className="text-xs text-[#F3E3C3]/60 mt-1">
+                            {note.created_at ? new Date(note.created_at).toLocaleDateString() : ''}
+                          </p>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="text-[#F3E3C3]/70">No notes yet. Add one above!</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-// --- Blog Admin Section (Fixed) ---
+// --- Fix Blog Admin Section ---
 function BlogAdminSection({
   blogPosts,
   createBlogPost,
@@ -2365,7 +2215,7 @@ function BlogAdminSection({
         : Array.isArray(newPost.tags)
           ? newPost.tags
           : [],
-      publish_date: newPost.publish_date || new Date().toISOString()
+      publish_date: newPost.publish_date || new Date().toISOString().split('T')[0] // Fix date format
     });
     setNewPost({
       title: '',
@@ -2389,7 +2239,8 @@ function BlogAdminSection({
           ...post,
           tags: Array.isArray(post.tags)
             ? post.tags.join(', ')
-            : (typeof post.tags === 'string' ? post.tags : '')
+            : (typeof post.tags === 'string' ? post.tags : ''),
+          publish_date: post.publish_date ? post.publish_date.split('T')[0] : '' // Fix date format for input
         });
       } else {
         setEditForm(null);
@@ -2406,14 +2257,20 @@ function BlogAdminSection({
 
   const handleUpdate = async e => {
     e.preventDefault();
-    await updateBlogPost(editForm.id, {
+    const updateData = {
       ...editForm,
       tags: typeof editForm.tags === 'string'
         ? editForm.tags.split(',').map(t => t.trim()).filter(Boolean)
         : Array.isArray(editForm.tags)
           ? editForm.tags
           : []
-    });
+    };
+    
+    // Remove id from update data to prevent conflicts
+    delete updateData.id;
+    delete updateData.created_at;
+    
+    await updateBlogPost(editForm.id, updateData);
     setBlogEdit(null);
   };
 
@@ -2429,18 +2286,18 @@ function BlogAdminSection({
       {editForm ? (
         <form onSubmit={handleUpdate} className="space-y-4 mb-8 bg-[#232323] p-6 rounded">
           <h5 className="text-lg font-bold mb-4">Edit Post</h5>
-          <input name="title" value={editForm.title} onChange={handleEditChange} placeholder="Title" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
-          <input name="slug" value={editForm.slug} onChange={handleEditChange} placeholder="Slug" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
+          <input name="title" value={editForm.title || ''} onChange={handleEditChange} placeholder="Title" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
+          <input name="slug" value={editForm.slug || ''} onChange={handleEditChange} placeholder="Slug" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" required />
           <div className="grid md:grid-cols-2 gap-4">
-            <input name="author" value={editForm.author} onChange={handleEditChange} placeholder="Author" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-            <input name="publish_date" value={editForm.publish_date} onChange={handleEditChange} placeholder="Publish Date" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" type="date" />
+            <input name="author" value={editForm.author || ''} onChange={handleEditChange} placeholder="Author" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+            <input name="publish_date" value={editForm.publish_date || ''} onChange={handleEditChange} placeholder="Publish Date" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" type="date" />
           </div>
           <div className="grid md:grid-cols-2 gap-4">
-            <input name="category" value={editForm.category} onChange={handleEditChange} placeholder="Category" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
-            <input name="tags" value={editForm.tags} onChange={handleEditChange} placeholder="Tags (comma separated)" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+            <input name="category" value={editForm.category || ''} onChange={handleEditChange} placeholder="Category" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+            <input name="tags" value={editForm.tags || ''} onChange={handleEditChange} placeholder="Tags (comma separated)" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
           </div>
-          <textarea name="excerpt" value={editForm.excerpt} onChange={handleEditChange} placeholder="Excerpt" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" rows={2} />
-          <textarea name="content" value={editForm.content} onChange={handleEditChange} placeholder="Content (Markdown supported)" rows={8} className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
+          <textarea name="excerpt" value={editForm.excerpt || ''} onChange={handleEditChange} placeholder="Excerpt" className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" rows={2} />
+          <textarea name="content" value={editForm.content || ''} onChange={handleEditChange} placeholder="Content (Markdown supported)" rows={8} className="w-full bg-[#181818] border border-white/20 rounded-md py-2 px-3" />
           <div className="flex gap-2">
             <button type="submit" className="bg-[#F3E3C3] text-[#1a1a1a] font-bold py-2 px-4 rounded-md" disabled={blogSaving}>
               {blogSaving ? 'Saving...' : 'Save Changes'}
