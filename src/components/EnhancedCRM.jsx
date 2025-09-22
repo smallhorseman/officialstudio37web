@@ -25,7 +25,7 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
   const [showLeadDetails, setShowLeadDetails] = useState(false);
   const [leadNotes, setLeadNotes] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [newNote, setNewNote] = useState('');
+  const [newNote, setNewNote] = useState({ note: '', priority: 'normal', follow_up_date: '' });
 
   const fetchLeadNotes = async (leadId) => {
     setLoading(true);
@@ -49,19 +49,20 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
   };
 
   const addNote = async () => {
-    if (!newNote.trim() || !selectedLead) return;
+    if (!newNote.note.trim() || !selectedLead) return;
     
     try {
       const { error } = await supabase.from('lead_notes').insert([{
         lead_id: selectedLead.id,
-        note: newNote,
+        note: newNote.note,
         note_type: 'manual',
-        priority: 'normal',
+        priority: newNote.priority,
+        follow_up_date: newNote.follow_up_date || null,
         status: 'Active'
       }]);
       
       if (!error) {
-        setNewNote('');
+        setNewNote({ note: '', priority: 'normal', follow_up_date: '' });
         await fetchLeadNotes(selectedLead.id);
       }
     } catch (err) {
@@ -218,11 +219,10 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
                 <div className="p-6 border-b border-white/10">
                   <h4 className="font-semibold text-[#F3E3C3] mb-4">Notes</h4>
 
-                  {/* Add Note Form */}
                   <div className="bg-[#181818] rounded-lg p-4 mb-4">
                     <textarea
-                      value={newNote}
-                      onChange={(e) => setNewNote(e.target.value)}
+                      value={newNote.note}
+                      onChange={(e) => setNewNote({...newNote, note: e.target.value})}
                       placeholder="Add a note..."
                       className="w-full bg-transparent border-none resize-none focus:outline-none text-[#F3E3C3] text-sm placeholder-[#F3E3C3]/50"
                       rows="3"
@@ -230,7 +230,7 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
                     <div className="flex justify-end mt-3">
                       <button
                         onClick={addNote}
-                        disabled={!newNote.trim()}
+                        disabled={!newNote.note.trim()}
                         className="bg-[#F3E3C3] text-[#1a1a1a] rounded px-3 py-1 text-xs font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#E6D5B8] transition-colors"
                       >
                         Add Note
