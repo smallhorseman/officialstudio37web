@@ -746,10 +746,25 @@ function App() {
     );
   };
 
-  // Enhanced Admin Dashboard
+  // Enhanced Admin Dashboard with proper routing
   const AdminDashboard = () => {
     useEffect(() => trackPageView('admin'), []);
-    const [activeTab, setActiveTab] = useState('crm');
+    const [activeTab, setActiveTab] = useState('dashboard');
+    
+    // Get tab from URL params
+    useEffect(() => {
+      const searchParams = new URLSearchParams(location.search);
+      const tab = searchParams.get('tab');
+      if (tab && ['dashboard', 'crm', 'projects', 'cms', 'analytics', 'leads'].includes(tab)) {
+        setActiveTab(tab);
+      }
+    }, [location.search]);
+
+    // Update URL when tab changes
+    const handleTabChange = (tabId) => {
+      setActiveTab(tabId);
+      navigate(`/admin?tab=${tabId}`, { replace: true });
+    };
     
     return (
       <div className="pt-20 pb-20 bg-[#212121] min-h-screen">
@@ -776,6 +791,8 @@ function App() {
           
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {[
+              { id: 'dashboard', label: 'Overview', icon: DollarSign },
+              { id: 'leads', label: 'Lead History', icon: Users },
               { id: 'crm', label: 'CRM', icon: Users },
               { id: 'projects', label: 'Projects', icon: Calendar },
               { id: 'cms', label: 'Portfolio', icon: Camera },
@@ -783,7 +800,7 @@ function App() {
             ].map(tab => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => handleTabChange(tab.id)}
                 className={`px-6 py-2 text-sm font-semibold rounded-full transition-all duration-300 flex items-center gap-2 ${
                   activeTab === tab.id 
                     ? 'bg-[#F3E3C3] text-[#1a1a1a]' 
@@ -797,6 +814,249 @@ function App() {
           </div>
 
           <div className="bg-[#262626] rounded-lg p-6">
+            {activeTab === 'dashboard' && (
+              <div>
+                <h3 className="text-2xl font-vintage mb-6 flex items-center gap-2">
+                  <DollarSign size={24} />
+                  Business Overview
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="text-lg font-semibold text-[#F3E3C3]">Total Leads</h4>
+                      <Users className="text-[#F3E3C3]/60" size={20} />
+                    </div>
+                    <p className="text-3xl font-bold text-[#F3E3C3]">{leads.length}</p>
+                    <p className="text-sm text-green-400">
+                      +{leads.filter(l => new Date(l.created_at) > new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)).length} this month
+                    </p>
+                  </div>
+                  
+                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="text-lg font-semibold text-[#F3E3C3]">Active Projects</h4>
+                      <Calendar className="text-[#F3E3C3]/60" size={20} />
+                    </div>
+                    <p className="text-3xl font-bold text-[#F3E3C3]">
+                      {projects.filter(p => p.status === 'In Progress').length}
+                    </p>
+                    <p className="text-sm text-blue-400">
+                      {projects.filter(p => p.status === 'Completed').length} completed
+                    </p>
+                  </div>
+                  
+                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="text-lg font-semibold text-[#F3E3C3]">Portfolio Images</h4>
+                      <Camera className="text-[#F3E3C3]/60" size={20} />
+                    </div>
+                    <p className="text-3xl font-bold text-[#F3E3C3]">{portfolioImages.length}</p>
+                    <p className="text-sm text-[#F3E3C3]/60">Published</p>
+                  </div>
+                  
+                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="text-lg font-semibold text-[#F3E3C3]">Revenue Pipeline</h4>
+                      <DollarSign className="text-[#F3E3C3]/60" size={20} />
+                    </div>
+                    <p className="text-3xl font-bold text-[#F3E3C3]">
+                      ${projects.reduce((sum, p) => sum + (p.budget || 0), 0).toLocaleString()}
+                    </p>
+                    <p className="text-sm text-[#F3E3C3]/60">Total project value</p>
+                  </div>
+                </div>
+                
+                {/* Recent Activity */}
+                <div className="bg-[#1a1a1a] rounded-lg p-6">
+                  <h4 className="text-lg font-semibold text-[#F3E3C3] mb-4">Recent Activity</h4>
+                  <div className="space-y-3">
+                    {leads.slice(0, 5).map(lead => (
+                      <div key={lead.id} className="flex items-center justify-between py-2 border-b border-white/10 last:border-0">
+                        <div>
+                          <p className="text-[#F3E3C3]">New lead: {lead.name}</p>
+                          <p className="text-[#F3E3C3]/60 text-sm">{lead.email} - {lead.service || 'No service specified'}</p>
+                        </div>
+                        <div className="text-right">
+                          <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                            lead.status === 'New' ? 'bg-green-500 text-white' :
+                            lead.status === 'Contacted' ? 'bg-blue-500 text-white' :
+                            lead.status === 'Qualified' ? 'bg-yellow-500 text-black' :
+                            lead.status === 'Converted' ? 'bg-purple-500 text-white' :
+                            'bg-gray-500 text-white'
+                          }`}>
+                            {lead.status}
+                          </span>
+                          <p className="text-[#F3E3C3]/60 text-xs mt-1">
+                            {new Date(lead.created_at).toLocaleDateString()}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                    {leads.length === 0 && (
+                      <p className="text-[#F3E3C3]/60 text-center py-4">No leads yet</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'leads' && (
+              <div>
+                <h3 className="text-2xl font-vintage mb-6 flex items-center gap-2">
+                  <Users size={24} />
+                  Complete Lead History
+                </h3>
+                
+                {/* Lead Statistics */}
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                  <div className="bg-[#1a1a1a] p-4 rounded-lg">
+                    <h4 className="text-sm font-medium text-[#F3E3C3]/70">Total Leads</h4>
+                    <p className="text-2xl font-bold text-[#F3E3C3]">{leads.length}</p>
+                  </div>
+                  <div className="bg-[#1a1a1a] p-4 rounded-lg">
+                    <h4 className="text-sm font-medium text-[#F3E3C3]/70">New Leads</h4>
+                    <p className="text-2xl font-bold text-green-400">
+                      {leads.filter(l => l.status === 'New').length}
+                    </p>
+                  </div>
+                  <div className="bg-[#1a1a1a] p-4 rounded-lg">
+                    <h4 className="text-sm font-medium text-[#F3E3C3]/70">Converted</h4>
+                    <p className="text-2xl font-bold text-purple-400">
+                      {leads.filter(l => l.status === 'Converted').length}
+                    </p>
+                  </div>
+                  <div className="bg-[#1a1a1a] p-4 rounded-lg">
+                    <h4 className="text-sm font-medium text-[#F3E3C3]/70">Conversion Rate</h4>
+                    <p className="text-2xl font-bold text-blue-400">
+                      {leads.length > 0 ? Math.round((leads.filter(l => l.status === 'Converted').length / leads.length) * 100) : 0}%
+                    </p>
+                  </div>
+                </div>
+
+                {/* Enhanced Lead Table */}
+                <div className="bg-[#1a1a1a] rounded-lg overflow-hidden">
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead className="bg-[#262626]">
+                        <tr>
+                          <th className="px-4 py-3 text-left text-xs font-medium text-[#F3E3C3]/70 uppercase tracking-wider">
+                            Contact Info
+                          </th>
+                          <th className="px-4 py-3 text-left text-xs font-medium text-[#F3E3C3]/70 uppercase tracking-wider">
+                            Service
+                          </th>
+                          <th className="px-4 py-3 text-left text-xs font-medium text-[#F3E3C3]/70 uppercase tracking-wider">
+                            Source
+                          </th>
+                          <th className="px-4 py-3 text-left text-xs font-medium text-[#F3E3C3]/70 uppercase tracking-wider">
+                            Status
+                          </th>
+                          <th className="px-4 py-3 text-left text-xs font-medium text-[#F3E3C3]/70 uppercase tracking-wider">
+                            Date
+                          </th>
+                          <th className="px-4 py-3 text-left text-xs font-medium text-[#F3E3C3]/70 uppercase tracking-wider">
+                            Actions
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-white/10">
+                        {leads.map((lead) => (
+                          <tr key={lead.id} className="hover:bg-white/5">
+                            <td className="px-4 py-4">
+                              <div>
+                                <p className="text-sm font-medium text-[#F3E3C3]">{lead.name}</p>
+                                <p className="text-sm text-[#F3E3C3]/60">{lead.email}</p>
+                                {lead.phone && (
+                                  <p className="text-sm text-[#F3E3C3]/60">{lead.phone}</p>
+                                )}
+                              </div>
+                            </td>
+                            <td className="px-4 py-4">
+                              <span className="text-sm text-[#F3E3C3]">
+                                {lead.service || 'Not specified'}
+                              </span>
+                            </td>
+                            <td className="px-4 py-4">
+                              <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-500/20 text-blue-300">
+                                {lead.source || 'Direct'}
+                              </span>
+                            </td>
+                            <td className="px-4 py-4">
+                              <select
+                                value={lead.status}
+                                onChange={(e) => updateLeadStatus(lead.id, e.target.value)}
+                                className={`text-xs font-semibold rounded-full px-2 py-1 border-0 focus:ring-2 focus:ring-[#F3E3C3] ${
+                                  lead.status === 'New' ? 'bg-green-500 text-white' :
+                                  lead.status === 'Contacted' ? 'bg-blue-500 text-white' :
+                                  lead.status === 'Qualified' ? 'bg-yellow-500 text-black' :
+                                  lead.status === 'Converted' ? 'bg-purple-500 text-white' :
+                                  lead.status === 'Lost' ? 'bg-red-500 text-white' :
+                                  'bg-gray-500 text-white'
+                                }`}
+                              >
+                                <option value="New">New</option>
+                                <option value="Contacted">Contacted</option>
+                                <option value="Qualified">Qualified</option>
+                                <option value="Converted">Converted</option>
+                                <option value="Lost">Lost</option>
+                              </select>
+                            </td>
+                            <td className="px-4 py-4">
+                              <div>
+                                <p className="text-sm text-[#F3E3C3]">
+                                  {new Date(lead.created_at).toLocaleDateString()}
+                                </p>
+                                <p className="text-xs text-[#F3E3C3]/60">
+                                  {new Date(lead.created_at).toLocaleTimeString()}
+                                </p>
+                              </div>
+                            </td>
+                            <td className="px-4 py-4">
+                              <div className="flex gap-2">
+                                <a
+                                  href={`mailto:${lead.email}?subject=Follow up from Studio37&body=Hi ${lead.name},%0A%0AThank you for your interest in Studio37...`}
+                                  className="text-blue-400 hover:text-blue-300 text-xs"
+                                  title="Send Email"
+                                >
+                                  ✉️
+                                </a>
+                                {lead.phone && (
+                                  <a
+                                    href={`tel:${lead.phone}`}
+                                    className="text-green-400 hover:text-green-300 text-xs"
+                                    title="Call"
+                                  >
+                                    📞
+                                  </a>
+                                )}
+                                <button
+                                  onClick={() => {
+                                    navigator.clipboard.writeText(`${lead.name} - ${lead.email} - ${lead.phone || 'No phone'} - ${lead.service || 'No service'}`);
+                                    alert('Lead info copied to clipboard!');
+                                  }}
+                                  className="text-[#F3E3C3]/60 hover:text-[#F3E3C3] text-xs"
+                                  title="Copy Info"
+                                >
+                                  📋
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  
+                  {leads.length === 0 && (
+                    <div className="text-center py-12">
+                      <p className="text-[#F3E3C3]/70">No leads found</p>
+                      <p className="text-[#F3E3C3]/50 text-sm mt-2">Leads will appear here once visitors unlock the portfolio or submit contact forms</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
             {activeTab === 'crm' && (
               <div>
                 <h3 className="text-2xl font-vintage mb-6 flex items-center gap-2">
@@ -837,66 +1097,83 @@ function App() {
                   <DollarSign size={24} />
                   Business Analytics
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-lg font-semibold text-[#F3E3C3]">Total Leads</h4>
-                      <Users className="text-[#F3E3C3]/60" size={20} />
+                
+                {/* Lead Analytics */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                  <div className="bg-[#1a1a1a] rounded-lg p-6">
+                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-4">Lead Sources</h4>
+                    <div className="space-y-3">
+                      {Object.entries(leads.reduce((acc, lead) => {
+                        const source = lead.source || 'Direct';
+                        acc[source] = (acc[source] || 0) + 1;
+                        return acc;
+                      }, {})).map(([source, count]) => (
+                        <div key={source} className="flex justify-between items-center">
+                          <span className="text-[#F3E3C3]">{source}</span>
+                          <div className="flex items-center gap-2">
+                            <div className="w-20 bg-[#262626] rounded-full h-2">
+                              <div 
+                                className="h-2 rounded-full bg-blue-500"
+                                style={{ 
+                                  width: `${leads.length > 0 ? (count / leads.length) * 100 : 0}%` 
+                                }}
+                              ></div>
+                            </div>
+                            <span className="text-[#F3E3C3] text-sm w-8 text-right">{count}</span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                    <p className="text-3xl font-bold text-[#F3E3C3]">{leads.length}</p>
-                    <p className="text-sm text-[#F3E3C3]/60">All time</p>
                   </div>
-                  
-                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-lg font-semibold text-[#F3E3C3]">Active Projects</h4>
-                      <Calendar className="text-[#F3E3C3]/60" size={20} />
+
+                  <div className="bg-[#1a1a1a] rounded-lg p-6">
+                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-4">Service Interest</h4>
+                    <div className="space-y-3">
+                      {Object.entries(leads.reduce((acc, lead) => {
+                        const service = lead.service || 'Not specified';
+                        acc[service] = (acc[service] || 0) + 1;
+                        return acc;
+                      }, {})).map(([service, count]) => (
+                        <div key={service} className="flex justify-between items-center">
+                          <span className="text-[#F3E3C3]">{service}</span>
+                          <div className="flex items-center gap-2">
+                            <div className="w-20 bg-[#262626] rounded-full h-2">
+                              <div 
+                                className="h-2 rounded-full bg-green-500"
+                                style={{ 
+                                  width: `${leads.length > 0 ? (count / leads.length) * 100 : 0}%` 
+                                }}
+                              ></div>
+                            </div>
+                            <span className="text-[#F3E3C3] text-sm w-8 text-right">{count}</span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                    <p className="text-3xl font-bold text-[#F3E3C3]">
-                      {projects.filter(p => p.status === 'In Progress').length}
-                    </p>
-                    <p className="text-sm text-[#F3E3C3]/60">In progress</p>
-                  </div>
-                  
-                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-lg font-semibold text-[#F3E3C3]">Portfolio Images</h4>
-                      <Camera className="text-[#F3E3C3]/60" size={20} />
-                    </div>
-                    <p className="text-3xl font-bold text-[#F3E3C3]">{portfolioImages.length}</p>
-                    <p className="text-sm text-[#F3E3C3]/60">Published</p>
-                  </div>
-                  
-                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-lg font-semibold text-[#F3E3C3]">Revenue Pipeline</h4>
-                      <DollarSign className="text-[#F3E3C3]/60" size={20} />
-                    </div>
-                    <p className="text-3xl font-bold text-[#F3E3C3]">
-                      ${projects.reduce((sum, p) => sum + (p.budget || 0), 0).toLocaleString()}
-                    </p>
-                    <p className="text-sm text-[#F3E3C3]/60">Total project value</p>
                   </div>
                 </div>
-                
-                {/* Recent Activity */}
+
+                {/* Monthly Lead Trend */}
                 <div className="bg-[#1a1a1a] rounded-lg p-6">
-                  <h4 className="text-lg font-semibold text-[#F3E3C3] mb-4">Recent Activity</h4>
-                  <div className="space-y-3">
-                    {leads.slice(0, 5).map(lead => (
-                      <div key={lead.id} className="flex items-center justify-between py-2 border-b border-white/10 last:border-0">
-                        <div>
-                          <p className="text-[#F3E3C3]">New lead: {lead.name}</p>
-                          <p className="text-[#F3E3C3]/60 text-sm">{lead.email}</p>
+                  <h4 className="text-lg font-semibold text-[#F3E3C3] mb-4">Monthly Lead Trend</h4>
+                  <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+                    {Array.from({length: 6}, (_, i) => {
+                      const date = new Date();
+                      date.setMonth(date.getMonth() - (5 - i));
+                      const monthLeads = leads.filter(lead => {
+                        const leadDate = new Date(lead.created_at);
+                        return leadDate.getMonth() === date.getMonth() && leadDate.getFullYear() === date.getFullYear();
+                      }).length;
+                      
+                      return (
+                        <div key={i} className="text-center">
+                          <p className="text-2xl font-bold text-[#F3E3C3]">{monthLeads}</p>
+                          <p className="text-sm text-[#F3E3C3]/70">
+                            {date.toLocaleDateString('en-US', { month: 'short' })}
+                          </p>
                         </div>
-                        <span className="text-[#F3E3C3]/60 text-sm">
-                          {new Date(lead.created_at).toLocaleDateString()}
-                        </span>
-                      </div>
-                    ))}
-                    {leads.length === 0 && (
-                      <p className="text-[#F3E3C3]/60 text-center py-4">No recent activity</p>
-                    )}
+                      );
+                    })}
                   </div>
                 </div>
               </div>
