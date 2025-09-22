@@ -6,6 +6,7 @@ import ConversationalPlanner from './ConversationalPlanner';
 import { supabase, fetchWithErrorHandling, isSupabaseConfigured, testConnection } from './supabaseClient';
 import { EnhancedCrmSection } from './components/EnhancedCRM';
 import { EnhancedCmsSection } from './components/EnhancedCMS';
+import CrmSection from './components/CrmSection';
 import SEOHead from './components/SEOHead';
 import HubSpotIntegration, { trackHubSpotEvent, identifyHubSpotVisitor } from './components/HubSpotIntegration';
 
@@ -143,7 +144,6 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [portfolioUnlocked, setPortfolioUnlocked] = useState(false);
   const [showChatWidget, setShowChatWidget] = useState(false);
-  const [showPlanner, setShowPlanner] = useState(null);
   
   // Data states
   const [leads, setLeads] = useState([]);
@@ -153,19 +153,14 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [connectionStatus, setConnectionStatus] = useState('checking');
-  
-  // Loading states
-  const [blogLoading, setBlogLoading] = useState(false);
-  const [blogError, setBlogError] = useState('');
 
-  // Test Supabase connection on mount
+  // Test connection and load data
   useEffect(() => {
     const checkConnection = async () => {
       setConnectionStatus('checking');
       
       if (!isSupabaseConfigured()) {
         setConnectionStatus('unconfigured');
-        console.log('Supabase not configured - check environment variables');
         setLoading(false);
         return;
       }
@@ -174,7 +169,7 @@ function App() {
       setConnectionStatus(isConnected ? 'connected' : 'error');
       
       if (isConnected) {
-        loadInitialData();
+        await loadInitialData();
       } else {
         setLoading(false);
         setError('Database connection failed. Some features may not work properly.');
@@ -184,40 +179,11 @@ function App() {
     checkConnection();
   }, []);
 
-  // Fix missing error handling in useEffect hooks
-  useEffect(() => {
-    if (location.pathname === '/blog' || isAdmin) {
-      setBlogLoading(true);
-      setBlogError('');
-      
-      fetchWithErrorHandling(
-        supabase
-          .from('blog_posts')
-          .select('id, title, publish_date, created_at, slug, excerpt, author, content, tags, category')
-          .order('publish_date', { ascending: false })
-          .limit(10)
-      ).then((data) => {
-        if (!data || !Array.isArray(data)) {
-          setBlogError('No blog posts found.');
-          setBlogPosts([]);
-        } else {
-          setBlogPosts(data);
-        }
-      }).catch((error) => {
-        console.error('Blog posts fetch error:', error);
-        setBlogError('Failed to load blog posts.');
-        setBlogPosts([]);
-      }).finally(() => {
-        setBlogLoading(false);
-      });
-    }
-  }, [location.pathname, isAdmin]);
-
   const loadInitialData = async () => {
     try {
       setLoading(true);
       
-      // Load portfolio images
+      // Load portfolio images (public)
       const portfolioData = await fetchWithErrorHandling(
         supabase
           .from('portfolio_images')
@@ -235,16 +201,25 @@ function App() {
             .order('created_at', { ascending: false })
         );
         if (leadsData) setLeads(leadsData);
+
+        // Load projects
+        const projectsData = await fetchWithErrorHandling(
+          supabase
+            .from('projects')
+            .select('*')
+            .order('created_at', { ascending: false })
+        );
+        if (projectsData) setProjects(projectsData);
+
+        // Load blog posts
+        const blogData = await fetchWithErrorHandling(
+          supabase
+            .from('blog_posts')
+            .select('*')
+            .order('publish_date', { ascending: false })
+        );
+        if (blogData) setBlogPosts(blogData);
       }
-      
-      // Load projects for admin dashboard
-      const projectsData = await fetchWithErrorHandling(
-        supabase
-          .from('projects')
-          .select('*')
-          .order('created_at', { ascending: false })
-      );
-      if (projectsData) setProjects(projectsData);
       
     } catch (err) {
       console.error('Error loading initial data:', err);
@@ -254,35 +229,7 @@ function App() {
     }
   };
 
-  // Connection status notification component - SINGLE DECLARATION
-  const ConnectionStatusNotification = () => {
-    if (connectionStatus === 'connected') return null;
-    
-    const statusConfig = {
-      checking: { 
-        color: 'bg-blue-500/20 border-blue-500/30 text-blue-200',
-        message: '🔄 Connecting to database...'
-      },
-      unconfigured: { 
-        color: 'bg-yellow-500/20 border-yellow-500/30 text-yellow-200',
-        message: '⚠️ Database not configured. Using offline mode.'
-      },
-      error: { 
-        color: 'bg-red-500/20 border-red-500/30 text-red-200',
-        message: '❌ Database connection failed. Limited functionality.'
-      }
-    };
-    
-    const config = statusConfig[connectionStatus];
-    
-    return (
-      <div className={`${config.color} border px-4 py-2 text-sm text-center`}>
-        <strong>{config.message}</strong>
-      </div>
-    );
-  };
-
-  // Admin Login Component
+  // Admin authentication
   const AdminLogin = () => {
     const [credentials, setCredentials] = useState({ username: '', password: '' });
     const [loginError, setLoginError] = useState('');
@@ -293,19 +240,14 @@ function App() {
       setLoginLoading(true);
       setLoginError('');
 
-      // Simple admin credentials (in production, use proper authentication)
       const adminUsername = import.meta.env.VITE_ADMIN_USERNAME || 'admin';
       const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'studio37admin';
 
       if (credentials.username === adminUsername && credentials.password === adminPassword) {
         setIsAdmin(true);
-        loadInitialData(); // Reload data with admin access
+        await loadInitialData();
         navigate('/admin');
-        
-        // Track admin login
-        trackHubSpotEvent('admin_login', {
-          timestamp: new Date().toISOString()
-        });
+        trackHubSpotEvent('admin_login', { timestamp: new Date().toISOString() });
       } else {
         setLoginError('Invalid username or password');
       }
@@ -393,37 +335,22 @@ function App() {
     );
   };
 
-  // Enhanced portfolio unlock with HubSpot tracking
-  async function handlePortfolioUnlock(formData) {
+  // Portfolio unlock with fixed database call
+  const handlePortfolioUnlock = async (formData) => {
     if (connectionStatus !== 'connected') {
       setPortfolioUnlocked(true);
-      
-      // Track portfolio unlock in HubSpot
-      trackHubSpotEvent('portfolio_unlocked', {
-        service: formData.service,
-        source: 'portfolio_gate'
-      });
-      
-      // Identify the visitor
-      identifyHubSpotVisitor(formData.email, {
-        firstname: formData.name.split(' ')[0],
-        lastname: formData.name.split(' ').slice(1).join(' '),
-        phone: formData.phone,
-        service_interest: formData.service
-      });
-      
+      trackHubSpotEvent('portfolio_unlocked', { service: formData.service });
       return true;
     }
     
     try {
-      // Remove 'source' field that's causing database error
+      // Fixed: Remove 'source' field that doesn't exist in schema
       const { error } = await supabase.from('leads').insert([{
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
         service: formData.service,
         status: 'New'
-        // Removed 'source' field that doesn't exist in schema
       }]);
       
       if (error) {
@@ -434,16 +361,7 @@ function App() {
       setPortfolioUnlocked(true);
       trackHubSpotEvent('lead_created', {
         service: formData.service,
-        source: 'portfolio_unlock',
         lead_id: `studio37_${Date.now()}`
-      });
-      
-      identifyHubSpotVisitor(formData.email, {
-        firstname: formData.name.split(' ')[0],
-        lastname: formData.name.split(' ').slice(1).join(' '),
-        phone: formData.phone,
-        service_interest: formData.service,
-        lead_source: 'portfolio_unlock'
       });
       
       return true;
@@ -451,9 +369,96 @@ function App() {
       console.error('Unexpected portfolio unlock error:', err);
       return false;
     }
-  }
+  };
 
-  // Built-in Project Management Component
+  // Portfolio management functions
+  const addPortfolioImage = async (imageData) => {
+    if (connectionStatus !== 'connected') {
+      const newImage = { ...imageData, id: Date.now().toString(), created_at: new Date().toISOString() };
+      setPortfolioImages(prev => [newImage, ...prev]);
+      return;
+    }
+    
+    try {
+      const { data, error } = await supabase
+        .from('portfolio_images')
+        .insert([imageData])
+        .select();
+      
+      if (error) throw error;
+      if (data && data[0]) setPortfolioImages(prev => [data[0], ...prev]);
+    } catch (error) {
+      console.error('Error adding portfolio image:', error);
+      throw error;
+    }
+  };
+
+  const deletePortfolioImage = async (imageId) => {
+    if (connectionStatus !== 'connected') {
+      setPortfolioImages(prev => prev.filter(img => img.id !== imageId));
+      return;
+    }
+    
+    try {
+      const { error } = await supabase
+        .from('portfolio_images')
+        .delete()
+        .eq('id', imageId);
+      
+      if (error) throw error;
+      setPortfolioImages(prev => prev.filter(img => img.id !== imageId));
+    } catch (error) {
+      console.error('Error deleting portfolio image:', error);
+      throw error;
+    }
+  };
+
+  const updateLeadStatus = async (leadId, newStatus) => {
+    if (connectionStatus !== 'connected') {
+      setLeads(prev => prev.map(lead => 
+        lead.id === leadId ? { ...lead, status: newStatus } : lead
+      ));
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from('leads')
+        .update({ status: newStatus })
+        .eq('id', leadId);
+
+      if (error) throw error;
+      setLeads(prev => prev.map(lead => 
+        lead.id === leadId ? { ...lead, status: newStatus } : lead
+      ));
+    } catch (error) {
+      console.error('Error updating lead status:', error);
+    }
+  };
+
+  // Project management functions
+  const addProject = async (projectData) => {
+    if (connectionStatus !== 'connected') {
+      const newProject = { ...projectData, id: Date.now().toString(), created_at: new Date().toISOString() };
+      setProjects(prev => [newProject, ...prev]);
+      return;
+    }
+    
+    try {
+      const { data, error } = await supabase
+        .from('projects')
+        .insert([projectData])
+        .select();
+      
+      if (error) throw error;
+      if (data && data[0]) setProjects(prev => [data[0], ...prev]);
+    } catch (error) {
+      console.error('Error adding project:', error);
+      throw error;
+    }
+  };
+
+  // Project Management Component
   const ProjectManagement = () => {
     const [newProject, setNewProject] = useState({
       title: '',
@@ -471,43 +476,21 @@ function App() {
     const handleAddProject = async () => {
       if (!newProject.title || !newProject.client) return;
       
-      try {
-        const projectData = {
-          ...newProject,
-          created_at: new Date().toISOString(),
-          budget: parseFloat(newProject.budget) || 0
-        };
-        
-        if (connectionStatus === 'connected') {
-          const { data, error } = await supabase
-            .from('projects')
-            .insert([projectData])
-            .select();
-          
-          if (error) throw error;
-          if (data && data[0]) {
-            setProjects(prev => [data[0], ...prev]);
-          }
-        } else {
-          const mockProject = {
-            ...projectData,
-            id: Date.now(),
-          };
-          setProjects(prev => [mockProject, ...prev]);
-        }
-        
-        setNewProject({
-          title: '',
-          client: '',
-          description: '',
-          status: 'Planning',
-          budget: '',
-          deadline: '',
-          type: 'Photography'
-        });
-      } catch (error) {
-        console.error('Error adding project:', error);
-      }
+      const projectData = {
+        ...newProject,
+        budget: parseFloat(newProject.budget) || 0
+      };
+      
+      await addProject(projectData);
+      setNewProject({
+        title: '',
+        client: '',
+        description: '',
+        status: 'Planning',
+        budget: '',
+        deadline: '',
+        type: 'Photography'
+      });
     };
 
     return (
@@ -521,19 +504,19 @@ function App() {
               placeholder="Project Title *"
               value={newProject.title}
               onChange={(e) => setNewProject({...newProject, title: e.target.value})}
-              className="bg-[#262626] border border-white/20 rounded px-3 py-2"
+              className="bg-[#262626] border border-white/20 rounded px-3 py-2 text-[#F3E3C3]"
             />
             <input
               type="text"
               placeholder="Client Name *"
               value={newProject.client}
               onChange={(e) => setNewProject({...newProject, client: e.target.value})}
-              className="bg-[#262626] border border-white/20 rounded px-3 py-2"
+              className="bg-[#262626] border border-white/20 rounded px-3 py-2 text-[#F3E3C3]"
             />
             <select
               value={newProject.type}
               onChange={(e) => setNewProject({...newProject, type: e.target.value})}
-              className="bg-[#262626] border border-white/20 rounded px-3 py-2"
+              className="bg-[#262626] border border-white/20 rounded px-3 py-2 text-[#F3E3C3]"
             >
               {projectTypes.map(type => (
                 <option key={type} value={type}>{type}</option>
@@ -542,7 +525,7 @@ function App() {
             <select
               value={newProject.status}
               onChange={(e) => setNewProject({...newProject, status: e.target.value})}
-              className="bg-[#262626] border border-white/20 rounded px-3 py-2"
+              className="bg-[#262626] border border-white/20 rounded px-3 py-2 text-[#F3E3C3]"
             >
               {projectStatuses.map(status => (
                 <option key={status} value={status}>{status}</option>
@@ -553,20 +536,20 @@ function App() {
               placeholder="Budget ($)"
               value={newProject.budget}
               onChange={(e) => setNewProject({...newProject, budget: e.target.value})}
-              className="bg-[#262626] border border-white/20 rounded px-3 py-2"
+              className="bg-[#262626] border border-white/20 rounded px-3 py-2 text-[#F3E3C3]"
             />
             <input
               type="date"
               value={newProject.deadline}
               onChange={(e) => setNewProject({...newProject, deadline: e.target.value})}
-              className="bg-[#262626] border border-white/20 rounded px-3 py-2"
+              className="bg-[#262626] border border-white/20 rounded px-3 py-2 text-[#F3E3C3]"
             />
           </div>
           <textarea
             placeholder="Project Description"
             value={newProject.description}
             onChange={(e) => setNewProject({...newProject, description: e.target.value})}
-            className="w-full mt-4 bg-[#262626] border border-white/20 rounded px-3 py-2"
+            className="w-full mt-4 bg-[#262626] border border-white/20 rounded px-3 py-2 text-[#F3E3C3]"
             rows="3"
           />
           <button
@@ -626,23 +609,17 @@ function App() {
     );
   };
 
-  // Enhanced Admin Dashboard with all built-in tools
+  // Enhanced Admin Dashboard
   const AdminDashboard = () => {
-    useEffect(() => trackPageView('admin'), []);
     const [activeTab, setActiveTab] = useState('crm');
     
     return (
       <div className="pt-20 pb-20 bg-[#212121] min-h-screen">
-        <SEOHead 
-          title="Admin Dashboard - Studio37"
-          description="Studio37 admin dashboard for managing business operations"
-        />
+        <SEOHead title="Admin Dashboard - Studio37" />
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-vintage mb-6">Admin Dashboard</h1>
-            <p className="text-xl text-[#F3E3C3]/80">
-              Your complete business management suite
-            </p>
+            <p className="text-xl text-[#F3E3C3]/80">Complete business management suite</p>
             <button
               onClick={() => {
                 setIsAdmin(false);
@@ -656,21 +633,20 @@ function App() {
           
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {[
-              { id: 'crm', label: 'CRM', icon: Users },
-              { id: 'projects', label: 'Projects', icon: Calendar },
-              { id: 'cms', label: 'CMS', icon: Camera },
-              { id: 'analytics', label: 'Analytics', icon: DollarSign }
+              { id: 'crm', label: 'CRM' },
+              { id: 'projects', label: 'Projects' },
+              { id: 'cms', label: 'Portfolio' },
+              { id: 'analytics', label: 'Analytics' }
             ].map(tab => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-2 text-sm font-semibold rounded-full transition-all duration-300 flex items-center gap-2 ${
+                className={`px-6 py-2 text-sm font-semibold rounded-full transition-all duration-300 ${
                   activeTab === tab.id 
                     ? 'bg-[#F3E3C3] text-[#1a1a1a]' 
                     : 'bg-[#262626] hover:bg-[#333] text-[#F3E3C3]'
                 }`}
               >
-                <tab.icon size={16} />
                 {tab.label}
               </button>
             ))}
@@ -679,30 +655,21 @@ function App() {
           <div className="bg-[#262626] rounded-lg p-6">
             {activeTab === 'crm' && (
               <div>
-                <h3 className="text-2xl font-vintage mb-6 flex items-center gap-2">
-                  <Users size={24} />
-                  Customer Relationship Management
-                </h3>
+                <h3 className="text-2xl font-vintage mb-6">Customer Relationship Management</h3>
                 <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
               </div>
             )}
 
             {activeTab === 'projects' && (
               <div>
-                <h3 className="text-2xl font-vintage mb-6 flex items-center gap-2">
-                  <Calendar size={24} />
-                  Project Management
-                </h3>
+                <h3 className="text-2xl font-vintage mb-6">Project Management</h3>
                 <ProjectManagement />
               </div>
             )}
             
             {activeTab === 'cms' && (
               <div>
-                <h3 className="text-2xl font-vintage mb-6 flex items-center gap-2">
-                  <Camera size={24} />
-                  Content Management System
-                </h3>
+                <h3 className="text-2xl font-vintage mb-6">Portfolio Management</h3>
                 <EnhancedCmsSection
                   portfolioImages={portfolioImages}
                   addPortfolioImage={addPortfolioImage}
@@ -713,70 +680,27 @@ function App() {
 
             {activeTab === 'analytics' && (
               <div>
-                <h3 className="text-2xl font-vintage mb-6 flex items-center gap-2">
-                  <DollarSign size={24} />
-                  Business Analytics
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <h3 className="text-2xl font-vintage mb-6">Business Analytics</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   <div className="bg-[#1a1a1a] p-6 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-lg font-semibold text-[#F3E3C3]">Total Leads</h4>
-                      <Users className="text-[#F3E3C3]/60" size={20} />
-                    </div>
+                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-2">Total Leads</h4>
                     <p className="text-3xl font-bold text-[#F3E3C3]">{leads.length}</p>
-                    <p className="text-sm text-[#F3E3C3]/60">All time</p>
                   </div>
-                  
                   <div className="bg-[#1a1a1a] p-6 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-lg font-semibold text-[#F3E3C3]">Active Projects</h4>
-                      <Calendar className="text-[#F3E3C3]/60" size={20} />
-                    </div>
+                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-2">Active Projects</h4>
                     <p className="text-3xl font-bold text-[#F3E3C3]">
                       {projects.filter(p => p.status === 'In Progress').length}
                     </p>
-                    <p className="text-sm text-[#F3E3C3]/60">In progress</p>
                   </div>
-                  
                   <div className="bg-[#1a1a1a] p-6 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-lg font-semibold text-[#F3E3C3]">Portfolio Images</h4>
-                      <Camera className="text-[#F3E3C3]/60" size={20} />
-                    </div>
+                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-2">Portfolio Images</h4>
                     <p className="text-3xl font-bold text-[#F3E3C3]">{portfolioImages.length}</p>
-                    <p className="text-sm text-[#F3E3C3]/60">Published</p>
                   </div>
-                  
                   <div className="bg-[#1a1a1a] p-6 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-lg font-semibold text-[#F3E3C3]">Revenue Pipeline</h4>
-                      <DollarSign className="text-[#F3E3C3]/60" size={20} />
-                    </div>
+                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-2">Revenue Pipeline</h4>
                     <p className="text-3xl font-bold text-[#F3E3C3]">
                       ${projects.reduce((sum, p) => sum + (p.budget || 0), 0).toLocaleString()}
                     </p>
-                    <p className="text-sm text-[#F3E3C3]/60">Total project value</p>
-                  </div>
-                </div>
-                
-                {/* Recent Activity */}
-                <div className="bg-[#1a1a1a] rounded-lg p-6">
-                  <h4 className="text-lg font-semibold text-[#F3E3C3] mb-4">Recent Activity</h4>
-                  <div className="space-y-3">
-                    {leads.slice(0, 5).map(lead => (
-                      <div key={lead.id} className="flex items-center justify-between py-2 border-b border-white/10 last:border-0">
-                        <div>
-                          <p className="text-[#F3E3C3]">New lead: {lead.name}</p>
-                          <p className="text-[#F3E3C3]/60 text-sm">{lead.email}</p>
-                        </div>
-                        <span className="text-[#F3E3C3]/60 text-sm">
-                          {new Date(lead.created_at).toLocaleDateString()}
-                        </span>
-                      </div>
-                    ))}
-                    {leads.length === 0 && (
-                      <p className="text-[#F3E3C3]/60 text-center py-4">No recent activity</p>
-                    )}
                   </div>
                 </div>
               </div>
@@ -1302,7 +1226,6 @@ function App() {
 
   return (
     <div className="App bg-[#181818] text-[#F3E3C3] min-h-screen">
-      {/* Only add HubSpot for the virtual assistant, not to replace existing functionality */}
       <HubSpotIntegration />
       
       {/* Navigation with improved accessibility */}
@@ -1362,7 +1285,6 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/contact" element={<ContactPage />} />
           <Route path="/admin-login" element={!isAdmin ? <AdminLogin /> : <Navigate to="/admin" />} />
           <Route path="/admin" element={isAdmin ? <AdminDashboard /> : <Navigate to="/admin-login" />} />
         </Routes>
