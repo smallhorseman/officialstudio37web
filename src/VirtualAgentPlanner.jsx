@@ -1,256 +1,256 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { supabase } from './supabaseClient';
 
-const steps = [
-  { key: 'greet', prompt: "Hi! I'm your Studio37 virtual agent. Would you like to plan your photoshoot?", type: 'greet' },
-  { key: 'name', prompt: 'Great! What is your name?', type: 'input' },
-  { key: 'email', prompt: 'What is your email address?', type: 'input' },
-  { key: 'phone', prompt: 'Phone number (optional):', type: 'input' },
-  { key: 'date', prompt: 'What date are you considering for your photoshoot?', type: 'input' },
-  { key: 'location', prompt: 'Preferred location or type of setting?', type: 'input' },
-  { key: 'style', prompt: 'What style or vibe are you hoping for? (e.g. vintage, modern, candid)', type: 'input' },
-  { key: 'inspiration', prompt: 'Any inspiration, Pinterest links, or ideas you want to share?', type: 'input' },
-  { key: 'notes', prompt: 'Any other notes or special requests?', type: 'input' }
-];
-
-export default function VirtualAgentPlanner({ onComplete }) {
-  const [step, setStep] = useState(0);
-  const [answers, setAnswers] = useState({});
-  const [input, setInput] = useState('');
+const VirtualAgentPlanner = () => {
   const [messages, setMessages] = useState([
-    { from: 'bot', text: steps[0].prompt }
+    {
+      id: 1,
+      type: 'agent',
+      text: "Hi! I'm your Studio37 planning assistant. I'll help you plan the perfect photoshoot. What type of session are you interested in?",
+      timestamp: new Date()
+    }
   ]);
-  const [saving, setSaving] = useState(false);
-  const [done, setDone] = useState(false);
-  const [leadId, setLeadId] = useState(null);
-  const [projectId, setProjectId] = useState(null);
+  const [currentInput, setCurrentInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [sessionData, setSessionData] = useState({
+    type: '',
+    location: '',
+    date: '',
+    budget: '',
+    participants: '',
+    style: '',
+    email: '',
+    phone: ''
+  });
+  const [currentStep, setCurrentStep] = useState('type');
   const messagesEndRef = useRef(null);
 
-  // Auto-scroll to bottom
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  useEffect(scrollToBottom, [messages]);
 
-  // Simulate typing indicator
-  const addBotMessage = (text, delay = 800) => {
+  const steps = {
+    type: {
+      question: "What type of photoshoot would you like?",
+      options: ["Portrait Session", "Wedding", "Event", "Commercial/Branding", "Family Session", "Other"]
+    },
+    style: {
+      question: "What style are you looking for?",
+      options: ["Classic & Timeless", "Modern & Clean", "Vintage & Artistic", "Candid & Natural", "Creative & Bold"]
+    },
+    participants: {
+      question: "How many people will be in the shoot?",
+      options: ["Just me (1)", "Couple (2)", "Small group (3-5)", "Large group (6+)", "It varies"]
+    },
+    location: {
+      question: "Where would you like the shoot?",
+      options: ["Studio", "Outdoor location", "Your venue/home", "Multiple locations", "Not sure yet"]
+    },
+    budget: {
+      question: "What's your approximate budget?",
+      options: ["$75-150 (Mini session)", "$300-500 (Standard)", "$750-1200 (Premium)", "$1200+ (Luxury)", "Let's discuss"]
+    },
+    date: {
+      question: "When are you hoping to schedule this?",
+      options: ["This week", "Next week", "This month", "Next month", "I'm flexible"]
+    },
+    contact: {
+      question: "Great! Let me get your contact info so we can finalize details.",
+      isForm: true
+    }
+  };
+
+  const addMessage = (text, type = 'agent') => {
+    const newMessage = {
+      id: Date.now(),
+      type,
+      text,
+      timestamp: new Date()
+    };
+    setMessages(prev => [...prev, newMessage]);
+  };
+
+  const handleOptionClick = (option) => {
+    addMessage(option, 'user');
+    setSessionData(prev => ({ ...prev, [currentStep]: option }));
+    
     setIsTyping(true);
     setTimeout(() => {
       setIsTyping(false);
-      setMessages(msgs => [...msgs, { from: 'bot', text }]);
-    }, delay);
+      moveToNextStep();
+    }, 1000);
   };
 
-  const handleSend = async (e) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-
-    // Handle greeting response
-    if (step === 0) {
-      if (input.toLowerCase().includes('no')) {
-        setMessages(msgs => [...msgs, 
-          { from: 'user', text: input }, 
-          { from: 'bot', text: 'No problem! If you change your mind, just click the chat again. Have a great day! 📸' }
-        ]);
-        setInput('');
-        setDone(true);
-        return;
-      }
-    }
-
-    setMessages(msgs => [...msgs, { from: 'user', text: input }]);
-    const key = steps[step].key;
-    setAnswers(a => ({ ...a, [key]: input }));
-    setInput('');
-
-    if (step < steps.length - 1) {
-      addBotMessage(steps[step + 1].prompt);
-      setStep(s => s + 1);
-    } else {
-      // Final step - save to database
-      setSaving(true);
-      addBotMessage('Perfect! Let me save all your details... 💾', 1000);
+  const moveToNextStep = () => {
+    const stepOrder = ['type', 'style', 'participants', 'location', 'budget', 'date', 'contact'];
+    const currentIndex = stepOrder.indexOf(currentStep);
+    
+    if (currentIndex < stepOrder.length - 1) {
+      const nextStep = stepOrder[currentIndex + 1];
+      setCurrentStep(nextStep);
       
-      try {
-        // 1. Create lead
-        const leadData = {
-          name: answers.name || 'Anonymous',
-          email: answers.email,
-          phone: answers.phone,
-          service: 'AI Photoshoot Planner',
-          status: 'New'
-        };
+      setTimeout(() => {
+        addMessage(steps[nextStep].question);
+      }, 500);
+    } else {
+      // Complete the session
+      handleComplete();
+    }
+  };
 
-        const { data: newLead, error: leadError } = await supabase
-          .from('leads')
-          .insert([leadData])
-          .select()
-          .single();
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const email = formData.get('email');
+    const phone = formData.get('phone');
 
-        if (leadError) throw leadError;
-        
-        const newLeadId = newLead.id;
-        setLeadId(newLeadId);
+    if (!email) return;
 
-        // 2. Create project
-        const projectData = {
-          lead_id: newLeadId,
-          name: `${answers.name || 'Anonymous'}'s Photoshoot`,
-          client_name: answers.name,
-          stage: 'Inquiry',
-          status: 'Active',
-          opportunity_amount: 0,
-          notes: `AI Planner Session:\nDate: ${answers.date}\nLocation: ${answers.location}\nStyle: ${answers.style}\nInspiration: ${answers.inspiration}\nNotes: ${answers.notes}`
-        };
+    setSessionData(prev => ({ ...prev, email, phone }));
+    addMessage(`Email: ${email}${phone ? `, Phone: ${phone}` : ''}`, 'user');
+    
+    setIsTyping(true);
+    setTimeout(async () => {
+      setIsTyping(false);
+      await saveSession({ ...sessionData, email, phone });
+      addMessage("Perfect! I've saved all your details. Someone from Studio37 will contact you within 24 hours to finalize your shoot details and schedule. We can't wait to work with you! 📸");
+    }, 1000);
+  };
 
-        const { data: newProject, error: projectError } = await supabase
-          .from('projects')
-          .insert([projectData])
-          .select()
-          .single();
+  const saveSession = async (data) => {
+    try {
+      // Save to leads table
+      await supabase.from('leads').insert([{
+        name: 'Virtual Agent Lead',
+        email: data.email,
+        phone: data.phone || null,
+        service: data.type,
+        status: 'New'
+      }]);
 
-        if (projectError) throw projectError;
-        
-        setProjectId(newProject.id);
+      // Save session details
+      const sessionDetails = `
+Virtual Agent Session:
+Type: ${data.type}
+Style: ${data.style}
+Participants: ${data.participants}
+Location: ${data.location}
+Budget: ${data.budget}
+Preferred Date: ${data.date}
+      `.trim();
 
-        // 3. Add detailed note
-        const noteText = `🤖 AI Planner Session:\n📅 Preferred Date: ${answers.date}\n📍 Location: ${answers.location}\n🎨 Style: ${answers.style}\n💡 Inspiration: ${answers.inspiration}\n📝 Additional Notes: ${answers.notes}`;
-        
+      const { data: leadData } = await supabase
+        .from('leads')
+        .select('id')
+        .eq('email', data.email)
+        .order('created_at', { ascending: false })
+        .limit(1);
+
+      if (leadData && leadData[0]) {
         await supabase.from('lead_notes').insert([{
-          lead_id: newLeadId,
-          note: noteText,
-          note_type: 'system',
-          priority: 'normal',
-          status: 'AI Planning Session'
+          lead_id: leadData[0].id,
+          note: sessionDetails,
+          note_type: 'virtual_agent',
+          priority: 'medium',
+          status: 'New Lead'
         }]);
+      }
+    } catch (error) {
+      console.error('Error saving session:', error);
+    }
+  };
 
-        setSaving(false);
+  const handleComplete = () => {
+    setCurrentStep('contact');
+    setTimeout(() => {
+      addMessage(steps.contact.question);
+    }, 500);
+  };
+
+  return (
+    <div className="h-96 flex flex-col bg-[#232323] text-[#F3E3C3]">
+      {/* Messages Area */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        {messages.map((message) => (
+          <div
+            key={message.id}
+            className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+          >
+            <div
+              className={`max-w-xs px-4 py-2 rounded-lg text-sm ${
+                message.type === 'user'
+                  ? 'bg-[#F3E3C3] text-[#1a1a1a]'
+                  : 'bg-[#1a1a1a] text-[#F3E3C3]'
+              }`}
+            >
+              {message.text}
+            </div>
+          </div>
+        ))}
         
-        setTimeout(() => {
-          addBotMessage("✨ All set! I've created your project and our team will reach out within 24 hours.", 500);
-          setTimeout(() => {
-            addBotMessage("You can continue chatting to add notes or update info. What would you like to do? 🤔\n\n• Type 'add note' to add additional details\n• Type 'update info' to change something\n• Type 'done' to finish", 1000);
-            setStep(steps.length);
-          }, 1500);
-        }, 1000);
+        {isTyping && (
+          <div className="flex justify-start">
+            <div className="bg-[#1a1a1a] text-[#F3E3C3] px-4 py-2 rounded-lg text-sm">
+              <div className="flex space-x-1">
+                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+              </div>
+            </div>
+          </div>
+        )}
+        
+        <div ref={messagesEndRef} />
+      </div>
 
-      } catch (error) {
-        console.error('Error saving data:', error);
-        setSaving(false);
-        addBotMessage("Oops! There was an issue saving your information. Please try again or contact us directly at sales@studio37.cc", 500);
-      }
+      {/* Options or Form */}
+      <div className="border-t border-white/10 p-4">
+        {currentStep !== 'contact' && steps[currentStep] && !steps[currentStep].isForm ? (
+          <div className="space-y-2">
+            <p className="text-sm text-[#F3E3C3]/70 mb-3">Choose an option:</p>
+            <div className="grid grid-cols-1 gap-2">
+              {steps[currentStep].options.map((option, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleOptionClick(option)}
+                  className="text-left p-2 bg-[#1a1a1a] hover:bg-[#333] rounded text-sm transition-colors border border-white/10"
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : currentStep === 'contact' ? (
+          <form onSubmit={handleFormSubmit} className="space-y-3">
+            <input
+              name="email"
+              type="email"
+              placeholder="Your email address *"
+              required
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded px-3 py-2 text-sm text-[#F3E3C3] placeholder-[#F3E3C3]/50"
+            />
+            <input
+              name="phone"
+              type="tel"
+              placeholder="Your phone number (optional)"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded px-3 py-2 text-sm text-[#F3E3C3] placeholder-[#F3E3C3]/50"
+            />
+            <button
+              type="submit"
+              className="w-full bg-[#F3E3C3] text-[#1a1a1a] py-2 px-4 rounded font-semibold text-sm hover:bg-[#E6D5B8] transition-colors"
+            >
+              Complete Planning Session
+            </button>
+          </form>
+        ) : null}
+      </div>
+    </div>
+  );
+};
 
-      if (onComplete) onComplete();
-    }
-  };
-
-  // Handle post-creation commands
-  const handlePostCreation = async (e) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-
-    const cmd = input.trim().toLowerCase();
-    setMessages(msgs => [...msgs, { from: 'user', text: input }]);
-    setInput('');
-
-    if (cmd === 'done' || cmd === 'exit' || cmd === 'close' || cmd === 'finish') {
-      addBotMessage('🙏 Thank you for planning with Studio37! We\'re excited to work with you. You can close this chat anytime.');
-      setDone(true);
-      return;
-    }
-
-    if (cmd.includes('note') && cmd.includes('add')) {
-      addBotMessage('📝 Great! Please type your additional note:');
-      setStep('add_note');
-      return;
-    }
-
-    if (cmd.includes('update') && cmd.includes('info')) {
-      addBotMessage('🔄 What would you like to update?\n\n• name\n• email\n• phone\n• date\n• location\n• style\n• inspiration\n• notes');
-      setStep('update_field');
-      return;
-    }
-
-    // Handle unknown commands with helpful suggestions
-    addBotMessage("🤔 I didn't quite understand that. Here's what you can do:\n\n• 'add note' - Add additional details\n• 'update info' - Change your information\n• 'done' - Finish our chat\n\nWhat would you like to try?");
-  };
-
-  // Handle adding notes
-  const handleAddNote = async (e) => {
-    e.preventDefault();
-    if (!input.trim() || !leadId) return;
-
-    setMessages(msgs => [...msgs, { from: 'user', text: input }]);
-    
-    try {
-      await supabase.from('lead_notes').insert([{
-        lead_id: leadId,
-        note: `📝 Client Note: ${input}`,
-        note_type: 'manual',
-        priority: 'normal',
-        status: 'Client Update'
-      }]);
-
-      addBotMessage('✅ Note added successfully! Anything else you\'d like to do?\n\n• add note\n• update info\n• done');
-    } catch (error) {
-      addBotMessage('❌ Sorry, there was an issue adding your note. Please try again.');
-    }
-    
-    setInput('');
-    setStep(steps.length);
-  };
-
-  // Handle field selection for updates
-  const [updateField, setUpdateField] = useState('');
-
-  const handleUpdateField = async (e) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-
-    const field = input.trim().toLowerCase();
-    const validFields = ['name', 'email', 'phone', 'date', 'location', 'style', 'inspiration', 'notes'];
-    
-    setMessages(msgs => [...msgs, { from: 'user', text: input }]);
-
-    if (validFields.includes(field)) {
-      setUpdateField(field);
-      addBotMessage(`🔄 What's the new value for ${field}?`);
-      setStep('update_value');
-    } else {
-      addBotMessage('❌ That field isn\'t available to update. Please choose from:\n\n• name\n• email\n• phone\n• date\n• location\n• style\n• inspiration\n• notes');
-    }
-    
-    setInput('');
-  };
-
-  // Handle updating field values
-  const handleUpdateValue = async (e) => {
-    e.preventDefault();
-    if (!input.trim() || !leadId) return;
-
-    setMessages(msgs => [...msgs, { from: 'user', text: input }]);
-    
-    try {
-      // Update in leads table for basic fields
-      if (['name', 'email', 'phone'].includes(updateField)) {
-        await supabase.from('leads').update({ [updateField]: input }).eq('id', leadId);
-      }
-      
-      // Add note for all updates
-      await supabase.from('lead_notes').insert([{
-        lead_id: leadId,
-        note: `🔄 Updated ${updateField}: ${input}`,
-        note_type: 'system',
-        priority: 'normal',
-        status: 'Information Update'
-      }]);
-
-      addBotMessage(`✅ Updated ${updateField} successfully! What else would you like to do?\n\n• add note\n• update info\n• done`);
-    } catch (error) {
+export default VirtualAgentPlanner;
       addBotMessage('❌ Sorry, there was an issue updating that information. Please try again.');
     }
     
