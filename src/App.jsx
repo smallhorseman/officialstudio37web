@@ -748,7 +748,7 @@ function App() {
                   </div>
                   
                   <div className="bg-[#1a1a1a] p-6 rounded-lg">
-                    <div className="flex items-center justify-between mb-2"></div>
+                    <div className="flex items-center justify-between mb-2">
                       <h4 className="text-lg font-semibold text-[#F3E3C3]">Revenue Pipeline</h4>
                       <DollarSign className="text-[#F3E3C3]/60" size={20} />
                     </div>
