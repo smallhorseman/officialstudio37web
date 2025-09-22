@@ -1233,8 +1233,7 @@ function App() {
             </div>
           </div>
         </div>
-      );
-    });
+      });
 
     return <AdminDashboardContent />;
   };
@@ -1446,6 +1445,7 @@ function App() {
           </div>
         </div>
       )}
+      <Chatbot />
     </div>
   );
 }
