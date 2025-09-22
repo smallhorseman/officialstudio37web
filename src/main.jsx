@@ -54,28 +54,38 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 );
 
-// Completely disable and clean up service worker to prevent asset corruption
+// Aggressively disable and clean up service worker to prevent asset corruption
 if ('serviceWorker' in navigator) {
-  // Unregister all existing service workers immediately
+  // Immediately unregister all service workers
   navigator.serviceWorker.getRegistrations().then(function(registrations) {
-    for(let registration of registrations) {
+    registrations.forEach(function(registration) {
       registration.unregister().then(function(success) {
-        console.log('Unregistered corrupted service worker:', registration.scope, success);
+        console.log('✅ Unregistered corrupted service worker:', registration.scope, success);
+      }).catch(function(error) {
+        console.log('❌ Failed to unregister service worker:', error);
       });
-    }
+    });
   });
 
-  // Also try to clear any cached data
+  // Clear all caches
   if ('caches' in window) {
     caches.keys().then(function(cacheNames) {
       return Promise.all(
         cacheNames.map(function(cacheName) {
-          console.log('Clearing cache:', cacheName);
+          console.log('🗑️ Clearing cache:', cacheName);
           return caches.delete(cacheName);
         })
       );
     }).then(function() {
-      console.log('All caches cleared to prevent asset corruption');
+      console.log('✅ All caches cleared - asset corruption prevented');
+      // Force reload to ensure clean state
+      if (window.location.search.includes('sw-cleared')) {
+        // Already cleared, don't loop
+      } else {
+        window.location.search = '?sw-cleared=true';
+      }
+    }).catch(function(error) {
+      console.log('❌ Cache clearing failed:', error);
     });
   }
 }

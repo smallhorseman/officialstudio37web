@@ -31,22 +31,19 @@ export default defineConfig({
           'router': ['react-router-dom'],
           // Database
           'supabase': ['@supabase/supabase-js'],
-          // Icons and UI components
-          'ui-vendor': ['lucide-react'],
         },
         
         // Optimize asset naming for better caching
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: (assetInfo) => {
-          const ext = assetInfo.name.split('.').pop();
-          if (/\.(css)$/.test(assetInfo.name)) {
-            return `assets/css/[name]-[hash].${ext}`;
+          if (assetInfo.name?.endsWith('.css')) {
+            return 'assets/css/[name]-[hash][extname]';
           }
-          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name)) {
-            return `assets/img/[name]-[hash].${ext}`;
+          if (assetInfo.name?.match(/\.(png|jpg|jpeg|svg|gif|webp)$/)) {
+            return 'assets/images/[name]-[hash][extname]';
           }
-          return `assets/[name]-[hash].${ext}`;
+          return 'assets/[name]-[hash][extname]';
         },
       },
     },
@@ -80,8 +77,7 @@ export default defineConfig({
       'react',
       'react-dom', 
       'react-router-dom',
-      '@supabase/supabase-js',
-      'lucide-react'
+      '@supabase/supabase-js'
     ],
     // Force pre-bundling of these dependencies
     force: true,
@@ -106,4 +102,9 @@ export default defineConfig({
   css: {
     devSourcemap: false, // Disable CSS sourcemaps in dev for performance
   },
+  
+  define: {
+    // Fix the cleanup function error
+    'global': 'globalThis',
+  }
 })

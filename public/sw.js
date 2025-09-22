@@ -1,81 +1,47 @@
-// Disable service worker to prevent NS_ERROR_CORRUPTED_CONTENT errors
-// This service worker immediately unregisters itself and clears all caches
+// Studio37 Service Worker - DISABLED to prevent asset corruption
 
-self.addEventListener('install', () => {
-  // Skip waiting and immediately activate
+console.log('Studio37 SW: Disabled service worker loading');
+
+// Immediately unregister and clean up
+self.addEventListener('install', (event) => {
+  console.log('Studio37 SW: Install - immediately skip waiting');
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
-  console.log('Studio37 SW: Deactivating and clearing caches...');
+  console.log('Studio37 SW: Activate - clearing all caches and unregistering');
   event.waitUntil(
-    // Clear all existing caches
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          console.log('Clearing cache:', cacheName);
-          return caches.delete(cacheName);
-        })
-      );
-    }).then(() => {
-      console.log('Service worker disabled - all caches cleared');
+    Promise.all([
+      // Clear all caches
+      caches.keys().then((cacheNames) => {
+        return Promise.all(
+          cacheNames.map((cacheName) => {
+            console.log('Clearing cache:', cacheName);
+            return caches.delete(cacheName);
+          })
+        );
+      }),
       // Take control of all clients
-      return self.clients.claim();
-    }).then(() => {
+      self.clients.claim()
+    ]).then(() => {
+      console.log('Studio37 SW: All caches cleared, unregistering...');
       // Unregister this service worker
       return self.registration.unregister();
+    }).then(() => {
+      console.log('Studio37 SW: Successfully unregistered');
     })
   );
 });
 
-// Don't intercept any requests - let all requests pass through to network
+// Don't intercept ANY requests - let everything pass through
 self.addEventListener('fetch', (event) => {
-  // Simply return - don't intercept anything to prevent corruption
+  // Do nothing - let all requests pass through to prevent corruption
   return;
 });
 
-// Fetch event - Network first for API, Cache first for assets
-self.addEventListener('fetch', (event) => {
-  const { request } = event;
-  const url = new URL(request.url);
-
-  // Skip non-GET requests
-  if (request.method !== 'GET') return;
-
-  // Handle API requests with network-first strategy
-  if (url.pathname.includes('/api/') || url.origin.includes('supabase')) {
-    event.respondWith(
-      fetch(request)
-        .then(response => {
-          if (response.ok) {
-            const responseClone = response.clone();
-            caches.open(CACHE_NAME)
-              .then(cache => cache.put(request, responseClone));
-          }
-          return response;
-        })
-        .catch(() => caches.match(request))
-    );
-    return;
+// Notify clients that SW is disabled
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
   }
-
-  // Handle static assets with cache-first strategy
-  event.respondWith(
-    caches.match(request)
-      .then(cachedResponse => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-        
-        return fetch(request)
-          .then(response => {
-            if (response.ok) {
-              const responseClone = response.clone();
-              caches.open(CACHE_NAME)
-                .then(cache => cache.put(request, responseClone));
-            }
-            return response;
-          });
-      })
-  );
 });
