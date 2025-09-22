@@ -15,10 +15,20 @@ const HubSpotIntegration = () => {
       };
       
       script.onerror = () => {
-        console.log('HubSpot failed to load - using fallback');
+        console.log('HubSpot failed to load (503 error) - using fallback');
+        // Set a flag that HubSpot failed to load
+        window.hubSpotFailed = true;
       };
       
       document.head.appendChild(script);
+      
+      // Set a timeout to detect if HubSpot never loads
+      setTimeout(() => {
+        if (!window.hbspt) {
+          console.log('HubSpot timeout - service may be down');
+          window.hubSpotFailed = true;
+        }
+      }, 5000);
     }
   }, []);
 
@@ -27,6 +37,12 @@ const HubSpotIntegration = () => {
 
 // Minimal tracking functions - fallback if HubSpot doesn't load
 export const trackHubSpotEvent = (eventName, properties = {}) => {
+  // Check if HubSpot failed to load
+  if (window.hubSpotFailed) {
+    console.log('HubSpot unavailable - tracking event locally:', eventName, properties);
+    return;
+  }
+  
   if (typeof window !== 'undefined' && window._hsq) {
     try {
       window._hsq.push(['trackEvent', {
@@ -36,10 +52,18 @@ export const trackHubSpotEvent = (eventName, properties = {}) => {
     } catch (error) {
       console.log('HubSpot tracking fallback:', eventName, properties);
     }
+  } else {
+    console.log('HubSpot not loaded - event:', eventName);
   }
 };
 
 export const identifyHubSpotVisitor = (email, properties = {}) => {
+  // Check if HubSpot failed to load
+  if (window.hubSpotFailed) {
+    console.log('HubSpot unavailable - visitor identification local:', email, properties);
+    return;
+  }
+  
   if (typeof window !== 'undefined' && window._hsq) {
     try {
       window._hsq.push(['identify', {
@@ -49,6 +73,8 @@ export const identifyHubSpotVisitor = (email, properties = {}) => {
     } catch (error) {
       console.log('HubSpot identify fallback:', email, properties);
     }
+  } else {
+    console.log('HubSpot not loaded - identify:', email);
   }
 };
 
