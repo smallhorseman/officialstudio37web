@@ -79,31 +79,3 @@ export const identifyHubSpotVisitor = (email, properties = {}) => {
 };
 
 export default HubSpotIntegration;
-
-// Track custom events
-export const trackHubSpotEvent = (eventName, properties = {}) => {
-  if (window.hbspt && window.hbspt.analytics) {
-    try {
-      window.hbspt.analytics.trackEvent(eventName, properties);
-    } catch (error) {
-      console.warn('HubSpot event tracking failed:', error);
-    }
-  } else {
-    console.warn('HubSpot analytics not loaded');
-  }
-};
-
-// Identify visitors
-export const identifyHubSpotVisitor = (email, properties = {}) => {
-  if (window.hbspt && window.hbspt.analytics) {
-    try {
-      window.hbspt.analytics.identify(email, properties);
-    } catch (error) {
-      console.warn('HubSpot visitor identification failed:', error);
-    }
-  } else {
-    console.warn('HubSpot analytics not loaded');
-  }
-};
-
-export default HubSpotIntegration;
