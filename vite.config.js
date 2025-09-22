@@ -15,22 +15,34 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
+    minify: 'terser',
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
-          supabase: ['@supabase/supabase-js']
+          supabase: ['@supabase/supabase-js'],
+          ui: ['react-beautiful-dnd']
         }
       }
-    }
+    },
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom', '@supabase/supabase-js']
+    include: ['react', 'react-dom', 'react-router-dom', '@supabase/supabase-js', 'react-beautiful-dnd']
   },
   css: {
     modules: {
       localsConvention: 'camelCase'
     }
+  },
+  define: {
+    // Optimize production builds
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
   }
 })
 
