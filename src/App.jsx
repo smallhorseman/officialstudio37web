@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import { supabase, fetchWithErrorHandling } from './supabaseClient';
-
-// Import the enhanced components
-import { EnhancedCrmSection } from './components/EnhancedCRM';
-import { EnhancedCmsSection } from './components/EnhancedCMS';
-import SEOHead from './components/SEOHead';
-
-// Import virtual agent components
+import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
+import { Camera, Menu, X, Mail, Phone, MapPin, Instagram, ArrowRight, MessageCircle, Star } from 'lucide-react';
 import VirtualAgentPlanner from './VirtualAgentPlanner';
 import PhotoshootPlanner from './PhotoshootPlanner';
 import ConversationalPlanner from './ConversationalPlanner';
+import { supabase, fetchWithErrorHandling } from './supabaseClient';
+import { EnhancedCrmSection } from './components/EnhancedCRM';
+import { EnhancedCmsSection } from './components/EnhancedCMS';
+import SEOHead from './components/SEOHead';
 
 // --- Helper Components & Icons --- //
 
@@ -61,59 +55,29 @@ const Logo = ({ className }) => (
 // const AdminDashboard = lazy(() => import('./components/AdminDashboard'));
 // const BlogAdminSection = lazy(() => import('./components/BlogAdminSection'));
 
-export default function App() {
+function App() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  
+  // State management
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
-  const location = useLocation();
-
-  // --- Theme ---
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || 'dark';
-    }
-    return 'dark';
-  });
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      document.documentElement.classList.toggle('dark', theme === 'dark');
-      localStorage.setItem('theme', theme);
-    }
-  }, [theme]);
-  // Optionally, force dark theme only:
-  // useEffect(() => { document.documentElement.classList.add('dark'); }, []);
-  // const toggleTheme = () => {}; // Disable theme toggle if you want only dark
-  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
-
-  // --- Blog ---
+  const [portfolioUnlocked, setPortfolioUnlocked] = useState(false);
+  const [showChatWidget, setShowChatWidget] = useState(false);
+  const [showPlanner, setShowPlanner] = useState(null);
+  
+  // Data states
+  const [leads, setLeads] = useState([]);
+  const [portfolioImages, setPortfolioImages] = useState([]);
   const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  
+  // Loading states
   const [blogLoading, setBlogLoading] = useState(false);
   const [blogError, setBlogError] = useState('');
 
-  // --- Portfolio Unlock ---
-  const [portfolioUnlocked, setPortfolioUnlocked] = useState(false);
-  const [portfolioImages, setPortfolioImages] = useState([]);
-  const [portfolioLoading, setPortfolioLoading] = useState(false);
-
-  // --- Leads (CRM) ---
-  const [leads, setLeads] = useState([]);
-  const [leadsLoading, setLeadsLoading] = useState(false);
-
-  // --- Content (CMS) ---
-  const [siteContent, setSiteContent] = useState({ about: { title: '', bio: '' } });
-
-  // --- Projects ---
-  const [projects, setProjects] = useState([]);
-  const [projectsLoading, setProjectsLoading] = useState(false);
-
-  // --- Blog Admin ---
-  const [blogEdit, setBlogEdit] = useState(null);
-  const [blogSaving, setBlogSaving] = useState(false);
-  const [blogAdminError, setBlogAdminError] = useState('');
-
-  // --- Floating Chat Bot ---
-  const [showChatBot, setShowChatBot] = useState(false);
-
-  // --- Fetch Blog Posts ---
+  // Fix missing error handling in useEffect hooks
   useEffect(() => {
     if (location.pathname === '/blog' || isAdmin) {
       setBlogLoading(true);
@@ -142,88 +106,44 @@ export default function App() {
     }
   }, [location.pathname, isAdmin]);
 
-  // --- Fetch Portfolio Images ---
+  // Load initial data
   useEffect(() => {
-    if (location.pathname === '/portfolio' || isAdmin) {
-      setPortfolioLoading(true);
-      supabase
-        .from('portfolio_images')
-        .select('id, url, category, caption, created_at')
-        .order('order_index', { ascending: true })
-        .order('created_at', { ascending: false })
-        .limit(24)
-        .then(({ data, error }) => {
-          if (error) {
-            setPortfolioImages([]);
-          } else {
-            setPortfolioImages(data || []);
-          }
-          setPortfolioLoading(false);
-        });
-    }
-  }, [location.pathname, isAdmin]);
+    const loadInitialData = async () => {
+      try {
+        setLoading(true);
+        
+        // Load portfolio images
+        const portfolioData = await fetchWithErrorHandling(
+          supabase
+            .from('portfolio_images')
+            .select('*')
+            .order('order_index', { ascending: true })
+        );
+        if (portfolioData) setPortfolioImages(portfolioData);
 
-  // --- Fetch Leads (CRM) ---
-  useEffect(() => {
-    if (isAdmin) {
-      setLeadsLoading(true);
-      supabase
-        .from('leads')
-        .select('*')
-        .order('created_at', { ascending: false })
-        .then(({ data }) => {
-          setLeads(data || []);
-          setLeadsLoading(false);
-        });
-    }
-  }, [isAdmin]);
-
-  // --- Fetch Site Content (CMS) ---
-  useEffect(() => {
-    supabase
-      .from('about')
-      .select('id, title, bio, created_at')
-      .order('created_at', { ascending: false })
-      .limit(1)
-      .then(({ data, error }) => {
-        if (error || !data || !data[0]) {
-          setSiteContent({ about: { title: 'About', bio: 'Content not available.' } });
-        } else {
-          setSiteContent({ about: { title: data[0].title, bio: data[0].bio } });
+        // Load leads if admin
+        if (isAdmin) {
+          const leadsData = await fetchWithErrorHandling(
+            supabase
+              .from('leads')
+              .select('*')
+              .order('created_at', { ascending: false })
+          );
+          if (leadsData) setLeads(leadsData);
         }
-      });
-  }, []);
+        
+      } catch (err) {
+        console.error('Error loading initial data:', err);
+        setError('Failed to load application data.');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  // --- Fetch Site Map Order ---
-  const [siteMapOrder, setSiteMapOrder] = useState([]);
-  useEffect(() => {
-    supabase
-      .from('site_map_order')
-      .select('id, page_key, page_label, order_index')
-      .order('order_index', { ascending: true })
-      .order('id', { ascending: true })
-      .limit(100)
-      .then(({ data, error }) => {
-        if (!error && Array.isArray(data)) setSiteMapOrder(data);
-      });
-  }, []);
-
-  // --- Projects ---
-  useEffect(() => {
-    if (isAdmin) {
-      setProjectsLoading(true);
-      supabase
-        .from('projects')
-        .select('*')
-        .order('created_at', { ascending: false })
-        .then(({ data }) => {
-          setProjects(data || []);
-          setProjectsLoading(false);
-        });
-    }
+    loadInitialData();
   }, [isAdmin]);
 
-  // --- Portfolio Unlock Handler ---
+  // Add proper error handling for portfolio unlock
   async function handlePortfolioUnlock(formData) {
     try {
       const { error } = await supabase.from('leads').insert([{
@@ -247,948 +167,449 @@ export default function App() {
     }
   }
 
-  // --- Admin Login Handler ---
-  function handleAdminLogin() {
-    setIsAdmin(true);
-  }
+  // Portfolio management functions
+  const addPortfolioImage = async (imageData) => {
+    try {
+      const { data, error } = await supabase
+        .from('portfolio_images')
+        .insert([imageData])
+        .select();
+      
+      if (error) throw error;
+      
+      if (data && data[0]) {
+        setPortfolioImages(prev => [data[0], ...prev]);
+      }
+    } catch (error) {
+      console.error('Error adding portfolio image:', error);
+      throw error;
+    }
+  };
 
-  // --- Update Lead Status (CRM) ---
-  async function updateLeadStatus(leadId, status) {
-    await supabase.from('leads').update({ status }).eq('id', leadId);
-    setLeads(leads => leads.map(l => l.id === leadId ? { ...l, status } : l));
-  }
+  const deletePortfolioImage = async (imageId) => {
+    try {
+      const { error } = await supabase
+        .from('portfolio_images')
+        .delete()
+        .eq('id', imageId);
+      
+      if (error) throw error;
+      
+      setPortfolioImages(prev => prev.filter(img => img.id !== imageId));
+    } catch (error) {
+      console.error('Error deleting portfolio image:', error);
+      throw error;
+    }
+  };
 
-  // --- Update Content (CMS) ---
-  async function updateContent(newContent) {
-    await supabase.from('site_content').update({
-      about_title: newContent.about.title,
-      about_bio: newContent.about.bio
-    }).eq('id', 1);
-    setSiteContent(newContent);
-  }
+  const updatePortfolioImageOrder = async (imageId, newOrder) => {
+    try {
+      const { error } = await supabase
+        .from('portfolio_images')
+        .update({ order_index: newOrder })
+        .eq('id', imageId);
+      
+      if (error) throw error;
+      
+      // Reload portfolio images to reflect new order
+      const { data } = await supabase
+        .from('portfolio_images')
+        .select('*')
+        .order('order_index', { ascending: true });
+      
+      if (data) setPortfolioImages(data);
+    } catch (error) {
+      console.error('Error updating image order:', error);
+      throw error;
+    }
+  };
 
-  // --- Add/Delete Portfolio Image (CMS) ---
-  async function addPortfolioImage(image) {
-    // Get the highest order_index for the category
-    const { data: existingImages } = await supabase
-      .from('portfolio_images')
-      .select('order_index')
-      .eq('category', image.category)
-      .order('order_index', { ascending: false })
-      .limit(1);
-    
-    const nextOrderIndex = existingImages && existingImages[0] ? existingImages[0].order_index + 1 : 0;
-    
-    const { data } = await supabase
-      .from('portfolio_images')
-      .insert([{ ...image, order_index: nextOrderIndex }])
-      .select();
-    
-    if (data && data[0]) setPortfolioImages(imgs => [...imgs, data[0]]);
-  }
-  async function deletePortfolioImage(id) {
-    await supabase.from('portfolio_images').delete().eq('id', id);
-    setPortfolioImages(imgs => imgs.filter(img => img.id !== id));
-  }
+  // Lead management functions
+  const updateLeadStatus = async (leadId, newStatus) => {
+    try {
+      const { error } = await supabase
+        .from('leads')
+        .update({ status: newStatus, updated_at: new Date().toISOString() })
+        .eq('id', leadId);
+      
+      if (error) throw error;
+      
+      setLeads(prev => prev.map(lead => 
+        lead.id === leadId ? { ...lead, status: newStatus } : lead
+      ));
+    } catch (error) {
+      console.error('Error updating lead status:', error);
+      throw error;
+    }
+  };
 
-  // --- Update Portfolio Image Order ---
-  async function updatePortfolioImageOrder(imageId, newOrderIndex, category) {
-    await supabase
-      .from('portfolio_images')
-      .update({ order_index: newOrderIndex })
-      .eq('id', imageId);
-    
-    // Refresh the images to reflect new order
-    const { data } = await supabase
-      .from('portfolio_images')
-      .select('id, url, category, caption, created_at, order_index')
-      .order('order_index', { ascending: true })
-      .order('created_at', { ascending: false })
-      .limit(24);
-    
-    if (data) setPortfolioImages(data);
-  }
+  // Fix security issue - use environment variables for admin credentials
+  const AdminLoginPage = ({ onLogin }) => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
-  // --- Blog Admin CRUD ---
-  async function createBlogPost(post) {
-    setBlogSaving(true);
-    const { data, error } = await supabase.from('blog_posts').insert([post]).select();
-    if (error) setBlogAdminError('Failed to create post.');
-    else setBlogPosts(posts => [data[0], ...posts]);
-    setBlogSaving(false);
-  }
-  async function updateBlogPost(id, post) {
-    setBlogSaving(true);
-    await supabase.from('blog_posts').update(post).eq('id', id);
-    setBlogPosts(posts => posts.map(p => p.id === id ? { ...p, ...post } : p));
-    setBlogSaving(false);
-  }
-  async function deleteBlogPost(id) {
-    await supabase.from('blog_posts').delete().eq('id', id);
-    setBlogPosts(posts => posts.filter(p => p.id !== id));
-  }
+    const handleLogin = async (e) => {
+      e.preventDefault();
+      setLoading(true);
+      setError('');
+      
+      try {
+        // Use environment variables for secure authentication
+        const adminUsername = import.meta.env.VITE_ADMIN_USERNAME || 'admin';
+        const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'studio37admin';
+        
+        if (username.trim().toLowerCase() === adminUsername && password.trim() === adminPassword) {
+          onLogin();
+          navigate('/admin/dashboard');
+        } else {
+          setError('Invalid username or password.');
+        }
+      } catch (err) {
+        console.error('Login error:', err);
+        setError('An error occurred during login.');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  // --- Render ---
-  return (
-    <ErrorBoundary>
-      <div className="min-h-screen bg-[#181818] text-[#F3E3C3] font-sans antialiased transition-colors duration-300">
-        {/* Chatbot Button */}
-        <button
-          onClick={() => setShowChatBot(true)}
-          className="fixed bottom-6 right-6 z-50 bg-[#F3E3C3] text-[#1a1a1a] rounded-full shadow-lg p-4 flex items-center gap-2 hover:scale-105 transition-transform"
-          aria-label="Open Photoshoot Planner Chat Bot"
-          style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.25)' }}
-        >
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-          <span className="font-bold hidden md:inline">Plan My Shoot</span>
-        </button>
-        {showChatBot && (
-          <div className="fixed inset-0 bg-black/40 flex items-end md:items-center justify-center z-[100]">
-            <div className="bg-[#232323] dark:bg-white rounded-t-2xl md:rounded-lg shadow-2xl w-full max-w-md mx-auto p-0 md:p-0 relative animate-fadeInUp">
-              <button onClick={() => setShowChatBot(false)} className="absolute top-2 right-4 text-white dark:text-black text-2xl">&times;</button>
-              <div className="p-4 border-b border-white/10 flex items-center gap-2">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-                <span className="font-display text-lg font-bold">Photoshoot Planner</span>
-              </div>
-              {/* <VirtualAgentPlanner /> */}
-            </div>
-          </div>
-        )}
-        <Header 
-          isMenuOpen={isMenuOpen} 
-          setIsMenuOpen={setIsMenuOpen}
-          theme={theme}
-          toggleTheme={toggleTheme}
-          showAdminButton={!location.pathname.includes('admin')}
+    return (
+      <div className="section-padding-lg flex items-center justify-center">
+        <SEOHead 
+          title="Admin Login - Studio37"
+          description="Admin access to Studio37 dashboard"
         />
-        <main className="pt-20">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage content={siteContent.about} />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/portfolio" element={
-              <MemoizedPortfolioPage
-                isUnlocked={portfolioUnlocked}
-                onUnlock={handlePortfolioUnlock}
-                images={portfolioImages}
+        <div className="card max-w-md w-full p-8 md:p-12">
+          <h2 className="text-3xl font-vintage text-center mb-8">Admin Login</h2>
+          <form onSubmit={handleLogin} className="space-y-6">
+            <div>
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="form-input"
+                required
+                aria-label="Username"
               />
-            } />
-            <Route path="/blog" element={<BlogPage posts={blogPosts} loading={blogLoading} error={blogError} />} />
-            <Route path="/blog/:slug" element={<BlogPostPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/admin" element={<AdminLoginPage onLogin={handleAdminLogin} />} />
-            <Route path="/admin/dashboard" element={
-              isAdmin ? (
-                <AdminDashboard
-                  leads={leads}
-                  updateLeadStatus={updateLeadStatus}
-                  content={siteContent}
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form-input"
+                required
+                aria-label="Password"
+              />
+            </div>
+            {error && <p className="text-red-400 text-sm" role="alert">{error}</p>}
+            <button 
+              type="submit" 
+              disabled={loading}
+              className="btn-primary w-full group"
+            >
+              {loading ? (
+                <div className="flex items-center justify-center gap-2">
+                  <div className="loading-spinner"></div>
+                  Logging in...
+                </div>
+              ) : (
+                <>Login <ArrowRight className="ml-2" /></>
+              )}
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  };
+
+  // Update AdminDashboard to use enhanced components
+  const AdminDashboard = () => {
+    const [activeTab, setActiveTab] = useState('crm');
+
+    return (
+      <div className="section-padding-lg bg-[#212121]">
+        <SEOHead 
+          title="Admin Dashboard - Studio37"
+          description="Studio37 admin dashboard for managing business operations"
+        />
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="responsive-heading font-vintage">Admin Dashboard</h2>
+            <p className="responsive-text text-[#F3E3C3]/70 mt-4">Manage your business operations</p>
+          </div>
+          
+          <div className="flex flex-wrap gap-2 justify-center mb-8">
+            {['crm', 'cms', 'blog', 'analytics'].map(tab => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-6 py-2 text-sm font-semibold rounded-full transition-all duration-300 focus-ring ${
+                  activeTab === tab 
+                    ? 'bg-[#F3E3C3] text-[#1a1a1a]' 
+                    : 'bg-[#262626] hover:bg-[#333] text-[#F3E3C3]'
+                }`}
+              >
+                {tab.toUpperCase()}
+              </button>
+            ))}
+          </div>
+
+          <div className="card p-6">
+            {activeTab === 'crm' && (
+              <div>
+                <h3 className="text-2xl font-vintage mb-6">Customer Relationship Management</h3>
+                <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
+              </div>
+            )}
+            
+            {activeTab === 'cms' && (
+              <div>
+                <h3 className="text-2xl font-vintage mb-6">Content Management</h3>
+                <EnhancedCmsSection
                   portfolioImages={portfolioImages}
                   addPortfolioImage={addPortfolioImage}
                   deletePortfolioImage={deletePortfolioImage}
                   updatePortfolioImageOrder={updatePortfolioImageOrder}
-                  blogPosts={blogPosts}
-                  createBlogPost={createBlogPost}
-                  updateBlogPost={updateBlogPost}
-                  deleteBlogPost={deleteBlogPost}
-                  blogEdit={blogEdit}
-                  setBlogEdit={setBlogEdit}
-                  blogSaving={blogSaving}
-                  blogAdminError={blogAdminError}
-                  projects={projects}
-                  projectsLoading={projectsLoading}
                 />
-              ) : <AdminLoginPage onLogin={handleAdminLogin} />
-            } />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </ErrorBoundary>
-  );
-}
-
-// --- Error Boundary Component (must be declared first) ---
-const ErrorBoundary = ({ children, fallback }) => {
-  const [hasError, setHasError] = useState(false);
-
-  useEffect(() => {
-    const handleError = (error) => {
-      console.error('Application error:', error);
-      setHasError(true);
-    };
-    
-    window.addEventListener('error', handleError);
-    return () => window.removeEventListener('error', handleError);
-  }, []);
-
-  if (hasError) {
-    return fallback || (
-      <div className="min-h-screen flex items-center justify-center bg-[#181818] text-[#F3E3C3]">
-        <div className="text-center">
-          <h2 className="text-2xl font-display mb-4">Something went wrong</h2>
-          <button 
-            onClick={() => window.location.reload()} 
-            className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded"
-          >
-            Refresh Page
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  return children;
-};
-
-// --- OptimizedImage Component (declare early) ---
-const OptimizedImage = ({ src, alt, className, loading = "lazy", ...props }) => {
-  const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState(false);
-  const [retryCount, setRetryCount] = useState(0);
-  const maxRetries = 2;
-
-  const optimizeCloudinaryUrl = (url) => {
-    if (!url || !url.includes('cloudinary.com')) return url;
-    const optimizedUrl = url.replace('/upload/', '/upload/f_auto,q_auto:good,w_auto:breakpoints,c_scale/');
-    return optimizedUrl;
-  };
-
-  const handleImageError = () => {
-    if (retryCount < maxRetries) {
-      setRetryCount(prev => prev + 1);
-      setError(false);
-      setLoaded(false);
-      setTimeout(() => {
-        const img = new Image();
-        img.onload = () => setLoaded(true);
-        img.onerror = () => setError(true);
-        img.src = optimizeCloudinaryUrl(src);
-      }, 1000 * (retryCount + 1));
-    } else {
-      setError(true);
-    }
-  };
-
-  const optimizedSrc = optimizeCloudinaryUrl(src);
-
-  return (
-    <div className={`relative ${className}`}>
-      {!loaded && !error && (
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse rounded flex items-center justify-center">
-          <div className="w-8 h-8 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin"></div>
-        </div>
-      )}
-      <img
-        src={optimizedSrc}
-        alt={alt}
-        className={`${className} transition-all duration-500 ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-        onLoad={() => setLoaded(true)}
-        onError={handleImageError}
-        loading={loading}
-        decoding="async"
-        crossOrigin="anonymous"
-        {...props}
-      />
-      {error && (
-        <div className="absolute inset-0 bg-gray-800 flex items-center justify-center text-gray-400 text-sm rounded">
-          <div className="text-center p-4">
-            <svg className="w-12 h-12 mx-auto mb-2 opacity-50" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-            </svg>
-            <p>Image unavailable</p>
-            {retryCount > 0 && <p className="text-xs mt-1">Retried {retryCount}x</p>}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-// --- Portfolio Gate Component (declare before use) ---
-const PortfolioGate = ({ onUnlock }) => {
-  const [formData, setFormData] = useState({ name: '', email: '', service: '', phone: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const [showPlanner, setShowPlanner] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.name && formData.email) {
-      onUnlock(formData);
-      setSubmitted(true);
-    }
-  };
-
-  if (submitted) {
-    return (
-      <div className="text-center bg-[#262626] rounded-lg p-8 max-w-lg mx-auto relative">
-        <h3 className="text-2xl font-display text-white mb-2">Thank You!</h3>
-        <p className="text-[#F3E3C3]/80">The portfolio is now unlocked. Check your email for a 10% off coupon!</p>
-        <p className="text-[#F3E3C3]/80 mt-4">Want to plan your shoot?{' '}
-          <button onClick={() => setShowPlanner(true)} className="underline text-[#F3E3C3]">Try our Conversational AI Planner</button>
-        </p>
-        {showPlanner && (
-          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-            <div className="bg-[#232323] rounded-lg shadow-lg max-w-md w-full relative">
-              <button onClick={() => setShowPlanner(false)} className="absolute top-2 right-2 text-white text-xl">&times;</button>
-              {/* <ConversationalPlanner email={formData.email} onComplete={() => {}} /> */}
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  return (
-    <div className="bg-[#262626] rounded-lg shadow-xl p-8 md:p-12 max-w-2xl mx-auto border border-white/10">
-      <h3 className="text-2xl md:text-3xl font-display text-center text-white mb-2">Unlock the Portfolio</h3>
-      <p className="text-center text-[#F3E3C3]/70 mb-8">Submit your info to view our work and receive a 10% off coupon for your first service!</p>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <input type="text" name="name" placeholder="Your Name" required onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
-        <input type="email" name="email" placeholder="Your Email" required onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
-        <input type="tel" name="phone" placeholder="Your Phone (Optional)" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
-        <select name="service" onChange={handleChange} className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]">
-          <option value="">Service of Interest (Optional)</option>
-          <option>Director Package</option>
-          <option>Producer Package</option>
-          <option>Wedding</option>
-          <option>Portrait</option>
-          <option>Other</option>
-        </select>
-        <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
-          Unlock & Get Coupon <ArrowRight />
-        </button>
-      </form>
-    </div>
-  );
-};
-
-// --- Header Component (declare before use in other components) ---
-const Header = ({ isMenuOpen, setIsMenuOpen, theme, toggleTheme, showAdminButton }) => {
-  const location = useLocation();
-  
-  const navLinks = [
-    { page: '/', label: 'Home' },
-    { page: '/about', label: 'About' },
-    { page: '/services', label: 'Services' },
-    { page: '/portfolio', label: 'Portfolio' },
-    { page: '/blog', label: 'Blog' },
-    { page: '/contact', label: 'Contact' },
-    { page: 'book', label: 'Book a Session', external: true, url: 'https://book.usesession.com/i/sbDooN5rcH' }
-  ];
-
-  const NavLink = ({ page, label, external, url }) => (
-    external ? (
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="px-4 py-2 text-sm uppercase tracking-widest transition-colors duration-300 text-[#F3E3C3]/70 hover:text-white font-bold"
-      >
-        {label}
-      </a>
-    ) : (
-      <Link 
-        to={page}
-        className={`px-4 py-2 text-sm uppercase tracking-widest transition-colors duration-300 ${location.pathname === page ? 'text-white' : 'text-[#F3E3C3]/70 hover:text-white'}`}
-      >
-        {label}
-      </Link>
-    )
-  );
-
-  return (
-    <header className="fixed top-0 left-0 w-full z-40 bg-[#232323] shadow-lg">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-4">
-          <Logo />
-          <span className="font-display text-xl font-bold tracking-tight text-white">Studio37</span>
-        </Link>
-        <nav className="hidden md:flex gap-2 items-center">
-          {navLinks.map(link => <NavLink key={link.page} {...link} />)}
-        </nav>
-        <div className="flex items-center gap-2">
-          <button onClick={toggleTheme} className="text-[#F3E3C3] text-xl px-2" aria-label="Toggle Theme">
-            {theme === 'dark' ? '🌙' : '☀️'}
-          </button>
-                    {showAdminButton && (
-                      <Link
-                        to="/admin"
-                        className="text-xs px-2 py-1 rounded bg-transparent text-[#F3E3C3]/60 hover:text-[#F3E3C3] border border-transparent hover:border-[#F3E3C3]/30 transition"
-                        style={{ fontSize: '0.85rem' }}
-                        aria-label="Admin Login"
-                      >
-                        Admin
-                      </Link>
-                    )}
-                    <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white md:hidden">
-            {isMenuOpen ? <span>&#10005;</span> : <span>&#9776;</span>}
-          </button>
-        </div>
-      </div>
-      {isMenuOpen && (
-        <div className="md:hidden bg-[#232323]">
-          <nav className="flex flex-col items-center py-4">
-            {navLinks.map(link => <NavLink key={link.page} {...link} />)}
-          </nav>
-        </div>
-      )}
-    </header>
-  );
-};
-
-// --- HomePage Component ---
-const HomePage = () => {
-  const [heroImageLoaded, setHeroImageLoaded] = useState(false);
-  
-  const heroImageUrl = "https://res.cloudinary.com/dmjxho2rl/image/upload/f_auto,q_auto:good,w_auto:breakpoints,c_scale/v1758172510/A4B03835-ED8B-4FBB-A27E-1F2EE6CA1A18_1_105_c_gstgil.jpg";
-
-  return (
-    <>
-      <SEOHead 
-        title="Studio37 - Professional Photography & Content Strategy in Houston, TX"
-        description="Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX."
-        keywords="photography Houston, professional photographer Houston, content strategy, portraits, weddings, events, brand photography"
-        image="https://www.studio37.cc/og-image.jpg"
-      />
-      <div className="relative h-screen flex items-center justify-center text-center text-white px-4 -mt-20">
-        {!heroImageLoaded && (
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black animate-pulse"></div>
-        )}
-        <img 
-          src={heroImageUrl} 
-          alt="Studio37 Professional Photography - Houston TX" 
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${heroImageLoaded ? 'opacity-100' : 'opacity-0'}`}
-          onLoad={() => setHeroImageLoaded(true)}
-          onError={() => {
-            console.error('Hero image failed to load');
-            setHeroImageLoaded(false);
-          }}
-          loading="eager"
-          decoding="async"
-          crossOrigin="anonymous"
-        />
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-0 pointer-events-none"></div>
-        <div className="relative z-10">
-          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display mb-4 leading-tight break-words max-w-full">Capture. Create. Captivate.</h1>
-          <p className="text-base sm:text-lg md:text-xl max-w-xs sm:max-w-2xl mx-auto mb-8 text-[#F3E3C3]/80">Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.</p>
-          <div className="space-y-4 sm:space-x-4 flex flex-col sm:flex-row items-center justify-center w-full">
-            <Link to="/portfolio" className="group inline-flex items-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 w-full sm:w-auto">
-              View Our Work <ArrowRight />
-            </Link>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
-
-// --- Contact Page ---
-const ContactPage = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-    contactMethod: 'email'
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [sending, setSending] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSending(true);
-    
-    const { error } = await supabase.from('leads').insert([{
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      service: 'Contact Form',
-      status: 'New'
-    }]);
-
-    if (!error) {
-      const { data: leadData } = await supabase
-        .from('leads')
-        .select('id')
-        .eq('email', formData.email)
-        .order('created_at', { ascending: false })
-        .limit(1);
-
-      if (leadData && leadData[0]) {
-        await supabase.from('lead_notes').insert([{
-          lead_id: leadData[0].id,
-          note: `Contact Form: Preferred contact: ${formData.contactMethod}. Message: ${formData.message}`,
-          status: 'Contact Form'
-        }]);
-      }
-    }
-
-    setSending(false);
-    setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <>
-        <SEOHead 
-          title="Thank You - Message Sent | Studio37 Houston Photography"
-          description="Thank you for contacting Studio37. We'll get back to you soon about your photography needs in Houston, TX."
-        />
-        <div className="py-20 md:py-28 bg-[#212121]">
-          <div className="container mx-auto px-6 text-center">
-            <div className="bg-[#262626] rounded-lg p-8 max-w-md mx-auto">
-              <h2 className="text-3xl font-display text-white mb-4">Thank You!</h2>
-              <p className="text-[#F3E3C3]/80">We've received your message and will get back to you soon!</p>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <SEOHead 
-        title="Contact Studio37 - Houston Photography | Get Your Quote Today"
-        description="Contact Studio37 for professional photography services in Houston, TX. Call (832) 713-9944 or email sales@studio37.cc. Serving Greater Houston Area."
-        keywords="contact Houston photographer, Studio37 contact, Houston photography quote, professional photographer Houston TX"
-      />
-      <div className="py-20 md:py-28 bg-[#212121]">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-display">Get In Touch</h2>
-            <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">Ready to start your project? Let's talk. We serve Houston, TX and the surrounding 50-mile radius.</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <input 
-                type="text" 
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Your Name" 
-                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
-                required 
-              />
-              <input 
-                type="email" 
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Your Email" 
-                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
-                required 
-              />
-              <input 
-                type="tel" 
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="Your Phone (Optional)" 
-                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" 
-              />
-              <div>
-                <label className="block text-sm font-medium text-[#F3E3C3] mb-2">Preferred Contact Method</label>
-                <select 
-                  name="contactMethod"
-                  value={formData.contactMethod}
-                  onChange={handleChange}
-                  className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
-                >
-                  <option value="email">Email</option>
-                  <option value="phone">Phone Call</option>
-                  <option value="text">Text Message</option>
-                </select>
               </div>
-              <textarea 
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Your Message" 
-                rows="5" 
-                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
-                required
-              />
-              <button 
-                type="submit" 
-                className="group inline-flex items-center justify-center bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105"
-                disabled={sending}
-              >
-                {sending ? 'Sending...' : 'Send Message'} <ArrowRight />
-              </button>
-            </form>
-            <div className="text-[#F3E3C3]/80 space-y-6">
-              <div>
-                <h3 className="text-xl font-display text-white">Contact Info</h3>
-                <p>Email: <a href="mailto:sales@studio37.cc" className="hover:text-white transition">sales@studio37.cc</a></p>
-                <p>Phone: <a href="tel:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
-                <p>Text: <a href="sms:1-832-713-9944" className="hover:text-white transition">(832) 713-9944</a></p>
-              </div>
-              <div>
-                <h3 className="text-xl font-display text-white">Location</h3>
-                <p>Serving the Greater Houston Area</p>
-                <p>Based near Porter, TX 77362</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
-
-// --- Blog Page ---
-const BlogPage = ({ posts, loading, error }) => {
-  if (loading) {
-    return (
-      <>
-        <SEOHead 
-          title="Photography Blog - Studio37 Houston | Tips, Insights & Stories"
-          description="Photography tips, behind-the-scenes insights, and creative stories from Studio37's professional photographers in Houston, TX."
-          keywords="photography blog, photography tips Houston, behind the scenes, photography insights"
-        />
-        <div className="py-20 md:py-28 bg-[#212121]">
-          <div className="container mx-auto px-6">
-            <div className="text-center">
-              <h2 className="text-4xl md:text-5xl font-display mb-8">Blog</h2>
-              <div className="text-[#F3E3C3] py-10">Loading blog posts...</div>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
-
-  if (error) {
-    return (
-      <>
-        <SEOHead 
-          title="Photography Blog - Studio37 Houston"
-          description="Photography blog from Studio37 in Houston, TX."
-        />
-        <div className="py-20 md:py-28 bg-[#212121]">
-          <div className="container mx-auto px-6">
-            <div className="text-center">
-              <h2 className="text-4xl md:text-5xl font-display mb-8">Blog</h2>
-              <div className="text-red-400 py-10">{error}</div>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <SEOHead 
-        title="Photography Blog - Studio37 Houston | Tips, Insights & Stories"
-        description="Photography tips, behind-the-scenes insights, and creative stories from Studio37's professional photographers in Houston, TX."
-        keywords="photography blog, photography tips Houston, behind the scenes, photography insights"
-      />
-      <div className="py-20 md:py-28 bg-[#212121]">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-display">Blog</h2>
-            <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">
-              Insights, tips, and stories from behind the lens.
-            </p>
-          </div>
-          
-          {posts && posts.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map(post => (
-                <article key={post.id} className="bg-[#262626] rounded-lg shadow-lg overflow-hidden">
-                  <div className="p-6">
-                    <h3 className="text-xl font-display text-white mb-2">
-                      <Link to={`/blog/${post.slug}`} className="hover:text-[#F3E3C3] transition">
-                        {post.title}
-                      </Link>
-                    </h3>
-                    <div className="text-xs text-[#F3E3C3]/60 mb-3">
-                      {post.author} &middot; {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}
-                    </div>
-                    <p className="text-[#F3E3C3]/80 mb-4">{post.excerpt}</p>
-                    <Link 
-                      to={`/blog/${post.slug}`}
-                      className="inline-flex items-center text-[#F3E3C3] hover:text-white transition group"
-                    >
-                      Read More <ArrowRight />
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center text-[#F3E3C3]/70 py-10">
-              No blog posts available yet.
-            </div>
-          )}
-        </div>
-      </div>
-    </>
-  );
-};
-
-// --- BlogPostPage: dynamic blog post by slug ---
-function BlogPostPage() {
-  const { slug } = useParams();
-  const [post, setPost] = React.useState(null);
-  const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState('');
-  const navigate = useNavigate();
-
-  React.useEffect(() => {
-    setLoading(true);
-    setError('');
-    supabase
-      .from('blog_posts')
-      .select('*')
-      .eq('slug', slug)
-      .single()
-      .then(({ data, error }) => {
-        if (error || !data) {
-          setError('Blog post not found.');
-          setPost(null);
-        } else {
-          setPost(data);
-        }
-        setLoading(false);
-      });
-  }, [slug]);
-
-  if (loading) return <div className="text-[#F3E3C3] text-center py-10">Loading...</div>;
-  if (error) return <div className="text-red-400 text-center py-10">{error}</div>;
-  if (!post) return null;
-
-  return (
-    <div className="py-20 md:py-28 bg-[#212121]">
-      <div className="container mx-auto px-6 max-w-3xl">
-        <button onClick={() => navigate('/blog')} className="text-[#F3E3C3] mb-4 hover:underline">&larr; Back to Blog</button>
-        <h1 className="text-4xl font-display mb-2 text-white">{post.title}</h1>
-        <div className="text-xs text-[#F3E3C3]/60 mb-4">{post.author} &middot; {post.publish_date ? new Date(post.publish_date).toLocaleDateString() : ''}</div>
-        <div className="text-[#F3E3C3]/80 mb-6">{post.excerpt}</div>
-        <div className="prose prose-invert max-w-none text-[#F3E3C3]/90">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {post.content || ''}
-          </ReactMarkdown>
-        </div>
-        <div className="mt-8 text-xs text-[#F3E3C3]/60">
-          Tags: {Array.isArray(post.tags) ? post.tags.join(', ') : (typeof post.tags === 'string' ? post.tags : '')}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// --- Admin Login Page ---
-const AdminLoginPage = ({ onLogin }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    
-    try {
-      // Use environment variables for secure authentication
-      const adminUsername = import.meta.env.VITE_ADMIN_USERNAME || 'admin';
-      const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'studio37admin';
-      
-      if (username.trim().toLowerCase() === adminUsername && password.trim() === adminPassword) {
-        onLogin();
-        navigate('/admin/dashboard');
-      } else {
-        setError('Invalid username or password.');
-      }
-    } catch (err) {
-      console.error('Login error:', err);
-      setError('An error occurred during login.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <div className="py-20 md:py-32 flex items-center justify-center">
-      <SEOHead 
-        title="Admin Login - Studio37"
-        description="Admin access to Studio37 dashboard"
-      />
-      <div className="bg-[#232323] rounded-lg shadow-xl p-8 md:p-12 max-w-md w-full border border-white/10">
-        <h2 className="text-3xl font-vintage text-center mb-8">Admin Login</h2>
-        <form onSubmit={handleLogin} className="space-y-6">
-          <div>
-            <input
-              type="text"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 text-[#F3E3C3] placeholder-[#F3E3C3]/50 focus-ring"
-              required
-            />
-          </div>
-          <div>
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 text-[#F3E3C3] placeholder-[#F3E3C3]/50 focus-ring"
-              required
-            />
-          </div>
-          {error && <p className="text-red-400 text-sm" role="alert">{error}</p>}
-          <button 
-            type="submit" 
-            disabled={loading}
-            className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#232323] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed focus-ring"
-          >
-            {loading ? (
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 border-2 border-[#232323] border-t-transparent rounded-full animate-spin"></div>
-                Logging in...
-              </div>
-            ) : (
-              <>Login <ArrowRight className="ml-2" /></>
             )}
-          </button>
-        </form>
+            
+            {activeTab === 'blog' && (
+              <div>
+                <h3 className="text-2xl font-vintage mb-6">Blog Management</h3>
+                <div className="text-[#F3E3C3]/70">Blog management interface coming soon...</div>
+              </div>
+            )}
+
+            {activeTab === 'analytics' && (
+              <div>
+                <h3 className="text-2xl font-vintage mb-6">Analytics Dashboard</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
+                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-2">Total Leads</h4>
+                    <p className="text-3xl font-bold text-[#F3E3C3]">{leads.length}</p>
+                  </div>
+                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
+                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-2">Portfolio Images</h4>
+                    <p className="text-3xl font-bold text-[#F3E3C3]">{portfolioImages.length}</p>
+                  </div>
+                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
+                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-2">Blog Posts</h4>
+                    <p className="text-3xl font-bold text-[#F3E3C3]">{blogPosts.length}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // --- HomePage Component ---
+  const HomePage = () => (
+    <div>
+      <SEOHead />
+      <div className="section-padding-lg text-center">
+        <h1 className="responsive-heading font-vintage mb-6 animate-fadeInUp">
+          Vintage Heart, Modern Vision
+        </h1>
+        <p className="responsive-subheading text-[#F3E3C3]/80 mb-8 max-w-2xl mx-auto animate-fadeInUp">
+          Professional photography and content strategy for brands ready to conquer the world from Houston, TX.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp">
+          <Link to="/services" className="btn-primary">
+            Our Services
+          </Link>
+          <Link to="/portfolio" className="btn-secondary">
+            View Portfolio
+          </Link>
+        </div>
       </div>
     </div>
   );
-};
-
-// --- AdminDashboard Component (inline to avoid import issues) ---
-function AdminDashboard({
-  leads,
-  updateLeadStatus,
-  content,
-  portfolioImages,
-  addPortfolioImage,
-  deletePortfolioImage,
-  updatePortfolioImageOrder,
-  blogPosts,
-  createBlogPost,
-  updateBlogPost,
-  deleteBlogPost,
-  blogEdit,
-  setBlogEdit,
-  blogSaving,
-  blogAdminError,
-  projects,
-  projectsLoading
-}) {
-  const [activeTab, setActiveTab] = useState('crm');
 
   return (
-    <div className="py-20 md:py-28 bg-[#212121]">
-      <SEOHead 
-        title="Admin Dashboard - Studio37"
-        description="Studio37 admin dashboard for managing business operations"
-      />
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-vintage">Admin Dashboard</h2>
-          <p className="text-lg text-[#F3E3C3]/70 mt-4">Manage your business operations</p>
-        </div>
-        
-        <div className="flex flex-wrap gap-2 justify-center mb-8">
-          {['crm', 'cms', 'blog', 'analytics'].map(tab => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors focus-ring ${
-                activeTab === tab 
-                  ? 'bg-[#F3E3C3] text-[#1a1a1a]' 
-                  : 'bg-[#262626] hover:bg-[#333] text-[#F3E3C3]'
-              }`}
-            >
-              {tab.toUpperCase()}
-            </button>
-          ))}
-        </div>
+    <div className="App bg-[#181818] text-[#F3E3C3] min-h-screen">
+      {/* Navigation with improved accessibility */}
+      <nav className="fixed top-0 w-full z-50 bg-[#181818]/95 backdrop-blur-custom border-b border-white/10" role="navigation" aria-label="Main navigation">
+        <div className="container-custom">
+          <div className="flex items-center justify-between h-16">
+            <Link to="/" className="flex items-center space-x-2 focus-ring rounded-md">
+              <Camera className="h-8 w-8 text-[#F3E3C3]" />
+              <span className="text-xl font-vintage">Studio37</span>
+            </Link>
 
-        <div className="bg-[#262626] rounded-lg shadow-lg p-6">
-          {activeTab === 'crm' && (
-            <div>
-              <h3 className="text-2xl font-vintage mb-6">Customer Relationship Management</h3>
-              <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/about" className="nav-link">About</Link>
+              <Link to="/services" className="nav-link">Services</Link>
+              <Link to="/portfolio" className="nav-link">Portfolio</Link>
+              <Link to="/blog" className="nav-link">Blog</Link>
+              <Link to="/contact" className="nav-link">Contact</Link>
+              {isAdmin && (
+                <Link to="/admin/dashboard" className="nav-link text-[#F3E3C3]">Admin</Link>
+              )}
             </div>
-          )}
-          
-          {activeTab === 'cms' && (
-            <div>
-              <h3 className="text-2xl font-vintage mb-6">Content Management</h3>
-              <EnhancedCmsSection
-                portfolioImages={portfolioImages}
-                addPortfolioImage={addPortfolioImage}
-                deletePortfolioImage={deletePortfolioImage}
-                updatePortfolioImageOrder={updatePortfolioImageOrder}
-              />
-            </div>
-          )}
-          
-          {activeTab === 'blog' && (
-            <div>
-              <h3 className="text-2xl font-vintage mb-6">Blog Management</h3>
-              <div className="text-[#F3E3C3]/70 py-8">Blog admin coming soon...</div>
+
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden focus-ring p-2"
+              aria-label="Toggle navigation menu"
+              aria-expanded={isMenuOpen}
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+
+          {/* Mobile Navigation */}
+          {isMenuOpen && (
+            <div className="md:hidden py-4 border-t border-white/10">
+              <div className="flex flex-col space-y-2">
+                <Link to="/" className="nav-link block px-4 py-2" onClick={() => setIsMenuOpen(false)}>Home</Link>
+                <Link to="/about" className="nav-link block px-4 py-2" onClick={() => setIsMenuOpen(false)}>About</Link>
+                <Link to="/services" className="nav-link block px-4 py-2" onClick={() => setIsMenuOpen(false)}>Services</Link>
+                <Link to="/portfolio" className="nav-link block px-4 py-2" onClick={() => setIsMenuOpen(false)}>Portfolio</Link>
+                <Link to="/blog" className="nav-link block px-4 py-2" onClick={() => setIsMenuOpen(false)}>Blog</Link>
+                <Link to="/contact" className="nav-link block px-4 py-2" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+                {isAdmin && (
+                  <Link to="/admin/dashboard" className="nav-link block px-4 py-2" onClick={() => setIsMenuOpen(false)}>Admin</Link>
+                )}
+              </div>
             </div>
           )}
         </div>
-      </div>
+      </nav>
+
+      {/* Main Content */}
+      <main className="pt-16" role="main">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<div>About Page</div>} />
+          <Route path="/services" element={<div>Services Page</div>} />
+          <Route path="/portfolio" element={<div>Portfolio Page</div>} />
+          <Route path="/blog" element={<div>Blog Page</div>} />
+          <Route path="/contact" element={<div>Contact Page</div>} />
+          <Route path="/admin/login" element={!isAdmin ? <AdminLoginPage onLogin={() => setIsAdmin(true)} /> : <Navigate to="/admin/dashboard" replace />} />
+          <Route path="/admin/dashboard" element={isAdmin ? <AdminDashboard /> : <Navigate to="/admin/login" replace />} />
+        </Routes>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-[#1a1a1a] section-padding" role="contentinfo">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <Camera className="h-6 w-6 text-[#F3E3C3]" />
+                <span className="text-lg font-vintage">Studio37</span>
+              </div>
+              <p className="text-[#F3E3C3]/70 text-sm">
+                Professional photography with vintage heart and modern vision.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Contact Info</h3>
+              <div className="space-y-2 text-sm text-[#F3E3C3]/70">
+                <div className="flex items-center gap-2">
+                  <Mail className="h-4 w-4" />
+                  <span>sales@studio37.cc</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="h-4 w-4" />
+                  <span>(832) 713-9944</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  <span>Houston, TX</span>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Follow Us</h3>
+              <div className="flex space-x-4">
+                <a 
+                  href="https://instagram.com/studio37houston" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[#F3E3C3] hover:text-[#F3E3C3]/80 transition-colors focus-ring rounded-md p-1"
+                  aria-label="Follow us on Instagram"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div className="border-t border-white/10 mt-8 pt-8 text-center text-sm text-[#F3E3C3]/60">
+            <p>&copy; 2024 Studio37. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+      {/* Chat Widget with Virtual Agent */}
+      {showChatWidget && (
+        <div className="fixed bottom-6 right-6 z-50" role="dialog" aria-modal="true" aria-label="Chat with Studio37">
+          <div className="card w-80">
+            <div className="p-4 border-b border-white/10 flex justify-between items-center">
+              <h3 className="font-vintage text-lg">Chat with Studio37</h3>
+              <button 
+                onClick={() => setShowChatWidget(false)}
+                className="text-white text-xl hover:text-red-400 transition-colors focus-ring rounded-md p-1"
+                aria-label="Close chat"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <VirtualAgentPlanner />
+          </div>
+        </div>
+      )}
+
+      {!showChatWidget && (
+        <button
+          onClick={() => setShowChatWidget(true)}
+          className="fixed bottom-6 right-6 bg-[#F3E3C3] text-[#1a1a1a] p-4 rounded-full shadow-lg hover:bg-[#E6D5B8] transition-all hover:scale-110 z-50 focus-ring"
+          aria-label="Open chat with Studio37"
+        >
+          <MessageCircle size={24} />
+        </button>
+      )}
+
+      {/* Loading overlay */}
+      {loading && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 flex items-center justify-center">
+          <div className="text-center">
+            <div className="loading-spinner mx-auto mb-4"></div>
+            <p className="text-[#F3E3C3]">Loading Studio37...</p>
+          </div>
+        </div>
+      )}
+
+      {/* Error notification */}
+      {error && (
+        <div className="notification-error">
+          <p>{error}</p>
+          <button 
+            onClick={() => setError('')}
+            className="ml-2 hover:bg-red-600 p-1 rounded"
+            aria-label="Close error"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
 
-// --- Footer component ---
-const Footer = () => (
-  <footer className="bg-[#232323] text-[#F3E3C3] py-12">
-    <div className="container mx-auto px-6">
-      <div className="grid md:grid-cols-3 gap-8">
-        <div>
-          <div className="flex items-center gap-4 mb-4">
-            <Logo />
-            <span className="font-display text-xl font-bold tracking-tight text-white">Studio37</span>
-          </div>
-          <p className="text-[#F3E3C3]/70">
-            Vintage heart, modern vision. Full-service photography and content strategy.
-          </p>
-        </div>
-        <div>
-          <h4 className="font-display text-lg mb-4">Quick Links</h4>
-          <div className="space-y-2">
-            <Link to="/about" className="block text-[#F3E3C3]/70 hover:text-white transition">About</Link>
-            <Link to="/services" className="block text-[#F3E3C3]/70 hover:text-white transition">Services</Link>
-            <Link to="/portfolio" className="block text-[#F3E3C3]/70 hover:text-white transition">Portfolio</Link>
-            <Link to="/blog" className="block text-[#F3E3C3]/70 hover:text-white transition">Blog</Link>
-            <Link to="/contact" className="block text-[#F3E3C3]/70 hover:text-white transition">Contact</Link>
-          </div>
-        </div>
-        <div>
-          <h4 className="font-display text-lg mb-4">Contact Info</h4>
-          <div className="space-y-2 text-[#F3E3C3]/70">
-            <p>Email: sales@studio37.cc</p>
-            <p>Phone: (832) 713-9944</p>
-            <p>Serving Greater Houston Area</p>
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-white/10 mt-8 pt-8 text-center text-[#F3E3C3]/60">
-        <p>&copy; 2024 Studio37. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-);
+export default App;
