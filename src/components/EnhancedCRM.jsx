@@ -24,8 +24,8 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
   const [selectedLead, setSelectedLead] = useState(null);
   const [showLeadDetails, setShowLeadDetails] = useState(false);
   const [leadNotes, setLeadNotes] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [newNote, setNewNote] = useState({ note: '', priority: 'normal', follow_up_date: '' });
+const [loading, setLoading] = useState(false);
+const [newNote, setNewNote] = useState({ note: '', follow_up_date: '', priority: 'normal', note_type: 'manual' });
 
   const fetchLeadNotes = async (leadId) => {
     setLoading(true);
@@ -54,28 +54,28 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
     try {
       const { error } = await supabase.from('lead_notes').insert([{
         lead_id: selectedLead.id,
+<<<<<<< HEAD
         note: newNote.note,
-        note_type: 'manual',
-        priority: newNote.priority,
-        follow_up_date: newNote.follow_up_date || null,
-        status: 'Active'
-      }]);
-      
-      if (!error) {
+const { error } = await supabase.from('lead_notes').insert([{
+  lead_id: selectedLead.id,
+  note: newNote.note,
+  note_type: newNote.note_type,
+  priority: newNote.priority,
+  follow_up_date: newNote.follow_up_date || null,
+  status: 'Active'
+}]);
+=======
         setNewNote({ note: '', priority: 'normal', follow_up_date: '' });
+>>>>>>> a8f5e43f9ad47045c9d3eb66ab137f86078d454f
         await fetchLeadNotes(selectedLead.id);
       }
     } catch (err) {
       console.error('Error adding note:', err);
     }
-  };
-
-  const openLeadDetails = (lead) => {
-    setSelectedLead(lead);
-    setShowLeadDetails(true);
-    fetchLeadNotes(lead.id);
-  };
-
+if (!error) {
+  setNewNote({ note: '', follow_up_date: '', priority: 'normal', note_type: 'manual' });
+  await fetchLeadNotes(selectedLead.id);
+}
   if (!leads || leads.length === 0) {
     return <div className="text-[#F3E3C3]/70 py-8">No leads found.</div>;
   }
@@ -219,7 +219,11 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
                 <div className="p-6 border-b border-white/10">
                   <h4 className="font-semibold text-[#F3E3C3] mb-4">Notes</h4>
 
+<<<<<<< HEAD
+                  {/* Add Note Form */}
+=======
                   <div className="bg-[#181818] rounded-lg p-4 mb-4">
+>>>>>>> a8f5e43f9ad47045c9d3eb66ab137f86078d454f
                     <textarea
                       value={newNote.note}
                       onChange={(e) => setNewNote({...newNote, note: e.target.value})}
@@ -227,36 +231,40 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
                       className="w-full bg-transparent border-none resize-none focus:outline-none text-[#F3E3C3] text-sm placeholder-[#F3E3C3]/50"
                       rows="3"
                     />
-                    <div className="flex justify-end mt-3">
+<div className="p-6 border-b border-white/10">
+  <h4 className="font-semibold text-[#F3E3C3] mb-4">Notes</h4>
+
+  <div className="bg-[#181818] rounded-lg p-4 mb-4">
+    <textarea
+      value={newNote.note}
+      onChange={(e) => setNewNote({...newNote, note: e.target.value})}
+      placeholder="Add a note..."
+      className="w-full bg-transparent border-none resize-none focus:outline-none text-[#F3E3C3] text-sm placeholder-[#F3E3C3]/50"
+      rows="3"
+    />
+                  {loading && (
+                    <div className="text-center text-[#F3E3C3]/70 py-4">
+                      <div className="w-6 h-6 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+                      Loading notes...
+                    <div className="flex gap-2 mt-2">
+                      <input
+                        type="date"
+                        value={newNote.follow_up_date}
+                        onChange={(e) => setNewNote({...newNote, follow_up_date: e.target.value})}
+                        className="bg-[#262626] border border-white/20 rounded px-2 py-1 text-xs"
+                        placeholder="Follow-up date"
+                      />
+                      
                       <button
                         onClick={addNote}
                         disabled={!newNote.note.trim()}
-                        className="bg-[#F3E3C3] text-[#1a1a1a] rounded px-3 py-1 text-xs font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#E6D5B8] transition-colors"
+                        className="bg-[#F3E3C3] text-[#1a1a1a] rounded px-3 py-1 text-xs font-semibold disabled:opacity-50"
                       >
                         Add Note
                       </button>
                     </div>
                   </div>
                 </div>
-
-                {/* Notes List */}
-                <div className="flex-1 overflow-y-auto p-6">
-                  {loading && (
-                    <div className="text-center text-[#F3E3C3]/70 py-4">
-                      <div className="w-6 h-6 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
-                      Loading notes...
-                    </div>
-                  )}
-                  
-                  {!loading && leadNotes.length === 0 && (
-                    <div className="text-[#F3E3C3]/70 py-4 text-center text-sm">
-                      No notes found. Add the first note above.
-                    </div>
-                  )}
-                  
-                  <div className="space-y-3">
-                    {leadNotes.map(note => (
-                      <div key={note.id} className="bg-[#181818] rounded-lg p-4">
                         <div className="flex justify-between items-start mb-2">
                           <div className="flex items-center gap-2">
                             <span className="text-xs text-[#F3E3C3]/60 uppercase font-medium">
@@ -325,22 +333,35 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
                             <span className={`w-2 h-2 rounded-full ${getPriorityColor(note.priority)}`}></span>
                             <span className="text-xs text-[#F3E3C3]/60 uppercase">{note.note_type}</span>
                             {note.follow_up_date && (
-                              <span className="text-xs bg-yellow-500 text-black px-2 py-1 rounded">
-                                Follow-up: {new Date(note.follow_up_date).toLocaleDateString()}
+                  {!loading && leadNotes.length === 0 && (
+                    <div className="text-[#F3E3C3]/70 py-4 text-center text-sm">
+                      No notes found. Add the first note above.
+                    </div>
+                  )}
+                  
+                  <div className="space-y-3">
+                    {leadNotes.map(note => (
+                      <div key={note.id} className="bg-[#181818] rounded-lg p-4">
+                        <div className="flex justify-between items-start mb-2">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs text-[#F3E3C3]/60 uppercase font-medium">
+                              {note.note_type || 'manual'}
+                            </span>
+                            {note.priority && note.priority !== 'normal' && (
+                              <span className={`text-xs px-2 py-1 rounded ${
+                                note.priority === 'high' ? 'bg-red-500 text-white' :
+                                note.priority === 'medium' ? 'bg-yellow-500 text-black' :
+                                'bg-green-500 text-white'
+                              }`}>
+                                {note.priority}
                               </span>
                             )}
                           </div>
-                          <div className="flex gap-1">
-                            <button
-                              onClick={() => deleteNote(note.id)}
-                              className="text-xs text-red-400 hover:text-red-300"
-                            >
-                              Delete
-                            </button>
-                          </div>
                         </div>
                         
-                        <div className="text-[#F3E3C3] text-sm mb-2">{note.note}</div>
+                        <div className="text-[#F3E3C3] text-sm mb-2 leading-relaxed">
+                          {note.note}
+                        </div>
                         
                         <div className="text-xs text-[#F3E3C3]/40">
                           {new Date(note.created_at).toLocaleString()}
@@ -348,12 +369,3 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
                       </div>
                     ))}
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
