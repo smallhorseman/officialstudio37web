@@ -18,7 +18,7 @@
 
 html {
   scroll-behavior: smooth;
-  /* Remove problematic -webkit-text-size-adjust */
+  text-size-adjust: 100%;
 }
 
 body {
@@ -70,6 +70,14 @@ body {
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+  
+  .text-5xl {
+    font-size: 2.5rem;
+  }
+  
+  .text-7xl {
+    font-size: 3rem;
   }
 }
 
@@ -191,17 +199,17 @@ textarea:focus {
 
 /* Skeleton loaders */
 .skeleton {
-  background: linear-gradient(90deg, #262626 25%, #333 50%, #262626 75%);
-  background-size: 200% 100%;
-  animation: skeleton 1.5s ease-in-out infinite;
+  background: linear-gradient(90deg, var(--color-gray) 25%, var(--color-darker) 50%, var(--color-gray) 75%);
+  background-size: 200px 100%;
+  animation: skeleton 1.2s ease-in-out infinite;
 }
 
 @keyframes skeleton {
   0% {
-    background-position: -200% 0;
+    background-position: -200px 0;
   }
   100% {
-    background-position: 200% 0;
+    background-position: calc(200px + 100%) 0;
   }
 }
 

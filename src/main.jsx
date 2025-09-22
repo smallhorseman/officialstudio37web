@@ -47,15 +47,15 @@ class ErrorBoundary extends React.Component {
 // Focus on Supabase-based CRM instead
 
 // Initialize the React application
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-root.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ErrorBoundary>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </ErrorBoundary>
+  </React.StrictMode>
+);
   </React.StrictMode>
 );
 

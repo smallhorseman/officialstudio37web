@@ -1,5 +1,5 @@
-const CACHE_NAME = 'studio37-v1.0.1';
-const urlsToCache = [
+// This file should be completely deleted to resolve NS_ERROR_CORRUPTED_CONTENT issues
+// Service worker is corrupting asset requests and should be removed
   '/',
   '/favicon.svg'
 ];
