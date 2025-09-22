@@ -1236,6 +1236,9 @@ function App() {
       );
     });
 
+    return <AdminDashboardContent />;
+  };
+
   return (
     <div className="App bg-[#181818] text-[#F3E3C3] min-h-screen">
       {/* Navigation */}

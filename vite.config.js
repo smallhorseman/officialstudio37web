@@ -88,12 +88,12 @@ export default defineConfig({
   define: {
     __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
   },
-});
+
   esbuild: {
     // Keep function names for better debugging
     keepNames: true,
     // Handle JSX properly
     jsx: 'automatic'
   }
-})
+});
 
