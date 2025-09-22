@@ -148,6 +148,12 @@ export const safeSupabaseOperation = async (operation, fallback = null) => {
 testConnection().catch(console.error);
 
 export default supabase;
+
+// Health check function
+const healthCheck = async () => {
+  try {
+    const { error } = await supabase
+      .from('leads')
       .select('id')
       .limit(1);
     
