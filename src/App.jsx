@@ -6,6 +6,8 @@ import ConversationalPlanner from './ConversationalPlanner';
 import { supabase, fetchWithErrorHandling, isSupabaseConfigured, testConnection } from './supabaseClient';
 import { EnhancedCrmSection } from './components/EnhancedCRM';
 import { EnhancedCmsSection } from './components/EnhancedCMS';
+import ProjectsSection from './components/ProjectsSection';
+import CrmSection from './components/CrmSection';
 import SEOHead from './components/SEOHead';
 import HubSpotIntegration, { trackHubSpotEvent, identifyHubSpotVisitor } from './components/HubSpotIntegration';
 
@@ -784,7 +786,17 @@ function App() {
                   <Users size={24} />
                   Customer Relationship Management
                 </h3>
-                <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
+                <CrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
+              </div>
+            )}
+
+            {activeTab === 'projects' && (
+              <div>
+                <h3 className="text-2xl font-vintage mb-6 flex items-center gap-2">
+                  <Calendar size={24} />
+                  Project Management
+                </h3>
+                <ProjectsSection projects={projects} projectsLoading={loading} />
               </div>
             )}
             

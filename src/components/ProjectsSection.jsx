@@ -1,54 +1,67 @@
 import React, { useState } from 'react';
 import { supabase } from '../supabaseClient';
 
-const ProjectsSection = ({ projects = [], projectsLoading = false }) => {
+const ProjectsSection = ({ projects, projectsLoading }) => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [showProjectDetails, setShowProjectDetails] = useState(false);
   const [newProject, setNewProject] = useState({
     title: '',
-    client: '',
     description: '',
+    client_name: '',
+    project_type: '',
     status: 'Planning',
     budget: '',
-    deadline: '',
-    type: 'Photography'
+    start_date: '',
+    end_date: ''
   });
-  const [filter, setFilter] = useState('all');
-  const [sortBy, setSortBy] = useState('created_at');
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [saving, setSaving] = useState(false);
 
-  const projectStatuses = ['Planning', 'In Progress', 'Review', 'Completed', 'On Hold'];
-  const projectTypes = ['Photography', 'Video', 'Content Strategy', 'Marketing', 'Design'];
+  const projectTypes = ['Portrait', 'Wedding', 'Event', 'Commercial', 'Content Strategy'];
+  const statusOptions = ['Planning', 'In Progress', 'Review', 'Completed', 'On Hold', 'Cancelled'];
 
-  const handleAddProject = async () => {
-    if (!newProject.title || !newProject.client) {
-      alert('Please fill in title and client name');
-      return;
-    }
+  const statusColors = {
+    'Planning': 'bg-blue-500',
+    'In Progress': 'bg-yellow-500',
+    'Review': 'bg-purple-500',
+    'Completed': 'bg-green-500',
+    'On Hold': 'bg-gray-500',
+    'Cancelled': 'bg-red-500'
+  };
+
+  const handleAddProject = async (e) => {
+    e.preventDefault();
+    setSaving(true);
     
     try {
-      const projectData = {
-        ...newProject,
-        budget: parseFloat(newProject.budget) || 0
-      };
-      
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from('projects')
-        .insert([projectData]);
-      
+        .insert([{
+          ...newProject,
+          budget: newProject.budget ? parseFloat(newProject.budget) : null
+        }])
+        .select();
+
       if (error) throw error;
-      
+
+      // Reset form
       setNewProject({
         title: '',
-        client: '',
         description: '',
+        client_name: '',
+        project_type: '',
         status: 'Planning',
         budget: '',
-        deadline: '',
-        type: 'Photography'
+        start_date: '',
+        end_date: ''
       });
-      
-      alert('Project added successfully!');
+      setShowAddForm(false);
+      window.location.reload(); // Simple reload to refresh projects
     } catch (error) {
       console.error('Error adding project:', error);
       alert('Failed to add project. Please try again.');
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -58,36 +71,20 @@ const ProjectsSection = ({ projects = [], projectsLoading = false }) => {
         .from('projects')
         .update({ status: newStatus })
         .eq('id', projectId);
-      
+
       if (error) throw error;
+      
+      window.location.reload(); // Simple reload to refresh projects
     } catch (error) {
       console.error('Error updating project status:', error);
+      alert('Failed to update project status.');
     }
   };
-
-  const filteredProjects = projects.filter(project => {
-    if (filter === 'all') return true;
-    return project.status === filter;
-  }).sort((a, b) => {
-    switch (sortBy) {
-      case 'created_at':
-        return new Date(b.created_at) - new Date(a.created_at);
-      case 'deadline':
-        if (!a.deadline && !b.deadline) return 0;
-        if (!a.deadline) return 1;
-        if (!b.deadline) return -1;
-        return new Date(a.deadline) - new Date(b.deadline);
-      case 'budget':
-        return (b.budget || 0) - (a.budget || 0);
-      default:
-        return 0;
-    }
-  });
 
   if (projectsLoading) {
     return (
       <div className="text-center text-[#F3E3C3]/70 py-8">
-        <div className="w-8 h-8 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+        <div className="w-6 h-6 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
         Loading projects...
       </div>
     );
@@ -95,152 +92,321 @@ const ProjectsSection = ({ projects = [], projectsLoading = false }) => {
 
   return (
     <div className="space-y-6">
-      {/* Controls */}
-      <div className="flex flex-wrap gap-4 items-center bg-[#181818] rounded-lg p-4">
-        <select
-          value={filter}
-          onChange={(e) => setFilter(e.target.value)}
-          className="bg-[#262626] border border-white/20 rounded px-3 py-2 text-sm text-[#F3E3C3]"
+      {/* Header with Add Button */}
+      <div className="flex justify-between items-center">
+        <div>
+          <h3 className="text-2xl font-display">Projects Overview</h3>
+          <p className="text-[#F3E3C3]/70">Manage your photography projects and client work</p>
+        </div>
+        <button
+          onClick={() => setShowAddForm(true)}
+          className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded-md font-semibold hover:bg-[#E6D5B8] transition-colors"
         >
-          <option value="all">All Projects</option>
-          {projectStatuses.map(status => (
-            <option key={status} value={status}>{status}</option>
-          ))}
-        </select>
-        
-        <select
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
-          className="bg-[#262626] border border-white/20 rounded px-3 py-2 text-sm text-[#F3E3C3]"
-        >
-          <option value="created_at">Sort by Date</option>
-          <option value="deadline">Sort by Deadline</option>
-          <option value="budget">Sort by Budget</option>
-        </select>
+          Add Project
+        </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Add Project Form */}
-        <div className="bg-[#181818] rounded-lg p-6">
-          <h4 className="text-xl font-display mb-4">Add New Project</h4>
-          <div className="space-y-4">
-            <input
-              type="text"
-              placeholder="Project Title *"
-              value={newProject.title}
-              onChange={(e) => setNewProject({...newProject, title: e.target.value})}
-              className="w-full bg-[#262626] border border-white/20 rounded px-3 py-2 text-[#F3E3C3]"
-            />
-            <input
-              type="text"
-              placeholder="Client Name *"
-              value={newProject.client}
-              onChange={(e) => setNewProject({...newProject, client: e.target.value})}
-              className="w-full bg-[#262626] border border-white/20 rounded px-3 py-2 text-[#F3E3C3]"
-            />
-            <select
-              value={newProject.type}
-              onChange={(e) => setNewProject({...newProject, type: e.target.value})}
-              className="w-full bg-[#262626] border border-white/20 rounded px-3 py-2 text-[#F3E3C3]"
-            >
-              {projectTypes.map(type => (
-                <option key={type} value={type}>{type}</option>
-              ))}
-            </select>
-            <select
-              value={newProject.status}
-              onChange={(e) => setNewProject({...newProject, status: e.target.value})}
-              className="w-full bg-[#262626] border border-white/20 rounded px-3 py-2 text-[#F3E3C3]"
-            >
-              {projectStatuses.map(status => (
-                <option key={status} value={status}>{status}</option>
-              ))}
-            </select>
-            <input
-              type="number"
-              placeholder="Budget ($)"
-              value={newProject.budget}
-              onChange={(e) => setNewProject({...newProject, budget: e.target.value})}
-              className="w-full bg-[#262626] border border-white/20 rounded px-3 py-2 text-[#F3E3C3]"
-            />
-            <input
-              type="date"
-              value={newProject.deadline}
-              onChange={(e) => setNewProject({...newProject, deadline: e.target.value})}
-              className="w-full bg-[#262626] border border-white/20 rounded px-3 py-2 text-[#F3E3C3]"
-            />
-            <textarea
-              placeholder="Project Description"
-              value={newProject.description}
-              onChange={(e) => setNewProject({...newProject, description: e.target.value})}
-              className="w-full bg-[#262626] border border-white/20 rounded px-3 py-2 text-[#F3E3C3]"
-              rows="3"
-            />
-            <button
-              onClick={handleAddProject}
-              disabled={!newProject.title || !newProject.client}
-              className="w-full bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded font-semibold disabled:opacity-50"
-            >
-              Add Project
-            </button>
+      {/* Add Project Modal */}
+      {showAddForm && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+          <div className="bg-[#232323] rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-xl font-display">Add New Project</h3>
+                <button
+                  onClick={() => setShowAddForm(false)}
+                  className="text-white text-xl hover:text-red-400 transition-colors"
+                >
+                  &times;
+                </button>
+              </div>
+
+              <form onSubmit={handleAddProject} className="space-y-4">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
+                      Project Title *
+                    </label>
+                    <input
+                      type="text"
+                      value={newProject.title}
+                      onChange={(e) => setNewProject({...newProject, title: e.target.value})}
+                      required
+                      className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm text-[#F3E3C3] focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
+                      Client Name
+                    </label>
+                    <input
+                      type="text"
+                      value={newProject.client_name}
+                      onChange={(e) => setNewProject({...newProject, client_name: e.target.value})}
+                      className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm text-[#F3E3C3] focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
+                    Description
+                  </label>
+                  <textarea
+                    value={newProject.description}
+                    onChange={(e) => setNewProject({...newProject, description: e.target.value})}
+                    rows="3"
+                    className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm text-[#F3E3C3] focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                  />
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
+                      Project Type
+                    </label>
+                    <select
+                      value={newProject.project_type}
+                      onChange={(e) => setNewProject({...newProject, project_type: e.target.value})}
+                      className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm text-[#F3E3C3] focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                    >
+                      <option value="">Select Type</option>
+                      {projectTypes.map(type => (
+                        <option key={type} value={type}>{type}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
+                      Status
+                    </label>
+                    <select
+                      value={newProject.status}
+                      onChange={(e) => setNewProject({...newProject, status: e.target.value})}
+                      className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm text-[#F3E3C3] focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                    >
+                      {statusOptions.map(status => (
+                        <option key={status} value={status}>{status}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
+                      Budget ($)
+                    </label>
+                    <input
+                      type="number"
+                      value={newProject.budget}
+                      onChange={(e) => setNewProject({...newProject, budget: e.target.value})}
+                      className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm text-[#F3E3C3] focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
+                      Start Date
+                    </label>
+                    <input
+                      type="date"
+                      value={newProject.start_date}
+                      onChange={(e) => setNewProject({...newProject, start_date: e.target.value})}
+                      className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm text-[#F3E3C3] focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
+                      End Date
+                    </label>
+                    <input
+                      type="date"
+                      value={newProject.end_date}
+                      onChange={(e) => setNewProject({...newProject, end_date: e.target.value})}
+                      className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm text-[#F3E3C3] focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex gap-3 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setShowAddForm(false)}
+                    className="flex-1 bg-[#262626] text-[#F3E3C3] py-2 px-4 rounded-md font-semibold hover:bg-[#333] transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={saving || !newProject.title}
+                    className="flex-1 bg-[#F3E3C3] text-[#1a1a1a] py-2 px-4 rounded-md font-semibold hover:bg-[#E6D5B8] disabled:opacity-50 transition-colors"
+                  >
+                    {saving ? 'Adding...' : 'Add Project'}
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
+      )}
 
-        {/* Projects List */}
-        <div className="lg:col-span-2 space-y-4">
-          {filteredProjects.map(project => (
-            <div key={project.id} className="bg-[#181818] rounded-lg p-6">
+      {/* Projects Grid */}
+      {projects && projects.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map(project => (
+            <div key={project.id} className="bg-[#181818] rounded-lg p-6 hover:bg-[#222] transition-colors">
               <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h5 className="text-lg font-semibold text-[#F3E3C3]">{project.title}</h5>
-                  <p className="text-[#F3E3C3]/70">Client: {project.client}</p>
-                </div>
-                <div className="text-right">
-                  <select
-                    value={project.status}
-                    onChange={(e) => updateProjectStatus(project.id, e.target.value)}
-                    className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      project.status === 'Completed' ? 'bg-green-500 text-white' :
-                      project.status === 'In Progress' ? 'bg-blue-500 text-white' :
-                      project.status === 'On Hold' ? 'bg-red-500 text-white' :
-                      'bg-yellow-500 text-black'
-                    }`}
-                  >
-                    {projectStatuses.map(status => (
-                      <option key={status} value={status}>{status}</option>
-                    ))}
-                  </select>
-                  {project.budget > 0 && (
-                    <p className="text-[#F3E3C3]/70 mt-1">${project.budget.toLocaleString()}</p>
-                  )}
-                </div>
+                <h4 className="text-lg font-semibold text-[#F3E3C3] truncate">
+                  {project.title}
+                </h4>
+                <span className={`px-2 py-1 rounded text-xs font-medium text-white ${statusColors[project.status] || 'bg-gray-500'}`}>
+                  {project.status}
+                </span>
               </div>
-              
-              {project.description && (
-                <p className="text-[#F3E3C3]/80 mb-4">{project.description}</p>
-              )}
-              
-              <div className="flex justify-between items-center text-sm text-[#F3E3C3]/60">
-                <span>Type: {project.type}</span>
-                {project.deadline && (
-                  <span className={`${
-                    new Date(project.deadline) < new Date() ? 'text-red-400' : ''
-                  }`}>
-                    Due: {new Date(project.deadline).toLocaleDateString()}
-                  </span>
+
+              <div className="space-y-2 text-sm text-[#F3E3C3]/70">
+                {project.client_name && (
+                  <div>
+                    <span className="font-medium">Client:</span> {project.client_name}
+                  </div>
                 )}
-                <span>Created: {new Date(project.created_at).toLocaleDateString()}</span>
+                {project.project_type && (
+                  <div>
+                    <span className="font-medium">Type:</span> {project.project_type}
+                  </div>
+                )}
+                {project.budget && (
+                  <div>
+                    <span className="font-medium">Budget:</span> ${project.budget.toLocaleString()}
+                  </div>
+                )}
+                {project.start_date && (
+                  <div>
+                    <span className="font-medium">Start:</span> {new Date(project.start_date).toLocaleDateString()}
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
+                <button
+                  onClick={() => {
+                    setSelectedProject(project);
+                    setShowProjectDetails(true);
+                  }}
+                  className="text-[#F3E3C3] hover:text-[#F3E3C3]/80 text-sm font-medium"
+                >
+                  View Details
+                </button>
+                
+                <select
+                  value={project.status}
+                  onChange={(e) => updateProjectStatus(project.id, e.target.value)}
+                  className="bg-[#262626] border border-white/20 rounded px-2 py-1 text-xs text-[#F3E3C3]"
+                >
+                  {statusOptions.map(status => (
+                    <option key={status} value={status}>{status}</option>
+                  ))}
+                </select>
               </div>
             </div>
           ))}
-          
-          {filteredProjects.length === 0 && (
-            <div className="text-center text-[#F3E3C3]/70 py-8">
-              {filter === 'all' ? 'No projects yet. Add your first project!' : `No ${filter} projects found.`}
-            </div>
-          )}
         </div>
-      </div>
+      ) : (
+        <div className="text-center text-[#F3E3C3]/70 py-12">
+          <div className="mb-4">
+            <svg className="w-12 h-12 mx-auto text-[#F3E3C3]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </div>
+          <p className="text-lg">No projects found</p>
+          <p className="text-sm mt-2">Create your first project to get started</p>
+        </div>
+      )}
+
+      {/* Project Details Modal */}
+      {showProjectDetails && selectedProject && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+          <div className="bg-[#232323] rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-xl font-display">{selectedProject.title}</h3>
+                <button
+                  onClick={() => setShowProjectDetails(false)}
+                  className="text-white text-xl hover:text-red-400 transition-colors"
+                >
+                  &times;
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-[#F3E3C3] mb-2">Status</h4>
+                  <span className={`px-3 py-1 rounded text-sm font-medium text-white ${statusColors[selectedProject.status] || 'bg-gray-500'}`}>
+                    {selectedProject.status}
+                  </span>
+                </div>
+
+                {selectedProject.description && (
+                  <div>
+                    <h4 className="font-semibold text-[#F3E3C3] mb-2">Description</h4>
+                    <p className="text-[#F3E3C3]/80">{selectedProject.description}</p>
+                  </div>
+                )}
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-3">
+                    {selectedProject.client_name && (
+                      <div>
+                        <h4 className="font-semibold text-[#F3E3C3]">Client</h4>
+                        <p className="text-[#F3E3C3]/80">{selectedProject.client_name}</p>
+                      </div>
+                    )}
+                    
+                    {selectedProject.project_type && (
+                      <div>
+                        <h4 className="font-semibold text-[#F3E3C3]">Type</h4>
+                        <p className="text-[#F3E3C3]/80">{selectedProject.project_type}</p>
+                      </div>
+                    )}
+                    
+                    {selectedProject.budget && (
+                      <div>
+                        <h4 className="font-semibold text-[#F3E3C3]">Budget</h4>
+                        <p className="text-[#F3E3C3]/80">${selectedProject.budget.toLocaleString()}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="space-y-3">
+                    {selectedProject.start_date && (
+                      <div>
+                        <h4 className="font-semibold text-[#F3E3C3]">Start Date</h4>
+                        <p className="text-[#F3E3C3]/80">{new Date(selectedProject.start_date).toLocaleDateString()}</p>
+                      </div>
+                    )}
+                    
+                    {selectedProject.end_date && (
+                      <div>
+                        <h4 className="font-semibold text-[#F3E3C3]">End Date</h4>
+                        <p className="text-[#F3E3C3]/80">{new Date(selectedProject.end_date).toLocaleDateString()}</p>
+                      </div>
+                    )}
+                    
+                    <div>
+                      <h4 className="font-semibold text-[#F3E3C3]">Created</h4>
+                      <p className="text-[#F3E3C3]/80">{new Date(selectedProject.created_at).toLocaleDateString()}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
