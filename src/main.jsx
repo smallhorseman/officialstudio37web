@@ -32,11 +32,11 @@ class ErrorBoundary extends React.Component {
       return (
         <div className="min-h-screen flex items-center justify-center bg-[#181818] text-[#F3E3C3]">
           <div className="text-center p-8">
-            <h2 className="text-2xl font-display mb-4">Something went wrong</h2>
+            <h2 className="text-2xl font-vintage mb-4">Something went wrong</h2>
             <p className="text-[#F3E3C3]/70 mb-6">We apologize for the inconvenience. Please refresh the page or try again later.</p>
             <button 
               onClick={() => window.location.reload()} 
-              className="bg-[#F3E3C3] text-[#1a1a1a] px-6 py-2 rounded-full font-semibold hover:bg-[#E6D5B8] transition-colors"
+              className="bg-[#F3E3C3] text-[#1a1a1a] px-6 py-2 rounded-full font-semibold hover:bg-[#E6D5B8] transition-colors focus-ring"
             >
               Refresh Page
             </button>

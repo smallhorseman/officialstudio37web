@@ -90,7 +90,7 @@ Additional Details: ${formData.details}
               placeholder="Your Name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3]"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
               required
             />
             <input
@@ -99,7 +99,7 @@ Additional Details: ${formData.details}
               placeholder="Your Email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3]"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
               required
             />
             <input
@@ -108,7 +108,7 @@ Additional Details: ${formData.details}
               placeholder="Your Phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3]"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
             />
           </div>
         );
@@ -120,7 +120,7 @@ Additional Details: ${formData.details}
               name="shootType"
               value={formData.shootType}
               onChange={handleChange}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3]"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
               required
             >
               <option value="">Select shoot type</option>
@@ -136,7 +136,7 @@ Additional Details: ${formData.details}
               name="date"
               value={formData.date}
               onChange={handleChange}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3]"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
             />
           </div>
         );
@@ -150,13 +150,13 @@ Additional Details: ${formData.details}
               placeholder="Preferred location or 'flexible'"
               value={formData.location}
               onChange={handleChange}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3]"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
             />
             <select
               name="budget"
               value={formData.budget}
               onChange={handleChange}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3]"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
             >
               <option value="">Select budget range</option>
               <option value="$75-150">$75-150 (Mini Session)</option>
@@ -171,7 +171,7 @@ Additional Details: ${formData.details}
               value={formData.details}
               onChange={handleChange}
               rows="4"
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3]"
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
             />
           </div>
         );
@@ -189,7 +189,7 @@ Additional Details: ${formData.details}
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className={`w-3 h-3 rounded-full ${
+                className={`w-3 h-3 rounded-full transition-colors ${
                   i <= step ? 'bg-[#F3E3C3]' : 'bg-[#F3E3C3]/20'
                 }`}
               />
@@ -212,7 +212,7 @@ Additional Details: ${formData.details}
             <button
               type="button"
               onClick={handleBack}
-              className="px-4 py-2 bg-[#1a1a1a] text-[#F3E3C3] rounded hover:bg-[#333] transition-colors"
+              className="px-4 py-2 bg-[#1a1a1a] text-[#F3E3C3] rounded hover:bg-[#333] transition-colors focus-ring"
             >
               Back
             </button>
@@ -223,7 +223,7 @@ Additional Details: ${formData.details}
               type="button"
               onClick={handleNext}
               disabled={!formData.name || !formData.email || (step === 2 && !formData.shootType)}
-              className="px-4 py-2 bg-[#F3E3C3] text-[#1a1a1a] rounded font-semibold hover:bg-[#E6D5B8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed ml-auto"
+              className="px-4 py-2 bg-[#F3E3C3] text-[#1a1a1a] rounded font-semibold hover:bg-[#E6D5B8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed ml-auto focus-ring"
             >
               Next
             </button>
@@ -231,7 +231,7 @@ Additional Details: ${formData.details}
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-4 py-2 bg-[#F3E3C3] text-[#1a1a1a] rounded font-semibold hover:bg-[#E6D5B8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed ml-auto"
+              className="px-4 py-2 bg-[#F3E3C3] text-[#1a1a1a] rounded font-semibold hover:bg-[#E6D5B8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed ml-auto focus-ring"
             >
               {isSubmitting ? 'Submitting...' : 'Complete Planning'}
             </button>

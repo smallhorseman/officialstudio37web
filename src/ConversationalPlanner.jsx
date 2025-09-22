@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { supabase } from './supabaseClient'; // <-- create this shared file
 
 const questions = [
@@ -15,6 +15,12 @@ const ConversationalPlanner = ({ email, onComplete }) => {
   ]);
   const [currentMessage, setCurrentMessage] = useState('');
   const [sessionData, setSessionData] = useState({ email });
+  const [answers, setAnswers] = useState({});
+  const [step, setStep] = useState(0);
+  const [saving, setSaving] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [aiPlan, setAiPlan] = useState('');
+  const messagesEndRef = useRef(null);
 
   const quickReplies = [
     "Classic portraits",
@@ -23,6 +29,12 @@ const ConversationalPlanner = ({ email, onComplete }) => {
     "Candid moments",
     "Creative concepts"
   ];
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(scrollToBottom, [messages]);
 
   const addMessage = (text, sender = 'user') => {
     const newMessage = {
@@ -55,6 +67,8 @@ const ConversationalPlanner = ({ email, onComplete }) => {
         addMessage("Excellent choice! Classic portraits are timeless. Are you looking for indoor studio work or outdoor natural lighting?", 'bot');
       } else if (reply.includes('Modern')) {
         addMessage("Love the modern approach! We can create some stunning contemporary shots. What's your preferred location?", 'bot');
+      } else if (reply.includes('Vintage')) {
+        addMessage("Perfect! Vintage aesthetics are our specialty at Studio37. Would you like to incorporate specific vintage elements or styling?", 'bot');
       } else {
         addMessage("Great selection! Let's discuss timing and location preferences.", 'bot');
       }
@@ -84,6 +98,13 @@ const ConversationalPlanner = ({ email, onComplete }) => {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
+  };
+
   if (submitted) {
     return (
       <div className="p-6 text-center">
@@ -94,7 +115,13 @@ const ConversationalPlanner = ({ email, onComplete }) => {
   }
 
   return (
-    <div className="h-96 flex flex-col">
+    <div className="h-96 flex flex-col bg-[#232323] text-[#F3E3C3] rounded-lg">
+      {/* Header */}
+      <div className="p-4 border-b border-white/10">
+        <h3 className="font-vintage text-lg">Studio37 Planning Assistant</h3>
+        <p className="text-sm text-[#F3E3C3]/70">Let's create something beautiful together</p>
+      </div>
+
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((message) => (
@@ -103,16 +130,17 @@ const ConversationalPlanner = ({ email, onComplete }) => {
             className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
-              className={`max-w-xs px-4 py-2 rounded-lg ${
+              className={`max-w-xs px-4 py-2 rounded-lg text-sm ${
                 message.sender === 'user'
                   ? 'bg-[#F3E3C3] text-[#1a1a1a]'
-                  : 'bg-[#1a1a1a] text-[#F3E3C3]'
+                  : 'bg-[#1a1a1a] text-[#F3E3C3] border border-white/10'
               }`}
             >
               {message.text}
             </div>
           </div>
         ))}
+        <div ref={messagesEndRef} />
       </div>
 
       {/* Quick Replies */}
@@ -122,7 +150,7 @@ const ConversationalPlanner = ({ email, onComplete }) => {
             <button
               key={index}
               onClick={() => handleQuickReply(reply)}
-              className="text-xs px-3 py-1 bg-[#1a1a1a] text-[#F3E3C3] rounded-full hover:bg-[#333] transition-colors"
+              className="text-xs px-3 py-1 bg-[#1a1a1a] text-[#F3E3C3] rounded-full hover:bg-[#333] transition-colors border border-white/20"
             >
               {reply}
             </button>
@@ -131,18 +159,19 @@ const ConversationalPlanner = ({ email, onComplete }) => {
       </div>
 
       {/* Input */}
-      <div className="flex p-4 border-t border-white/10">
+      <div className="flex p-4 border-t border-white/10 gap-2">
         <input
           type="text"
           value={currentMessage}
           onChange={(e) => setCurrentMessage(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+          onKeyPress={handleKeyPress}
           placeholder="Type your message..."
-          className="flex-1 bg-[#1a1a1a] border border-white/20 rounded-l-md py-2 px-3 text-[#F3E3C3] text-sm"
+          className="flex-1 bg-[#1a1a1a] border border-white/20 rounded-l-md py-2 px-3 text-[#F3E3C3] text-sm focus-ring placeholder-[#F3E3C3]/50"
         />
         <button
           onClick={handleSend}
-          className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded-r-md font-semibold text-sm hover:bg-[#E6D5B8] transition-colors"
+          disabled={!currentMessage.trim()}
+          className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded-r-md font-semibold text-sm hover:bg-[#E6D5B8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus-ring"
         >
           Send
         </button>

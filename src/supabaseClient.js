@@ -52,3 +52,18 @@ export const deleteImage = async (fileName, bucket = 'images') => {
     throw error;
   }
 };
+
+// Utility function for secure data fetching
+export const fetchWithErrorHandling = async (query) => {
+  try {
+    const { data, error } = await query;
+    if (error) {
+      console.error('Supabase query error:', error);
+      throw error;
+    }
+    return data;
+  } catch (err) {
+    console.error('Database operation failed:', err);
+    throw err;
+  }
+};

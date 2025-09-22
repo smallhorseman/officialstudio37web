@@ -1,9 +1,43 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { supabase } from '../supabaseClient';
 
-const OptimizedImage = ({ src, alt, className, loading = "lazy", ...props }) => {
+const OptimizedImage = ({ src, alt, className, loading = "lazy", onError, ...props }) => {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+  const maxRetries = 2;
+
+  const handleImageError = useCallback(() => {
+    if (retryCount < maxRetries) {
+      setRetryCount(prev => prev + 1);
+      setError(false);
+      setLoaded(false);
+      // Retry with exponential backoff
+      setTimeout(() => {
+        const img = new Image();
+        img.onload = () => setLoaded(true);
+        img.onerror = () => setError(true);
+        img.src = src;
+      }, Math.pow(2, retryCount) * 1000);
+    } else {
+      setError(true);
+      onError?.(new Error('Image failed to load after retries'));
+    }
+  }, [retryCount, src, onError, maxRetries]);
+
+  // Add image optimization for Cloudinary URLs
+  const optimizeImageUrl = (url) => {
+    if (!url || !url.includes('cloudinary.com')) return url;
+    
+    // Add auto optimization parameters
+    const optimizedUrl = url.replace(
+      '/upload/',
+      '/upload/f_auto,q_auto:good,w_auto:breakpoints,c_scale/'
+    );
+    return optimizedUrl;
+  };
+
+  const optimizedSrc = optimizeImageUrl(src);
 
   return (
     <div className={`relative ${className}`}>
@@ -13,21 +47,24 @@ const OptimizedImage = ({ src, alt, className, loading = "lazy", ...props }) => 
         </div>
       )}
       <img
-        src={src}
+        src={optimizedSrc}
         alt={alt}
         className={`${className} transition-all duration-500 ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
         onLoad={() => setLoaded(true)}
-        onError={() => setError(true)}
+        onError={handleImageError}
         loading={loading}
+        decoding="async"
+        crossOrigin="anonymous"
         {...props}
       />
       {error && (
         <div className="absolute inset-0 bg-gray-800 flex items-center justify-center text-gray-400 text-sm rounded">
           <div className="text-center p-4">
-            <svg className="w-8 h-8 mx-auto mb-2 opacity-50" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-8 h-8 mx-auto mb-2 opacity-50" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
             </svg>
             <p>Image unavailable</p>
+            {retryCount > 0 && <p className="text-xs mt-1">Retried {retryCount}x</p>}
           </div>
         </div>
       )}
@@ -86,11 +123,23 @@ export function EnhancedCmsSection({
   };
 
   const handleAddImage = async () => {
-    if (!newImage.url || !newImage.category) return;
+    const validationErrors = validateImageData(newImage);
+    if (validationErrors.length > 0) {
+      alert('Validation errors:\n' + validationErrors.join('\n'));
+      return;
+    }
     
     setUploading(true);
     try {
-      await addPortfolioImage(newImage);
+      // Sanitize inputs
+      const sanitizedImage = {
+        url: newImage.url.trim(),
+        category: newImage.category.trim(),
+        caption: newImage.caption.trim(),
+        alt_text: newImage.alt_text.trim()
+      };
+      
+      await addPortfolioImage(sanitizedImage);
       setNewImage({
         url: '',
         category: '',
@@ -99,8 +148,30 @@ export function EnhancedCmsSection({
       });
     } catch (error) {
       console.error('Error adding image:', error);
+      alert('Failed to add image. Please try again.');
+    } finally {
+      setUploading(false);
     }
-    setUploading(false);
+  };
+
+  const validateImageData = (imageData) => {
+    const errors = [];
+    
+    if (!imageData.url.trim()) {
+      errors.push('URL is required');
+    } else if (!validateCloudinaryUrl(imageData.url)) {
+      errors.push('Please enter a valid Cloudinary URL');
+    }
+    
+    if (!imageData.category.trim()) {
+      errors.push('Category is required');
+    }
+    
+    if (imageData.caption && imageData.caption.length > 500) {
+      errors.push('Caption must be less than 500 characters');
+    }
+    
+    return errors;
   };
 
   const handleImageSelect = (imageId) => {
@@ -126,6 +197,14 @@ export function EnhancedCmsSection({
       setSelectedImages(new Set());
     } catch (error) {
       console.error('Error deleting images:', error);
+    }
+  };
+
+  // Add keyboard navigation support
+  const handleKeyDown = (event, action) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      action();
     }
   };
 
@@ -204,21 +283,29 @@ export function EnhancedCmsSection({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Add Image Form */}
         <div className="bg-[#262626] rounded-lg p-6">
-          <h3 className="text-xl font-display mb-4">Add New Image</h3>
-          <div className="space-y-4">
+          <h3 className="text-xl font-vintage mb-4">Add New Image</h3>
+          <form onSubmit={(e) => { e.preventDefault(); handleAddImage(); }} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-[#F3E3C3] mb-2">
+              <label 
+                htmlFor="image-url" 
+                className="block text-sm font-medium text-[#F3E3C3] mb-2"
+              >
                 Image URL *
               </label>
               <input
+                id="image-url"
                 type="url"
                 value={newImage.url}
                 onChange={(e) => handleImageChange('url', e.target.value)}
                 placeholder="https://res.cloudinary.com/..."
-                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+                className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-sm focus-ring"
+                required
+                aria-describedby={newImage.url && !validateCloudinaryUrl(newImage.url) ? 'url-error' : undefined}
               />
               {newImage.url && !validateCloudinaryUrl(newImage.url) && (
-                <p className="text-red-400 text-xs mt-1">Please enter a valid Cloudinary URL</p>
+                <p id="url-error" className="text-red-400 text-xs mt-1" role="alert">
+                  Please enter a valid Cloudinary URL
+                </p>
               )}
             </div>
 
@@ -278,20 +365,21 @@ export function EnhancedCmsSection({
             )}
 
             <button
-              onClick={handleAddImage}
+              type="submit"
               disabled={!newImage.url || !newImage.category || !validateCloudinaryUrl(newImage.url) || uploading}
-              className="w-full bg-[#F3E3C3] text-[#1a1a1a] rounded-md py-2 px-4 font-semibold transition-all hover:bg-[#E6D5B8] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#F3E3C3]"
+              className="w-full bg-[#F3E3C3] text-[#1a1a1a] rounded-md py-2 px-4 font-semibold transition-all hover:bg-[#E6D5B8] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#F3E3C3] focus-ring"
+              aria-describedby="add-image-status"
             >
               {uploading ? (
                 <div className="flex items-center justify-center gap-2">
-                  <div className="w-4 h-4 border-2 border-[#1a1a1a] border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-4 h-4 border-2 border-[#1a1a1a] border-t-transparent rounded-full animate-spin" aria-hidden="true"></div>
                   Adding...
                 </div>
               ) : (
                 'Add Image'
               )}
             </button>
-          </div>
+          </form>
         </div>
 
         {/* Images Display */}

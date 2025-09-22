@@ -1,14 +1,19 @@
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import React, { useState, useEffect, useMemo, useCallback, Suspense, lazy } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import SEOHead from './components/SEOHead';
-import { supabase } from './supabaseClient';
-import { Routes, Route, useParams, useNavigate, Link, useLocation } from 'react-router-dom';
+import { supabase, fetchWithErrorHandling } from './supabaseClient';
 
 // Import the enhanced components
 import { EnhancedCrmSection } from './components/EnhancedCRM';
 import { EnhancedCmsSection } from './components/EnhancedCMS';
+import SEOHead from './components/SEOHead';
+
+// Import virtual agent components
+import VirtualAgentPlanner from './VirtualAgentPlanner';
+import PhotoshootPlanner from './PhotoshootPlanner';
+import ConversationalPlanner from './ConversationalPlanner';
 
 // --- Helper Components & Icons --- //
 
@@ -113,29 +118,27 @@ export default function App() {
     if (location.pathname === '/blog' || isAdmin) {
       setBlogLoading(true);
       setBlogError('');
-      supabase
-        .from('blog_posts')
-        .select('id, title, publish_date, created_at, slug, excerpt, author, content, tags, category')
-        .order('publish_date', { ascending: false })
-        .limit(10)
-        .then(({ data, error }) => {
-          if (error) {
-            console.error('Blog posts fetch error:', error);
-            setBlogError('Failed to load blog posts.');
-            setBlogPosts([]);
-          } else if (!data || !Array.isArray(data)) {
-            setBlogError('No blog posts found.');
-            setBlogPosts([]);
-          } else {
-            setBlogPosts(data);
-          }
-          setBlogLoading(false);
-        })
-        .catch((err) => {
-          console.error('Unexpected error:', err);
-          setBlogError('An unexpected error occurred.');
-          setBlogLoading(false);
-        });
+      
+      fetchWithErrorHandling(
+        supabase
+          .from('blog_posts')
+          .select('id, title, publish_date, created_at, slug, excerpt, author, content, tags, category')
+          .order('publish_date', { ascending: false })
+          .limit(10)
+      ).then((data) => {
+        if (!data || !Array.isArray(data)) {
+          setBlogError('No blog posts found.');
+          setBlogPosts([]);
+        } else {
+          setBlogPosts(data);
+        }
+      }).catch((error) => {
+        console.error('Blog posts fetch error:', error);
+        setBlogError('Failed to load blog posts.');
+        setBlogPosts([]);
+      }).finally(() => {
+        setBlogLoading(false);
+      });
     }
   }, [location.pathname, isAdmin]);
 
@@ -1000,7 +1003,7 @@ const AdminLoginPage = ({ onLogin }) => {
     setError('');
     
     try {
-      // Use environment variables or secure authentication
+      // Use environment variables for secure authentication
       const adminUsername = import.meta.env.VITE_ADMIN_USERNAME || 'admin';
       const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'studio37admin';
       
@@ -1020,268 +1023,53 @@ const AdminLoginPage = ({ onLogin }) => {
 
   return (
     <div className="py-20 md:py-32 flex items-center justify-center">
+      <SEOHead 
+        title="Admin Login - Studio37"
+        description="Admin access to Studio37 dashboard"
+      />
       <div className="bg-[#232323] rounded-lg shadow-xl p-8 md:p-12 max-w-md w-full border border-white/10">
-        <h2 className="text-3xl font-display text-center mb-8">Admin Login</h2>
+        <h2 className="text-3xl font-vintage text-center mb-8">Admin Login</h2>
         <form onSubmit={handleLogin} className="space-y-6">
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
+          <div>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 text-[#F3E3C3] placeholder-[#F3E3C3]/50 focus-ring"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 text-[#F3E3C3] placeholder-[#F3E3C3]/50 focus-ring"
+              required
+            />
+          </div>
           {error && <p className="text-red-400 text-sm" role="alert">{error}</p>}
           <button 
             type="submit" 
             disabled={loading}
-            className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#232323] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#232323] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed focus-ring"
           >
-            {loading ? 'Logging in...' : 'Login'} <ArrowRight />
+            {loading ? (
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 border-2 border-[#232323] border-t-transparent rounded-full animate-spin"></div>
+                Logging in...
+              </div>
+            ) : (
+              <>Login <ArrowRight className="ml-2" /></>
+            )}
           </button>
         </form>
       </div>
     </div>
   );
 };
-
-// --- AboutPage Component ---
-const AboutPage = ({ content }) => (
-  <>
-    <SEOHead 
-      title="About Studio37 - Professional Photography Team in Houston, TX"
-      description="Meet the Studio37 team. Professional photographers and content strategists serving Houston and surrounding areas with vintage-inspired, modern photography."
-      keywords="about Studio37, Houston photographers, photography team, professional photography Houston"
-    />
-    <div className="py-20 md:py-32 bg-[#212121]">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1">
-            <h2 className="text-4xl md:text-5xl font-display mb-6">{content.title || 'About Studio37'}</h2>
-            <div className="text-lg text-[#F3E3C3]/80 leading-relaxed">
-              {content.bio ? (
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                  {content.bio}
-                </ReactMarkdown>
-              ) : (
-                <p>Loading content...</p>
-              )}
-            </div>
-          </div>
-          <div className="order-1 md:order-2">
-            <div className="bg-[#262626] rounded-lg p-8 text-center">
-              <h3 className="text-xl font-display text-white mb-4">Studio37 Team</h3>
-              <p className="text-[#F3E3C3]/70">Professional photography and content strategy from Houston, TX</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </>
-);
-
-// --- ServicesPage Component ---
-const proPackages = [
-  {
-    name: "Director Package",
-    description: "Our most comprehensive package for brands and businesses. Includes full content strategy, creative direction, multi-location photo/video shoots, and post-production. Ideal for campaigns, launches, and ongoing brand storytelling.",
-    price: "$2,000+"
-  },
-  {
-    name: "Producer Package",
-    description: "Perfect for small businesses and creators. Includes a half-day photo/video shoot, creative planning, and a set of edited images and short-form video content for social media and web.",
-    price: "$1,200+"
-  },
-  {
-    name: "Brand Builder",
-    description: "A focused session for new businesses or rebrands. Includes headshots, team photos, and product or location images, plus a content strategy consult.",
-    price: "$750+"
-  },
-  {
-    name: "Content Day",
-    description: "A quick, high-impact shoot for monthly content refreshes. Includes up to 2 hours on-site, 20 edited images, and 2 short video clips.",
-    price: "$500+"
-  }
-];
-
-const personalPackages = [
-  {
-    name: "Mini Reel",
-    description: "A quick 15-minute session for individuals or couples. Includes 15 edited photos, a free 1-minute movie reel of your shoot, and a complimentary Polaroid print.",
-    price: "$75"
-  },
-  {
-    name: "Full Episode",
-    description: "A 30-minute session for individuals, couples, or small families. Includes 30 edited photos, a free 1-minute movie reel of your shoot, and a complimentary Polaroid print.",
-    price: "$150"
-  },
-  {
-    name: "Movie Premier",
-    description: "A deluxe 60-minute session for couples, families, or creative portraits. Includes 60 edited photos, a free 1-minute movie reel of your shoot, and a complimentary Polaroid print.",
-    price: "$300"
-  }
-];
-
-const otherServices = [
-  {
-    name: "Event Coverage",
-    description: "Professional photography for events, parties, and gatherings. Includes candid and group shots, with fast turnaround on edited images.",
-    price: "$500+"
-  },
-  {
-    name: "Wedding & Engagement",
-    description: "Custom packages for weddings and engagements. Includes planning consult, full-day coverage, and a highlight movie reel.",
-    price: "Contact for Quote"
-  },
-  {
-    name: "Real Estate & Architecture",
-    description: "High-quality images and video for real estate listings, Airbnbs, and architectural projects. Includes drone options.",
-    price: "$250+"
-  }
-];
-
-function ServiceCard({ name, description, price }) {
-  return (
-    <div className="bg-[#262626] rounded-lg shadow-lg p-6 flex flex-col items-start">
-      <h4 className="text-xl font-display mb-2 text-white">{name}</h4>
-      <div className="text-[#F3E3C3]/80 mb-4">{description}</div>
-      {price && <div className="text-lg font-bold text-[#F3E3C3] mt-auto">{price}</div>}
-    </div>
-  );
-}
-
-const ServicesPage = () => (
-  <>
-    <SEOHead 
-      title="Photography Services - Studio37 Houston | Portraits, Weddings, Events"
-      description="Professional photography services in Houston: Director Package ($2000+), Producer Package ($1200+), portraits ($75+), weddings, events. Full-service content strategy."
-      keywords="photography services Houston, wedding photographer Houston, portrait photography, event photography, content strategy"
-    />
-    <div className="py-20 md:py-28">
-      <div className="container mx-auto px-6">
-        <section id="pro-packages" className="mb-20">
-          <h3 className="text-3xl font-display text-center mb-10">Content & Marketing Packages</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {proPackages.map(p => <ServiceCard key={p.name} {...p} />)}
-          </div>
-        </section>
-        <section id="personal-packages" className="mb-20">
-          <h3 className="text-3xl font-display text-center mb-10">Portrait Packages</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {personalPackages.map(p => <ServiceCard key={p.name} {...p} />)}
-          </div>
-        </section>
-        <section id="other-services">
-          <h3 className="text-3xl font-display text-center mb-10">Additional Creative & Event Services</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {otherServices.map(s => <ServiceCard key={s.name} {...s} />)}
-          </div>
-        </section>
-      </div>
-    </div>
-  </>
-);
-
-// --- PortfolioPage Component ---
-const PortfolioPage = ({ isUnlocked, onUnlock, images }) => {
-  const [filter, setFilter] = useState('All');
-  const [imageLoadErrors, setImageLoadErrors] = useState(new Set());
-  const [loadedImages, setLoadedImages] = useState(new Set());
-
-  const filteredImages = useMemo(() => {
-    const validImages = images.filter(img => img.url && !imageLoadErrors.has(img.id));
-    return filter === 'All' ? validImages : validImages.filter(img => img.category === filter);
-  }, [images, filter, imageLoadErrors]);
-
-  const categories = useMemo(() => 
-    ['All', ...new Set(images.filter(img => !imageLoadErrors.has(img.id)).map(img => img.category))], 
-    [images, imageLoadErrors]
-  );
-
-  const handleImageError = useCallback((imageId) => {
-    setImageLoadErrors(prev => new Set([...prev, imageId]));
-  }, []);
-
-  // --- Lazy loading and virtualization ---
-  const visibleImages = useMemo(() => {
-    return filteredImages.slice(0, 20); // Load only first 20
-  }, [filteredImages]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const imgId = entry.target.dataset.imageId;
-            setLoadedImages(prev => new Set([...prev, imgId]));
-          }
-        });
-      },
-      { rootMargin: '50px' }
-    );
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <>
-      <SEOHead 
-        title="Photography Portfolio - Studio37 Houston | Professional Work Gallery"
-        description="View Studio37's photography portfolio showcasing professional work in Houston, TX. Portraits, weddings, events, and commercial photography."
-        keywords="photography portfolio Houston, professional photography gallery, Studio37 work, Houston photographer portfolio"
-      />
-      <div className="py-20 md:py-28">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-display">Our Work</h2>
-            <p className="text-lg text-[#F3E3C3]/70 mt-4 max-w-2xl mx-auto mb-8">A curated selection of our favorite moments and projects.</p>
-          </div>
-          {!isUnlocked && <PortfolioGate onUnlock={onUnlock} />}
-          {isUnlocked && (
-            <>
-              <div className="flex flex-wrap gap-2 justify-center mb-8">
-                {categories.map(cat => (
-                  <button
-                    key={cat}
-                    onClick={() => setFilter(cat)}
-                    className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors ${filter === cat ? 'bg-[#F3E3C3] text-[#1a1a1a]' : 'bg-[#262626] hover:bg-[#333]'}`}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
-              <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6">
-                {visibleImages.map(img => (
-                  <div key={img.id} className="break-inside-avoid relative group">
-                    <OptimizedImage
-                      src={img.url} 
-                      alt={img.caption || `${img.category} photography`} 
-                      className="w-full rounded-lg shadow-lg hover:opacity-90 transition-opacity"
-                      loading="lazy"
-                      onError={() => handleImageError(img.id)}
-                    />
-                    {img.caption && (
-                      <div className="absolute bottom-0 left-0 right-0 bg-black/75 backdrop-blur-sm p-3 rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity">
-                        <p className="text-[#F3E3C3]/75 text-sm font-serif italic leading-relaxed">
-                          {img.caption}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-              {filteredImages.length === 0 && (
-                <div className="text-center text-[#F3E3C3]/70 py-12">
-                  {imageLoadErrors.size > 0 ? 
-                    'Some images failed to load. Please refresh the page.' : 
-                    'No images available in this category.'
-                  }
-                </div>
-              )}
-            </>
-          )}
-        </div>
-      </div>
-    </>
-  );
-};
-
-// --- Memoized components for performance ---
-const MemoizedPortfolioPage = React.memo(PortfolioPage);
 
 // --- AdminDashboard Component (inline to avoid import issues) ---
 function AdminDashboard({
@@ -1307,18 +1095,22 @@ function AdminDashboard({
 
   return (
     <div className="py-20 md:py-28 bg-[#212121]">
+      <SEOHead 
+        title="Admin Dashboard - Studio37"
+        description="Studio37 admin dashboard for managing business operations"
+      />
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-display">Admin Dashboard</h2>
+          <h2 className="text-4xl md:text-5xl font-vintage">Admin Dashboard</h2>
           <p className="text-lg text-[#F3E3C3]/70 mt-4">Manage your business operations</p>
         </div>
         
         <div className="flex flex-wrap gap-2 justify-center mb-8">
-          {['crm', 'cms', 'blog'].map(tab => (
+          {['crm', 'cms', 'blog', 'analytics'].map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors ${
+              className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors focus-ring ${
                 activeTab === tab 
                   ? 'bg-[#F3E3C3] text-[#1a1a1a]' 
                   : 'bg-[#262626] hover:bg-[#333] text-[#F3E3C3]'
@@ -1332,14 +1124,14 @@ function AdminDashboard({
         <div className="bg-[#262626] rounded-lg shadow-lg p-6">
           {activeTab === 'crm' && (
             <div>
-              <h3 className="text-2xl font-display mb-6">Customer Relationship Management</h3>
+              <h3 className="text-2xl font-vintage mb-6">Customer Relationship Management</h3>
               <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
             </div>
           )}
           
           {activeTab === 'cms' && (
             <div>
-              <h3 className="text-2xl font-display mb-6">Content Management</h3>
+              <h3 className="text-2xl font-vintage mb-6">Content Management</h3>
               <EnhancedCmsSection
                 portfolioImages={portfolioImages}
                 addPortfolioImage={addPortfolioImage}
@@ -1351,7 +1143,7 @@ function AdminDashboard({
           
           {activeTab === 'blog' && (
             <div>
-              <h3 className="text-2xl font-display mb-6">Blog Management</h3>
+              <h3 className="text-2xl font-vintage mb-6">Blog Management</h3>
               <div className="text-[#F3E3C3]/70 py-8">Blog admin coming soon...</div>
             </div>
           )}
