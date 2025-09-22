@@ -1,9 +1,9 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, lazy, Suspense, memo, useCallback, useMemo } from 'react';
 import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { supabase, testConnection, getConnectionStatus } from './supabaseClient';
 import { useSupabaseQuery, useSupabaseMutation } from './hooks/useSupabaseQuery';
+import { usePerformance } from './hooks/usePerformance';
 import SEOHead from './components/SEOHead';
-import Chatbot from './components/Chatbot';
 
 // Centralized icon imports
 import {
@@ -12,83 +12,110 @@ import {
   AlertTriangle, CheckCircle, Info, Trash2, Plus, Edit, Eye, EyeOff
 } from './components/Icons';
 
-// Lazy load heavy components for better performance
-const VirtualAgentPlanner = lazy(() => import('./VirtualAgentPlanner'));
-const EnhancedCrmSection = lazy(() => import('./components/EnhancedCRM').then(module => ({ default: module.EnhancedCrmSection })));
-const EnhancedCmsSection = lazy(() => import('./components/EnhancedCMS').then(module => ({ default: module.EnhancedCmsSection })));
-const ProjectsSection = lazy(() => import('./components/ProjectsSection'));
-
-// Enhanced error boundary for better UX
-const ErrorFallback = ({ error, resetError }) => (
-  <div className="min-h-screen flex items-center justify-center bg-[#181818] text-[#F3E3C3]">
-    <div className="text-center p-8">
-      <AlertTriangle className="h-16 w-16 mx-auto mb-4 text-red-500" />
-      <h2 className="text-2xl font-bold mb-4">Something went wrong</h2>
-      <p className="text-[#F3E3C3]/70 mb-6">{error?.message || 'An unexpected error occurred'}</p>
-      <button
-        onClick={resetError}
-        className="bg-[#F3E3C3] text-[#1a1a1a] px-6 py-2 rounded-md hover:bg-[#E6D5B8] transition-colors"
-      >
-        Try Again
-      </button>
-    </div>
-  </div>
+// Optimized lazy loading with better error boundaries
+const Chatbot = lazy(() => 
+  import('./components/Chatbot/Chatbot').catch(() => ({ default: () => <div>Chat unavailable</div> }))
 );
 
-// Loading component
-const LoadingSpinner = ({ message = 'Loading...' }) => (
+const VirtualAgentPlanner = lazy(() => 
+  import('./VirtualAgentPlanner').catch(() => ({ default: () => <div>Assistant unavailable</div> }))
+);
+
+const EnhancedCrmSection = lazy(() => 
+  import('./components/EnhancedCRM').then(module => ({ default: module.EnhancedCrmSection }))
+    .catch(() => ({ default: () => <div>CRM unavailable</div> }))
+);
+
+const EnhancedCmsSection = lazy(() => 
+  import('./components/EnhancedCMS').then(module => ({ default: module.EnhancedCmsSection }))
+    .catch(() => ({ default: () => <div>CMS unavailable</div> }))
+);
+
+const ProjectsSection = lazy(() => 
+  import('./components/ProjectsSection').catch(() => ({ default: () => <div>Projects unavailable</div> }))
+);
+
+// Memoized components for better performance
+const MemoizedSEOHead = memo(SEOHead);
+const MemoizedConnectionStatusNotification = memo(({ status, onRetry }) => {
+  if (status === 'connected') return null;
+  
+  const statusConfig = {
+    checking: { 
+      color: 'bg-blue-500/20 border-blue-500/30 text-blue-200',
+      message: '🔄 Connecting to database...'
+    },
+    unconfigured: { 
+      color: 'bg-yellow-500/20 border-yellow-500/30 text-yellow-200',
+      message: '⚠️ Database not configured. Using offline mode with local storage.'
+    },
+    error: { 
+      color: 'bg-red-500/20 border-red-500/30 text-red-200',
+      message: '❌ Database connection failed. Operating in offline mode.'
+    },
+    mock: {
+      color: 'bg-purple-500/20 border-purple-500/30 text-purple-200',
+      message: '🔧 Running in mock mode with local storage.'
+    }
+  };
+  
+  const config = statusConfig[status] || statusConfig.error;
+  
+  return (
+    <div className={`${config.color} border px-4 py-2 text-sm text-center`}>
+      <strong>{config.message}</strong>
+      {status === 'error' && (
+        <button onClick={onRetry} className="ml-2 underline hover:no-underline">
+          Retry Connection
+        </button>
+      )}
+    </div>
+  );
+});
+
+// Enhanced loading component
+const OptimizedLoadingSpinner = memo(({ message = 'Loading...', skeleton = false }) => (
   <div className="flex items-center justify-center p-8">
     <div className="text-center">
-      <div className="w-8 h-8 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-      <p className="text-[#F3E3C3]/70">{message}</p>
+      {skeleton ? (
+        <div className="space-y-3">
+          <div className="h-4 bg-gray-700 rounded animate-pulse"></div>
+          <div className="h-4 bg-gray-700 rounded animate-pulse w-3/4"></div>
+          <div className="h-4 bg-gray-700 rounded animate-pulse w-1/2"></div>
+        </div>
+      ) : (
+        <>
+          <div className="w-8 h-8 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-[#F3E3C3]/70">{message}</p>
+        </>
+      )}
     </div>
   </div>
-);
-
-// Enhanced analytics without HubSpot dependency
-const trackEvent = (eventName, properties = {}) => {
-  try {
-    // Console logging for development
-    if (import.meta.env.DEV) {
-      console.log('📊 Event:', eventName, properties);
-    }
-    
-    // Store in localStorage for offline analytics
-    const events = JSON.parse(localStorage.getItem('studio37_events') || '[]');
-    events.push({
-      event: eventName,
-      properties,
-      timestamp: new Date().toISOString(),
-      url: window.location.href,
-      userAgent: navigator.userAgent
-    });
-    
-    // Keep only last 100 events
-    if (events.length > 100) {
-      events.splice(0, events.length - 100);
-    }
-    
-    localStorage.setItem('studio37_events', JSON.stringify(events));
-  } catch (error) {
-    console.error('Analytics error:', error);
-  }
-};
+));
 
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { measureComponentRender } = usePerformance();
   
-  // State management
+  // Performance timing
+  const renderStart = useMemo(() => performance.now(), [location.pathname]);
+  
+  // State management with better initial states
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [portfolioUnlocked, setPortfolioUnlocked] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(() => {
+    // Check localStorage for admin session
+    return localStorage.getItem('studio37_admin') === 'true';
+  });
+  const [portfolioUnlocked, setPortfolioUnlocked] = useState(() => {
+    // Check localStorage for portfolio unlock
+    return localStorage.getItem('studio37_portfolio_unlocked') === 'true';
+  });
   const [showChatWidget, setShowChatWidget] = useState(false);
-  
-  // Remove duplicate loading state - only keep connection status states
   const [error, setError] = useState('');
   const [connectionStatus, setConnectionStatus] = useState('checking');
 
-  // Replace manual data loading with optimized hooks
+  // Optimized data fetching with better caching
   const {
     data: portfolioImages = [],
     loading: portfolioLoading,
@@ -102,7 +129,8 @@ function App() {
     [],
     {
       enabled: true,
-      staleTime: 10 * 60 * 1000, // 10 minutes
+      staleTime: 15 * 60 * 1000, // 15 minutes cache
+      cacheTime: 30 * 60 * 1000, // 30 minutes background cache
       realtime: true,
       realtimeTable: 'portfolio_images'
     }
@@ -226,12 +254,17 @@ function App() {
     
     checkConnection();
     
-    // Retry connection periodically if failed
+    // Exponential backoff retry
+    let retryCount = 0;
+    const maxRetries = 3;
     const retryInterval = setInterval(() => {
-      if (getConnectionStatus() === 'error') {
-        checkConnection();
+      if (getConnectionStatus() === 'error' && retryCount < maxRetries) {
+        retryCount++;
+        setTimeout(checkConnection, Math.pow(2, retryCount) * 1000);
+      } else if (retryCount >= maxRetries) {
+        clearInterval(retryInterval);
       }
-    }, 30000); // Retry every 30 seconds
+    }, 30000);
     
     return () => {
       mounted = false;
@@ -239,191 +272,20 @@ function App() {
     };
   }, []);
 
-  // Enhanced performance monitoring
+  // Performance monitoring for route changes
   useEffect(() => {
-    const observer = new PerformanceObserver((list) => {
-      list.getEntries().forEach((entry) => {
-        if (entry.entryType === 'navigation') {
-          trackEvent('page_performance', {
-            loadTime: entry.loadEventEnd - entry.loadEventStart,
-            domContentLoaded: entry.domContentLoadedEventEnd - entry.domContentLoadedEventStart,
-            firstPaint: entry.responseEnd - entry.requestStart
-          });
-        }
-      });
-    });
-    
-    observer.observe({ entryTypes: ['navigation'] });
-    
-    return () => observer.disconnect();
-  }, []);
+    measureComponentRender(`Route-${location.pathname}`, renderStart);
+  }, [location.pathname, measureComponentRender, renderStart]);
 
-  // Computed loading state - rename to avoid conflict
-  const isLoading = portfolioLoading || (isAdmin && (leadsLoading || projectsLoading));
-  const hasErrors = portfolioError || (isAdmin && (leadsError || projectsError));
-
-  // Connection status notification component
-  const ConnectionStatusNotification = () => {
-    const status = getConnectionStatus();
-    
-    if (status === 'connected') return null;
-    
-    const statusConfig = {
-      checking: { 
-        color: 'bg-blue-500/20 border-blue-500/30 text-blue-200',
-        message: '🔄 Connecting to database...'
-      },
-      unconfigured: { 
-        color: 'bg-yellow-500/20 border-yellow-500/30 text-yellow-200',
-        message: '⚠️ Database not configured. Using offline mode with local storage.'
-      },
-      error: { 
-        color: 'bg-red-500/20 border-red-500/30 text-red-200',
-        message: '❌ Database connection failed. Operating in offline mode.'
-      },
-      mock: {
-        color: 'bg-purple-500/20 border-purple-500/30 text-purple-200',
-        message: '🔧 Running in mock mode with local storage.'
-      }
-    };
-    
-    const config = statusConfig[status] || statusConfig.error;
-    
-    return (
-      <div className={`${config.color} border px-4 py-2 text-sm text-center`}>
-        <strong>{config.message}</strong>
-        {status === 'error' && (
-          <button
-            onClick={async () => {
-              setConnectionStatus('checking');
-              const isConnected = await testConnection();
-              setConnectionStatus(isConnected ? 'connected' : 'error');
-            }}
-            className="ml-2 underline hover:no-underline"
-          >
-            Retry Connection
-          </button>
-        )}
-      </div>
-    );
-  };
-
-  // Admin Login Component
-  const AdminLogin = () => {
-    const [credentials, setCredentials] = useState({ username: '', password: '' });
-    const [loginError, setLoginError] = useState('');
-    const [loginLoading, setLoginLoading] = useState(false);
-
-    const handleLogin = async (e) => {
-      e.preventDefault();
-      setLoginLoading(true);
-      setLoginError('');
-
-      // Simple admin credentials (in production, use proper authentication)
-      const adminUsername = import.meta.env.VITE_ADMIN_USERNAME || 'admin';
-      const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'studio37admin';
-
-      if (credentials.username === adminUsername && credentials.password === adminPassword) {
-        setIsAdmin(true);
-        navigate('/admin');
-        trackEvent('admin_login', { timestamp: new Date().toISOString() });
-      } else {
-        setLoginError('Invalid username or password');
-      }
-      
-      setLoginLoading(false);
-    };
-
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#181818] py-12 px-4 sm:px-6 lg:px-8">
-        <SEOHead title="Admin Login - Studio37" />
-        <div className="max-w-md w-full space-y-8">
-          <div>
-            <div className="mx-auto h-12 w-12 flex items-center justify-center">
-              <Camera className="h-12 w-12 text-[#F3E3C3]" />
-            </div>
-            <h2 className="mt-6 text-center text-3xl font-vintage text-[#F3E3C3]">
-              Admin Login
-            </h2>
-            <p className="mt-2 text-center text-sm text-[#F3E3C3]/70">
-              Sign in to access the admin dashboard
-            </p>
-          </div>
-          <form className="mt-8 space-y-6" onSubmit={handleLogin}>
-            <div className="rounded-md shadow-sm -space-y-px">
-              <div>
-                <label htmlFor="username" className="sr-only">Username</label>
-                <input
-                  id="username"
-                  name="username"
-                  type="text"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-white/20 placeholder-[#F3E3C3]/50 text-[#F3E3C3] bg-[#262626] rounded-t-md focus:outline-none focus:ring-[#F3E3C3] focus:border-[#F3E3C3] focus:z-10 sm:text-sm"
-                  placeholder="Username"
-                  value={credentials.username}
-                  onChange={(e) => setCredentials({...credentials, username: e.target.value})}
-                />
-              </div>
-              <div>
-                <label htmlFor="password" className="sr-only">Password</label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-white/20 placeholder-[#F3E3C3]/50 text-[#F3E3C3] bg-[#262626] rounded-b-md focus:outline-none focus:ring-[#F3E3C3] focus:border-[#F3E3C3] focus:z-10 sm:text-sm"
-                  placeholder="Password"
-                  value={credentials.password}
-                  onChange={(e) => setCredentials({...credentials, password: e.target.value})}
-                />
-              </div>
-            </div>
-
-            {loginError && (
-              <div className="text-red-400 text-sm text-center" role="alert">
-                {loginError}
-              </div>
-            )}
-
-            <div>
-              <button
-                type="submit"
-                disabled={loginLoading}
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-[#1a1a1a] bg-[#F3E3C3] hover:bg-[#E6D5B8] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F3E3C3] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-              >
-                {loginLoading ? (
-                  <div className="flex items-center">
-                    <div className="w-4 h-4 border-2 border-[#1a1a1a] border-t-transparent rounded-full animate-spin mr-2"></div>
-                    Signing in...
-                  </div>
-                ) : (
-                  <>
-                    Sign in
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </>
-                )}
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    );
-  };
-
-  // Portfolio unlock function focusing on Supabase CRM
-  const handlePortfolioUnlock = async (formData) => {
+  // Memoized handlers
+  const handlePortfolioUnlock = useCallback(async (formData) => {
     if (getConnectionStatus() !== 'connected') {
       setPortfolioUnlocked(true);
-      trackEvent('portfolio_unlocked', {
-        service: formData.service,
-        source: 'portfolio_gate',
-        offline: true
-      });
+      localStorage.setItem('studio37_portfolio_unlocked', 'true');
       return true;
     }
     
     try {
-      // Remove 'source' field since it doesn't exist in database schema
       const { data, error } = await supabase.from('leads').insert([{
         name: formData.name,
         email: formData.email,
@@ -439,47 +301,35 @@ function App() {
       }
       
       setPortfolioUnlocked(true);
+      localStorage.setItem('studio37_portfolio_unlocked', 'true');
       
-      // Clear leads cache and refetch (commented out since clearTableCache is not defined)
-      // clearTableCache('leads');
       if (isAdmin) {
         refetchLeads();
       }
-      
-      trackEvent('lead_created', {
-        service: formData.service,
-        source: 'portfolio_unlock',
-        lead_id: data[0].id
-      });
       
       return true;
     } catch (err) {
       console.error('Unexpected portfolio unlock error:', err);
       return false;
     }
-  };
+  }, [isAdmin, refetchLeads]);
 
-  // Portfolio management functions with mutations
-  const addPortfolioImage = async (imageData) => {
-    return addPortfolioMutation.mutate(imageData);
-  };
+  const handleConnectionRetry = useCallback(async () => {
+    setConnectionStatus('checking');
+    const isConnected = await testConnection();
+    setConnectionStatus(isConnected ? 'connected' : 'error');
+  }, []);
 
-  const deletePortfolioImage = async (imageId) => {
-    return deletePortfolioMutation.mutate(imageId);
-  };
+  // Computed loading state - rename to avoid conflict
+  const isLoading = useMemo(() => 
+    portfolioLoading || (isAdmin && (leadsLoading || projectsLoading)), 
+    [portfolioLoading, isAdmin, leadsLoading, projectsLoading]
+  );
 
-  const updateLeadStatus = async (leadId, newStatus) => {
-    return updateLeadMutation.mutate({ leadId, status: newStatus });
-  };
-
-  // Track page views without HubSpot
-  const trackPageView = (pageName) => {
-    trackEvent('page_view', {
-      page_name: pageName,
-      page_url: window.location.href,
-      referrer: document.referrer
-    });
-  };
+  const hasErrors = useMemo(() => 
+    portfolioError || (isAdmin && (leadsError || projectsError)),
+    [portfolioError, isAdmin, leadsError, projectsError]
+  );
 
   // HomePage component
   const HomePage = () => {
@@ -739,7 +589,7 @@ function App() {
     // Enhanced error boundary wrapper
     const withErrorBoundary = (Component) => {
       return (props) => (
-        <Suspense fallback={<LoadingSpinner message="Loading component..." />}>
+        <Suspense fallback={<OptimizedLoadingSpinner message="Loading component..." />}>
           <Component {...props} />
         </Suspense>
       );
@@ -1101,7 +951,7 @@ function App() {
                     <Users size={24} />
                     Enhanced CRM Tools
                   </h3>
-                  <Suspense fallback={<LoadingSpinner message="Loading CRM tools..." />}>
+                  <Suspense fallback={<OptimizedLoadingSpinner message="Loading CRM tools..." />}>
                     <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
                   </Suspense>
                 </div>
@@ -1113,7 +963,7 @@ function App() {
                     <Calendar size={24} />
                     Project Management
                   </h3>
-                  <Suspense fallback={<LoadingSpinner message="Loading projects..." />}>
+                  <Suspense fallback={<OptimizedLoadingSpinner message="Loading projects..." />}>
                     <ProjectsSection projects={projects} projectsLoading={isLoading} />
                   </Suspense>
                 </div>
@@ -1125,7 +975,7 @@ function App() {
                     <Camera size={24} />
                     Portfolio Management
                   </h3>
-                  <Suspense fallback={<LoadingSpinner message="Loading portfolio management..." />}>
+                  <Suspense fallback={<OptimizedLoadingSpinner message="Loading portfolio management..." />}>
                     <EnhancedCmsSection
                       portfolioImages={portfolioImages}
                       addPortfolioImage={addPortfolioImage}
@@ -1238,10 +1088,13 @@ function App() {
 
   return (
     <div className="App bg-[#181818] text-[#F3E3C3] min-h-screen">
-      {/* Navigation */}
+      {/* Navigation - memoized for better performance */}
       <nav className="fixed top-0 w-full z-50 bg-[#181818]/95 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-6">
-          <ConnectionStatusNotification />
+          <MemoizedConnectionStatusNotification 
+            status={connectionStatus} 
+            onRetry={handleConnectionRetry}
+          />
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="flex items-center space-x-2">
               <Camera className="h-8 w-8 text-[#F3E3C3]" />
@@ -1298,15 +1151,17 @@ function App() {
         </div>
       </nav>
 
-      {/* Main content */}
+      {/* Main content with Suspense boundaries */}
       <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/admin-login" element={!isAdmin ? <AdminLogin /> : <Navigate to="/admin" />} />
-          <Route path="/admin" element={isAdmin ? <AdminDashboard /> : <Navigate to="/admin-login" />} />
-        </Routes>
+        <Suspense fallback={<OptimizedLoadingSpinner message="Loading page..." skeleton />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/admin-login" element={!isAdmin ? <AdminLogin /> : <Navigate to="/admin" />} />
+            <Route path="/admin" element={isAdmin ? <AdminDashboard /> : <Navigate to="/admin-login" />} />
+          </Routes>
+        </Suspense>
       </main>
 
       {/* Footer */}
@@ -1362,7 +1217,7 @@ function App() {
         </div>
       </footer>
 
-      {/* Enhanced Virtual Assistant Chat Widget */}
+      {/* Optimized chat widget with better error boundaries */}
       {showChatWidget && (
         <div className="fixed bottom-6 right-6 z-50">
           <div className="bg-[#262626] rounded-lg shadow-lg w-80 max-h-96 flex flex-col">
@@ -1376,7 +1231,7 @@ function App() {
               </button>
             </div>
             <div className="flex-1 overflow-hidden">
-              <Suspense fallback={<LoadingSpinner message="Loading assistant..." />}>
+              <Suspense fallback={<OptimizedLoadingSpinner message="Loading assistant..." />}>
                 <VirtualAgentPlanner />
               </Suspense>
             </div>
@@ -1384,12 +1239,13 @@ function App() {
         </div>
       )}
 
-      {/* Chat widget button */}
+      {/* Chat widget button with better UX */}
       {!showChatWidget && (
         <button
           onClick={() => setShowChatWidget(true)}
           className="fixed bottom-6 right-6 bg-[#F3E3C3] text-[#1a1a1a] p-4 rounded-full shadow-lg hover:bg-[#E6D5B8] transition-all hover:scale-110 z-50 group"
           title="Chat with Studio37 Assistant"
+          aria-label="Open chat assistant"
         >
           <MessageCircle size={24} />
           <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
@@ -1398,18 +1254,19 @@ function App() {
         </button>
       )}
 
-      {/* Loading overlay - use renamed variable */}
+      {/* Optimized Chatbot with better loading */}
+      <Suspense fallback={null}>
+        <Chatbot />
+      </Suspense>
+
+      {/* Loading overlay with better UX */}
       {isLoading && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 flex items-center justify-center">
-          <div className="text-center">
-            <div className="w-8 h-8 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin mr-2"></div>
-            <p className="text-[#F3E3C3]">
-              {getConnectionStatus() === 'checking' ? 'Connecting to Studio37...' : 'Loading Studio37...'}
-            </p>
-            {portfolioLoading && <p className="text-[#F3E3C3]/70 text-sm">Loading portfolio...</p>}
-            {isAdmin && leadsLoading && <p className="text-[#F3E3C3]/70 text-sm">Loading leads...</p>}
-            {isAdmin && projectsLoading && <p className="text-[#F3E3C3]/70 text-sm">Loading projects...</p>}
-          </div>
+          <OptimizedLoadingSpinner 
+            message={
+              connectionStatus === 'checking' ? 'Connecting to Studio37...' : 'Loading Studio37...'
+            }
+          />
         </div>
       )}
 
@@ -1443,9 +1300,8 @@ function App() {
           </div>
         </div>
       )}
-      <Chatbot />
     </div>
   );
 }
 
-export default App;
+export default memo(App);
