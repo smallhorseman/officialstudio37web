@@ -167,18 +167,3 @@ const SEOHead = ({
 };
 
 export default SEOHead;
-      if (!document.querySelector(`link[href="${href}"]`)) {
-        const link = document.createElement('link');
-        link.rel = 'preconnect';
-        link.href = href;
-        if (href.includes('gstatic')) link.crossOrigin = 'anonymous';
-        document.head.appendChild(link);
-      }
-    });
-
-  }, [title, description, keywords, image, url]);
-
-  return null;
-};
-
-export default SEOHead;
