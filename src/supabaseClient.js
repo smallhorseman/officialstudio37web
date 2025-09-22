@@ -189,7 +189,7 @@ const setupAutoReconnect = () => {
 };
 
 // Setup auto-reconnection
-const cleanup = setupAutoReconnect();
+const cleanupReconnect = setupAutoReconnect();
 
 // Enhanced helper functions with caching and retry logic
 export const uploadImage = async (file, bucket = 'images', retries = 2) => {
@@ -458,7 +458,7 @@ export const cleanup = () => {
   clearCache();
   
   // Stop auto-reconnection
-  if (cleanup) cleanup();
+  if (cleanupReconnect) cleanupReconnect();
   
   console.log('🧹 Supabase client cleanup completed');
 };
