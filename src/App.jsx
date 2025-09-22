@@ -1322,49 +1322,48 @@ function App() {
                 <Camera className="h-6 w-6 text-[#F3E3C3]" />
                 <span className="text-lg font-vintage">Studio37</span>
               </div>
-              <p className="text-[#F3E3C3]/70 text-sm"></p>
+              <p className="text-[#F3E3C3]/70 text-sm">
                 Professional photography with vintage heart and modern vision.
               </p>
             </div>
             
-              <div>
-                <h3 className="font-semibold mb-4">Contact Info</h3>
-                <div className="space-y-2 text-sm text-[#F3E3C3]/70">
-                  <div className="flex items-center gap-2">
-                    <Mail className="h-4 w-4" />
-                    <span>sales@studio37.cc</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Phone className="h-4 w-4" />
-                    <span>(832) 713-9944</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4" />
-                    <span>Houston, TX</span>
-                  </div>
+            <div>
+              <h3 className="font-semibold mb-4">Contact Info</h3>
+              <div className="space-y-2 text-sm text-[#F3E3C3]/70">
+                <div className="flex items-center gap-2">
+                  <Mail className="h-4 w-4" />
+                  <span>sales@studio37.cc</span>
                 </div>
-              </div>
-              
-              <div>
-                <h3 className="font-semibold mb-4">Follow Us</h3>
-                <div className="flex space-x-4">
-                  <a 
-                    href="https://instagram.com/studio37houston" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-[#F3E3C3] hover:text-[#F3E3C3]/80 transition-colors"
-                  >
-                    <Instagram className="h-5 w-5" />
-                  </a>
+                <div className="flex items-center gap-2">
+                  <Phone className="h-4 w-4" />
+                  <span>(832) 713-9944</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  <span>Houston, TX</span>
                 </div>
               </div>
             </div>
             
-            <div className="border-t border-white/10 mt-8 pt-8 text-center text-sm text-[#F3E3C3]/60">
-              <p>&copy; 2024 Studio37. All rights reserved.</p>
+            <div>
+              <h3 className="font-semibold mb-4">Follow Us</h3>
+              <div className="flex space-x-4">
+                <a 
+                  href="https://instagram.com/studio37houston" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[#F3E3C3] hover:text-[#F3E3C3]/80 transition-colors"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+              </div>
             </div>
           </div>
-        </footer>
+          
+          <div className="border-t border-white/10 mt-8 pt-8 text-center text-sm text-[#F3E3C3]/60">
+            <p>&copy; 2024 Studio37. All rights reserved.</p>
+          </div>
+        </div>
       </footer>
 
       {/* Enhanced Virtual Assistant Chat Widget */}
