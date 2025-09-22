@@ -174,14 +174,4 @@ export default defineConfig({
     drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
   }
 });
-    keepNames: process.env.NODE_ENV === 'development',
-    jsx: 'automatic',
-    legalComments: 'none',
-    target: 'es2020',
-    // Tree shaking optimization
-    treeShaking: true,
-    // Remove unused imports
-    ignoreAnnotations: false,
-  }
-});
 
