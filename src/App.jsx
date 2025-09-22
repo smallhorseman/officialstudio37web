@@ -440,8 +440,8 @@ function App() {
       
       setPortfolioUnlocked(true);
       
-      // Clear leads cache and refetch
-      clearTableCache('leads');
+      // Clear leads cache and refetch (commented out since clearTableCache is not defined)
+      // clearTableCache('leads');
       if (isAdmin) {
         refetchLeads();
       }

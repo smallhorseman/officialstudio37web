@@ -20,7 +20,8 @@ export default defineConfig({
       'react',
       'react-dom',
       'react-router-dom',
-      '@supabase/supabase-js'
+      '@supabase/supabase-js',
+      'react-markdown'
     ],
   },
   
@@ -40,6 +41,9 @@ export default defineConfig({
           
           // Supabase chunk
           supabase: ['@supabase/supabase-js'],
+          
+          // React-markdown chunk
+          markdown: ['react-markdown']
         },
         
         // Optimize chunk names
@@ -110,14 +114,6 @@ export default defineConfig({
   },
 
   esbuild: {
-    // Keep function names for better debugging
-    keepNames: true,
-    // Handle JSX properly
-    jsx: 'automatic',
-    // Ensure proper CSS handling
-    legalComments: 'none',
-  }
-});
     // Keep function names for better debugging
     keepNames: true,
     // Handle JSX properly
