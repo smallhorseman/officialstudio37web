@@ -1,7 +1,8 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, lazy, Suspense, useMemo, useCallback } from 'react';
 import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { supabase, testConnection, getConnectionStatus } from './supabaseClient';
 import { useSupabaseQuery, useSupabaseMutation } from './hooks/useSupabaseQuery';
+import { usePerformanceMonitor } from './hooks/usePerformance';
 import SEOHead from './components/SEOHead';
 
 // Centralized icon imports
@@ -11,13 +12,37 @@ import {
   AlertTriangle, CheckCircle, Info, Trash2, Plus, Edit, Eye, EyeOff
 } from './components/Icons';
 
-// Lazy load heavy components for better performance
-const EnhancedCrmSection = lazy(() => import('./components/EnhancedCRM').then(module => ({ default: module.EnhancedCrmSection })));
-const EnhancedCmsSection = lazy(() => import('./components/EnhancedCMS').then(module => ({ default: module.EnhancedCmsSection })));
-const ProjectsSection = lazy(() => import('./components/ProjectsSection'));
+// Optimized lazy loading with better chunk names
+const EnhancedCrmSection = lazy(() => 
+  import('./components/EnhancedCRM').then(module => ({ 
+    default: module.EnhancedCrmSection 
+  }))
+);
 
-// Enhanced error boundary for better UX
-const ErrorFallback = ({ error, resetError }) => (
+const EnhancedCmsSection = lazy(() => 
+  import('./components/EnhancedCMS').then(module => ({ 
+    default: module.EnhancedCmsSection 
+  }))
+);
+
+const ProjectsSection = lazy(() => 
+  import('./components/ProjectsSection').then(module => ({ 
+    default: module.default 
+  }))
+);
+
+// Memoized loading spinner for better performance
+const LoadingSpinner = React.memo(({ message = 'Loading...' }) => (
+  <div className="flex items-center justify-center p-8">
+    <div className="text-center">
+      <div className="w-8 h-8 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+      <p className="text-[#F3E3C3]/70">{message}</p>
+    </div>
+  </div>
+));
+
+// Memoized error boundary
+const ErrorFallback = React.memo(({ error, resetError }) => (
   <div className="min-h-screen flex items-center justify-center bg-[#181818] text-[#F3E3C3]">
     <div className="text-center p-8">
       <AlertTriangle className="h-16 w-16 mx-auto mb-4 text-red-500" />
@@ -31,78 +56,46 @@ const ErrorFallback = ({ error, resetError }) => (
       </button>
     </div>
   </div>
-);
-
-// Loading component
-const LoadingSpinner = ({ message = 'Loading...' }) => (
-  <div className="flex items-center justify-center p-8">
-    <div className="text-center">
-      <div className="w-8 h-8 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-      <p className="text-[#F3E3C3]/70">{message}</p>
-    </div>
-  </div>
-);
-
-// Enhanced analytics without HubSpot dependency
-const trackEvent = (eventName, properties = {}) => {
-  try {
-    // Console logging for development
-    if (import.meta.env.DEV) {
-      console.log('📊 Event:', eventName, properties);
-    }
-    
-    // Store in localStorage for offline analytics
-    const events = JSON.parse(localStorage.getItem('studio37_events') || '[]');
-    events.push({
-      event: eventName,
-      properties,
-      timestamp: new Date().toISOString(),
-      url: window.location.href,
-      userAgent: navigator.userAgent
-    });
-    
-    // Keep only last 100 events
-    if (events.length > 100) {
-      events.splice(0, events.length - 100);
-    }
-    
-    localStorage.setItem('studio37_events', JSON.stringify(events));
-    
-    // Try to send to Supabase if available
-    if (getConnectionStatus() === 'connected') {
-      supabase
-        .from('analytics_events')
-        .insert({
-          event_type: eventName,
-          event_data: properties,
-          page_url: window.location.href,
-          user_agent: navigator.userAgent,
-          created_at: new Date().toISOString()
-        })
-        .then(({ error }) => {
-          if (error) console.log('Analytics tracking failed:', error);
-        });
-    }
-  } catch (error) {
-    console.error('Analytics error:', error);
-  }
-};
+));
 
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
   
-  // State management
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [portfolioUnlocked, setPortfolioUnlocked] = useState(false);
-  const [showChatWidget, setShowChatWidget] = useState(false);
+  // Performance monitoring
+  const performanceMetrics = usePerformanceMonitor();
   
-  // Remove duplicate loading state - only keep connection status states
+  // Optimized state management with useMemo for computed values
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(() => {
+    // Check localStorage on initial load
+    return localStorage.getItem('studio37_admin') === 'true';
+  });
+  const [portfolioUnlocked, setPortfolioUnlocked] = useState(() => {
+    return localStorage.getItem('studio37_portfolio_unlocked') === 'true';
+  });
+  
   const [error, setError] = useState('');
   const [connectionStatus, setConnectionStatus] = useState('checking');
 
-  // Replace manual data loading with optimized hooks
+  // Memoized connection check to prevent unnecessary re-renders
+  const checkConnection = useCallback(async () => {
+    setConnectionStatus('checking');
+    try {
+      const isConnected = await testConnection();
+      setConnectionStatus(isConnected ? 'connected' : 'error');
+      if (!isConnected) {
+        setError('Database connection failed. Some features may be limited.');
+      } else {
+        setError(''); // Clear error on successful connection
+      }
+    } catch (error) {
+      setConnectionStatus('error');
+      setError(`Connection error: ${error.message}`);
+    }
+  }, []);
+
+  // Optimized queries with better error handling and caching
   const {
     data: portfolioImages = [],
     loading: portfolioLoading,
@@ -117,8 +110,10 @@ function App() {
     {
       enabled: true,
       staleTime: 10 * 60 * 1000, // 10 minutes
+      cacheTime: 30 * 60 * 1000, // 30 minutes
       realtime: true,
-      realtimeTable: 'portfolio_images'
+      realtimeTable: 'portfolio_images',
+      refetchOnWindowFocus: false, // Disable for better UX
     }
   );
 
@@ -136,8 +131,10 @@ function App() {
     {
       enabled: isAdmin && getConnectionStatus() === 'connected',
       staleTime: 5 * 60 * 1000, // 5 minutes
+      cacheTime: 15 * 60 * 1000, // 15 minutes
       realtime: isAdmin,
-      realtimeTable: 'leads'
+      realtimeTable: 'leads',
+      refetchOnWindowFocus: false,
     }
   );
 
@@ -154,13 +151,15 @@ function App() {
     [isAdmin],
     {
       enabled: isAdmin && getConnectionStatus() === 'connected',
-      staleTime: 10 * 60 * 1000, // 10 minutes
+      staleTime: 10 * 60 * 1000,
+      cacheTime: 30 * 60 * 1000,
       realtime: isAdmin,
-      realtimeTable: 'projects'
+      realtimeTable: 'projects',
+      refetchOnWindowFocus: false,
     }
   );
 
-  // Optimized mutations
+  // Optimized mutations with better error handling
   const addPortfolioMutation = useSupabaseMutation(
     async (imageData) => {
       const { data, error } = await supabase
@@ -174,6 +173,9 @@ function App() {
     {
       onSuccess: () => {
         refetchPortfolio();
+      },
+      onError: (error) => {
+        console.error('Failed to add portfolio image:', error);
       }
     }
   );
@@ -191,6 +193,9 @@ function App() {
     {
       onSuccess: () => {
         refetchPortfolio();
+      },
+      onError: (error) => {
+        console.error('Failed to delete portfolio image:', error);
       }
     }
   );
@@ -209,40 +214,22 @@ function App() {
     {
       onSuccess: () => {
         refetchLeads();
+      },
+      onError: (error) => {
+        console.error('Failed to update lead status:', error);
       }
     }
   );
 
-  // Test Supabase connection on mount with better error handling
+  // Initialize connection check
   useEffect(() => {
     let mounted = true;
-    
-    const checkConnection = async () => {
-      if (!mounted) return;
-      
-      setConnectionStatus('checking');
-      
-      try {
-        const isConnected = await testConnection();
-        if (mounted) {
-          setConnectionStatus(isConnected ? 'connected' : 'error');
-          if (!isConnected) {
-            setError('Database connection failed. Some features may be limited.');
-          }
-        }
-      } catch (error) {
-        if (mounted) {
-          setConnectionStatus('error');
-          setError(`Connection error: ${error.message}`);
-        }
-      }
-    };
     
     checkConnection();
     
     // Retry connection periodically if failed
     const retryInterval = setInterval(() => {
-      if (getConnectionStatus() === 'error') {
+      if (getConnectionStatus() === 'error' && mounted) {
         checkConnection();
       }
     }, 30000); // Retry every 30 seconds
@@ -251,7 +238,17 @@ function App() {
       mounted = false;
       clearInterval(retryInterval);
     };
-  }, []);
+  }, [checkConnection]);
+
+  // Persist admin state
+  useEffect(() => {
+    localStorage.setItem('studio37_admin', isAdmin.toString());
+  }, [isAdmin]);
+
+  // Persist portfolio unlock state
+  useEffect(() => {
+    localStorage.setItem('studio37_portfolio_unlocked', portfolioUnlocked.toString());
+  }, [portfolioUnlocked]);
 
   // Enhanced performance monitoring
   useEffect(() => {
@@ -261,7 +258,8 @@ function App() {
           trackEvent('page_performance', {
             loadTime: entry.loadEventEnd - entry.loadEventStart,
             domContentLoaded: entry.domContentLoadedEventEnd - entry.domContentLoadedEventStart,
-            firstPaint: entry.responseEnd - entry.requestStart
+            firstPaint: entry.responseEnd - entry.requestStart,
+            transferSize: entry.transferSize,
           });
         }
       });
@@ -270,14 +268,117 @@ function App() {
     observer.observe({ entryTypes: ['navigation'] });
     
     return () => observer.disconnect();
-  }, []);
+  }, [trackEvent]);
+
+  // Enhanced analytics without external dependencies
+  const trackEvent = useCallback((eventName, properties = {}) => {
+    try {
+      // Console logging for development
+      if (import.meta.env.DEV) {
+        console.log('📊 Event:', eventName, properties);
+      }
+      
+      // Enhanced offline analytics with performance data
+      const events = JSON.parse(localStorage.getItem('studio37_events') || '[]');
+      events.push({
+        event: eventName,
+        properties,
+        timestamp: new Date().toISOString(),
+        url: window.location.href,
+        userAgent: navigator.userAgent,
+        performance: {
+          memory: performanceMetrics.memory,
+          connectionType: navigator.connection?.effectiveType,
+        }
+      });
+      
+      // Keep only last 100 events
+      if (events.length > 100) {
+        events.splice(0, events.length - 100);
+      }
+      
+      localStorage.setItem('studio37_events', JSON.stringify(events));
+      
+      // Try to send to Supabase if available
+      if (getConnectionStatus() === 'connected') {
+        supabase
+          .from('analytics_events')
+          .insert({
+            event_type: eventName,
+            event_data: properties,
+            page_url: window.location.href,
+            user_agent: navigator.userAgent,
+            created_at: new Date().toISOString()
+          })
+          .then(({ error }) => {
+            if (error) console.log('Analytics tracking failed:', error);
+          });
+      }
+    } catch (error) {
+      console.error('Analytics error:', error);
+    }
+  }, [performanceMetrics]);
+
+  // Optimized portfolio unlock with caching
+  const handlePortfolioUnlock = useCallback(async (formData) => {
+    if (getConnectionStatus() !== 'connected') {
+      setPortfolioUnlocked(true);
+      trackEvent('portfolio_unlocked', {
+        service: formData.service,
+        source: 'portfolio_gate',
+        offline: true
+      });
+      return true;
+    }
+    
+    try {
+      const { data, error } = await supabase.from('leads').insert([{
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        status: 'New',
+        created_at: new Date().toISOString()
+      }]).select();
+      
+      if (error) {
+        console.error('Portfolio unlock error:', error);
+        return false;
+      }
+      
+      setPortfolioUnlocked(true);
+      
+      // Clear leads cache and refetch
+      if (isAdmin) {
+        refetchLeads();
+      }
+      
+      trackEvent('lead_created', {
+        service: formData.service,
+        source: 'portfolio_unlock',
+        lead_id: data[0].id
+      });
+      
+      return true;
+    } catch (err) {
+      console.error('Unexpected portfolio unlock error:', err);
+      return false;
+    }
+  }, [isAdmin, refetchLeads, trackEvent]);
 
   // Computed loading state - rename to avoid conflict
-  const isLoading = portfolioLoading || (isAdmin && (leadsLoading || projectsLoading));
-  const hasErrors = portfolioError || (isAdmin && (leadsError || projectsError));
+  const isLoading = useMemo(() => 
+    portfolioLoading || (isAdmin && (leadsLoading || projectsLoading)),
+    [portfolioLoading, isAdmin, leadsLoading, projectsLoading]
+  );
+
+  const hasErrors = useMemo(() => 
+    portfolioError || (isAdmin && (leadsError || projectsError)),
+    [portfolioError, isAdmin, leadsError, projectsError]
+  );
 
   // Connection status notification component
-  const ConnectionStatusNotification = () => {
+  const ConnectionStatusNotification = useMemo(() => {
     const status = getConnectionStatus();
     
     if (status === 'connected') return null;
@@ -289,7 +390,7 @@ function App() {
       },
       unconfigured: { 
         color: 'bg-yellow-500/20 border-yellow-500/30 text-yellow-200',
-        message: '⚠️ Database not configured. Using offline mode with local storage.'
+        message: '⚠️ Database not configured. Using offline mode.'
       },
       error: { 
         color: 'bg-red-500/20 border-red-500/30 text-red-200',
@@ -308,11 +409,7 @@ function App() {
         <strong>{config.message}</strong>
         {status === 'error' && (
           <button
-            onClick={async () => {
-              setConnectionStatus('checking');
-              const isConnected = await testConnection();
-              setConnectionStatus(isConnected ? 'connected' : 'error');
-            }}
+            onClick={checkConnection}
             className="ml-2 underline hover:no-underline"
           >
             Retry Connection
@@ -320,7 +417,7 @@ function App() {
         )}
       </div>
     );
-  };
+  }, [connectionStatus, checkConnection]);
 
   // Admin Login Component
   const AdminLogin = () => {
@@ -422,54 +519,6 @@ function App() {
         </div>
       </div>
     );
-  };
-
-  // Portfolio unlock function focusing on Supabase CRM
-  const handlePortfolioUnlock = async (formData) => {
-    if (getConnectionStatus() !== 'connected') {
-      setPortfolioUnlocked(true);
-      trackEvent('portfolio_unlocked', {
-        service: formData.service,
-        source: 'portfolio_gate',
-        offline: true
-      });
-      return true;
-    }
-    
-    try {
-      // Remove 'source' field since it doesn't exist in database schema
-      const { data, error } = await supabase.from('leads').insert([{
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        service: formData.service,
-        status: 'New',
-        created_at: new Date().toISOString()
-      }]).select();
-      
-      if (error) {
-        console.error('Portfolio unlock error:', error);
-        return false;
-      }
-      
-      setPortfolioUnlocked(true);
-      
-      // Clear leads cache and refetch
-      if (isAdmin) {
-        refetchLeads();
-      }
-      
-      trackEvent('lead_created', {
-        service: formData.service,
-        source: 'portfolio_unlock',
-        lead_id: data[0].id
-      });
-      
-      return true;
-    } catch (err) {
-      console.error('Unexpected portfolio unlock error:', err);
-      return false;
-    }
   };
 
   // Portfolio management functions with mutations
@@ -1376,48 +1425,63 @@ function App() {
         </div>
       </footer>
 
-      {/* Loading overlay - use renamed variable */}
+      {/* Optimized loading overlay with better UX */}
       {isLoading && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 flex items-center justify-center">
-          <div className="text-center">
-            <div className="w-8 h-8 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin mr-2"></div>
-            <p className="text-[#F3E3C3]">
-              {getConnectionStatus() === 'checking' ? 'Connecting to Studio37...' : 'Loading Studio37...'}
+          <div className="text-center bg-[#262626] p-8 rounded-lg border border-[#F3E3C3]/20">
+            <div className="w-12 h-12 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-[#F3E3C3] font-semibold mb-2">
+              {connectionStatus === 'checking' ? 'Connecting to Studio37...' : 'Loading Studio37...'}
             </p>
-            {portfolioLoading && <p className="text-[#F3E3C3]/70 text-sm">Loading portfolio...</p>}
-            {isAdmin && leadsLoading && <p className="text-[#F3E3C3]/70 text-sm">Loading leads...</p>}
-            {isAdmin && projectsLoading && <p className="text-[#F3E3C3]/70 text-sm">Loading projects...</p>}
+            <div className="text-sm text-[#F3E3C3]/70 space-y-1">
+              {portfolioLoading && <p>📸 Loading portfolio...</p>}
+              {isAdmin && leadsLoading && <p>👥 Loading leads...</p>}
+              {isAdmin && projectsLoading && <p>📋 Loading projects...</p>}
+            </div>
+            {/* Performance indicator in dev mode */}
+            {import.meta.env.DEV && performanceMetrics.memory && (
+              <div className="mt-4 text-xs text-[#F3E3C3]/50">
+                Memory: {performanceMetrics.memory.used}/{performanceMetrics.memory.total}MB
+              </div>
+            )}
           </div>
         </div>
       )}
 
-      {/* Enhanced error notification */}
+      {/* Enhanced error notification with retry functionality */}
       {(error || hasErrors) && (
-        <div className="fixed bottom-4 left-4 bg-red-500 text-white p-4 rounded-lg shadow-lg z-50 max-w-md">
-          <p className="text-sm">
-            {error || 'Some features may not work properly due to connection issues.'}
-          </p>
-          <div className="flex gap-2 mt-2">
-            <button 
-              onClick={() => {
-                setError('');
-                // Refetch all data
-                refetchPortfolio();
-                if (isAdmin) {
-                  refetchLeads();
-                  refetchProjects();
-                }
-              }}
-              className="text-xs bg-white/20 px-2 py-1 rounded hover:bg-white/30 transition-colors"
-            >
-              Retry
-            </button>
-            <button 
-              onClick={() => setError('')}
-              className="text-xs bg-white/20 px-2 py-1 rounded hover:bg-white/30 transition-colors"
-            >
-              Dismiss
-            </button>
+        <div className="fixed bottom-4 left-4 bg-gradient-to-r from-red-500 to-red-600 text-white p-4 rounded-lg shadow-lg z-50 max-w-md border border-red-400">
+          <div className="flex items-start gap-3">
+            <AlertTriangle className="w-5 h-5 mt-0.5" />
+            <div className="flex-1">
+              <p className="text-sm font-semibold mb-1">Connection Issue</p>
+              <p className="text-xs opacity-90">
+                {error || 'Some features may not work properly due to connection issues.'}
+              </p>
+              <div className="flex gap-2 mt-3">
+                <button 
+                  onClick={() => {
+                    setError('');
+                    checkConnection();
+                    // Refetch all data
+                    refetchPortfolio();
+                    if (isAdmin) {
+                      refetchLeads();
+                      refetchProjects();
+                    }
+                  }}
+                  className="text-xs bg-white/20 px-3 py-1 rounded hover:bg-white/30 transition-colors font-semibold"
+                >
+                  Retry Connection
+                </button>
+                <button 
+                  onClick={() => setError('')}
+                  className="text-xs bg-white/10 px-3 py-1 rounded hover:bg-white/20 transition-colors"
+                >
+                  Dismiss
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
