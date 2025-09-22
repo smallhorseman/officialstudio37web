@@ -33,7 +33,6 @@ self.addEventListener('fetch', (event) => {
   // Simply return - don't intercept anything to prevent corruption
   return;
 });
-});
 
 // Fetch event - Network first for API, Cache first for assets
 self.addEventListener('fetch', (event) => {
