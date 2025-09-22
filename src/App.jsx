@@ -227,6 +227,108 @@ function App() {
     }
   );
 
+  // Helper function to update lead status
+  const updateLeadStatus = useCallback(async (leadId, status) => {
+    try {
+      await updateLeadMutation.mutateAsync({ leadId, status });
+    } catch (error) {
+      console.error('Error updating lead status:', error);
+    }
+  }, [updateLeadMutation]);
+
+  // Helper functions for portfolio management
+  const addPortfolioImage = useCallback(async (imageData) => {
+    try {
+      return await addPortfolioMutation.mutateAsync(imageData);
+    } catch (error) {
+      console.error('Error adding portfolio image:', error);
+      throw error;
+    }
+  }, [addPortfolioMutation]);
+
+  const deletePortfolioImage = useCallback(async (imageId) => {
+    try {
+      return await deletePortfolioMutation.mutateAsync(imageId);
+    } catch (error) {
+      console.error('Error deleting portfolio image:', error);
+      throw error;
+    }
+  }, [deletePortfolioMutation]);
+
+  // Track page views function
+  const trackPageView = useCallback((page) => {
+    // Analytics tracking would go here
+    console.log(`Page view: ${page}`);
+  }, []);
+
+  // Connection status notification component
+  const ConnectionStatusNotification = useCallback(() => (
+    <MemoizedConnectionStatusNotification 
+      status={connectionStatus} 
+      onRetry={handleConnectionRetry}
+    />
+  ), [connectionStatus, handleConnectionRetry]);
+
+  // Admin login component
+  const AdminLogin = () => {
+    const [password, setPassword] = useState('');
+    const [loginError, setLoginError] = useState('');
+    const [isLogging, setIsLogging] = useState(false);
+
+    const handleLogin = async (e) => {
+      e.preventDefault();
+      setIsLogging(true);
+      setLoginError('');
+      
+      // Simple password check - in production, use proper authentication
+      if (password === 'studio37admin2024') {
+        setIsAdmin(true);
+        localStorage.setItem('studio37_admin', 'true');
+        navigate('/admin');
+      } else {
+        setLoginError('Invalid password');
+      }
+      setIsLogging(false);
+    };
+
+    return (
+      <div className="pt-20 pb-20 min-h-screen bg-[#181818] flex items-center justify-center">
+        <SEOHead title="Admin Login - Studio37" />
+        <div className="max-w-md w-full mx-auto">
+          <div className="bg-[#262626] rounded-lg p-8">
+            <h2 className="text-3xl font-display mb-6 text-center text-[#F3E3C3]">Admin Login</h2>
+            <form onSubmit={handleLogin} className="space-y-6">
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-[#F3E3C3] mb-2">
+                  Password
+                </label>
+                <input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3] text-[#F3E3C3]"
+                  placeholder="Enter admin password"
+                />
+              </div>
+              {loginError && (
+                <div className="text-red-400 text-sm text-center">{loginError}</div>
+              )}
+              <button
+                type="submit"
+                disabled={isLogging}
+                className="w-full bg-[#F3E3C3] text-[#1a1a1a] rounded-md py-3 px-6 font-semibold transition-all hover:bg-[#E6D5B8] disabled:opacity-50"
+              >
+                {isLogging ? 'Logging in...' : 'Login'}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   // Test Supabase connection on mount with better error handling
   useEffect(() => {
     let mounted = true;
