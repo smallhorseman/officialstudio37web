@@ -111,7 +111,7 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
                         : 'bg-green-500 text-white hover:bg-green-600'
                     }`}
                   >
-                    {lead status === 'Completed' ? 'Reopen' : 'Complete'}
+                    {lead.status === 'Completed' ? 'Reopen' : 'Complete'}
                   </button>
                   <button
                     onClick={() => openLeadDetails(lead)}
