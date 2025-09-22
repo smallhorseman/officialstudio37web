@@ -34,51 +34,21 @@ export default defineConfig({
   
   build: {
     // Enable source maps for better debugging
-    sourcemap: 'hidden', // Only generate source maps, don't include in bundle
+    sourcemap: false, // Disable source maps to prevent SW issues
     
     // CSS optimization
-    cssMinify: 'lightningcss',
+    cssMinify: 'esbuild', // Use esbuild instead of lightningcss
     
     // Advanced chunk splitting for better caching
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          // Vendor chunks for better caching
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
-              return 'react-vendor';
-            }
-            if (id.includes('@supabase')) {
-              return 'supabase';
-            }
-            if (id.includes('react-markdown')) {
-              return 'markdown';
-            }
-            // Group other vendor libraries
-            return 'vendor';
-          }
-          
-          // Component chunks
-          if (id.includes('/components/')) {
-            if (id.includes('Chatbot') || id.includes('EnhancedCRM') || id.includes('EnhancedCMS')) {
-              return 'admin-components';
-            }
-            return 'components';
-          }
-          
-          // Utils and hooks
-          if (id.includes('/hooks/') || id.includes('/utils/')) {
-            return 'utils';
-          }
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          supabase: ['@supabase/supabase-js']
         },
         
-        // Optimize chunk and asset names
-        chunkFileNames: (chunkInfo) => {
-          const facadeModuleId = chunkInfo.facadeModuleId ? 
-            chunkInfo.facadeModuleId.split('/').pop()?.replace(/\.(jsx|tsx)$/, '') : 'chunk';
-          return `assets/js/${facadeModuleId}-[hash].js`;
-        },
-        
+        // Simpler asset naming to prevent SW cache issues
+        chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
         
         assetFileNames: (assetInfo) => {
@@ -87,65 +57,27 @@ export default defineConfig({
           if (/\.(css)$/.test(assetInfo.name)) {
             return `assets/css/[name]-[hash].${ext}`;
           }
-          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name)) {
-            return `assets/images/[name]-[hash].${ext}`;
-          }
           return `assets/[name]-[hash].${ext}`;
         },
       },
     },
     
     // Aggressive minification
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: process.env.NODE_ENV === 'production', // Remove console.logs in production
-        drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug'], // Remove specific console methods
-        passes: 2, // Multiple passes for better optimization
-      },
-      mangle: {
-        safari10: true,
-      },
-      format: {
-        safari10: true,
-        comments: false // Remove all comments
-      },
-    },
-    
-    // Chunk size optimization
-    chunkSizeWarningLimit: 500, // Lower limit to encourage splitting
-    
-    // Target modern browsers for smaller bundles
-    target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
-    
-    // Additional optimizations
-    reportCompressedSize: false, // Faster builds
+    minify: 'esbuild', // Use esbuild instead of terser for better compatibility
+    chunkSizeWarningLimit: 1000,
+    target: 'es2015', // More compatible target
     assetsInlineLimit: 4096, // Inline smaller assets
   },
   
   // CSS processing optimization
   css: {
     devSourcemap: true,
-    modules: {
-      // CSS modules optimization
-      localsConvention: 'camelCase',
-      generateScopedName: process.env.NODE_ENV === 'production' 
-        ? '[hash:base64:5]' 
-        : '[name]__[local]__[hash:base64:5]'
-    }
   },
   
   // Development server optimization
   server: {
     port: 3000,
     host: true,
-    
-    // Enhanced HMR
-    hmr: {
-      overlay: true,
-      port: 3001 // Separate HMR port
-    },
   },
   
   // Preview server configuration
@@ -157,7 +89,6 @@ export default defineConfig({
   // Define environment variables
   define: {
     __APP_VERSION__: JSON.stringify(process.env.npm_package_version || '1.0.0'),
-    __DEV__: process.env.NODE_ENV === 'development',
   },
 
   // Enhanced esbuild configuration
@@ -174,4 +105,4 @@ export default defineConfig({
     drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
   }
 });
-
+w

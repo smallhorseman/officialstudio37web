@@ -69,6 +69,22 @@ const trackEvent = (eventName, properties = {}) => {
     }
     
     localStorage.setItem('studio37_events', JSON.stringify(events));
+    
+    // Try to send to Supabase if available
+    if (getConnectionStatus() === 'connected') {
+      supabase
+        .from('analytics_events')
+        .insert({
+          event_type: eventName,
+          event_data: properties,
+          page_url: window.location.href,
+          user_agent: navigator.userAgent,
+          created_at: new Date().toISOString()
+        })
+        .then(({ error }) => {
+          if (error) console.log('Analytics tracking failed:', error);
+        });
+    }
   } catch (error) {
     console.error('Analytics error:', error);
   }

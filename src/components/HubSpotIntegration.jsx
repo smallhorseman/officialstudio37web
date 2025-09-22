@@ -1,39 +1,25 @@
 import { useEffect } from 'react';
 
-// Minimal HubSpot integration - ONLY for virtual assistant, not replacing existing CRM/CMS
+// Disabled HubSpot integration due to loading issues
+// Using Supabase-based CRM instead
 const HubSpotIntegration = () => {
   useEffect(() => {
-    // Only load HubSpot for chatflow/virtual assistant
-    if (typeof window !== 'undefined' && !window.hbspt) {
-      const script = document.createElement('script');
-      script.src = 'https://js-na2.hs-scripts.com/242993708.js';
-      script.async = true;
-      script.defer = true;
-      
-      script.onload = () => {
-        console.log('HubSpot loaded for virtual assistant');
-      };
-      
-      script.onerror = () => {
-        console.log('HubSpot failed to load (503 error) - using fallback');
-        // Set a flag that HubSpot failed to load
-        window.hubSpotFailed = true;
-      };
-      
-      document.head.appendChild(script);
-      
-      // Set a timeout to detect if HubSpot never loads
-      setTimeout(() => {
-        if (!window.hbspt) {
-          console.log('HubSpot timeout - service may be down');
-          window.hubSpotFailed = true;
-        }
-      }, 5000);
-    }
+    console.log('HubSpot integration disabled - using Supabase CRM');
   }, []);
 
   return null;
 };
+
+// No-op tracking functions
+export const trackHubSpotEvent = (eventName, properties = {}) => {
+  console.log('HubSpot tracking disabled - event:', eventName, properties);
+};
+
+export const identifyHubSpotVisitor = (email, properties = {}) => {
+  console.log('HubSpot identify disabled - visitor:', email, properties);
+};
+
+export default HubSpotIntegration;
 
 // Minimal tracking functions - fallback if HubSpot doesn't load
 export const trackHubSpotEvent = (eventName, properties = {}) => {

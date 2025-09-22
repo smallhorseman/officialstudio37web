@@ -1,30 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App.jsx';
+import App from './App';
 import './index.css';
 
-// Error boundary for the entire app
+// Enhanced error boundary
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { hasError: false, error: null, errorInfo: null };
+    this.state = { hasError: false, error: null };
   }
 
   static getDerivedStateFromError(error) {
-    return { hasError: true };
+    return { hasError: true, error };
   }
 
   componentDidCatch(error, errorInfo) {
-    this.setState({
-      error: error,
-      errorInfo: errorInfo
-    });
-    
-    // Log error to console in development
-    if (import.meta.env.DEV) {
-      console.error('Application Error:', error, errorInfo);
-    }
+    console.error('App Error:', error, errorInfo);
   }
 
   render() {
@@ -32,23 +24,16 @@ class ErrorBoundary extends React.Component {
       return (
         <div className="min-h-screen flex items-center justify-center bg-[#181818] text-[#F3E3C3]">
           <div className="text-center p-8">
-            <h2 className="text-2xl font-vintage mb-4">Something went wrong</h2>
-            <p className="text-[#F3E3C3]/70 mb-6">We apologize for the inconvenience. Please refresh the page or try again later.</p>
-            <button 
-              onClick={() => window.location.reload()} 
-              className="bg-[#F3E3C3] text-[#1a1a1a] px-6 py-2 rounded-full font-semibold hover:bg-[#E6D5B8] transition-colors focus-ring"
+            <h1 className="text-2xl font-bold mb-4">Something went wrong</h1>
+            <p className="text-[#F3E3C3]/70 mb-4">
+              {this.state.error?.message || 'An unexpected error occurred'}
+            </p>
+            <button
+              onClick={() => window.location.reload()}
+              className="bg-[#F3E3C3] text-[#1a1a1a] px-6 py-2 rounded-md hover:bg-[#E6D5B8] transition-colors"
             >
-              Refresh Page
+              Reload Page
             </button>
-            {import.meta.env.DEV && (
-              <details className="mt-4 text-left text-sm">
-                <summary className="cursor-pointer text-red-400">Error Details (Dev Mode)</summary>
-                <pre className="mt-2 p-4 bg-[#1a1a1a] rounded text-xs overflow-auto">
-                  {this.state.error && this.state.error.toString()}
-                  {this.state.errorInfo.componentStack}
-                </pre>
-              </details>
-            )}
           </div>
         </div>
       );
@@ -57,6 +42,9 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
+
+// Remove HubSpot integration to prevent loading errors
+// Focus on Supabase-based CRM instead
 
 // Initialize the React application
 const root = ReactDOM.createRoot(document.getElementById('root'));
