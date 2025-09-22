@@ -223,6 +223,117 @@ function App() {
     );
   };
 
+  // Admin Login Component
+  const AdminLogin = () => {
+    const [credentials, setCredentials] = useState({ username: '', password: '' });
+    const [loginError, setLoginError] = useState('');
+    const [loginLoading, setLoginLoading] = useState(false);
+
+    const handleLogin = async (e) => {
+      e.preventDefault();
+      setLoginLoading(true);
+      setLoginError('');
+
+      // Simple admin credentials (in production, use proper authentication)
+      const adminUsername = import.meta.env.VITE_ADMIN_USERNAME || 'admin';
+      const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'studio37admin';
+
+      if (credentials.username === adminUsername && credentials.password === adminPassword) {
+        setIsAdmin(true);
+        loadInitialData(); // Reload data with admin access
+        navigate('/admin');
+        
+        // Track admin login
+        trackHubSpotEvent('admin_login', {
+          timestamp: new Date().toISOString()
+        });
+      } else {
+        setLoginError('Invalid username or password');
+      }
+      
+      setLoginLoading(false);
+    };
+
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#181818] py-12 px-4 sm:px-6 lg:px-8">
+        <SEOHead title="Admin Login - Studio37" />
+        <div className="max-w-md w-full space-y-8">
+          <div>
+            <div className="mx-auto h-12 w-12 flex items-center justify-center">
+              <Camera className="h-12 w-12 text-[#F3E3C3]" />
+            </div>
+            <h2 className="mt-6 text-center text-3xl font-vintage text-[#F3E3C3]">
+              Admin Login
+            </h2>
+            <p className="mt-2 text-center text-sm text-[#F3E3C3]/70">
+              Sign in to access the admin dashboard
+            </p>
+          </div>
+          <form className="mt-8 space-y-6" onSubmit={handleLogin}>
+            <div className="rounded-md shadow-sm -space-y-px">
+              <div>
+                <label htmlFor="username" className="sr-only">
+                  Username
+                </label>
+                <input
+                  id="username"
+                  name="username"
+                  type="text"
+                  required
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-white/20 placeholder-[#F3E3C3]/50 text-[#F3E3C3] bg-[#262626] rounded-t-md focus:outline-none focus:ring-[#F3E3C3] focus:border-[#F3E3C3] focus:z-10 sm:text-sm"
+                  placeholder="Username"
+                  value={credentials.username}
+                  onChange={(e) => setCredentials({...credentials, username: e.target.value})}
+                />
+              </div>
+              <div>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  required
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-white/20 placeholder-[#F3E3C3]/50 text-[#F3E3C3] bg-[#262626] rounded-b-md focus:outline-none focus:ring-[#F3E3C3] focus:border-[#F3E3C3] focus:z-10 sm:text-sm"
+                  placeholder="Password"
+                  value={credentials.password}
+                  onChange={(e) => setCredentials({...credentials, password: e.target.value})}
+                />
+              </div>
+            </div>
+
+            {loginError && (
+              <div className="text-red-400 text-sm text-center" role="alert">
+                {loginError}
+              </div>
+            )}
+
+            <div>
+              <button
+                type="submit"
+                disabled={loginLoading}
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-[#1a1a1a] bg-[#F3E3C3] hover:bg-[#E6D5B8] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F3E3C3] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                {loginLoading ? (
+                  <div className="flex items-center">
+                    <div className="w-4 h-4 border-2 border-[#1a1a1a] border-t-transparent rounded-full animate-spin mr-2"></div>
+                    Signing in...
+                  </div>
+                ) : (
+                  <>
+                    Sign in
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </>
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  };
+
   // Enhanced portfolio unlock with HubSpot tracking
   async function handlePortfolioUnlock(formData) {
     if (connectionStatus !== 'connected') {
@@ -344,29 +455,6 @@ function App() {
     }
   };
 
-  const updatePortfolioImageOrder = async (imageId, newOrder) => {
-    try {
-      const { error } = await supabase
-        .from('portfolio_images')
-        .update({ order_index: newOrder })
-        .eq('id', imageId);
-      
-      if (error) throw error;
-      
-      // Reload portfolio images to reflect new order
-      const { data } = await supabase
-        .from('portfolio_images')
-        .select('*')
-        .order('order_index', { ascending: true });
-      
-      if (data) setPortfolioImages(data);
-    } catch (error) {
-      console.error('Error updating image order:', error);
-      throw error;
-    }
-  };
-
-  // Lead management functions
   const updateLeadStatus = async (leadId, newStatus) => {
     if (connectionStatus !== 'connected') {
       // Update local state for offline mode
@@ -481,27 +569,85 @@ function App() {
   // Update AdminDashboard to use enhanced components
   const AdminDashboard = () => {
     useEffect(() => trackPageView('admin'), []);
+    const [activeTab, setActiveTab] = useState('crm');
     
     return (
-      <div className="py-20 md:py-28">
+      <div className="pt-20 pb-20 bg-[#212121] min-h-screen">
         <SEOHead 
           title="Admin Dashboard - Studio37"
           description="Studio37 admin dashboard for managing business operations"
         />
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-vintage mb-6">Admin Dashboard</h1>
             <p className="text-xl text-[#F3E3C3]/80">
               Manage your Studio37 operations
             </p>
+            <button
+              onClick={() => {
+                setIsAdmin(false);
+                navigate('/');
+              }}
+              className="mt-4 text-sm text-[#F3E3C3]/60 hover:text-[#F3E3C3] transition-colors"
+            >
+              Sign Out
+            </button>
           </div>
-          <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
-          <div className="mt-12">
-            <EnhancedCmsSection 
-              portfolioImages={portfolioImages}
-              addPortfolioImage={addPortfolioImage}
-              deletePortfolioImage={deletePortfolioImage}
-            />
+          
+          <div className="flex flex-wrap gap-2 justify-center mb-8">
+            {['crm', 'cms', 'analytics'].map(tab => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-6 py-2 text-sm font-semibold rounded-full transition-all duration-300 ${
+                  activeTab === tab 
+                    ? 'bg-[#F3E3C3] text-[#1a1a1a]' 
+                    : 'bg-[#262626] hover:bg-[#333] text-[#F3E3C3]'
+                }`}
+              >
+                {tab.toUpperCase()}
+              </button>
+            ))}
+          </div>
+
+          <div className="bg-[#262626] rounded-lg p-6">
+            {activeTab === 'crm' && (
+              <div>
+                <h3 className="text-2xl font-vintage mb-6">Customer Relationship Management</h3>
+                <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
+              </div>
+            )}
+            
+            {activeTab === 'cms' && (
+              <div>
+                <h3 className="text-2xl font-vintage mb-6">Content Management</h3>
+                <EnhancedCmsSection
+                  portfolioImages={portfolioImages}
+                  addPortfolioImage={addPortfolioImage}
+                  deletePortfolioImage={deletePortfolioImage}
+                />
+              </div>
+            )}
+
+            {activeTab === 'analytics' && (
+              <div>
+                <h3 className="text-2xl font-vintage mb-6">Analytics Dashboard</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
+                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-2">Total Leads</h4>
+                    <p className="text-3xl font-bold text-[#F3E3C3]">{leads.length}</p>
+                  </div>
+                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
+                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-2">Portfolio Images</h4>
+                    <p className="text-3xl font-bold text-[#F3E3C3]">{portfolioImages.length}</p>
+                  </div>
+                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
+                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-2">Blog Posts</h4>
+                    <p className="text-3xl font-bold text-[#F3E3C3]">{blogPosts.length}</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -520,11 +666,11 @@ function App() {
         <p className="responsive-subheading text-[#F3E3C3]/80 mb-8 max-w-2xl mx-auto animate-fadeInUp">
           Professional photography and content strategy for brands ready to conquer the world from Houston, TX.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp">
-          <Link to="/services" className="btn-primary">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp max-w-md mx-auto">
+          <Link to="/services" className="bg-[#F3E3C3] text-[#1a1a1a] px-8 py-4 rounded-md font-semibold hover:bg-[#E6D5B8] transition-all hover:scale-105">
             Our Services
           </Link>
-          <Link to="/portfolio" className="btn-secondary">
+          <Link to="/portfolio" className="border-2 border-[#F3E3C3] text-[#F3E3C3] px-8 py-4 rounded-md font-semibold hover:bg-[#F3E3C3] hover:text-[#1a1a1a] transition-all">
             View Portfolio
           </Link>
         </div>
@@ -617,7 +763,7 @@ function App() {
     useEffect(() => trackPageView('portfolio'), []);
     
     return (
-      <div className="py-20 md:py-28">
+      <div className="pt-20 pb-20">
         <SEOHead 
           title="Photography Portfolio - Studio37 Houston"
           description="View our stunning photography portfolio featuring portraits, weddings, events, and commercial work from Houston's premier photography studio."
@@ -1091,6 +1237,7 @@ function App() {
           {isAdmin && (
             <Route path="/admin" element={<AdminDashboard />} />
           )}
+          <Route path="/admin-login" element={!isAdmin ? <AdminLoginPage onLogin={() => setIsAdmin(true)} /> : <Navigate to="/admin" />} />
         </Routes>
       </main>
 
@@ -1158,7 +1305,7 @@ function App() {
                 onClick={() => setShowChatWidget(false)}
                 className="text-white text-xl hover:text-red-400 transition-colors focus-ring rounded-md p-1"
                 aria-label="Close chat"
-              >
+              ></button>
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -1191,12 +1338,11 @@ function App() {
 
       {/* Error notification */}
       {error && (
-        <div className="notification-error">
-          <p>{error}</p>
+        <div className="fixed bottom-4 left-4 bg-red-500 text-white p-4 rounded-lg shadow-lg z-50 max-w-md"></div>
+          <p className="text-sm">{error}</p>
           <button 
             onClick={() => setError('')}
-            className="ml-2 hover:bg-red-600 p-1 rounded"
-            aria-label="Close error"
+            className="absolute top-1 right-2 text-white hover:text-gray-200"
           >
             <X className="h-4 w-4" />
           </button>
