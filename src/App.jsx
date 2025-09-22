@@ -294,63 +294,6 @@ function App() {
     });
   };
 
-  // Connection status notification component
-  const ConnectionStatusNotification = () => {
-    if (connectionStatus === 'connected') return null;
-    
-    const statusConfig = {
-      checking: { 
-        color: 'bg-blue-500/20 border-blue-500/30 text-blue-200',
-        message: '🔄 Connecting to database...'
-      },
-      unconfigured: { 
-        color: 'bg-yellow-500/20 border-yellow-500/30 text-yellow-200',
-        message: '⚠️ Database not configured. Using offline mode.'
-      },
-      error: { 
-        color: 'bg-red-500/20 border-red-500/30 text-red-200',
-        message: '❌ Database connection failed. Limited functionality.'
-      }
-    };
-    
-    const config = statusConfig[connectionStatus];
-    
-    return (
-      <div className={`${config.color} border px-4 py-2 text-sm text-center`}>
-        <strong>{config.message}</strong>
-      </div>
-    );
-  };
-
-  // Add proper error handling for portfolio unlock
-  async function handlePortfolioUnlock(formData) {
-    if (connectionStatus !== 'connected') {
-      setPortfolioUnlocked(true);
-      return true;
-    }
-    
-    try {
-      const { error } = await supabase.from('leads').insert([{
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        service: formData.service,
-        status: 'New'
-      }]);
-      
-      if (error) {
-        console.error('Portfolio unlock error:', error);
-        return false;
-      }
-      
-      setPortfolioUnlocked(true);
-      return true;
-    } catch (err) {
-      console.error('Unexpected portfolio unlock error:', err);
-      return false;
-    }
-  }
-
   // Portfolio management functions with real database support
   const addPortfolioImage = async (imageData) => {
     if (connectionStatus !== 'connected') {
