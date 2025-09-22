@@ -6,7 +6,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hi! I'm Studio37's assistant. I can help you learn about our photography services, book sessions, or answer questions about pricing. How can I help you today?",
+      text: "👋 Hi! I'm Studio37's AI assistant. I can help you with:\n\n📸 Photography services & pricing\n📅 Booking sessions\n❓ General questions\n\nHow can I help you today?",
       sender: 'bot',
       timestamp: new Date()
     }
@@ -14,6 +14,10 @@ const Chatbot = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [conversationId] = useState(() => `conv_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [collectingInfo, setCollectingInfo] = useState(false);
+  const [infoStep, setInfoStep] = useState('name'); // 'name', 'email', 'service'
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -24,62 +28,109 @@ const Chatbot = () => {
     scrollToBottom();
   }, [messages]);
 
+  // Enhanced responses with quick actions
   const responses = {
     greetings: [
-      "Hello! Welcome to Studio37. I'm here to help you with your photography needs.",
-      "Hi there! Thanks for visiting Studio37. What kind of photography are you interested in?",
-      "Welcome! I'd love to help you learn about our photography services."
+      "Hello! Welcome to Studio37 Photography! 🎯 I'm here to help you capture your perfect moments. What type of photography are you interested in?",
+      "Hi there! 📷 Thanks for visiting Studio37. I can help you with our services, pricing, or booking. What would you like to know?",
+      "Welcome to Studio37! ✨ I'd love to help you find the perfect photography solution. What brings you here today?"
     ],
     services: {
-      portrait: "We specialize in professional portrait photography including headshots, family portraits, and personal branding sessions. Our sessions start at $300.",
-      wedding: "Our wedding photography packages range from $1,500 to $5,000 and include engagement sessions, full wedding day coverage, and edited galleries.",
-      commercial: "We offer commercial photography for businesses including product photography, corporate headshots, and marketing materials.",
-      content: "Our content strategy services help businesses create compelling visual stories for social media and marketing."
+      portrait: {
+        text: "🎭 **Portrait Photography**\n\n• Professional headshots: $300\n• Family portraits: $400\n• Personal branding: $500\n• Corporate headshots: $350\n\nAll sessions include professional editing and high-res images. Would you like to book a consultation?",
+        quickActions: ['Book Portrait Session', 'View Portfolio', 'Get Pricing Details']
+      },
+      wedding: {
+        text: "💒 **Wedding Photography**\n\n• Engagement sessions: $800\n• Wedding day (6 hrs): $1,500\n• Full day coverage: $2,500\n• Premium package: $5,000\n\nIncludes edited gallery, USB drive, and print release. Interested in learning more?",
+        quickActions: ['View Wedding Gallery', 'Book Consultation', 'Download Pricing Guide']
+      },
+      commercial: {
+        text: "🏢 **Commercial Photography**\n\n• Product photography: Starting $200/product\n• Corporate events: $150/hour\n• Real estate: $300/property\n• Marketing campaigns: Custom quotes\n\nProfessional quality for your business needs. Ready to discuss your project?",
+        quickActions: ['Request Quote', 'View Commercial Work', 'Schedule Call']
+      },
+      content: {
+        text: "📱 **Content Strategy Services**\n\n• Social media content: $600/month\n• Brand photography: $800/session\n• Content planning: $400/month\n• Full strategy package: $1,200/month\n\nBoost your online presence with professional content. Want to get started?",
+        quickActions: ['See Content Examples', 'Book Strategy Call', 'Get Custom Quote']
+      }
     },
     pricing: {
-      general: "Our pricing varies by service type. Portrait sessions start at $300, wedding packages range from $1,500-$5,000. Would you like specific pricing?",
-      portrait: "Portrait sessions are $300 for a 1-hour session including 10 edited photos.",
-      wedding: "Wedding packages start at $1,500 for 6 hours of coverage."
+      general: "💰 **Studio37 Pricing Overview**\n\nPortraits: $300-500\nWeddings: $1,500-5,000\nCommercial: $150-300/hr\nContent Strategy: $400-1,200/month\n\nAll packages include professional editing. Which service interests you most?",
+      packages: "📦 **Popular Packages**\n\n🥉 Starter: $300 - Basic portrait session\n🥈 Professional: $800 - Extended session + extras\n🥇 Premium: $1,500 - Full service experience\n\nEach package can be customized to your needs!"
     },
-    booking: "I'd love to help you book a session! Can you share your name, email, and what type of photography you're interested in?",
-    location: "We're based in Houston, TX and serve the greater Houston area."
+    booking: {
+      text: "📅 **Ready to Book?**\n\nI'd love to help you schedule! To get started, I'll need:\n• Your name\n• Email address\n• Preferred service type\n• Preferred dates\n\nShall we begin with your name?",
+      collectInfo: true
+    },
+    location: "📍 **Studio37 Location**\n\nBased in Houston, TX\n🚗 Serving greater Houston area\n✈️ Available for destination shoots\n🏢 Studio sessions available\n\nTravel fees may apply for locations outside Houston. Where are you located?",
+    
+    quickReplies: {
+      "Book Portrait Session": "Perfect! I'll help you book a portrait session. What's your name?",
+      "View Portfolio": "You can view our portfolio at studio37photography.com/portfolio. Would you like me to send you the direct link?",
+      "Get Pricing Details": "I'll send you our detailed pricing guide. What's your email address?",
+      "Book Consultation": "Great choice! Free consultations help us plan your perfect session. What's your name?",
+      "Request Quote": "I'll help you get a custom quote. Tell me about your project needs.",
+      "Schedule Call": "Perfect! I can schedule a call with our team. What's your availability like this week?"
+    }
   };
 
   const detectIntent = (message) => {
     const lowerMessage = message.toLowerCase();
     
-    if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+    // Greeting detection
+    if (lowerMessage.match(/(hello|hi|hey|greetings|good morning|good afternoon)/)) {
       return 'greeting';
     }
-    if (lowerMessage.includes('portrait') || lowerMessage.includes('headshot')) {
+    
+    // Service detection
+    if (lowerMessage.match(/(portrait|headshot|family photo|personal branding)/)) {
       return 'portrait';
     }
-    if (lowerMessage.includes('wedding') || lowerMessage.includes('bride')) {
+    if (lowerMessage.match(/(wedding|bride|groom|marriage|engagement)/)) {
       return 'wedding';
     }
-    if (lowerMessage.includes('commercial') || lowerMessage.includes('business')) {
+    if (lowerMessage.match(/(commercial|business|corporate|product photo|real estate)/)) {
       return 'commercial';
     }
-    if (lowerMessage.includes('content') || lowerMessage.includes('social media')) {
+    if (lowerMessage.match(/(content|social media|marketing|brand|instagram)/)) {
       return 'content';
     }
-    if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('how much')) {
+    
+    // Action detection
+    if (lowerMessage.match(/(price|cost|how much|pricing|budget|rate)/)) {
       return 'pricing';
     }
-    if (lowerMessage.includes('book') || lowerMessage.includes('schedule')) {
+    if (lowerMessage.match(/(book|schedule|appointment|reserve|hire)/)) {
       return 'booking';
     }
-    if (lowerMessage.includes('location') || lowerMessage.includes('where')) {
+    if (lowerMessage.match(/(location|where|address|houston|studio)/)) {
       return 'location';
+    }
+    if (lowerMessage.match(/(package|deal|offer|bundle)/)) {
+      return 'packages';
     }
     
     return 'general';
   };
 
   const generateResponse = (intent, userMessage) => {
+    // Handle quick replies first
+    if (responses.quickReplies[userMessage]) {
+      if (userMessage.includes('Book') || userMessage.includes('Consultation')) {
+        setCollectingInfo(true);
+        setInfoStep('name');
+      }
+      return {
+        text: responses.quickReplies[userMessage],
+        quickActions: intent === 'booking' ? [] : ['Contact Studio37', 'View More Services']
+      };
+    }
+
     switch (intent) {
       case 'greeting':
-        return responses.greetings[Math.floor(Math.random() * responses.greetings.length)];
+        return {
+          text: responses.greetings[Math.floor(Math.random() * responses.greetings.length)],
+          quickActions: ['Portrait Photography', 'Wedding Photography', 'Commercial Services', 'Pricing Info']
+        };
       case 'portrait':
         return responses.services.portrait;
       case 'wedding':
@@ -89,15 +140,76 @@ const Chatbot = () => {
       case 'content':
         return responses.services.content;
       case 'pricing':
-        if (userMessage.includes('portrait')) return responses.pricing.portrait;
-        if (userMessage.includes('wedding')) return responses.pricing.wedding;
-        return responses.pricing.general;
+        return {
+          text: responses.pricing.general,
+          quickActions: ['Portrait Pricing', 'Wedding Packages', 'Commercial Rates', 'Book Consultation']
+        };
+      case 'packages':
+        return {
+          text: responses.pricing.packages,
+          quickActions: ['Book Starter Package', 'Learn About Premium', 'Custom Quote']
+        };
       case 'booking':
-        return responses.booking;
+        setCollectingInfo(true);
+        setInfoStep('name');
+        return {
+          text: responses.booking.text,
+          quickActions: []
+        };
       case 'location':
-        return responses.location;
+        return {
+          text: responses.location,
+          quickActions: ['Get Directions', 'Book Studio Session', 'Request Travel Quote']
+        };
       default:
-        return "I'd be happy to help you with information about our photography services, pricing, or booking. What questions do you have?";
+        return {
+          text: "I'd be happy to help! I can assist with:\n\n📸 Photography services\n💰 Pricing information\n📅 Booking sessions\n📍 Location details\n\nWhat would you like to know more about?",
+          quickActions: ['See All Services', 'Get Pricing', 'Book Now', 'Contact Studio']
+        };
+    }
+  };
+
+  const handleInfoCollection = (message) => {
+    switch (infoStep) {
+      case 'name':
+        setUserName(message);
+        setInfoStep('email');
+        return `Nice to meet you, ${message}! 😊 What's your email address?`;
+      case 'email':
+        setUserEmail(message);
+        setInfoStep('service');
+        return `Perfect! Now, what type of photography session are you interested in?\n\n📸 Portrait\n💒 Wedding\n🏢 Commercial\n📱 Content Creation`;
+      case 'service':
+        setCollectingInfo(false);
+        // Create lead in Supabase
+        createLead(userName, userEmail, message);
+        return `Excellent choice! 🎉\n\nI've saved your information:\n• Name: ${userName}\n• Email: ${userEmail}\n• Service: ${message}\n\nOur team will contact you within 24 hours to discuss your ${message.toLowerCase()} session. You'll receive a confirmation email shortly!\n\nIs there anything else I can help you with today?`;
+      default:
+        return "I'm here to help with any other questions!";
+    }
+  };
+
+  const createLead = async (name, email, service) => {
+    try {
+      const { error } = await supabase
+        .from('leads')
+        .insert({
+          name: name,
+          email: email,
+          service: service,
+          status: 'New',
+          source: 'Chatbot',
+          message: `Lead generated from chatbot conversation. Interested in ${service} photography.`,
+          created_at: new Date().toISOString()
+        });
+
+      if (error) {
+        console.error('Error creating lead:', error);
+      } else {
+        console.log('Lead created successfully');
+      }
+    } catch (error) {
+      console.error('Error creating lead:', error);
     }
   };
 
@@ -108,7 +220,9 @@ const Chatbot = () => {
         .insert({
           conversation_id: conversationId,
           user_message: userMessage,
-          bot_response: botResponse,
+          bot_response: typeof botResponse === 'string' ? botResponse : botResponse.text,
+          user_name: userName || null,
+          user_email: userEmail || null,
           created_at: new Date().toISOString()
         });
 
@@ -131,24 +245,45 @@ const Chatbot = () => {
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
 
-    const intent = detectIntent(inputMessage);
-    const botResponseText = generateResponse(intent, inputMessage);
+    let botResponseText;
+    let quickActions = [];
 
+    // Handle info collection flow
+    if (collectingInfo) {
+      botResponseText = handleInfoCollection(inputMessage);
+    } else {
+      const intent = detectIntent(inputMessage);
+      const response = generateResponse(intent, inputMessage);
+      botResponseText = response.text || response;
+      quickActions = response.quickActions || [];
+    }
+
+    // Simulate typing delay
     setTimeout(async () => {
       const botMessage = {
         id: messages.length + 2,
         text: botResponseText,
         sender: 'bot',
-        timestamp: new Date()
+        timestamp: new Date(),
+        quickActions: quickActions
       };
 
       setMessages(prev => [...prev, botMessage]);
       setIsLoading(false);
 
+      // Save to Supabase
       await saveConversationToSupabase(inputMessage, botResponseText);
-    }, 1000);
+    }, 1200);
 
     setInputMessage('');
+  };
+
+  const handleQuickAction = (action) => {
+    setInputMessage(action);
+    // Auto-send the quick action
+    setTimeout(() => {
+      handleSendMessage();
+    }, 100);
   };
 
   const handleKeyPress = (e) => {
@@ -160,42 +295,85 @@ const Chatbot = () => {
 
   return (
     <>
+      {/* Chat Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 bg-[#F3E3C3] text-[#1a1a1a] p-4 rounded-full shadow-lg hover:bg-[#E6D5B8] transition-all hover:scale-110 z-50"
+        className="fixed bottom-6 right-6 bg-gradient-to-r from-[#F3E3C3] to-[#E6D5B8] text-[#1a1a1a] p-4 rounded-full shadow-xl hover:shadow-2xl transition-all hover:scale-110 z-50 animate-pulse"
         style={{ display: isOpen ? 'none' : 'flex' }}
+        title="Chat with Studio37 AI Assistant"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M12 2C6.48 2 2 6.48 2 12C2 13.54 2.36 15.01 3.01 16.32L2 22L7.68 20.99C8.99 21.64 10.46 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" fill="currentColor"/>
-        </svg>
+        <div className="relative">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C6.48 2 2 6.48 2 12C2 13.54 2.36 15.01 3.01 16.32L2 22L7.68 20.99C8.99 21.64 10.46 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" fill="currentColor"/>
+          </svg>
+          <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-ping"></div>
+          <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full"></div>
+        </div>
       </button>
 
+      {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 bg-[#262626] rounded-lg shadow-lg w-80 max-h-96 flex flex-col z-50">
-          <div className="p-4 border-b border-white/10 flex justify-between items-center">
-            <h3 className="font-vintage text-lg text-[#F3E3C3]">Studio37 Assistant</h3>
-            <button onClick={() => setIsOpen(false)} className="text-[#F3E3C3] hover:text-red-400">×</button>
+        <div className="fixed bottom-6 right-6 bg-gradient-to-br from-[#262626] to-[#1a1a1a] rounded-xl shadow-2xl w-96 max-h-[600px] flex flex-col z-50 border border-[#F3E3C3]/20">
+          {/* Header */}
+          <div className="p-4 border-b border-[#F3E3C3]/20 flex justify-between items-center bg-gradient-to-r from-[#F3E3C3] to-[#E6D5B8] rounded-t-xl">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-[#1a1a1a] rounded-full flex items-center justify-center">
+                <span className="text-[#F3E3C3] font-bold text-lg">S37</span>
+              </div>
+              <div>
+                <h3 className="font-vintage text-lg text-[#1a1a1a]">Studio37 AI</h3>
+                <p className="text-xs text-[#1a1a1a]/70">Photography Assistant</p>
+              </div>
+            </div>
+            <button 
+              onClick={() => setIsOpen(false)} 
+              className="text-[#1a1a1a] hover:text-red-600 transition-colors text-xl font-bold"
+            >
+              ×
+            </button>
           </div>
           
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-64">
+          {/* Messages */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-80 scrollbar-thin scrollbar-thumb-[#F3E3C3]/20">
             {messages.map((message) => (
-              <div key={message.id} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-xs px-4 py-2 rounded-lg text-sm ${
-                  message.sender === 'user'
-                    ? 'bg-[#F3E3C3] text-[#1a1a1a]'
-                    : 'bg-[#1a1a1a] text-[#F3E3C3]'
-                }`}>
-                  {message.text}
+              <div key={message.id}>
+                <div className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`max-w-xs px-4 py-3 rounded-2xl text-sm leading-relaxed ${
+                    message.sender === 'user'
+                      ? 'bg-gradient-to-r from-[#F3E3C3] to-[#E6D5B8] text-[#1a1a1a] rounded-br-md'
+                      : 'bg-[#1a1a1a] text-[#F3E3C3] border border-[#F3E3C3]/20 rounded-bl-md'
+                  }`}>
+                    <div className="whitespace-pre-line">{message.text}</div>
+                  </div>
                 </div>
+
+                {/* Quick Actions */}
+                {message.sender === 'bot' && message.quickActions && message.quickActions.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-2 ml-2">
+                    {message.quickActions.map((action, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleQuickAction(action)}
+                        className="px-3 py-1 bg-[#F3E3C3]/10 hover:bg-[#F3E3C3]/20 text-[#F3E3C3] border border-[#F3E3C3]/30 rounded-full text-xs transition-all hover:scale-105"
+                      >
+                        {action}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
+            
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-[#1a1a1a] text-[#F3E3C3] px-4 py-2 rounded-lg text-sm">
-                  <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                    <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                <div className="bg-[#1a1a1a] text-[#F3E3C3] border border-[#F3E3C3]/20 px-4 py-3 rounded-2xl rounded-bl-md text-sm">
+                  <div className="flex items-center space-x-2">
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    </div>
+                    <span className="text-xs">AI thinking...</span>
                   </div>
                 </div>
               </div>
@@ -203,23 +381,37 @@ const Chatbot = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          <div className="p-4 border-t border-white/10">
+          {/* Input Area */}
+          <div className="p-4 border-t border-[#F3E3C3]/20">
             <div className="flex gap-2">
               <textarea
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Type your message..."
+                placeholder={collectingInfo ? 
+                  infoStep === 'name' ? "Enter your name..." :
+                  infoStep === 'email' ? "Enter your email..." :
+                  "Tell me about your needs..." :
+                  "Ask me about photography services..."
+                }
                 rows="1"
-                className="flex-1 bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] text-sm focus:outline-none focus:ring-2 focus:ring-[#F3E3C3] resize-none"
+                className="flex-1 bg-[#1a1a1a] border border-[#F3E3C3]/30 rounded-xl py-3 px-4 text-[#F3E3C3] text-sm focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]/50 placeholder-[#F3E3C3]/40 resize-none"
               />
               <button
                 onClick={handleSendMessage}
                 disabled={!inputMessage.trim() || isLoading}
-                className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded-md font-semibold text-sm hover:bg-[#E6D5B8] disabled:opacity-50"
+                className="bg-gradient-to-r from-[#F3E3C3] to-[#E6D5B8] text-[#1a1a1a] px-4 py-3 rounded-xl font-semibold text-sm hover:from-[#E6D5B8] hover:to-[#D4C5A8] disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:scale-105 flex items-center"
               >
-                Send
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22,2 15,22 11,13 2,9 22,2"></polygon>
+                </svg>
               </button>
+            </div>
+            
+            <div className="flex justify-between items-center mt-2 text-xs text-[#F3E3C3]/50">
+              <span>Press Enter to send</span>
+              {userName && <span>👋 Hi, {userName}!</span>}
             </div>
           </div>
         </div>
