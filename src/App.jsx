@@ -3,12 +3,12 @@ import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-r
 import VirtualAgentPlanner from './VirtualAgentPlanner';
 import PhotoshootPlanner from './PhotoshootPlanner';
 import ConversationalPlanner from './ConversationalPlanner';
-import { supabase, fetchWithErrorHandling } from './supabaseClient';
+import { supabase, fetchWithErrorHandling, isSupabaseConfigured, testConnection } from './supabaseClient';
 import { EnhancedCrmSection } from './components/EnhancedCRM';
 import { EnhancedCmsSection } from './components/EnhancedCMS';
 import SEOHead from './components/SEOHead';
 
-// Simple SVG icon components to replace lucide-react
+// Simple SVG icon components
 const Camera = ({ className, size = 24 }) => (
   <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
@@ -101,10 +101,37 @@ function App() {
   const [blogPosts, setBlogPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [connectionStatus, setConnectionStatus] = useState('checking');
   
   // Loading states
   const [blogLoading, setBlogLoading] = useState(false);
   const [blogError, setBlogError] = useState('');
+
+  // Test Supabase connection on mount
+  useEffect(() => {
+    const checkConnection = async () => {
+      setConnectionStatus('checking');
+      
+      if (!isSupabaseConfigured()) {
+        setConnectionStatus('unconfigured');
+        console.log('Supabase not configured - check environment variables');
+        setLoading(false);
+        return;
+      }
+      
+      const isConnected = await testConnection();
+      setConnectionStatus(isConnected ? 'connected' : 'error');
+      
+      if (isConnected) {
+        loadInitialData();
+      } else {
+        setLoading(false);
+        setError('Database connection failed. Some features may not work properly.');
+      }
+    };
+    
+    checkConnection();
+  }, []);
 
   // Fix missing error handling in useEffect hooks
   useEffect(() => {
@@ -135,45 +162,73 @@ function App() {
     }
   }, [location.pathname, isAdmin]);
 
-  // Load initial data
-  useEffect(() => {
-    const loadInitialData = async () => {
-      try {
-        setLoading(true);
-        
-        // Load portfolio images
-        const portfolioData = await fetchWithErrorHandling(
-          supabase
-            .from('portfolio_images')
-            .select('*')
-            .order('order_index', { ascending: true })
-        );
-        if (portfolioData) setPortfolioImages(portfolioData);
+  const loadInitialData = async () => {
+    try {
+      setLoading(true);
+      
+      // Load portfolio images
+      const portfolioData = await fetchWithErrorHandling(
+        supabase
+          .from('portfolio_images')
+          .select('*')
+          .order('order_index', { ascending: true })
+      );
+      if (portfolioData) setPortfolioImages(portfolioData);
 
-        // Load leads if admin
-        if (isAdmin) {
-          const leadsData = await fetchWithErrorHandling(
-            supabase
-              .from('leads')
-              .select('*')
-              .order('created_at', { ascending: false })
-          );
-          if (leadsData) setLeads(leadsData);
-        }
-        
-      } catch (err) {
-        console.error('Error loading initial data:', err);
-        setError('Failed to load application data.');
-      } finally {
-        setLoading(false);
+      // Load leads if admin
+      if (isAdmin) {
+        const leadsData = await fetchWithErrorHandling(
+          supabase
+            .from('leads')
+            .select('*')
+            .order('created_at', { ascending: false })
+        );
+        if (leadsData) setLeads(leadsData);
+      }
+      
+    } catch (err) {
+      console.error('Error loading initial data:', err);
+      setError('Failed to load application data.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Connection status notification component
+  const ConnectionStatusNotification = () => {
+    if (connectionStatus === 'connected') return null;
+    
+    const statusConfig = {
+      checking: { 
+        color: 'bg-blue-500/20 border-blue-500/30 text-blue-200',
+        message: '🔄 Connecting to database...'
+      },
+      unconfigured: { 
+        color: 'bg-yellow-500/20 border-yellow-500/30 text-yellow-200',
+        message: '⚠️ Database not configured. Using offline mode.'
+      },
+      error: { 
+        color: 'bg-red-500/20 border-red-500/30 text-red-200',
+        message: '❌ Database connection failed. Limited functionality.'
       }
     };
-
-    loadInitialData();
-  }, [isAdmin]);
+    
+    const config = statusConfig[connectionStatus];
+    
+    return (
+      <div className={`${config.color} border px-4 py-2 text-sm text-center`}>
+        <strong>{config.message}</strong>
+      </div>
+    );
+  };
 
   // Add proper error handling for portfolio unlock
   async function handlePortfolioUnlock(formData) {
+    if (connectionStatus !== 'connected') {
+      setPortfolioUnlocked(true);
+      return true;
+    }
+    
     try {
       const { error } = await supabase.from('leads').insert([{
         name: formData.name,
@@ -196,8 +251,18 @@ function App() {
     }
   }
 
-  // Portfolio management functions
+  // Portfolio management functions with real database support
   const addPortfolioImage = async (imageData) => {
+    if (connectionStatus !== 'connected') {
+      const newImage = {
+        ...imageData,
+        id: Date.now().toString(),
+        created_at: new Date().toISOString()
+      };
+      setPortfolioImages(prev => [newImage, ...prev]);
+      return;
+    }
+    
     try {
       const { data, error } = await supabase
         .from('portfolio_images')
@@ -216,6 +281,11 @@ function App() {
   };
 
   const deletePortfolioImage = async (imageId) => {
+    if (connectionStatus !== 'connected') {
+      setPortfolioImages(prev => prev.filter(img => img.id !== imageId));
+      return;
+    }
+    
     try {
       const { error } = await supabase
         .from('portfolio_images')
@@ -444,6 +514,7 @@ function App() {
   const HomePage = () => (
     <div>
       <SEOHead />
+      <ConnectionStatusNotification />
       <div className="section-padding-lg text-center">
         <h1 className="responsive-heading font-vintage mb-6 animate-fadeInUp">
           Vintage Heart, Modern Vision
@@ -459,6 +530,11 @@ function App() {
             View Portfolio
           </Link>
         </div>
+        {connectionStatus === 'connected' && (
+          <div className="mt-6 text-sm text-green-400">
+            ✅ Database connected - Full functionality available
+          </div>
+        )}
       </div>
     </div>
   );
@@ -468,6 +544,7 @@ function App() {
       {/* Navigation with improved accessibility */}
       <nav className="fixed top-0 w-full z-50 bg-[#181818]/95 backdrop-blur-custom border-b border-white/10" role="navigation" aria-label="Main navigation">
         <div className="container-custom">
+          <ConnectionStatusNotification />
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="flex items-center space-x-2 focus-ring rounded-md">
               <Camera className="h-8 w-8 text-[#F3E3C3]" />
@@ -614,12 +691,14 @@ function App() {
         </button>
       )}
 
-      {/* Loading overlay */}
+      {/* Loading overlay with connection status */}
       {loading && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 flex items-center justify-center">
           <div className="text-center">
             <div className="loading-spinner mx-auto mb-4"></div>
-            <p className="text-[#F3E3C3]">Loading Studio37...</p>
+            <p className="text-[#F3E3C3]">
+              {connectionStatus === 'checking' ? 'Connecting to Studio37...' : 'Loading Studio37...'}
+            </p>
           </div>
         </div>
       )}
