@@ -3,7 +3,6 @@ import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-r
 import { supabase, testConnection, getConnectionStatus } from './supabaseClient';
 import { useSupabaseQuery, useSupabaseMutation } from './hooks/useSupabaseQuery';
 import SEOHead from './components/SEOHead';
-import Chatbot from './components/Chatbot';
 
 // Centralized icon imports
 import {
@@ -13,7 +12,6 @@ import {
 } from './components/Icons';
 
 // Lazy load heavy components for better performance
-const VirtualAgentPlanner = lazy(() => import('./VirtualAgentPlanner'));
 const EnhancedCrmSection = lazy(() => import('./components/EnhancedCRM').then(module => ({ default: module.EnhancedCrmSection })));
 const EnhancedCmsSection = lazy(() => import('./components/EnhancedCMS').then(module => ({ default: module.EnhancedCmsSection })));
 const ProjectsSection = lazy(() => import('./components/ProjectsSection'));
@@ -1378,42 +1376,6 @@ function App() {
         </div>
       </footer>
 
-      {/* Enhanced Virtual Assistant Chat Widget */}
-      {showChatWidget && (
-        <div className="fixed bottom-6 right-6 z-50">
-          <div className="bg-[#262626] rounded-lg shadow-lg w-80 max-h-96 flex flex-col">
-            <div className="p-4 border-b border-white/10 flex justify-between items-center">
-              <h3 className="font-vintage text-lg text-[#F3E3C3]">Studio37 Assistant</h3>
-              <button 
-                onClick={() => setShowChatWidget(false)}
-                className="text-[#F3E3C3] hover:text-red-400 transition-colors"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-            <div className="flex-1 overflow-hidden">
-              <Suspense fallback={<LoadingSpinner message="Loading assistant..." />}>
-                <VirtualAgentPlanner />
-              </Suspense>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Chat widget button */}
-      {!showChatWidget && (
-        <button
-          onClick={() => setShowChatWidget(true)}
-          className="fixed bottom-6 right-6 bg-[#F3E3C3] text-[#1a1a1a] p-4 rounded-full shadow-lg hover:bg-[#E6D5B8] transition-all hover:scale-110 z-50 group"
-          title="Chat with Studio37 Assistant"
-        >
-          <MessageCircle size={24} />
-          <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-            Ask me anything!
-          </span>
-        </button>
-      )}
-
       {/* Loading overlay - use renamed variable */}
       {isLoading && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 flex items-center justify-center">
@@ -1459,7 +1421,6 @@ function App() {
           </div>
         </div>
       )}
-      <Chatbot />
     </div>
   );
 }
