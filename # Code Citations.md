@@ -1,246 +1,1544 @@
 # Code Citations
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
 
 ```
-<path fillRule="evenodd"
-```
-
-
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
-
-```
-<path fillRule="evenodd" d="M4 3
+"
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
 
 ```
-<path fillRule="evenodd" d="M4 3a2 2 0 00
-```
-
-
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
-
-```
-<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002
+"react":
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
 
 ```
-<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002
-```
-
-
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
-
-```
-<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2
+"react": "^18.
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
 
 ```
-<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12
-```
-
-
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
-
-```
-<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 
+"react": "^18.2.0",
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
 
 ```
-<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 
-```
-
-
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
-
-```
-<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="eveno
+"react": "^18.2.0",
+    "react
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
 
 ```
-<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-            </svg
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from '
+"react": "^18.2.0",
+    "react-dom
 ```
 
 
 ## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
 
 ```
-vite.config.js
-import { defineConfig } from '
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react
+"react": "^18.2.0",
+    "react-dom
 ```
 
 
 ## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
 
 ```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config
+"react": "^18.2.0",
+    "react-dom": "^18
 ```
 
 
 ## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
 
 ```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config
+"react": "^18.2.0",
+    "react-dom": "^18
 ```
 
 
 ## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
 
 ```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
+"react": "^18.2.0",
+    "react-dom": "^18.2.0
 ```
 
 
 ## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
 
 ```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
+"react": "^18.2.0",
+    "react-dom": "^18.2.0
 ```
 
 
 ## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
 
 ```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port:
+"react": "^18.2.0",
+    "react-dom": "^18.2.0
 ```
 
 
 ## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
 
 ```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port:
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "
 ```
 
 
 ## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
 
 ```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    host: true,
-    open:
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "
 ```
 
 
 ## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
 
 ```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "
+```
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    host: true,
-    open:
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDepen
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDepen
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDepen
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin
+```
+
+
+## License: unknown
+https://github.com/kostovm/Shared_Joy/blob/aac08c2616b5a8f4cacb4a5247e65586527f4760/client/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react"
+```
+
+
+## License: unknown
+https://github.com/Briamher95/proyecto-alquiler/blob/c48befe1e8d216abf82102d59f7a580d4b48c2e0/README.md
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react"
+```
+
+
+## License: unknown
+https://github.com/Devipriya7811/Ecommerce-main/blob/8740c6bef813b7a61b88d4c2e25bfd5e3c06be17/package.json_backup
+
+```
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react"
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autop
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "esl
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "esl
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "esl
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "esl
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "postcss": "
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "postcss": "
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "postcss": "^8.4
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "postcss": "^8.4
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "postcss": "^8.4.31
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "postcss": "^8.4.31
+```
+
+
+## License: unknown
+https://github.com/KohkiMartinez/My-Portfolio/blob/139159a3453b1169d706b47991ca00d96e672fca/JavaScript/MyFavouritePokemonGenerator/README.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "postcss": "^8.4.31"
+```
+
+
+## License: MIT
+https://github.com/JuanPabloDiaz/doc/blob/c4b2ed83ec83a0356e21ab4b29246321792a4530/_posts/api/2023-11-23-consume-rapid-api.md
+
+```
+"autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "postcss": "^8.4.31"
 ```
 

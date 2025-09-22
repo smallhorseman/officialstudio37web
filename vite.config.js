@@ -12,7 +12,7 @@ export default defineConfig({
       gzipSize: true,
       brotliSize: true,
     }),
-  ],
+q  ].filter(Boolean), // Remove falsy plugins
   
   // Optimize dependencies
   optimizeDeps: {
@@ -37,9 +37,6 @@ export default defineConfig({
           
           // Supabase chunk
           supabase: ['@supabase/supabase-js'],
-          
-          // Utils chunk
-          utils: ['react-markdown', 'remark-gfm'],
         },
         
         // Optimize chunk names
