@@ -582,6 +582,538 @@ function App() {
     </div>
   );
 
+  // Add missing page components
+  const ServicesPage = () => {
+    useEffect(() => trackPageView('services'), []);
+    
+    return (
+      <div className="py-20 md:py-28">
+        <SEOHead 
+          title="Professional Photography Services - Studio37 Houston"
+          description="Expert photography services in Houston: portraits, weddings, events, commercial photography, and content strategy. Vintage style meets modern vision."
+        />
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-6xl font-vintage mb-6">Our Services</h1>
+            <p className="text-xl text-[#F3E3C3]/80 max-w-3xl mx-auto">
+              From intimate portraits to grand celebrations, we capture the moments that matter most with our signature vintage heart and modern vision.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Portrait Photography",
+                description: "Professional headshots, family portraits, and personal branding sessions that capture your authentic self.",
+                features: ["Professional Headshots", "Family Portraits", "Personal Branding", "Studio & Location Options"]
+              },
+              {
+                title: "Wedding Photography",
+                description: "Your love story deserves to be told beautifully. We capture every precious moment of your special day.",
+                features: ["Full Day Coverage", "Engagement Sessions", "Bridal Portraits", "Online Gallery Delivery"]
+              },
+              {
+                title: "Event Photography",
+                description: "Corporate events, celebrations, and special occasions documented with professional expertise.",
+                features: ["Corporate Events", "Birthday Parties", "Anniversaries", "Fast Turnaround"]
+              },
+              {
+                title: "Commercial Photography",
+                description: "Elevate your brand with stunning product photography and commercial imagery.",
+                features: ["Product Photography", "Brand Imagery", "Marketing Materials", "E-commerce Ready"]
+              },
+              {
+                title: "Content Strategy",
+                description: "Strategic visual content planning to help your brand conquer the digital world.",
+                features: ["Content Planning", "Social Media Strategy", "Brand Development", "Marketing Consultation"]
+              },
+              {
+                title: "Custom Packages",
+                description: "Every client is unique. Let's create a custom package that perfectly fits your needs and budget.",
+                features: ["Tailored Solutions", "Flexible Pricing", "Multiple Sessions", "Ongoing Support"]
+              }
+            ].map((service, index) => (
+              <div key={index} className="bg-[#262626] rounded-lg p-8 hover:bg-[#333] transition-colors">
+                <h3 className="text-2xl font-display mb-4">{service.title}</h3>
+                <p className="text-[#F3E3C3]/80 mb-6">{service.description}</p>
+                <ul className="space-y-2">
+                  {service.features.map((feature, i) => (
+                    <li key={i} className="flex items-center text-sm">
+                      <span className="w-2 h-2 bg-[#F3E3C3] rounded-full mr-3"></span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-16">
+            <Link to="/contact" className="btn-primary">
+              Get Your Quote Today
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const PortfolioPage = () => {
+    useEffect(() => trackPageView('portfolio'), []);
+    
+    return (
+      <div className="py-20 md:py-28">
+        <SEOHead 
+          title="Photography Portfolio - Studio37 Houston"
+          description="View our stunning photography portfolio featuring portraits, weddings, events, and commercial work from Houston's premier photography studio."
+        />
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-6xl font-vintage mb-6">Our Portfolio</h1>
+            <p className="text-xl text-[#F3E3C3]/80 max-w-3xl mx-auto">
+              Discover the artistry behind our lens. Each image tells a story, captures an emotion, and preserves a moment in time.
+            </p>
+          </div>
+
+          {portfolioUnlocked ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {portfolioImages.map((image, index) => (
+                <div key={image.id || index} className="aspect-square bg-[#262626] rounded-lg overflow-hidden group">
+                  <img
+                    src={image.url}
+                    alt={image.alt_text || image.caption || "Portfolio image"}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <PortfolioGate onUnlock={handlePortfolioUnlock} />
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  const BlogPage = () => {
+    useEffect(() => trackPageView('blog'), []);
+    
+    return (
+      <div className="py-20 md:py-28">
+        <SEOHead 
+          title="Photography Blog - Studio37 Houston"
+          description="Photography tips, behind-the-scenes stories, and inspiration from Houston's premier photography studio. Learn about our vintage-modern approach."
+        />
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-6xl font-vintage mb-6">Our Blog</h1>
+            <p className="text-xl text-[#F3E3C3]/80 max-w-3xl mx-auto">
+              Stories, tips, and inspiration from behind the lens. Dive into our world of vintage heart and modern vision.
+            </p>
+          </div>
+
+          {blogPosts && blogPosts.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogPosts.map(post => (
+                <article key={post.id} className="bg-[#262626] rounded-lg overflow-hidden hover:bg-[#333] transition-colors">
+                  {post.featured_image && (
+                    <img
+                      src={post.featured_image}
+                      alt={post.title}
+                      className="w-full h-48 object-cover"
+                      loading="lazy"
+                    />
+                  )}
+                  <div className="p-6">
+                    <h2 className="text-xl font-display mb-3">
+                      <Link to={`/blog/${post.slug}`} className="hover:text-[#F3E3C3]/80 transition-colors">
+                        {post.title}
+                      </Link>
+                    </h2>
+                    <p className="text-[#F3E3C3]/70 mb-4 line-clamp-3">{post.excerpt}</p>
+                    <div className="flex items-center justify-between text-sm text-[#F3E3C3]/60">
+                      <span>{new Date(post.created_at).toLocaleDateString()}</span>
+                      <Link to={`/blog/${post.slug}`} className="text-[#F3E3C3] hover:underline">
+                        Read More
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center text-[#F3E3C3]/70 py-16">
+              <h3 className="text-2xl font-display mb-4">Coming Soon</h3>
+              <p>We're preparing amazing content for you. Check back soon!</p>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  const AboutPage = () => {
+    useEffect(() => trackPageView('about'), []);
+    
+    return (
+      <div className="py-20 md:py-28">
+        <SEOHead 
+          title="About Studio37 - Professional Photography Houston"
+          description="Meet the team behind Studio37, Houston's premier photography studio combining vintage heart with modern vision for unforgettable imagery."
+        />
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h1 className="text-4xl md:text-6xl font-vintage mb-6">About Studio37</h1>
+              <p className="text-xl text-[#F3E3C3]/80">
+                Where vintage heart meets modern vision
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+              <div>
+                <h2 className="text-3xl font-display mb-6">Our Story</h2>
+                <div className="space-y-4 text-[#F3E3C3]/80 leading-relaxed">
+                  <p>
+                    Studio37 was born from a passion for capturing life's most precious moments with a unique blend of timeless elegance and contemporary flair.
+                  </p>
+                  <p>
+                    Based in the vibrant city of Houston, Texas, we specialize in creating stunning visual narratives that tell your story with authenticity and artistry.
+                  </p>
+                  <p>
+                    Our vintage heart embraces the classic beauty of traditional photography, while our modern vision ensures every image resonates with today's aesthetic sensibilities.
+                  </p>
+                </div>
+              </div>
+              <div className="bg-[#262626] rounded-lg p-8">
+                <h3 className="text-2xl font-display mb-6">Our Approach</h3>
+                <ul className="space-y-3">
+                  {[
+                    "Personalized consultation for every project",
+                    "Blend of vintage charm and modern technique",
+                    "Professional equipment and editing",
+                    "Fast turnaround with high-quality results",
+                    "Ongoing support and relationship building"
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-center">
+                      <span className="w-2 h-2 bg-[#F3E3C3] rounded-full mr-3"></span>
+                      <span className="text-[#F3E3C3]/80">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <h2 className="text-3xl font-display mb-6">Ready to Work Together?</h2>
+              <p className="text-lg text-[#F3E3C3]/80 mb-8">
+                Let's create something beautiful together. Reach out and let's discuss your vision.
+              </p>
+              <Link to="/contact" className="btn-primary">
+                Get In Touch
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const ContactPage = () => {
+    useEffect(() => trackPageView('contact'), []);
+    
+    return (
+      <div className="py-20 md:py-28">
+        <SEOHead 
+          title="Contact Studio37 - Houston Photography Services"
+          description="Get in touch with Studio37 for professional photography services in Houston. Book your session for portraits, weddings, events, and commercial photography."
+        />
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h1 className="text-4xl md:text-6xl font-vintage mb-6">Contact Us</h1>
+              <p className="text-xl text-[#F3E3C3]/80">
+                Ready to capture your story? Let's connect and discuss your vision.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12">
+              <div>
+                <h2 className="text-2xl font-display mb-6">Get In Touch</h2>
+                <div className="space-y-6">
+                  <div className="flex items-center">
+                    <PhoneIcon />
+                    <div className="ml-4">
+                      <p className="font-semibold">Phone</p>
+                      <a href="tel:+18327139944" className="text-[#F3E3C3]/80 hover:text-[#F3E3C3] transition-colors">
+                        (832) 713-9944
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <MailIcon />
+                    <div className="ml-4">
+                      <p className="font-semibold">Email</p>
+                      <a href="mailto:sales@studio37.cc" className="text-[#F3E3C3]/80 hover:text-[#F3E3C3] transition-colors">
+                        sales@studio37.cc
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <MapPinIcon />
+                    <div className="ml-4">
+                      <p className="font-semibold">Location</p>
+                      <p className="text-[#F3E3C3]/80">
+                        Houston, Texas<br />
+                        Serving the Greater Houston Area
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <ContactForm />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const BlogPost = () => {
+    useEffect(() => trackPageView('blog_post'), []);
+    
+    return (
+      <div className="py-20 md:py-28">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-16">
+              <h1 className="text-4xl md:text-6xl font-vintage mb-6">Blog Post</h1>
+              <p className="text-xl text-[#F3E3C3]/80">
+                Individual blog post content will be loaded here
+              </p>
+            </div>
+            <div className="text-center">
+              <Link to="/blog" className="btn-secondary">
+                ← Back to Blog
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const AdminDashboard = () => {
+    useEffect(() => trackPageView('admin'), []);
+    
+    return (
+      <div className="py-20 md:py-28">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-6xl font-vintage mb-6">Admin Dashboard</h1>
+            <p className="text-xl text-[#F3E3C3]/80">
+              Manage your Studio37 operations
+            </p>
+          </div>
+          <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
+          <div className="mt-12">
+            <EnhancedCmsSection 
+              portfolioImages={portfolioImages}
+              addPortfolioImage={addPortfolioImage}
+              deletePortfolioImage={deletePortfolioImage}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // Add missing icon components
+  const PhoneIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></svg>
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  );
+
+  const MailIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></svg>
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+  );
+
+  const MapPinIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></svg>
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3"></circle>
+    </svg>
+  );
+
+  // Simple Portfolio Gate component
+  const PortfolioGate = ({ onUnlock }) => {
+    const [formData, setFormData] = useState({
+      name: '',
+      email: '',
+      phone: '',
+      service: ''
+    });
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const success = await onUnlock(formData);
+      if (!success) {
+        alert('There was an error. Please try again.');
+      }
+    };
+
+    return (
+      <div className="max-w-2xl mx-auto bg-[#262626] rounded-lg p-8"></div>
+        <h2 className="text-3xl font-display mb-6 text-center">Unlock Our Portfolio</h2>
+        <p className="text-[#F3E3C3]/80 mb-8 text-center">
+          Get exclusive access to our full portfolio by sharing a few details about your project.
+        </p>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-4">
+            <input
+              type="text"
+              placeholder="Your Name *"
+              value={formData.name}
+              onChange={(e) => setFormData({...formData, name: e.target.value})}
+              required
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+            />
+            <input
+              type="email"
+              placeholder="Your Email *"
+              value={formData.email}
+              onChange={(e) => setFormData({...formData, email: e.target.value})}
+              required
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+            />
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={(e) => setFormData({...formData, phone: e.target.value})}
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+            />
+            <select
+              value={formData.service}
+              onChange={(e) => setFormData({...formData, service: e.target.value})}
+              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+            >
+              <option value="">Select Service</option>
+              <option value="portraits">Portrait Photography</option>
+              <option value="weddings">Wedding Photography</option>
+              <option value="events">Event Photography</option>
+              <option value="commercial">Commercial Photography</option>
+              <option value="content">Content Strategy</option>
+            </select>
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-[#F3E3C3] text-[#1a1a1a] rounded-md py-3 px-6 font-semibold transition-all hover:bg-[#E6D5B8]"
+          >
+            Unlock Portfolio
+          </button>
+        </form>
+      </div>
+    );
+  };
+
+  // Simple Contact Form component
+  const ContactForm = () => {
+    const [formData, setFormData] = useState({
+      name: '',
+      email: '',
+      phone: '',
+      service: '',
+      message: ''
+    });
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      // Track form submission
+      trackHubSpotEvent('contact_form_submitted', {
+        service: formData.service,
+        form_type: 'contact'
+      });
+      
+      // For now, just show an alert
+      alert('Thank you for your message! We\'ll be in touch soon.');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
+      });
+    };
+
+    return (
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-4">
+          <input
+            type="text"
+            placeholder="Your Name *"
+            value={formData.name}
+            onChange={(e) => setFormData({...formData, name: e.target.value})}
+            required
+            className="w-full bg-[#262626] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+          />
+          <input
+            type="email"
+            placeholder="Your Email *"
+            value={formData.email}
+            onChange={(e) => setFormData({...formData, email: e.target.value})}
+            required
+            className="w-full bg-[#262626] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+          />
+        </div>
+        <div className="grid md:grid-cols-2 gap-4">
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            value={formData.phone}
+            onChange={(e) => setFormData({...formData, phone: e.target.value})}
+            className="w-full bg-[#262626] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+          />
+          <select
+            value={formData.service}
+            onChange={(e) => setFormData({...formData, service: e.target.value})}
+            className="w-full bg-[#262626] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+          >
+            <option value="">Select Service</option>
+            <option value="portraits">Portrait Photography</option>
+            <option value="weddings">Wedding Photography</option>
+            <option value="events">Event Photography</option>
+            <option value="commercial">Commercial Photography</option>
+            <option value="content">Content Strategy</option>
+          </select>
+        </div>
+        <textarea
+          placeholder="Tell us about your project..."
+          value={formData.message}
+          onChange={(e) => setFormData({...formData, message: e.target.value})}
+          rows="6"
+          className="w-full bg-[#262626] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+        />
+        <button
+          type="submit"
+          className="w-full bg-[#F3E3C3] text-[#1a1a1a] rounded-md py-3 px-6 font-semibold transition-all hover:bg-[#E6D5B8]"
+        >
+          Send Message
+        </button>
+      </form>
+    );
+  };
+
   return (
     <div className="App bg-[#181818] text-[#F3E3C3] min-h-screen">
       {/* Add HubSpot Integration */}
@@ -643,71 +1175,15 @@ function App() {
       {/* Main content with HubSpot event tracking */}
       <main className="flex-1">
         <Routes>
-          <Route 
-            path="/" 
-            element={
-              <div onLoad={() => trackPageView('home')}>
-                <HomePage />
-              </div>
-            } 
-          />
-          <Route 
-            path="/services" 
-            element={
-              <div onLoad={() => trackPageView('services')}>
-                <ServicesPage />
-              </div>
-            }
-          />
-          <Route 
-            path="/portfolio" 
-            element={
-              <div onLoad={() => trackPageView('portfolio')}>
-                <PortfolioPage />
-              </div>
-            }
-          />
-          <Route 
-            path="/blog" 
-            element={
-              <div onLoad={() => trackPageView('blog')}>
-                <BlogPage />
-              </div>
-            }
-          />
-          <Route 
-            path="/blog/:slug" 
-            element={
-              <div onLoad={() => trackPageView('blog_post')}>
-                <BlogPost />
-              </div>
-            }
-          />
-          <Route 
-            path="/about" 
-            element={
-              <div onLoad={() => trackPageView('about')}>
-                <AboutPage />
-              </div>
-            }
-          />
-          <Route 
-            path="/contact" 
-            element={
-              <div onLoad={() => trackPageView('contact')}>
-                <ContactPage />
-              </div>
-            }
-          />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           {isAdmin && (
-            <Route 
-              path="/admin" 
-              element={
-                <div onLoad={() => trackPageView('admin')}>
-                  <AdminDashboard />
-                </div>
-              }
-            />
+            <Route path="/admin" element={<AdminDashboard />} />
           )}
         </Routes>
       </main>
