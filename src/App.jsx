@@ -3,6 +3,7 @@ import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-r
 import { supabase, testConnection, getConnectionStatus } from './supabaseClient';
 import { useSupabaseQuery, useSupabaseMutation } from './hooks/useSupabaseQuery';
 import SEOHead from './components/SEOHead';
+import Chatbot from './components/Chatbot';
 
 // Centralized icon imports
 import {
@@ -158,7 +159,6 @@ function App() {
     },
     {
       onSuccess: () => {
-        clearTableCache('portfolio_images');
         refetchPortfolio();
       }
     }
@@ -176,7 +176,6 @@ function App() {
     },
     {
       onSuccess: () => {
-        clearTableCache('portfolio_images');
         refetchPortfolio();
       }
     }
@@ -195,7 +194,6 @@ function App() {
     },
     {
       onSuccess: () => {
-        clearTableCache('leads');
         refetchLeads();
       }
     }
