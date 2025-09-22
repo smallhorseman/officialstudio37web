@@ -59,6 +59,9 @@ const ErrorFallback = React.memo(({ error, resetError }) => (
 ));
 
 import Studio37Chatbot from './components/HubSpotIntegration';
+import { useJourneyTracking, useAbTest, useRealtimeNotifications } from './hooks/useProFeatures';
+import ProAnalyticsDashboard from './components/ProAnalyticsDashboard';
+import { trackAnalyticsEvent, cachedQuery } from './supabaseClient';
 
 function App() {
   const location = useLocation();
@@ -321,8 +324,26 @@ function App() {
     }
   }, [performanceMetrics]);
 
-  // Optimized portfolio unlock with caching
+  // Pro-level feature hooks
+  const { trackJourneyStep } = useJourneyTracking();
+  const { variant: headerVariant } = useAbTest('header_cta');
+  const { notifications, dismissNotification } = useRealtimeNotifications();
+
+  // Enhanced tracking with customer journey
+  useEffect(() => {
+    trackJourneyStep('awareness', 'website', {
+      type: 'page_load',
+      content: { page: location.pathname }
+    });
+  }, [location.pathname, trackJourneyStep]);
+
+  // Pro-level portfolio unlock with journey tracking
   const handlePortfolioUnlock = useCallback(async (formData) => {
+    trackJourneyStep('consideration', 'portfolio', {
+      type: 'gate_form_submit',
+      content: { service: formData.service }
+    });
+
     if (getConnectionStatus() !== 'connected') {
       setPortfolioUnlocked(true);
       trackEvent('portfolio_unlocked', {
@@ -361,12 +382,17 @@ function App() {
         lead_id: data[0].id
       });
       
+      trackJourneyStep('decision', 'portfolio', {
+        type: 'portfolio_unlocked',
+        content: { service: formData.service }
+      });
+      
       return true;
     } catch (err) {
       console.error('Unexpected portfolio unlock error:', err);
       return false;
     }
-  }, [isAdmin, refetchLeads, trackEvent]);
+  }, [isAdmin, refetchLeads, trackEvent, trackJourneyStep]);
 
   // Computed loading state - rename to avoid conflict
   const isLoading = useMemo(() => 
@@ -1301,8 +1327,58 @@ function App() {
     return <AdminDashboardContent />;
   };
 
+  // Pro-level header with A/B testing
+  const ProHeader = () => (
+    <div className="section-padding-lg text-center">
+      <h1 className="text-5xl md:text-7xl font-vintage mb-6 animate-fadeInUp">
+        Vintage Heart, Modern Vision
+      </h1>
+      <p className="text-xl md:text-2xl text-[#F3E3C3]/80 mb-8 max-w-2xl mx-auto animate-fadeInUp">
+        Professional photography and content strategy for brands ready to conquer the world from Houston, TX.
+      </p>
+      <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp max-w-md mx-auto">
+        <Link 
+          to="/services" 
+          className={`px-8 py-4 rounded-md font-semibold transition-all hover:scale-105 ${
+            headerVariant === 'variant_a' 
+              ? 'bg-gradient-to-r from-[#F3E3C3] to-[#E6D5B8] text-[#1a1a1a]'
+              : 'bg-[#F3E3C3] text-[#1a1a1a] hover:bg-[#E6D5B8]'
+          }`}
+          onClick={() => trackJourneyStep('consideration', 'header_cta', { type: 'services_click' })}
+        >
+          {headerVariant === 'variant_a' ? 'Start Your Journey' : 'Our Services'}
+        </Link>
+        <Link 
+          to="/portfolio" 
+          className="border-2 border-[#F3E3C3] text-[#F3E3C3] px-8 py-4 rounded-md font-semibold hover:bg-[#F3E3C3] hover:text-[#1a1a1a] transition-all"
+          onClick={() => trackJourneyStep('consideration', 'header_cta', { type: 'portfolio_click' })}
+        >
+          View Portfolio
+        </Link>
+      </div>
+    </div>
+  );
+
   return (
     <div className="App bg-[#181818] text-[#F3E3C3] min-h-screen">
+      {/* Real-time notifications */}
+      {notifications.map(notification => (
+        <div 
+          key={notification.id}
+          className="fixed top-20 right-4 z-50 bg-green-500 text-white p-4 rounded-lg shadow-lg animate-slideInRight"
+        >
+          <div className="flex items-center justify-between">
+            <p className="font-semibold">{notification.message}</p>
+            <button 
+              onClick={() => dismissNotification(notification.id)}
+              className="ml-4 text-white hover:text-gray-200"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      ))}
+
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-[#181818]/95 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-6">
@@ -1366,7 +1442,12 @@ function App() {
       {/* Main content */}
       <main className="flex-1">
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={
+            <div className="pt-20">
+              <SEOHead />
+              <ProHeader />
+            </div>
+          } />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/admin-login" element={!isAdmin ? <AdminLogin /> : <Navigate to="/admin" />} />

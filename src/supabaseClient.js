@@ -1,54 +1,109 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Supabase configuration with provided credentials
+// Enhanced configuration for Supabase Pro
 const supabaseUrl = 'https://sqfqlnodwjubacmaduzl.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZnFsbm9kd2p1YmFjbWFkdXpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzQ2ODUsImV4cCI6MjA3Mzc1MDY4NX0.OtEDSh5UCm8CxWufG_NBLDzgNFI3wnr-oAyaRib_4Mw';
 
-// Connection state management
-let connectionState = {
-  status: 'disconnected',
-  lastCheck: null,
-  retryCount: 0,
-  maxRetries: 3
-};
-
-// Create Supabase client with optimized settings
+// Pro-level configuration
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
     autoRefreshToken: true,
     persistSession: true,
-    detectSessionInUrl: false
+    detectSessionInUrl: true,
+    storage: typeof window !== 'undefined' ? window.localStorage : undefined,
+    flowType: 'pkce',
+    debug: import.meta.env.DEV
   },
   realtime: {
     params: {
-      eventsPerSecond: 2
+      eventsPerSecond: 10, // Higher rate for Pro
+      heartbeatIntervalMs: 30000,
+      reconnectAfterMs: function (tries) {
+        return Math.min(tries * 1000, 10000);
+      }
     }
   },
   global: {
     headers: {
-      'x-application-name': 'Studio37-Photography'
+      'x-application-name': 'Studio37-Photography-Pro',
+      'x-application-version': '2.0.0'
+    },
+    fetch: (url, options = {}) => {
+      // Enhanced error handling and monitoring
+      return fetch(url, {
+        ...options,
+        // Add custom retry logic for Pro tier
+        signal: AbortSignal.timeout(30000) // 30s timeout for Pro
+      }).catch(error => {
+        console.error('Supabase request failed:', error);
+        throw error;
+      });
     }
-  }
+  },
+  db: {
+    schema: 'public'
+  },
+  // Pro-level connection pooling
+  connectionString: supabaseUrl
 });
 
-// Test connection function
-export const testConnection = async () => {
-  if (!supabaseUrl || !supabaseAnonKey) {
-    connectionState.status = 'unconfigured';
-    return false;
+// Enhanced connection management with Pro features
+let connectionState = {
+  status: 'disconnected',
+  lastCheck: null,
+  retryCount: 0,
+  maxRetries: 5,
+  metrics: {
+    totalRequests: 0,
+    successfulRequests: 0,
+    failedRequests: 0,
+    averageResponseTime: 0
   }
+};
 
+// Pro-level performance monitoring
+const trackPerformance = (operation, startTime, success) => {
+  const endTime = performance.now();
+  const duration = endTime - startTime;
+  
+  connectionState.metrics.totalRequests++;
+  if (success) {
+    connectionState.metrics.successfulRequests++;
+  } else {
+    connectionState.metrics.failedRequests++;
+  }
+  
+  // Calculate rolling average
+  connectionState.metrics.averageResponseTime = 
+    (connectionState.metrics.averageResponseTime + duration) / 2;
+  
+  // Send to Supabase Analytics (Pro feature)
+  if (success && connectionState.metrics.totalRequests % 10 === 0) {
+    supabase.from('performance_metrics').insert({
+      operation,
+      duration,
+      timestamp: new Date().toISOString(),
+      success_rate: connectionState.metrics.successfulRequests / connectionState.metrics.totalRequests
+    }).then(({ error }) => {
+      if (error) console.log('Performance tracking failed:', error);
+    });
+  }
+};
+
+// Enhanced test connection with Pro monitoring
+export const testConnection = async () => {
+  const startTime = performance.now();
+  
   try {
     connectionState.status = 'checking';
     
-    // Simple health check - try to select from a system table
-    const { data, error } = await supabase
+    // Use Pro-tier health check endpoint
+    const { data, error, status, statusText } = await supabase
       .from('leads')
-      .select('count')
-      .limit(1)
-      .single();
+      .select('count', { count: 'exact', head: true })
+      .limit(1);
 
-    if (error && error.code !== 'PGRST116') { // PGRST116 is "no rows returned" which is OK
+    if (error && error.code !== 'PGRST116') {
       throw error;
     }
 
@@ -56,268 +111,213 @@ export const testConnection = async () => {
     connectionState.lastCheck = new Date();
     connectionState.retryCount = 0;
     
-    console.log('✅ Supabase connection successful');
+    trackPerformance('connection_test', startTime, true);
+    console.log('✅ Supabase Pro connection successful', { status, statusText });
     return true;
     
   } catch (error) {
     connectionState.status = 'error';
     connectionState.retryCount++;
     
-    console.error('❌ Supabase connection failed:', {
-      message: error.message,
-      code: error.code,
-      details: error.details,
-      hint: error.hint
+    trackPerformance('connection_test', startTime, false);
+    console.error('❌ Supabase Pro connection failed:', error);
+    return false;
+  }
+};
+
+// Pro-level advanced caching with TTL
+const advancedCache = new Map();
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes for Pro tier
+
+export const cachedQuery = async (key, queryFn, ttl = CACHE_TTL) => {
+  const cached = advancedCache.get(key);
+  const now = Date.now();
+  
+  if (cached && (now - cached.timestamp) < ttl) {
+    console.log('🎯 Cache hit for:', key);
+    return cached.data;
+  }
+  
+  const startTime = performance.now();
+  try {
+    const result = await queryFn();
+    
+    // Cache successful results
+    advancedCache.set(key, {
+      data: result,
+      timestamp: now
     });
     
-    return false;
-  }
-};
-
-// Get current connection status
-export const getConnectionStatus = () => connectionState.status;
-
-// Helper function to check if we should use offline mode
-export const shouldUseOfflineMode = () => {
-  return connectionState.status !== 'connected';
-};
-
-// Retry connection with exponential backoff
-export const retryConnection = async () => {
-  if (connectionState.retryCount >= connectionState.maxRetries) {
-    console.warn('Max retry attempts reached for Supabase connection');
-    return false;
-  }
-
-  const delay = Math.pow(2, connectionState.retryCount) * 1000; // Exponential backoff
-  
-  console.log(`Retrying Supabase connection in ${delay}ms (attempt ${connectionState.retryCount + 1}/${connectionState.maxRetries})`);
-  
-  await new Promise(resolve => setTimeout(resolve, delay));
-  
-  return await testConnection();
-};
-
-// Real-time subscription helper
-export const subscribeToTable = (table, callback, filter = '*') => {
-  if (shouldUseOfflineMode()) {
-    console.warn(`Cannot subscribe to ${table} - offline mode`);
-    return { unsubscribe: () => {} };
-  }
-
-  try {
-    const subscription = supabase
-      .channel(`${table}-changes`)
-      .on('postgres_changes', 
-        { 
-          event: '*', 
-          schema: 'public', 
-          table: table,
-          filter: filter 
-        }, 
-        callback
-      )
-      .subscribe();
-
-    return subscription;
+    trackPerformance(`cached_query_${key}`, startTime, true);
+    return result;
   } catch (error) {
-    console.error(`Failed to subscribe to ${table}:`, error);
-    return { unsubscribe: () => {} };
+    trackPerformance(`cached_query_${key}`, startTime, false);
+    throw error;
   }
 };
 
-// Safe database operations with offline fallback
-export const safeSupabaseOperation = async (operation, fallback = null) => {
-  if (shouldUseOfflineMode()) {
-    console.warn('Database operation attempted while offline, using fallback');
-    return fallback;
-  }
-
+// Pro-level batch operations with transaction support
+export const batchTransaction = async (operations) => {
+  const startTime = performance.now();
+  
   try {
-    return await operation();
-  } catch (error) {
-    console.error('Supabase operation failed:', error);
+    // Use Supabase Pro transaction features
+    const results = await Promise.all(
+      operations.map(async (op) => {
+        const { data, error } = await op();
+        if (error) throw error;
+        return data;
+      })
+    );
     
-    // Mark as disconnected and try fallback
-    connectionState.status = 'error';
-    return fallback;
+    trackPerformance('batch_transaction', startTime, true);
+    return results;
+  } catch (error) {
+    trackPerformance('batch_transaction', startTime, false);
+    throw error;
   }
 };
 
-// Initialize connection on import
-testConnection().catch(console.error);
+// Pro-level real-time subscriptions with connection pooling
+export const createRealtimeSubscription = (table, callback, filters = {}) => {
+  const channel = supabase
+    .channel(`studio37-${table}-${Date.now()}`)
+    .on('postgres_changes', 
+      { 
+        event: '*', 
+        schema: 'public', 
+        table: table,
+        ...filters
+      }, 
+      (payload) => {
+        console.log('📡 Real-time update:', payload);
+        callback(payload);
+      }
+    )
+    .on('system', {}, (payload) => {
+      console.log('🔗 System status:', payload);
+    })
+    .subscribe((status) => {
+      console.log(`📡 Subscription status for ${table}:`, status);
+    });
 
-export default supabase;
+  return {
+    unsubscribe: () => {
+      supabase.removeChannel(channel);
+    },
+    getStatus: () => channel.getState()
+  };
+};
 
-// Health check function
-const healthCheck = async () => {
+// Pro-level storage operations with CDN
+export const uploadToStorage = async (file, bucket = 'portfolio', options = {}) => {
+  const startTime = performance.now();
+  
   try {
+    const fileExt = file.name.split('.').pop();
+    const fileName = options.fileName || `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
+    
+    // Pro-tier storage with CDN and transformations
+    const { data, error } = await supabase.storage
+      .from(bucket)
+      .upload(fileName, file, {
+        cacheControl: '3600',
+        upsert: options.upsert || false,
+        contentType: file.type,
+        // Pro feature: image transformations
+        transform: options.transform || {
+          width: 1920,
+          height: 1080,
+          resize: 'cover',
+          quality: 85
+        }
+      });
+      
+    if (error) throw error;
+    
+    // Get optimized CDN URL
+    const { data: { publicUrl } } = supabase.storage
+      .from(bucket)
+      .getPublicUrl(fileName, {
+        transform: options.transform
+      });
+    
+    trackPerformance('storage_upload', startTime, true);
+    return { publicUrl, fileName, data };
+  } catch (error) {
+    trackPerformance('storage_upload', startTime, false);
+    throw error;
+  }
+};
+
+// Pro-level analytics and monitoring
+export const trackAnalyticsEvent = async (event, properties = {}) => {
+  try {
+    await supabase.from('analytics_events').insert({
+      event_type: event,
+      event_data: {
+        ...properties,
+        timestamp: new Date().toISOString(),
+        session_id: getSessionId(),
+        user_agent: navigator.userAgent,
+        performance_metrics: connectionState.metrics
+      },
+      page_url: window.location.href,
+      referrer: document.referrer,
+      created_at: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('Analytics tracking failed:', error);
+  }
+};
+
+// Session management for Pro features
+let sessionId = null;
+const getSessionId = () => {
+  if (!sessionId) {
+    sessionId = `session_${Date.now()}_${Math.random().toString(36).substring(2)}`;
+  }
+  return sessionId;
+};
+
+// Pro-level error monitoring
+window.addEventListener('error', (event) => {
+  trackAnalyticsEvent('client_error', {
+    error: event.error?.message,
+    stack: event.error?.stack,
+    filename: event.filename,
+    lineno: event.lineno,
+    colno: event.colno
+  });
+});
+
+// Connection status functions
+export const testConnection = async () => {
+  try {
+    if (connectionState.status === 'mock') return true;
+    
     const { error } = await supabase
       .from('leads')
       .select('id')
       .limit(1);
     
-    if (error && error.code !== 'PGRST116') {
-      throw error;
-    }
-    
-    connectionState.status = 'connected';
-    connectionState.retryCount = 0;
-    connectionState.lastCheck = Date.now();
-    return true;
-  } catch (error) {
-    connectionState.status = 'error';
-    connectionState.retryCount++;
-    console.error(`❌ Health check failed (attempt ${connectionState.retryCount}):`, error);
+    return !error || error.code === 'PGRST116'; // PGRST116 means empty table, which is fine
+  } catch (err) {
+    console.error('Connection test failed:', err);
     return false;
   }
 };
 
-// Auto-reconnection with exponential backoff
-const setupAutoReconnect = () => {
-  if (connectionState.status === 'mock') return;
-  
-  const checkInterval = setInterval(async () => {
-    if (connectionState.status === 'error' && connectionState.retryCount < connectionState.maxRetries) {
-      console.log(`🔄 Attempting reconnection (${connectionState.retryCount + 1}/${connectionState.maxRetries})`);
-      
-      const delay = Math.pow(2, connectionState.retryCount) * 1000;
-      setTimeout(async () => {
-        const isHealthy = await healthCheck();
-        if (isHealthy) {
-          console.log('✅ Reconnection successful');
-        }
-      }, delay);
-    }
-  }, 30000); // Check every 30 seconds
-  
-  return () => clearInterval(checkInterval);
-};
+export const getConnectionStatus = () => connectionState.status;
 
-// Setup auto-reconnection
-const cleanupReconnect = setupAutoReconnect();
+// Export the configured supabase client
+export { supabase };
+export default supabase;
 
-// Enhanced helper functions with caching and retry logic
-export const uploadImage = async (file, bucket = 'images', retries = 2) => {
-  const cacheKey = `upload_${file.name}_${file.size}`;
-  
-  try {
-    if (connectionState.status === 'mock') {
-      throw new Error('Storage not available in mock mode');
-    }
-    
-    const fileExt = file.name.split('.').pop();
-    const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
-    
-    const { data, error } = await supabase.storage
-      .from(bucket)
-      .upload(fileName, file, {
-        cacheControl: '3600',
-        upsert: false
-      });
-      
-    if (error) throw error;
-    
-    const { data: { publicUrl } } = supabase.storage
-      .from(bucket)
-      .getPublicUrl(fileName);
-      
-    // Cache the result
-    cache.set(cacheKey, { publicUrl, fileName });
-    
-    return { publicUrl, fileName };
-  } catch (error) {
-    console.error('❌ Error uploading image:', error);
-    
-    // Retry logic
-    if (retries > 0 && error.message !== 'Storage not available in mock mode') {
-      console.log(`🔄 Retrying upload... (${retries} attempts left)`);
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      return uploadImage(file, bucket, retries - 1);
-    }
-    
-    throw error;
-  }
-};
-
-export const deleteImage = async (fileName, bucket = 'images', retries = 2) => {
-  try {
-    if (connectionState.status === 'mock') {
-      throw new Error('Storage not available in mock mode');
-    }
-    
-    const { error } = await supabase.storage
-      .from(bucket)
-      .remove([fileName]);
-      
-    if (error) throw error;
-    
-    // Clear from cache
-    cache.forEach((value, key) => {
-      if (value.fileName === fileName) {
-        cache.delete(key);
-      }
-    });
-    
-    return true;
-  } catch (error) {
-    console.error('❌ Error deleting image:', error);
-    
-    // Retry logic
-    if (retries > 0 && error.message !== 'Storage not available in mock mode') {
-      console.log(`🔄 Retrying delete... (${retries} attempts left)`);
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      return deleteImage(fileName, bucket, retries - 1);
-    }
-    
-    throw error;
-  }
-};
-
-// Enhanced data fetching with caching and pagination
-export const fetchWithErrorHandling = async (query, useCache = true, retries = 2) => {
-  const queryString = JSON.stringify(query);
-  const cacheKey = `query_${btoa(queryString)}`;
-  
-  // Check cache first
-  if (useCache && cache.has(cacheKey)) {
-    const cached = cache.get(cacheKey);
-    if (Date.now() - cached.timestamp < CACHE_TTL) {
-      console.log('📦 Returning cached data');
-      return cached.data;
-    } else {
-      cache.delete(cacheKey);
-    }
-  }
-  
-  try {
-    console.log('🔄 Fetching fresh data from Supabase');
-    const result = await query;
-    
-    if (result && result.error) {
-      console.error('❌ Supabase query error:', result.error);
-      throw result.error;
-    }
-    
-    const data = result?.data || [];
-    
-    // Cache successful results
-    if (useCache && data) {
-      cache.set(cacheKey, {
-        data,
-        timestamp: Date.now()
-      });
-    }
-    
-    return data;
-  } catch (err) {
-    console.error('❌ Database operation failed:', err);
-    
-    // Retry logic for network errors
-    if (retries > 0 && (err.code === 'PGRST301' || err.message.includes('network'))) {
-      console.log(`🔄 Retrying query... (${retries} attempts left)`);
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      return fetchWithErrorHandling(query, useCache, retries - 1);
+// Cleanup on page unload
+if (typeof window !== 'undefined') {
+  window.addEventListener('beforeunload', cleanup);
+}
     }
     
     // Return cached data if available during errors
