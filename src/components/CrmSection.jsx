@@ -113,7 +113,6 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
                   >
                     {lead.status === 'Completed' ? 'Reopen' : 'Complete'}
                   </button>
-                  <button
                     onClick={() => openLeadDetails(lead)}
                     className="px-3 py-1 bg-[#F3E3C3] text-[#1a1a1a] rounded-full text-xs font-semibold transition-transform hover:scale-105"
                   >
