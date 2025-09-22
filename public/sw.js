@@ -1,33 +1,33 @@
-// This file should be completely deleted to resolve NS_ERROR_CORRUPTED_CONTENT issues
-// Service worker is corrupting asset requests and should be removed
-const CACHE_NAME = 'studio37-v1.2.0';
-const STATIC_CACHE = 'studio37-static-v1';
-const DYNAMIC_CACHE = 'studio37-dynamic-v1';
+// TEMPORARY REMOVAL - Service worker causing asset loading failures
+// This file should be deleted to resolve NS_ERROR_CORRUPTED_CONTENT issues
 
-// Assets to cache immediately
-const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.webmanifest',
-  '/offline.html', // Create this fallback page
-];
-
-// Install event - cache static assets
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(STATIC_CACHE)
-      .then(cache => cache.addAll(STATIC_ASSETS))
-      .then(() => self.skipWaiting())
-  );
+// Immediately unregister any existing service worker
+self.addEventListener('install', () => {
+  self.skipWaiting();
 });
 
-// Activate event - clean old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
+    // Clear all caches
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
-          if (cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE) {
+          console.log('Clearing cache:', cacheName);
+          return caches.delete(cacheName);
+        })
+      );
+    }).then(() => {
+      // Unregister this service worker
+      return self.registration.unregister();
+    })
+  );
+});
+
+// Don't intercept any requests - let them pass through normally
+self.addEventListener('fetch', (event) => {
+  // Do nothing - let network handle all requests
+  return;
+});
             console.log('Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }

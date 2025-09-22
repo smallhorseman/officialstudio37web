@@ -141,7 +141,7 @@ const SEOHead = ({
         canonicalLink.href = url;
       }
 
-      // Remove HubSpot preconnect links since HubSpot is returning 503 errors
+      // Add preconnect links (remove HubSpot)
       if (!hasChanged('preconnects', 'added')) {
         const preconnectLinks = [
           'https://fonts.googleapis.com',
@@ -160,7 +160,7 @@ const SEOHead = ({
         });
       }
 
-      // Remove HubSpot tracking attributes since service is failing
+      // REMOVE HubSpot tracking - service is failing with 503 errors
     });
 
   }, [title, description, keywords, image, url]);

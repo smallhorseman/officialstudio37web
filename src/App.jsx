@@ -58,6 +58,8 @@ const ErrorFallback = React.memo(({ error, resetError }) => (
   </div>
 ));
 
+import Studio37Chatbot from './components/HubSpotIntegration';
+
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -1371,6 +1373,9 @@ function App() {
           <Route path="/admin" element={isAdmin ? <AdminDashboard /> : <Navigate to="/admin-login" />} />
         </Routes>
       </main>
+
+      {/* Add Studio37 Chatbot */}
+      <Studio37Chatbot />
 
       {/* Footer */}
       <footer className="bg-[#1a1a1a] py-12">
