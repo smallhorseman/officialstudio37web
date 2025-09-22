@@ -84,14 +84,6 @@ export default defineConfig({
   
   // CSS processing
   css: {
-    postcss: {
-      plugins: [
-        // Ensure autoprefixer runs
-        require('autoprefixer')({
-          overrideBrowserslist: ['> 1%', 'last 2 versions', 'not dead'],
-        }),
-      ],
-    },
     devSourcemap: true,
   },
   
@@ -118,6 +110,14 @@ export default defineConfig({
   },
 
   esbuild: {
+    // Keep function names for better debugging
+    keepNames: true,
+    // Handle JSX properly
+    jsx: 'automatic',
+    // Ensure proper CSS handling
+    legalComments: 'none',
+  }
+});
     // Keep function names for better debugging
     keepNames: true,
     // Handle JSX properly
