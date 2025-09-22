@@ -318,18 +318,6 @@ export default supabase;
 if (typeof window !== 'undefined') {
   window.addEventListener('beforeunload', cleanup);
 }
-    }
-    
-    // Return cached data if available during errors
-    if (cache.has(cacheKey)) {
-      console.log('📦 Returning stale cached data due to error');
-      return cache.get(cacheKey).data;
-    }
-    
-    // Graceful degradation
-    return [];
-  }
-};
 
 // Complete the batchInsert function
 export const batchInsert = async (table, records, batchSize = 100) => {
