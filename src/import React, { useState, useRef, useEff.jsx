@@ -55,22 +55,22 @@ const Studio37Chatbot = () => {
   const detectIntent = (message) => {
     const lowerMessage = message.toLowerCase();
     
-    if (lowerMessage.match(/(hello|hi|hey|greetings|good morning|good afternoon)/)) {
+    if (lowerMessage.match(/(hello|hi|hey|greetings)/)) {
       return 'greeting';
     }
-    if (lowerMessage.match(/(portrait|headshot|family photo|personal branding)/)) {
+    if (lowerMessage.match(/(portrait|headshot|family)/)) {
       return 'portrait';
     }
-    if (lowerMessage.match(/(wedding|bride|groom|marriage|engagement)/)) {
+    if (lowerMessage.match(/(wedding|bride|marriage)/)) {
       return 'wedding';
     }
-    if (lowerMessage.match(/(commercial|business|corporate|product photo|real estate)/)) {
+    if (lowerMessage.match(/(commercial|business|product)/)) {
       return 'commercial';
     }
-    if (lowerMessage.match(/(price|cost|how much|pricing|budget|rate)/)) {
+    if (lowerMessage.match(/(price|cost|pricing)/)) {
       return 'pricing';
     }
-    if (lowerMessage.match(/(book|schedule|appointment|reserve|hire)/)) {
+    if (lowerMessage.match(/(book|schedule)/)) {
       return 'booking';
     }
     
