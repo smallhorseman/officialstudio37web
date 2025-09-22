@@ -2,9 +2,6 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import React, { useState, useEffect, useMemo, useCallback, Suspense, lazy } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import PhotoshootPlanner from './PhotoshootPlanner';
-import ConversationalPlanner from './ConversationalPlanner';
-import VirtualAgentPlanner from './VirtualAgentPlanner';
 import SEOHead from './components/SEOHead';
 import { supabase } from './supabaseClient';
 import { Routes, Route, useParams, useNavigate, Link, useLocation } from 'react-router-dom';
@@ -123,6 +120,7 @@ export default function App() {
         .limit(10)
         .then(({ data, error }) => {
           if (error) {
+            console.error('Blog posts fetch error:', error);
             setBlogError('Failed to load blog posts.');
             setBlogPosts([]);
           } else if (!data || !Array.isArray(data)) {
@@ -131,6 +129,11 @@ export default function App() {
           } else {
             setBlogPosts(data);
           }
+          setBlogLoading(false);
+        })
+        .catch((err) => {
+          console.error('Unexpected error:', err);
+          setBlogError('An unexpected error occurred.');
           setBlogLoading(false);
         });
     }
@@ -219,15 +222,26 @@ export default function App() {
 
   // --- Portfolio Unlock Handler ---
   async function handlePortfolioUnlock(formData) {
-    // Save lead to Supabase
-    await supabase.from('leads').insert([{
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      service: formData.service,
-      status: 'New'
-    }]);
-    setPortfolioUnlocked(true);
+    try {
+      const { error } = await supabase.from('leads').insert([{
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        status: 'New'
+      }]);
+      
+      if (error) {
+        console.error('Portfolio unlock error:', error);
+        return false;
+      }
+      
+      setPortfolioUnlocked(true);
+      return true;
+    } catch (err) {
+      console.error('Unexpected portfolio unlock error:', err);
+      return false;
+    }
   }
 
   // --- Admin Login Handler ---
@@ -333,7 +347,7 @@ export default function App() {
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
                 <span className="font-display text-lg font-bold">Photoshoot Planner</span>
               </div>
-              <VirtualAgentPlanner />
+              {/* <VirtualAgentPlanner /> */}
             </div>
           </div>
         )}
@@ -518,7 +532,7 @@ const PortfolioGate = ({ onUnlock }) => {
           <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
             <div className="bg-[#232323] rounded-lg shadow-lg max-w-md w-full relative">
               <button onClick={() => setShowPlanner(false)} className="absolute top-2 right-2 text-white text-xl">&times;</button>
-              <ConversationalPlanner email={formData.email} onComplete={() => {}} />
+              {/* <ConversationalPlanner email={formData.email} onComplete={() => {}} /> */}
             </div>
           </div>
         )}
@@ -977,18 +991,30 @@ const AdminLoginPage = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (
-      username.trim().toLowerCase() === 'admin' &&
-      password.trim() === 'studio37admin'
-    ) {
-      onLogin();
-      navigate('/admin/dashboard');
-    } else {
-      setError('Invalid username or password.');
+    setLoading(true);
+    setError('');
+    
+    try {
+      // Use environment variables or secure authentication
+      const adminUsername = import.meta.env.VITE_ADMIN_USERNAME || 'admin';
+      const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'studio37admin';
+      
+      if (username.trim().toLowerCase() === adminUsername && password.trim() === adminPassword) {
+        onLogin();
+        navigate('/admin/dashboard');
+      } else {
+        setError('Invalid username or password.');
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      setError('An error occurred during login.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -999,9 +1025,13 @@ const AdminLoginPage = ({ onLogin }) => {
         <form onSubmit={handleLogin} className="space-y-6">
           <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
           <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required className="w-full bg-[#181818] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]" />
-          {error && <p className="text-red-400 text-sm">{error}</p>}
-          <button type="submit" className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#232323] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
-            Login <ArrowRight />
+          {error && <p className="text-red-400 text-sm" role="alert">{error}</p>}
+          <button 
+            type="submit" 
+            disabled={loading}
+            className="w-full group inline-flex items-center justify-center bg-[#F3E3C3] text-[#232323] font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {loading ? 'Logging in...' : 'Login'} <ArrowRight />
           </button>
         </form>
       </div>

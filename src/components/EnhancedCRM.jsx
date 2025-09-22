@@ -53,32 +53,55 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
     setLoading(false);
   };
 
+  // Add input validation and sanitization
+  const sanitizeInput = (input) => {
+    return input.replace(/<[^>]*>/g, '').trim();
+  };
+
   const addNote = async () => {
-    if (!newNote.note.trim() || !selectedLead) return;
+    const sanitizedNote = sanitizeInput(newNote.note);
+    if (!sanitizedNote || !selectedLead) return;
     
+    setLoading(true);
     try {
       const { error } = await supabase.from('lead_notes').insert([{
         lead_id: selectedLead.id,
-        note: newNote.note,
+        note: sanitizedNote,
         note_type: newNote.note_type,
         priority: newNote.priority,
         follow_up_date: newNote.follow_up_date || null,
         status: 'Active'
       }]);
       
-      if (!error) {
-        setNewNote({ note: '', follow_up_date: '', priority: 'normal', note_type: 'manual' });
-        await fetchLeadNotes(selectedLead.id);
+      if (error) {
+        console.error('Note creation error:', error);
+        throw error;
       }
+      
+      setNewNote({ note: '', follow_up_date: '', priority: 'normal', note_type: 'manual' });
+      await fetchLeadNotes(selectedLead.id);
     } catch (err) {
       console.error('Error adding note:', err);
+      // Add user-friendly error handling
+      alert('Failed to add note. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
+  // Add accessibility improvements
   const openLeadDetails = (lead) => {
     setSelectedLead(lead);
     setShowLeadDetails(true);
     fetchLeadNotes(lead.id);
+    
+    // Focus management for accessibility
+    setTimeout(() => {
+      const modal = document.querySelector('[role="dialog"]');
+      if (modal) {
+        modal.focus();
+      }
+    }, 100);
   };
 
   if (!leads || leads.length === 0) {
@@ -87,22 +110,22 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
 
   return (
     <div>
-      {/* Leads Table */}
-      <div className="overflow-x-auto rounded-lg border border-white/10">
+      {/* Add ARIA labels and improved accessibility */}
+      <div className="overflow-x-auto rounded-lg border border-white/10" role="table" aria-label="Customer leads">
         <table className="min-w-full divide-y divide-[#F3E3C3]/10">
           <thead className="bg-[#181818]">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">Name</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">Email</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">Phone</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">Service</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">Status</th>
-              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">Actions</th>
+            <tr role="row">
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">Name</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">Email</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">Phone</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">Service</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">Status</th>
+              <th scope="col" className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-[#F3E3C3]">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#F3E3C3]/10">
+          <tbody className="divide-y divide-[#F3E3C3]/10" role="rowgroup">
             {leads.map(lead => (
-              <tr key={lead.id} className="hover:bg-[#333] transition-colors">
+              <tr key={lead.id} className="hover:bg-[#333] transition-colors" role="row">
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm font-medium text-[#F3E3C3]">{lead.name}</div>
                 </td>
@@ -144,13 +167,21 @@ export function EnhancedCrmSection({ leads, updateLeadStatus }) {
 
       {/* Lead Details Modal */}
       {showLeadDetails && selectedLead && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+        <div 
+          className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+          role="dialog" 
+          aria-modal="true"
+          aria-labelledby="lead-details-title"
+        >
           <div className="bg-[#232323] rounded-lg shadow-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
             <div className="flex justify-between items-center p-6 border-b border-white/10">
-              <h3 className="text-lg font-display">Lead Details: {selectedLead.name}</h3>
+              <h3 id="lead-details-title" className="text-lg font-display">
+                Lead Details: {selectedLead.name}
+              </h3>
               <button 
                 onClick={() => setShowLeadDetails(false)} 
                 className="text-white text-xl hover:text-red-400 transition-colors"
+                aria-label="Close lead details"
               >
                 &times;
               </button>
