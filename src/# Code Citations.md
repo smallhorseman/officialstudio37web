@@ -1,20 +1,10 @@
 # Code Citations
 
-## License: Apache-2.0
-https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
-
-```
-= () => (
-    
-```
-
-
 ## License: MIT
 https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-= () => (
-    
+= ()
 ```
 
 
@@ -23,7 +13,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 
 ```
 = () => (
-    <svg xmlns
+    <svg xmlns="
 ```
 
 
@@ -32,7 +22,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 
 ```
 = () => (
-    <svg xmlns
+    <svg xmlns="
 ```
 
 
@@ -41,7 +31,7 @@ https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f42
 
 ```
 = () => (
-    <svg xmlns
+    <svg xmlns="
 ```
 
 
@@ -50,7 +40,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.
+    <svg xmlns="http://www.w3.org
 ```
 
 
@@ -59,7 +49,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.
+    <svg xmlns="http://www.w3.org
 ```
 
 
@@ -68,7 +58,7 @@ https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f42
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.
+    <svg xmlns="http://www.w3.org
 ```
 
 
@@ -77,7 +67,7 @@ https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1c
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.
+    <svg xmlns="http://www.w3.org
 ```
 
 
@@ -221,7 +211,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor
 ```
 
 
@@ -230,7 +220,7 @@ https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b12
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor
 ```
 
 
@@ -239,7 +229,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor
 ```
 
 
@@ -248,7 +238,7 @@ https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644a
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor
 ```
 
 
@@ -257,7 +247,7 @@ https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f42
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor
 ```
 
 
@@ -266,61 +256,7 @@ https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1c
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
-```
-
-
-## License: Apache-2.0
-https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-```
-
-
-## License: unknown
-https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-```
-
-
-## License: MIT
-https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-```
-
-
-## License: MIT
-https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-```
-
-
-## License: unknown
-https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-```
-
-
-## License: GPL-3.0
-https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor
 ```
 
 
@@ -498,7 +434,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path
+      <path d="M22 16
 ```
 
 
@@ -508,7 +444,7 @@ https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b12
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path
+      <path d="M22 16
 ```
 
 
@@ -518,7 +454,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path
+      <path d="M22 16
 ```
 
 
@@ -528,7 +464,7 @@ https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644a
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path
+      <path d="M22 16
 ```
 
 
@@ -538,7 +474,7 @@ https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f42
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path
+      <path d="M22 16
 ```
 
 
@@ -548,7 +484,7 @@ https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1c
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path
+      <path d="M22 16
 ```
 
 
@@ -558,7 +494,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92
+      <path d="M22 16.92v3a2 2
 ```
 
 
@@ -568,7 +504,7 @@ https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b12
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92
+      <path d="M22 16.92v3a2 2
 ```
 
 
@@ -578,7 +514,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92
+      <path d="M22 16.92v3a2 2
 ```
 
 
@@ -588,7 +524,7 @@ https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644a
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92
+      <path d="M22 16.92v3a2 2
 ```
 
 
@@ -598,7 +534,7 @@ https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f42
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92
+      <path d="M22 16.92v3a2 2
 ```
 
 
@@ -608,7 +544,7 @@ https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1c
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92
+      <path d="M22 16.92v3a2 2
 ```
 
 
@@ -618,7 +554,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0
+      <path d="M22 16.92v3a2 2 0 0 1-2
 ```
 
 
@@ -628,7 +564,7 @@ https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b12
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0
+      <path d="M22 16.92v3a2 2 0 0 1-2
 ```
 
 
@@ -638,7 +574,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0
+      <path d="M22 16.92v3a2 2 0 0 1-2
 ```
 
 
@@ -648,7 +584,7 @@ https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644a
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0
+      <path d="M22 16.92v3a2 2 0 0 1-2
 ```
 
 
@@ -658,7 +594,7 @@ https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f42
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0
+      <path d="M22 16.92v3a2 2 0 0 1-2
 ```
 
 
@@ -668,67 +604,7 @@ https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1c
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0
-```
-
-
-## License: Apache-2.0
-https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18
-```
-
-
-## License: unknown
-https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18
-```
-
-
-## License: MIT
-https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18
-```
-
-
-## License: MIT
-https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18
-```
-
-
-## License: unknown
-https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18
-```
-
-
-## License: GPL-3.0
-https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18
+      <path d="M22 16.92v3a2 2 0 0 1-2
 ```
 
 
@@ -918,7 +794,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5
 ```
 
 
@@ -928,7 +804,7 @@ https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b12
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5
 ```
 
 
@@ -938,7 +814,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5
 ```
 
 
@@ -948,7 +824,7 @@ https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644a
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5
 ```
 
 
@@ -958,7 +834,7 @@ https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f42
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5
 ```
 
 
@@ -968,7 +844,7 @@ https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1c
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5
 ```
 
 
@@ -978,7 +854,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6
 ```
 
 
@@ -988,7 +864,7 @@ https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b12
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6
 ```
 
 
@@ -998,7 +874,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6
 ```
 
 
@@ -1008,7 +884,7 @@ https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644a
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6
 ```
 
 
@@ -1018,7 +894,7 @@ https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f42
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6
 ```
 
 
@@ -1028,7 +904,7 @@ https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1c
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6
 ```
 
 
@@ -1126,15 +1002,6 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 
 
-## License: MIT
-https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
-
-```
-= () => (
-    <svg xmlns="http://
-```
-
-
 ## License: unknown
 https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
@@ -1149,39 +1016,12 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2
-```
-
-
-## License: MIT
-https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2
-```
-
-
-## License: MIT
-https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2
+    <svg xmlns="http://www.w3.org/2000/svg" width="20"
 ```
 
 
 ## License: unknown
-https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2
-```
-
-
-## License: Apache-2.0
-https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
 = () => (
@@ -1221,60 +1061,6 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0
-```
-
-
-## License: unknown
-https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0
-```
-
-
-## License: MIT
-https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0
-```
-
-
-## License: MIT
-https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0
-```
-
-
-## License: unknown
-https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0
-```
-
-
-## License: Apache-2.0
-https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
-```
-
-
-## License: AGPL-3.0
-https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
-
-```
-= () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
 ```
 
@@ -1315,15 +1101,6 @@ https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95
 ```
 
 
-## License: unknown
-https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-```
-
-
 ## License: Apache-2.0
 https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
@@ -1375,15 +1152,6 @@ https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-```
-
-
-## License: unknown
-https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinec
 ```
 
 
@@ -1446,71 +1214,8 @@ https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b63672935
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
-```
-
-
-## License: Apache-2.0
-https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
-```
-
-
-## License: AGPL-3.0
-https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
-```
-
-
-## License: unknown
-https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
-```
-
-
-## License: MIT
-https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
-```
-
-
-## License: MIT
-https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
-```
-
-
-## License: unknown
-https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
-```
-
-
-## License: unknown
-https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
-
-```
-= () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path 
+      <path
 ```
 
 
@@ -1520,7 +1225,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path 
+      <path
 ```
 
 
@@ -1530,7 +1235,7 @@ https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path 
+      <path
 ```
 
 
@@ -1540,7 +1245,7 @@ https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path 
+      <path
 ```
 
 
@@ -1550,7 +1255,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path 
+      <path
 ```
 
 
@@ -1560,7 +1265,7 @@ https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path 
+      <path
 ```
 
 
@@ -1570,7 +1275,7 @@ https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path 
+      <path
 ```
 
 
@@ -1580,7 +1285,7 @@ https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b63672935
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c
+      <path d="M4 4h
 ```
 
 
@@ -1590,7 +1295,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c
+      <path d="M4 4h
 ```
 
 
@@ -1600,7 +1305,7 @@ https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c
+      <path d="M4 4h
 ```
 
 
@@ -1610,7 +1315,7 @@ https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c
+      <path d="M4 4h
 ```
 
 
@@ -1620,7 +1325,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c
+      <path d="M4 4h
 ```
 
 
@@ -1630,7 +1335,7 @@ https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c
+      <path d="M4 4h
 ```
 
 
@@ -1640,7 +1345,7 @@ https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c
+      <path d="M4 4h
 ```
 
 
@@ -1650,7 +1355,7 @@ https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b63672935
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .
+      <path d="M4 4h16c1.1 0 
 ```
 
 
@@ -1660,7 +1365,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .
+      <path d="M4 4h16c1.1 0 
 ```
 
 
@@ -1670,7 +1375,7 @@ https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .
+      <path d="M4 4h16c1.1 0 
 ```
 
 
@@ -1680,7 +1385,7 @@ https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .
+      <path d="M4 4h16c1.1 0 
 ```
 
 
@@ -1690,7 +1395,7 @@ https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .
+      <path d="M4 4h16c1.1 0 
 ```
 
 
@@ -1700,7 +1405,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .
+      <path d="M4 4h16c1.1 0 
 ```
 
 
@@ -1710,7 +1415,7 @@ https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .
+      <path d="M4 4h16c1.1 0 
 ```
 
 
@@ -1720,7 +1425,7 @@ https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .
+      <path d="M4 4h16c1.1 0 
 ```
 
 
@@ -1730,7 +1435,7 @@ https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b63672935
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
+      <path d="M4 4h16c1.1 0 2 .9 2 2
 ```
 
 
@@ -1740,7 +1445,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
+      <path d="M4 4h16c1.1 0 2 .9 2 2
 ```
 
 
@@ -1750,7 +1455,7 @@ https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
+      <path d="M4 4h16c1.1 0 2 .9 2 2
 ```
 
 
@@ -1760,7 +1465,7 @@ https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
+      <path d="M4 4h16c1.1 0 2 .9 2 2
 ```
 
 
@@ -1770,7 +1475,7 @@ https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
+      <path d="M4 4h16c1.1 0 2 .9 2 2
 ```
 
 
@@ -1780,7 +1485,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
+      <path d="M4 4h16c1.1 0 2 .9 2 2
 ```
 
 
@@ -1790,7 +1495,7 @@ https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
+      <path d="M4 4h16c1.1 0 2 .9 2 2
 ```
 
 
@@ -1800,7 +1505,7 @@ https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
+      <path d="M4 4h16c1.1 0 2 .9 2 2
 ```
 
 
@@ -1810,7 +1515,7 @@ https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b63672935
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1
 ```
 
 
@@ -1820,7 +1525,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1
 ```
 
 
@@ -1830,7 +1535,7 @@ https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1
 ```
 
 
@@ -1840,7 +1545,7 @@ https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1
 ```
 
 
@@ -1850,7 +1555,7 @@ https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1
 ```
 
 
@@ -1860,7 +1565,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1
 ```
 
 
@@ -1870,7 +1575,7 @@ https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1
 ```
 
 
@@ -1880,7 +1585,7 @@ https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1
 ```
 
 
@@ -1890,7 +1595,7 @@ https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b63672935
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2
 ```
 
 
@@ -1900,7 +1605,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2
 ```
 
 
@@ -1910,7 +1615,7 @@ https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2
 ```
 
 
@@ -1920,7 +1625,7 @@ https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2
 ```
 
 
@@ -1930,7 +1635,7 @@ https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2
 ```
 
 
@@ -1940,7 +1645,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2
 ```
 
 
@@ -1950,7 +1655,7 @@ https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2
 ```
 
 
@@ -1960,7 +1665,7 @@ https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2
 ```
 
 
@@ -1970,7 +1675,7 @@ https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b63672935
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 
 ```
 
 
@@ -1980,7 +1685,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 
 ```
 
 
@@ -1990,7 +1695,7 @@ https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 
 ```
 
 
@@ -2000,7 +1705,7 @@ https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 
 ```
 
 
@@ -2010,7 +1715,7 @@ https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 
 ```
 
 
@@ -2020,7 +1725,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 
 ```
 
 
@@ -2030,7 +1735,7 @@ https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 
 ```
 
 
@@ -2040,7 +1745,7 @@ https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 
 ```
 
 
@@ -2050,7 +1755,7 @@ https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b63672935
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-
 ```
 
 
@@ -2060,7 +1765,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-
 ```
 
 
@@ -2070,7 +1775,7 @@ https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-
 ```
 
 
@@ -2080,7 +1785,7 @@ https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-
 ```
 
 
@@ -2090,7 +1795,7 @@ https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-
 ```
 
 
@@ -2100,7 +1805,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-
 ```
 
 
@@ -2110,7 +1815,7 @@ https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-
 ```
 
 
@@ -2120,7 +1825,7 @@ https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-
 ```
 
 
@@ -2130,7 +1835,7 @@ https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b63672935
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.
 ```
 
 
@@ -2140,7 +1845,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.
 ```
 
 
@@ -2150,7 +1855,7 @@ https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.
 ```
 
 
@@ -2160,7 +1865,7 @@ https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.
 ```
 
 
@@ -2170,7 +1875,7 @@ https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.
 ```
 
 
@@ -2180,7 +1885,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.
 ```
 
 
@@ -2190,7 +1895,7 @@ https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.
 ```
 
 
@@ -2200,7 +1905,7 @@ https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.
 ```
 
 
@@ -2210,7 +1915,7 @@ https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b63672935
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-
 ```
 
 
@@ -2220,7 +1925,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-
 ```
 
 
@@ -2230,7 +1935,7 @@ https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-
 ```
 
 
@@ -2240,7 +1945,7 @@ https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-
 ```
 
 
@@ -2250,7 +1955,7 @@ https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-
 ```
 
 
@@ -2260,7 +1965,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-
 ```
 
 
@@ -2270,7 +1975,7 @@ https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-
 ```
 
 
@@ -2280,7 +1985,7 @@ https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-
 ```
 
 
@@ -2291,7 +1996,7 @@ https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b63672935
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <poly
+      
 ```
 
 
@@ -2302,7 +2007,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <poly
+      
 ```
 
 
@@ -2313,7 +2018,7 @@ https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <poly
+      
 ```
 
 
@@ -2324,7 +2029,7 @@ https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <poly
+      
 ```
 
 
@@ -2335,7 +2040,7 @@ https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <poly
+      
 ```
 
 
@@ -2346,7 +2051,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <poly
+      
 ```
 
 
@@ -2357,7 +2062,7 @@ https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <poly
+      
 ```
 
 
@@ -2368,7 +2073,7 @@ https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <poly
+      
 ```
 
 
@@ -2379,7 +2084,7 @@ https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b63672935
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12
+      <polyline points="22,6 
 ```
 
 
@@ -2390,7 +2095,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12
+      <polyline points="22,6 
 ```
 
 
@@ -2401,7 +2106,7 @@ https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12
+      <polyline points="22,6 
 ```
 
 
@@ -2412,7 +2117,7 @@ https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12
+      <polyline points="22,6 
 ```
 
 
@@ -2423,7 +2128,7 @@ https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12
+      <polyline points="22,6 
 ```
 
 
@@ -2434,7 +2139,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12
+      <polyline points="22,6 
 ```
 
 
@@ -2445,7 +2150,7 @@ https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12
+      <polyline points="22,6 
 ```
 
 
@@ -2456,7 +2161,7 @@ https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12
+      <polyline points="22,6 
 ```
 
 
@@ -2467,7 +2172,7 @@ https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b63672935
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></poly
+      <polyline points="22,6 12,13 2,6">
 ```
 
 
@@ -2478,7 +2183,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></poly
+      <polyline points="22,6 12,13 2,6">
 ```
 
 
@@ -2489,7 +2194,7 @@ https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></poly
+      <polyline points="22,6 12,13 2,6">
 ```
 
 
@@ -2500,7 +2205,7 @@ https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></poly
+      <polyline points="22,6 12,13 2,6">
 ```
 
 
@@ -2511,7 +2216,7 @@ https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></poly
+      <polyline points="22,6 12,13 2,6">
 ```
 
 
@@ -2522,7 +2227,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></poly
+      <polyline points="22,6 12,13 2,6">
 ```
 
 
@@ -2533,7 +2238,7 @@ https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></poly
+      <polyline points="22,6 12,13 2,6">
 ```
 
 
@@ -2544,103 +2249,7 @@ https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></poly
-```
-
-
-## License: unknown
-https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></polyline>
-    </svg>
-```
-
-
-## License: Apache-2.0
-https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></polyline>
-    </svg>
-```
-
-
-## License: MIT
-https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6746bcf/src/assets/svg.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></polyline>
-    </svg>
-```
-
-
-## License: AGPL-3.0
-https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></polyline>
-    </svg>
-```
-
-
-## License: unknown
-https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></polyline>
-    </svg>
-```
-
-
-## License: MIT
-https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></polyline>
-    </svg>
-```
-
-
-## License: MIT
-https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></polyline>
-    </svg>
-```
-
-
-## License: unknown
-https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></polyline>
-    </svg>
+      <polyline points="22,6 12,13 2,6">
 ```
 
 
@@ -2771,7 +2380,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 
 ```
 = () => (
-    <svg xmlns="http://www.w
+    <svg xmlns="http://www.
 ```
 
 
@@ -2780,7 +2389,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 
 ```
 = () => (
-    <svg xmlns="http://www.w
+    <svg xmlns="http://www.
 ```
 
 
@@ -2789,7 +2398,7 @@ https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6
 
 ```
 = () => (
-    <svg xmlns="http://www.w
+    <svg xmlns="http://www.
 ```
 
 
@@ -2798,7 +2407,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg
+    <svg xmlns="http://www.w3.org/2000/
 ```
 
 
@@ -2807,7 +2416,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg
+    <svg xmlns="http://www.w3.org/2000/
 ```
 
 
@@ -2816,7 +2425,7 @@ https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg
+    <svg xmlns="http://www.w3.org/2000/
 ```
 
 
@@ -2825,7 +2434,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="
 ```
 
 
@@ -2834,7 +2443,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="
 ```
 
 
@@ -2843,7 +2452,7 @@ https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a84
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="
 ```
 
 
@@ -2852,7 +2461,7 @@ https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="
 ```
 
 
@@ -2861,7 +2470,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0
 ```
 
 
@@ -2870,7 +2479,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0
 ```
 
 
@@ -2879,7 +2488,7 @@ https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a84
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0
 ```
 
 
@@ -2888,7 +2497,7 @@ https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0
 ```
 
 
@@ -2897,7 +2506,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none
 ```
 
 
@@ -2906,7 +2515,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none
 ```
 
 
@@ -2915,7 +2524,7 @@ https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a22
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none
 ```
 
 
@@ -2924,7 +2533,7 @@ https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a84
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none
 ```
 
 
@@ -2933,7 +2542,52 @@ https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth
+```
+
+
+## License: MIT
+https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a2252dbf0/src/index.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth
+```
+
+
+## License: MIT
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth
+```
+
+
+## License: unknown
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth
 ```
 
 
@@ -2942,7 +2596,7 @@ https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="
 ```
 
 
@@ -2951,7 +2605,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="
 ```
 
 
@@ -2960,7 +2614,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="
 ```
 
 
@@ -2969,7 +2623,7 @@ https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a22
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="
 ```
 
 
@@ -2978,7 +2632,7 @@ https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a84
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="
 ```
 
 
@@ -2987,7 +2641,7 @@ https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="
 ```
 
 
@@ -2996,7 +2650,7 @@ https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="roun
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="roun
 ```
 
 
@@ -3005,7 +2659,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="roun
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="roun
 ```
 
 
@@ -3014,7 +2668,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="roun
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="roun
 ```
 
 
@@ -3023,7 +2677,7 @@ https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a22
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="roun
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="roun
 ```
 
 
@@ -3032,7 +2686,7 @@ https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a84
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="roun
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="roun
 ```
 
 
@@ -3041,61 +2695,7 @@ https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6
 
 ```
 = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="roun
-```
-
-
-## License: MIT
-https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74b/pdf/even-more.pdf
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-```
-
-
-## License: Apache-2.0
-https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-```
-
-
-## License: MIT
-https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-```
-
-
-## License: MIT
-https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a2252dbf0/src/index.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-```
-
-
-## License: MIT
-https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-```
-
-
-## License: unknown
-https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
-
-```
-= () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="roun
 ```
 
 
@@ -3105,7 +2705,7 @@ https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21
+      <path d="M
 ```
 
 
@@ -3115,7 +2715,7 @@ https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21
+      <path d="M
 ```
 
 
@@ -3125,7 +2725,7 @@ https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21
+      <path d="M
 ```
 
 
@@ -3135,7 +2735,7 @@ https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a22
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21
+      <path d="M
 ```
 
 
@@ -3145,7 +2745,7 @@ https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a84
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21
+      <path d="M
 ```
 
 
@@ -3155,7 +2755,7 @@ https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6
 ```
 = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21
+      <path d="M
 ```
 
 
@@ -3660,6 +3260,148 @@ https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6
       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
       <circle cx="12" cy="10" r="3"></circle>
     </svg
+```
+
+
+## License: unknown
+https://github.com/kensnow/assignments/blob/05aa229b71a52f2b4e0a52ebd4ed179acad636b4/react-roto-router/src/Nav.js
+
+```
+>
+              <Link to="
+```
+
+
+## License: unknown
+https://github.com/ljavierrodriguez/test-react-app-context-api/blob/6bba64efb38951ca5bdf4c6f9e143c53b1bfb0b7/src/App.js
+
+```
+>
+              <Link to="
+```
+
+
+## License: unknown
+https://github.com/kensnow/assignments/blob/05aa229b71a52f2b4e0a52ebd4ed179acad636b4/react-roto-router/src/Nav.js
+
+```
+>
+              <Link to="/" className="nav-link">Home
+```
+
+
+## License: unknown
+https://github.com/ljavierrodriguez/test-react-app-context-api/blob/6bba64efb38951ca5bdf4c6f9e143c53b1bfb0b7/src/App.js
+
+```
+>
+              <Link to="/" className="nav-link">Home
+```
+
+
+## License: unknown
+https://github.com/kensnow/assignments/blob/05aa229b71a52f2b4e0a52ebd4ed179acad636b4/react-roto-router/src/Nav.js
+
+```
+>
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to
+```
+
+
+## License: unknown
+https://github.com/ljavierrodriguez/test-react-app-context-api/blob/6bba64efb38951ca5bdf4c6f9e143c53b1bfb0b7/src/App.js
+
+```
+>
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to
+```
+
+
+## License: unknown
+https://github.com/kensnow/assignments/blob/05aa229b71a52f2b4e0a52ebd4ed179acad636b4/react-roto-router/src/Nav.js
+
+```
+>
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/about" className="nav-link
+```
+
+
+## License: unknown
+https://github.com/ljavierrodriguez/test-react-app-context-api/blob/6bba64efb38951ca5bdf4c6f9e143c53b1bfb0b7/src/App.js
+
+```
+>
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/about" className="nav-link
+```
+
+
+## License: unknown
+https://github.com/kensnow/assignments/blob/05aa229b71a52f2b4e0a52ebd4ed179acad636b4/react-roto-router/src/Nav.js
+
+```
+>
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/about" className="nav-link">About</Link>
+              
+```
+
+
+## License: unknown
+https://github.com/ljavierrodriguez/test-react-app-context-api/blob/6bba64efb38951ca5bdf4c6f9e143c53b1bfb0b7/src/App.js
+
+```
+>
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/about" className="nav-link">About</Link>
+              
+```
+
+
+## License: unknown
+https://github.com/kensnow/assignments/blob/05aa229b71a52f2b4e0a52ebd4ed179acad636b4/react-roto-router/src/Nav.js
+
+```
+>
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/about" className="nav-link">About</Link>
+              <Link to="/services" className="nav
+```
+
+
+## License: unknown
+https://github.com/ljavierrodriguez/test-react-app-context-api/blob/6bba64efb38951ca5bdf4c6f9e143c53b1bfb0b7/src/App.js
+
+```
+>
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/about" className="nav-link">About</Link>
+              <Link to="/services" className="nav
+```
+
+
+## License: unknown
+https://github.com/kensnow/assignments/blob/05aa229b71a52f2b4e0a52ebd4ed179acad636b4/react-roto-router/src/Nav.js
+
+```
+>
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/about" className="nav-link">About</Link>
+              <Link to="/services" className="nav-link">Services</Link
+```
+
+
+## License: unknown
+https://github.com/ljavierrodriguez/test-react-app-context-api/blob/6bba64efb38951ca5bdf4c6f9e143c53b1bfb0b7/src/App.js
+
+```
+>
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/about" className="nav-link">About</Link>
+              <Link to="/services" className="nav-link">Services</Link
 ```
 
 
@@ -3668,7 +3410,7 @@ https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c6
 
 ```
 <Routes>
-          <Route path="/"
+          <Route path="
 ```
 
 
@@ -3677,7 +3419,7 @@ https://github.com/RyzaHacks/WebOpMaticsWebDev/blob/04f3c331f77af893a1f781d4190c
 
 ```
 <Routes>
-          <Route path="/"
+          <Route path="
 ```
 
 
@@ -3686,34 +3428,7 @@ https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd14
 
 ```
 <Routes>
-          <Route path="/"
-```
-
-
-## License: unknown
-https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c64ec347b/client/src/App.js
-
-```
-<Routes>
-          <Route path="/" element={
-```
-
-
-## License: unknown
-https://github.com/RyzaHacks/WebOpMaticsWebDev/blob/04f3c331f77af893a1f781d4190c6b8061b04c16/src/App.jsx
-
-```
-<Routes>
-          <Route path="/" element={
-```
-
-
-## License: unknown
-https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd1447f87d41fa6c1/src/App.js
-
-```
-<Routes>
-          <Route path="/" element={
+          <Route path="
 ```
 
 
@@ -3723,7 +3438,7 @@ https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c6
 ```
 <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path
+          <Route path="/services"
 ```
 
 
@@ -3733,7 +3448,7 @@ https://github.com/RyzaHacks/WebOpMaticsWebDev/blob/04f3c331f77af893a1f781d4190c
 ```
 <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path
+          <Route path="/services"
 ```
 
 
@@ -3743,7 +3458,7 @@ https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd14
 ```
 <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path
+          <Route path="/services"
 ```
 
 
@@ -3753,8 +3468,7 @@ https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c6
 ```
 <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          
+          <Route path="/services" element={<ServicesPage />}
 ```
 
 
@@ -3764,8 +3478,7 @@ https://github.com/RyzaHacks/WebOpMaticsWebDev/blob/04f3c331f77af893a1f781d4190c
 ```
 <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          
+          <Route path="/services" element={<ServicesPage />}
 ```
 
 
@@ -3775,8 +3488,7 @@ https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd14
 ```
 <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          
+          <Route path="/services" element={<ServicesPage />}
 ```
 
 
@@ -3821,42 +3533,6 @@ https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c6
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route
-```
-
-
-## License: unknown
-https://github.com/RyzaHacks/WebOpMaticsWebDev/blob/04f3c331f77af893a1f781d4190c6b8061b04c16/src/App.jsx
-
-```
-<Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route
-```
-
-
-## License: unknown
-https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd1447f87d41fa6c1/src/App.js
-
-```
-<Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route
-```
-
-
-## License: unknown
-https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c64ec347b/client/src/App.js
-
-```
-<Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/blog" element={<Blog
 ```
 
@@ -3882,45 +3558,6 @@ https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd14
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/blog" element={<Blog
-```
-
-
-## License: unknown
-https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c64ec347b/client/src/App.js
-
-```
-<Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route
-```
-
-
-## License: unknown
-https://github.com/RyzaHacks/WebOpMaticsWebDev/blob/04f3c331f77af893a1f781d4190c6b8061b04c16/src/App.jsx
-
-```
-<Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route
-```
-
-
-## License: unknown
-https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd1447f87d41fa6c1/src/App.js
-
-```
-<Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route
 ```
 
 
