@@ -84,5 +84,27 @@
       </style>
     </div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Register service worker with error handling
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+
+      // Fallback loading mechanism
+      window.addEventListener('error', (e) => {
+        if (e.filename && e.filename.includes('/assets/')) {
+          console.warn('Asset loading failed, attempting reload:', e.filename);
+          // Optionally reload the page or retry loading
+        }
+      });
+    </script>
   </body>
 </html>
