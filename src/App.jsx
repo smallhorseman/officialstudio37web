@@ -135,11 +135,7 @@ function App() {
   const [portfolioUnlocked, setPortfolioUnlocked] = useState(false);
   const [showChatWidget, setShowChatWidget] = useState(false);
   
-  // Data states
-  const [leads, setLeads] = useState([]);
-  const [portfolioImages, setPortfolioImages] = useState([]);
-  const [blogPosts, setBlogPosts] = useState([]);
-  const [projects, setProjects] = useState([]);
+  // Remove old state declarations - these are now handled by hooks
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [connectionStatus, setConnectionStatus] = useState('checking');
@@ -284,62 +280,9 @@ function App() {
     checkConnection();
   }, []);
 
-  // Load admin data when admin status changes
-  useEffect(() => {
-    if (isAdmin && connectionStatus === 'connected') {
-      loadInitialData();
-    }
-  }, [isAdmin, connectionStatus]);
-
-  const loadInitialData = async () => {
-    try {
-      setLoading(true);
-      
-      // Load portfolio images (public)
-      const portfolioData = await fetchWithErrorHandling(
-        supabase
-          .from('portfolio_images')
-          .select('*')
-          .order('order_index', { ascending: true })
-      );
-      if (portfolioData) setPortfolioImages(portfolioData);
-
-      // Load leads if admin
-      if (isAdmin) {
-        const leadsData = await fetchWithErrorHandling(
-          supabase
-            .from('leads')
-            .select('*')
-            .order('created_at', { ascending: false })
-        );
-        if (leadsData) setLeads(leadsData);
-
-        // Load projects
-        const projectsData = await fetchWithErrorHandling(
-          supabase
-            .from('projects')
-            .select('*')
-            .order('created_at', { ascending: false })
-        );
-        if (projectsData) setProjects(projectsData);
-
-        // Load blog posts
-        const blogData = await fetchWithErrorHandling(
-          supabase
-            .from('blog_posts')
-            .select('*')
-            .order('publish_date', { ascending: false })
-        );
-        if (blogData) setBlogPosts(blogData);
-      }
-      
-    } catch (err) {
-      console.error('Error loading initial data:', err);
-      setError('Failed to load application data.');
-    } finally {
-      setLoading(false);
-    }
-  };
+  // Simplified data loading with better state management
+  const loading = portfolioLoading || (isAdmin && (leadsLoading || projectsLoading));
+  const hasErrors = portfolioError || (isAdmin && (leadsError || projectsError));
 
   // Connection status notification component
   const ConnectionStatusNotification = () => {
