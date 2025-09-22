@@ -54,14 +54,28 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 );
 
-// Disable service worker registration to prevent asset loading issues
-// This prevents NS_ERROR_CORRUPTED_CONTENT errors
+// Completely disable and clean up service worker to prevent asset corruption
 if ('serviceWorker' in navigator) {
-  // Unregister any existing service workers
+  // Unregister all existing service workers immediately
   navigator.serviceWorker.getRegistrations().then(function(registrations) {
     for(let registration of registrations) {
-      registration.unregister();
-      console.log('Unregistered service worker:', registration);
+      registration.unregister().then(function(success) {
+        console.log('Unregistered corrupted service worker:', registration.scope, success);
+      });
     }
   });
+
+  // Also try to clear any cached data
+  if ('caches' in window) {
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          console.log('Clearing cache:', cacheName);
+          return caches.delete(cacheName);
+        })
+      );
+    }).then(function() {
+      console.log('All caches cleared to prevent asset corruption');
+    });
+  }
 }

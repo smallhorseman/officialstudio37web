@@ -1,38 +1,38 @@
-// Studio37 Service Worker - Optimized for performance
-const CACHE_NAME = 'studio37-v1';
-const STATIC_CACHE = 'studio37-static-v1';
+// Disable service worker to prevent NS_ERROR_CORRUPTED_CONTENT errors
+// This service worker immediately unregisters itself and clears all caches
 
-const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/favicon.svg',
-  '/manifest.webmanifest'
-];
+self.addEventListener('install', () => {
+  // Skip waiting and immediately activate
+  self.skipWaiting();
+});
 
-// Install event
-self.addEventListener('install', (event) => {
-  console.log('Studio37 SW: Installing...');
+self.addEventListener('activate', (event) => {
+  console.log('Studio37 SW: Deactivating and clearing caches...');
   event.waitUntil(
-    caches.open(STATIC_CACHE)
-      .then(cache => cache.addAll(STATIC_ASSETS))
-      .then(() => self.skipWaiting())
+    // Clear all existing caches
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          console.log('Clearing cache:', cacheName);
+          return caches.delete(cacheName);
+        })
+      );
+    }).then(() => {
+      console.log('Service worker disabled - all caches cleared');
+      // Take control of all clients
+      return self.clients.claim();
+    }).then(() => {
+      // Unregister this service worker
+      return self.registration.unregister();
+    })
   );
 });
 
-// Activate event
-self.addEventListener('activate', (event) => {
-  console.log('Studio37 SW: Activating...');
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME && cacheName !== STATIC_CACHE) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    }).then(() => self.clients.claim())
-  );
+// Don't intercept any requests - let all requests pass through to network
+self.addEventListener('fetch', (event) => {
+  // Simply return - don't intercept anything to prevent corruption
+  return;
+});
 });
 
 // Fetch event - Network first for API, Cache first for assets

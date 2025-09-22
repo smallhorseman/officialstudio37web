@@ -6,148 +6,148 @@ const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
 
 // Connection state management
 let connectionState = {
-  status: 'disconnected', // 'connecting', 'connected', 'error', 'disconnected'
+  status: 'disconnected',
   lastCheck: null,
   retryCount: 0,
   maxRetries: 3
 };
 
-// Cache for frequently accessed data
-const cache = new Map();
-const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+// Create Supabase client with optimized settings
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: false
+  },
+  realtime: {
+    params: {
+      eventsPerSecond: 2
+    }
+  },
+  global: {
+    headers: {
+      'x-application-name': 'Studio37-Photography'
+    }
+  }
+});
 
-// Enhanced mock client for offline mode
-const createEnhancedMockSupabase = () => {
-  const mockData = {
-    leads: JSON.parse(localStorage.getItem('studio37_mock_leads') || '[]'),
-    portfolio_images: JSON.parse(localStorage.getItem('studio37_mock_portfolio') || '[]'),
-    projects: JSON.parse(localStorage.getItem('studio37_mock_projects') || '[]')
-  };
+// Test connection function
+export const testConnection = async () => {
+  if (!supabaseUrl || !supabaseAnonKey) {
+    connectionState.status = 'unconfigured';
+    return false;
+  }
 
-  const saveMockData = (table, data) => {
-    mockData[table] = data;
-    localStorage.setItem(`studio37_mock_${table}`, JSON.stringify(data));
-  };
+  try {
+    connectionState.status = 'checking';
+    
+    // Simple health check - try to select from a system table
+    const { data, error } = await supabase
+      .from('leads')
+      .select('count')
+      .limit(1)
+      .single();
 
-  return {
-    from: (table) => ({
-      select: (columns = '*') => {
-        const data = mockData[table] || [];
-        return Promise.resolve({ 
-          data: columns === 'count' ? [{ count: data.length }] : data, 
-          error: null 
-        });
-      },
-      insert: (records) => {
-        const data = mockData[table] || [];
-        const newRecords = Array.isArray(records) ? records : [records];
-        const recordsWithIds = newRecords.map(record => ({
-          ...record,
-          id: record.id || Date.now() + Math.random(),
-          created_at: record.created_at || new Date().toISOString()
-        }));
-        
-        const updatedData = [...data, ...recordsWithIds];
-        saveMockData(table, updatedData);
-        
-        return Promise.resolve({ data: recordsWithIds, error: null });
-      },
-      update: (updates) => ({
-        eq: (column, value) => {
-          const data = mockData[table] || [];
-          const updatedData = data.map(item => 
-            item[column] === value ? { ...item, ...updates } : item
-          );
-          saveMockData(table, updatedData);
-          return Promise.resolve({ data: updatedData.filter(item => item[column] === value), error: null });
-        }
-      }),
-      delete: () => ({
-        eq: (column, value) => {
-          const data = mockData[table] || [];
-          const filteredData = data.filter(item => item[column] !== value);
-          saveMockData(table, filteredData);
-          return Promise.resolve({ data: [], error: null });
-        }
-      }),
-      eq: function(column, value) { 
-        this._filters = this._filters || [];
-        this._filters.push({ column, value, operator: 'eq' });
-        return this; 
-      },
-      order: function(column, options = {}) { 
-        this._order = { column, ascending: options.ascending !== false };
-        return this; 
-      },
-      limit: function(count) { 
-        this._limit = count;
-        return this; 
-      }
-    }),
-    storage: {
-      from: () => ({
-        upload: () => Promise.resolve({ data: null, error: null }),
-        remove: () => Promise.resolve({ data: null, error: null }),
-        getPublicUrl: (fileName) => ({ 
-          data: { publicUrl: `https://example.com/mock/${fileName}` } 
-        })
-      })
-    },
-    // Add realtime mock
-    channel: () => ({
-      on: () => ({ subscribe: () => {} }),
-      unsubscribe: () => {}
-    })
-  };
-};
+    if (error && error.code !== 'PGRST116') { // PGRST116 is "no rows returned" which is OK
+      throw error;
+    }
 
-// Create optimized Supabase client
-let supabase;
-try {
-  if (supabaseUrl && supabaseAnonKey && (supabaseUrl.startsWith('http://') || supabaseUrl.startsWith('https://'))) {
-    supabase = createClient(supabaseUrl, supabaseAnonKey, {
-      auth: {
-        autoRefreshToken: true,
-        persistSession: true,
-        detectSessionInUrl: true,
-        flowType: 'pkce'
-      },
-      realtime: {
-        params: {
-          eventsPerSecond: 10
-        }
-      },
-      global: {
-        headers: {
-          'x-client-info': 'studio37-web@1.0.0'
-        }
-      },
-      db: {
-        schema: 'public'
-      }
+    connectionState.status = 'connected';
+    connectionState.lastCheck = new Date();
+    connectionState.retryCount = 0;
+    
+    console.log('✅ Supabase connection successful');
+    return true;
+    
+  } catch (error) {
+    connectionState.status = 'error';
+    connectionState.retryCount++;
+    
+    console.error('❌ Supabase connection failed:', {
+      message: error.message,
+      code: error.code,
+      details: error.details,
+      hint: error.hint
     });
     
-    connectionState.status = 'connected';
-    console.log('✅ Supabase client initialized successfully');
-  } else {
-    console.warn('⚠️ Invalid or missing Supabase configuration. Using enhanced mock client.');
-    supabase = createEnhancedMockSupabase();
-    connectionState.status = 'mock';
+    return false;
   }
-} catch (error) {
-  console.error('❌ Failed to initialize Supabase:', error);
-  supabase = createEnhancedMockSupabase();
-  connectionState.status = 'error';
-}
+};
 
-// Connection health monitoring
-const healthCheck = async () => {
-  if (connectionState.status === 'mock') return true;
+// Get current connection status
+export const getConnectionStatus = () => connectionState.status;
+
+// Helper function to check if we should use offline mode
+export const shouldUseOfflineMode = () => {
+  return connectionState.status !== 'connected';
+};
+
+// Retry connection with exponential backoff
+export const retryConnection = async () => {
+  if (connectionState.retryCount >= connectionState.maxRetries) {
+    console.warn('Max retry attempts reached for Supabase connection');
+    return false;
+  }
+
+  const delay = Math.pow(2, connectionState.retryCount) * 1000; // Exponential backoff
   
+  console.log(`Retrying Supabase connection in ${delay}ms (attempt ${connectionState.retryCount + 1}/${connectionState.maxRetries})`);
+  
+  await new Promise(resolve => setTimeout(resolve, delay));
+  
+  return await testConnection();
+};
+
+// Real-time subscription helper
+export const subscribeToTable = (table, callback, filter = '*') => {
+  if (shouldUseOfflineMode()) {
+    console.warn(`Cannot subscribe to ${table} - offline mode`);
+    return { unsubscribe: () => {} };
+  }
+
   try {
-    connectionState.status = 'connecting';
-    const { error } = await supabase
-      .from('leads')
+    const subscription = supabase
+      .channel(`${table}-changes`)
+      .on('postgres_changes', 
+        { 
+          event: '*', 
+          schema: 'public', 
+          table: table,
+          filter: filter 
+        }, 
+        callback
+      )
+      .subscribe();
+
+    return subscription;
+  } catch (error) {
+    console.error(`Failed to subscribe to ${table}:`, error);
+    return { unsubscribe: () => {} };
+  }
+};
+
+// Safe database operations with offline fallback
+export const safeSupabaseOperation = async (operation, fallback = null) => {
+  if (shouldUseOfflineMode()) {
+    console.warn('Database operation attempted while offline, using fallback');
+    return fallback;
+  }
+
+  try {
+    return await operation();
+  } catch (error) {
+    console.error('Supabase operation failed:', error);
+    
+    // Mark as disconnected and try fallback
+    connectionState.status = 'error';
+    return fallback;
+  }
+};
+
+// Initialize connection on import
+testConnection().catch(console.error);
+
+export default supabase;
       .select('id')
       .limit(1);
     
