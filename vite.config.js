@@ -4,101 +4,159 @@ import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      // Enable SWC for faster builds and smaller bundles
+      jsxRuntime: 'automatic',
+      babel: {
+        plugins: [
+          // Remove PropTypes in production
+          process.env.NODE_ENV === 'production' && ['babel-plugin-transform-remove-prop-types', { removeImport: true }]
+        ].filter(Boolean)
+      }
+    }),
     // Bundle analyzer (only in build)
     process.env.ANALYZE && visualizer({
       filename: 'dist/stats.html',
       open: true,
       gzipSize: true,
       brotliSize: true,
+      template: 'treemap' // Better visualization
     }),
-  ].filter(Boolean), // Remove falsy plugins
+  ].filter(Boolean),
   
-  // Optimize dependencies
+  // Optimize dependencies with better tree shaking
   optimizeDeps: {
     include: [
       'react',
       'react-dom',
       'react-router-dom',
-      '@supabase/supabase-js',
-      'react-markdown'
+      '@supabase/supabase-js'
     ],
+    exclude: [
+      // Exclude large optional dependencies
+      'react-markdown'
+    ]
   },
   
   build: {
     // Enable source maps for better debugging
-    sourcemap: true,
+    sourcemap: 'hidden', // Only generate source maps, don't include in bundle
     
     // CSS optimization
     cssMinify: 'lightningcss',
     
-    // Optimize chunk splitting
+    // Advanced chunk splitting for better caching
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Vendor chunk for large dependencies
-          vendor: ['react', 'react-dom', 'react-router-dom'],
+        manualChunks: (id) => {
+          // Vendor chunks for better caching
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+              return 'react-vendor';
+            }
+            if (id.includes('@supabase')) {
+              return 'supabase';
+            }
+            if (id.includes('react-markdown')) {
+              return 'markdown';
+            }
+            // Group other vendor libraries
+            return 'vendor';
+          }
           
-          // Supabase chunk
-          supabase: ['@supabase/supabase-js'],
+          // Component chunks
+          if (id.includes('/components/')) {
+            if (id.includes('Chatbot') || id.includes('EnhancedCRM') || id.includes('EnhancedCMS')) {
+              return 'admin-components';
+            }
+            return 'components';
+          }
           
-          // React-markdown chunk
-          markdown: ['react-markdown']
+          // Utils and hooks
+          if (id.includes('/hooks/') || id.includes('/utils/')) {
+            return 'utils';
+          }
         },
         
-        // Optimize chunk names
+        // Optimize chunk and asset names
         chunkFileNames: (chunkInfo) => {
           const facadeModuleId = chunkInfo.facadeModuleId ? 
-            chunkInfo.facadeModuleId.split('/').pop().replace('.jsx', '') : 'chunk';
-          return `assets/${facadeModuleId}-[hash].js`;
+            chunkInfo.facadeModuleId.split('/').pop()?.replace(/\.(jsx|tsx)$/, '') : 'chunk';
+          return `assets/js/${facadeModuleId}-[hash].js`;
         },
         
-        // Optimize CSS file names
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
-            return 'assets/[name]-[hash].css';
+          const info = assetInfo.name.split('.');
+          const ext = info[info.length - 1];
+          if (/\.(css)$/.test(assetInfo.name)) {
+            return `assets/css/[name]-[hash].${ext}`;
           }
-          return 'assets/[name]-[hash][extname]';
+          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name)) {
+            return `assets/images/[name]-[hash].${ext}`;
+          }
+          return `assets/[name]-[hash].${ext}`;
         },
       },
+      
+      // External dependencies (load from CDN in production)
+      external: process.env.NODE_ENV === 'production' ? [] : [],
     },
     
-    // Minification options - less aggressive
+    // Aggressive minification
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: false, // Keep console.logs for debugging
+        drop_console: process.env.NODE_ENV === 'production', // Remove console.logs in production
         drop_debugger: true,
-        passes: 1, // Reduce passes to avoid over-optimization
+        pure_funcs: ['console.log', 'console.info', 'console.debug'], // Remove specific console methods
+        passes: 2, // Multiple passes for better optimization
       },
       mangle: {
-        safari10: true, // Fix Safari issues
+        safari10: true,
+        properties: {
+          regex: /^_/ // Mangle private properties
+        }
       },
       format: {
-        safari10: true, // Ensure Safari compatibility
+        safari10: true,
+        comments: false // Remove all comments
       },
     },
     
-    // Set chunk size warning limit
-    chunkSizeWarningLimit: 1000,
+    // Chunk size optimization
+    chunkSizeWarningLimit: 500, // Lower limit to encourage splitting
     
     // Target modern browsers for smaller bundles
     target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
+    
+    // Additional optimizations
+    reportCompressedSize: false, // Faster builds
+    assetsInlineLimit: 4096, // Inline smaller assets
   },
   
-  // CSS processing
+  // CSS processing optimization
   css: {
     devSourcemap: true,
+    modules: {
+      // CSS modules optimization
+      localsConvention: 'camelCase',
+      generateScopedName: process.env.NODE_ENV === 'production' 
+        ? '[hash:base64:5]' 
+        : '[name]__[local]__[hash:base64:5]'
+    }
   },
   
   // Development server optimization
   server: {
     port: 3000,
-    host: true, // Allow external connections
+    host: true,
     
-    // Enable HMR
+    // Enhanced HMR
     hmr: {
       overlay: true,
+      port: 3001 // Separate HMR port
     },
   },
   
@@ -110,16 +168,20 @@ export default defineConfig({
   
   // Define environment variables
   define: {
-    __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
+    __APP_VERSION__: JSON.stringify(process.env.npm_package_version || '1.0.0'),
+    __DEV__: process.env.NODE_ENV === 'development',
   },
 
+  // Enhanced esbuild configuration
   esbuild: {
-    // Keep function names for better debugging
-    keepNames: true,
-    // Handle JSX properly
+    keepNames: process.env.NODE_ENV === 'development',
     jsx: 'automatic',
-    // Ensure proper CSS handling
     legalComments: 'none',
+    target: 'es2020',
+    // Tree shaking optimization
+    treeShaking: true,
+    // Remove unused imports
+    ignoreAnnotations: false,
   }
 });
 
