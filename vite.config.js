@@ -1,94 +1,94 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { visualizer } from 'rollup-plugin-visualizer';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    host: true,
-    open: true
+  plugins: [
+    react(),
+    // Bundle analyzer (only in build)
+    process.env.ANALYZE && visualizer({
+      filename: 'dist/stats.html',
+      open: true,
+      gzipSize: true,
+      brotliSize: true,
+    }),
+  ],
+  
+  // Optimize dependencies
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-router-dom',
+      '@supabase/supabase-js'
+    ],
   },
-  preview: {
-    port: 3000
-  },
+  
   build: {
-    outDir: 'dist',
-    sourcemap: false, // Disable to avoid source map errors
-    minify: 'terser',
+    // Enable source maps for better debugging
+    sourcemap: true,
+    
+    // Optimize chunk splitting
     rollupOptions: {
       output: {
         manualChunks: {
+          // Vendor chunk for large dependencies
           vendor: ['react', 'react-dom', 'react-router-dom'],
+          
+          // Supabase chunk
           supabase: ['@supabase/supabase-js'],
-          ui: ['react-beautiful-dnd']
-        }
+          
+          // Utils chunk
+          utils: ['react-markdown', 'remark-gfm'],
+        },
+        
+        // Optimize chunk names
+        chunkFileNames: (chunkInfo) => {
+          const facadeModuleId = chunkInfo.facadeModuleId ? 
+            chunkInfo.facadeModuleId.split('/').pop().replace('.jsx', '') : 'chunk';
+          return `assets/${facadeModuleId}-[hash].js`;
+        },
       },
-      // Suppress warnings about external modules
-      external: (id) => {
-        return id.includes('hubspot') || id.includes('hs-scripts')
-      }
     },
+    
+    // Minification options
+    minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true,
+        drop_console: true, // Remove console.logs in production
         drop_debugger: true,
       },
-      // Prevent mangling of component names to fix PhoneIcon issues
-      mangle: {
-        keep_fnames: true,
-        reserved: ['PhoneIcon', 'MailIcon', 'MapPinIcon']
-      }
+    },
+    
+    // Set chunk size warning limit
+    chunkSizeWarningLimit: 1000,
+    
+    // Target modern browsers for smaller bundles
+    target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
+  },
+  
+  // Development server optimization
+  server: {
+    port: 3000,
+    host: true, // Allow external connections
+    
+    // Enable HMR
+    hmr: {
+      overlay: true,
     },
   },
-  optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom', '@supabase/supabase-js', 'react-beautiful-dnd'],
-    // Force pre-bundling of problematic dependencies
-    force: true
+  
+  // Preview server configuration
+  preview: {
+    port: 4173,
+    host: true,
   },
-  css: {
-    modules: {
-      localsConvention: 'camelCase'
-    },
-    postcss: {
-      plugins: [
-        // Add autoprefixer to handle vendor prefixes properly
-        {
-          postcssPlugin: 'custom-fixes',
-          Once(root) {
-            // Remove problematic webkit rules that cause parsing errors
-            root.walkRules(rule => {
-              if (rule.selector.includes('-webkit-text-size-adjust')) {
-                rule.remove()
-              }
-              // Fix invalid media queries with color values
-              if (rule.parent && rule.parent.type === 'atrule' && 
-                  rule.parent.name === 'media' && 
-                  rule.parent.params.includes('#')) {
-                rule.parent.remove()
-              }
-            })
-          }
-        }
-      ]
-    }
-  },
+  
+  // Define environment variables
   define: {
-    // Optimize production builds and fix undefined issues
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-    // Define globals to prevent undefined errors
-    'global': 'globalThis',
-    '__DEV__': process.env.NODE_ENV === 'development'
+    __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
   },
-  resolve: {
-    alias: {
-      // Add aliases to prevent import issues
-      '@': '/src',
-      'components': '/src/components',
-      'hooks': '/src/hooks'
-    }
-  },
-  // Add error handling for external script failures
+});
   esbuild: {
     // Keep function names for better debugging
     keepNames: true,
