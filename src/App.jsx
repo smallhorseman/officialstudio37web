@@ -135,8 +135,7 @@ function App() {
   const [portfolioUnlocked, setPortfolioUnlocked] = useState(false);
   const [showChatWidget, setShowChatWidget] = useState(false);
   
-  // Remove old state declarations - these are now handled by hooks
-  const [loading, setLoading] = useState(true);
+  // Remove duplicate loading state - only keep connection status states
   const [error, setError] = useState('');
   const [connectionStatus, setConnectionStatus] = useState('checking');
 
@@ -262,7 +261,6 @@ function App() {
       if (!isSupabaseConfigured()) {
         setConnectionStatus('unconfigured');
         console.log('⚠️ Supabase not configured - check environment variables');
-        setLoading(false);
         return;
       }
       
@@ -270,18 +268,15 @@ function App() {
       setConnectionStatus(isConnected ? 'connected' : 'error');
       
       if (!isConnected) {
-        setLoading(false);
         setError('Database connection failed. Operating in offline mode.');
-      } else {
-        setLoading(false);
       }
     };
     
     checkConnection();
   }, []);
 
-  // Simplified data loading with better state management
-  const loading = portfolioLoading || (isAdmin && (leadsLoading || projectsLoading));
+  // Computed loading state - rename to avoid conflict
+  const isLoading = portfolioLoading || (isAdmin && (leadsLoading || projectsLoading));
   const hasErrors = portfolioError || (isAdmin && (leadsError || projectsError));
 
   // Connection status notification component
@@ -818,7 +813,7 @@ function App() {
                   <Calendar size={24} />
                   Project Management
                 </h3>
-                <ProjectsSection projects={projects} projectsLoading={loading} />
+                <ProjectsSection projects={projects} projectsLoading={isLoading} />
               </div>
             )}
             
@@ -1066,8 +1061,8 @@ function App() {
         </button>
       )}
 
-      {/* Loading overlay */}
-      {loading && (
+      {/* Loading overlay - use renamed variable */}
+      {isLoading && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 flex items-center justify-center">
           <div className="text-center">
             <div className="w-8 h-8 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
