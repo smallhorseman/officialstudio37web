@@ -1,166 +1,166 @@
 /* Add Google Fonts for vintage typography */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --color-primary: #F3E3C3;
+  --color-dark: #181818;
+  --color-darker: #1a1a1a;
+  --color-gray: #262626;
+}
 
-@layer base {
-  :root {
-    --color-cream: #F3E3C3;
-    --color-dark: #181818;
-    --color-medium: #232323;
-    --color-accent: #E6D5B8;
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Crimson Text', serif;
+  background-color: var(--color-dark);
+  color: var(--color-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix webkit text adjustment issues */
+body, html {
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Typography */
+.font-vintage {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Utility classes */
+.section-padding-lg {
+  padding: 6rem 1.5rem;
+}
+
+/* Animations */
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-  }
-
-  body {
-    margin: 0;
-    font-family: 'Crimson Text', serif;
-    background-color: var(--color-dark);
-    color: var(--color-cream);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  .font-vintage {
-    font-family: 'Playfair Display', serif;
-  }
-
-  .font-display {
-    font-family: 'Playfair Display', serif;
-  }
-
-  .font-sans {
-    font-family: 'Crimson Text', serif;
-  }
-
-  /* Focus ring utility */
-  .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-[#F3E3C3] focus:ring-offset-2 focus:ring-offset-[#181818];
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@layer components {
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
+/* Responsive breakpoints using proper media queries */
+@media (max-width: 768px) {
+  .section-padding-lg {
+    padding: 4rem 1rem;
   }
-
-  ::-webkit-scrollbar-track {
-    background: #1a1a1a;
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
+}
 
-  ::-webkit-scrollbar-thumb {
-    background: #F3E3C3;
-    border-radius: 3px;
+@media (max-width: 640px) {
+  .text-5xl {
+    font-size: 2.5rem;
   }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #E6D5B8;
+  
+  .text-7xl {
+    font-size: 3rem;
   }
+}
 
-  /* Firefox scrollbar */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #F3E3C3 #1a1a1a;
+/* Fix for color-based media queries that were causing errors */
+.theme-primary {
+  color: var(--color-primary);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-dark {
+  background-color: var(--color-dark);
+}
+
+.bg-darker {
+  background-color: var(--color-darker);
+}
+
+.bg-gray {
+  background-color: var(--color-gray);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Focus styles for accessibility */
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Loading states */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
-
-  /* Custom button styles */
-  .btn-primary {
-    @apply bg-[#F3E3C3] text-[#1a1a1a] font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus-ring;
+  to {
+    transform: rotate(360deg);
   }
+}
 
-  .btn-secondary {
-    @apply bg-transparent border-2 border-[#F3E3C3] text-[#F3E3C3] font-bold py-3 px-8 rounded-full transition-all duration-300 hover:bg-[#F3E3C3] hover:text-[#1a1a1a] hover:scale-105 focus-ring;
-  }
+/* Chat widget specific styles */
+.chat-widget {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
 
-  .btn-ghost {
-    @apply bg-transparent text-[#F3E3C3] font-semibold py-2 px-6 rounded-full transition-all duration-300 hover:bg-[#F3E3C3]/10 focus-ring;
-  }
-
-  /* Form styles */
-  .form-input {
-    @apply w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 text-[#F3E3C3] placeholder-[#F3E3C3]/50 transition-all duration-300 focus-ring;
-  }
-
-  .form-textarea {
-    @apply form-input resize-none;
-  }
-
-  .form-select {
-    @apply form-input appearance-none cursor-pointer;
-  }
-
-  /* Card styles */
-  .card {
-    @apply bg-[#232323] rounded-lg shadow-lg border border-white/10 overflow-hidden;
-  }
-
-  .card-hover {
-    @apply card transition-all duration-300 hover:shadow-xl hover:scale-[1.02] hover:border-[#F3E3C3]/20;
-  }
-
-  /* Navigation styles */
-  .nav-link {
-    @apply text-[#F3E3C3] font-medium transition-all duration-300 hover:text-[#F3E3C3] hover:scale-105 focus-ring rounded-md px-2 py-1;
-  }
-
-  .nav-link-active {
-    @apply nav-link text-[#F3E3C3] font-bold;
-  }
-
-  /* Modal styles */
-  .modal-backdrop {
-    @apply fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4;
-  }
-
-  .modal-content {
-    @apply bg-[#232323] rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden border border-white/10;
-  }
-
-  /* Animation utilities */
-  .animate-fadeIn {
-    animation: fadeIn 0.6s ease-in-out;
-  }
-
-  .animate-fadeInUp {
-    animation: fadeInUp 0.6s ease-out;
-  }
-
-  .animate-slideInLeft {
-    animation: slideInLeft 0.6s ease-out;
-  }
-
-  .animate-slideInRight {
-    animation: slideInRight 0.6s ease-out;
-  }
-
-  .animate-bounce-gentle {
-    animation: bounceGentle 2s infinite;
-  }
-
-  .animate-pulse-slow {
-    animation: pulseGentle 3s infinite;
-  }
-
-  /* Loading states */
-  .loading-spinner {
-    @apply w-6 h-6 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin;
-  }
-
-  .loading-dots {
-    @apply flex space-x-1;
+/* Error prevention for external scripts */
+.external-script-error {
+  display: none;
+}
   }
 
   .loading-dots > div {

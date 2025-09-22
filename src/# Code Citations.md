@@ -1,607 +1,262 @@
 # Code Citations
 
 ## License: unknown
-https://github.com/Shifatur-Rahman/Shifatur_Portfolio/blob/63083974b84d97bde77ccd70ade460dfea1f2dd5/src/router/AnimatedRoute.jsx
+https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
 
 ```
-="/"
-```
-
-
-## License: unknown
-https://github.com/Shifatur-Rahman/Shifatur_Portfolio/blob/63083974b84d97bde77ccd70ade460dfea1f2dd5/src/router/AnimatedRoute.jsx
-
-```
-="/" element={<HomePage />} />
+vite.config.js
+import { defineConfig
 ```
 
 
 ## License: unknown
-https://github.com/Shifatur-Rahman/Shifatur_Portfolio/blob/63083974b84d97bde77ccd70ade460dfea1f2dd5/src/router/AnimatedRoute.jsx
+https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
 
 ```
-="/" element={<HomePage />} />
-          <Route path="/portfolio
-```
-
-
-## License: unknown
-https://github.com/Shifatur-Rahman/Shifatur_Portfolio/blob/63083974b84d97bde77ccd70ade460dfea1f2dd5/src/router/AnimatedRoute.jsx
-
-```
-="/" element={<HomePage />} />
-          <Route path="/portfolio" element={<Portfolio
+vite.config.js
+import { defineConfig
 ```
 
 
 ## License: unknown
-https://github.com/Shifatur-Rahman/Shifatur_Portfolio/blob/63083974b84d97bde77ccd70ade460dfea1f2dd5/src/router/AnimatedRoute.jsx
+https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
 
 ```
-="/" element={<HomePage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path
-```
-
-
-## License: unknown
-https://github.com/Shifatur-Rahman/Shifatur_Portfolio/blob/63083974b84d97bde77ccd70ade460dfea1f2dd5/src/router/AnimatedRoute.jsx
-
-```
-="/" element={<HomePage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/contact" element={<ContactPage />}
+vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react
 ```
 
 
 ## License: unknown
-https://github.com/Shifatur-Rahman/Shifatur_Portfolio/blob/63083974b84d97bde77ccd70ade460dfea1f2dd5/src/router/AnimatedRoute.jsx
+https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
 
 ```
-="/" element={<HomePage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="
-```
-
-
-## License: unknown
-https://github.com/lucci-glitch/crema-react/blob/f51dfa367b3c005da1ad866c7a2ae0aac10b83ff/src/components/ChatWindow.js
-
-```
-useState(false);
-  const messagesEndRef = useRef(null
+vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react
 ```
 
 
 ## License: unknown
-https://github.com/lucci-glitch/crema-react/blob/f51dfa367b3c005da1ad866c7a2ae0aac10b83ff/src/components/ChatWindow.js
+https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
 
 ```
-useState(false);
-  const messagesEndRef = useRef(null);
+vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-  const
-```
-
-
-## License: unknown
-https://github.com/lucci-glitch/crema-react/blob/f51dfa367b3c005da1ad866c7a2ae0aac10b83ff/src/components/ChatWindow.js
-
-```
-useState(false);
-  const messagesEndRef = useRef(null);
-
-  const scrollToBottom = () => {
+// https://vitejs.dev/config
 ```
 
 
 ## License: unknown
-https://github.com/lucci-glitch/crema-react/blob/f51dfa367b3c005da1ad866c7a2ae0aac10b83ff/src/components/ChatWindow.js
+https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
 
 ```
-useState(false);
-  const messagesEndRef = useRef(null);
+vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.
-```
-
-
-## License: unknown
-https://github.com/lucci-glitch/crema-react/blob/f51dfa367b3c005da1ad866c7a2ae0aac10b83ff/src/components/ChatWindow.js
-
-```
-useState(false);
-  const messagesEndRef = useRef(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "
+// https://vitejs.dev/config
 ```
 
 
 ## License: unknown
-https://github.com/lucci-glitch/crema-react/blob/f51dfa367b3c005da1ad866c7a2ae0aac10b83ff/src/components/ChatWindow.js
+https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
 
 ```
-useState(false);
-  const messagesEndRef = useRef(null);
+vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  
-```
-
-
-## License: unknown
-https://github.com/lucci-glitch/crema-react/blob/f51dfa367b3c005da1ad866c7a2ae0aac10b83ff/src/components/ChatWindow.js
-
-```
-useState(false);
-  const messagesEndRef = useRef(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scroll
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
 ```
 
 
 ## License: unknown
-https://github.com/lucci-glitch/crema-react/blob/f51dfa367b3c005da1ad866c7a2ae0aac10b83ff/src/components/ChatWindow.js
+https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
 
 ```
-useState(false);
-  const messagesEndRef = useRef(null);
+vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
 ```
 
 
 ## License: unknown
-https://github.com/lucci-glitch/crema-react/blob/f51dfa367b3c005da1ad866c7a2ae0aac10b83ff/src/components/ChatWindow.js
+https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
 
 ```
-useState(false);
-  const messagesEndRef = useRef(null);
+vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]
-```
-
-
-## License: unknown
-https://github.com/ankostenko/tensor_msgr/blob/722b5b6d1e0eaf63640a3e8b37437e294990923e/msgrjs/src/App.js
-
-```
-fill="none" stroke="currentColor
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3
 ```
 
 
 ## License: unknown
-https://github.com/katjalmarko/React-Developer-Assignment/blob/dceb7921d14393a74e2611e393b3bf9968feaa40/.history/src/pages/main/tasks_20230415143915.tsx
+https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
 
 ```
-fill="none" stroke="currentColor
-```
+vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-
-## License: unknown
-https://github.com/ankostenko/tensor_msgr/blob/722b5b6d1e0eaf63640a3e8b37437e294990923e/msgrjs/src/App.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 
-```
-
-
-## License: unknown
-https://github.com/fer-dyhia/studApp/blob/3cbd8280be1bcb97a1fc8a566c4487220b256d5b/src/mesagerie-main/components/chatContent/ChatContent.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3
 ```
 
 
 ## License: unknown
-https://github.com/katjalmarko/React-Developer-Assignment/blob/dceb7921d14393a74e2611e393b3bf9968feaa40/.history/src/pages/main/tasks_20230415143915.tsx
+https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
 
 ```
-fill="none" stroke="currentColor" viewBox="0 0 
-```
+vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-
-## License: unknown
-https://github.com/ankostenko/tensor_msgr/blob/722b5b6d1e0eaf63640a3e8b37437e294990923e/msgrjs/src/App.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-```
-
-
-## License: unknown
-https://github.com/fer-dyhia/studApp/blob/3cbd8280be1bcb97a1fc8a566c4487220b256d5b/src/mesagerie-main/components/chatContent/ChatContent.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000,
+    host: true,
+    open
 ```
 
 
 ## License: unknown
-https://github.com/katjalmarko/React-Developer-Assignment/blob/dceb7921d14393a74e2611e393b3bf9968feaa40/.history/src/pages/main/tasks_20230415143915.tsx
+https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
 
 ```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-```
+vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-
-## License: unknown
-https://github.com/ankostenko/tensor_msgr/blob/722b5b6d1e0eaf63640a3e8b37437e294990923e/msgrjs/src/App.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" stroke
-```
-
-
-## License: unknown
-https://github.com/fer-dyhia/studApp/blob/3cbd8280be1bcb97a1fc8a566c4487220b256d5b/src/mesagerie-main/components/chatContent/ChatContent.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" stroke
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000,
+    host: true,
+    open
 ```
 
 
 ## License: unknown
-https://github.com/katjalmarko/React-Developer-Assignment/blob/dceb7921d14393a74e2611e393b3bf9968feaa40/.history/src/pages/main/tasks_20230415143915.tsx
+https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
 
 ```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" stroke
-```
+vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-
-## License: unknown
-https://github.com/ankostenko/tensor_msgr/blob/722b5b6d1e0eaf63640a3e8b37437e294990923e/msgrjs/src/App.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth
-```
-
-
-## License: unknown
-https://github.com/fer-dyhia/studApp/blob/3cbd8280be1bcb97a1fc8a566c4487220b256d5b/src/mesagerie-main/components/chatContent/ChatContent.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000,
+    host: true,
+    open:
 ```
 
 
 ## License: unknown
-https://github.com/katjalmarko/React-Developer-Assignment/blob/dceb7921d14393a74e2611e393b3bf9968feaa40/.history/src/pages/main/tasks_20230415143915.tsx
+https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
 
 ```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth
-```
+vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-
-## License: unknown
-https://github.com/ankostenko/tensor_msgr/blob/722b5b6d1e0eaf63640a3e8b37437e294990923e/msgrjs/src/App.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12
-```
-
-
-## License: unknown
-https://github.com/fer-dyhia/studApp/blob/3cbd8280be1bcb97a1fc8a566c4487220b256d5b/src/mesagerie-main/components/chatContent/ChatContent.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000,
+    host: true,
+    open:
 ```
 
 
 ## License: unknown
-https://github.com/katjalmarko/React-Developer-Assignment/blob/dceb7921d14393a74e2611e393b3bf9968feaa40/.history/src/pages/main/tasks_20230415143915.tsx
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12
-```
-
-
-## License: unknown
-https://github.com/ankostenko/tensor_msgr/blob/722b5b6d1e0eaf63640a3e8b37437e294990923e/msgrjs/src/App.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9
+,wght@0,400
 ```
 
 
 ## License: unknown
-https://github.com/fer-dyhia/studApp/blob/3cbd8280be1bcb97a1fc8a566c4487220b256d5b/src/mesagerie-main/components/chatContent/ChatContent.js
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9
-```
-
-
-## License: unknown
-https://github.com/katjalmarko/React-Developer-Assignment/blob/dceb7921d14393a74e2611e393b3bf9968feaa40/.history/src/pages/main/tasks_20230415143915.tsx
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9
+,wght@0,400;0,700;1,400
 ```
 
 
 ## License: unknown
-https://github.com/ankostenko/tensor_msgr/blob/722b5b6d1e0eaf63640a3e8b37437e294990923e/msgrjs/src/App.js
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9
-```
-
-
-## License: unknown
-https://github.com/fer-dyhia/studApp/blob/3cbd8280be1bcb97a1fc8a566c4487220b256d5b/src/mesagerie-main/components/chatContent/ChatContent.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9
+,wght@0,400;0,700;1,400;1,700&family=
 ```
 
 
 ## License: unknown
-https://github.com/katjalmarko/React-Developer-Assignment/blob/dceb7921d14393a74e2611e393b3bf9968feaa40/.history/src/pages/main/tasks_20230415143915.tsx
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9
-```
-
-
-## License: unknown
-https://github.com/ankostenko/tensor_msgr/blob/722b5b6d1e0eaf63640a3e8b37437e294990923e/msgrjs/src/App.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,
 ```
 
 
 ## License: unknown
-https://github.com/fer-dyhia/studApp/blob/3cbd8280be1bcb97a1fc8a566c4487220b256d5b/src/mesagerie-main/components/chatContent/ChatContent.js
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm
-```
-
-
-## License: unknown
-https://github.com/katjalmarko/React-Developer-Assignment/blob/dceb7921d14393a74e2611e393b3bf9968feaa40/.history/src/pages/main/tasks_20230415143915.tsx
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0
 ```
 
 
 ## License: unknown
-https://github.com/ankostenko/tensor_msgr/blob/722b5b6d1e0eaf63640a3e8b37437e294990923e/msgrjs/src/App.js
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-```
-
-
-## License: unknown
-https://github.com/fer-dyhia/studApp/blob/3cbd8280be1bcb97a1fc8a566c4487220b256d5b/src/mesagerie-main/components/chatContent/ChatContent.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1
 ```
 
 
 ## License: unknown
-https://github.com/katjalmarko/React-Developer-Assignment/blob/dceb7921d14393a74e2611e393b3bf9968feaa40/.history/src/pages/main/tasks_20230415143915.tsx
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-```
-
-
-## License: unknown
-https://github.com/ankostenko/tensor_msgr/blob/722b5b6d1e0eaf63640a3e8b37437e294990923e/msgrjs/src/App.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 ```
 
 
 ## License: unknown
-https://github.com/fer-dyhia/studApp/blob/3cbd8280be1bcb97a1fc8a566c4487220b256d5b/src/mesagerie-main/components/chatContent/ChatContent.js
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          
-```
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
-
-## License: unknown
-https://github.com/katjalmarko/React-Developer-Assignment/blob/dceb7921d14393a74e2611e393b3bf9968feaa40/.history/src/pages/main/tasks_20230415143915.tsx
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          
-```
-
-
-## License: unknown
-https://github.com/ankostenko/tensor_msgr/blob/722b5b6d1e0eaf63640a3e8b37437e294990923e/msgrjs/src/App.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          </button>
-        </div>
-```
-
-
-## License: unknown
-https://github.com/fer-dyhia/studApp/blob/3cbd8280be1bcb97a1fc8a566c4487220b256d5b/src/mesagerie-main/components/chatContent/ChatContent.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          </button>
-        </div>
-```
-
-
-## License: unknown
-https://github.com/katjalmarko/React-Developer-Assignment/blob/dceb7921d14393a74e2611e393b3bf9968feaa40/.history/src/pages/main/tasks_20230415143915.tsx
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          </button>
-        </div>
-```
-
-
-## License: unknown
-https://github.com/ankostenko/tensor_msgr/blob/722b5b6d1e0eaf63640a3e8b37437e294990923e/msgrjs/src/App.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div
-```
-
-
-## License: unknown
-https://github.com/fer-dyhia/studApp/blob/3cbd8280be1bcb97a1fc8a566c4487220b256d5b/src/mesagerie-main/components/chatContent/ChatContent.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div
-```
-
-
-## License: unknown
-https://github.com/katjalmarko/React-Developer-Assignment/blob/dceb7921d14393a74e2611e393b3bf9968feaa40/.history/src/pages/main/tasks_20230415143915.tsx
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div
-```
-
-
-## License: unknown
-https://github.com/ankostenko/tensor_msgr/blob/722b5b6d1e0eaf63640a3e8b37437e294990923e/msgrjs/src/App.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export
-```
-
-
-## License: unknown
-https://github.com/fer-dyhia/studApp/blob/3cbd8280be1bcb97a1fc8a566c4487220b256d5b/src/mesagerie-main/components/chatContent/ChatContent.js
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export
-```
-
-
-## License: unknown
-https://github.com/katjalmarko/React-Developer-Assignment/blob/dceb7921d14393a74e2611e393b3bf9968feaa40/.history/src/pages/main/tasks_20230415143915.tsx
-
-```
-fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export
+:root {
+  -
 ```
 
