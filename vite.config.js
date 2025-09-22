@@ -12,7 +12,7 @@ export default defineConfig({
       gzipSize: true,
       brotliSize: true,
     }),
-q  ].filter(Boolean), // Remove falsy plugins
+  ].filter(Boolean), // Remove falsy plugins
   
   // Optimize dependencies
   optimizeDeps: {
@@ -27,6 +27,9 @@ q  ].filter(Boolean), // Remove falsy plugins
   build: {
     // Enable source maps for better debugging
     sourcemap: true,
+    
+    // CSS optimization
+    cssMinify: 'lightningcss',
     
     // Optimize chunk splitting
     rollupOptions: {
@@ -45,15 +48,30 @@ q  ].filter(Boolean), // Remove falsy plugins
             chunkInfo.facadeModuleId.split('/').pop().replace('.jsx', '') : 'chunk';
           return `assets/${facadeModuleId}-[hash].js`;
         },
+        
+        // Optimize CSS file names
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+            return 'assets/[name]-[hash].css';
+          }
+          return 'assets/[name]-[hash][extname]';
+        },
       },
     },
     
-    // Minification options
+    // Minification options - less aggressive
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true, // Remove console.logs in production
+        drop_console: false, // Keep console.logs for debugging
         drop_debugger: true,
+        passes: 1, // Reduce passes to avoid over-optimization
+      },
+      mangle: {
+        safari10: true, // Fix Safari issues
+      },
+      format: {
+        safari10: true, // Ensure Safari compatibility
       },
     },
     
@@ -61,7 +79,20 @@ q  ].filter(Boolean), // Remove falsy plugins
     chunkSizeWarningLimit: 1000,
     
     // Target modern browsers for smaller bundles
-    target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
+    target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
+  },
+  
+  // CSS processing
+  css: {
+    postcss: {
+      plugins: [
+        // Ensure autoprefixer runs
+        require('autoprefixer')({
+          overrideBrowserslist: ['> 1%', 'last 2 versions', 'not dead'],
+        }),
+      ],
+    },
+    devSourcemap: true,
   },
   
   // Development server optimization
@@ -90,7 +121,9 @@ q  ].filter(Boolean), // Remove falsy plugins
     // Keep function names for better debugging
     keepNames: true,
     // Handle JSX properly
-    jsx: 'automatic'
+    jsx: 'automatic',
+    // Ensure proper CSS handling
+    legalComments: 'none',
   }
 });
 
