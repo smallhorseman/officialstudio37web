@@ -1,81 +1,81 @@
 // This file should be completely deleted to resolve NS_ERROR_CORRUPTED_CONTENT issues
 // Service worker is corrupting asset requests and should be removed
-const CACHE_NAME = 'studio37-v1';
-const urlsToCache = [
+const CACHE_NAME = 'studio37-v1.2.0';
+const STATIC_CACHE = 'studio37-static-v1';
+const DYNAMIC_CACHE = 'studio37-dynamic-v1';
+
+// Assets to cache immediately
+const STATIC_ASSETS = [
   '/',
-  '/assets/',
-  '/favicon.svg'
+  '/index.html',
+  '/manifest.webmanifest',
+  '/offline.html', // Create this fallback page
 ];
 
-// Install event - only cache essential resources
-self.addEventListener('install', event => {
-  console.log('Service Worker installing...');
+// Install event - cache static assets
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Cache opened');
-        return cache.addAll(urlsToCache);
-      })
-      .catch(err => {
-        console.log('Cache installation failed:', err);
-        // Don't fail the install if caching fails
-        return Promise.resolve();
-      })
+    caches.open(STATIC_CACHE)
+      .then(cache => cache.addAll(STATIC_ASSETS))
+      .then(() => self.skipWaiting())
   );
-  // Force the waiting service worker to become the active service worker
-  self.skipWaiting();
 });
 
-// Fetch event - improved error handling
-self.addEventListener('fetch', event => {
+// Activate event - clean old caches
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE) {
+            console.log('Deleting old cache:', cacheName);
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    }).then(() => self.clients.claim())
+  );
+});
+
+// Fetch event - serve from cache with network fallback
+self.addEventListener('fetch', (event) => {
+  const { request } = event;
+  
   // Skip non-GET requests
-  if (event.request.method !== 'GET') {
+  if (request.method !== 'GET') return;
+  
+  // Handle navigation requests
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
+        .catch(() => caches.match('/offline.html'))
+    );
     return;
   }
-
-  // Skip external requests that might cause CORS issues
-  if (!event.request.url.startsWith(self.location.origin)) {
-    return;
-  }
-
+  
+  // Handle other requests with cache-first strategy
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Return cached version or fetch from network
-        return response || fetch(event.request)
-          .catch(error => {
-            console.log('Fetch failed for:', event.request.url, error);
-            // For critical assets, try to serve from cache anyway
-            return caches.match(event.request.url);
+    caches.match(request)
+      .then((cachedResponse) => {
+        if (cachedResponse) return cachedResponse;
+        
+        return fetch(request)
+          .then((response) => {
+            // Don't cache if not successful
+            if (!response || response.status !== 200 || response.type !== 'basic') {
+              return response;
+            }
+            
+            // Cache successful responses
+            const responseToCache = response.clone();
+            caches.open(DYNAMIC_CACHE)
+              .then((cache) => cache.put(request, responseToCache));
+            
+            return response;
           });
       })
-      .catch(error => {
-        console.log('Cache match failed:', error);
-        // Fallback to network request
-        return fetch(event.request);
-      })
   );
 });
-
-// Activate event - cleanup old caches
-self.addEventListener('activate', event => {
-  console.log('Service Worker activating...');
-  event.waitUntil(
-    caches.keys()
-      .then(cacheNames => {
-        return Promise.all(
-          cacheNames.map(cacheName => {
-            if (cacheName !== CACHE_NAME) {
-              console.log('Deleting old cache:', cacheName);
-              return caches.delete(cacheName);
-            }
-          })
-        );
-      })
-      .then(() => {
-        // Claim control of all clients
-        return self.clients.claim();
-      })
   );
 });
 
