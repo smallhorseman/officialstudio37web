@@ -928,8 +928,11 @@ function App() {
               <Link to="/portfolio" className="hover:text-[#F3E3C3]/80 transition-colors">Portfolio</Link>
               <Link to="/contact" className="hover:text-[#F3E3C3]/80 transition-colors">Contact</Link>
               {!isAdmin ? (
-                <Link to="/admin-login" className="text-[#F3E3C3]/60 hover:text-[#F3E3C3] transition-colors text-sm">
-                  Admin
+                <Link 
+                  to="/admin-login" 
+                  className="bg-[#F3E3C3]/10 border border-[#F3E3C3]/30 text-[#F3E3C3] px-4 py-2 rounded-md text-sm font-semibold hover:bg-[#F3E3C3]/20 hover:border-[#F3E3C3] transition-all"
+                >
+                  Admin Login
                 </Link>
               ) : (
                 <Link to="/admin" className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded-md text-sm font-semibold hover:bg-[#E6D5B8] transition-colors">
