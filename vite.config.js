@@ -6,7 +6,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
-    host: true
+    host: true,
+    open: true
+  },
+  preview: {
+    port: 3000
   },
   build: {
     outDir: 'dist',
@@ -22,15 +26,6 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom', '@supabase/supabase-js']
-  }
-})
-  },
-  server: {
-    port: 3000,
-    open: true
-  },
-  preview: {
-    port: 3000
   },
   css: {
     modules: {
