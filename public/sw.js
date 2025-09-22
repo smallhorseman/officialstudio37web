@@ -76,8 +76,6 @@ self.addEventListener('fetch', (event) => {
       })
   );
 });
-  );
-});
 
 // Handle messages from the main thread
 self.addEventListener('message', event => {
