@@ -325,7 +325,7 @@ export const fetchWithErrorHandling = async (query, useCache = true, retries = 2
   }
 };
 
-// Batch operations for better performance
+// Complete the batchInsert function
 export const batchInsert = async (table, records, batchSize = 100) => {
   if (!Array.isArray(records) || records.length === 0) {
     return [];
@@ -369,18 +369,17 @@ export const batchUpdate = async (table, updates, batchSize = 50) => {
     
     for (const update of batch) {
       try {
-        const { id, ...updateData } = update;
         const { data, error } = await supabase
           .from(table)
-          .update(updateData)
-          .eq('id', id)
+          .update(update.data)
+          .eq(update.column, update.value)
           .select();
         
         if (error) throw error;
         
         results.push(...(data || []));
       } catch (error) {
-        console.error(`❌ Batch update failed for record ${update.id}:`, error);
+        console.error(`❌ Batch update failed for item ${update.value}:`, error);
         throw error;
       }
     }
@@ -395,12 +394,11 @@ export const batchUpdate = async (table, updates, batchSize = 50) => {
 // Cache management
 export const clearCache = () => {
   cache.clear();
-  console.log('🗑️ Cache cleared');
+  console.log('🧹 Cache cleared');
 };
 
 export const clearTableCache = (table) => {
   const keysToDelete = [];
-  
   cache.forEach((value, key) => {
     if (key.includes(table)) {
       keysToDelete.push(key);
@@ -408,88 +406,70 @@ export const clearTableCache = (table) => {
   });
   
   keysToDelete.forEach(key => cache.delete(key));
-  console.log(`🗑️ Cache cleared for table: ${table}`);
+  console.log(`🧹 Cleared cache for table: ${table}`);
 };
 
 // Real-time subscriptions with auto-cleanup
 const activeSubscriptions = new Map();
 
-export const subscribeToTable = (table, callback, filter = null) => {
-  if (connectionState.status === 'mock') {
-    console.log('📡 Real-time subscriptions not available in mock mode');
-    return () => {};
+export const subscribeToTable = (table, callback, filters = {}) => {
+  const subscriptionKey = `${table}_${JSON.stringify(filters)}`;
+  
+  // Unsubscribe existing subscription
+  if (activeSubscriptions.has(subscriptionKey)) {
+    activeSubscriptions.get(subscriptionKey).unsubscribe();
   }
   
-  const subscriptionId = `${table}_${Date.now()}`;
-  
-  let subscription = supabase
-    .channel(subscriptionId)
-    .on('postgres_changes', {
-      event: '*',
-      schema: 'public',
-      table: table,
-      ...(filter && { filter })
-    }, (payload) => {
-      console.log(`📡 Real-time update for ${table}:`, payload);
-      clearTableCache(table);
-      callback(payload);
-    })
-    .subscribe();
-  
-  activeSubscriptions.set(subscriptionId, subscription);
-  
-  return () => {
-    subscription.unsubscribe();
-    activeSubscriptions.delete(subscriptionId);
-    console.log(`📡 Unsubscribed from ${table}`);
-  };
+  try {
+    let query = supabase
+      .channel(`${table}_changes`)
+      .on('postgres_changes', 
+        { 
+          event: '*', 
+          schema: 'public', 
+          table: table,
+          ...filters
+        }, 
+        callback
+      )
+      .subscribe();
+    
+    activeSubscriptions.set(subscriptionKey, query);
+    console.log(`📡 Subscribed to ${table} changes`);
+    
+    return () => {
+      query.unsubscribe();
+      activeSubscriptions.delete(subscriptionKey);
+      console.log(`📡 Unsubscribed from ${table} changes`);
+    };
+  } catch (error) {
+    console.error(`❌ Failed to subscribe to ${table}:`, error);
+    return () => {};
+  }
 };
 
-// Cleanup function
-export const cleanup = () => {
-  // Unsubscribe from all real-time subscriptions
-  activeSubscriptions.forEach((subscription, id) => {
-    subscription.unsubscribe();
-    console.log(`📡 Cleaned up subscription: ${id}`);
-  });
-  activeSubscriptions.clear();
-  
-  // Clear cache
-  clearCache();
-  
-  // Stop auto-reconnection
-  if (cleanupReconnect) cleanupReconnect();
-  
-  console.log('🧹 Supabase client cleanup completed');
-};
-
-// Connection status utilities
-export const isSupabaseConfigured = () => {
-  return supabaseUrl && supabaseAnonKey && (supabaseUrl.startsWith('http://') || supabaseUrl.startsWith('https://'));
-};
-
-export const getConnectionStatus = () => {
-  return connectionState.status;
-};
-
+// Connection status functions
 export const testConnection = async () => {
-  return await healthCheck();
+  try {
+    if (connectionState.status === 'mock') return true;
+    
+    const { error } = await supabase
+      .from('leads')
+      .select('id')
+      .limit(1);
+    
+    return !error || error.code === 'PGRST116'; // PGRST116 means empty table, which is fine
+  } catch (err) {
+    console.error('Connection test failed:', err);
+    return false;
+  }
 };
 
-// Performance monitoring
-export const getPerformanceMetrics = () => {
-  return {
-    cacheSize: cache.size,
-    cacheHitRate: cache.hitRate || 0,
-    connectionStatus: connectionState.status,
-    lastHealthCheck: connectionState.lastCheck,
-    retryCount: connectionState.retryCount,
-    activeSubscriptions: activeSubscriptions.size
-  };
-};
+export const getConnectionStatus = () => connectionState.status;
 
-// Export the enhanced client
+// Export the configured supabase client
 export { supabase };
+export default supabase;
 
 // Cleanup on page unload
 if (typeof window !== 'undefined') {

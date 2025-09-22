@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { supabase } from '../supabaseClient';
+import CmsSection from './CmsSection';
 
 const OptimizedImage = ({ src, alt, className, loading = "lazy", onError, ...props }) => {
   const [loaded, setLoaded] = useState(false);
@@ -502,3 +503,9 @@ export function EnhancedCmsSection({
     </div>
   );
 }
+
+export const EnhancedCmsSectionWrapper = (props) => {
+  return <CmsSection {...props} />;
+};
+
+export default EnhancedCmsSectionWrapper;
