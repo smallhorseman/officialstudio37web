@@ -500,14 +500,3 @@ export function EnhancedCmsSection({
     </div>
   );
 }
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-)}
-    </div>
-  );
-}
