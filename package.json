@@ -15,14 +15,17 @@
     "type-check": "tsc --noEmit",
     "clean": "rm -rf dist node_modules/.vite",
     "audit:security": "npm audit",
-    "audit:performance": "npm run build && npx lighthouse http://localhost:4173 --output json --output-path ./lighthouse-report.json"
+    "audit:performance": "npm run build && npx lighthouse http://localhost:4173 --output json --output-path ./lighthouse-report.json",
+    "analyze:bundle": "npm run build && npx vite-bundle-analyzer dist/stats.html"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.0",
-    "react-markdown": "^8.0.0"
+    "react-markdown": "^8.0.0",
+    "react-helmet": "^6.1.0",
+    "react-error-boundary": "^4.0.11"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",

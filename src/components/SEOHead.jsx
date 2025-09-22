@@ -1,67 +1,67 @@
-import { useEffect, useRef } from 'react';
+import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const SEOHead = ({ 
-  title = "Studio37 - Professional Photography & Content Strategy in Houston, TX",
-  description = "Vintage heart, modern vision. Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.",
-  keywords = "photography Houston, professional photographer Houston, content strategy, portraits, weddings, events",
+  title = "Studio37 Photography - Professional Photography Houston, TX",
+  description = "Studio37 offers professional photography and content strategy services in Houston, Texas. Specializing in portraits, weddings, events, and commercial photography.",
+  keywords = "photography, Houston photographer, professional photography, portrait photography, wedding photography, commercial photography, content strategy, Studio37",
   image = "https://www.studio37.cc/og-image.jpg",
-  url = "https://www.studio37.cc"
+  url = "https://www.studio37.cc",
+  type = "website"
 }) => {
-  const previousValues = useRef({});
+  return (
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
+      
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content={type} />
+      <meta property="og:url" content={url} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={image} />
+      
+      {/* Twitter */}
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content={url} />
+      <meta property="twitter:title" content={title} />
+      <meta property="twitter:description" content={description} />
+      <meta property="twitter:image" content={image} />
+      
+      {/* Additional SEO */}
+      <meta name="robots" content="index, follow" />
+      <meta name="author" content="Studio37 Photography" />
+      <link rel="canonical" href={url} />
+      
+      {/* Local Business Schema */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "http://schema.org",
+          "@type": "LocalBusiness",
+          "name": "Studio37 Photography",
+          "description": description,
+          "url": url,
+          "telephone": "(832) 713-9944",
+          "email": "sales@studio37.cc",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Houston",
+            "addressRegion": "TX",
+            "addressCountry": "US"
+          },
+          "priceRange": "$300-$5000",
+          "openingHours": "Mo-Fr 09:00-18:00",
+          "sameAs": [
+            "https://instagram.com/studio37houston"
+          ]
+        })}
+      </script>
+    </Helmet>
+  );
+};
 
-  useEffect(() => {
-    // Prevent unnecessary DOM updates
-    const hasChanged = (key, value) => {
-      if (previousValues.current[key] !== value) {
-        previousValues.current[key] = value;
-        return true;
-      }
-      return false;
-    };
-
-    // Update document title only if changed
-    if (hasChanged('title', title)) {
-      document.title = title;
-    }
-
-    // Batch DOM updates for better performance
-    const updateMetaTag = (property, content, isProperty = false) => {
-      if (!hasChanged(`${property}_${isProperty}`, content)) return;
-      
-      const attribute = isProperty ? 'property' : 'name';
-      let tag = document.querySelector(`meta[${attribute}="${property}"]`);
-      
-      if (!tag) {
-        tag = document.createElement('meta');
-        tag.setAttribute(attribute, property);
-        document.head.appendChild(tag);
-      }
-      
-      tag.setAttribute('content', content);
-    };
-
-    // Use requestAnimationFrame for better performance
-    requestAnimationFrame(() => {
-      // Basic meta tags
-      updateMetaTag('description', description);
-      updateMetaTag('keywords', keywords);
-      updateMetaTag('viewport', 'width=device-width, initial-scale=1, viewport-fit=cover');
-      updateMetaTag('theme-color', '#F3E3C3');
-      updateMetaTag('color-scheme', 'dark light');
-      
-      // Open Graph tags
-      updateMetaTag('og:title', title, true);
-      updateMetaTag('og:description', description, true);
-      updateMetaTag('og:image', image, true);
-      updateMetaTag('og:image:width', '1200', true);
-      updateMetaTag('og:image:height', '630', true);
-      updateMetaTag('og:image:alt', 'Studio37 Professional Photography Houston TX', true);
-      updateMetaTag('og:url', url, true);
-      updateMetaTag('og:type', 'website', true);
-      updateMetaTag('og:site_name', 'Studio37', true);
-      updateMetaTag('og:locale', 'en_US', true);
-      
-      // Twitter Card tags
+export default SEOHead;
       updateMetaTag('twitter:card', 'summary_large_image');
       updateMetaTag('twitter:title', title);
       updateMetaTag('twitter:description', description);

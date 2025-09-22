@@ -1,7 +1,12 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const usePerformanceMonitor = () => {
   const metricsRef = useRef({});
+  const [metrics, setMetrics] = useState({
+    memory: null,
+    connection: null,
+    loadTime: null
+  });
 
   useEffect(() => {
     // Web Vitals tracking
@@ -91,7 +96,49 @@ export const usePerformanceMonitor = () => {
     };
   }, []);
 
-  return metricsRef.current;
+  useEffect(() => {
+    // Memory usage (if available)
+    if ('memory' in performance) {
+      const updateMemory = () => {
+        setMetrics(prev => ({
+          ...prev,
+          memory: {
+            used: Math.round(performance.memory.usedJSHeapSize / 1024 / 1024),
+            total: Math.round(performance.memory.totalJSHeapSize / 1024 / 1024),
+            limit: Math.round(performance.memory.jsHeapSizeLimit / 1024 / 1024)
+          }
+        }));
+      };
+
+      updateMemory();
+      const interval = setInterval(updateMemory, 5000);
+      return () => clearInterval(interval);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Connection information
+    if ('connection' in navigator) {
+      const updateConnection = () => {
+        setMetrics(prev => ({
+          ...prev,
+          connection: {
+            effectiveType: navigator.connection.effectiveType,
+            downlink: navigator.connection.downlink,
+            rtt: navigator.connection.rtt
+          }
+        }));
+      };
+
+      updateConnection();
+      navigator.connection.addEventListener('change', updateConnection);
+      return () => {
+        navigator.connection.removeEventListener('change', updateConnection);
+      };
+    }
+  }, []);
+
+  return metrics;
 };
 
 // Performance budget warnings
