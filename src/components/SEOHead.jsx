@@ -141,6 +141,25 @@ const SEOHead = ({
         canonicalLink.href = url;
       }
 
+      // Add HubSpot preconnect links only once
+      if (!hasChanged('hubspot-preconnects', 'added')) {
+        const hubspotPreconnectLinks = [
+          'https://js-na2.hs-scripts.com',
+          'https://forms.hubspot.com',
+          'https://api.hubapi.com'
+        ];
+
+        hubspotPreconnectLinks.forEach(href => {
+          if (!document.querySelector(`link[href="${href}"]`)) {
+            const link = document.createElement('link');
+            link.rel = 'preconnect';
+            link.href = href;
+            link.crossOrigin = 'anonymous';
+            document.head.appendChild(link);
+          }
+        });
+      }
+
       // Add preconnect links only once
       if (!hasChanged('preconnects', 'added')) {
         const preconnectLinks = [
@@ -158,6 +177,12 @@ const SEOHead = ({
             document.head.appendChild(link);
           }
         });
+      }
+
+      // Add HubSpot tracking attributes for better integration
+      if (!hasChanged('hubspot-attrs', 'added')) {
+        document.body.setAttribute('data-hubspot-portal', '242993708');
+        document.body.setAttribute('data-hubspot-enabled', 'true');
       }
     });
 

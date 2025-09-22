@@ -7,6 +7,7 @@ import { supabase, fetchWithErrorHandling, isSupabaseConfigured, testConnection 
 import { EnhancedCrmSection } from './components/EnhancedCRM';
 import { EnhancedCmsSection } from './components/EnhancedCMS';
 import SEOHead from './components/SEOHead';
+import HubSpotIntegration, { trackHubSpotEvent, identifyHubSpotVisitor } from './components/HubSpotIntegration';
 
 // Simple SVG icon components
 const Camera = ({ className, size = 24 }) => (
@@ -192,6 +193,105 @@ function App() {
     } finally {
       setLoading(false);
     }
+  };
+
+  // Connection status notification component
+  const ConnectionStatusNotification = () => {
+    if (connectionStatus === 'connected') return null;
+    
+    const statusConfig = {
+      checking: { 
+        color: 'bg-blue-500/20 border-blue-500/30 text-blue-200',
+        message: '🔄 Connecting to database...'
+      },
+      unconfigured: { 
+        color: 'bg-yellow-500/20 border-yellow-500/30 text-yellow-200',
+        message: '⚠️ Database not configured. Using offline mode.'
+      },
+      error: { 
+        color: 'bg-red-500/20 border-red-500/30 text-red-200',
+        message: '❌ Database connection failed. Limited functionality.'
+      }
+    };
+    
+    const config = statusConfig[connectionStatus];
+    
+    return (
+      <div className={`${config.color} border px-4 py-2 text-sm text-center`}>
+        <strong>{config.message}</strong>
+      </div>
+    );
+  };
+
+  // Enhanced portfolio unlock with HubSpot tracking
+  async function handlePortfolioUnlock(formData) {
+    if (connectionStatus !== 'connected') {
+      setPortfolioUnlocked(true);
+      
+      // Track portfolio unlock in HubSpot
+      trackHubSpotEvent('portfolio_unlocked', {
+        service: formData.service,
+        source: 'portfolio_gate'
+      });
+      
+      // Identify the visitor
+      identifyHubSpotVisitor(formData.email, {
+        firstname: formData.name.split(' ')[0],
+        lastname: formData.name.split(' ').slice(1).join(' '),
+        phone: formData.phone,
+        service_interest: formData.service
+      });
+      
+      return true;
+    }
+    
+    try {
+      const { error } = await supabase.from('leads').insert([{
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        status: 'New',
+        source: 'portfolio_unlock'
+      }]);
+      
+      if (error) {
+        console.error('Portfolio unlock error:', error);
+        return false;
+      }
+      
+      setPortfolioUnlocked(true);
+      
+      // Track successful lead creation in HubSpot
+      trackHubSpotEvent('lead_created', {
+        service: formData.service,
+        source: 'portfolio_unlock',
+        lead_id: `studio37_${Date.now()}`
+      });
+      
+      // Identify the visitor in HubSpot
+      identifyHubSpotVisitor(formData.email, {
+        firstname: formData.name.split(' ')[0],
+        lastname: formData.name.split(' ').slice(1).join(' '),
+        phone: formData.phone,
+        service_interest: formData.service,
+        lead_source: 'portfolio_unlock'
+      });
+      
+      return true;
+    } catch (err) {
+      console.error('Unexpected portfolio unlock error:', err);
+      return false;
+    }
+  }
+
+  // Enhanced navigation tracking
+  const trackPageView = (pageName) => {
+    trackHubSpotEvent('page_view', {
+      page_name: pageName,
+      page_url: window.location.href,
+      referrer: document.referrer
+    });
   };
 
   // Connection status notification component
@@ -541,6 +641,9 @@ function App() {
 
   return (
     <div className="App bg-[#181818] text-[#F3E3C3] min-h-screen">
+      {/* Add HubSpot Integration */}
+      <HubSpotIntegration />
+      
       {/* Navigation with improved accessibility */}
       <nav className="fixed top-0 w-full z-50 bg-[#181818]/95 backdrop-blur-custom border-b border-white/10" role="navigation" aria-label="Main navigation">
         <div className="container-custom">
@@ -594,17 +697,75 @@ function App() {
         </div>
       </nav>
 
-      {/* Main Content */}
-      <main className="pt-16" role="main">
+      {/* Main content with HubSpot event tracking */}
+      <main className="flex-1">
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<div>About Page</div>} />
-          <Route path="/services" element={<div>Services Page</div>} />
-          <Route path="/portfolio" element={<div>Portfolio Page</div>} />
-          <Route path="/blog" element={<div>Blog Page</div>} />
-          <Route path="/contact" element={<div>Contact Page</div>} />
-          <Route path="/admin/login" element={!isAdmin ? <AdminLoginPage onLogin={() => setIsAdmin(true)} /> : <Navigate to="/admin/dashboard" replace />} />
-          <Route path="/admin/dashboard" element={isAdmin ? <AdminDashboard /> : <Navigate to="/admin/login" replace />} />
+          <Route 
+            path="/" 
+            element={
+              <div onLoad={() => trackPageView('home')}>
+                <HomePage />
+              </div>
+            } 
+          />
+          <Route 
+            path="/services" 
+            element={
+              <div onLoad={() => trackPageView('services')}>
+                <ServicesPage />
+              </div>
+            }
+          />
+          <Route 
+            path="/portfolio" 
+            element={
+              <div onLoad={() => trackPageView('portfolio')}>
+                <PortfolioPage />
+              </div>
+            }
+          />
+          <Route 
+            path="/blog" 
+            element={
+              <div onLoad={() => trackPageView('blog')}>
+                <BlogPage />
+              </div>
+            }
+          />
+          <Route 
+            path="/blog/:slug" 
+            element={
+              <div onLoad={() => trackPageView('blog_post')}>
+                <BlogPost />
+              </div>
+            }
+          />
+          <Route 
+            path="/about" 
+            element={
+              <div onLoad={() => trackPageView('about')}>
+                <AboutPage />
+              </div>
+            }
+          />
+          <Route 
+            path="/contact" 
+            element={
+              <div onLoad={() => trackPageView('contact')}>
+                <ContactPage />
+              </div>
+            }
+          />
+          {isAdmin && (
+            <Route 
+              path="/admin" 
+              element={
+                <div onLoad={() => trackPageView('admin')}>
+                  <AdminDashboard />
+                </div>
+              }
+            />
+          )}
         </Routes>
       </main>
 
