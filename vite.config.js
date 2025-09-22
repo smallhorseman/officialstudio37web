@@ -7,12 +7,6 @@ export default defineConfig({
     react({
       // Enable SWC for faster builds and smaller bundles
       jsxRuntime: 'automatic',
-      babel: {
-        plugins: [
-          // Remove PropTypes in production
-          process.env.NODE_ENV === 'production' && ['babel-plugin-transform-remove-prop-types', { removeImport: true }]
-        ].filter(Boolean)
-      }
     }),
     // Bundle analyzer (only in build)
     process.env.ANALYZE && visualizer({
@@ -99,9 +93,6 @@ export default defineConfig({
           return `assets/[name]-[hash].${ext}`;
         },
       },
-      
-      // External dependencies (load from CDN in production)
-      external: process.env.NODE_ENV === 'production' ? [] : [],
     },
     
     // Aggressive minification
@@ -115,9 +106,6 @@ export default defineConfig({
       },
       mangle: {
         safari10: true,
-        properties: {
-          regex: /^_/ // Mangle private properties
-        }
       },
       format: {
         safari10: true,
@@ -174,6 +162,18 @@ export default defineConfig({
 
   // Enhanced esbuild configuration
   esbuild: {
+    keepNames: process.env.NODE_ENV === 'development',
+    jsx: 'automatic',
+    legalComments: 'none',
+    target: 'es2020',
+    // Tree shaking optimization
+    treeShaking: true,
+    // Remove unused imports
+    ignoreAnnotations: false,
+    // Drop console and debugger in production
+    drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
+  }
+});
     keepNames: process.env.NODE_ENV === 'development',
     jsx: 'automatic',
     legalComments: 'none',
