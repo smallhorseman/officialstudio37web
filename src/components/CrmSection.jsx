@@ -71,6 +71,19 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
     fetchLeadNotes(lead.id);
   };
 
+  const PhoneIcon = ({ className, size = 20 }) => (
+    <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  );
+
+  const MailIcon = ({ className, size = 20 }) => (
+    <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+  );
+
   if (!leads || leads.length === 0) {
     return (
       <div className="text-center text-[#F3E3C3]/70 py-8">
@@ -113,6 +126,7 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
                   >
                     {lead.status === 'Completed' ? 'Reopen' : 'Complete'}
                   </button>
+                  <button
                     onClick={() => openLeadDetails(lead)}
                     className="px-3 py-1 bg-[#F3E3C3] text-[#1a1a1a] rounded-full text-xs font-semibold transition-transform hover:scale-105"
                   >
@@ -161,6 +175,29 @@ const CrmSection = ({ leads, updateLeadStatus }) => {
                   <div>
                     <label className="text-xs text-[#F3E3C3]/60 uppercase font-semibold">Status</label>
                     <div className="text-[#F3E3C3]">{selectedLead.status}</div>
+                  </div>
+
+                  {/* Quick Actions */}
+                  <div className="pt-4 border-t border-white/10">
+                    <h4 className="text-sm font-semibold text-[#F3E3C3] mb-3">Quick Actions</h4>
+                    <div className="space-y-2">
+                      {selectedLead.phone && (
+                        <button
+                          onClick={() => window.open(`tel:${selectedLead.phone}`)}
+                          className="w-full bg-green-500 text-white rounded-md py-2 px-3 text-sm font-semibold flex items-center justify-center gap-2 hover:bg-green-600 transition-colors"
+                        >
+                          <PhoneIcon size={16} />
+                          Call
+                        </button>
+                      )}
+                      <button
+                        onClick={() => window.open(`mailto:${selectedLead.email}`)}
+                        className="w-full bg-red-500 text-white rounded-md py-2 px-3 text-sm font-semibold flex items-center justify-center gap-2 hover:bg-red-600 transition-colors"
+                      >
+                        <MailIcon size={16} />
+                        Email
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
