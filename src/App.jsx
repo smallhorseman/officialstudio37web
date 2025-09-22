@@ -10,7 +10,6 @@ import { EnhancedCmsSection } from './components/EnhancedCMS';
 import ProjectsSection from './components/ProjectsSection';
 import CrmSection from './components/CrmSection';
 import SEOHead from './components/SEOHead';
-import HubSpotIntegration, { trackHubSpotEvent, identifyHubSpotVisitor } from './components/HubSpotIntegration';
 
 // Icon Components - All needed icons including PhoneIcon
 const Camera = ({ className, size = 24 }) => (
@@ -122,8 +121,12 @@ const DollarSign = ({ className, size = 24 }) => (
   </svg>
 );
 
-// Export PhoneIcon for use in other components
-window.PhoneIcon = PhoneIcon;
+// Enhanced lead tracking without HubSpot
+const trackEvent = (eventName, properties = {}) => {
+  console.log('📊 Event tracked:', eventName, properties);
+  // You can add your own analytics here if needed
+  // For now, we'll just log to console
+};
 
 function App() {
   const location = useLocation();
@@ -343,7 +346,7 @@ function App() {
       if (credentials.username === adminUsername && credentials.password === adminPassword) {
         setIsAdmin(true);
         navigate('/admin');
-        trackHubSpotEvent('admin_login', { timestamp: new Date().toISOString() });
+        trackEvent('admin_login', { timestamp: new Date().toISOString() });
       } else {
         setLoginError('Invalid username or password');
       }
@@ -427,25 +430,20 @@ function App() {
     );
   };
 
-  // Portfolio unlock function with optimized database operations
+  // Portfolio unlock function focusing on Supabase CRM
   const handlePortfolioUnlock = async (formData) => {
     if (getConnectionStatus() !== 'connected') {
       setPortfolioUnlocked(true);
-      trackHubSpotEvent('portfolio_unlocked', {
+      trackEvent('portfolio_unlocked', {
         service: formData.service,
-        source: 'portfolio_gate'
-      });
-      identifyHubSpotVisitor(formData.email, {
-        firstname: formData.name.split(' ')[0],
-        lastname: formData.name.split(' ').slice(1).join(' '),
-        phone: formData.phone,
-        service_interest: formData.service
+        source: 'portfolio_gate',
+        offline: true
       });
       return true;
     }
     
     try {
-      // Remove 'source' field from the insert since it doesn't exist in the database
+      // Remove 'source' field since it doesn't exist in database schema
       const { data, error } = await supabase.from('leads').insert([{
         name: formData.name,
         email: formData.email,
@@ -468,18 +466,10 @@ function App() {
         refetchLeads();
       }
       
-      trackHubSpotEvent('lead_created', {
+      trackEvent('lead_created', {
         service: formData.service,
         source: 'portfolio_unlock',
         lead_id: data[0].id
-      });
-      
-      identifyHubSpotVisitor(formData.email, {
-        firstname: formData.name.split(' ')[0],
-        lastname: formData.name.split(' ').slice(1).join(' '),
-        phone: formData.phone,
-        service_interest: formData.service,
-        lead_source: 'portfolio_unlock'
       });
       
       return true;
@@ -502,9 +492,9 @@ function App() {
     return updateLeadMutation.mutate({ leadId, status: newStatus });
   };
 
-  // Track page views
+  // Track page views without HubSpot
   const trackPageView = (pageName) => {
-    trackHubSpotEvent('page_view', {
+    trackEvent('page_view', {
       page_name: pageName,
       page_url: window.location.href,
       referrer: document.referrer
@@ -755,7 +745,7 @@ function App() {
     useEffect(() => {
       const searchParams = new URLSearchParams(location.search);
       const tab = searchParams.get('tab');
-      if (tab && ['dashboard', 'crm', 'projects', 'cms', 'analytics', 'leads'].includes(tab)) {
+      if (tab && ['dashboard', 'leads', 'crm', 'projects', 'cms', 'analytics'].includes(tab)) {
         setActiveTab(tab);
       }
     }, [location.search]);
@@ -774,26 +764,34 @@ function App() {
         />
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-6xl font-vintage mb-6">Admin Dashboard</h1>
+            <h1 className="text-4xl md:text-6xl font-vintage mb-6">Studio37 CRM Dashboard</h1>
             <p className="text-xl text-[#F3E3C3]/80">
-              Complete business management suite
+              Supabase-powered business management
             </p>
-            <button
-              onClick={() => {
-                setIsAdmin(false);
-                navigate('/');
-              }}
-              className="mt-4 text-sm text-[#F3E3C3]/60 hover:text-[#F3E3C3] transition-colors"
-            >
-              Sign Out
-            </button>
+            <div className="mt-4 flex items-center justify-center gap-4">
+              <div className="flex items-center gap-2 text-sm">
+                <div className={`w-3 h-3 rounded-full ${getConnectionStatus() === 'connected' ? 'bg-green-500' : 'bg-red-500'}`}></div>
+                <span className="text-[#F3E3C3]/70">
+                  Database: {getConnectionStatus() === 'connected' ? 'Connected' : 'Disconnected'}
+                </span>
+              </div>
+              <button
+                onClick={() => {
+                  setIsAdmin(false);
+                  navigate('/');
+                }}
+                className="text-sm text-[#F3E3C3]/60 hover:text-[#F3E3C3] transition-colors"
+              >
+                Sign Out
+              </button>
+            </div>
           </div>
           
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {[
               { id: 'dashboard', label: 'Overview', icon: DollarSign },
-              { id: 'leads', label: 'Lead History', icon: Users },
-              { id: 'crm', label: 'CRM', icon: Users },
+              { id: 'leads', label: 'Lead Management', icon: Users },
+              { id: 'crm', label: 'CRM Tools', icon: Users },
               { id: 'projects', label: 'Projects', icon: Calendar },
               { id: 'cms', label: 'Portfolio', icon: Camera },
               { id: 'analytics', label: 'Analytics', icon: DollarSign }
@@ -820,11 +818,13 @@ function App() {
                   <DollarSign size={24} />
                   Business Overview
                 </h3>
+                
+                {/* Enhanced statistics with better CRM focus */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
+                  <div className="bg-[#1a1a1a] p-6 rounded-lg border-l-4 border-green-500">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="text-lg font-semibold text-[#F3E3C3]">Total Leads</h4>
-                      <Users className="text-[#F3E3C3]/60" size={20} />
+                      <Users className="text-green-500" size={24} />
                     </div>
                     <p className="text-3xl font-bold text-[#F3E3C3]">{leads.length}</p>
                     <p className="text-sm text-green-400">
@@ -832,10 +832,10 @@ function App() {
                     </p>
                   </div>
                   
-                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
+                  <div className="bg-[#1a1a1a] p-6 rounded-lg border-l-4 border-blue-500">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="text-lg font-semibold text-[#F3E3C3]">Active Projects</h4>
-                      <Calendar className="text-[#F3E3C3]/60" size={20} />
+                      <Calendar className="text-blue-500" size={24} />
                     </div>
                     <p className="text-3xl font-bold text-[#F3E3C3]">
                       {projects.filter(p => p.status === 'In Progress').length}
@@ -845,66 +845,122 @@ function App() {
                     </p>
                   </div>
                   
-                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
+                  <div className="bg-[#1a1a1a] p-6 rounded-lg border-l-4 border-purple-500">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="text-lg font-semibold text-[#F3E3C3]">Portfolio Images</h4>
-                      <Camera className="text-[#F3E3C3]/60" size={20} />
+                      <Camera className="text-purple-500" size={24} />
                     </div>
                     <p className="text-3xl font-bold text-[#F3E3C3]">{portfolioImages.length}</p>
                     <p className="text-sm text-[#F3E3C3]/60">Published</p>
                   </div>
                   
-                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
+                  <div className="bg-[#1a1a1a] p-6 rounded-lg border-l-4 border-yellow-500">
                     <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-lg font-semibold text-[#F3E3C3]">Revenue Pipeline</h4>
-                      <DollarSign className="text-[#F3E3C3]/60" size={20} />
+                      <h4 className="text-lg font-semibold text-[#F3E3C3]">Conversion Rate</h4>
+                      <DollarSign className="text-yellow-500" size={24} />
                     </div>
                     <p className="text-3xl font-bold text-[#F3E3C3]">
-                      ${projects.reduce((sum, p) => sum + (p.budget || 0), 0).toLocaleString()}
+                      {leads.length > 0 ? Math.round((leads.filter(l => l.status === 'Converted').length / leads.length) * 100) : 0}%
                     </p>
-                    <p className="text-sm text-[#F3E3C3]/60">Total project value</p>
+                    <p className="text-sm text-yellow-400">
+                      {leads.filter(l => l.status === 'Converted').length} converted
+                    </p>
                   </div>
                 </div>
                 
-                {/* Recent Activity */}
-                <div className="bg-[#1a1a1a] rounded-lg p-6">
-                  <h4 className="text-lg font-semibold text-[#F3E3C3] mb-4">Recent Activity</h4>
-                  <div className="space-y-3">
-                    {leads.slice(0, 5).map(lead => (
-                      <div key={lead.id} className="flex items-center justify-between py-2 border-b border-white/10 last:border-0">
-                        <div>
-                          <p className="text-[#F3E3C3]">New lead: {lead.name}</p>
-                          <p className="text-[#F3E3C3]/60 text-sm">{lead.email} - {lead.service || 'No service specified'}</p>
+                {/* Enhanced Recent Activity with CRM focus */}
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="bg-[#1a1a1a] rounded-lg p-6">
+                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-4 flex items-center gap-2">
+                      <Users size={20} />
+                      Recent Leads
+                    </h4>
+                    <div className="space-y-3">
+                      {leads.slice(0, 5).map(lead => (
+                        <div key={lead.id} className="flex items-center justify-between py-2 border-b border-white/10 last:border-0">
+                          <div>
+                            <p className="text-[#F3E3C3] font-medium">{lead.name}</p>
+                            <p className="text-[#F3E3C3]/60 text-sm">{lead.email}</p>
+                            <p className="text-[#F3E3C3]/40 text-xs">{lead.service || 'No service specified'}</p>
+                          </div>
+                          <div className="text-right">
+                            <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                              lead.status === 'New' ? 'bg-green-500 text-white' :
+                              lead.status === 'Contacted' ? 'bg-blue-500 text-white' :
+                              lead.status === 'Qualified' ? 'bg-yellow-500 text-black' :
+                              lead.status === 'Converted' ? 'bg-purple-500 text-white' :
+                              'bg-gray-500 text-white'
+                            }`}>
+                              {lead.status}
+                            </span>
+                            <p className="text-[#F3E3C3]/60 text-xs mt-1">
+                              {new Date(lead.created_at).toLocaleDateString()}
+                            </p>
+                          </div>
                         </div>
-                        <div className="text-right">
-                          <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                            lead.status === 'New' ? 'bg-green-500 text-white' :
-                            lead.status === 'Contacted' ? 'bg-blue-500 text-white' :
-                            lead.status === 'Qualified' ? 'bg-yellow-500 text-black' :
-                            lead.status === 'Converted' ? 'bg-purple-500 text-white' :
-                            'bg-gray-500 text-white'
-                          }`}>
-                            {lead.status}
-                          </span>
-                          <p className="text-[#F3E3C3]/60 text-xs mt-1">
-                            {new Date(lead.created_at).toLocaleDateString()}
-                          </p>
+                      ))}
+                      {leads.length === 0 && (
+                        <p className="text-[#F3E3C3]/60 text-center py-4">No leads yet</p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="bg-[#1a1a1a] rounded-lg p-6">
+                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-4 flex items-center gap-2">
+                      <Calendar size={20} />
+                      Quick Actions
+                    </h4>
+                    <div className="space-y-3">
+                      <button
+                        onClick={() => handleTabChange('leads')}
+                        className="w-full bg-[#262626] hover:bg-[#333] p-3 rounded-lg text-left transition-colors"
+                      >
+                        <div className="flex items-center gap-3">
+                          <Users size={20} className="text-green-500" />
+                          <div>
+                            <p className="text-[#F3E3C3] font-medium">Manage Leads</p>
+                            <p className="text-[#F3E3C3]/60 text-sm">View and update lead status</p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                    {leads.length === 0 && (
-                      <p className="text-[#F3E3C3]/60 text-center py-4">No leads yet</p>
-                    )}
+                      </button>
+                      
+                      <button
+                        onClick={() => handleTabChange('cms')}
+                        className="w-full bg-[#262626] hover:bg-[#333] p-3 rounded-lg text-left transition-colors"
+                      >
+                        <div className="flex items-center gap-3">
+                          <Camera size={20} className="text-purple-500" />
+                          <div>
+                            <p className="text-[#F3E3C3] font-medium">Update Portfolio</p>
+                            <p className="text-[#F3E3C3]/60 text-sm">Add or remove portfolio images</p>
+                          </div>
+                        </div>
+                      </button>
+                      
+                      <button
+                        onClick={() => handleTabChange('analytics')}
+                        className="w-full bg-[#262626] hover:bg-[#333] p-3 rounded-lg text-left transition-colors"
+                      >
+                        <div className="flex items-center gap-3">
+                          <DollarSign size={20} className="text-yellow-500" />
+                          <div>
+                            <p className="text-[#F3E3C3] font-medium">View Analytics</p>
+                            <p className="text-[#F3E3C3]/60 text-sm">Business performance metrics</p>
+                          </div>
+                        </div>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             )}
 
+            {/* Remove the Source column from leads table since it doesn't exist in database */}
             {activeTab === 'leads' && (
               <div>
                 <h3 className="text-2xl font-vintage mb-6 flex items-center gap-2">
                   <Users size={24} />
-                  Complete Lead History
+                  Lead Management System
                 </h3>
                 
                 {/* Lead Statistics */}
@@ -933,7 +989,7 @@ function App() {
                   </div>
                 </div>
 
-                {/* Enhanced Lead Table */}
+                {/* Enhanced Lead Table - removed Source column */}
                 <div className="bg-[#1a1a1a] rounded-lg overflow-hidden">
                   <div className="overflow-x-auto">
                     <table className="w-full">
@@ -943,16 +999,16 @@ function App() {
                             Contact Info
                           </th>
                           <th className="px-4 py-3 text-left text-xs font-medium text-[#F3E3C3]/70 uppercase tracking-wider">
-                            Service
+                            Service Interest
                           </th>
                           <th className="px-4 py-3 text-left text-xs font-medium text-[#F3E3C3]/70 uppercase tracking-wider">
                             Status
                           </th>
                           <th className="px-4 py-3 text-left text-xs font-medium text-[#F3E3C3]/70 uppercase tracking-wider">
-                            Date
+                            Date Created
                           </th>
                           <th className="px-4 py-3 text-left text-xs font-medium text-[#F3E3C3]/70 uppercase tracking-wider">
-                            Actions
+                            Quick Actions
                           </th>
                         </tr>
                       </thead>
@@ -969,7 +1025,7 @@ function App() {
                               </div>
                             </td>
                             <td className="px-4 py-4">
-                              <span className="text-sm text-[#F3E3C3]">
+                              <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-indigo-500/20 text-indigo-300">
                                 {lead.service || 'Not specified'}
                               </span>
                             </td>
@@ -1007,18 +1063,18 @@ function App() {
                               <div className="flex gap-2">
                                 <a
                                   href={`mailto:${lead.email}?subject=Follow up from Studio37&body=Hi ${lead.name},%0A%0AThank you for your interest in Studio37...`}
-                                  className="text-blue-400 hover:text-blue-300 text-xs"
+                                  className="text-blue-400 hover:text-blue-300 text-sm px-2 py-1 bg-blue-500/20 rounded"
                                   title="Send Email"
                                 >
-                                  ✉️
+                                  Email
                                 </a>
                                 {lead.phone && (
                                   <a
                                     href={`tel:${lead.phone}`}
-                                    className="text-green-400 hover:text-green-300 text-xs"
+                                    className="text-green-400 hover:text-green-300 text-sm px-2 py-1 bg-green-500/20 rounded"
                                     title="Call"
                                   >
-                                    📞
+                                    Call
                                   </a>
                                 )}
                                 <button
@@ -1026,10 +1082,10 @@ function App() {
                                     navigator.clipboard.writeText(`${lead.name} - ${lead.email} - ${lead.phone || 'No phone'} - ${lead.service || 'No service'}`);
                                     alert('Lead info copied to clipboard!');
                                   }}
-                                  className="text-[#F3E3C3]/60 hover:text-[#F3E3C3] text-xs"
+                                  className="text-[#F3E3C3]/60 hover:text-[#F3E3C3] text-sm px-2 py-1 bg-[#F3E3C3]/10 rounded"
                                   title="Copy Info"
                                 >
-                                  📋
+                                  Copy
                                 </button>
                               </div>
                             </td>
@@ -1041,7 +1097,8 @@ function App() {
                   
                   {leads.length === 0 && (
                     <div className="text-center py-12">
-                      <p className="text-[#F3E3C3]/70">No leads found</p>
+                      <Users size={48} className="mx-auto text-[#F3E3C3]/30 mb-4" />
+                      <p className="text-[#F3E3C3]/70 text-lg">No leads found</p>
                       <p className="text-[#F3E3C3]/50 text-sm mt-2">Leads will appear here once visitors unlock the portfolio or submit contact forms</p>
                     </div>
                   )}
@@ -1049,13 +1106,14 @@ function App() {
               </div>
             )}
 
+            {/* Enhanced CRM section */}
             {activeTab === 'crm' && (
               <div>
                 <h3 className="text-2xl font-vintage mb-6 flex items-center gap-2">
                   <Users size={24} />
-                  Customer Relationship Management
+                  Enhanced CRM Tools
                 </h3>
-                <CrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
+                <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
               </div>
             )}
 
@@ -1087,7 +1145,7 @@ function App() {
               <div>
                 <h3 className="text-2xl font-vintage mb-6 flex items-center gap-2">
                   <DollarSign size={24} />
-                  Business Analytics
+                  Supabase CRM Analytics
                 </h3>
                 
                 {/* Lead Analytics - Remove source analysis since column doesn't exist */}
@@ -1153,7 +1211,7 @@ function App() {
 
                 {/* Monthly Lead Trend */}
                 <div className="bg-[#1a1a1a] rounded-lg p-6">
-                  <h4 className="text-lg font-semibold text-[#F3E3C3] mb-4">Monthly Lead Trend</h4>
+                  <h4 className="text-lg font-semibold text-[#F3E3C3] mb-4">Lead Acquisition Trend (Last 6 Months)</h4>
                   <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
                     {Array.from({length: 6}, (_, i) => {
                       const date = new Date();
@@ -1164,7 +1222,7 @@ function App() {
                       }).length;
                       
                       return (
-                        <div key={i} className="text-center">
+                        <div key={i} className="text-center bg-[#262626] p-4 rounded-lg">
                           <p className="text-2xl font-bold text-[#F3E3C3]">{monthLeads}</p>
                           <p className="text-sm text-[#F3E3C3]/70">
                             {date.toLocaleDateString('en-US', { month: 'short' })}
@@ -1184,9 +1242,6 @@ function App() {
 
   return (
     <div className="App bg-[#181818] text-[#F3E3C3] min-h-screen">
-      {/* Only add HubSpot for the virtual assistant, not to replace existing functionality */}
-      <HubSpotIntegration />
-      
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-[#181818]/95 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-6">
@@ -1267,64 +1322,67 @@ function App() {
                 <Camera className="h-6 w-6 text-[#F3E3C3]" />
                 <span className="text-lg font-vintage">Studio37</span>
               </div>
-              <p className="text-[#F3E3C3]/70 text-sm">
+              <p className="text-[#F3E3C3]/70 text-sm"></p>
                 Professional photography with vintage heart and modern vision.
               </p>
             </div>
             
-            <div>
-              <h3 className="font-semibold mb-4">Contact Info</h3>
-              <div className="space-y-2 text-sm text-[#F3E3C3]/70">
-                <div className="flex items-center gap-2">
-                  <Mail className="h-4 w-4" />
-                  <span>sales@studio37.cc</span>
+              <div>
+                <h3 className="font-semibold mb-4">Contact Info</h3>
+                <div className="space-y-2 text-sm text-[#F3E3C3]/70">
+                  <div className="flex items-center gap-2">
+                    <Mail className="h-4 w-4" />
+                    <span>sales@studio37.cc</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Phone className="h-4 w-4" />
+                    <span>(832) 713-9944</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4" />
+                    <span>Houston, TX</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Phone className="h-4 w-4" />
-                  <span>(832) 713-9944</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
-                  <span>Houston, TX</span>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-4">Follow Us</h3>
+                <div className="flex space-x-4">
+                  <a 
+                    href="https://instagram.com/studio37houston" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-[#F3E3C3] hover:text-[#F3E3C3]/80 transition-colors"
+                  >
+                    <Instagram className="h-5 w-5" />
+                  </a>
                 </div>
               </div>
             </div>
             
-            <div>
-              <h3 className="font-semibold mb-4">Follow Us</h3>
-              <div className="flex space-x-4">
-                <a 
-                  href="https://instagram.com/studio37houston" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-[#F3E3C3] hover:text-[#F3E3C3]/80 transition-colors"
-                >
-                  <Instagram className="h-5 w-5" />
-                </a>
-              </div>
+            <div className="border-t border-white/10 mt-8 pt-8 text-center text-sm text-[#F3E3C3]/60">
+              <p>&copy; 2024 Studio37. All rights reserved.</p>
             </div>
           </div>
-          
-          <div className="border-t border-white/10 mt-8 pt-8 text-center text-sm text-[#F3E3C3]/60">
-            <p>&copy; 2024 Studio37. All rights reserved.</p>
-          </div>
-        </div>
+        </footer>
       </footer>
 
-      {/* Virtual Assistant Chat Widget (HubSpot integration for questions only) */}
+      {/* Enhanced Virtual Assistant Chat Widget */}
       {showChatWidget && (
         <div className="fixed bottom-6 right-6 z-50">
-          <div className="bg-[#262626] rounded-lg shadow-lg w-80">
+          <div className="bg-[#262626] rounded-lg shadow-lg w-80 max-h-96 flex flex-col">
             <div className="p-4 border-b border-white/10 flex justify-between items-center">
-              <h3 className="font-vintage text-lg">Studio37 Assistant</h3>
+              <h3 className="font-vintage text-lg text-[#F3E3C3]">Studio37 Assistant</h3>
               <button 
                 onClick={() => setShowChatWidget(false)}
-                className="text-white text-xl hover:text-red-400 transition-colors"
+                className="text-[#F3E3C3] hover:text-red-400 transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <VirtualAgentPlanner />
+            <div className="flex-1 overflow-hidden">
+              <VirtualAgentPlanner />
+            </div>
           </div>
         </div>
       )}
@@ -1332,10 +1390,13 @@ function App() {
       {!showChatWidget && (
         <button
           onClick={() => setShowChatWidget(true)}
-          className="fixed bottom-6 right-6 bg-[#F3E3C3] text-[#1a1a1a] p-4 rounded-full shadow-lg hover:bg-[#E6D5B8] transition-all hover:scale-110 z-50"
+          className="fixed bottom-6 right-6 bg-[#F3E3C3] text-[#1a1a1a] p-4 rounded-full shadow-lg hover:bg-[#E6D5B8] transition-all hover:scale-110 z-50 group"
           title="Chat with Studio37 Assistant"
         >
           <MessageCircle size={24} />
+          <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+            Ask me anything!
+          </span>
         </button>
       )}
 
