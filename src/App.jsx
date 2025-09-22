@@ -1305,7 +1305,7 @@ function App() {
                 onClick={() => setShowChatWidget(false)}
                 className="text-white text-xl hover:text-red-400 transition-colors focus-ring rounded-md p-1"
                 aria-label="Close chat"
-              ></button>
+              >
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -1338,7 +1338,7 @@ function App() {
 
       {/* Error notification */}
       {error && (
-        <div className="fixed bottom-4 left-4 bg-red-500 text-white p-4 rounded-lg shadow-lg z-50 max-w-md"></div>
+        <div className="fixed bottom-4 left-4 bg-red-500 text-white p-4 rounded-lg shadow-lg z-50 max-w-md">
           <p className="text-sm">{error}</p>
           <button 
             onClick={() => setError('')}
