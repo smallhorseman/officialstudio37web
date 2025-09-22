@@ -56,8 +56,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </ErrorBoundary>
   </React.StrictMode>
 );
-  </React.StrictMode>
-);
 
 // Register service worker for PWA functionality
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
