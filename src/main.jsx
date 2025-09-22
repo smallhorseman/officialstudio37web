@@ -54,15 +54,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 );
 
-// Register service worker for PWA functionality - fixed syntax
-if ('serviceWorker' in navigator && import.meta.env.PROD) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((registrationError) => {
-        console.log('SW registration failed: ', registrationError);
-      });
+// Disable service worker registration to prevent asset loading issues
+// This prevents NS_ERROR_CORRUPTED_CONTENT errors
+if ('serviceWorker' in navigator) {
+  // Unregister any existing service workers
+  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+    for(let registration of registrations) {
+      registration.unregister();
+      console.log('Unregistered service worker:', registration);
+    }
   });
+}
 }

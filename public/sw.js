@@ -1,14 +1,14 @@
-// TEMPORARY REMOVAL - Service worker causing asset loading failures
-// This file should be deleted to resolve NS_ERROR_CORRUPTED_CONTENT issues
+// Disable service worker to prevent asset loading issues
+// This resolves NS_ERROR_CORRUPTED_CONTENT errors
 
-// Immediately unregister any existing service worker
 self.addEventListener('install', () => {
+  // Skip waiting and immediately activate
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    // Clear all caches
+    // Clear all existing caches
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
@@ -17,18 +17,18 @@ self.addEventListener('activate', (event) => {
         })
       );
     }).then(() => {
-      // Unregister this service worker
-      return self.registration.unregister();
+      console.log('Service worker disabled - all caches cleared');
+      // Take control of all clients
+      return self.clients.claim();
     })
   );
 });
 
-// Don't intercept any requests - let them pass through normally
+// Don't intercept any requests - let all requests pass through to network
 self.addEventListener('fetch', (event) => {
-  // Do nothing - let network handle all requests
+  // Simply return - don't intercept anything
   return;
 });
-
 // Fetch event - serve from cache with network fallback
 self.addEventListener('fetch', (event) => {
   const { request } = event;
