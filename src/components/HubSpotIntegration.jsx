@@ -1,58 +1,58 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
+// Minimal HubSpot integration - ONLY for virtual assistant, not replacing existing CRM/CMS
 const HubSpotIntegration = () => {
-  const hubspotLoaded = useRef(false);
-
   useEffect(() => {
-    // Ensure HubSpot is only loaded once
-    if (hubspotLoaded.current) return;
-    
-    const checkHubSpot = () => {
-      if (window.hbspt) {
-        hubspotLoaded.current = true;
-        console.log('HubSpot loaded successfully');
-        
-        // Initialize HubSpot tracking
-        if (window.hbspt.analytics) {
-          window.hbspt.analytics.trackPageView();
-        }
-      } else {
-        // Retry after a short delay
-        setTimeout(checkHubSpot, 500);
-      }
-    };
-
-    // Start checking for HubSpot
-    checkHubSpot();
+    // Only load HubSpot for chatflow/virtual assistant
+    if (typeof window !== 'undefined' && !window.hbspt) {
+      const script = document.createElement('script');
+      script.src = 'https://js-na2.hs-scripts.com/242993708.js';
+      script.async = true;
+      script.defer = true;
+      
+      script.onload = () => {
+        console.log('HubSpot loaded for virtual assistant');
+      };
+      
+      script.onerror = () => {
+        console.log('HubSpot failed to load - using fallback');
+      };
+      
+      document.head.appendChild(script);
+    }
   }, []);
 
   return null;
 };
 
-// HubSpot Form Component
-export const HubSpotForm = ({ 
-  formId, 
-  portalId = '242993708', 
-  target = 'hubspot-form',
-  onFormSubmit,
-  className = ''
-}) => {
-  const formRef = useRef(null);
+// Minimal tracking functions - fallback if HubSpot doesn't load
+export const trackHubSpotEvent = (eventName, properties = {}) => {
+  if (typeof window !== 'undefined' && window._hsq) {
+    try {
+      window._hsq.push(['trackEvent', {
+        id: eventName,
+        properties: properties
+      }]);
+    } catch (error) {
+      console.log('HubSpot tracking fallback:', eventName, properties);
+    }
+  }
+};
 
-  useEffect(() => {
-    const loadForm = () => {
-      if (window.hbspt && window.hbspt.forms) {
-        try {
-          window.hbspt.forms.create({
-            portalId: portalId,
-            formId: formId,
-            target: `#${target}`,
-            onFormSubmit: (form) => {
-              console.log('HubSpot form submitted', form);
-              onFormSubmit?.(form);
-            },
-            onFormReady: (form) => {
-              console.log('HubSpot form ready', form);
+export const identifyHubSpotVisitor = (email, properties = {}) => {
+  if (typeof window !== 'undefined' && window._hsq) {
+    try {
+      window._hsq.push(['identify', {
+        email: email,
+        ...properties
+      }]);
+    } catch (error) {
+      console.log('HubSpot identify fallback:', email, properties);
+    }
+  }
+};
+
+export default HubSpotIntegration;
             }
           });
         } catch (error) {
