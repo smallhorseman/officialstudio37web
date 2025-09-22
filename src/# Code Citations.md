@@ -1,196 +1,10 @@
 # Code Citations
 
 ## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-vite.config.js
-import { defineConfig
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    host: true,
-    open
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    host: true,
-    open
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    host: true,
-    open:
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    host: true,
-    open:
+,wght@
 ```
 
 
@@ -198,7 +12,7 @@ export default defineConfig({
 https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-,wght@0,400
+,wght@0,400;
 ```
 
 
@@ -206,7 +20,7 @@ https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40
 https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-,wght@0,400;0,700;1,400
+,wght@0,400;0,700;
 ```
 
 
@@ -214,7 +28,7 @@ https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40
 https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-,wght@0,400;0,700;1,400;1,700&family=
+,wght@0,400;0,700;1,400;
 ```
 
 
@@ -222,7 +36,7 @@ https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40
 https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,
+,wght@0,400;0,700;1,400;1,700&
 ```
 
 
@@ -230,7 +44,7 @@ https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40
 https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0
+,wght@0,400;0,700;1,400;1,700&family=Crim
 ```
 
 
@@ -238,7 +52,47 @@ https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40
 https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:
+```
+
+
+## License: unknown
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
+
+```
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,w
+```
+
+
+## License: unknown
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
+
+```
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,
+```
+
+
+## License: unknown
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
+
+```
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,
+```
+
+
+## License: unknown
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
+
+```
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,
+```
+
+
+## License: unknown
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
+
+```
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=
 ```
 
 
@@ -247,6 +101,9 @@ https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40
 
 ```
 ,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+:root {
+  
 ```
 
 
@@ -258,5 +115,1376 @@ https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40
 
 :root {
   -
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count: 1
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count: 1;
+  column-gap: 
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1rem;
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    column-count
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    column-count: 2;
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+
+@media (min
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry-gri
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry-grid {
+    column
+```
+
+
+## License: unknown
+https://github.com/eftpmc/melodari/blob/c3b8e8ac5c5d803f5dbef8bb9d6b52377142c5f4/app/globals.css
+
+```
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry-grid {
+    column-count
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@media (prefers
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@media (prefers-reduced-motion
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@media (prefers-reduced-motion: reduce) {
+  
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms
+```
+
+
+## License: unknown
+https://github.com/abhinavkakku/abhinavkakku.github.io/blob/99a84abc3d0b825216eab7db2eff6ce091177918/src/styles/global.css
+
+```
+motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@key
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity:
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform:
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity:
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translate
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform:
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+```
+
+
+## License: unknown
+https://github.com/kun-kin/Tourest/blob/4205d502932a7f177b391d8cf88a0040e770753b/lib/css/_animation.scss
+
+```
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform:
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute;
+  width
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute;
+  width: 1px
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin:
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0,
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border:
+```
+
+
+## License: unknown
+https://github.com/sighmon/NI/blob/b0f72f86d6d6ac1d8de020718dfdb66e05240814/public/assets/application-8d502c6042fab3671abd9320614f3e531f6b3e178ca605b30c6f25c61eb7ab09.css
+
+```
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 ```
 
