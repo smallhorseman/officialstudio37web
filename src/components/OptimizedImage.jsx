@@ -89,34 +89,3 @@ export const HeroImage = ({ src, alt, ...props }) => (
 );
 
 export default OptimizedImage;
-        />
-      )}
-    </div>
-  );
-};
-
-// Gallery optimized version
-export const GalleryImage = ({ src, alt, onClick, ...props }) => (
-  <OptimizedImage
-    src={src}
-    alt={alt}
-    aspectRatio="square"
-    className="cursor-pointer hover:opacity-90 transition-opacity"
-    onClick={onClick}
-    {...props}
-  />
-);
-
-// Hero image version
-export const HeroImage = ({ src, alt, ...props }) => (
-  <OptimizedImage
-    src={src}
-    alt={alt}
-    priority={true}
-    aspectRatio="landscape"
-    className="w-full"
-    {...props}
-  />
-);
-
-export default OptimizedImage;

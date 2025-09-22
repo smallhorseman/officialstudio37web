@@ -60,35 +60,10 @@ const SystemHealthCheck = () => {
     }
   };
 
-  return (
-    <div className="bg-[#1a1a1a] rounded-lg p-6 border border-white/10">
-      <h3 className="text-lg font-semibold text-[#F3E3C3] mb-4">System Health</h3>
-      
-      <div className="grid grid-cols-2 gap-4">
-        {Object.entries(health).map(([system, status]) => (
-          <div key={system} className="flex items-center gap-2">
-            <span className="text-lg">{getStatusIcon(status)}</span>
-            <span className="capitalize text-[#F3E3C3]">{system}:</span>
-            <span className={`font-medium ${getStatusColor(status)}`}>
-              {status}
-            </span>
-          </div>
-        ))}
-      </div>
+  const getConnectionStatus = () => {
+    return health.database === 'healthy' ? 'Connected' : 'Disconnected';
+  };
 
-      <div className="mt-4 pt-4 border-t border-white/10">
-        <button
-          onClick={checkSystemHealth}
-          className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded-md text-sm font-semibold hover:bg-[#E6D5B8] transition-colors"
-        >
-          Refresh Status
-        </button>
-      </div>
-    </div>
-  );
-};
-
-export default SystemHealthCheck;
   return (
     <div className="bg-[#1a1a1a] rounded-lg p-6 border border-white/10">
       <h3 className="text-lg font-semibold text-[#F3E3C3] mb-4">System Health Status</h3>

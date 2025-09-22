@@ -229,15 +229,3 @@ const Chatbot = () => {
 };
 
 export default Chatbot;
-              >
-                Send
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
-  );
-};
-
-export default Chatbot;
