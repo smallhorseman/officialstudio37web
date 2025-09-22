@@ -1,6184 +1,3964 @@
 # Code Citations
 
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-```
-
-
 ## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-X
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-X
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-X
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-X
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-X
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-X
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-X
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1;
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1;
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1;
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1;
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1;
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1;
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1;
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "no
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "no
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "no
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "no
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "no
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "no
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "no
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-```
-
-
-## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-```
-
-
-## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
+= () => (
     
 ```
 
 
 ## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    
-```
-
-
-## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
+= () => (
     
 ```
 
 
 ## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy
+= () => (
+    <svg xmlns
 ```
 
 
 ## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy
+= () => (
+    <svg xmlns
 ```
 
 
 ## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy
+= () => (
+    <svg xmlns
 ```
 
 
 ## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict
+= () => (
+    <svg xmlns="http://www.w3.
 ```
 
 
 ## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict
-```
-
-
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict
+= () => (
+    <svg xmlns="http://www.w3.
 ```
 
 
 ## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict
+= () => (
+    <svg xmlns="http://www.w3.
 ```
 
 
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict
+= () => (
+    <svg xmlns="http://www.w3.
 ```
 
 
 ## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width
 ```
 
 
 ## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width
 ```
 
 
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width
 ```
 
 
 ## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width
 ```
 
 
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width
 ```
 
 
 ## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="
 ```
 
 
 ## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="
 ```
 
 
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="
 ```
 
 
 ## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="
 ```
 
 
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="
 ```
 
 
 ## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content
-```
-
-
-## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
 ```
 
 
 ## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
 ```
 
 
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
 ```
 
 
 ## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
 ```
 
 
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
 ```
 
 
 ## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
 ```
 
 
 ## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
+https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
 ```
 
 
 ## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
 ```
 
 
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
 ```
 
 
 ## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
 ```
 
 
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
 ```
 
 
 ## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
 ## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
+https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
 ## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
-## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
 ## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
 ## License: Apache-2.0
-https://github.com/gohugoio/hugo/blob/02d5ec14f3fea20fa05aa2f0c2b9698620633edc/docs/content/en/getting-started/configuration.md
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
 ```
 
 
 ## License: unknown
-https://github.com/znck/znck.me/blob/d6a00346d8fd44581327e48b263e681c11329ad9/public/netlify.toml
+https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self
-```
-
-
-## License: unknown
-https://github.com/Oro/blog.oro.nu/blob/157126bece41ccf41b810e528335fb59a58a99e0/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
 ```
 
 
 ## License: MIT
-https://github.com/Decicus/DecAPI-Docs/blob/2055e58ec9d9c45fe94f00fd181bbd4a0546062c/netlify.toml
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-"
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+```
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
 
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+```
+
+
+## License: unknown
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+```
+
+
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" stroke
+```
+
+
+## License: unknown
+https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" stroke
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" stroke
+```
+
+
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" stroke
+```
+
+
+## License: unknown
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" stroke
+```
+
+
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" stroke
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      
+```
+
+
+## License: unknown
+https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      
+```
+
+
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      
+```
+
+
+## License: unknown
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      
+```
+
+
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path
+```
+
+
+## License: unknown
+https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path
+```
+
+
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path
+```
+
+
+## License: unknown
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path
+```
+
+
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92
+```
+
+
+## License: unknown
+https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92
+```
+
+
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92
+```
+
+
+## License: unknown
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92
+```
+
+
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0
+```
+
+
+## License: unknown
+https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0
+```
+
+
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0
+```
+
+
+## License: unknown
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0
+```
+
+
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18
+```
+
+
+## License: unknown
+https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18
+```
+
+
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18
+```
+
+
+## License: unknown
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18
+```
+
+
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79
+```
+
+
+## License: unknown
+https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79
+```
+
+
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79
+```
+
+
+## License: unknown
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79
+```
+
+
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0
+```
+
+
+## License: unknown
+https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0
+```
+
+
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0
+```
+
+
+## License: unknown
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0
+```
+
+
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3
+```
+
+
+## License: unknown
+https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3
+```
+
+
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3
+```
+
+
+## License: unknown
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3
+```
+
+
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19
+```
+
+
+## License: unknown
+https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19
+```
+
+
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19
+```
+
+
+## License: unknown
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19
+```
+
+
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1
+```
+
+
+## License: unknown
+https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1
+```
+
+
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1
+```
+
+
+## License: unknown
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1
+```
+
+
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.
+```
+
+
+## License: unknown
+https://github.com/Fall-Back/Fall-Back.github.io/blob/e74a44b8eb81dfed40622f3b127be50f5c4ce5e4/_layouts/dev/structure.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.
+```
+
+
+## License: MIT
+https://github.com/mazipan/mazipan.space/blob/9e555ed3c00e4b9b68ad339f84f3ff644ad4787c/components/Icons/SocPhone.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.
+```
+
+
+## License: unknown
+https://github.com/AlessandroRoic/MaskBook/blob/3a0bb6ad4e77980b629d321c4bcb6f427500cd48/src/components/SharePopup/SharePopup.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.
+```
+
+
+## License: GPL-3.0
+https://github.com/DualNature-Org/assignmentEx/blob/c76f5f422be4044f4af72ce33d1cc80b83814c07/src/pages/Dashboard.jsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://
+```
+
+
+## License: MIT
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
+
+```
+= () => (
+    <svg xmlns="http://
+```
+
+
+## License: unknown
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
+
+```
+= () => (
+    <svg xmlns="http://
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2
+```
+
+
+## License: MIT
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2
+```
+
+
+## License: unknown
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20"
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20"
+```
+
+
+## License: MIT
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20"
+```
+
+
+## License: unknown
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20"
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0
+```
+
+
+## License: unknown
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0
+```
+
+
+## License: MIT
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0
+```
+
+
+## License: unknown
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
 ```
 
 
 ## License: AGPL-3.0
-https://github.com/CaptainFact/captain-fact-frontend/blob/7688ed3c1d4d82a4f6669ef9f6835a02894882d0/netlify.toml
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
 ```
 
 
 ## License: unknown
-https://github.com/lightpositive/lightpositive/blob/5bb4a8e738ef5773659f5933a52dee1adfc36751/netlify.toml
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self
-```
-
-
-## License: unknown
-https://github.com/dhrubsingh/ishiring.fyi/blob/2ac86c9e5974fa155c1e41a177bbd4d4e6596d8c/netlify.toml
-
-```
-"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-```
-
-
-## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
-
-```
-(
-  <svg
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
 
 ```
-(
-  <svg className={className}
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size}
-```
-
-
-## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
-
-```
-(
-  <svg className={className} width={size}
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size}
-```
-
-
-## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
-
-```
-(
-  <svg className={className} width={size} height={size}
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
-## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke
-```
-
-
-## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor"
-```
-
-
-## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor"
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinec
 ```
 
 
-## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinec
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinec
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinec
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinec
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinec
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinec
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinec
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinec
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
-```
-
-
-## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinec
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
 ```
 
 
-## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path 
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path 
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path 
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.
-```
-
-
-## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path 
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path 
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path 
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path 
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path 
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path 
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h
-```
-
-
-## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path 
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c
 ```
 
 
-## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c
+```
+
+
+## License: unknown
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6746bcf/src/assets/svg.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .
+```
+
+
+## License: unknown
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6746bcf/src/assets/svg.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c
+```
+
+
+## License: unknown
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6746bcf/src/assets/svg.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
+```
+
+
+## License: unknown
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6746bcf/src/assets/svg.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c
+```
+
+
+## License: unknown
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6746bcf/src/assets/svg.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2
+```
+
+
+## License: unknown
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6746bcf/src/assets/svg.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
+```
+
+
+## License: unknown
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6746bcf/src/assets/svg.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9
+```
+
+
+## License: unknown
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6746bcf/src/assets/svg.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+```
+
+
+## License: unknown
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <poly
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <poly
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6746bcf/src/assets/svg.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <poly
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <poly
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <poly
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <poly
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <poly
 ```
 
 
 ## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <poly
+```
+
+
+## License: unknown
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6746bcf/src/assets/svg.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12
+```
+
+
+## License: MIT
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12
+```
+
+
+## License: unknown
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></poly
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></poly
+```
+
+
+## License: MIT
+https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6746bcf/src/assets/svg.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></poly
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></poly
+```
+
+
+## License: unknown
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></poly
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></poly
+```
+
+
+## License: MIT
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></poly
+```
+
+
+## License: unknown
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></poly
+```
+
+
+## License: unknown
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+```
+
+
+## License: MIT
+https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6746bcf/src/assets/svg.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+```
+
+
+## License: unknown
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+```
+
+
+## License: MIT
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+```
+
+
+## License: unknown
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+```
+
+
+## License: unknown
+https://github.com/bdainton/bdainton.github.com/blob/b9148ea1bb2d792b19b636729353017c81d48218/media/venting-frustrations-in-1-on-1s.html
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+  )
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+  )
+```
+
+
+## License: MIT
+https://github.com/nixstrom/tinybits-web/blob/7c387323136d471e1a1705d08bb2f29ba6746bcf/src/assets/svg.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+  )
+```
+
+
+## License: AGPL-3.0
+https://github.com/betagouv/api.gouv.fr/blob/9d27ebc035aaa88611eec604cf59f9226cc2d5f2/uiComponents/icon/socialMedia.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+  )
+```
+
+
+## License: unknown
+https://github.com/danstepanov/danstepanov.com/blob/cb4eeb9554e8c98db425c1e63e97ce6dfbc4c96f/danstepanov.com/components/Footer.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+  )
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+  )
+```
+
+
+## License: MIT
+https://github.com/ajurasz/ajurasz.github.io/blob/d121ae8916559cdda220827085f6a7ffc33b86ba/src/components/Share/index.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+  )
+```
+
+
+## License: unknown
+https://github.com/rrcg-chetan/shonanagCMS/blob/738499551a2a62ac53ef65c9b3467f95d0c23b52/src/Components/navbar/NavBar.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+  )
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
     
 ```
 
 
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+= () => (
     
 ```
 
 
-## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle
+= () => (
+    <svg xmlns="http://www.w
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle
+= () => (
+    <svg xmlns="http://www.w
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle cx="12"
+= () => (
+    <svg xmlns="http://www.w
 ```
 
 
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle cx="12"
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle cx="12"
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle cx="12" cy="13
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg
 ```
 
 
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle cx="12" cy="13
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle cx="12" cy="13
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle cx="12" cy="13" r="3
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle cx="12" cy="13" r="3
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle cx="12" cy="13" r="3
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle cx="12" cy="13" r="3"></circle>
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20
 ```
 
 
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle cx="12" cy="13" r="3"></circle>
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle cx="12" cy="13" r="3"></circle>
-```
-
-
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle cx="12" cy="13" r="3"></circle>
-  <
-```
-
-
-## License: unknown
-https://github.com/himanshuxmehra/music-hove/blob/0eb59792d659191010ecef01733a3477fb5b1954/music-hove-frontend/pages/index.tsx
-
-```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle cx="12" cy="13" r="3"></circle>
-  <
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 
 ```
 
 
 ## License: MIT
-https://github.com/GarliqBread/Noteup/blob/3553f589518bad98c884cdf17f90f69ed4b10c21/packages/shared/src/components/Icons.tsx
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
 
 ```
-(
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-    <circle cx="12" cy="13" r="3"></circle>
-  <
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
 
 ```
-="2
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-="2" stroke-lin
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-lin
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-="2" stroke-linecap="roun
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
 ```
 
 
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
+## License: MIT
+https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a2252dbf0/src/index.js
 
 ```
-="2" stroke-linecap="roun
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+```
+
+
+## License: MIT
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
 
 ```
-="2" stroke-linecap="round" stroke-li
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-li
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74b/pdf/even-more.pdf
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="roun
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="roun
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="
 ```
 
 
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
+## License: MIT
+https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a2252dbf0/src/index.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="
+```
+
+
+## License: MIT
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74b/pdf/even-more.pdf
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="roun
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="roun
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="roun
 ```
 
 
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
+## License: MIT
+https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a2252dbf0/src/index.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="roun
+```
+
+
+## License: MIT
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="roun
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="roun
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74b/pdf/even-more.pdf
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
 ```
 
 
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
+## License: MIT
+https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a2252dbf0/src/index.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+```
+
+
+## License: MIT
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74b/pdf/even-more.pdf
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21
 ```
 
 
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
+## License: MIT
+https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a2252dbf0/src/index.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21
+```
+
+
+## License: MIT
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74b/pdf/even-more.pdf
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9
 ```
 
 
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
+## License: MIT
+https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a2252dbf0/src/index.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9
+```
+
+
+## License: MIT
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74b/pdf/even-more.pdf
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-
 ```
 
 
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
+## License: MIT
+https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a2252dbf0/src/index.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-
+```
+
+
+## License: MIT
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74b/pdf/even-more.pdf
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a
 ```
 
 
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
+## License: MIT
+https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a2252dbf0/src/index.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a
+```
+
+
+## License: MIT
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74b/pdf/even-more.pdf
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-  <circle cx
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-  <circle cx
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-  <circle cx="12" cy
-```
-
-
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
-
-```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-  <circle cx="12" cy
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 
 ```
 
 
-## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-  <circle cx="12" cy="13
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 
 ```
 
 
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
+## License: MIT
+https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a2252dbf0/src/index.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-  <circle cx="12" cy="13
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 
+```
+
+
+## License: MIT
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-  <circle cx="12" cy="13" r="3
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 
 ```
 
 
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
+## License: MIT
+https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74b/pdf/even-more.pdf
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-  <circle cx="12" cy="13" r="3
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path
+```
+
+
+## License: MIT
+https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a2252dbf0/src/index.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path
+```
+
+
+## License: MIT
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-  <circle cx="12" cy="13" r="3"></circle>
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path
 ```
 
 
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
+## License: MIT
+https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74b/pdf/even-more.pdf
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-  <circle cx="12" cy="13" r="3"></circle>
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12
+```
+
+
+## License: MIT
+https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a2252dbf0/src/index.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12
+```
+
+
+## License: MIT
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12
 ```
 
 
 ## License: unknown
-https://github.com/tiagosilva-pt/tiagosilva-pt.github.io/blob/54690d512371602fef95ebb4c802c34e226b8a77/travel/index.html
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-  <circle cx="12" cy="13" r="3"></circle>
-</svg
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12
 ```
 
 
-## License: GPL-3.0
-https://github.com/Levminer/authme/blob/9ccc46bb067f5e45448e51392fcf540b20fcf5a5/interface/windows/import/import.svelte
+## License: MIT
+https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74b/pdf/even-more.pdf
 
 ```
-="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-  <circle cx="12" cy="13" r="3"></circle>
-</svg
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3
+```
+
+
+## License: MIT
+https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a2252dbf0/src/index.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3
+```
+
+
+## License: MIT
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3
+```
+
+
+## License: unknown
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3
+```
+
+
+## License: MIT
+https://github.com/technicat/resume/blob/5fcbc5323cc42e2233c904c59231de0884f1d74b/pdf/even-more.pdf
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3"></circle>
+    </svg
+```
+
+
+## License: Apache-2.0
+https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3"></circle>
+    </svg
+```
+
+
+## License: MIT
+https://github.com/vercel/next.js/blob/42f8ac16c6ff497f297198e42fc2abb113bf4a7b/examples/with-supabase/components/Code.tsx
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3"></circle>
+    </svg
+```
+
+
+## License: MIT
+https://github.com/Chalarangelo/mock-pwa/blob/c408a8bded1adc14f7da178c8a45c45a2252dbf0/src/index.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3"></circle>
+    </svg
+```
+
+
+## License: MIT
+https://github.com/mouhsnimohamed/qzulu/blob/d398b32bafbe1232c6186af81f17f7c1a849261f/src/templates/contact-page.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3"></circle>
+    </svg
+```
+
+
+## License: unknown
+https://github.com/mateenqazi/vumah/blob/d33f77a394f4615f6f11cfed9e7917dfd2b67b6b/src/components/VumahAuto.js
+
+```
+= () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3"></circle>
+    </svg
+```
+
+
+## License: unknown
+https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c64ec347b/client/src/App.js
+
+```
+<Routes>
+          <Route path="/"
+```
+
+
+## License: unknown
+https://github.com/RyzaHacks/WebOpMaticsWebDev/blob/04f3c331f77af893a1f781d4190c6b8061b04c16/src/App.jsx
+
+```
+<Routes>
+          <Route path="/"
+```
+
+
+## License: unknown
+https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd1447f87d41fa6c1/src/App.js
+
+```
+<Routes>
+          <Route path="/"
+```
+
+
+## License: unknown
+https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c64ec347b/client/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={
+```
+
+
+## License: unknown
+https://github.com/RyzaHacks/WebOpMaticsWebDev/blob/04f3c331f77af893a1f781d4190c6b8061b04c16/src/App.jsx
+
+```
+<Routes>
+          <Route path="/" element={
+```
+
+
+## License: unknown
+https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd1447f87d41fa6c1/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={
+```
+
+
+## License: unknown
+https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c64ec347b/client/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path
+```
+
+
+## License: unknown
+https://github.com/RyzaHacks/WebOpMaticsWebDev/blob/04f3c331f77af893a1f781d4190c6b8061b04c16/src/App.jsx
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path
+```
+
+
+## License: unknown
+https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd1447f87d41fa6c1/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path
+```
+
+
+## License: unknown
+https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c64ec347b/client/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          
+```
+
+
+## License: unknown
+https://github.com/RyzaHacks/WebOpMaticsWebDev/blob/04f3c331f77af893a1f781d4190c6b8061b04c16/src/App.jsx
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          
+```
+
+
+## License: unknown
+https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd1447f87d41fa6c1/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          
+```
+
+
+## License: unknown
+https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c64ec347b/client/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<Portfolio
+```
+
+
+## License: unknown
+https://github.com/RyzaHacks/WebOpMaticsWebDev/blob/04f3c331f77af893a1f781d4190c6b8061b04c16/src/App.jsx
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<Portfolio
+```
+
+
+## License: unknown
+https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd1447f87d41fa6c1/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<Portfolio
+```
+
+
+## License: unknown
+https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c64ec347b/client/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route
+```
+
+
+## License: unknown
+https://github.com/RyzaHacks/WebOpMaticsWebDev/blob/04f3c331f77af893a1f781d4190c6b8061b04c16/src/App.jsx
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route
+```
+
+
+## License: unknown
+https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd1447f87d41fa6c1/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route
+```
+
+
+## License: unknown
+https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c64ec347b/client/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/blog" element={<Blog
+```
+
+
+## License: unknown
+https://github.com/RyzaHacks/WebOpMaticsWebDev/blob/04f3c331f77af893a1f781d4190c6b8061b04c16/src/App.jsx
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/blog" element={<Blog
+```
+
+
+## License: unknown
+https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd1447f87d41fa6c1/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/blog" element={<Blog
+```
+
+
+## License: unknown
+https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c64ec347b/client/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route
+```
+
+
+## License: unknown
+https://github.com/RyzaHacks/WebOpMaticsWebDev/blob/04f3c331f77af893a1f781d4190c6b8061b04c16/src/App.jsx
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route
+```
+
+
+## License: unknown
+https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd1447f87d41fa6c1/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route
+```
+
+
+## License: unknown
+https://github.com/uttejterlapu/teachnook/blob/03a38345f6618f914e729eef3e6da32c64ec347b/client/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/
+```
+
+
+## License: unknown
+https://github.com/RyzaHacks/WebOpMaticsWebDev/blob/04f3c331f77af893a1f781d4190c6b8061b04c16/src/App.jsx
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/
+```
+
+
+## License: unknown
+https://github.com/Bara87/optimisation-cv-react/blob/fe1287bf2c2432bec6e0802dd1447f87d41fa6c1/src/App.js
+
+```
+<Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/
 ```
 

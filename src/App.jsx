@@ -195,7 +195,7 @@ function App() {
     }
   };
 
-  // Connection status notification component
+  // Connection status notification component - SINGLE DECLARATION
   const ConnectionStatusNotification = () => {
     if (connectionStatus === 'connected') return null;
     
@@ -368,14 +368,23 @@ function App() {
 
   // Lead management functions
   const updateLeadStatus = async (leadId, newStatus) => {
+    if (connectionStatus !== 'connected') {
+      // Update local state for offline mode
+      setLeads(prev => prev.map(lead => 
+        lead.id === leadId ? { ...lead, status: newStatus } : lead
+      ));
+      return;
+    }
+
     try {
       const { error } = await supabase
         .from('leads')
-        .update({ status: newStatus, updated_at: new Date().toISOString() })
+        .update({ status: newStatus })
         .eq('id', leadId);
-      
+
       if (error) throw error;
-      
+
+      // Update local state
       setLeads(prev => prev.map(lead => 
         lead.id === leadId ? { ...lead, status: newStatus } : lead
       ));
@@ -582,7 +591,7 @@ function App() {
     </div>
   );
 
-  // Add missing page components
+  // Add missing page components with proper JSX structure
   const ServicesPage = () => {
     useEffect(() => trackPageView('services'), []);
     
@@ -932,28 +941,7 @@ function App() {
     );
   };
 
-  // Add missing icon components
-  const PhoneIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></svg>
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-    </svg>
-  );
-
-  const MailIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></svg>
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-      <polyline points="22,6 12,13 2,6"></polyline>
-    </svg>
-  );
-
-  const MapPinIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></svg>
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-      <circle cx="12" cy="10" r="3"></circle>
-    </svg>
-  );
-
-  // Simple Portfolio Gate component
+  // Simple Portfolio Gate component with proper JSX structure
   const PortfolioGate = ({ onUnlock }) => {
     const [formData, setFormData] = useState({
       name: '',
@@ -971,7 +959,7 @@ function App() {
     };
 
     return (
-      <div className="max-w-2xl mx-auto bg-[#262626] rounded-lg p-8"></div>
+      <div className="max-w-2xl mx-auto bg-[#262626] rounded-lg p-8">
         <h2 className="text-3xl font-display mb-6 text-center">Unlock Our Portfolio</h2>
         <p className="text-[#F3E3C3]/80 mb-8 text-center">
           Get exclusive access to our full portfolio by sharing a few details about your project.
@@ -983,7 +971,7 @@ function App() {
               placeholder="Your Name *"
               value={formData.name}
               onChange={(e) => setFormData({...formData, name: e.target.value})}
-              required
+              requirede
               className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
             />
             <input
@@ -1027,7 +1015,7 @@ function App() {
     );
   };
 
-  // Simple Contact Form component
+  // Simple Contact Form component with proper JSX structure
   const ContactForm = () => {
     const [formData, setFormData] = useState({
       name: '',
@@ -1039,13 +1027,11 @@ function App() {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      // Track form submission
       trackHubSpotEvent('contact_form_submitted', {
         service: formData.service,
         form_type: 'contact'
       });
       
-      // For now, just show an alert
       alert('Thank you for your message! We\'ll be in touch soon.');
       setFormData({
         name: '',
@@ -1285,14 +1271,13 @@ function App() {
 
       {/* Error notification */}
       {error && (
-        <div className="notification-error">
-          <p>{error}</p>
+        <div className="fixed bottom-4 right-4 bg-red-500 text-white p-4 rounded-lg shadow-lg z-50">
+          <p className="text-sm">{error}</p>
           <button 
             onClick={() => setError('')}
-            className="ml-2 hover:bg-red-600 p-1 rounded"
-            aria-label="Close error"
+            className="absolute top-1 right-2 text-white hover:text-gray-200"
           >
-            <X className="h-4 w-4" />
+            ×
           </button>
         </div>
       )}
