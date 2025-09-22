@@ -53,30 +53,6 @@ export const identifyHubSpotVisitor = (email, properties = {}) => {
 };
 
 export default HubSpotIntegration;
-            }
-          });
-        } catch (error) {
-          console.error('Error creating HubSpot form:', error);
-        }
-      } else {
-        // Retry if HubSpot not loaded yet
-        setTimeout(loadForm, 1000);
-      }
-    };
-
-    if (formId) {
-      loadForm();
-    }
-  }, [formId, portalId, target, onFormSubmit]);
-
-  return (
-    <div 
-      id={target} 
-      className={className}
-      ref={formRef}
-    />
-  );
-};
 
 // Track custom events
 export const trackHubSpotEvent = (eventName, properties = {}) => {
