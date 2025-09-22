@@ -43,9 +43,6 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-// Remove HubSpot integration to prevent loading errors
-// Focus on Supabase-based CRM instead
-
 // Initialize the React application
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -57,8 +54,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 );
 
-// Remove service worker registration completely to prevent asset corruption
-// PWA functionality will be disabled but site will load properly
+// Register service worker for PWA functionality - fixed syntax
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then((registration) => {

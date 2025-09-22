@@ -1,1381 +1,573 @@
-Code Citations
+ Code Citations
 
 ## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
 
 ```
-"0 0
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0
+);
+  const mess
 ```
 
 
 ## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
 
 ```
-"0 0
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24
+);
+  const messagesEndRef = useRef
 ```
 
 
 ## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
 
 ```
-"0 0 24 24
-```
+);
+  const messagesEndRef = useRef(null);
 
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24
+  const
 ```
 
 
 ## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
 
 ```
-"0 0 24 24">
-          <path
-```
+);
+  const messagesEndRef = useRef(null);
 
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path
+  const scrollToBottom = ()
 ```
 
 
 ## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
 
 ```
-"0 0 24 24">
-          <path
-```
+);
+  const messagesEndRef = useRef(null);
 
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap
+  const scrollToBottom = () => {
+    messagesEndRef
 ```
 
 
 ## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
 
 ```
-"0 0 24 24">
-          <path strokeLinecap
+);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scroll
 ```
 
 
 ## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
 
 ```
-"0 0 24 24">
-          <path strokeLinecap
+);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "
+```
+
+
+## License: unknown
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
+
+```
+);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  
+```
+
+
+## License: unknown
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
+
+```
+);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+```
+
+
+## License: unknown
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
+
+```
+);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+```
+
+
+## License: unknown
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
+
+```
+);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const
+```
+
+
+## License: unknown
+https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+
+```
+Component {
+  constructor(
+```
+
+
+## License: unknown
+https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+
+```
+Component {
+  constructor(props) {
+    super(props
+```
+
+
+## License: unknown
+https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+
+```
+Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+```
+
+
+## License: unknown
+https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+
+```
+Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+```
+
+
+## License: unknown
+https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+
+```
+Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedState
+```
+
+
+## License: unknown
+https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+
+```
+Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    
+```
+
+
+## License: unknown
+https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+
+```
+Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError:
+```
+
+
+## License: unknown
+https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+
+```
+Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+```
+
+
+## License: unknown
+https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+
+```
+Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidC
+```
+
+
+## License: unknown
+https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+
+```
+Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+```
+
+
+## License: unknown
+https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+
+```
+Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('
 ```
 
 
 ## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
+https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" stroke
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" stroke
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" stroke
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" stroke
+'loa
 ```
 
 
 ## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
+https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="
+'load', () => {
+    navigator.
 ```
 
 
 ## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
+https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="
+'load', () => {
+    navigator.
 ```
 
 
 ## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
+https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={
+'load', () => {
+    navigator.serviceWorker.register('/sw
 ```
 
 
 ## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
+https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={
+'load', () => {
+    navigator.serviceWorker.register('/sw
 ```
 
 
 ## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
+https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then
 ```
 
 
 ## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
+https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then
 ```
 
 
 ## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
+https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
 ```
 
 
 ## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
+https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
 ```
 
 
 ## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
+https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW
 ```
 
 
 ## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
+https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW
 ```
 
 
 ## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
+https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
 ```
 
 
 ## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
+https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
 ```
 
 
 ## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
+https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+      })
+      .catch((regist
 ```
 
 
 ## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
+https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+      })
+      .catch((regist
 ```
 
 
 ## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
+https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+      })
+      .catch((registrationError) => {
+        console
 ```
 
 
 ## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
+https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+      })
+      .catch((registrationError) => {
+        console
 ```
 
 
 ## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
+https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+      })
+      .catch((registrationError) => {
+        console.log('SW registration failed: ',
 ```
 
 
 ## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
+https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+      })
+      .catch((registrationError) => {
+        console.log('SW registration failed: ',
 ```
 
 
 ## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
+https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+      })
+      .catch((registrationError) => {
+        console.log('SW registration failed: ', registrationError);
+      });
 ```
 
 
 ## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
+https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+      })
+      .catch((registrationError) => {
+        console.log('SW registration failed: ', registrationError);
+      });
 ```
 
 
 ## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
+https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
 
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+      })
+      .catch((registrationError) => {
+        console.log('SW registration failed: ', registrationError);
+      });
+  });
+}
 ```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 
-```
-
-
-## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 
-```
-
-
-## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 
-```
-
-
-## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 
-```
-
-
-## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6
-```
-
-
-## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6
-```
-
-
-## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 
-```
-
-
-## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 
-```
-
-
-## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a
-```
-
-
-## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a
-```
-
-
-## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 
-```
-
-
-## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 
-```
-
-
-## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a
-```
-
-
-## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a
-```
-
-
-## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-
-```
-
-
-## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-
-```
-
-
-## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 
-```
-
-
-## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 
-```
-
-
-## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 
-```
-
-
-## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 
-```
-
-
-## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a
-```
-
-
-## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a
-```
-
-
-## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 
-```
-
-
-## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 
-```
-
-
-## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg
-```
-
-
-## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg
-```
-
-
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg
-```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg
-```
-
-
-## License: MIT
-https://github.com/microweber/microweber/blob/032b7f030209520bb05d848cfdad1a49859e156e/src/MicroweberPackages/User/resources/views/components/welcome.blade.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        <span className="text
-```
-
-
-## License: unknown
-https://github.com/Codeinwp/wp-maintenance-mode/blob/1959221a7db1ba2a358c6a6328de7e0bca4d50eb/views/settings.php
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        <span className="text
-```
-
-
-## License: unknown
-https://github.com/PompolutZ/yawudb/blob/575eb0f783b8fcb0ebaa7e58ca4ff5e9402d5b6c/src/pages/Deck/ReadonlyDeck/atoms/DeckActionsMenuLarge.js
-
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        <span className="text
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
 
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        <span className="text
-```
 
-
 ## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
+https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
 
-```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        <span className="text
 ```
-
-
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
-
+'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+      })
+      .catch((registrationError) => {
+        console.log('SW registration failed: ', registrationError);
+      });
+  });
+}
 ```
-"0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        <span className="text
 ```
 
