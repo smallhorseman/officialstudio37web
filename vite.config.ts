@@ -32,6 +32,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
+          // Fixed: Remove duplicate assignment - keep react-router-dom only in vendor
           vendor: ['react', 'react-dom', 'react-router-dom'],
           supabase: ['@supabase/supabase-js'],
           // Include react-markdown since it's in dependencies

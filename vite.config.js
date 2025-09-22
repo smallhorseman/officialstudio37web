@@ -61,12 +61,12 @@ export default defineConfig(({ mode }) => {
           drop_debugger: true
         }
       } : {},
-      // Advanced chunk splitting for better caching
+      // Advanced chunk splitting for better caching - FIXED
       rollupOptions: {
         output: {
           manualChunks: {
+            // Fixed: Remove duplicate router chunk that conflicts with vendor
             vendor: ['react', 'react-dom', 'react-router-dom'],
-            router: ['react-router-dom'],
             supabase: ['@supabase/supabase-js'],
             markdown: ['react-markdown']
           },
