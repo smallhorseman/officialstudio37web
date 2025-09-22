@@ -445,13 +445,13 @@ function App() {
     }
     
     try {
+      // Remove 'source' field from the insert since it doesn't exist in the database
       const { data, error } = await supabase.from('leads').insert([{
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
         service: formData.service,
         status: 'New',
-        source: 'portfolio_unlock',
         created_at: new Date().toISOString()
       }]).select();
       
@@ -946,9 +946,6 @@ function App() {
                             Service
                           </th>
                           <th className="px-4 py-3 text-left text-xs font-medium text-[#F3E3C3]/70 uppercase tracking-wider">
-                            Source
-                          </th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-[#F3E3C3]/70 uppercase tracking-wider">
                             Status
                           </th>
                           <th className="px-4 py-3 text-left text-xs font-medium text-[#F3E3C3]/70 uppercase tracking-wider">
@@ -974,11 +971,6 @@ function App() {
                             <td className="px-4 py-4">
                               <span className="text-sm text-[#F3E3C3]">
                                 {lead.service || 'Not specified'}
-                              </span>
-                            </td>
-                            <td className="px-4 py-4">
-                              <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-500/20 text-blue-300">
-                                {lead.source || 'Direct'}
                               </span>
                             </td>
                             <td className="px-4 py-4">
@@ -1098,34 +1090,8 @@ function App() {
                   Business Analytics
                 </h3>
                 
-                {/* Lead Analytics */}
+                {/* Lead Analytics - Remove source analysis since column doesn't exist */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                  <div className="bg-[#1a1a1a] rounded-lg p-6">
-                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-4">Lead Sources</h4>
-                    <div className="space-y-3">
-                      {Object.entries(leads.reduce((acc, lead) => {
-                        const source = lead.source || 'Direct';
-                        acc[source] = (acc[source] || 0) + 1;
-                        return acc;
-                      }, {})).map(([source, count]) => (
-                        <div key={source} className="flex justify-between items-center">
-                          <span className="text-[#F3E3C3]">{source}</span>
-                          <div className="flex items-center gap-2">
-                            <div className="w-20 bg-[#262626] rounded-full h-2">
-                              <div 
-                                className="h-2 rounded-full bg-blue-500"
-                                style={{ 
-                                  width: `${leads.length > 0 ? (count / leads.length) * 100 : 0}%` 
-                                }}
-                              ></div>
-                            </div>
-                            <span className="text-[#F3E3C3] text-sm w-8 text-right">{count}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
                   <div className="bg-[#1a1a1a] rounded-lg p-6">
                     <h4 className="text-lg font-semibold text-[#F3E3C3] mb-4">Service Interest</h4>
                     <div className="space-y-3">
@@ -1140,6 +1106,38 @@ function App() {
                             <div className="w-20 bg-[#262626] rounded-full h-2">
                               <div 
                                 className="h-2 rounded-full bg-green-500"
+                                style={{ 
+                                  width: `${leads.length > 0 ? (count / leads.length) * 100 : 0}%` 
+                                }}
+                              ></div>
+                            </div>
+                            <span className="text-[#F3E3C3] text-sm w-8 text-right">{count}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="bg-[#1a1a1a] rounded-lg p-6">
+                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-4">Lead Status Distribution</h4>
+                    <div className="space-y-3">
+                      {Object.entries(leads.reduce((acc, lead) => {
+                        const status = lead.status || 'Unknown';
+                        acc[status] = (acc[status] || 0) + 1;
+                        return acc;
+                      }, {})).map(([status, count]) => (
+                        <div key={status} className="flex justify-between items-center">
+                          <span className="text-[#F3E3C3]">{status}</span>
+                          <div className="flex items-center gap-2">
+                            <div className="w-20 bg-[#262626] rounded-full h-2">
+                              <div 
+                                className={`h-2 rounded-full ${
+                                  status === 'New' ? 'bg-green-500' :
+                                  status === 'Contacted' ? 'bg-blue-500' :
+                                  status === 'Qualified' ? 'bg-yellow-500' :
+                                  status === 'Converted' ? 'bg-purple-500' :
+                                  'bg-red-500'
+                                }`}
                                 style={{ 
                                   width: `${leads.length > 0 ? (count / leads.length) * 100 : 0}%` 
                                 }}
