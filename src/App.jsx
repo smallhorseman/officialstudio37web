@@ -745,7 +745,7 @@ function App() {
     };
 
     // Optimized admin dashboard with code splitting
-    const AdminDashboardContent = withErrorBoundary(() => {
+    const AdminDashboardContent = () => {
       return (
         <div className="pt-20 pb-20 bg-[#212121] min-h-screen">
           <SEOHead title="Admin Dashboard - Studio37" />
@@ -1230,7 +1230,8 @@ function App() {
             </div>
           </div>
         </div>
-      });
+      );
+    };
 
     return <AdminDashboardContent />;
   };
