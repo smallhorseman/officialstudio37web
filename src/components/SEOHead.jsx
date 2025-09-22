@@ -169,26 +169,3 @@ const SEOHead = ({
 };
 
 export default SEOHead;
-          if (!document.querySelector(`link[href="${href}"]`)) {
-            const link = document.createElement('link');
-            link.rel = 'preconnect';
-            link.href = href;
-            if (href.includes('gstatic')) link.crossOrigin = 'anonymous';
-            document.head.appendChild(link);
-          }
-        });
-      }
-
-      // Add HubSpot tracking attributes for better integration
-      if (!hasChanged('hubspot-attrs', 'added')) {
-        document.body.setAttribute('data-hubspot-portal', '242993708');
-        document.body.setAttribute('data-hubspot-enabled', 'true');
-      }
-    });
-
-  }, [title, description, keywords, image, url]);
-
-  return null;
-};
-
-export default SEOHead;

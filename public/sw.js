@@ -28,14 +28,6 @@ self.addEventListener('fetch', (event) => {
   // Do nothing - let network handle all requests
   return;
 });
-            console.log('Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    }).then(() => self.clients.claim())
-  );
-});
 
 // Fetch event - serve from cache with network fallback
 self.addEventListener('fetch', (event) => {
