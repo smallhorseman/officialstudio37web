@@ -3,7 +3,8 @@ import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-r
 import VirtualAgentPlanner from './VirtualAgentPlanner';
 import PhotoshootPlanner from './PhotoshootPlanner';
 import ConversationalPlanner from './ConversationalPlanner';
-import { supabase, fetchWithErrorHandling, isSupabaseConfigured, testConnection } from './supabaseClient';
+import { supabase, fetchWithErrorHandling, isSupabaseConfigured, testConnection, getConnectionStatus, subscribeToTable, clearTableCache } from './supabaseClient';
+import { useSupabaseQuery, useSupabaseMutation } from './hooks/useSupabaseQuery';
 import { EnhancedCrmSection } from './components/EnhancedCRM';
 import { EnhancedCmsSection } from './components/EnhancedCMS';
 import ProjectsSection from './components/ProjectsSection';
@@ -143,14 +144,128 @@ function App() {
   const [error, setError] = useState('');
   const [connectionStatus, setConnectionStatus] = useState('checking');
 
-  // Test Supabase connection on mount
+  // Replace manual data loading with optimized hooks
+  const {
+    data: portfolioImages = [],
+    loading: portfolioLoading,
+    error: portfolioError,
+    refetch: refetchPortfolio
+  } = useSupabaseQuery(
+    () => supabase
+      .from('portfolio_images')
+      .select('*')
+      .order('order_index', { ascending: true }),
+    [],
+    {
+      enabled: true,
+      staleTime: 10 * 60 * 1000, // 10 minutes
+      realtime: true,
+      realtimeTable: 'portfolio_images'
+    }
+  );
+
+  const {
+    data: leads = [],
+    loading: leadsLoading,
+    error: leadsError,
+    refetch: refetchLeads
+  } = useSupabaseQuery(
+    () => supabase
+      .from('leads')
+      .select('*')
+      .order('created_at', { ascending: false }),
+    [isAdmin],
+    {
+      enabled: isAdmin && getConnectionStatus() === 'connected',
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      realtime: isAdmin,
+      realtimeTable: 'leads'
+    }
+  );
+
+  const {
+    data: projects = [],
+    loading: projectsLoading,
+    error: projectsError,
+    refetch: refetchProjects
+  } = useSupabaseQuery(
+    () => supabase
+      .from('projects')
+      .select('*')
+      .order('created_at', { ascending: false }),
+    [isAdmin],
+    {
+      enabled: isAdmin && getConnectionStatus() === 'connected',
+      staleTime: 10 * 60 * 1000, // 10 minutes
+      realtime: isAdmin,
+      realtimeTable: 'projects'
+    }
+  );
+
+  // Optimized mutations
+  const addPortfolioMutation = useSupabaseMutation(
+    async (imageData) => {
+      const { data, error } = await supabase
+        .from('portfolio_images')
+        .insert([imageData])
+        .select();
+      
+      if (error) throw error;
+      return data[0];
+    },
+    {
+      onSuccess: () => {
+        clearTableCache('portfolio_images');
+        refetchPortfolio();
+      }
+    }
+  );
+
+  const deletePortfolioMutation = useSupabaseMutation(
+    async (imageId) => {
+      const { error } = await supabase
+        .from('portfolio_images')
+        .delete()
+        .eq('id', imageId);
+      
+      if (error) throw error;
+      return imageId;
+    },
+    {
+      onSuccess: () => {
+        clearTableCache('portfolio_images');
+        refetchPortfolio();
+      }
+    }
+  );
+
+  const updateLeadMutation = useSupabaseMutation(
+    async ({ leadId, status }) => {
+      const { data, error } = await supabase
+        .from('leads')
+        .update({ status, updated_at: new Date().toISOString() })
+        .eq('id', leadId)
+        .select();
+      
+      if (error) throw error;
+      return data[0];
+    },
+    {
+      onSuccess: () => {
+        clearTableCache('leads');
+        refetchLeads();
+      }
+    }
+  );
+
+  // Test Supabase connection on mount with better error handling
   useEffect(() => {
     const checkConnection = async () => {
       setConnectionStatus('checking');
       
       if (!isSupabaseConfigured()) {
         setConnectionStatus('unconfigured');
-        console.log('Supabase not configured - check environment variables');
+        console.log('⚠️ Supabase not configured - check environment variables');
         setLoading(false);
         return;
       }
@@ -158,11 +273,11 @@ function App() {
       const isConnected = await testConnection();
       setConnectionStatus(isConnected ? 'connected' : 'error');
       
-      if (isConnected) {
-        loadInitialData();
+      if (!isConnected) {
+        setLoading(false);
+        setError('Database connection failed. Operating in offline mode.');
       } else {
         setLoading(false);
-        setError('Database connection failed. Some features may not work properly.');
       }
     };
     
@@ -228,7 +343,9 @@ function App() {
 
   // Connection status notification component
   const ConnectionStatusNotification = () => {
-    if (connectionStatus === 'connected') return null;
+    const status = getConnectionStatus();
+    
+    if (status === 'connected') return null;
     
     const statusConfig = {
       checking: { 
@@ -237,19 +354,35 @@ function App() {
       },
       unconfigured: { 
         color: 'bg-yellow-500/20 border-yellow-500/30 text-yellow-200',
-        message: '⚠️ Database not configured. Using offline mode.'
+        message: '⚠️ Database not configured. Using offline mode with local storage.'
       },
       error: { 
         color: 'bg-red-500/20 border-red-500/30 text-red-200',
-        message: '❌ Database connection failed. Limited functionality.'
+        message: '❌ Database connection failed. Operating in offline mode.'
+      },
+      mock: {
+        color: 'bg-purple-500/20 border-purple-500/30 text-purple-200',
+        message: '🔧 Running in mock mode with local storage.'
       }
     };
     
-    const config = statusConfig[connectionStatus];
+    const config = statusConfig[status] || statusConfig.error;
     
     return (
       <div className={`${config.color} border px-4 py-2 text-sm text-center`}>
         <strong>{config.message}</strong>
+        {status === 'error' && (
+          <button
+            onClick={async () => {
+              setConnectionStatus('checking');
+              const isConnected = await testConnection();
+              setConnectionStatus(isConnected ? 'connected' : 'error');
+            }}
+            className="ml-2 underline hover:no-underline"
+          >
+            Retry Connection
+          </button>
+        )}
       </div>
     );
   };
@@ -356,9 +489,9 @@ function App() {
     );
   };
 
-  // Portfolio unlock function - FIXED DATABASE SCHEMA ISSUE
+  // Portfolio unlock function with optimized database operations
   const handlePortfolioUnlock = async (formData) => {
-    if (connectionStatus !== 'connected') {
+    if (getConnectionStatus() !== 'connected') {
       setPortfolioUnlocked(true);
       trackHubSpotEvent('portfolio_unlocked', {
         service: formData.service,
@@ -374,15 +507,15 @@ function App() {
     }
     
     try {
-      // FIXED: Include 'source' field that exists in schema
-      const { error } = await supabase.from('leads').insert([{
+      const { data, error } = await supabase.from('leads').insert([{
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
         service: formData.service,
         status: 'New',
-        source: 'portfolio_unlock'
-      }]);
+        source: 'portfolio_unlock',
+        created_at: new Date().toISOString()
+      }]).select();
       
       if (error) {
         console.error('Portfolio unlock error:', error);
@@ -390,10 +523,17 @@ function App() {
       }
       
       setPortfolioUnlocked(true);
+      
+      // Clear leads cache and refetch
+      clearTableCache('leads');
+      if (isAdmin) {
+        refetchLeads();
+      }
+      
       trackHubSpotEvent('lead_created', {
         service: formData.service,
         source: 'portfolio_unlock',
-        lead_id: `studio37_${Date.now()}`
+        lead_id: data[0].id
       });
       
       identifyHubSpotVisitor(formData.email, {
@@ -411,78 +551,17 @@ function App() {
     }
   };
 
-  // Portfolio management functions
+  // Portfolio management functions with mutations
   const addPortfolioImage = async (imageData) => {
-    if (connectionStatus !== 'connected') {
-      const newImage = {
-        ...imageData,
-        id: Date.now().toString(),
-        created_at: new Date().toISOString()
-      };
-      setPortfolioImages(prev => [newImage, ...prev]);
-      return;
-    }
-    
-    try {
-      const { data, error } = await supabase
-        .from('portfolio_images')
-        .insert([imageData])
-        .select();
-      
-      if (error) throw error;
-      
-      if (data && data[0]) {
-        setPortfolioImages(prev => [data[0], ...prev]);
-      }
-    } catch (error) {
-      console.error('Error adding portfolio image:', error);
-      throw error;
-    }
+    return addPortfolioMutation.mutate(imageData);
   };
 
   const deletePortfolioImage = async (imageId) => {
-    if (connectionStatus !== 'connected') {
-      setPortfolioImages(prev => prev.filter(img => img.id !== imageId));
-      return;
-    }
-    
-    try {
-      const { error } = await supabase
-        .from('portfolio_images')
-        .delete()
-        .eq('id', imageId);
-      
-      if (error) throw error;
-      
-      setPortfolioImages(prev => prev.filter(img => img.id !== imageId));
-    } catch (error) {
-      console.error('Error deleting portfolio image:', error);
-      throw error;
-    }
+    return deletePortfolioMutation.mutate(imageId);
   };
 
   const updateLeadStatus = async (leadId, newStatus) => {
-    if (connectionStatus !== 'connected') {
-      setLeads(prev => prev.map(lead => 
-        lead.id === leadId ? { ...lead, status: newStatus } : lead
-      ));
-      return;
-    }
-
-    try {
-      const { error } = await supabase
-        .from('leads')
-        .update({ status: newStatus })
-        .eq('id', leadId);
-
-      if (error) throw error;
-
-      setLeads(prev => prev.map(lead => 
-        lead.id === leadId ? { ...lead, status: newStatus } : lead
-      ));
-    } catch (error) {
-      console.error('Error updating lead status:', error);
-    }
+    return updateLeadMutation.mutate({ leadId, status: newStatus });
   };
 
   // Track page views
@@ -1050,22 +1129,43 @@ function App() {
           <div className="text-center">
             <div className="w-8 h-8 border-2 border-[#F3E3C3] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-[#F3E3C3]">
-              {connectionStatus === 'checking' ? 'Connecting to Studio37...' : 'Loading Studio37...'}
+              {getConnectionStatus() === 'checking' ? 'Connecting to Studio37...' : 'Loading Studio37...'}
             </p>
+            {portfolioLoading && <p className="text-[#F3E3C3]/70 text-sm">Loading portfolio...</p>}
+            {isAdmin && leadsLoading && <p className="text-[#F3E3C3]/70 text-sm">Loading leads...</p>}
+            {isAdmin && projectsLoading && <p className="text-[#F3E3C3]/70 text-sm">Loading projects...</p>}
           </div>
         </div>
       )}
 
-      {/* Error notification */}
-      {error && (
+      {/* Enhanced error notification */}
+      {(error || hasErrors) && (
         <div className="fixed bottom-4 left-4 bg-red-500 text-white p-4 rounded-lg shadow-lg z-50 max-w-md">
-          <p className="text-sm">{error}</p>
-          <button 
-            onClick={() => setError('')}
-            className="absolute top-1 right-2 text-white hover:text-gray-200"
-          >
-            <X className="h-4 w-4" />
-          </button>
+          <p className="text-sm">
+            {error || 'Some features may not work properly due to connection issues.'}
+          </p>
+          <div className="flex gap-2 mt-2">
+            <button 
+              onClick={() => {
+                setError('');
+                // Refetch all data
+                refetchPortfolio();
+                if (isAdmin) {
+                  refetchLeads();
+                  refetchProjects();
+                }
+              }}
+              className="text-xs bg-white/20 px-2 py-1 rounded hover:bg-white/30 transition-colors"
+            >
+              Retry
+            </button>
+            <button 
+              onClick={() => setError('')}
+              className="text-xs bg-white/20 px-2 py-1 rounded hover:bg-white/30 transition-colors"
+            >
+              Dismiss
+            </button>
+          </div>
         </div>
       )}
     </div>

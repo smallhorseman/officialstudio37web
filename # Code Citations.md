@@ -1,110 +1,91 @@
 # Code Citations
 
 ## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
+https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
 
 ```
-vite.config
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config
+<path fillRule="evenodd"
 ```
 
 
 ## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
+https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
 
 ```
-vite.config.js
-import
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import
+<path fillRule="evenodd" d="M4 3
 ```
 
 
 ## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
+https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
 
 ```
-vite.config.js
-import { defineConfig }
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig }
+<path fillRule="evenodd" d="M4 3a2 2 0 00
 ```
 
 
 ## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
+https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
 
 ```
-vite.config.js
-import { defineConfig } from 'v
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'v
+<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002
 ```
 
 
 ## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
+https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
 
 ```
-vite.config.js
-import { defineConfig } from 'vite'
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
+<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002
 ```
 
 
 ## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
+https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
 
 ```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@
+<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2
 ```
 
 
 ## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
+https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
 
 ```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@
+<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12
+```
+
+
+## License: unknown
+https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+
+```
+<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 
+```
+
+
+## License: unknown
+https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+
+```
+<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 
+```
+
+
+## License: unknown
+https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+
+```
+<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="eveno
+```
+
+
+## License: unknown
+https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+
+```
+<path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+            </svg
 ```
 
 
@@ -113,8 +94,7 @@ https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458
 
 ```
 vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin
+import { defineConfig } from '
 ```
 
 
@@ -123,8 +103,7 @@ https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e43209
 
 ```
 vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin
+import { defineConfig } from '
 ```
 
 
@@ -134,7 +113,7 @@ https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458
 ```
 vite.config.js
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react
 ```
 
 
@@ -144,7 +123,7 @@ https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e43209
 ```
 vite.config.js
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react
 ```
 
 
@@ -156,7 +135,7 @@ vite.config.js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-//
+// https://vitejs.dev/config
 ```
 
 
@@ -168,105 +147,7 @@ vite.config.js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-//
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default define
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default define
+// https://vitejs.dev/config
 ```
 
 
@@ -280,7 +161,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  
 ```
 
 
@@ -294,65 +174,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  
 ```
 
 
@@ -368,6 +189,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
+    port:
 ```
 
 
@@ -383,174 +205,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    host
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    host
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    host: true
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    host: true
-```
-
-
-## License: unknown
-https://github.com/walherb/JavaScript/blob/02bb13ebebb0c43c939da9c049bdaea122458fe6/ReactJS/ReactJS.jsx
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    host: true,
-    open
-```
-
-
-## License: unknown
-https://github.com/jsakas/cypress-issue-26615/blob/2fc159bb6a4a6b4d1abedc1e432098523e05dbc9/vite.config.ts
-
-```
-vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    host: true,
-    open
+    port:
 ```
 
 

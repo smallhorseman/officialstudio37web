@@ -4,36 +4,104 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = 'https://sqfqlnodwjubacmaduzl.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZnFsbm9kd2p1YmFjbWFkdXpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzQ2ODUsImV4cCI6MjA3Mzc1MDY4NX0.OtEDSh5UCm8CxWufG_NBLDzgNFI3wnr-oAyaRib_4Mw';
 
-// Validate required configuration
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn('Supabase configuration missing. Using demo mode.');
-}
+// Connection state management
+let connectionState = {
+  status: 'disconnected', // 'connecting', 'connected', 'error', 'disconnected'
+  lastCheck: null,
+  retryCount: 0,
+  maxRetries: 3
+};
 
-// Create a mock client for demo purposes when Supabase is not configured
-const createMockSupabase = () => {
-  const mockResponse = { data: null, error: null };
-  
+// Cache for frequently accessed data
+const cache = new Map();
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+// Enhanced mock client for offline mode
+const createEnhancedMockSupabase = () => {
+  const mockData = {
+    leads: JSON.parse(localStorage.getItem('studio37_mock_leads') || '[]'),
+    portfolio_images: JSON.parse(localStorage.getItem('studio37_mock_portfolio') || '[]'),
+    projects: JSON.parse(localStorage.getItem('studio37_mock_projects') || '[]')
+  };
+
+  const saveMockData = (table, data) => {
+    mockData[table] = data;
+    localStorage.setItem(`studio37_mock_${table}`, JSON.stringify(data));
+  };
+
   return {
-    from: () => ({
-      select: () => Promise.resolve({ data: [], error: null }),
-      insert: () => Promise.resolve(mockResponse),
-      update: () => Promise.resolve(mockResponse),
-      delete: () => Promise.resolve(mockResponse),
-      eq: function() { return this; },
-      order: function() { return this; },
-      limit: function() { return this; }
+    from: (table) => ({
+      select: (columns = '*') => {
+        const data = mockData[table] || [];
+        return Promise.resolve({ 
+          data: columns === 'count' ? [{ count: data.length }] : data, 
+          error: null 
+        });
+      },
+      insert: (records) => {
+        const data = mockData[table] || [];
+        const newRecords = Array.isArray(records) ? records : [records];
+        const recordsWithIds = newRecords.map(record => ({
+          ...record,
+          id: record.id || Date.now() + Math.random(),
+          created_at: record.created_at || new Date().toISOString()
+        }));
+        
+        const updatedData = [...data, ...recordsWithIds];
+        saveMockData(table, updatedData);
+        
+        return Promise.resolve({ data: recordsWithIds, error: null });
+      },
+      update: (updates) => ({
+        eq: (column, value) => {
+          const data = mockData[table] || [];
+          const updatedData = data.map(item => 
+            item[column] === value ? { ...item, ...updates } : item
+          );
+          saveMockData(table, updatedData);
+          return Promise.resolve({ data: updatedData.filter(item => item[column] === value), error: null });
+        }
+      }),
+      delete: () => ({
+        eq: (column, value) => {
+          const data = mockData[table] || [];
+          const filteredData = data.filter(item => item[column] !== value);
+          saveMockData(table, filteredData);
+          return Promise.resolve({ data: [], error: null });
+        }
+      }),
+      eq: function(column, value) { 
+        this._filters = this._filters || [];
+        this._filters.push({ column, value, operator: 'eq' });
+        return this; 
+      },
+      order: function(column, options = {}) { 
+        this._order = { column, ascending: options.ascending !== false };
+        return this; 
+      },
+      limit: function(count) { 
+        this._limit = count;
+        return this; 
+      }
     }),
     storage: {
       from: () => ({
-        upload: () => Promise.resolve(mockResponse),
-        remove: () => Promise.resolve(mockResponse),
-        getPublicUrl: () => ({ data: { publicUrl: '' } })
+        upload: () => Promise.resolve({ data: null, error: null }),
+        remove: () => Promise.resolve({ data: null, error: null }),
+        getPublicUrl: (fileName) => ({ 
+          data: { publicUrl: `https://example.com/mock/${fileName}` } 
+        })
       })
-    }
+    },
+    // Add realtime mock
+    channel: () => ({
+      on: () => ({ subscribe: () => {} }),
+      unsubscribe: () => {}
+    })
   };
 };
 
-// Create Supabase client
+// Create optimized Supabase client
 let supabase;
 try {
   if (supabaseUrl && supabaseAnonKey && (supabaseUrl.startsWith('http://') || supabaseUrl.startsWith('https://'))) {
@@ -41,39 +109,106 @@ try {
       auth: {
         autoRefreshToken: true,
         persistSession: true,
-        detectSessionInUrl: true
+        detectSessionInUrl: true,
+        flowType: 'pkce'
       },
       realtime: {
         params: {
           eventsPerSecond: 10
         }
+      },
+      global: {
+        headers: {
+          'x-client-info': 'studio37-web@1.0.0'
+        }
+      },
+      db: {
+        schema: 'public'
       }
     });
-    console.log('Supabase client initialized successfully');
+    
+    connectionState.status = 'connected';
+    console.log('✅ Supabase client initialized successfully');
   } else {
-    console.warn('Invalid or missing Supabase configuration. Using mock client.');
-    supabase = createMockSupabase();
+    console.warn('⚠️ Invalid or missing Supabase configuration. Using enhanced mock client.');
+    supabase = createEnhancedMockSupabase();
+    connectionState.status = 'mock';
   }
 } catch (error) {
-  console.error('Failed to initialize Supabase:', error);
-  supabase = createMockSupabase();
+  console.error('❌ Failed to initialize Supabase:', error);
+  supabase = createEnhancedMockSupabase();
+  connectionState.status = 'error';
 }
 
-export { supabase };
-
-// Helper functions for common operations
-export const uploadImage = async (file, bucket = 'images') => {
+// Connection health monitoring
+const healthCheck = async () => {
+  if (connectionState.status === 'mock') return true;
+  
   try {
-    if (!supabase.storage) {
-      throw new Error('Storage not available in demo mode');
+    connectionState.status = 'connecting';
+    const { error } = await supabase
+      .from('leads')
+      .select('id')
+      .limit(1);
+    
+    if (error && error.code !== 'PGRST116') {
+      throw error;
+    }
+    
+    connectionState.status = 'connected';
+    connectionState.retryCount = 0;
+    connectionState.lastCheck = Date.now();
+    return true;
+  } catch (error) {
+    connectionState.status = 'error';
+    connectionState.retryCount++;
+    console.error(`❌ Health check failed (attempt ${connectionState.retryCount}):`, error);
+    return false;
+  }
+};
+
+// Auto-reconnection with exponential backoff
+const setupAutoReconnect = () => {
+  if (connectionState.status === 'mock') return;
+  
+  const checkInterval = setInterval(async () => {
+    if (connectionState.status === 'error' && connectionState.retryCount < connectionState.maxRetries) {
+      console.log(`🔄 Attempting reconnection (${connectionState.retryCount + 1}/${connectionState.maxRetries})`);
+      
+      const delay = Math.pow(2, connectionState.retryCount) * 1000;
+      setTimeout(async () => {
+        const isHealthy = await healthCheck();
+        if (isHealthy) {
+          console.log('✅ Reconnection successful');
+        }
+      }, delay);
+    }
+  }, 30000); // Check every 30 seconds
+  
+  return () => clearInterval(checkInterval);
+};
+
+// Setup auto-reconnection
+const cleanup = setupAutoReconnect();
+
+// Enhanced helper functions with caching and retry logic
+export const uploadImage = async (file, bucket = 'images', retries = 2) => {
+  const cacheKey = `upload_${file.name}_${file.size}`;
+  
+  try {
+    if (connectionState.status === 'mock') {
+      throw new Error('Storage not available in mock mode');
     }
     
     const fileExt = file.name.split('.').pop();
-    const fileName = `${Math.random()}.${fileExt}`;
+    const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
     
     const { data, error } = await supabase.storage
       .from(bucket)
-      .upload(fileName, file);
+      .upload(fileName, file, {
+        cacheControl: '3600',
+        upsert: false
+      });
       
     if (error) throw error;
     
@@ -81,17 +216,28 @@ export const uploadImage = async (file, bucket = 'images') => {
       .from(bucket)
       .getPublicUrl(fileName);
       
-    return publicUrl;
+    // Cache the result
+    cache.set(cacheKey, { publicUrl, fileName });
+    
+    return { publicUrl, fileName };
   } catch (error) {
-    console.error('Error uploading image:', error);
+    console.error('❌ Error uploading image:', error);
+    
+    // Retry logic
+    if (retries > 0 && error.message !== 'Storage not available in mock mode') {
+      console.log(`🔄 Retrying upload... (${retries} attempts left)`);
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      return uploadImage(file, bucket, retries - 1);
+    }
+    
     throw error;
   }
 };
 
-export const deleteImage = async (fileName, bucket = 'images') => {
+export const deleteImage = async (fileName, bucket = 'images', retries = 2) => {
   try {
-    if (!supabase.storage) {
-      throw new Error('Storage not available in demo mode');
+    if (connectionState.status === 'mock') {
+      throw new Error('Storage not available in mock mode');
     }
     
     const { error } = await supabase.storage
@@ -99,50 +245,253 @@ export const deleteImage = async (fileName, bucket = 'images') => {
       .remove([fileName]);
       
     if (error) throw error;
+    
+    // Clear from cache
+    cache.forEach((value, key) => {
+      if (value.fileName === fileName) {
+        cache.delete(key);
+      }
+    });
+    
     return true;
   } catch (error) {
-    console.error('Error deleting image:', error);
+    console.error('❌ Error deleting image:', error);
+    
+    // Retry logic
+    if (retries > 0 && error.message !== 'Storage not available in mock mode') {
+      console.log(`🔄 Retrying delete... (${retries} attempts left)`);
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      return deleteImage(fileName, bucket, retries - 1);
+    }
+    
     throw error;
   }
 };
 
-// Utility function for secure data fetching
-export const fetchWithErrorHandling = async (query) => {
+// Enhanced data fetching with caching and pagination
+export const fetchWithErrorHandling = async (query, useCache = true, retries = 2) => {
+  const queryString = JSON.stringify(query);
+  const cacheKey = `query_${btoa(queryString)}`;
+  
+  // Check cache first
+  if (useCache && cache.has(cacheKey)) {
+    const cached = cache.get(cacheKey);
+    if (Date.now() - cached.timestamp < CACHE_TTL) {
+      console.log('📦 Returning cached data');
+      return cached.data;
+    } else {
+      cache.delete(cacheKey);
+    }
+  }
+  
   try {
+    console.log('🔄 Fetching fresh data from Supabase');
     const result = await query;
+    
     if (result && result.error) {
-      console.error('Supabase query error:', result.error);
+      console.error('❌ Supabase query error:', result.error);
       throw result.error;
     }
-    return result.data || [];
+    
+    const data = result?.data || [];
+    
+    // Cache successful results
+    if (useCache && data) {
+      cache.set(cacheKey, {
+        data,
+        timestamp: Date.now()
+      });
+    }
+    
+    return data;
   } catch (err) {
-    console.error('Database operation failed:', err);
-    // Return empty array for graceful degradation
+    console.error('❌ Database operation failed:', err);
+    
+    // Retry logic for network errors
+    if (retries > 0 && (err.code === 'PGRST301' || err.message.includes('network'))) {
+      console.log(`🔄 Retrying query... (${retries} attempts left)`);
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      return fetchWithErrorHandling(query, useCache, retries - 1);
+    }
+    
+    // Return cached data if available during errors
+    if (cache.has(cacheKey)) {
+      console.log('📦 Returning stale cached data due to error');
+      return cache.get(cacheKey).data;
+    }
+    
+    // Graceful degradation
     return [];
   }
 };
 
-// Check if Supabase is properly configured
+// Batch operations for better performance
+export const batchInsert = async (table, records, batchSize = 100) => {
+  if (!Array.isArray(records) || records.length === 0) {
+    return [];
+  }
+  
+  const results = [];
+  
+  for (let i = 0; i < records.length; i += batchSize) {
+    const batch = records.slice(i, i + batchSize);
+    
+    try {
+      const { data, error } = await supabase
+        .from(table)
+        .insert(batch)
+        .select();
+      
+      if (error) throw error;
+      
+      results.push(...(data || []));
+    } catch (error) {
+      console.error(`❌ Batch insert failed for batch ${Math.floor(i / batchSize) + 1}:`, error);
+      throw error;
+    }
+  }
+  
+  // Clear related cache
+  clearTableCache(table);
+  
+  return results;
+};
+
+export const batchUpdate = async (table, updates, batchSize = 50) => {
+  if (!Array.isArray(updates) || updates.length === 0) {
+    return [];
+  }
+  
+  const results = [];
+  
+  for (let i = 0; i < updates.length; i += batchSize) {
+    const batch = updates.slice(i, i + batchSize);
+    
+    for (const update of batch) {
+      try {
+        const { id, ...updateData } = update;
+        const { data, error } = await supabase
+          .from(table)
+          .update(updateData)
+          .eq('id', id)
+          .select();
+        
+        if (error) throw error;
+        
+        results.push(...(data || []));
+      } catch (error) {
+        console.error(`❌ Batch update failed for record ${update.id}:`, error);
+        throw error;
+      }
+    }
+  }
+  
+  // Clear related cache
+  clearTableCache(table);
+  
+  return results;
+};
+
+// Cache management
+export const clearCache = () => {
+  cache.clear();
+  console.log('🗑️ Cache cleared');
+};
+
+export const clearTableCache = (table) => {
+  const keysToDelete = [];
+  
+  cache.forEach((value, key) => {
+    if (key.includes(table)) {
+      keysToDelete.push(key);
+    }
+  });
+  
+  keysToDelete.forEach(key => cache.delete(key));
+  console.log(`🗑️ Cache cleared for table: ${table}`);
+};
+
+// Real-time subscriptions with auto-cleanup
+const activeSubscriptions = new Map();
+
+export const subscribeToTable = (table, callback, filter = null) => {
+  if (connectionState.status === 'mock') {
+    console.log('📡 Real-time subscriptions not available in mock mode');
+    return () => {};
+  }
+  
+  const subscriptionId = `${table}_${Date.now()}`;
+  
+  let subscription = supabase
+    .channel(subscriptionId)
+    .on('postgres_changes', {
+      event: '*',
+      schema: 'public',
+      table: table,
+      ...(filter && { filter })
+    }, (payload) => {
+      console.log(`📡 Real-time update for ${table}:`, payload);
+      clearTableCache(table);
+      callback(payload);
+    })
+    .subscribe();
+  
+  activeSubscriptions.set(subscriptionId, subscription);
+  
+  return () => {
+    subscription.unsubscribe();
+    activeSubscriptions.delete(subscriptionId);
+    console.log(`📡 Unsubscribed from ${table}`);
+  };
+};
+
+// Cleanup function
+export const cleanup = () => {
+  // Unsubscribe from all real-time subscriptions
+  activeSubscriptions.forEach((subscription, id) => {
+    subscription.unsubscribe();
+    console.log(`📡 Cleaned up subscription: ${id}`);
+  });
+  activeSubscriptions.clear();
+  
+  // Clear cache
+  clearCache();
+  
+  // Stop auto-reconnection
+  if (cleanup) cleanup();
+  
+  console.log('🧹 Supabase client cleanup completed');
+};
+
+// Connection status utilities
 export const isSupabaseConfigured = () => {
   return supabaseUrl && supabaseAnonKey && (supabaseUrl.startsWith('http://') || supabaseUrl.startsWith('https://'));
 };
 
-// Test connection function
-export const testConnection = async () => {
-  try {
-    const { data, error } = await supabase
-      .from('leads')
-      .select('count')
-      .limit(1);
-    
-    if (error && error.code !== 'PGRST116') { // PGRST116 is "relation does not exist" which is expected if tables aren't created yet
-      throw error;
-    }
-    
-    console.log('Supabase connection test successful');
-    return true;
-  } catch (error) {
-    console.error('Supabase connection test failed:', error);
-    return false;
-  }
+export const getConnectionStatus = () => {
+  return connectionState.status;
 };
+
+export const testConnection = async () => {
+  return await healthCheck();
+};
+
+// Performance monitoring
+export const getPerformanceMetrics = () => {
+  return {
+    cacheSize: cache.size,
+    cacheHitRate: cache.hitRate || 0,
+    connectionStatus: connectionState.status,
+    lastHealthCheck: connectionState.lastCheck,
+    retryCount: connectionState.retryCount,
+    activeSubscriptions: activeSubscriptions.size
+  };
+};
+
+// Export the enhanced client
+export { supabase };
+
+// Cleanup on page unload
+if (typeof window !== 'undefined') {
+  window.addEventListener('beforeunload', cleanup);
+}
