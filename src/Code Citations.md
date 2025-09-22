@@ -1,4 +1,12 @@
- Code Citations
+Code Citations
+
+## License: unknown
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
+
+```
+);
+```
+
 
 ## License: unknown
 https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
@@ -14,7 +22,16 @@ https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react
 
 ```
 );
-  const messagesEndRef = useRef
+  const messagesEndRef =
+```
+
+
+## License: unknown
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
+
+```
+);
+  const messagesEndRef = useRef(null
 ```
 
 
@@ -36,7 +53,30 @@ https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react
 );
   const messagesEndRef = useRef(null);
 
+  const scroll
+```
+
+
+## License: unknown
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
+
+```
+);
+  const messagesEndRef = useRef(null);
+
   const scrollToBottom = ()
+```
+
+
+## License: unknown
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
+
+```
+);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    
 ```
 
 
@@ -72,7 +112,44 @@ https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({
+```
+
+
+## License: unknown
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
+
+```
+);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "
+```
+
+
+## License: unknown
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
+
+```
+);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+```
+
+
+## License: unknown
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
+
+```
+);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 ```
 
 
@@ -87,7 +164,7 @@ https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  
+  use
 ```
 
 
@@ -103,6 +180,22 @@ https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react
   };
 
   useEffect(() => {
+```
+
+
+## License: unknown
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
+
+```
+);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scroll
 ```
 
 
@@ -119,6 +212,23 @@ https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react
 
   useEffect(() => {
     scrollToBottom();
+```
+
+
+## License: unknown
+https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react-app/src/components/gamearea/Chat.js
+
+```
+);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages
 ```
 
 
@@ -142,432 +252,177 @@ https://github.com/jyih/owok/blob/726c641e1b0044e0662127a43a45b8f42569e38c/react
 
 
 ## License: unknown
-https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-Component {
-  constructor(
-```
-
-
-## License: unknown
-https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
-
-```
-Component {
-  constructor(props) {
-    super(props
+,
 ```
 
 
 ## License: unknown
-https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+,wght@0
 ```
 
 
 ## License: unknown
-https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null };
+,wght@0,400;0
 ```
 
 
 ## License: unknown
-https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
-
-  static getDerivedState
+,wght@0,400;0,700
 ```
 
 
 ## License: unknown
-https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
-
-  static getDerivedStateFromError(error) {
-    
+,wght@0,400;0,700;1,400
 ```
 
 
 ## License: unknown
-https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError:
+,wght@0,400;0,700;1,400;
 ```
 
 
 ## License: unknown
-https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true, error };
+,wght@0,400;0,700;1,400;1,700&
 ```
 
 
 ## License: unknown
-https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true, error };
-  }
-
-  componentDidC
+,wght@0,400;0,700;1,400;1,700&family
 ```
 
 
 ## License: unknown
-https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true, error };
-  }
-
-  componentDidCatch(error, errorInfo) {
+,wght@0,400;0,700;1,400;1,700&family=Crim
 ```
 
 
 ## License: unknown
-https://github.com/CSU-ServerSide-Fall-23/Group_2/blob/c280771b405acf30a41a0f2a2fd7ffb330b145dc/news-website/src/components/Error.jsx
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true, error };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error('
-```
-
-
-## License: MIT
-https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
-
-```
-'loa
-```
-
-
-## License: MIT
-https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
-
-```
-'load', () => {
-    navigator.
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text
 ```
 
 
 ## License: unknown
-https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-'load', () => {
-    navigator.
-```
-
-
-## License: MIT
-https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
-
-```
-'load', () => {
-    navigator.serviceWorker.register('/sw
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,
 ```
 
 
 ## License: unknown
-https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-'load', () => {
-    navigator.serviceWorker.register('/sw
-```
-
-
-## License: MIT
-https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
-
-```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0
 ```
 
 
 ## License: unknown
-https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then
-```
-
-
-## License: MIT
-https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
-
-```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0
 ```
 
 
 ## License: unknown
-https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-```
-
-
-## License: MIT
-https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
-
-```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600
 ```
 
 
 ## License: unknown
-https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW
-```
-
-
-## License: MIT
-https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
-
-```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1
 ```
 
 
 ## License: unknown
-https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-```
-
-
-## License: MIT
-https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
-
-```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((regist
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1
 ```
 
 
 ## License: unknown
-https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((regist
-```
-
-
-## License: MIT
-https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
-
-```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((registrationError) => {
-        console
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display
 ```
 
 
 ## License: unknown
-https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((registrationError) => {
-        console
-```
-
-
-## License: MIT
-https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
-
-```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((registrationError) => {
-        console.log('SW registration failed: ',
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 ```
 
 
 ## License: unknown
-https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((registrationError) => {
-        console.log('SW registration failed: ',
-```
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
-
-## License: MIT
-https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
-
-```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((registrationError) => {
-        console.log('SW registration failed: ', registrationError);
-      });
+:
 ```
 
 
 ## License: unknown
-https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((registrationError) => {
-        console.log('SW registration failed: ', registrationError);
-      });
-```
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
-
-## License: MIT
-https://github.com/webpack/webpack-cli/blob/3db28625af0a2372d733e442eecd527aad8a5ea5/packages/generators/templates/template.html
-
-```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((registrationError) => {
-        console.log('SW registration failed: ', registrationError);
-      });
-  });
-}
-```
+:root {
+  
 ```
 
 
 ## License: unknown
-https://github.com/hualigushi/money-blog/blob/8efd10405cb3e39114a21209184d59bd912c820b/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/webpack/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md
+https://github.com/Indra2108/Griya/blob/4c5397bac7d7f9a7d410653ec0afe07531ed9f40/wiki/assets/style.css
 
 ```
-'load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((registrationError) => {
-        console.log('SW registration failed: ', registrationError);
-      });
-  });
-}
-```
+,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+:root {
+  -
 ```
 
