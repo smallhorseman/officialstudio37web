@@ -1,108 +1,130 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { VitePWA } from 'vite-plugin-pwa';
 import { visualizer } from 'rollup-plugin-visualizer';
 
-export default defineConfig({
-  plugins: [
-    react({
-      // Enable SWC for faster builds and smaller bundles
-      jsxRuntime: 'automatic',
-    }),
-    // Bundle analyzer (only in build)
-    process.env.ANALYZE && visualizer({
-      filename: 'dist/stats.html',
-      open: true,
-      gzipSize: true,
-      brotliSize: true,
-      template: 'treemap' // Better visualization
-    }),
-  ].filter(Boolean),
+export default defineConfig(({ mode }) => {
+  const isProduction = mode === 'production';
   
-  // Optimize dependencies with better tree shaking
-  optimizeDeps: {
-    include: [
-      'react',
-      'react-dom',
-      'react-router-dom',
-      '@supabase/supabase-js'
-    ],
-    exclude: [
-      // Exclude large optional dependencies
-      'react-markdown'
-    ]
-  },
-  
-  build: {
-    // Enable source maps for better debugging
-    sourcemap: false, // Disable source maps to prevent SW issues
-    
-    // CSS optimization
-    cssMinify: 'esbuild', // Use esbuild instead of lightningcss
-    
-    // Advanced chunk splitting for better caching
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          supabase: ['@supabase/supabase-js']
+  return {
+    plugins: [
+      react({
+        // Enable SWC for faster builds and smaller bundles
+        jsxRuntime: 'automatic',
+      }),
+      VitePWA({
+        registerType: 'autoUpdate',
+        workbox: {
+          globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg,webp}'],
+          cleanupOutdatedCaches: true,
+          skipWaiting: true
         },
-        
-        // Simpler asset naming to prevent SW cache issues
-        chunkFileNames: 'assets/js/[name]-[hash].js',
-        entryFileNames: 'assets/js/[name]-[hash].js',
-        
-        assetFileNames: (assetInfo) => {
-          const info = assetInfo.name.split('.');
-          const ext = info[info.length - 1];
-          if (/\.(css)$/.test(assetInfo.name)) {
-            return `assets/css/[name]-[hash].${ext}`;
-          }
-          return `assets/[name]-[hash].${ext}`;
+        manifest: {
+          name: 'Studio37 Photography',
+          short_name: 'Studio37',
+          description: 'Professional photography and content strategy services in Houston, TX',
+          theme_color: '#000000',
+          background_color: '#ffffff',
+          display: 'standalone',
+          icons: [
+            {
+              src: '/icon-192x192.png',
+              sizes: '192x192',
+              type: 'image/png'
+            },
+            {
+              src: '/icon-512x512.png',
+              sizes: '512x512',
+              type: 'image/png'
+            }
+          ]
+        }
+      }),
+      ...(process.env.ANALYZE === 'true' ? [visualizer({
+        filename: 'dist/stats.html',
+        open: true,
+        gzipSize: true,
+        brotliSize: true
+      })] : [])
+    ],
+    build: {
+      outDir: 'dist',
+      // Enable source maps for better debugging
+      sourcemap: false, // Disable source maps to prevent SW issues
+      
+      // CSS optimization
+      cssMinify: 'esbuild', // Use esbuild instead of lightningcss,
+      minify: isProduction ? 'terser' : false,
+      terserOptions: isProduction ? {
+        compress: {
+          drop_console: true,
+          drop_debugger: true
+        }
+      } : {},
+      // Advanced chunk splitting for better caching
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['react', 'react-dom', 'react-router-dom'],
+            router: ['react-router-dom'],
+            supabase: ['@supabase/supabase-js'],
+            markdown: ['react-markdown']
+          },
+          
+          // Simpler asset naming to prevent SW cache issues
+          chunkFileNames: 'assets/js/[name]-[hash].js',
+          entryFileNames: 'assets/js/[name]-[hash].js',
+          
+          assetFileNames: (assetInfo) => {
+            const info = assetInfo.name.split('.');
+            const ext = info[info.length - 1];
+            if (/\.(css)$/.test(assetInfo.name)) {
+              return `assets/css/[name]-[hash].${ext}`;
+            }
+            return `assets/[name]-[hash].${ext}`;
+          },
         },
       },
+      
+      chunkSizeWarningLimit: 1000
+    },
+    optimizeDeps: {
+      include: ['react', 'react-dom', 'react-router-dom', '@supabase/supabase-js', 'react-markdown'],
+      exclude: [
+        // Exclude large optional dependencies
+        'react-markdown'
+      ]
+    },
+    server: {
+      port: 3000,
+      host: true,
+      open: true
+    },
+    preview: {
+      port: 4173,
+      host: true
+    },
+    define: {
+      'process.env.NODE_ENV': JSON.stringify(mode),
+      __APP_VERSION__: JSON.stringify(process.env.npm_package_version || '1.0.0'),
+    },
+    css: {
+      devSourcemap: !isProduction,
+      transformer: 'lightningcss'
     },
     
-    // Aggressive minification
-    minify: 'esbuild', // Use esbuild instead of terser for better compatibility
-    chunkSizeWarningLimit: 1000,
-    target: 'es2015', // More compatible target
-    assetsInlineLimit: 4096, // Inline smaller assets
-  },
-  
-  // CSS processing optimization
-  css: {
-    devSourcemap: true,
-  },
-  
-  // Development server optimization
-  server: {
-    port: 3000,
-    host: true,
-  },
-  
-  // Preview server configuration
-  preview: {
-    port: 4173,
-    host: true,
-  },
-  
-  // Define environment variables
-  define: {
-    __APP_VERSION__: JSON.stringify(process.env.npm_package_version || '1.0.0'),
-  },
-
-  // Enhanced esbuild configuration
-  esbuild: {
-    keepNames: process.env.NODE_ENV === 'development',
-    jsx: 'automatic',
-    legalComments: 'none',
-    target: 'es2020',
-    // Tree shaking optimization
-    treeShaking: true,
-    // Remove unused imports
-    ignoreAnnotations: false,
-    // Drop console and debugger in production
-    drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
-  }
+    // Enhanced esbuild configuration
+    esbuild: {
+      keepNames: process.env.NODE_ENV === 'development',
+      jsx: 'automatic',
+      legalComments: 'none',
+      target: 'es2020',
+      // Tree shaking optimization
+      treeShaking: true,
+      // Remove unused imports
+      ignoreAnnotations: false,
+      // Drop console and debugger in production
+      drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
+    }
+  };
 });
-w
