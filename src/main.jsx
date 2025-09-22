@@ -57,8 +57,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 );
 
-// Register service worker for PWA functionality
-if ('serviceWorker' in navigator && import.meta.env.PROD) {
+// Remove service worker registration completely to prevent asset corruption
+// PWA functionality will be disabled but site will load properly
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then((registration) => {

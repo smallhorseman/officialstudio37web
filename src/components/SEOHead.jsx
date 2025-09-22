@@ -141,26 +141,7 @@ const SEOHead = ({
         canonicalLink.href = url;
       }
 
-      // Add HubSpot preconnect links only once
-      if (!hasChanged('hubspot-preconnects', 'added')) {
-        const hubspotPreconnectLinks = [
-          'https://js-na2.hs-scripts.com',
-          'https://forms.hubspot.com',
-          'https://api.hubapi.com'
-        ];
-
-        hubspotPreconnectLinks.forEach(href => {
-          if (!document.querySelector(`link[href="${href}"]`)) {
-            const link = document.createElement('link');
-            link.rel = 'preconnect';
-            link.href = href;
-            link.crossOrigin = 'anonymous';
-            document.head.appendChild(link);
-          }
-        });
-      }
-
-      // Add preconnect links only once
+      // Remove HubSpot preconnect links since HubSpot is returning 503 errors
       if (!hasChanged('preconnects', 'added')) {
         const preconnectLinks = [
           'https://fonts.googleapis.com',
@@ -169,6 +150,25 @@ const SEOHead = ({
         ];
 
         preconnectLinks.forEach(href => {
+          if (!document.querySelector(`link[href="${href}"]`)) {
+            const link = document.createElement('link');
+            link.rel = 'preconnect';
+            link.href = href;
+            if (href.includes('gstatic')) link.crossOrigin = 'anonymous';
+            document.head.appendChild(link);
+          }
+        });
+      }
+
+      // Remove HubSpot tracking attributes since service is failing
+    });
+
+  }, [title, description, keywords, image, url]);
+
+  return null;
+};
+
+export default SEOHead;
           if (!document.querySelector(`link[href="${href}"]`)) {
             const link = document.createElement('link');
             link.rel = 'preconnect';
