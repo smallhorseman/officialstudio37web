@@ -15,6 +15,7 @@ CREATE TABLE leads (
     phone VARCHAR(50),
     service VARCHAR(255),
     status VARCHAR(50) DEFAULT 'New',
+    source VARCHAR(100) DEFAULT 'website',
     due_date DATE,
     assigned_to VARCHAR(255),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
