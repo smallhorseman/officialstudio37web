@@ -480,82 +480,28 @@ function App() {
 
   // Update AdminDashboard to use enhanced components
   const AdminDashboard = () => {
-    const [activeTab, setActiveTab] = useState('crm');
-
+    useEffect(() => trackPageView('admin'), []);
+    
     return (
-      <div className="section-padding-lg bg-[#212121]">
+      <div className="py-20 md:py-28">
         <SEOHead 
           title="Admin Dashboard - Studio37"
           description="Studio37 admin dashboard for managing business operations"
         />
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="responsive-heading font-vintage">Admin Dashboard</h2>
-            <p className="responsive-text text-[#F3E3C3]/70 mt-4">Manage your business operations</p>
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-6xl font-vintage mb-6">Admin Dashboard</h1>
+            <p className="text-xl text-[#F3E3C3]/80">
+              Manage your Studio37 operations
+            </p>
           </div>
-          
-          <div className="flex flex-wrap gap-2 justify-center mb-8">
-            {['crm', 'cms', 'blog', 'analytics'].map(tab => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-6 py-2 text-sm font-semibold rounded-full transition-all duration-300 focus-ring ${
-                  activeTab === tab 
-                    ? 'bg-[#F3E3C3] text-[#1a1a1a]' 
-                    : 'bg-[#262626] hover:bg-[#333] text-[#F3E3C3]'
-                }`}
-              >
-                {tab.toUpperCase()}
-              </button>
-            ))}
-          </div>
-
-          <div className="card p-6">
-            {activeTab === 'crm' && (
-              <div>
-                <h3 className="text-2xl font-vintage mb-6">Customer Relationship Management</h3>
-                <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
-              </div>
-            )}
-            
-            {activeTab === 'cms' && (
-              <div>
-                <h3 className="text-2xl font-vintage mb-6">Content Management</h3>
-                <EnhancedCmsSection
-                  portfolioImages={portfolioImages}
-                  addPortfolioImage={addPortfolioImage}
-                  deletePortfolioImage={deletePortfolioImage}
-                  updatePortfolioImageOrder={updatePortfolioImageOrder}
-                />
-              </div>
-            )}
-            
-            {activeTab === 'blog' && (
-              <div>
-                <h3 className="text-2xl font-vintage mb-6">Blog Management</h3>
-                <div className="text-[#F3E3C3]/70">Blog management interface coming soon...</div>
-              </div>
-            )}
-
-            {activeTab === 'analytics' && (
-              <div>
-                <h3 className="text-2xl font-vintage mb-6">Analytics Dashboard</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
-                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-2">Total Leads</h4>
-                    <p className="text-3xl font-bold text-[#F3E3C3]">{leads.length}</p>
-                  </div>
-                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
-                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-2">Portfolio Images</h4>
-                    <p className="text-3xl font-bold text-[#F3E3C3]">{portfolioImages.length}</p>
-                  </div>
-                  <div className="bg-[#1a1a1a] p-6 rounded-lg">
-                    <h4 className="text-lg font-semibold text-[#F3E3C3] mb-2">Blog Posts</h4>
-                    <p className="text-3xl font-bold text-[#F3E3C3]">{blogPosts.length}</p>
-                  </div>
-                </div>
-              </div>
-            )}
+          <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
+          <div className="mt-12">
+            <EnhancedCmsSection 
+              portfolioImages={portfolioImages}
+              addPortfolioImage={addPortfolioImage}
+              deletePortfolioImage={deletePortfolioImage}
+            />
           </div>
         </div>
       </div>
@@ -916,31 +862,6 @@ function App() {
     );
   };
 
-  const AdminDashboard = () => {
-    useEffect(() => trackPageView('admin'), []);
-    
-    return (
-      <div className="py-20 md:py-28">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-vintage mb-6">Admin Dashboard</h1>
-            <p className="text-xl text-[#F3E3C3]/80">
-              Manage your Studio37 operations
-            </p>
-          </div>
-          <EnhancedCrmSection leads={leads} updateLeadStatus={updateLeadStatus} />
-          <div className="mt-12">
-            <EnhancedCmsSection 
-              portfolioImages={portfolioImages}
-              addPortfolioImage={addPortfolioImage}
-              deletePortfolioImage={deletePortfolioImage}
-            />
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   // Simple Portfolio Gate component with proper JSX structure
   const PortfolioGate = ({ onUnlock }) => {
     const [formData, setFormData] = useState({
@@ -1158,7 +1079,6 @@ function App() {
         </div>
       </nav>
 
-      {/* Main content with HubSpot event tracking */}
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<HomePage />} />
