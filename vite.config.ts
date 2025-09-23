@@ -9,11 +9,11 @@ export default defineConfig({
       jsxRuntime: 'automatic',
     }),
     // Bundle analyzer (only when requested)
-    process.env.ANALYZE && visualizer({
+    process.env.ANALYZE === 'true' ? visualizer({
       template: 'treemap',
       open: false,
       filename: 'dist/stats.html',
-    }),
+    }) : undefined,
   ].filter(Boolean), // Filter out false/undefined values
   
   build: {
