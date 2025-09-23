@@ -314,15 +314,15 @@ textarea:focus {
   will-change: transform;
 }
 
-/* Container queries support - removed problematic property */
-@supports (container-type: inline-size) {
+/* Container queries support - using standard CSS property */
+@supports (contain: inline-size) {
   .container-query {
-    container-type: inline-size;
+    contain: inline-size;
   }
 }
 
 /* Fallback for browsers without container query support */
-@supports not (container-type: inline-size) {
+@supports not (contain: inline-size) {
   .container-query {
     /* Use standard responsive design as fallback */
     width: 100%;
