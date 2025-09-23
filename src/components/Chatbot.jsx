@@ -17,7 +17,7 @@ const Chatbot = () => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [collectingInfo, setCollectingInfo] = useState(false);
-  const [infoStep, setInfoStep] = useState('name'); // 'name', 'email', 'service'
+  const [infoStep, setInfoStep] = useState('name');
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -54,34 +54,16 @@ const Chatbot = () => {
       }
     },
     pricing: {
-      general: "💰 **Studio37 Pricing Overview**\n\nPortraits: $300-500\nWeddings: $1,500-5,000\nCommercial: $150-300/hr\nContent Strategy: $400-1,200/month\n\nAll packages include professional editing. Which service interests you most?",
-      packages: "📦 **Popular Packages**\n\n🥉 Starter: $300 - Basic portrait session\n🥈 Professional: $800 - Extended session + extras\n🥇 Premium: $1,500 - Full service experience\n\nEach package can be customized to your needs!"
-    },
-    booking: {
-      text: "📅 **Ready to Book?**\n\nI'd love to help you schedule! To get started, I'll need:\n• Your name\n• Email address\n• Preferred service type\n• Preferred dates\n\nShall we begin with your name?",
-      collectInfo: true
-    },
-    location: "📍 **Studio37 Location**\n\nBased in Houston, TX\n🚗 Serving greater Houston area\n✈️ Available for destination shoots\n🏢 Studio sessions available\n\nTravel fees may apply for locations outside Houston. Where are you located?",
-    
-    quickReplies: {
-      "Book Portrait Session": "Perfect! I'll help you book a portrait session. What's your name?",
-      "View Portfolio": "You can view our portfolio at studio37photography.com/portfolio. Would you like me to send you the direct link?",
-      "Get Pricing Details": "I'll send you our detailed pricing guide. What's your email address?",
-      "Book Consultation": "Great choice! Free consultations help us plan your perfect session. What's your name?",
-      "Request Quote": "I'll help you get a custom quote. Tell me about your project needs.",
-      "Schedule Call": "Perfect! I can schedule a call with our team. What's your availability like this week?"
+      general: "💰 **Studio37 Pricing Overview**\n\nPortraits: $300-500\nWeddings: $1,500-5,000\nCommercial: $150-300/hr\nContent Strategy: $400-1,200/month\n\nAll packages include professional editing. Which service interests you most?"
     }
   };
 
   const detectIntent = (message) => {
     const lowerMessage = message.toLowerCase();
     
-    // Greeting detection
     if (lowerMessage.match(/(hello|hi|hey|greetings|good morning|good afternoon)/)) {
       return 'greeting';
     }
-    
-    // Service detection
     if (lowerMessage.match(/(portrait|headshot|family photo|personal branding)/)) {
       return 'portrait';
     }
@@ -94,37 +76,17 @@ const Chatbot = () => {
     if (lowerMessage.match(/(content|social media|marketing|brand|instagram)/)) {
       return 'content';
     }
-    
-    // Action detection
     if (lowerMessage.match(/(price|cost|how much|pricing|budget|rate)/)) {
       return 'pricing';
     }
     if (lowerMessage.match(/(book|schedule|appointment|reserve|hire)/)) {
       return 'booking';
     }
-    if (lowerMessage.match(/(location|where|address|houston|studio)/)) {
-      return 'location';
-    }
-    if (lowerMessage.match(/(package|deal|offer|bundle)/)) {
-      return 'packages';
-    }
     
     return 'general';
   };
 
   const generateResponse = (intent, userMessage) => {
-    // Handle quick replies first
-    if (responses.quickReplies[userMessage]) {
-      if (userMessage.includes('Book') || userMessage.includes('Consultation')) {
-        setCollectingInfo(true);
-        setInfoStep('name');
-      }
-      return {
-        text: responses.quickReplies[userMessage],
-        quickActions: intent === 'booking' ? [] : ['Contact Studio37', 'View More Services']
-      };
-    }
-
     switch (intent) {
       case 'greeting':
         return {
@@ -144,27 +106,17 @@ const Chatbot = () => {
           text: responses.pricing.general,
           quickActions: ['Portrait Pricing', 'Wedding Packages', 'Commercial Rates', 'Book Consultation']
         };
-      case 'packages':
-        return {
-          text: responses.pricing.packages,
-          quickActions: ['Book Starter Package', 'Learn About Premium', 'Custom Quote']
-        };
       case 'booking':
         setCollectingInfo(true);
         setInfoStep('name');
         return {
-          text: responses.booking.text,
+          text: "📅 **Ready to Book?**\n\nI'd love to help you schedule! What's your name?",
           quickActions: []
-        };
-      case 'location':
-        return {
-          text: responses.location,
-          quickActions: ['Get Directions', 'Book Studio Session', 'Request Travel Quote']
         };
       default:
         return {
-          text: "I'd be happy to help! I can assist with:\n\n📸 Photography services\n💰 Pricing information\n📅 Booking sessions\n📍 Location details\n\nWhat would you like to know more about?",
-          quickActions: ['See All Services', 'Get Pricing', 'Book Now', 'Contact Studio']
+          text: "I'd be happy to help! I can assist with:\n\n📸 Photography services\n💰 Pricing information\n📅 Booking sessions\n\nWhat would you like to know more about?",
+          quickActions: ['See All Services', 'Get Pricing', 'Book Now']
         };
     }
   };
@@ -178,12 +130,11 @@ const Chatbot = () => {
       case 'email':
         setUserEmail(message);
         setInfoStep('service');
-        return `Perfect! Now, what type of photography session are you interested in?\n\n📸 Portrait\n💒 Wedding\n🏢 Commercial\n📱 Content Creation`;
+        return `Perfect! What type of photography session interests you?\n\n📸 Portrait\n💒 Wedding\n🏢 Commercial\n📱 Content Creation`;
       case 'service':
         setCollectingInfo(false);
-        // Create lead in Supabase
         createLead(userName, userEmail, message);
-        return `Excellent choice! 🎉\n\nI've saved your information:\n• Name: ${userName}\n• Email: ${userEmail}\n• Service: ${message}\n\nOur team will contact you within 24 hours to discuss your ${message.toLowerCase()} session. You'll receive a confirmation email shortly!\n\nIs there anything else I can help you with today?`;
+        return `Excellent choice! 🎉\n\nI've saved your information:\n• Name: ${userName}\n• Email: ${userEmail}\n• Service: ${message}\n\nOur team will contact you within 24 hours. Is there anything else I can help you with?`;
       default:
         return "I'm here to help with any other questions!";
     }
@@ -198,8 +149,6 @@ const Chatbot = () => {
           email: email,
           service: service,
           status: 'New',
-          source: 'Chatbot',
-          message: `Lead generated from chatbot conversation. Interested in ${service} photography.`,
           created_at: new Date().toISOString()
         });
 
@@ -210,25 +159,6 @@ const Chatbot = () => {
       }
     } catch (error) {
       console.error('Error creating lead:', error);
-    }
-  };
-
-  const saveConversationToSupabase = async (userMessage, botResponse) => {
-    try {
-      const { error } = await supabase
-        .from('chatbot_conversations')
-        .insert({
-          conversation_id: conversationId,
-          user_message: userMessage,
-          bot_response: typeof botResponse === 'string' ? botResponse : botResponse.text,
-          user_name: userName || null,
-          user_email: userEmail || null,
-          created_at: new Date().toISOString()
-        });
-
-      if (error) console.error('Error saving conversation:', error);
-    } catch (error) {
-      console.error('Error saving to Supabase:', error);
     }
   };
 
@@ -248,7 +178,6 @@ const Chatbot = () => {
     let botResponseText;
     let quickActions = [];
 
-    // Handle info collection flow
     if (collectingInfo) {
       botResponseText = handleInfoCollection(inputMessage);
     } else {
@@ -258,8 +187,7 @@ const Chatbot = () => {
       quickActions = response.quickActions || [];
     }
 
-    // Simulate typing delay
-    setTimeout(async () => {
+    setTimeout(() => {
       const botMessage = {
         id: messages.length + 2,
         text: botResponseText,
@@ -270,9 +198,6 @@ const Chatbot = () => {
 
       setMessages(prev => [...prev, botMessage]);
       setIsLoading(false);
-
-      // Save to Supabase
-      await saveConversationToSupabase(inputMessage, botResponseText);
     }, 1200);
 
     setInputMessage('');
@@ -280,7 +205,6 @@ const Chatbot = () => {
 
   const handleQuickAction = (action) => {
     setInputMessage(action);
-    // Auto-send the quick action
     setTimeout(() => {
       handleSendMessage();
     }, 100);
@@ -295,7 +219,6 @@ const Chatbot = () => {
 
   return (
     <>
-      {/* Chat Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-6 right-6 bg-gradient-to-r from-[#F3E3C3] to-[#E6D5B8] text-[#1a1a1a] p-4 rounded-full shadow-xl hover:shadow-2xl transition-all hover:scale-110 z-50 animate-pulse"
@@ -311,10 +234,8 @@ const Chatbot = () => {
         </div>
       </button>
 
-      {/* Chat Window */}
       {isOpen && (
         <div className="fixed bottom-6 right-6 bg-gradient-to-br from-[#262626] to-[#1a1a1a] rounded-xl shadow-2xl w-96 max-h-[600px] flex flex-col z-50 border border-[#F3E3C3]/20">
-          {/* Header */}
           <div className="p-4 border-b border-[#F3E3C3]/20 flex justify-between items-center bg-gradient-to-r from-[#F3E3C3] to-[#E6D5B8] rounded-t-xl">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-[#1a1a1a] rounded-full flex items-center justify-center">
@@ -333,12 +254,91 @@ const Chatbot = () => {
             </button>
           </div>
           
-          {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-80 scrollbar-thin scrollbar-thumb-[#F3E3C3]/20">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-80">
             {messages.map((message) => (
               <div key={message.id}>
                 <div className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-xs px-4 py-3 rounded-2xl text-sm leading-relaxed ${
+                    message.sender === 'user'
+                      ? 'bg-gradient-to-r from-[#F3E3C3] to-[#E6D5B8] text-[#1a1a1a] rounded-br-md'
+                      : 'bg-[#1a1a1a] text-[#F3E3C3] border border-[#F3E3C3]/20 rounded-bl-md'
+                  }`}>
+                    <div className="whitespace-pre-line">{message.text}</div>
+                  </div>
+                </div>
+
+                {message.sender === 'bot' && message.quickActions && message.quickActions.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-2 ml-2">
+                    {message.quickActions.map((action, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleQuickAction(action)}
+                        className="px-3 py-1 bg-[#F3E3C3]/10 hover:bg-[#F3E3C3]/20 text-[#F3E3C3] border border-[#F3E3C3]/30 rounded-full text-xs transition-all hover:scale-105"
+                      >
+                        {action}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-[#1a1a1a] text-[#F3E3C3] border border-[#F3E3C3]/20 px-4 py-3 rounded-2xl rounded-bl-md text-sm">
+                  <div className="flex items-center space-x-2">
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    </div>
+                    <span className="text-xs">AI thinking...</span>
+                  </div>
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+
+          <div className="p-4 border-t border-[#F3E3C3]/20">
+            <div className="flex gap-2">
+              <textarea
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder={collectingInfo ? 
+                  infoStep === 'name' ? "Enter your name..." :
+                  infoStep === 'email' ? "Enter your email..." :
+                  "Tell me about your needs..." :
+                  "Ask me about photography services..."
+                }
+                rows="1"
+                className="flex-1 bg-[#1a1a1a] border border-[#F3E3C3]/30 rounded-xl py-3 px-4 text-[#F3E3C3] text-sm focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]/50 placeholder-[#F3E3C3]/40 resize-none"
+              />
+              <button
+                onClick={handleSendMessage}
+                disabled={!inputMessage.trim() || isLoading}
+                className="bg-gradient-to-r from-[#F3E3C3] to-[#E6D5B8] text-[#1a1a1a] px-4 py-3 rounded-xl font-semibold text-sm hover:from-[#E6D5B8] hover:to-[#D4C5A8] disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:scale-105 flex items-center"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22,2 15,22 11,13 2,9 22,2"></polygon>
+                </svg>
+              </button>
+            </div>
+            
+            <div className="flex justify-between items-center mt-2 text-xs text-[#F3E3C3]/50">
+              <span>Press Enter to send</span>
+              {userName && <span>👋 Hi, {userName}!</span>}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default Chatbot;
                     message.sender === 'user'
                       ? 'bg-gradient-to-r from-[#F3E3C3] to-[#E6D5B8] text-[#1a1a1a] rounded-br-md'
                       : 'bg-[#1a1a1a] text-[#F3E3C3] border border-[#F3E3C3]/20 rounded-bl-md'

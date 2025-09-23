@@ -2,12 +2,11 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 const SEOHead = ({ 
-  title = "Studio37 Photography - Professional Photography Houston, TX",
-  description = "Studio37 offers professional photography and content strategy services in Houston, Texas. Specializing in portraits, weddings, events, and commercial photography.",
-  keywords = "photography, Houston photographer, professional photography, portrait photography, wedding photography, commercial photography, content strategy, Studio37",
-  image = "https://www.studio37.cc/og-image.jpg",
-  url = "https://www.studio37.cc",
-  type = "website"
+  title = "Studio37 - Professional Photography Houston TX",
+  description = "Professional photography and content strategy in Houston, TX. Vintage-inspired, modern approach for portraits, weddings, commercial, and content creation.",
+  keywords = "photography, Houston, TX, professional photographer, portraits, weddings, commercial photography, content strategy",
+  image = "/og-image.jpg",
+  url = "https://www.studio37.cc"
 }) => {
   return (
     <Helmet>
@@ -15,27 +14,28 @@ const SEOHead = ({
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content={type} />
-      <meta property="og:url" content={url} />
+      {/* Open Graph */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
+      <meta property="og:url" content={url} />
+      <meta property="og:type" content="website" />
       
       {/* Twitter */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={url} />
-      <meta property="twitter:title" content={title} />
-      <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={image} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={image} />
       
       {/* Additional SEO */}
       <meta name="robots" content="index, follow" />
-      <meta name="author" content="Studio37 Photography" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="canonical" href={url} />
-      
-      {/* Local Business Schema */}
-      <script type="application/ld+json">
+    </Helmet>
+  );
+};
+
+export default SEOHead;
         {JSON.stringify({
           "@context": "http://schema.org",
           "@type": "LocalBusiness",

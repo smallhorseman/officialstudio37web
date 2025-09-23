@@ -1,72 +1,59 @@
 import { useState, useEffect, useCallback } from 'react';
-import { supabase, fetchWithErrorHandling, subscribeToTable, getConnectionStatus } from '../supabaseClient';
+import { supabase } from '../supabaseClient';
 
-export const useSupabaseQuery = (queryFn, dependencies = [], options = {}) => {
+export const useSupabaseQuery = (queryFn, deps = [], options = {}) => {
   const [data, setData] = useState(options.initialData || null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const executeQuery = useCallback(async () => {
-    if (!options.enabled && options.enabled !== undefined) {
-      setLoading(false);
-      return;
-    }
-
+  const refetch = useCallback(async () => {
+    if (!options.enabled && options.enabled !== undefined) return;
+    
+    setLoading(true);
+    setError(null);
+    
     try {
-      setLoading(true);
-      setError(null);
-      
       const result = await queryFn();
+      setData(result.data || result);
       
       if (result.error) {
-        throw result.error;
+        setError(result.error);
       }
-      
-      setData(result.data || result);
     } catch (err) {
-      console.error('Query error:', err);
       setError(err);
-      if (options.onError) {
-        options.onError(err);
-      }
     } finally {
       setLoading(false);
     }
-  }, [queryFn, options.enabled]);
+  }, deps);
 
   useEffect(() => {
-    executeQuery();
-  }, [...dependencies, executeQuery]);
+    refetch();
+  }, [refetch]);
 
-  // Real-time subscription
+  // Set up real-time subscription if requested
   useEffect(() => {
     if (options.realtime && options.realtimeTable) {
       const subscription = supabase
-        .channel(`${options.realtimeTable}-changes`)
+        .channel(`${options.realtimeTable}_changes`)
         .on('postgres_changes', 
           { 
             event: '*', 
             schema: 'public', 
-            table: options.realtimeTable 
+            table: options.realtimeTable
           }, 
           () => {
-            executeQuery();
+            refetch();
           }
         )
         .subscribe();
 
       return () => {
-        subscription.unsubscribe();
+        supabase.removeChannel(subscription);
       };
     }
-  }, [options.realtime, options.realtimeTable, executeQuery]);
+  }, [options.realtime, options.realtimeTable, refetch]);
 
-  return {
-    data,
-    loading,
-    error,
-    refetch: executeQuery
-  };
+  return { data, loading, error, refetch };
 };
 
 export const useSupabaseMutation = (mutationFn, options = {}) => {
@@ -74,10 +61,10 @@ export const useSupabaseMutation = (mutationFn, options = {}) => {
   const [error, setError] = useState(null);
 
   const mutate = useCallback(async (variables) => {
+    setLoading(true);
+    setError(null);
+    
     try {
-      setLoading(true);
-      setError(null);
-      
       const result = await mutationFn(variables);
       
       if (options.onSuccess) {
@@ -86,7 +73,20 @@ export const useSupabaseMutation = (mutationFn, options = {}) => {
       
       return result;
     } catch (err) {
-      console.error('Mutation error:', err);
+      setError(err);
+      
+      if (options.onError) {
+        options.onError(err);
+      }
+      
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  }, [mutationFn, options]);
+
+  return { mutate, loading, error };
+};
       setError(err);
       
       if (options.onError) {

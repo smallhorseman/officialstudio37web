@@ -4,101 +4,43 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = 'https://sqfqlnodwjubacmaduzl.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZnFsbm9kd2p1YmFjbWFkdXpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxNzQ2ODUsImV4cCI6MjA3Mzc1MDY4NX0.OtEDSh5UCm8CxWufG_NBLDzgNFI3wnr-oAyaRib_4Mw';
 
-// Pro-level configuration
+// Create Supabase client
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
     autoRefreshToken: true,
     persistSession: true,
     detectSessionInUrl: true,
     storage: typeof window !== 'undefined' ? window.localStorage : undefined,
-    flowType: 'pkce',
-    debug: import.meta.env.DEV
+    flowType: 'pkce'
   },
   realtime: {
     params: {
-      eventsPerSecond: 10, // Higher rate for Pro
-      heartbeatIntervalMs: 30000,
-      reconnectAfterMs: function (tries) {
-        return Math.min(tries * 1000, 10000);
-      }
+      eventsPerSecond: 10,
+      heartbeatIntervalMs: 30000
     }
   },
   global: {
     headers: {
-      'x-application-name': 'Studio37-Photography-Pro',
+      'x-application-name': 'Studio37-Photography',
       'x-application-version': '2.0.0'
-    },
-    fetch: (url, options = {}) => {
-      // Enhanced error handling and monitoring
-      return fetch(url, {
-        ...options,
-        // Add custom retry logic for Pro tier
-        signal: AbortSignal.timeout(30000) // 30s timeout for Pro
-      }).catch(error => {
-        console.error('Supabase request failed:', error);
-        throw error;
-      });
     }
-  },
-  db: {
-    schema: 'public'
-  },
-  // Pro-level connection pooling
-  connectionString: supabaseUrl
+  }
 });
 
-// Enhanced connection management with Pro features
+// Connection state management
 let connectionState = {
   status: 'disconnected',
   lastCheck: null,
   retryCount: 0,
-  maxRetries: 5,
-  metrics: {
-    totalRequests: 0,
-    successfulRequests: 0,
-    failedRequests: 0,
-    averageResponseTime: 0
-  }
+  maxRetries: 5
 };
 
-// Pro-level performance monitoring
-const trackPerformance = (operation, startTime, success) => {
-  const endTime = performance.now();
-  const duration = endTime - startTime;
-  
-  connectionState.metrics.totalRequests++;
-  if (success) {
-    connectionState.metrics.successfulRequests++;
-  } else {
-    connectionState.metrics.failedRequests++;
-  }
-  
-  // Calculate rolling average
-  connectionState.metrics.averageResponseTime = 
-    (connectionState.metrics.averageResponseTime + duration) / 2;
-  
-  // Send to Supabase Analytics (Pro feature)
-  if (success && connectionState.metrics.totalRequests % 10 === 0) {
-    supabase.from('performance_metrics').insert({
-      operation,
-      duration,
-      timestamp: new Date().toISOString(),
-      success_rate: connectionState.metrics.successfulRequests / connectionState.metrics.totalRequests
-    }).then(({ error }) => {
-      if (error) console.log('Performance tracking failed:', error);
-    });
-  }
-};
-
-// Enhanced test connection with Pro monitoring
+// Test connection function
 export const testConnection = async () => {
-  const startTime = performance.now();
-  
   try {
     connectionState.status = 'checking';
     
-    // Use Pro-tier health check endpoint
-    const { data, error, status, statusText } = await supabase
+    const { data, error } = await supabase
       .from('leads')
       .select('count', { count: 'exact', head: true })
       .limit(1);
@@ -111,43 +53,101 @@ export const testConnection = async () => {
     connectionState.lastCheck = new Date();
     connectionState.retryCount = 0;
     
-    trackPerformance('connection_test', startTime, true);
-    console.log('✅ Supabase Pro connection successful', { status, statusText });
+    console.log('✅ Supabase connection successful');
     return true;
     
   } catch (error) {
     connectionState.status = 'error';
     connectionState.retryCount++;
     
-    trackPerformance('connection_test', startTime, false);
-    console.error('❌ Supabase Pro connection failed:', error);
+    console.error('❌ Supabase connection failed:', error);
     return false;
   }
 };
 
-// Pro-level advanced caching with TTL
-const advancedCache = new Map();
-const CACHE_TTL = 5 * 60 * 1000; // 5 minutes for Pro tier
+// Get connection status
+export const getConnectionStatus = () => connectionState.status;
 
-export const cachedQuery = async (key, queryFn, ttl = CACHE_TTL) => {
-  const cached = advancedCache.get(key);
-  const now = Date.now();
-  
-  if (cached && (now - cached.timestamp) < ttl) {
-    console.log('🎯 Cache hit for:', key);
-    return cached.data;
+// Batch operations
+export const batchInsert = async (table, records, batchSize = 100) => {
+  if (!Array.isArray(records) || records.length === 0) {
+    return [];
   }
   
-  const startTime = performance.now();
+  const results = [];
+  
+  for (let i = 0; i < records.length; i += batchSize) {
+    const batch = records.slice(i, i + batchSize);
+    
+    try {
+      const { data, error } = await supabase
+        .from(table)
+        .insert(batch)
+        .select();
+      
+      if (error) throw error;
+      results.push(...(data || []));
+    } catch (error) {
+      console.error(`❌ Batch insert failed for batch ${Math.floor(i / batchSize) + 1}:`, error);
+      throw error;
+    }
+  }
+  
+  return results;
+};
+
+// Real-time subscriptions
+const activeSubscriptions = new Map();
+
+export const subscribeToTable = (table, callback, filters = {}) => {
+  const subscriptionKey = `${table}_${JSON.stringify(filters)}`;
+  
+  if (activeSubscriptions.has(subscriptionKey)) {
+    activeSubscriptions.get(subscriptionKey).unsubscribe();
+  }
+  
   try {
-    const result = await queryFn();
+    const channel = supabase
+      .channel(`${table}_changes`)
+      .on('postgres_changes', 
+        { 
+          event: '*', 
+          schema: 'public', 
+          table: table,
+          ...filters
+        }, 
+        callback
+      )
+      .subscribe();
     
-    // Cache successful results
-    advancedCache.set(key, {
-      data: result,
-      timestamp: now
-    });
+    activeSubscriptions.set(subscriptionKey, channel);
+    console.log(`📡 Subscribed to ${table} changes`);
     
+    return () => {
+      supabase.removeChannel(channel);
+      activeSubscriptions.delete(subscriptionKey);
+      console.log(`📡 Unsubscribed from ${table} changes`);
+    };
+  } catch (error) {
+    console.error(`❌ Failed to subscribe to ${table}:`, error);
+    return () => {};
+  }
+};
+
+// Cleanup function
+const cleanup = () => {
+  activeSubscriptions.forEach((channel) => {
+    supabase.removeChannel(channel);
+  });
+  activeSubscriptions.clear();
+};
+
+// Cleanup on page unload
+if (typeof window !== 'undefined') {
+  window.addEventListener('beforeunload', cleanup);
+}
+
+export default supabase;
     trackPerformance(`cached_query_${key}`, startTime, true);
     return result;
   } catch (error) {

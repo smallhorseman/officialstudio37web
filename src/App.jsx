@@ -58,7 +58,7 @@ const ErrorFallback = React.memo(({ error, resetError }) => (
   </div>
 ));
 
-import Studio37Chatbot from './components/HubSpotIntegration';
+import Studio37Chatbot from './components/Chatbot';
 import { useJourneyTracking, useAbTest, useRealtimeNotifications } from './hooks/useProFeatures';
 import ProAnalyticsDashboard from './components/ProAnalyticsDashboard';
 import { trackAnalyticsEvent, cachedQuery } from './supabaseClient';
@@ -1330,13 +1330,13 @@ function App() {
   // Pro-level header with A/B testing
   const ProHeader = () => (
     <div className="section-padding-lg text-center">
-      <h1 className="text-5xl md:text-7xl font-vintage mb-6 animate-fadeInUp">
+      <h1 className="text-5xl md:text-7xl font-vintage mb-6">
         Vintage Heart, Modern Vision
       </h1>
-      <p className="text-xl md:text-2xl text-[#F3E3C3]/80 mb-8 max-w-2xl mx-auto animate-fadeInUp">
+      <p className="text-xl md:text-2xl text-[#F3E3C3]/80 mb-8 max-w-2xl mx-auto">
         Professional photography and content strategy for brands ready to conquer the world from Houston, TX.
       </p>
-      <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp max-w-md mx-auto">
+      <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
         <Link 
           to="/services" 
           className={`px-8 py-4 rounded-md font-semibold transition-all hover:scale-105 ${
@@ -1455,7 +1455,7 @@ function App() {
         </Routes>
       </main>
 
-      {/* Add Studio37 Chatbot */}
+      {/* Add Studio37 Chatbot - use the corrected import */}
       <Studio37Chatbot />
 
       {/* Footer */}

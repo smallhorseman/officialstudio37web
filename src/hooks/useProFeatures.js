@@ -138,34 +138,27 @@ export const useAbTest = (testName) => {
 
 // Customer journey tracking
 export const useJourneyTracking = () => {
-  const sessionId = useRef(null);
-
-  useEffect(() => {
-    if (!sessionId.current) {
-      sessionId.current = `session_${Date.now()}_${Math.random().toString(36).substring(2)}`;
+  const trackJourneyStep = useCallback((stage, touchpoint, data) => {
+    const journeyData = {
+      stage,
+      touchpoint,
+      data,
+      timestamp: new Date().toISOString(),
+      sessionId: sessionStorage.getItem('sessionId') || 'anonymous'
+    };
+    
+    // Store in localStorage for offline tracking
+    const journeyHistory = JSON.parse(localStorage.getItem('journeyHistory') || '[]');
+    journeyHistory.push(journeyData);
+    
+    // Keep only last 50 events
+    if (journeyHistory.length > 50) {
+      journeyHistory.splice(0, journeyHistory.length - 50);
     }
-  }, []);
-
-  const trackJourneyStep = useCallback(async (stage, touchpoint, data = {}) => {
-    try {
-      await supabase.from('customer_journey').insert({
-        session_id: sessionId.current,
-        journey_stage: stage,
-        touchpoint,
-        interaction_type: data.type || 'page_view',
-        page_url: window.location.href,
-        content_engaged: data.content || {},
-        time_spent: data.timeSpent || 0
-      });
-
-      trackAnalyticsEvent('journey_step', {
-        stage,
-        touchpoint,
-        ...data
-      });
-    } catch (error) {
-      console.error('Journey tracking failed:', error);
-    }
+    
+    localStorage.setItem('journeyHistory', JSON.stringify(journeyHistory));
+    
+    console.log('Journey Step:', journeyData);
   }, []);
 
   return { trackJourneyStep };
@@ -174,6 +167,26 @@ export const useJourneyTracking = () => {
 // Real-time notifications
 export const useRealtimeNotifications = () => {
   const [notifications, setNotifications] = useState([]);
+
+  const dismissNotification = useCallback((id) => {
+    setNotifications(prev => prev.filter(n => n.id !== id));
+  }, []);
+
+  const addNotification = useCallback((message, type = 'info') => {
+    const notification = {
+      id: Date.now(),
+      message,
+      type,
+      timestamp: new Date()
+    };
+    
+    setNotifications(prev => [...prev, notification]);
+    
+    // Auto dismiss after 5 seconds
+    setTimeout(() => {
+      dismissNotification(notification.id);
+    }, 5000);
+  }, [dismissNotification]);
 
   useEffect(() => {
     const subscription = createRealtimeSubscription(
@@ -194,9 +207,5 @@ export const useRealtimeNotifications = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  const dismissNotification = useCallback((id) => {
-    setNotifications(prev => prev.filter(n => n.id !== id));
-  }, []);
-
-  return { notifications, dismissNotification };
+  return { notifications, dismissNotification, addNotification };
 };
