@@ -20,15 +20,16 @@ export default defineConfig({
   ].filter(Boolean),
   
   build: {
+    outDir: 'dist',
     sourcemap: false, // Disable for production to reduce size
     rollupOptions: {
       output: {
         // Optimize chunk splitting for better caching
         manualChunks: {
           // Core React libraries
-          'react-vendor': ['react', 'react-dom'],
-          // Router
-          'router': ['react-router-dom'],
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          // UI libraries
+          'ui-vendor': ['framer-motion', 'lucide-react'],
           // Database
           'supabase': ['@supabase/supabase-js'],
         },
