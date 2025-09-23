@@ -1,4 +1,4 @@
-Code Citations
+<!-- This file should be deleted as it may be causing parsing issues -->
 
 ## License: unknown
 https://github.com/iskanderbroere/iskanderbroere/blob/41f4cca970d9537334ab22aad54e05591cd8dd36/netlify.toml

@@ -108,3 +108,5 @@ export default defineConfig({
     'global': 'globalThis',
   }
 })
+
+// This file should be deleted - we'll use vite.config.js instead
