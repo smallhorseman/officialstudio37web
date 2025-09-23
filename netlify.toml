@@ -37,9 +37,6 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    # Disable service worker
-    Service-Worker-Allowed = "none"
-    Clear-Site-Data = '"cache", "storage"'
 
 [[headers]]
   for = "/assets/*"
@@ -71,6 +68,9 @@
 
 # SPA fallback
 [[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
   from = "/*"
   to = "/index.html"
   status = 200

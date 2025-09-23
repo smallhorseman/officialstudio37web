@@ -1,37 +1,57 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Use environment variables instead of hardcoded values
+// Use environment variables with better error handling
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-// Validate environment variables
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('Missing Supabase environment variables');
-  throw new Error('Supabase configuration is incomplete. Please check your .env file.');
-}
+// Create mock client for development without Supabase
+const createMockClient = () => {
+  console.warn('⚠️ Running in mock mode - no Supabase connection');
+  
+  return {
+    from: (table) => ({
+      select: () => Promise.resolve({ data: [], error: null }),
+      insert: (data) => Promise.resolve({ data, error: null }),
+      update: (data) => Promise.resolve({ data, error: null }),
+      delete: () => Promise.resolve({ data: null, error: null }),
+      upsert: (data) => Promise.resolve({ data, error: null })
+    }),
+    auth: {
+      getUser: () => Promise.resolve({ data: { user: null }, error: null }),
+      signIn: () => Promise.resolve({ data: null, error: null }),
+      signOut: () => Promise.resolve({ error: null })
+    },
+    storage: {
+      from: () => ({
+        upload: () => Promise.resolve({ data: null, error: null }),
+        getPublicUrl: () => ({ data: { publicUrl: '' } })
+      })
+    },
+    channel: () => ({
+      on: () => ({ subscribe: () => {} }),
+      unsubscribe: () => {}
+    }),
+    removeChannel: () => {}
+  };
+};
 
-// Create Supabase client
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    autoRefreshToken: true,
-    persistSession: true,
-    detectSessionInUrl: true,
-    storage: typeof window !== 'undefined' ? window.localStorage : undefined,
-    flowType: 'pkce'
-  },
-  realtime: {
-    params: {
-      eventsPerSecond: 10,
-      heartbeatIntervalMs: 30000
+// Create Supabase client or mock
+let supabase;
+
+if (supabaseUrl && supabaseAnonKey) {
+  supabase = createClient(supabaseUrl, supabaseAnonKey, {
+    auth: {
+      autoRefreshToken: true,
+      persistSession: true,
+      detectSessionInUrl: true,
+      storage: typeof window !== 'undefined' ? window.localStorage : undefined,
+      flowType: 'pkce'
     }
-  },
-  global: {
-    headers: {
-      'x-application-name': 'Studio37-Photography',
-      'x-application-version': '2.0.0'
-    }
-  }
-});
+  });
+} else {
+  console.warn('Missing Supabase environment variables - using mock client');
+  supabase = createMockClient();
+}
 
 // Connection state management
 let connectionState = {
@@ -48,6 +68,11 @@ let connectionState = {
 
 // Test connection function
 export const testConnection = async () => {
+  if (!supabaseUrl || !supabaseAnonKey) {
+    connectionState.status = 'mock';
+    return false;
+  }
+  
   try {
     connectionState.status = 'checking';
     

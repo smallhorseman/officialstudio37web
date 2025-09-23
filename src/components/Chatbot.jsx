@@ -1,4 +1,3 @@
-// DELETE THIS FILE - Use Studio37Chatbot.jsx instead
 import { supabase } from '../supabaseClient';
 
 const Chatbot = () => {

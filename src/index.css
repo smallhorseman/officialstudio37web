@@ -1,14 +1,22 @@
 /* Add Google Fonts for vintage typography */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Use system fonts as fallback */
 :root {
-  --color-primary: #F3E3C3;
-  --color-dark: #181818;
-  --color-darker: #1a1a1a;
-  --color-gray: #262626;
-  --color-cream: #F3E3C3;
   --font-vintage: 'Playfair Display', Georgia, serif;
   --font-display: 'Crimson Text', Georgia, serif;
+  --color-primary: #F3E3C3;
+  --color-dark: #181818;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 /* Reset and base styles */
@@ -16,11 +24,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  text-size-adjust: 100%;
 }
 
 body {
@@ -33,6 +36,10 @@ body {
 }
 
 @layer base {
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+  
   .font-vintage {
     font-family: var(--font-vintage);
   }
@@ -343,7 +350,7 @@ textarea:focus {
   margin-bottom: 0.5rem;
   padding: 0.75rem;
   background-color: #1a1a1a;
-  color: var(--color-primary);
+  color: #F3E3C3;
   font-size: 0.75rem;
   border-radius: 0.25rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
