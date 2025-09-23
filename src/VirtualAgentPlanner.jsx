@@ -142,23 +142,11 @@ const VirtualAgentPlanner = () => {
         />
         <button
           onClick={handleSendMessage}
-          disabled={!inputValue.trim()}
-          className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded-md font-semibold hover:bg-[#E6D5B8] disabled:opacity-50 transition-colors"
+          disabled={!inputValue.trim() || isTyping}
+          className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded-md font-semibold hover:bg-[#E6D5B8] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           Send
         </button>
-      </div>
-    </div>
-  );
-};
-
-export default VirtualAgentPlanner;
-            disabled={!inputValue.trim() || isTyping}
-            className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded-md font-semibold text-sm hover:bg-[#E6D5B8] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-          >
-            Send
-          </button>
-        </div>
       </div>
     </div>
   );

@@ -94,7 +94,3 @@ const SystemHealthCheck = () => {
 };
 
 export default SystemHealthCheck;
-  );
-};
-
-export default SystemHealthCheck;
