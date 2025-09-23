@@ -33,15 +33,15 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Don't intercept ANY requests - let everything pass through
-self.addEventListener('fetch', (event) => {
-  // Do nothing - let all requests pass through to prevent corruption
-  return;
-});
+// Completely remove fetch event listener to prevent ANY interception
+// No fetch listener = no interception = no corruption
 
 // Notify clients that SW is disabled
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
     self.skipWaiting();
   }
 });
