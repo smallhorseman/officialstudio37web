@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import ErrorBoundary from './components/ErrorBoundary';
+import { initCleanup } from './utils/cleanup';
 import './index.css';
+
+// Clean up any service worker issues
+initCleanup();
 
 // Initialize the React application
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -15,10 +19,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </ErrorBoundary>
   </React.StrictMode>
 );
-
-// Remove service worker completely - no registration, no unregistration
-// This prevents any service worker interference with assets
-if ('serviceWorker' in navigator) {
   // Immediately unregister all service workers
   navigator.serviceWorker.getRegistrations().then(function(registrations) {
     registrations.forEach(function(registration) {

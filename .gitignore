@@ -70,6 +70,17 @@ Thumbs.db
 # Keep the example
 !.env.example
 
+# Service worker
+sw.js
+public/sw.js
+
+# Citation files (cleanup)
+*Citations.md
+Code Citations.md
+
+# Database backups
+*.sql.backup
+
 # Netlify
 .netlify
 
@@ -82,14 +93,6 @@ stats.html
 # Temporary folders
 tmp/
 temp/
-
-# Citation files
-**/Code Citations.md
-**/*# Code Citations.md
-src/f.md
-src/components/sw# Code Citations.md
-public/Code Citations.md
-public/# Code Citations.md
 
 # Misplaced JSX files
 public/*.jsx

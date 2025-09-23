@@ -1,1 +1,5 @@
 /*    /index.html   200
+
+# Force HTTPS
+http://studio37.cc/*  https://studio37.cc/:splat  301!
+http://www.studio37.cc/*  https://www.studio37.cc/:splat  301!
