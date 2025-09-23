@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     react({
       jsxRuntime: 'automatic',
-    }),
+    }), no
     // Bundle analyzer (only when requested)
     ...(process.env.ANALYZE === 'true' ? [visualizer({
       template: 'treemap',
