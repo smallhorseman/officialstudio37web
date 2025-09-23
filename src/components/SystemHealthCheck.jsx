@@ -30,70 +30,70 @@ const SystemHealthCheck = () => {
       setHealth(prev => ({ ...prev, crm: 'error' }));
     }
 
-    // CMS functionality  
+    // Storage check
+    try {
+      const { data: buckets, error: storageError } = await supabase.storage.listBuckets();
+      setHealth(prev => ({ ...prev, storage: storageError ? 'error' : 'healthy' }));
+    } catch (error) {
+      setHealth(prev => ({ ...prev, storage: 'error' }));
+    }
+
+    // CMS check
     try {
       const { error: cmsError } = await supabase.from('portfolio_images').select('count').limit(1);
       setHealth(prev => ({ ...prev, cms: cmsError ? 'error' : 'healthy' }));
     } catch (error) {
       setHealth(prev => ({ ...prev, cms: 'error' }));
     }
-
-    // Storage
-    setHealth(prev => ({ ...prev, storage: 'healthy' }));
   };
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'healthy': return 'text-green-500';
-      case 'error': return 'text-red-500';
-      case 'checking': return 'text-yellow-500';
-      default: return 'text-gray-500';
+      case 'healthy': return 'bg-green-500';
+      case 'error': return 'bg-red-500';
+      case 'checking': return 'bg-yellow-500';
+      default: return 'bg-gray-500';
     }
   };
 
-  const getStatusIcon = (status) => {
+  const getStatusText = (status) => {
     switch (status) {
-      case 'healthy': return '✅';
-      case 'error': return '❌';
-      case 'checking': return '🔄';
-      default: return '❓';
+      case 'healthy': return 'Operational';
+      case 'error': return 'Error';
+      case 'checking': return 'Checking...';
+      default: return 'Unknown';
     }
-  };
-
-  const getConnectionStatus = () => {
-    return health.database === 'healthy' ? 'Connected' : 'Disconnected';
   };
 
   return (
-    <div className="bg-[#1a1a1a] rounded-lg p-6 border border-white/10">
-      <h3 className="text-lg font-semibold text-[#F3E3C3] mb-4">System Health Status</h3>
+    <div className="system-health-check bg-[#262626] rounded-lg p-6">
+      <h3 className="text-xl font-display mb-4 text-[#F3E3C3]">System Health</h3>
       
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {Object.entries(health).map(([system, status]) => (
-          <div key={system} className="flex items-center gap-2">
-            <span className="text-lg">{getStatusIcon(status)}</span>
-            <span className="capitalize text-[#F3E3C3]">{system}:</span>
-            <span className={`font-medium ${getStatusColor(status)}`}>
-              {status}
-            </span>
+      <div className="grid grid-cols-2 gap-4">
+        {Object.entries(health).map(([service, status]) => (
+          <div key={service} className="bg-[#1a1a1a] rounded p-4">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-[#F3E3C3] capitalize">
+                {service.replace('_', ' ')}
+              </span>
+              <div className={`w-3 h-3 rounded-full ${getStatusColor(status)}`} />
+            </div>
+            <p className="text-xs text-[#F3E3C3]/60">{getStatusText(status)}</p>
           </div>
         ))}
       </div>
-
-      <div className="mt-4 pt-4 border-t border-white/10">
-        <button
-          onClick={checkSystemHealth}
-          className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded-md text-sm font-semibold hover:bg-[#E6D5B8] transition-colors"
-        >
-          Refresh Status
-        </button>
-      </div>
-
-      <div className="mt-4 text-sm text-[#F3E3C3]/60">
-        <p>Database Status: {getConnectionStatus()}</p>
-        <p>Last Check: {new Date().toLocaleTimeString()}</p>
-      </div>
+      
+      <button
+        onClick={checkSystemHealth}
+        className="mt-4 w-full bg-[#F3E3C3] text-[#1a1a1a] py-2 rounded font-semibold hover:bg-[#E6D5B8] transition-colors"
+      >
+        Refresh Status
+      </button>
     </div>
+  );
+};
+
+export default SystemHealthCheck;
   );
 };
 

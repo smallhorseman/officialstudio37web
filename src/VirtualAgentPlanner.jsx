@@ -33,42 +33,20 @@ const VirtualAgentPlanner = () => {
     contact: "You can reach us:\n📞 Phone: (832) 713-9944\n📧 Email: sales@studio37.cc\n📍 Location: Houston, TX\n\nWe're here to help bring your vision to life!"
   };
 
-  const getResponse = (userMessage) => {
-    const message = userMessage.toLowerCase();
+  const detectIntent = (message) => {
+    const lowerMessage = message.toLowerCase();
     
-    if (message.includes('price') || message.includes('cost') || message.includes('how much')) {
-      return predefinedResponses.pricing;
-    }
-    if (message.includes('service') || message.includes('what do you')) {
-      return predefinedResponses.services;
-    }
-    if (message.includes('book') || message.includes('schedule') || message.includes('appointment')) {
-      return predefinedResponses.booking;
-    }
-    if (message.includes('portfolio') || message.includes('work') || message.includes('photos')) {
-      return predefinedResponses.portfolio;
-    }
-    if (message.includes('wedding') || message.includes('marry') || message.includes('bride')) {
-      return predefinedResponses.wedding;
-    }
-    if (message.includes('where') || message.includes('location') || message.includes('houston')) {
-      return predefinedResponses.location;
-    }
-    if (message.includes('when') || message.includes('how long') || message.includes('turnaround')) {
-      return predefinedResponses.turnaround;
-    }
-    if (message.includes('contact') || message.includes('phone') || message.includes('email')) {
-      return predefinedResponses.contact;
-    }
-    if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
-      return "Hello! 👋 Welcome to Studio37. I'm here to help you with any questions about our photography services. What would you like to know?";
-    }
-    if (message.includes('thank') || message.includes('thanks')) {
-      return "You're very welcome! Is there anything else I can help you with today? I'm here to make your Studio37 experience amazing! 😊";
-    }
+    // Detect various intents
+    if (lowerMessage.match(/(price|pricing|cost|how much|rate)/i)) return 'pricing';
+    if (lowerMessage.match(/(service|offer|what do you do)/i)) return 'services';
+    if (lowerMessage.match(/(book|schedule|appointment|consultation)/i)) return 'booking';
+    if (lowerMessage.match(/(portfolio|work|gallery|examples)/i)) return 'portfolio';
+    if (lowerMessage.match(/(wedding|engagement|bride|groom)/i)) return 'wedding';
+    if (lowerMessage.match(/(where|location|houston|address)/i)) return 'location';
+    if (lowerMessage.match(/(turnaround|delivery|how long)/i)) return 'turnaround';
+    if (lowerMessage.match(/(contact|phone|email|reach)/i)) return 'contact';
     
-    // Default response
-    return "I'd be happy to help with that! For specific questions, you can:\n\n📞 Call us at (832) 713-9944\n📧 Email sales@studio37.cc\n\nOr ask me about:\n• Pricing & packages\n• Services we offer\n• Booking a session\n• Our portfolio\n• Wedding photography\n\nWhat interests you most?";
+    return 'general';
   };
 
   const handleSendMessage = async () => {
@@ -77,7 +55,7 @@ const VirtualAgentPlanner = () => {
     const userMessage = {
       id: Date.now(),
       type: 'user',
-      content: inputValue.trim(),
+      content: inputValue,
       timestamp: new Date()
     };
 
@@ -85,18 +63,22 @@ const VirtualAgentPlanner = () => {
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate AI thinking time
+    // Detect intent and generate response
+    const intent = detectIntent(inputValue);
+    const response = predefinedResponses[intent] || "I'd be happy to help! Could you tell me more about what you're looking for?";
+
+    // Simulate typing delay
     setTimeout(() => {
-      const botResponse = {
+      const botMessage = {
         id: Date.now() + 1,
         type: 'bot',
-        content: getResponse(inputValue),
+        content: response,
         timestamp: new Date()
       };
-      
-      setMessages(prev => [...prev, botResponse]);
+
+      setMessages(prev => [...prev, botMessage]);
       setIsTyping(false);
-    }, 1500);
+    }, 1000);
   };
 
   const handleKeyPress = (e) => {
@@ -107,52 +89,70 @@ const VirtualAgentPlanner = () => {
   };
 
   return (
-    <div className="flex flex-col h-full max-h-96">
-      {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.map((message) => (
+    <div className="virtual-agent-planner bg-[#262626] rounded-lg p-6 max-w-2xl mx-auto">
+      <div className="chat-header mb-4">
+        <h2 className="text-2xl font-display text-[#F3E3C3]">Studio37 Virtual Assistant</h2>
+        <p className="text-[#F3E3C3]/60 text-sm">Ask me anything about our services!</p>
+      </div>
+
+      <div className="chat-messages bg-[#1a1a1a] rounded-lg p-4 h-96 overflow-y-auto mb-4">
+        {messages.map(message => (
           <div
             key={message.id}
-            className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+            className={`mb-4 ${message.type === 'user' ? 'text-right' : 'text-left'}`}
           >
             <div
-              className={`max-w-xs px-4 py-2 rounded-lg text-sm whitespace-pre-line ${
+              className={`inline-block max-w-xs px-4 py-2 rounded-lg ${
                 message.type === 'user'
                   ? 'bg-[#F3E3C3] text-[#1a1a1a]'
-                  : 'bg-[#1a1a1a] text-[#F3E3C3] border border-white/10'
+                  : 'bg-[#262626] text-[#F3E3C3]'
               }`}
             >
-              {message.content}
+              <p className="whitespace-pre-line">{message.content}</p>
+              <p className="text-xs opacity-60 mt-1">
+                {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+              </p>
             </div>
           </div>
         ))}
+        
         {isTyping && (
-          <div className="flex justify-start">
-            <div className="bg-[#1a1a1a] text-[#F3E3C3] border border-white/10 px-4 py-2 rounded-lg text-sm">
+          <div className="text-left mb-4">
+            <div className="inline-block bg-[#262626] text-[#F3E3C3] px-4 py-2 rounded-lg">
               <div className="flex space-x-1">
-                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce"></div>
-                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" />
+                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce delay-100" />
+                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce delay-200" />
               </div>
             </div>
           </div>
         )}
+        
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input */}
-      <div className="p-4 border-t border-white/10">
-        <div className="flex gap-2">
-          <input
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            onKeyPress={handleKeyPress}
-            placeholder="Type your message..."
-            className="flex-1 bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] text-sm focus:outline-none focus:ring-2 focus:ring-[#F3E3C3] placeholder-[#F3E3C3]/50"
-          />
-          <button
-            onClick={handleSendMessage}
+      <div className="chat-input flex gap-2">
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyPress={handleKeyPress}
+          placeholder="Type your message..."
+          className="flex-1 bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-4 text-[#F3E3C3] focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+        />
+        <button
+          onClick={handleSendMessage}
+          disabled={!inputValue.trim()}
+          className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded-md font-semibold hover:bg-[#E6D5B8] disabled:opacity-50 transition-colors"
+        >
+          Send
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default VirtualAgentPlanner;
             disabled={!inputValue.trim() || isTyping}
             className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded-md font-semibold text-sm hover:bg-[#E6D5B8] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
