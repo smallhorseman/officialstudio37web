@@ -8,10 +8,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'display': ['Playfair Display', 'serif'],
-        'vintage': ['Playfair Display', 'serif'],
-        'vintage-text': ['Crimson Text', 'serif'],
-        'serif': ['Crimson Text', 'serif'],
+        // Use system fonts to avoid external dependencies
+        'display': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'system-ui', 'serif'],
+        'vintage': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'system-ui', 'serif'],
+        'vintage-text': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'system-ui', 'serif'],
+        'serif': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'system-ui', 'serif'],
       },
       colors: {
         cream: '#F3E3C3',

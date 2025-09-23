@@ -18,32 +18,20 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
-    <!-- Preconnect to external domains -->
+    <!-- Preconnect to Supabase only -->
     <link rel="preconnect" href="https://sqfqlnodwjubacmaduzl.supabase.co" />
     
     <!-- Web App Manifest -->
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#F3E3C3" />
     
-    <!-- Critical CSS to prevent FOUC -->
+    <!-- Critical CSS with system fonts only -->
     <style>
-      /* Use system fonts instead of Google Fonts to avoid external dependencies */
-      @font-face {
-        font-family: 'vintage';
-        src: local('Playfair Display'), local('Georgia'), local('serif');
-        font-display: swap;
-      }
-      
-      @font-face {
-        font-family: 'display';
-        src: local('Crimson Text'), local('Georgia'), local('serif');
-        font-display: swap;
-      }
-      
+      /* System fonts fallback - no external dependencies */
       html {
-        font-family: system-ui, -apple-system, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
         line-height: 1.6;
-        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
       }
       
       body {
@@ -72,13 +60,23 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
+      
+      .loading-spinner {
+        width: 2rem;
+        height: 2rem;
+        border: 2px solid #F3E3C3;
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
+      }
     </style>
   </head>
   <body>
     <div id="root">
       <div class="loading-container">
         <div>
-          <div style="width: 2rem; height: 2rem; border: 2px solid #F3E3C3; border-top: 2px solid transparent; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem;"></div>
+          <div class="loading-spinner"></div>
           <div>Loading Studio37...</div>
         </div>
       </div>

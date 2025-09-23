@@ -1,23 +1,23 @@
-// Studio37 Service Worker - DISABLED to prevent asset corruption
+// Service Worker completely removed to prevent asset corruption
+// This file intentionally left minimal to avoid any caching issues
 
-console.log('Studio37 SW: Disabled service worker loading');
+console.log('Studio37: Service Worker disabled - no caching active');
 
-// Immediately unregister and clean up
-self.addEventListener('install', (event) => {
-  console.log('Studio37 SW: Install - immediately skip waiting');
+// Immediately skip waiting and unregister
+self.addEventListener('install', () => {
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
-  console.log('Studio37 SW: Activate - clearing all caches and unregistering');
   event.waitUntil(
-    Promise.all([
-      // Clear all caches
-      caches.keys().then((cacheNames) => {
-        return Promise.all(
-          cacheNames.map((cacheName) => {
-            console.log('Clearing cache:', cacheName);
-            return caches.delete(cacheName);
+    caches.keys().then(names => 
+      Promise.all(names.map(name => caches.delete(name)))
+    ).then(() => {
+      self.clients.claim();
+      return self.registration.unregister();
+    })
+  );
+});
           })
         );
       }),

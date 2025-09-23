@@ -30,7 +30,7 @@ export default defineConfig(({ mode }) => {
           manualChunks: {
             vendor: ['react', 'react-dom', 'react-router-dom'],
             supabase: ['@supabase/supabase-js'],
-            ui: ['react-markdown']
+            ui: ['react-helmet']
           },
           
           chunkFileNames: 'assets/js/[name]-[hash].js',
@@ -86,6 +86,11 @@ export default defineConfig(({ mode }) => {
     
     css: {
       devSourcemap: !isProduction,
+    },
+    
+    // Disable service worker registration
+    worker: {
+      format: 'es'
     }
   };
 });

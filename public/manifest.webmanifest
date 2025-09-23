@@ -1,0 +1,19 @@
+{
+  "name": "Studio37 Photography",
+  "short_name": "Studio37",
+  "description": "Professional photography and content strategy services in Houston, TX",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#181818",
+  "theme_color": "#F3E3C3",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["photography", "business", "lifestyle"],
+  "lang": "en-US"
+}

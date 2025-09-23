@@ -2,26 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import ErrorBoundary from './components/ErrorBoundary';
-import { initCleanup } from './utils/cleanup';
 import './index.css';
 
-// Clean up any service worker issues
-initCleanup();
+// Disable service worker registration completely
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+    for(let registration of registrations) {
+      registration.unregister().then(() => {
+        console.log('Studio37: Service Worker unregistered successfully');
+      });
+    }
+  });
+}
 
-// Initialize the React application
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ErrorBoundary>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ErrorBoundary>
-  </React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>,
 );
-
-// Immediately unregister all service workers
-navigator.serviceWorker.getRegistrations().then(function(registrations) {
   registrations.forEach(function(registration) {
     registration.unregister().then(function(success) {
       console.log('✅ Unregistered corrupted service worker:', registration.scope, success);
