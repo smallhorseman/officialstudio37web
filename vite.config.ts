@@ -107,4 +107,4 @@ export default defineConfig({
   }
 })
 
-// This file should be deleted - we'll use vite.config.js instead
+// Delete this file - we're using vite.config.js instead
