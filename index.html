@@ -18,9 +18,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
-    <!-- Preconnect to external domains (Google Fonts only) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://sqfqlnodwjubacmaduzl.supabase.co" />
     
     <!-- Web App Manifest -->
@@ -29,10 +27,23 @@
     
     <!-- Critical CSS to prevent FOUC -->
     <style>
+      /* Use system fonts instead of Google Fonts to avoid external dependencies */
+      @font-face {
+        font-family: 'vintage';
+        src: local('Playfair Display'), local('Georgia'), local('serif');
+        font-display: swap;
+      }
+      
+      @font-face {
+        font-family: 'display';
+        src: local('Crimson Text'), local('Georgia'), local('serif');
+        font-display: swap;
+      }
+      
       html {
         font-family: system-ui, -apple-system, sans-serif;
         line-height: 1.6;
-        text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
       }
       
       body {

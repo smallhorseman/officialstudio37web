@@ -37,6 +37,9 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    # Disable service worker
+    Service-Worker-Allowed = "none"
+    Clear-Site-Data = '"cache", "storage"'
 
 [[headers]]
   for = "/assets/*"
@@ -56,7 +59,8 @@
 [[headers]]
   for = "/sw.js"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "no-store, no-cache, must-revalidate, max-age=0"
+    Service-Worker-Allowed = "none"
 
 # Redirects
 [[redirects]]

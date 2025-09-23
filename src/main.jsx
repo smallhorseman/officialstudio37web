@@ -16,8 +16,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 );
 
-// Aggressively disable and clean up service worker to prevent asset corruption
-if ('serviceWorker' in navigator) {
+// Remove service worker completely - no registration, no unregistration
+// This prevents any service worker interference with assets
   // Immediately unregister all service workers
   navigator.serviceWorker.getRegistrations().then(function(registrations) {
     registrations.forEach(function(registration) {

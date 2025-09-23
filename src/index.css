@@ -7,6 +7,8 @@
   --color-darker: #1a1a1a;
   --color-gray: #262626;
   --color-cream: #F3E3C3;
+  --font-vintage: 'Playfair Display', Georgia, serif;
+  --font-display: 'Crimson Text', Georgia, serif;
 }
 
 /* Reset and base styles */
@@ -22,7 +24,7 @@ html {
 }
 
 body {
-  font-family: 'Crimson Text', serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   background-color: var(--color-dark);
   color: var(--color-primary);
   line-height: 1.6;
@@ -30,14 +32,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography */
-.font-vintage {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-}
-
-.font-display {
-  font-family: 'Playfair Display', serif;
+@layer base {
+  .font-vintage {
+    font-family: var(--font-vintage);
+  }
+  
+  .font-display {
+    font-family: var(--font-display);
+  }
 }
 
 /* Utility classes */
@@ -312,191 +314,6 @@ textarea:focus {
   will-change: transform;
 }
 
-/* Container queries support */
-@supports (container-type: inline-size) {
-  .container-query {
-    /* stylelint-disable-next-line property-no-unknown */
-    container-type: inline-size;
-  }
-}
-/* Container queries support */
-@supports (container-type: inline-size) {
-  .container-query {
-    /* stylelint-disable-next-line property-no-unknown */
-    container-type: inline-size;
-  }
-}
-/* Tooltip styles */
-.tooltip {
-  position: relative;
-}
-
-.tooltip::before {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 0.5rem;
-  padding: 0.75rem;
-  background-color: #1a1a1a;
-  color: var(--color-primary);
-  font-size: 0.75rem;
-  border-radius: 0.25rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 300ms ease;
-  white-space: nowrap;
-}
-
-.tooltip:hover::before {
-  opacity: 1;
-}
-/* Additional animations */
-@keyframes fadeIn {
-  from { 
-    opacity: 0;
-  }
-  to { 
-    opacity: 1;
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes pulseGentle {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
-/* Image hover effects */
-.image-zoom-hover img {
-  transition: transform 0.3s ease;
-}
-
-.image-zoom-hover:hover img {
-  transform: scale(1.1);
-}
-
-/* Progressive Web App specific styles */
-@media (display-mode: standalone) {
-  .app-header {
-    padding-top: env(safe-area-inset-top);
-  }
-  
-  .app-content {
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-}
-
-/* Custom gradient backgrounds */
-.gradient-dark {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-}
-
-.gradient-cream {
-  background: linear-gradient(135deg, var(--color-primary) 0%, #E6D5B8 50%, var(--color-primary) 100%);
-}
-
-.gradient-radial {
-  background: radial-gradient(circle at center, #232323 0%, var(--color-dark) 100%);
-}
-
-/* State utilities */
-.error-state {
-  border-color: #ef4444;
-  background-color: rgba(239, 68, 68, 0.1);
-  color: #f87171;
-}
-
-.success-state {
-  border-color: #10b981;
-  background-color: rgba(16, 185, 129, 0.1);
-  color: #34d399;
-}
-
-.warning-state {
-  border-color: #f59e0b;
-  background-color: rgba(245, 158, 11, 0.1);
-  color: #fbbf24;
-}
-
-/* Notification styles */
-.notification {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 50;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  max-width: 24rem;
-  animation: fadeInUp 0.3s ease-out;
-}
-
-.notification-success {
-  background-color: #10b981;
-  color: white;
-}
-
-.notification-error {
-  background-color: #ef4444;
-  color: white;
-}
-
-.notification-warning {
-  background-color: #f59e0b;
-  color: #1f2937;
-}
-
-.notification-info {
-  background-color: #3b82f6;
-  color: white;
-}
-
-/* Accessibility improvements */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* High performance transforms */
-.gpu-accelerated {
-  transform: translateZ(0);
-  will-change: transform;
-}
 /* Container queries support */
 @supports (container-type: inline-size) {
   .container-query {
