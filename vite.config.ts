@@ -7,8 +7,6 @@ export default defineConfig({
   plugins: [
     react({
       jsxRuntime: 'automatic',
-      // Enable React Fast Refresh optimizations
-      fastRefresh: true,
     }),
     // Bundle analyzer (only when requested)
     process.env.ANALYZE && visualizer({
@@ -16,7 +14,7 @@ export default defineConfig({
       open: false,
       filename: 'dist/stats.html',
     }),
-  ].filter(Boolean),
+  ].filter(Boolean), // Filter out false/undefined values
   
   build: {
     outDir: 'dist',
