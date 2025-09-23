@@ -154,19 +154,16 @@ const Studio37Chatbot = () => {
           email: email,
           service: service,
           status: 'New',
+          source: 'Chatbot',
+          message: `Lead generated from chatbot - interested in ${service} photography`,
           created_at: new Date().toISOString()
         });
 
-      if (error) {
-        console.error('Error creating lead:', error);
-        return false;
+      if (!error) {
+        console.log('Lead created successfully');
       }
-      
-      console.log('Lead created successfully');
-      return true;
     } catch (error) {
       console.error('Error creating lead:', error);
-      return false;
     }
   };
 
@@ -178,7 +175,7 @@ const Studio37Chatbot = () => {
         return `Nice to meet you, ${message}! 😊 What's your email address?`;
       case 'email':
         if (!validateEmail(message)) {
-          return "Please enter a valid email address (e.g., john@example.com)";
+          return "Please provide a valid email address.";
         }
         setUserEmail(message);
         setInfoStep('service');

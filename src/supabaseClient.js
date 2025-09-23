@@ -193,21 +193,11 @@ const activeSubscriptions = new Map();
 export const subscribeToTable = (table, callback, filters = {}) => {
   const subscriptionKey = `${table}_${JSON.stringify(filters)}`;
   
-  // Unsubscribe existing subscription
-  if (activeSubscriptions.has(subscriptionKey)) {
-    activeSubscriptions.get(subscriptionKey).unsubscribe();
-  }
-  
   try {
-    let query = supabase
+    const query = supabase
       .channel(`${table}_changes`)
       .on('postgres_changes', 
-        { 
-          event: '*', 
-          schema: 'public', 
-          table: table,
-          ...filters
-        }, 
+        { event: '*', schema: 'public', table }, 
         callback
       )
       .subscribe();
@@ -247,7 +237,8 @@ export const batchTransaction = async (operations) => {
   } catch (error) {
     const duration = performance.now() - startTime;
     console.error(`❌ Batch transaction failed after ${duration.toFixed(2)}ms:`, error);
-    return { data: null, error };
+    
+    return { data: null, error: error.message };
   }
 };
 
@@ -312,21 +303,20 @@ export const uploadToStorage = async (file, bucket = 'portfolio', options = {}) 
 };
 
 // Pro-level analytics and monitoring
-export const trackAnalyticsEvent = async (event, properties = {}) => {
+export const trackAnalyticsEvent = async (eventType, eventData = {}) => {
   try {
-    await supabase.from('analytics_events').insert({
-      event_type: event,
-      event_data: {
-        ...properties,
-        timestamp: new Date().toISOString(),
-        session_id: getSessionId(),
+    const { error } = await supabase
+      .from('analytics_events')
+      .insert({
+        event_type: eventType,
+        event_data: eventData,
+        page_url: window.location.href,
         user_agent: navigator.userAgent,
-        performance_metrics: connectionState.metrics
-      },
-      page_url: window.location.href,
-      referrer: document.referrer,
-      created_at: new Date().toISOString()
-    });
+        created_at: new Date().toISOString()
+      });
+    
+    if (error) throw error;
+    console.log(`📊 Analytics event tracked: ${eventType}`);
   } catch (error) {
     console.error('Analytics tracking failed:', error);
   }
@@ -350,6 +340,16 @@ const trackPerformance = (eventName, startTime, success) => {
 // Connection status functions
 // testConnection is already defined above
 
+// getConnectionStatus is already defined above
+
+// Export the configured supabase client
+export { supabase };
+export default supabase;
+
+// Cleanup on page unload
+if (typeof window !== 'undefined') {
+  window.addEventListener('beforeunload', cleanup);
+}
 // getConnectionStatus is already defined above
 
 // Export the configured supabase client

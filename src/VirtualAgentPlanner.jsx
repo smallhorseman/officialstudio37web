@@ -28,23 +28,16 @@ const VirtualAgentPlanner = () => {
     if (lowerMessage.match(/(service|offer|what do you do|photography type)/i)) return 'services';
     if (lowerMessage.match(/(book|schedule|appointment|consultation|hire)/i)) return 'booking';
     if (lowerMessage.match(/(portfolio|gallery|work|examples|samples)/i)) return 'portfolio';
-    if (lowerMessage.match(/(wedding|bride|groom|engagement)/i)) return 'wedding';
+    if (lowerMessage.match(/(wedding|bride|groom|marriage|engagement)/i)) return 'wedding';
     if (lowerMessage.match(/(location|where|houston|travel)/i)) return 'location';
-    if (lowerMessage.match(/(turnaround|delivery|how long|when)/i)) return 'turnaround';
+    if (lowerMessage.match(/(turnaround|delivery|when|timeline)/i)) return 'turnaround';
     if (lowerMessage.match(/(contact|phone|email|reach)/i)) return 'contact';
     
-    return null;
+    return 'general';
   };
 
-  const generateResponse = (message) => {
-    const intent = detectIntent(message);
-    
-    if (intent && predefinedResponses[intent]) {
-      return predefinedResponses[intent];
-    }
-    
-    // Default response
-    return "I'd be happy to help! Could you tell me more about what you're looking for? I can provide information about our services, pricing, booking, or answer any other questions you have about photography sessions.";
+  const generateResponse = (intent) => {
+    return predefinedResponses[intent] || "I'd be happy to help you with information about Studio37's photography services. What specific questions do you have?";
   };
 
   const handleSubmit = async (e) => {
@@ -133,6 +126,13 @@ const VirtualAgentPlanner = () => {
           >
             Send
           </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default VirtualAgentPlanner;
         </div>
       </form>
     </div>

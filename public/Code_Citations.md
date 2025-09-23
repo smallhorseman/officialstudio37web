@@ -1,1 +1,1 @@
-// DELETE THIS FILE
+<!-- This file has been removed as it was marked for deletion -->

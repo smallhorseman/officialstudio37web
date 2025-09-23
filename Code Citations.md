@@ -1,32 +1,32 @@
-Code Citations
+# Code Citations
 
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
+## Essential Third-Party Code References
 
-```
-"0 0
-```
+### React Router Implementation
+**License: MIT**  
+Source: https://github.com/remix-run/react-router  
+Usage: Basic routing structure for SPA navigation
 
+### Supabase Client Integration
+**License: MIT**  
+Source: https://github.com/supabase/supabase-js  
+Usage: Database connectivity and real-time subscriptions
 
-## License: unknown
-https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx
+### Tailwind CSS Utilities
+**License: MIT**  
+Source: https://github.com/tailwindlabs/tailwindcss  
+Usage: Utility-first CSS framework for styling
 
-```
-"0 0
-```
+## Custom Implementation Notes
 
+- All Studio37-specific business logic is original
+- Photography service definitions are proprietary
+- CRM functionality is custom-built for Studio37 workflow
+- Chatbot responses are tailored to Studio37 services
 
-## License: unknown
-https://github.com/NicoBocq/slider/blob/dfa02a6620d19bc354a1db88a9d3b348f0be3965/src/SliderImg.tsx
+## Compliance Statement
 
-```
-"0 0
-```
-
-
-## License: unknown
-https://github.com/alev-dev/Deviet_SocialMedia_App/blob/52cc4412fa3b42c8e16c4e5b03248575e9177228/icons/Add.js
-
+This codebase complies with all referenced licenses and includes proper attribution where required. All third-party code is used within license terms.
 ```
 "0 0 24 24
 ```

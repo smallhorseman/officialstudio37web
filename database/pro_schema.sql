@@ -166,26 +166,80 @@ ORDER BY
 -- Real-time dashboard view
 CREATE OR REPLACE VIEW dashboard_metrics AS
 SELECT 
-    (SELECT COUNT(*) FROM leads WHERE created_at > NOW() - INTERVAL '30 days') as leads_30d,
-    (SELECT COUNT(*) FROM leads WHERE created_at > NOW() - INTERVAL '7 days') as leads_7d,
-    (SELECT COUNT(*) FROM leads WHERE created_at > NOW() - INTERVAL '1 day') as leads_24h,
+    (SELECT COUNT(*) FROM contacts WHERE created_at > NOW() - INTERVAL '30 days') as leads_30d,
+    (SELECT COUNT(*) FROM contacts WHERE created_at > NOW() - INTERVAL '7 days') as leads_7d,
+    (SELECT COUNT(*) FROM contacts WHERE created_at > NOW() - INTERVAL '1 day') as leads_24h,
     (SELECT AVG(final_score) FROM lead_scoring_advanced) as avg_lead_score,
     (SELECT COUNT(DISTINCT session_id) FROM user_sessions WHERE created_at > NOW() - INTERVAL '1 day') as sessions_24h,
-    (SELECT AVG(session_duration) FROM user_sessions WHERE created_at > NOW() - INTERVAL '7 days') as avg_session_duration;
-ORDER BY 
-    CASE journey_stage 
-        WHEN 'awareness' THEN 1
-        WHEN 'consideration' THEN 2  
-        WHEN 'decision' THEN 3
-        WHEN 'retention' THEN 4
-    END;
+    (SELECT AVG(session_duration) FROM user_sessions WHERE created_at > NOW() - INTERVAL '7 days') as avg_session_duration,
+    (SELECT COUNT(*) FROM projects WHERE status = 'active') as active_projects,
+    (SELECT SUM(estimated_value) FROM projects WHERE status IN ('active', 'quoted')) as pipeline_value;
 
--- Real-time dashboard view
-CREATE OR REPLACE VIEW dashboard_metrics AS
-SELECT 
-    (SELECT COUNT(*) FROM leads WHERE created_at > NOW() - INTERVAL '30 days') as leads_30d,
-    (SELECT COUNT(*) FROM leads WHERE created_at > NOW() - INTERVAL '7 days') as leads_7d,
-    (SELECT COUNT(*) FROM leads WHERE created_at > NOW() - INTERVAL '1 day') as leads_24h,
-    (SELECT AVG(final_score) FROM lead_scoring_advanced) as avg_lead_score,
-    (SELECT COUNT(DISTINCT session_id) FROM user_sessions WHERE created_at > NOW() - INTERVAL '1 day') as sessions_24h,
-    (SELECT AVG(session_duration) FROM user_sessions WHERE created_at > NOW() - INTERVAL '7 days') as avg_session_duration;
+-- Pro-level stored procedures for advanced operations
+CREATE OR REPLACE FUNCTION calculate_lead_score(contact_uuid UUID)
+RETURNS INTEGER AS $$
+DECLARE
+    score INTEGER := 0;
+    contact_record RECORD;
+    interaction_count INTEGER;
+    recent_activity INTEGER;
+BEGIN
+    -- Get contact details
+    SELECT * INTO contact_record FROM contacts WHERE id = contact_uuid;
+    
+    IF NOT FOUND THEN
+        RETURN 0;
+    END IF;
+    
+    -- Base scoring criteria
+    IF contact_record.phone IS NOT NULL THEN score := score + 20; END IF;
+    IF contact_record.service_interest IS NOT NULL THEN score := score + 25; END IF;
+    IF LENGTH(contact_record.message) > 100 THEN score := score + 15; END IF;
+    
+    -- Email domain scoring
+    IF contact_record.email LIKE '%@gmail.com' OR contact_record.email LIKE '%@yahoo.com' THEN 
+        score := score + 10; 
+    ELSE 
+        score := score + 20; -- Business email gets higher score
+    END IF;
+    
+    -- Interaction scoring
+    SELECT COUNT(*) INTO interaction_count 
+    FROM contact_interactions 
+    WHERE contact_id = contact_uuid;
+    
+    score := score + (interaction_count * 5);
+    
+    -- Recent activity bonus
+    SELECT COUNT(*) INTO recent_activity 
+    FROM contact_interactions 
+    WHERE contact_id = contact_uuid 
+    AND interaction_date > NOW() - INTERVAL '7 days';
+    
+    score := score + (recent_activity * 10);
+    
+    -- Cap at 100
+    IF score > 100 THEN score := 100; END IF;
+    
+    RETURN score;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger to auto-update lead scores
+CREATE OR REPLACE FUNCTION update_lead_score_trigger()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO lead_scoring_advanced (contact_id, base_score, final_score)
+    VALUES (NEW.id, calculate_lead_score(NEW.id), calculate_lead_score(NEW.id))
+    ON CONFLICT (contact_id) DO UPDATE SET
+        base_score = calculate_lead_score(NEW.id),
+        calculated_at = NOW();
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_update_lead_score
+    AFTER INSERT OR UPDATE ON contacts
+    FOR EACH ROW
+    EXECUTE FUNCTION update_lead_score_trigger();

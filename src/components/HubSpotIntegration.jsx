@@ -338,3 +338,143 @@ const Studio37Chatbot = () => {
 };
 
 export default Studio37Chatbot;
+
+import { useState, useRef, useEffect } from 'react';
+import { supabase } from '../supabaseClient';
+
+const HubSpotIntegration = () => {
+  const [isConnected, setIsConnected] = useState(false);
+  const [apiKey, setApiKey] = useState('');
+  const [syncStatus, setSyncStatus] = useState('idle');
+
+  // HubSpot API integration
+  const syncToHubSpot = async (leadData) => {
+    if (!isConnected || !apiKey) {
+      console.warn('HubSpot not configured');
+      return;
+    }
+
+    try {
+      setSyncStatus('syncing');
+      
+      const hubspotContact = {
+        properties: {
+          email: leadData.email,
+          firstname: leadData.name.split(' ')[0],
+          lastname: leadData.name.split(' ').slice(1).join(' '),
+          phone: leadData.phone || '',
+          hs_lead_status: 'NEW',
+          lifecyclestage: 'lead',
+          source: 'Studio37 Website'
+        }
+      };
+
+      const response = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(hubspotContact)
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setSyncStatus('success');
+        
+        // Update local record with HubSpot ID
+        await supabase
+          .from('hubspot_sync')
+          .upsert({
+            contact_id: leadData.id,
+            hubspot_contact_id: result.id,
+            sync_status: 'success',
+            last_sync_at: new Date().toISOString()
+          });
+        
+        console.log('Successfully synced to HubSpot:', result.id);
+      } else {
+        throw new Error(`HubSpot API error: ${response.status}`);
+      }
+    } catch (error) {
+      setSyncStatus('error');
+      console.error('HubSpot sync failed:', error);
+      
+      // Log error to database
+      await supabase
+        .from('hubspot_sync')
+        .upsert({
+          contact_id: leadData.id,
+          sync_status: 'failed',
+          error_message: error.message,
+          sync_attempts: 1
+        });
+    }
+  };
+
+  const testConnection = async () => {
+    if (!apiKey) return;
+
+    try {
+      const response = await fetch('https://api.hubapi.com/crm/v3/objects/contacts?limit=1', {
+        headers: {
+          'Authorization': `Bearer ${apiKey}`
+        }
+      });
+
+      if (response.ok) {
+        setIsConnected(true);
+        console.log('HubSpot connection successful');
+      } else {
+        throw new Error('Invalid API key');
+      }
+    } catch (error) {
+      setIsConnected(false);
+      console.error('HubSpot connection failed:', error);
+    }
+  };
+
+  return (
+    <div className="hubspot-integration bg-white p-6 rounded-lg shadow">
+      <h3 className="text-lg font-semibold mb-4">HubSpot Integration</h3>
+      
+      <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium mb-2">
+            HubSpot API Key
+          </label>
+          <input
+            type="password"
+            value={apiKey}
+            onChange={(e) => setApiKey(e.target.value)}
+            placeholder="Enter your HubSpot API key"
+            className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        
+        <div className="flex gap-2">
+          <button
+            onClick={testConnection}
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          >
+            Test Connection
+          </button>
+          
+          <div className={`px-3 py-2 rounded text-sm font-medium ${
+            isConnected 
+              ? 'bg-green-100 text-green-800' 
+              : 'bg-red-100 text-red-800'
+          }`}>
+            {isConnected ? 'Connected' : 'Not Connected'}
+          </div>
+        </div>
+        
+        <div className="text-sm text-gray-600">
+          Sync Status: <span className="capitalize font-medium">{syncStatus}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default HubSpotIntegration;
