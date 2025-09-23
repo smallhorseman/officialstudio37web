@@ -12,10 +12,9 @@ export default defineConfig({
     }),
     // Bundle analyzer (only when requested)
     process.env.ANALYZE && visualizer({
+      template: 'treemap',
+      open: false,
       filename: 'dist/stats.html',
-      open: true,
-      gzipSize: true,
-      brotliSize: true,
     }),
   ].filter(Boolean),
   
