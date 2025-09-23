@@ -18,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 // Remove service worker completely - no registration, no unregistration
 // This prevents any service worker interference with assets
+if ('serviceWorker' in navigator) {
   // Immediately unregister all service workers
   navigator.serviceWorker.getRegistrations().then(function(registrations) {
     registrations.forEach(function(registration) {
