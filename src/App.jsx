@@ -514,6 +514,8 @@ function App() {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-white/20 placeholder-[#F3E3C3]/50 text-[#F3E3C3] bg-[#262626] rounded-b-md focus:outline-none focus:ring-[#F3E3C3] focus:border-[#F3E3C3] focus:z-10 sm:text-sm"
                   placeholder="Password"
+                  value={credentials.password}
+                  onChange={(e) => setCredentials({...credentials, password: e.target.value})}
                 />
               </div>
             </div>
@@ -1322,6 +1324,7 @@ function App() {
           </div>
         </div>
       );
+
     };
 
     return <AdminDashboardContent />;
