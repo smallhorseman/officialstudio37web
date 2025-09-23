@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     react({
       jsxRuntime: 'automatic',
-    }), no
+    }),
     // Bundle analyzer (only when requested)
     ...(process.env.ANALYZE === 'true' ? [visualizer({
       template: 'treemap',
@@ -34,7 +34,7 @@ export default defineConfig({
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: (assetInfo) => {
-          const info = assetInfo.name.split('.')
+          const info = (assetInfo.name ?? '').split('.')
           const extType = info[info.length - 1]
           if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
             return `assets/images/[name]-[hash][extname]`
