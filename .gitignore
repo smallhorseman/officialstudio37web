@@ -63,6 +63,12 @@ Thumbs.db
 
 # dotenv environment variables file
 .env
+.env.local
+.env.production
+.env.*.local
+
+# Keep the example
+!.env.example
 
 # Netlify
 .netlify
