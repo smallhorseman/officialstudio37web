@@ -1,872 +1,4753 @@
 # Code Citations
 
 ## License: unknown
-https://github.com/directormac/mkra.dev/blob/cbe69f6c83f0c24b66a5dcba3199e3c571afb211/src/routes/manifest.webmanifest/%2Bserver.ts
+https://github.com/nocobase/nocobase/blob/f1f9f3ec288d104f7bc101a5505562a8037b2c44/packages/core/client/.dumi/theme/slots/PreviewerActions.tsx
 
 ```
-,
-```
-
-
-## License: MPL-2.0
-https://github.com/tablatures/tablatures/blob/a86794fb2124d96d56733861db8b257edf99e304/vite.config.js
-
-```
-,
-          display:
+.json
 ```
 
 
 ## License: unknown
-https://github.com/directormac/mkra.dev/blob/cbe69f6c83f0c24b66a5dcba3199e3c571afb211/src/routes/manifest.webmanifest/%2Bserver.ts
+https://github.com/aJonghunPark/vite-react-ts-boilerplate/blob/c32f648abc232a22b0f6a9b71790ec9735c1263e/README.md
 
 ```
-,
-          display:
-```
-
-
-## License: MPL-2.0
-https://github.com/tablatures/tablatures/blob/a86794fb2124d96d56733861db8b257edf99e304/vite.config.js
-
-```
-,
-          display: 'standalone',
-          icons
+.json
 ```
 
 
 ## License: unknown
-https://github.com/directormac/mkra.dev/blob/cbe69f6c83f0c24b66a5dcba3199e3c571afb211/src/routes/manifest.webmanifest/%2Bserver.ts
+https://github.com/nocobase/nocobase/blob/f1f9f3ec288d104f7bc101a5505562a8037b2c44/packages/core/client/.dumi/theme/slots/PreviewerActions.tsx
 
 ```
-,
-          display: 'standalone',
-          icons
-```
-
-
-## License: MPL-2.0
-https://github.com/tablatures/tablatures/blob/a86794fb2124d96d56733861db8b257edf99e304/vite.config.js
-
-```
-,
-          display: 'standalone',
-          icons: [
-            {
+.json
+{
+  "compilerOptions":
 ```
 
 
 ## License: unknown
-https://github.com/directormac/mkra.dev/blob/cbe69f6c83f0c24b66a5dcba3199e3c571afb211/src/routes/manifest.webmanifest/%2Bserver.ts
+https://github.com/aJonghunPark/vite-react-ts-boilerplate/blob/c32f648abc232a22b0f6a9b71790ec9735c1263e/README.md
 
 ```
-,
-          display: 'standalone',
-          icons: [
-            {
-```
-
-
-## License: MPL-2.0
-https://github.com/tablatures/tablatures/blob/a86794fb2124d96d56733861db8b257edf99e304/vite.config.js
-
-```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon
+.json
+{
+  "compilerOptions":
 ```
 
 
 ## License: unknown
-https://github.com/directormac/mkra.dev/blob/cbe69f6c83f0c24b66a5dcba3199e3c571afb211/src/routes/manifest.webmanifest/%2Bserver.ts
+https://github.com/nocobase/nocobase/blob/f1f9f3ec288d104f7bc101a5505562a8037b2c44/packages/core/client/.dumi/theme/slots/PreviewerActions.tsx
 
 ```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon
-```
-
-
-## License: MPL-2.0
-https://github.com/tablatures/tablatures/blob/a86794fb2124d96d56733861db8b257edf99e304/vite.config.js
-
-```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.
+.json
+{
+  "compilerOptions": {
+    "target": "ES
 ```
 
 
 ## License: unknown
-https://github.com/directormac/mkra.dev/blob/cbe69f6c83f0c24b66a5dcba3199e3c571afb211/src/routes/manifest.webmanifest/%2Bserver.ts
+https://github.com/aJonghunPark/vite-react-ts-boilerplate/blob/c32f648abc232a22b0f6a9b71790ec9735c1263e/README.md
 
 ```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.
-```
-
-
-## License: MPL-2.0
-https://github.com/tablatures/tablatures/blob/a86794fb2124d96d56733861db8b257edf99e304/vite.config.js
-
-```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192
+.json
+{
+  "compilerOptions": {
+    "target": "ES
 ```
 
 
 ## License: unknown
-https://github.com/directormac/mkra.dev/blob/cbe69f6c83f0c24b66a5dcba3199e3c571afb211/src/routes/manifest.webmanifest/%2Bserver.ts
+https://github.com/nocobase/nocobase/blob/f1f9f3ec288d104f7bc101a5505562a8037b2c44/packages/core/client/.dumi/theme/slots/PreviewerActions.tsx
 
 ```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192
-```
-
-
-## License: MPL-2.0
-https://github.com/tablatures/tablatures/blob/a86794fb2124d96d56733861db8b257edf99e304/vite.config.js
-
-```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192x192',
-              type: 
+.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "use
 ```
 
 
 ## License: unknown
-https://github.com/directormac/mkra.dev/blob/cbe69f6c83f0c24b66a5dcba3199e3c571afb211/src/routes/manifest.webmanifest/%2Bserver.ts
+https://github.com/aJonghunPark/vite-react-ts-boilerplate/blob/c32f648abc232a22b0f6a9b71790ec9735c1263e/README.md
 
 ```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192x192',
-              type: 
-```
-
-
-## License: MPL-2.0
-https://github.com/tablatures/tablatures/blob/a86794fb2124d96d56733861db8b257edf99e304/vite.config.js
-
-```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
+.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "use
 ```
 
 
 ## License: unknown
-https://github.com/directormac/mkra.dev/blob/cbe69f6c83f0c24b66a5dcba3199e3c571afb211/src/routes/manifest.webmanifest/%2Bserver.ts
+https://github.com/nocobase/nocobase/blob/f1f9f3ec288d104f7bc101a5505562a8037b2c44/packages/core/client/.dumi/theme/slots/PreviewerActions.tsx
 
 ```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
-```
-
-
-## License: MPL-2.0
-https://github.com/tablatures/tablatures/blob/a86794fb2124d96d56733861db8b257edf99e304/vite.config.js
-
-```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
-            {
-              src: '/
+.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
 ```
 
 
 ## License: unknown
-https://github.com/directormac/mkra.dev/blob/cbe69f6c83f0c24b66a5dcba3199e3c571afb211/src/routes/manifest.webmanifest/%2Bserver.ts
+https://github.com/aJonghunPark/vite-react-ts-boilerplate/blob/c32f648abc232a22b0f6a9b71790ec9735c1263e/README.md
 
 ```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
-            {
-              src: '/
-```
-
-
-## License: MPL-2.0
-https://github.com/tablatures/tablatures/blob/a86794fb2124d96d56733861db8b257edf99e304/vite.config.js
-
-```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
-            {
-              src: '/icon-512x512.png',
+.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
 ```
 
 
 ## License: unknown
-https://github.com/directormac/mkra.dev/blob/cbe69f6c83f0c24b66a5dcba3199e3c571afb211/src/routes/manifest.webmanifest/%2Bserver.ts
+https://github.com/nocobase/nocobase/blob/f1f9f3ec288d104f7bc101a5505562a8037b2c44/packages/core/client/.dumi/theme/slots/PreviewerActions.tsx
 
 ```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
-            {
-              src: '/icon-512x512.png',
-```
-
-
-## License: MPL-2.0
-https://github.com/tablatures/tablatures/blob/a86794fb2124d96d56733861db8b257edf99e304/vite.config.js
-
-```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
-            {
-              src: '/icon-512x512.png',
-              sizes: '512x512
+.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2
 ```
 
 
 ## License: unknown
-https://github.com/directormac/mkra.dev/blob/cbe69f6c83f0c24b66a5dcba3199e3c571afb211/src/routes/manifest.webmanifest/%2Bserver.ts
+https://github.com/aJonghunPark/vite-react-ts-boilerplate/blob/c32f648abc232a22b0f6a9b71790ec9735c1263e/README.md
 
 ```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
-            {
-              src: '/icon-512x512.png',
-              sizes: '512x512
-```
-
-
-## License: MPL-2.0
-https://github.com/tablatures/tablatures/blob/a86794fb2124d96d56733861db8b257edf99e304/vite.config.js
-
-```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
-            {
-              src: '/icon-512x512.png',
-              sizes: '512x512',
-              type: 'image
+.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2
 ```
 
 
 ## License: unknown
-https://github.com/directormac/mkra.dev/blob/cbe69f6c83f0c24b66a5dcba3199e3c571afb211/src/routes/manifest.webmanifest/%2Bserver.ts
+https://github.com/nocobase/nocobase/blob/f1f9f3ec288d104f7bc101a5505562a8037b2c44/packages/core/client/.dumi/theme/slots/PreviewerActions.tsx
 
 ```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
-            {
-              src: '/icon-512x512.png',
-              sizes: '512x512',
-              type: 'image
-```
-
-
-## License: MPL-2.0
-https://github.com/tablatures/tablatures/blob/a86794fb2124d96d56733861db8b257edf99e304/vite.config.js
-
-```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
-            {
-              src: '/icon-512x512.png',
-              sizes: '512x512',
-              type: 'image/png'
+.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.
 ```
 
 
 ## License: unknown
-https://github.com/directormac/mkra.dev/blob/cbe69f6c83f0c24b66a5dcba3199e3c571afb211/src/routes/manifest.webmanifest/%2Bserver.ts
+https://github.com/aJonghunPark/vite-react-ts-boilerplate/blob/c32f648abc232a22b0f6a9b71790ec9735c1263e/README.md
 
 ```
-,
-          display: 'standalone',
-          icons: [
-            {
-              src: '/icon-192x192.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
-            {
-              src: '/icon-512x512.png',
-              sizes: '512x512',
-              type: 'image/png'
+.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.
 ```
 
 
-## License: MIT
-https://github.com/rand-asswad/rand-asswad.github.io/blob/d33ca08c3605072decc92b4811e832bb0c7f3d7c/_src/_includes/head.html
+## License: unknown
+https://github.com/nocobase/nocobase/blob/f1f9f3ec288d104f7bc101a5505562a8037b2c44/packages/core/client/.dumi/theme/slots/PreviewerActions.tsx
 
 ```
-title>
+.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "
+```
+
+
+## License: unknown
+https://github.com/aJonghunPark/vite-react-ts-boilerplate/blob/c32f648abc232a22b0f6a9b71790ec9735c1263e/README.md
+
+```
+.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "
+```
+
+
+## License: unknown
+https://github.com/nocobase/nocobase/blob/f1f9f3ec288d104f7bc101a5505562a8037b2c44/packages/core/client/.dumi/theme/slots/PreviewerActions.tsx
+
+```
+.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
     
 ```
 
 
-## License: MIT
-https://github.com/rand-asswad/rand-asswad.github.io/blob/d33ca08c3605072decc92b4811e832bb0c7f3d7c/_src/_includes/head.html
+## License: unknown
+https://github.com/aJonghunPark/vite-react-ts-boilerplate/blob/c32f648abc232a22b0f6a9b71790ec9735c1263e/README.md
 
 ```
-title>
+.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
     
-    <!-- Pre
 ```
 
 
-## License: MIT
-https://github.com/rand-asswad/rand-asswad.github.io/blob/d33ca08c3605072decc92b4811e832bb0c7f3d7c/_src/_includes/head.html
+## License: unknown
+https://github.com/nocobase/nocobase/blob/f1f9f3ec288d104f7bc101a5505562a8037b2c44/packages/core/client/.dumi/theme/slots/PreviewerActions.tsx
 
 ```
-title>
-    
-    <!-- Preconnect to Google Fonts -->
-```
-
-
-## License: MIT
-https://github.com/rand-asswad/rand-asswad.github.io/blob/d33ca08c3605072decc92b4811e832bb0c7f3d7c/_src/_includes/head.html
-
-```
-title>
-    
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect
+.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "
 ```
 
 
-## License: MIT
-https://github.com/rand-asswad/rand-asswad.github.io/blob/d33ca08c3605072decc92b4811e832bb0c7f3d7c/_src/_includes/head.html
+## License: unknown
+https://github.com/aJonghunPark/vite-react-ts-boilerplate/blob/c32f648abc232a22b0f6a9b71790ec9735c1263e/README.md
 
 ```
-title>
-    
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis
-```
-
-
-## License: MIT
-https://github.com/rand-asswad/rand-asswad.github.io/blob/d33ca08c3605072decc92b4811e832bb0c7f3d7c/_src/_includes/head.html
-
-```
-title>
-    
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel
+.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "
 ```
 
 
 ## License: MIT
-https://github.com/rand-asswad/rand-asswad.github.io/blob/d33ca08c3605072decc92b4811e832bb0c7f3d7c/_src/_includes/head.html
+https://github.com/EmirDelicR/starter-pack-react/blob/02ec9482771806b9b98c977412c6d310e399ddad/application/frontend/README.md
 
 ```
-title>
-    
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https
+baseUrl": ".",
+    "paths
 ```
 
 
 ## License: MIT
-https://github.com/rand-asswad/rand-asswad.github.io/blob/d33ca08c3605072decc92b4811e832bb0c7f3d7c/_src/_includes/head.html
+https://github.com/EmirDelicR/starter-pack-react/blob/02ec9482771806b9b98c977412c6d310e399ddad/application/frontend/README.md
 
 ```
-title>
-    
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.g
+baseUrl": ".",
+    "paths": {
+      "@/*": ["
 ```
 
 
 ## License: MIT
-https://github.com/rand-asswad/rand-asswad.github.io/blob/d33ca08c3605072decc92b4811e832bb0c7f3d7c/_src/_includes/head.html
+https://github.com/EmirDelicR/starter-pack-react/blob/02ec9482771806b9b98c977412c6d310e399ddad/application/frontend/README.md
 
 ```
-title>
+baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+```
+
+
+## License: MIT
+https://github.com/EmirDelicR/starter-pack-react/blob/02ec9482771806b9b98c977412c6d310e399ddad/application/frontend/README.md
+
+```
+baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include":
+```
+
+
+## License: MIT
+https://github.com/EmirDelicR/starter-pack-react/blob/02ec9482771806b9b98c977412c6d310e399ddad/application/frontend/README.md
+
+```
+baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src"],
+  "references":
+```
+
+
+## License: MIT
+https://github.com/EmirDelicR/starter-pack-react/blob/02ec9482771806b9b98c977412c6d310e399ddad/application/frontend/README.md
+
+```
+baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig
+```
+
+
+## License: MIT
+https://github.com/EmirDelicR/starter-pack-react/blob/02ec9482771806b9b98c977412c6d310e399ddad/application/frontend/README.md
+
+```
+baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+```
+
+
+## License: MIT
+https://github.com/EmirDelicR/starter-pack-react/blob/02ec9482771806b9b98c977412c6d310e399ddad/application/frontend/README.md
+
+```
+baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
+``
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports =
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports =
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true,
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true,
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true,
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    '
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    '
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    '
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    '
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    '
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    '
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    '
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    '
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
     
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
 
 ```
-="currentColor" view
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" view
-```
-
-
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
-
-```
-="currentColor" viewBox="0 
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    
 ```
 
 
 ## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 
-```
-
-
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fill
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fill
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    
 ```
 
 
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="eveno
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="eveno
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin
 ```
 
 
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin
 ```
 
 
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
 ```
 
 
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
 ```
 
 
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H
-```
-
-
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.
 ```
 
 
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8
-```
-
-
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.
 ```
 
 
 ## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 
-```
-
-
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="
-```
-
-
-## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="
-```
-
-
-## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
-
-```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd"
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.
 ```
 
 
 ## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd"
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs',
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs',
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs',
 ```
 
 
 ## License: unknown
-https://github.com/deakin-launchpad/react-frontend-boilerplate/blob/2c1fef3c3d79dd27189e162fa7e0c0740dcac787/src/assets/icons/Image.js
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-            </svg
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs',
 ```
 
 
 ## License: unknown
-https://github.com/BoaterBase/bb-react-components/blob/57cfc9a70cf1da869bea15a543e4d6a10df9dfe4/src/Search/LayoutSelector.js
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
 
 ```
-="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-            </svg
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs',
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs',
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs',
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: {
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: {
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: {
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: {
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: {
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: {
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: {
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest',
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest',
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest',
+```
+
+
+## License: unknown
+https://github.com/esteves-esta/esteves-esta.github.io/blob/38eb557dcc563439fff5786714f82b38ecf8dd4b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest',
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest',
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest',
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest',
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest',
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+```
+
+
+## License: unknown
+https://github.com/esteves-esta/esteves-esta.github.io/blob/38eb557dcc563439fff5786714f82b38ecf8dd4b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: {
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: {
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: {
+```
+
+
+## License: unknown
+https://github.com/esteves-esta/esteves-esta.github.io/blob/38eb557dcc563439fff5786714f82b38ecf8dd4b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: {
+```
+
+
+## License: unknown
+https://github.com/phudlow/mw-char-maker/blob/8b0bb58b05dd8a1f499dabbbcb4dcb84b31f06fa/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: {
+```
+
+
+## License: unknown
+https://github.com/cozups/FE_practice/blob/f6ba40a2195aa9cc99dd7130362d149352cc2536/recoil/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: {
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: {
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: {
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: {
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: {
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' }
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' }
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' }
+```
+
+
+## License: unknown
+https://github.com/esteves-esta/esteves-esta.github.io/blob/38eb557dcc563439fff5786714f82b38ecf8dd4b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' }
+```
+
+
+## License: unknown
+https://github.com/phudlow/mw-char-maker/blob/8b0bb58b05dd8a1f499dabbbcb4dcb84b31f06fa/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' }
+```
+
+
+## License: unknown
+https://github.com/cozups/FE_practice/blob/f6ba40a2195aa9cc99dd7130362d149352cc2536/recoil/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' }
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' }
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' }
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' }
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' }
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-
+```
+
+
+## License: unknown
+https://github.com/esteves-esta/esteves-esta.github.io/blob/38eb557dcc563439fff5786714f82b38ecf8dd4b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-
+```
+
+
+## License: unknown
+https://github.com/phudlow/mw-char-maker/blob/8b0bb58b05dd8a1f499dabbbcb4dcb84b31f06fa/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-
+```
+
+
+## License: unknown
+https://github.com/cozups/FE_practice/blob/f6ba40a2195aa9cc99dd7130362d149352cc2536/recoil/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-
+```
+
+
+## License: unknown
+https://github.com/raagsharma/SwipTory/blob/ddc0c6a350c51a733885d232964e4daba9d9efe4/web/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+```
+
+
+## License: unknown
+https://github.com/esteves-esta/esteves-esta.github.io/blob/38eb557dcc563439fff5786714f82b38ecf8dd4b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+```
+
+
+## License: unknown
+https://github.com/phudlow/mw-char-maker/blob/8b0bb58b05dd8a1f499dabbbcb4dcb84b31f06fa/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+```
+
+
+## License: unknown
+https://github.com/cozups/FE_practice/blob/f6ba40a2195aa9cc99dd7130362d149352cc2536/recoil/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+```
+
+
+## License: unknown
+https://github.com/raagsharma/SwipTory/blob/ddc0c6a350c51a733885d232964e4daba9d9efe4/web/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-
+```
+
+
+## License: unknown
+https://github.com/esteves-esta/esteves-esta.github.io/blob/38eb557dcc563439fff5786714f82b38ecf8dd4b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-
+```
+
+
+## License: unknown
+https://github.com/phudlow/mw-char-maker/blob/8b0bb58b05dd8a1f499dabbbcb4dcb84b31f06fa/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-
+```
+
+
+## License: unknown
+https://github.com/cozups/FE_practice/blob/f6ba40a2195aa9cc99dd7130362d149352cc2536/recoil/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-
+```
+
+
+## License: unknown
+https://github.com/raagsharma/SwipTory/blob/ddc0c6a350c51a733885d232964e4daba9d9efe4/web/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      '
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      '
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      '
+```
+
+
+## License: unknown
+https://github.com/esteves-esta/esteves-esta.github.io/blob/38eb557dcc563439fff5786714f82b38ecf8dd4b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      '
+```
+
+
+## License: unknown
+https://github.com/phudlow/mw-char-maker/blob/8b0bb58b05dd8a1f499dabbbcb4dcb84b31f06fa/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      '
+```
+
+
+## License: unknown
+https://github.com/cozups/FE_practice/blob/f6ba40a2195aa9cc99dd7130362d149352cc2536/recoil/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      '
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      '
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      '
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      '
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      '
+```
+
+
+## License: unknown
+https://github.com/raagsharma/SwipTory/blob/ddc0c6a350c51a733885d232964e4daba9d9efe4/web/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      '
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstant
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstant
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstant
+```
+
+
+## License: unknown
+https://github.com/esteves-esta/esteves-esta.github.io/blob/38eb557dcc563439fff5786714f82b38ecf8dd4b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstant
+```
+
+
+## License: unknown
+https://github.com/phudlow/mw-char-maker/blob/8b0bb58b05dd8a1f499dabbbcb4dcb84b31f06fa/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstant
+```
+
+
+## License: unknown
+https://github.com/cozups/FE_practice/blob/f6ba40a2195aa9cc99dd7130362d149352cc2536/recoil/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstant
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstant
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstant
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstant
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstant
+```
+
+
+## License: unknown
+https://github.com/raagsharma/SwipTory/blob/ddc0c6a350c51a733885d232964e4daba9d9efe4/web/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstant
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+```
+
+
+## License: unknown
+https://github.com/esteves-esta/esteves-esta.github.io/blob/38eb557dcc563439fff5786714f82b38ecf8dd4b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+```
+
+
+## License: unknown
+https://github.com/phudlow/mw-char-maker/blob/8b0bb58b05dd8a1f499dabbbcb4dcb84b31f06fa/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+```
+
+
+## License: unknown
+https://github.com/cozups/FE_practice/blob/f6ba40a2195aa9cc99dd7130362d149352cc2536/recoil/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+```
+
+
+## License: unknown
+https://github.com/raagsharma/SwipTory/blob/ddc0c6a350c51a733885d232964e4daba9d9efe4/web/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types
+```
+
+
+## License: unknown
+https://github.com/esteves-esta/esteves-esta.github.io/blob/38eb557dcc563439fff5786714f82b38ecf8dd4b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types
+```
+
+
+## License: unknown
+https://github.com/phudlow/mw-char-maker/blob/8b0bb58b05dd8a1f499dabbbcb4dcb84b31f06fa/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types
+```
+
+
+## License: unknown
+https://github.com/cozups/FE_practice/blob/f6ba40a2195aa9cc99dd7130362d149352cc2536/recoil/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types
+```
+
+
+## License: unknown
+https://github.com/raagsharma/SwipTory/blob/ddc0c6a350c51a733885d232964e4daba9d9efe4/web/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    '
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    '
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    '
+```
+
+
+## License: unknown
+https://github.com/esteves-esta/esteves-esta.github.io/blob/38eb557dcc563439fff5786714f82b38ecf8dd4b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    '
+```
+
+
+## License: unknown
+https://github.com/phudlow/mw-char-maker/blob/8b0bb58b05dd8a1f499dabbbcb4dcb84b31f06fa/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    '
+```
+
+
+## License: unknown
+https://github.com/cozups/FE_practice/blob/f6ba40a2195aa9cc99dd7130362d149352cc2536/recoil/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    '
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    '
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    '
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    '
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    '
+```
+
+
+## License: unknown
+https://github.com/raagsharma/SwipTory/blob/ddc0c6a350c51a733885d232964e4daba9d9efe4/web/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    '
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { ar
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { ar
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { ar
+```
+
+
+## License: unknown
+https://github.com/esteves-esta/esteves-esta.github.io/blob/38eb557dcc563439fff5786714f82b38ecf8dd4b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { ar
+```
+
+
+## License: unknown
+https://github.com/phudlow/mw-char-maker/blob/8b0bb58b05dd8a1f499dabbbcb4dcb84b31f06fa/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { ar
+```
+
+
+## License: unknown
+https://github.com/cozups/FE_practice/blob/f6ba40a2195aa9cc99dd7130362d149352cc2536/recoil/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { ar
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { ar
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { ar
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { ar
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { ar
+```
+
+
+## License: unknown
+https://github.com/raagsharma/SwipTory/blob/ddc0c6a350c51a733885d232964e4daba9d9efe4/web/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { ar
+```
+
+
+## License: unknown
+https://github.com/tikaro/sandex/blob/6f7f5c4b16e81ad6c01df42be291c3d2b6cd886b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^
+```
+
+
+## License: GPL-2.0
+https://github.com/rafalp/Misago/blob/abad4f068f8e593efe350df4ce93b0eef2a4c961/misago-admin/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^
+```
+
+
+## License: MIT
+https://github.com/le0pard/pgtune/blob/422848fc5d2d0eff61a66a59b48668659a0a2829/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^
+```
+
+
+## License: unknown
+https://github.com/esteves-esta/esteves-esta.github.io/blob/38eb557dcc563439fff5786714f82b38ecf8dd4b/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^
+```
+
+
+## License: unknown
+https://github.com/phudlow/mw-char-maker/blob/8b0bb58b05dd8a1f499dabbbcb4dcb84b31f06fa/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^
+```
+
+
+## License: unknown
+https://github.com/cozups/FE_practice/blob/f6ba40a2195aa9cc99dd7130362d149352cc2536/recoil/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^
+```
+
+
+## License: unknown
+https://github.com/jihwooon/javascript-in-action/blob/7af41b4c32adfbde0caded90270300be4394b224/learn-react-and-next/section4/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^
+```
+
+
+## License: unknown
+https://github.com/endulum/react-itinerary/blob/9e387d9d3038022c7d92cd709534ff0c3ce2dd0a/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^
+```
+
+
+## License: unknown
+https://github.com/EntropicBlackhole/factucomperu/blob/a42c7400244cdbd6f09aadb28c0abdaa37b26a68/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^
+```
+
+
+## License: unknown
+https://github.com/shantielparker/Block-30-Strangers-Things/blob/4c9c9d4c0fd903d049b144f38f3effd47f8cb4c2/eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^
+```
+
+
+## License: unknown
+https://github.com/raagsharma/SwipTory/blob/ddc0c6a350c51a733885d232964e4daba9d9efe4/web/.eslintrc.cjs
+
+```
+/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^
 ```
 
