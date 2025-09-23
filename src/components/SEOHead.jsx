@@ -31,11 +31,9 @@ const SEOHead = ({
       <meta name="robots" content="index, follow" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="canonical" href={url} />
-    </Helmet>
-  );
-};
-
-export default SEOHead;
+      
+      {/* JSON-LD Schema */}
+      <script type="application/ld+json">
         {JSON.stringify({
           "@context": "http://schema.org",
           "@type": "LocalBusiness",

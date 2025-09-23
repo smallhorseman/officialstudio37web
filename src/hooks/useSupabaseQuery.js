@@ -87,21 +87,3 @@ export const useSupabaseMutation = (mutationFn, options = {}) => {
 
   return { mutate, loading, error };
 };
-      setError(err);
-      
-      if (options.onError) {
-        options.onError(err);
-      }
-      
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, [mutationFn, options]);
-
-  return {
-    mutate,
-    loading,
-    error
-  };
-};

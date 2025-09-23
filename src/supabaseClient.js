@@ -148,13 +148,6 @@ if (typeof window !== 'undefined') {
 }
 
 export default supabase;
-    trackPerformance(`cached_query_${key}`, startTime, true);
-    return result;
-  } catch (error) {
-    trackPerformance(`cached_query_${key}`, startTime, false);
-    throw error;
-  }
-};
 
 // Pro-level batch operations with transaction support
 export const batchTransaction = async (operations) => {
