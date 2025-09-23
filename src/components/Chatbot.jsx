@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+// DELETE THIS FILE - Use Studio37Chatbot.jsx instead
 import { supabase } from '../supabaseClient';
 
 const Chatbot = () => {

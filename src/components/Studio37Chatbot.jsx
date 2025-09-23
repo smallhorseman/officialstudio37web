@@ -147,46 +147,48 @@ const Studio37Chatbot = () => {
 
   const createLead = async (name, email, service) => {
     try {
-      // Validate email format
-      if (!validateEmail(email)) {
-        console.error('Invalid email format');
-        return;
-      }
-
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('leads')
         .insert({
-          name: name.trim(),
-          email: email.toLowerCase().trim(),
+          name: name,
+          email: email,
           service: service,
           status: 'New',
-          source: 'Chatbot',
-          message: `Lead generated from chatbot - interested in ${service} photography`,
           created_at: new Date().toISOString()
-        })
-        .select()
-        .single();
+        });
 
       if (error) {
         console.error('Error creating lead:', error);
-        throw error;
+        return false;
       }
-
-      console.log('Lead created successfully:', data);
       
-      // Log conversation
-      await supabase
-        .from('chatbot_conversations')
-        .insert({
-          conversation_id: conversationId,
-          user_message: `Name: ${name}, Email: ${email}, Service: ${service}`,
-          bot_response: 'Lead captured successfully',
-          lead_email: email
-        });
-
+      console.log('Lead created successfully');
+      return true;
     } catch (error) {
-      console.error('Error in createLead:', error);
-      // You might want to show an error message to the user
+      console.error('Error creating lead:', error);
+      return false;
+    }
+  };
+
+  const handleInfoCollection = (message) => {
+    switch (infoStep) {
+      case 'name':
+        setUserName(message);
+        setInfoStep('email');
+        return `Nice to meet you, ${message}! 😊 What's your email address?`;
+      case 'email':
+        if (!validateEmail(message)) {
+          return "Please enter a valid email address (e.g., john@example.com)";
+        }
+        setUserEmail(message);
+        setInfoStep('service');
+        return `Perfect! What type of photography session interests you?\n\n📸 Portrait\n💒 Wedding\n🏢 Commercial\n📱 Content Creation`;
+      case 'service':
+        setCollectingInfo(false);
+        createLead(userName, userEmail, message);
+        return `Excellent choice! 🎉\n\nI've saved your information:\n• Name: ${userName}\n• Email: ${userEmail}\n• Service: ${message}\n\nOur team will contact you within 24 hours. Is there anything else I can help you with?`;
+      default:
+        return "I'm here to help with any other questions!";
     }
   };
 
@@ -227,6 +229,20 @@ const Studio37Chatbot = () => {
       quickActions = response.quickActions || [];
     }
 
+    // Save conversation to database
+    try {
+      await supabase.from('chatbot_conversations').insert({
+        conversation_id: conversationId,
+        user_message: inputMessage,
+        bot_response: botResponseText,
+        lead_email: userEmail || null,
+        lead_phone: null,
+        created_at: new Date().toISOString()
+      });
+    } catch (error) {
+      console.error('Error saving conversation:', error);
+    }
+
     setTimeout(() => {
       const botMessage = {
         id: messages.length + 2,
@@ -241,33 +257,6 @@ const Studio37Chatbot = () => {
     }, 1200);
 
     setInputMessage('');
-  };
-
-  const handleInfoCollection = (message) => {
-    switch (infoStep) {
-      case 'name':
-        if (message.length < 2) {
-          return "Please enter a valid name (at least 2 characters).";
-        }
-        setUserName(message);
-        setInfoStep('email');
-        return `Nice to meet you, ${message}! 😊 What's your email address?`;
-        
-      case 'email':
-        if (!validateEmail(message)) {
-          return "Please enter a valid email address (e.g., name@example.com).";
-        }
-        setUserEmail(message);
-        setInfoStep('service');
-        return `Perfect! What type of photography session interests you?\n\n📸 Portrait\n💒 Wedding\n🏢 Commercial\n📱 Content Creation`;
-        
-      case 'service':
-        setCollectingInfo(false);
-        createLead(userName, userEmail, message);
-        return `Excellent choice! 🎉\n\nI've saved your information:\n• Name: ${userName}\n• Email: ${userEmail}\n• Service: ${message}\n\nOur team will contact you within 24 hours. Is there anything else I can help you with?`;
-      default:
-        return "I'm here to help with any other questions!";
-    }
   };
 
   const handleQuickAction = (action) => {

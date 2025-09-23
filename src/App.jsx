@@ -59,7 +59,7 @@ const ErrorFallback = React.memo(({ error, resetError }) => (
   </div>
 ));
 
-import Studio37Chatbot from './components/Chatbot';
+import Studio37Chatbot from './components/Studio37Chatbot';
 import ProAnalyticsDashboard from './components/ProAnalyticsDashboard';
 import { trackAnalyticsEvent, cachedQuery } from './supabaseClient';
 

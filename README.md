@@ -6,7 +6,7 @@ Professional photography and content strategy services in Houston, TX.
 
 ## 🚀 Live Site
 
-Visit the live site at: [https://studio37.netlify.app](https://studio37.netlify.app) (or your custom domain)
+Visit the live site at: [https://www.studio37.cc](https://www.studio37.cc)
 
 ## 📸 Features
 
