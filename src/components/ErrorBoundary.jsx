@@ -1,13 +1,10 @@
 import React from 'react';
+import { AlertTriangle } from './Icons';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      hasError: false, 
-      error: null,
-      errorInfo: null 
-    };
+    this.state = { hasError: false, error: null };
   }
 
   static getDerivedStateFromError(error) {
@@ -15,63 +12,57 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    this.setState({ errorInfo });
-    
-    // Log error to monitoring service
     console.error('Error caught by boundary:', error, errorInfo);
     
-    // Optional: Send to error reporting service
-    if (process.env.NODE_ENV === 'production') {
-      // reportError(error, errorInfo);
+    // Log to analytics if available
+    if (window.supabase) {
+      window.supabase
+        .from('system_logs')
+        .insert({
+          log_type: 'error',
+          message: error.toString(),
+          details: {
+            componentStack: errorInfo.componentStack,
+            error: {
+              message: error.message,
+              stack: error.stack
+            }
+          },
+          user_agent: navigator.userAgent,
+          created_at: new Date().toISOString()
+        })
+        .then(({ error: logError }) => {
+          if (logError) console.error('Failed to log error:', logError);
+        });
     }
   }
 
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-          <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-6 text-center">
-            <div className="mb-4">
-              <svg className="mx-auto h-12 w-12 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
-              </svg>
-            </div>
-            
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">
-              Something went wrong
-            </h2>
-            
-            <p className="text-gray-600 mb-6">
+        <div className="min-h-screen flex items-center justify-center bg-[#181818] text-[#F3E3C3]">
+          <div className="text-center p-8 max-w-md">
+            <AlertTriangle className="h-16 w-16 mx-auto mb-4 text-red-500" />
+            <h1 className="text-2xl font-bold mb-4">Something went wrong</h1>
+            <p className="text-[#F3E3C3]/70 mb-6">
               We're sorry, but something unexpected happened. Please try refreshing the page.
             </p>
-            
-            <div className="space-y-3">
+            <div className="space-y-4">
               <button
                 onClick={() => window.location.reload()}
-                className="w-full bg-black text-white py-2 px-4 rounded hover:bg-gray-800 transition-colors"
+                className="bg-[#F3E3C3] text-[#1a1a1a] px-6 py-2 rounded-md hover:bg-[#E6D5B8] transition-colors"
               >
                 Refresh Page
               </button>
-              
-              <button
-                onClick={() => window.location.href = '/'}
-                className="w-full bg-gray-200 text-gray-900 py-2 px-4 rounded hover:bg-gray-300 transition-colors"
-              >
-                Go Home
-              </button>
+              {import.meta.env.DEV && (
+                <details className="text-left bg-[#262626] p-4 rounded-md">
+                  <summary className="cursor-pointer text-sm">Error Details</summary>
+                  <pre className="mt-2 text-xs text-[#F3E3C3]/60 overflow-auto">
+                    {this.state.error?.stack}
+                  </pre>
+                </details>
+              )}
             </div>
-            
-            {process.env.NODE_ENV === 'development' && this.state.error && (
-              <details className="mt-6 text-left">
-                <summary className="cursor-pointer text-sm text-gray-500">
-                  Technical Details
-                </summary>
-                <pre className="mt-2 text-xs bg-gray-100 p-2 rounded overflow-auto">
-                  {this.state.error.toString()}
-                  {this.state.errorInfo?.componentStack}
-                </pre>
-              </details>
-            )}
           </div>
         </div>
       );

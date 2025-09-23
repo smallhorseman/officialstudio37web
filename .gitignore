@@ -76,3 +76,15 @@ stats.html
 # Temporary folders
 tmp/
 temp/
+
+# Citation files
+**/Code Citations.md
+**/*# Code Citations.md
+src/f.md
+src/components/sw# Code Citations.md
+public/Code Citations.md
+public/# Code Citations.md
+
+# Misplaced JSX files
+public/*.jsx
+src/hooks/*.jsx

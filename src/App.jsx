@@ -3,6 +3,7 @@ import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-r
 import { supabase, testConnection, getConnectionStatus } from './supabaseClient';
 import { useSupabaseQuery, useSupabaseMutation } from './hooks/useSupabase';
 import { usePerformanceMonitor } from './hooks/usePerformance';
+import { useJourneyTracking, useAbTest, useRealtimeNotifications } from './hooks/useProFeatures';
 import SEOHead from './components/SEOHead';
 
 // Centralized icon imports
@@ -59,7 +60,6 @@ const ErrorFallback = React.memo(({ error, resetError }) => (
 ));
 
 import Studio37Chatbot from './components/Chatbot';
-import { useJourneyTracking, useAbTest, useRealtimeNotifications } from './hooks/useProFeatures';
 import ProAnalyticsDashboard from './components/ProAnalyticsDashboard';
 import { trackAnalyticsEvent, cachedQuery } from './supabaseClient';
 

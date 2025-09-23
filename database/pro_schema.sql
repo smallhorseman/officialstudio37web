@@ -38,10 +38,25 @@ CREATE TABLE user_sessions (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
+-- Customer journey mapping
+CREATE TABLE customer_journey (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    contact_id UUID REFERENCES contacts(id), -- Changed from leads(id) to contacts(id)
+    session_id VARCHAR(100) NOT NULL,
+    journey_stage VARCHAR(50) NOT NULL,
+    touchpoint VARCHAR(100) NOT NULL,
+    interaction_type VARCHAR(50) NOT NULL,
+    page_url TEXT,
+    content_engaged JSONB,
+    time_spent INTEGER, -- seconds
+    conversion_event VARCHAR(100),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
 -- Enhanced lead scoring with AI/ML features
 CREATE TABLE lead_scoring_advanced (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    contact_id UUID NOT NULL REFERENCES leads(id) ON DELETE CASCADE,
+    contact_id UUID NOT NULL REFERENCES contacts(id) ON DELETE CASCADE, -- Changed from leads(id)
     base_score INTEGER DEFAULT 0,
     behavior_score INTEGER DEFAULT 0,
     demographic_score INTEGER DEFAULT 0,
@@ -78,38 +93,6 @@ CREATE TABLE ab_test_assignments (
     converted BOOLEAN DEFAULT FALSE,
     conversion_value DECIMAL(10,2),
     assigned_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-
--- Customer journey mapping
-CREATE TABLE customer_journey (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    contact_id UUID REFERENCES leads(id),
-    session_id VARCHAR(100) NOT NULL,
-    journey_stage VARCHAR(50) NOT NULL, -- awareness, consideration, decision, retention
-    touchpoint VARCHAR(100) NOT NULL, -- website, email, phone, social, etc.
-    interaction_type VARCHAR(50) NOT NULL,
-    page_url TEXT,
-    content_engaged JSONB,
-    time_spent INTEGER, -- seconds
-    conversion_event VARCHAR(100),
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-
--- Advanced content management with SEO
-CREATE TABLE seo_content (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    page_slug VARCHAR(100) UNIQUE NOT NULL,
-    title VARCHAR(200) NOT NULL,
-    meta_description TEXT,
-    keywords TEXT[],
-    canonical_url TEXT,
-    og_title VARCHAR(200),
-    og_description TEXT,
-    og_image TEXT,
-    schema_markup JSONB,
-    content_score INTEGER DEFAULT 0,
-    last_optimized TIMESTAMP WITH TIME ZONE,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
 -- Email marketing integration
@@ -172,6 +155,23 @@ SELECT
     COUNT(*) FILTER (WHERE conversion_event IS NOT NULL) as conversions
 FROM customer_journey
 GROUP BY journey_stage
+ORDER BY 
+    CASE journey_stage 
+        WHEN 'awareness' THEN 1
+        WHEN 'consideration' THEN 2  
+        WHEN 'decision' THEN 3
+        WHEN 'retention' THEN 4
+    END;
+
+-- Real-time dashboard view
+CREATE OR REPLACE VIEW dashboard_metrics AS
+SELECT 
+    (SELECT COUNT(*) FROM leads WHERE created_at > NOW() - INTERVAL '30 days') as leads_30d,
+    (SELECT COUNT(*) FROM leads WHERE created_at > NOW() - INTERVAL '7 days') as leads_7d,
+    (SELECT COUNT(*) FROM leads WHERE created_at > NOW() - INTERVAL '1 day') as leads_24h,
+    (SELECT AVG(final_score) FROM lead_scoring_advanced) as avg_lead_score,
+    (SELECT COUNT(DISTINCT session_id) FROM user_sessions WHERE created_at > NOW() - INTERVAL '1 day') as sessions_24h,
+    (SELECT AVG(session_duration) FROM user_sessions WHERE created_at > NOW() - INTERVAL '7 days') as avg_session_duration;
 ORDER BY 
     CASE journey_stage 
         WHEN 'awareness' THEN 1

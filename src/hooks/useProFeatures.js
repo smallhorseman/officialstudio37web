@@ -168,44 +168,42 @@ export const useJourneyTracking = () => {
 export const useRealtimeNotifications = () => {
   const [notifications, setNotifications] = useState([]);
 
-  const dismissNotification = useCallback((id) => {
-    setNotifications(prev => prev.filter(n => n.id !== id));
-  }, []);
-
   const addNotification = useCallback((message, type = 'info') => {
     const notification = {
-      id: Date.now(),
+      id: Date.now() + Math.random(),
       message,
       type,
-      timestamp: new Date()
+      timestamp: new Date().toISOString()
     };
     
     setNotifications(prev => [...prev, notification]);
     
-    // Auto dismiss after 5 seconds
+    // Auto-dismiss after 5 seconds
     setTimeout(() => {
       dismissNotification(notification.id);
     }, 5000);
-  }, [dismissNotification]);
+  }, []);
+
+  const dismissNotification = useCallback((id) => {
+    setNotifications(prev => prev.filter(n => n.id !== id));
+  }, []);
 
   useEffect(() => {
     const subscription = createRealtimeSubscription(
       'leads',
       (payload) => {
         if (payload.eventType === 'INSERT') {
-          setNotifications(prev => [...prev, {
-            id: Date.now(),
-            type: 'new_lead',
-            message: `New lead: ${payload.new.name}`,
-            data: payload.new,
-            timestamp: new Date()
-          }]);
+          addNotification(`New lead: ${payload.new.name}`, 'success');
         }
       }
     );
 
-    return () => subscription.unsubscribe();
-  }, []);
+    return () => {
+      if (subscription && typeof subscription.unsubscribe === 'function') {
+        subscription.unsubscribe();
+      }
+    };
+  }, [addNotification]);
 
   return { notifications, dismissNotification, addNotification };
 };
