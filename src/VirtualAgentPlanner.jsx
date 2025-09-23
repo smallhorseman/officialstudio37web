@@ -3,24 +3,11 @@ import { supabase } from './supabaseClient';
 
 const VirtualAgentPlanner = () => {
   const [messages, setMessages] = useState([
-    {
-      id: 1,
-      type: 'bot',
-      content: "👋 Hi! I'm your Studio37 virtual assistant. I can help you with:\n\n• Photography services & pricing\n• Booking consultations\n• Portfolio questions\n• Wedding & event photography\n• Commercial shoots\n\nWhat would you like to know?",
-      timestamp: new Date()
-    }
+    { id: 1, text: "Hi! I'm your virtual photography planner. I can help you plan your perfect photo session!", sender: 'bot' }
   ]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
 
   const predefinedResponses = {
     pricing: "Our photography packages start at $500 for portrait sessions and $2,500 for weddings. Each package is customized to your needs. Would you like to schedule a consultation to discuss your specific requirements?",
@@ -38,91 +25,90 @@ const VirtualAgentPlanner = () => {
     
     // Detect various intents
     if (lowerMessage.match(/(price|pricing|cost|how much|rate)/i)) return 'pricing';
-    if (lowerMessage.match(/(service|offer|what do you do)/i)) return 'services';
-    if (lowerMessage.match(/(book|schedule|appointment|consultation)/i)) return 'booking';
-    if (lowerMessage.match(/(portfolio|work|gallery|examples)/i)) return 'portfolio';
-    if (lowerMessage.match(/(wedding|engagement|bride|groom)/i)) return 'wedding';
-    if (lowerMessage.match(/(where|location|houston|address)/i)) return 'location';
-    if (lowerMessage.match(/(turnaround|delivery|how long)/i)) return 'turnaround';
+    if (lowerMessage.match(/(service|offer|what do you do|photography type)/i)) return 'services';
+    if (lowerMessage.match(/(book|schedule|appointment|consultation|hire)/i)) return 'booking';
+    if (lowerMessage.match(/(portfolio|gallery|work|examples|samples)/i)) return 'portfolio';
+    if (lowerMessage.match(/(wedding|bride|groom|engagement)/i)) return 'wedding';
+    if (lowerMessage.match(/(location|where|houston|travel)/i)) return 'location';
+    if (lowerMessage.match(/(turnaround|delivery|how long|when)/i)) return 'turnaround';
     if (lowerMessage.match(/(contact|phone|email|reach)/i)) return 'contact';
     
-    return 'general';
+    return null;
   };
 
-  const handleSendMessage = async () => {
-    if (!inputValue.trim()) return;
+  const generateResponse = (message) => {
+    const intent = detectIntent(message);
+    
+    if (intent && predefinedResponses[intent]) {
+      return predefinedResponses[intent];
+    }
+    
+    // Default response
+    return "I'd be happy to help! Could you tell me more about what you're looking for? I can provide information about our services, pricing, booking, or answer any other questions you have about photography sessions.";
+  };
 
-    const userMessage = {
-      id: Date.now(),
-      type: 'user',
-      content: inputValue,
-      timestamp: new Date()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!inputMessage.trim()) return;
+
+    // Add user message
+    const userMsg = {
+      id: messages.length + 1,
+      text: inputMessage,
+      sender: 'user'
     };
-
-    setMessages(prev => [...prev, userMessage]);
-    setInputValue('');
+    
+    setMessages(prev => [...prev, userMsg]);
+    setInputMessage('');
     setIsTyping(true);
-
-    // Detect intent and generate response
-    const intent = detectIntent(inputValue);
-    const response = predefinedResponses[intent] || "I'd be happy to help! Could you tell me more about what you're looking for?";
 
     // Simulate typing delay
     setTimeout(() => {
-      const botMessage = {
-        id: Date.now() + 1,
-        type: 'bot',
-        content: response,
-        timestamp: new Date()
+      const botResponse = generateResponse(inputMessage);
+      const botMsg = {
+        id: messages.length + 2,
+        text: botResponse,
+        sender: 'bot'
       };
-
-      setMessages(prev => [...prev, botMessage]);
+      
+      setMessages(prev => [...prev, botMsg]);
       setIsTyping(false);
     }, 1000);
   };
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSendMessage();
-    }
-  };
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   return (
-    <div className="virtual-agent-planner bg-[#262626] rounded-lg p-6 max-w-2xl mx-auto">
-      <div className="chat-header mb-4">
-        <h2 className="text-2xl font-display text-[#F3E3C3]">Studio37 Virtual Assistant</h2>
-        <p className="text-[#F3E3C3]/60 text-sm">Ask me anything about our services!</p>
+    <div className="flex flex-col h-full max-h-[600px] bg-[#262626] rounded-lg">
+      {/* Header */}
+      <div className="bg-[#1a1a1a] p-4 rounded-t-lg border-b border-[#F3E3C3]/20">
+        <h3 className="text-lg font-vintage text-[#F3E3C3]">Virtual Photography Planner</h3>
+        <p className="text-sm text-[#F3E3C3]/70">Let's plan your perfect photo session!</p>
       </div>
 
-      <div className="chat-messages bg-[#1a1a1a] rounded-lg p-4 h-96 overflow-y-auto mb-4">
-        {messages.map(message => (
-          <div
-            key={message.id}
-            className={`mb-4 ${message.type === 'user' ? 'text-right' : 'text-left'}`}
-          >
-            <div
-              className={`inline-block max-w-xs px-4 py-2 rounded-lg ${
-                message.type === 'user'
-                  ? 'bg-[#F3E3C3] text-[#1a1a1a]'
-                  : 'bg-[#262626] text-[#F3E3C3]'
-              }`}
-            >
-              <p className="whitespace-pre-line">{message.content}</p>
-              <p className="text-xs opacity-60 mt-1">
-                {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-              </p>
+      {/* Messages */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        {messages.map(msg => (
+          <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+            <div className={`max-w-xs px-4 py-2 rounded-lg ${
+              msg.sender === 'user' 
+                ? 'bg-[#F3E3C3] text-[#1a1a1a]' 
+                : 'bg-[#1a1a1a] text-[#F3E3C3] border border-[#F3E3C3]/20'
+            }`}>
+              <p className="whitespace-pre-line">{msg.text}</p>
             </div>
           </div>
         ))}
         
         {isTyping && (
-          <div className="text-left mb-4">
-            <div className="inline-block bg-[#262626] text-[#F3E3C3] px-4 py-2 rounded-lg">
+          <div className="flex justify-start">
+            <div className="bg-[#1a1a1a] text-[#F3E3C3] px-4 py-2 rounded-lg border border-[#F3E3C3]/20">
               <div className="flex space-x-1">
-                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" />
-                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce delay-100" />
-                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce delay-200" />
+                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
               </div>
             </div>
           </div>
@@ -131,23 +117,24 @@ const VirtualAgentPlanner = () => {
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="chat-input flex gap-2">
-        <input
-          type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          onKeyPress={handleKeyPress}
-          placeholder="Type your message..."
-          className="flex-1 bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-4 text-[#F3E3C3] focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
-        />
-        <button
-          onClick={handleSendMessage}
-          disabled={!inputValue.trim() || isTyping}
-          className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded-md font-semibold hover:bg-[#E6D5B8] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-        >
-          Send
-        </button>
-      </div>
+      {/* Input */}
+      <form onSubmit={handleSubmit} className="p-4 border-t border-[#F3E3C3]/20">
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+            placeholder="Ask about pricing, services, booking..."
+            className="flex-1 bg-[#1a1a1a] text-[#F3E3C3] px-4 py-2 rounded-lg border border-[#F3E3C3]/30 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]/50 placeholder-[#F3E3C3]/50"
+          />
+          <button
+            type="submit"
+            className="bg-[#F3E3C3] text-[#1a1a1a] px-4 py-2 rounded-lg hover:bg-[#E6D5B8] transition-colors"
+          >
+            Send
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

@@ -77,6 +77,10 @@ public/sw.js
 # Citation files (cleanup)
 *Citations.md
 Code Citations.md
+Code_Citations.md
+src/Code Citations.md
+src/hooks/# Code Citations.md
+public/Code_Citations.md
 
 # Database backups
 *.sql.backup

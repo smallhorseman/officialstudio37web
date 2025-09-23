@@ -578,30 +578,58 @@ function App() {
     useEffect(() => trackPageView('home'), []);
     
     return (
-      <div className="pt-20">
+      <div className="min-h-screen bg-dark text-cream">
         <SEOHead />
-        <ConnectionStatusNotification />
-        <div className="section-padding-lg text-center">
-          <h1 className="text-5xl md:text-7xl font-vintage mb-6 animate-fadeInUp">
-            Vintage Heart, Modern Vision
-          </h1>
-          <p className="text-xl md:text-2xl text-[#F3E3C3]/80 mb-8 max-w-2xl mx-auto animate-fadeInUp">
-            Professional photography and content strategy for brands ready to conquer the world from Houston, TX.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp max-w-md mx-auto">
-            <Link to="/services" className="bg-[#F3E3C3] text-[#1a1a1a] px-8 py-4 rounded-md font-semibold hover:bg-[#E6D5B8] transition-all hover:scale-105">
-              Our Services
-            </Link>
-            <Link to="/portfolio" className="border-2 border-[#F3E3C3] text-[#F3E3C3] px-8 py-4 rounded-md font-semibold hover:bg-[#F3E3C3] hover:text-[#1a1a1a] transition-all">
-              View Portfolio
-            </Link>
-          </div>
-          {connectionStatus === 'connected' && (
-            <div className="mt-6 text-sm text-green-400">
-              ✅ Database connected - Full functionality available
+        
+        {/* Hero Section */}
+        <section className="relative h-screen flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+            <h1 className="text-4xl md:text-6xl font-vintage mb-6">
+              Vintage Heart, Modern Vision
+            </h1>
+            <p className="text-xl md:text-2xl mb-8">
+              Full-service photography and content strategy for brands ready to conquer the world from Houston, TX.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                to="/portfolio" 
+                className="bg-cream text-dark px-8 py-3 rounded hover:bg-cream/90 transition"
+              >
+                View Portfolio
+              </Link>
+              <Link 
+                to="/contact" 
+                className="border border-cream px-8 py-3 rounded hover:bg-cream hover:text-dark transition"
+              >
+                Book Session
+              </Link>
             </div>
-          )}
-        </div>
+          </div>
+        </section>
+        
+        {/* Services Preview */}
+        <section className="py-20 px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-vintage text-center mb-12">
+              Our Services
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { title: 'Portraits', icon: '📸', desc: 'Professional headshots and personal branding' },
+                { title: 'Weddings', icon: '💒', desc: 'Capture your special day with timeless elegance' },
+                { title: 'Commercial', icon: '🏢', desc: 'Elevate your brand with stunning visuals' },
+                { title: 'Content Strategy', icon: '📱', desc: 'Complete visual content solutions' }
+              ].map((service, idx) => (
+                <div key={idx} className="text-center">
+                  <div className="text-4xl mb-4">{service.icon}</div>
+                  <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                  <p className="text-cream/70">{service.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
     );
   };
@@ -614,72 +642,80 @@ function App() {
       phone: '',
       service: ''
     });
-    const [submitting, setSubmitting] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      setSubmitting(true);
+      setLoading(true);
+      
       const success = await onUnlock(formData);
-      setSubmitting(false);
+      
       if (!success) {
         alert('There was an error. Please try again.');
       }
+      
+      setLoading(false);
     };
 
     return (
-      <div className="max-w-2xl mx-auto bg-[#262626] rounded-lg p-8">
-        <h2 className="text-3xl font-display mb-6 text-center">Unlock Our Portfolio</h2>
-        <p className="text-[#F3E3C3]/80 mb-8 text-center">
-          Get exclusive access to our full portfolio by sharing a few details about your project.
-        </p>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-4">
+      <div className="min-h-screen bg-dark text-cream flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-dark-secondary p-8 rounded-lg">
+          <h2 className="text-2xl font-vintage mb-6 text-center">
+            Unlock Our Portfolio
+          </h2>
+          <p className="text-center mb-8 text-cream/70">
+            Get instant access to our complete portfolio by sharing a bit about your project
+          </p>
+          
+          <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="text"
-              placeholder="Your Name *"
+              placeholder="Your Name"
+              required
               value={formData.name}
               onChange={(e) => setFormData({...formData, name: e.target.value})}
-              required
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              className="w-full px-4 py-3 bg-dark border border-cream/20 rounded focus:border-cream/50 transition"
             />
+            
             <input
               type="email"
-              placeholder="Your Email *"
+              placeholder="Email"
+              required
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
-              required
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              className="w-full px-4 py-3 bg-dark border border-cream/20 rounded focus:border-cream/50 transition"
             />
-          </div>
-          <div className="grid md:grid-cols-2 gap-4">
+            
             <input
               type="tel"
-              placeholder="Phone Number"
+              placeholder="Phone (Optional)"
               value={formData.phone}
               onChange={(e) => setFormData({...formData, phone: e.target.value})}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              className="w-full px-4 py-3 bg-dark border border-cream/20 rounded focus:border-cream/50 transition"
             />
+            
             <select
               value={formData.service}
               onChange={(e) => setFormData({...formData, service: e.target.value})}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+              className="w-full px-4 py-3 bg-dark border border-cream/20 rounded focus:border-cream/50 transition"
+              required
             >
-              <option value="">Select Service</option>
-              <option value="portraits">Portrait Photography</option>
-              <option value="weddings">Wedding Photography</option>
-              <option value="events">Event Photography</option>
+              <option value="">Select Service Interest</option>
+              <option value="portrait">Portrait Photography</option>
+              <option value="wedding">Wedding Photography</option>
               <option value="commercial">Commercial Photography</option>
               <option value="content">Content Strategy</option>
             </select>
-          </div>
-          <button
-            type="submit"
-            disabled={submitting}
-            className="w-full bg-[#F3E3C3] text-[#1a1a1a] rounded-md py-3 px-6 font-semibold transition-all hover:bg-[#E6D5B8] disabled:opacity-50"
-          >
-            {submitting ? 'Unlocking...' : 'Unlock Portfolio'}
-          </button>
-        </form>
+            
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-cream text-dark py-3 rounded hover:bg-cream/90 transition disabled:opacity-50"
+            >
+              {loading ? 'Unlocking...' : 'Unlock Portfolio'}
+            </button>
+          </form>
+        </div>
       </div>
     );
   };

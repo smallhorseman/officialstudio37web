@@ -16,6 +16,7 @@
     "preview:performance": "vite preview --host && npx lighthouse http://localhost:4173 --output json --output-path ./performance-report.json",
     "lint:fix": "eslint . --ext js,jsx --fix",
     "clean": "rm -rf dist node_modules/.vite",
+    "clean:citations": "node src/utils/cleanup-citations.js",
     "audit:security": "npm audit",
     "audit:performance": "npm run build && npx lighthouse http://localhost:4173 --output json --output-path ./lighthouse-report.json",
     "analyze:bundle": "npm run build && npx vite-bundle-analyzer dist/stats.html"

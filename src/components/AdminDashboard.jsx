@@ -1,31 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
+import { Navigate } from 'react-router-dom';
+import { simpleAuth } from '../utils/simpleAuth';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { supabase } from '../supabaseClient';
 import CmsSection from './CmsSection';
 import SiteMapTab from './SiteMapTab';
 
 // --- AdminDashboard Component ---
-export default function AdminDashboard({
-  leads,
-  updateLeadStatus,
-  content,
-  portfolioImages,
-  addPortfolioImage,
-  deletePortfolioImage,
-  updatePortfolioImageOrder,
-  blogPosts,
-  createBlogPost,
-  updateBlogPost,
-  deleteBlogPost,
-  blogEdit,
-  setBlogEdit,
-  blogSaving,
-  blogAdminError,
-  projects,
-  projectsLoading
-}) {
+const AdminDashboard = ({ 
+  leads = [], 
+  portfolioImages = [], 
+  projects = [], 
+  blogPosts = [],
+  onAddPortfolioImage, 
+  onDeletePortfolioImage,
+  onUpdateLeadStatus,
+  onUpdateProject,
+  onCreateBlogPost,
+  onUpdateBlogPost,
+  onDeleteBlogPost
+}) => {
   const [activeTab, setActiveTab] = useState('crm');
   const [siteMapPage, setSiteMapPage] = useState('home');
+
+  // Use simpleAuth instead of checking localStorage directly
+  const isAuthenticated = simpleAuth.isAuthenticated();
+  
+  if (!isAuthenticated) {
+    return <Navigate to="/admin/login" />;
+  }
+
+  const handleLogout = () => {
+    simpleAuth.logout();
+    window.location.href = '/admin/login';
+  };
 
   return (
     <div className="py-20 md:py-28 bg-[#212121]">
@@ -120,3 +128,4 @@ export default function AdminDashboard({
 }
 
 // Import other admin components here...
+export default AdminDashboard;
