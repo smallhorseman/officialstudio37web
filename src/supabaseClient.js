@@ -32,7 +32,12 @@ let connectionState = {
   status: 'disconnected',
   lastCheck: null,
   retryCount: 0,
-  maxRetries: 5
+  maxRetries: 5,
+  metrics: {
+    lastLatency: 0,
+    averageLatency: 0,
+    connectionQuality: 'good'
+  }
 };
 
 // Test connection function
@@ -90,6 +95,37 @@ export const batchInsert = async (table, records, batchSize = 100) => {
     } catch (error) {
       console.error(`❌ Batch insert failed for batch ${Math.floor(i / batchSize) + 1}:`, error);
       throw error;
+    }
+  }
+  
+  return results;
+};
+
+export const batchUpdate = async (table, updates, batchSize = 50) => {
+  if (!Array.isArray(updates) || updates.length === 0) {
+    return [];
+  }
+  
+  const results = [];
+  
+  for (let i = 0; i < updates.length; i += batchSize) {
+    const batch = updates.slice(i, i + batchSize);
+    
+    for (const update of batch) {
+      try {
+        const { data, error } = await supabase
+          .from(table)
+          .update(update.data)
+          .eq(update.column, update.value)
+          .select();
+        
+        if (error) throw error;
+        
+        results.push(...(data || []));
+      } catch (error) {
+        console.error(`❌ Batch update failed for item ${update.value}:`, error);
+        throw error;
+      }
     }
   }
   
@@ -207,28 +243,16 @@ export const uploadToStorage = async (file, bucket = 'portfolio', options = {}) 
   const startTime = performance.now();
   
   try {
-    const fileExt = file.name.split('.').pop();
-    const fileName = options.fileName || `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
-    
-    // Pro-tier storage with CDN and transformations
+    const fileName = `${Date.now()}_${file.name}`;
     const { data, error } = await supabase.storage
       .from(bucket)
       .upload(fileName, file, {
         cacheControl: '3600',
-        upsert: options.upsert || false,
-        contentType: file.type,
-        // Pro feature: image transformations
-        transform: options.transform || {
-          width: 1920,
-          height: 1080,
-          resize: 'cover',
-          quality: 85
-        }
+        upsert: false
       });
-      
+    
     if (error) throw error;
     
-    // Get optimized CDN URL
     const { data: { publicUrl } } = supabase.storage
       .from(bucket)
       .getPublicUrl(fileName, {
@@ -273,16 +297,11 @@ const getSessionId = () => {
   return sessionId;
 };
 
-// Pro-level error monitoring
-window.addEventListener('error', (event) => {
-  trackAnalyticsEvent('client_error', {
-    error: event.error?.message,
-    stack: event.error?.stack,
-    filename: event.filename,
-    lineno: event.lineno,
-    colno: event.colno
-  });
-});
+// Performance tracking function
+const trackPerformance = (eventName, startTime, success) => {
+  const duration = performance.now() - startTime;
+  console.log(`Performance: ${eventName} - ${duration}ms - ${success ? 'success' : 'failed'}`);
+};
 
 // Connection status functions
 export const testConnection = async () => {
@@ -311,25 +330,6 @@ export default supabase;
 if (typeof window !== 'undefined') {
   window.addEventListener('beforeunload', cleanup);
 }
-
-// Complete the batchInsert function
-export const batchInsert = async (table, records, batchSize = 100) => {
-  if (!Array.isArray(records) || records.length === 0) {
-    return [];
-  }
-  
-  const results = [];
-  
-  for (let i = 0; i < records.length; i += batchSize) {
-    const batch = records.slice(i, i + batchSize);
-    
-    try {
-      const { data, error } = await supabase
-        .from(table)
-        .insert(batch)
-        .select();
-      
-      if (error) throw error;
       
       results.push(...(data || []));
     } catch (error) {

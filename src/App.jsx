@@ -1,7 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense, useMemo, useCallback } from 'react';
 import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { supabase, testConnection, getConnectionStatus } from './supabaseClient';
-import { useSupabaseQuery, useSupabaseMutation } from './hooks/useSupabaseQuery';
+import { useSupabaseQuery, useSupabaseMutation } from './hooks/useSupabase';
 import { usePerformanceMonitor } from './hooks/usePerformance';
 import SEOHead from './components/SEOHead';
 
@@ -331,11 +331,13 @@ function App() {
 
   // Enhanced tracking with customer journey
   useEffect(() => {
-    trackJourneyStep('awareness', 'website', {
-      type: 'page_load',
-      content: { page: location.pathname }
-    });
-  }, [location.pathname, trackJourneyStep]);
+    if (trackJourneyStep) {
+      trackJourneyStep('awareness', 'website', {
+        type: 'page_load',
+        content: { page: location.pathname }
+      });
+    }
+  }, [location.pathname]);
 
   // Pro-level portfolio unlock with journey tracking
   const handlePortfolioUnlock = useCallback(async (formData) => {
@@ -512,8 +514,6 @@ function App() {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-white/20 placeholder-[#F3E3C3]/50 text-[#F3E3C3] bg-[#262626] rounded-b-md focus:outline-none focus:ring-[#F3E3C3] focus:border-[#F3E3C3] focus:z-10 sm:text-sm"
                   placeholder="Password"
-                  value={credentials.password}
-                  onChange={(e) => setCredentials({...credentials, password: e.target.value})}
                 />
               </div>
             </div>

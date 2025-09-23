@@ -1,4 +1,4 @@
-# Delete this file - it contains malformed syntax that may interfere with build parsing
+<!-- This file should be deleted -->
 
 ## License: unknown
 https://github.com/trodrigues/trodrigues.net/blob/cfb3c963c54ed3a2085de7d07bfbd5527bb5fbe3/abp/sw.js

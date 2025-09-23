@@ -1,4 +1,4 @@
-sw# Code Citations
+<!-- This file should be deleted -->
 
 ## License: Apache-2.0
 https://github.com/TimothyYe/godns/blob/3f788f118a3e7e4627886f9b0084a6ec4e5893bb/web/components/navbar.tsx

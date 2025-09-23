@@ -1,4 +1,4 @@
-# Code Citations
+<!-- This file should be deleted -->
 
 ## License: unknown
 https://github.com/nocobase/nocobase/blob/f1f9f3ec288d104f7bc101a5505562a8037b2c44/packages/core/client/.dumi/theme/slots/PreviewerActions.tsx
