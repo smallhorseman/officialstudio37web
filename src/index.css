@@ -315,7 +315,6 @@ textarea:focus {
 /* Container queries support */
 @supports (container-type: inline-size) {
   .container-query {
-    /* postcss-disable-next-line */
     /* stylelint-disable-next-line property-no-unknown */
     container-type: inline-size;
   }
@@ -323,6 +322,7 @@ textarea:focus {
 /* Container queries support */
 @supports (container-type: inline-size) {
   .container-query {
+    /* stylelint-disable-next-line property-no-unknown */
     container-type: inline-size;
   }
 }
@@ -503,7 +503,6 @@ textarea:focus {
     /* stylelint-disable-next-line property-no-unknown */
     container-type: inline-size;
   }
-}
 }
 
 /* Tooltip styles */
