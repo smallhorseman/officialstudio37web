@@ -315,10 +315,17 @@ textarea:focus {
 /* Container queries support */
 @supports (container-type: inline-size) {
   .container-query {
+    /* postcss-disable-next-line */
+    /* stylelint-disable-next-line property-no-unknown */
     container-type: inline-size;
   }
 }
-
+/* Container queries support */
+@supports (container-type: inline-size) {
+  .container-query {
+    container-type: inline-size;
+  }
+}
 /* Tooltip styles */
 .tooltip {
   position: relative;
@@ -490,12 +497,13 @@ textarea:focus {
   transform: translateZ(0);
   will-change: transform;
 }
-
 /* Container queries support */
 @supports (container-type: inline-size) {
   .container-query {
+    /* stylelint-disable-next-line property-no-unknown */
     container-type: inline-size;
   }
+}
 }
 
 /* Tooltip styles */
