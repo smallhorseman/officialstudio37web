@@ -49,141 +49,141 @@ const PhotoshootPlanner = ({ onComplete }) => {
 
       if (leadError) throw leadError;
 
-      // Save detailed planning info
-      const planningDetails = `
-Photoshoot Planning Details:
-Type: ${formData.shootType}
-Preferred Date: ${formData.date}
-Location: ${formData.location}
-Budget: ${formData.budget}
-Additional Details: ${formData.details}
-      `.trim();
-
-      if (leadData && leadData[0]) {
-        await supabase.from('lead_notes').insert([{
+      // Save planning details
+      const { error: planningError } = await supabase
+        .from('photoshoot_plans')
+        .insert([{
           lead_id: leadData[0].id,
-          note: planningDetails,
-          note_type: 'planning_session',
-          priority: 'medium',
-          status: 'Planning Complete'
+          shoot_type: formData.shootType,
+          date: formData.date,
+          location: formData.location,
+          budget: formData.budget,
+          details: formData.details
         }]);
-      }
 
-      onComplete && onComplete(formData);
+      if (planningError) throw planningError;
+
+      if (onComplete) {
+        onComplete(formData);
+      }
     } catch (error) {
-      console.error('Error submitting planning form:', error);
-      alert('There was an error submitting your information. Please try again.');
+      console.error('Error submitting photoshoot plan:', error);
+      alert('There was an error submitting your plan. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const renderStep = () => {
-    switch (step) {
-      case 1:
-        return (
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-[#F3E3C3]">Let's start with your contact information</h3>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
-              required
-            />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Your Phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
-            />
-          </div>
-        );
-      case 2:
-        return (
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-[#F3E3C3]">What type of shoot are you planning?</h3>
-            <select
-              name="shootType"
-              value={formData.shootType}
-              onChange={handleChange}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
-              required
-            >
-              <option value="">Select shoot type</option>
-              <option value="Portrait">Portrait Session</option>
-              <option value="Wedding">Wedding</option>
-              <option value="Event">Event Photography</option>
-              <option value="Commercial">Commercial/Branding</option>
-              <option value="Family">Family Session</option>
-              <option value="Other">Other</option>
-            </select>
-            <input
-              type="date"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
-            />
-          </div>
-        );
-      case 3:
-        return (
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-[#F3E3C3]">Location and budget preferences</h3>
-            <input
-              type="text"
-              name="location"
-              placeholder="Preferred location or 'flexible'"
-              value={formData.location}
-              onChange={handleChange}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
-            />
-            <select
-              name="budget"
-              value={formData.budget}
-              onChange={handleChange}
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
-            >
-              <option value="">Select budget range</option>
-              <option value="$75-150">$75-150 (Mini Session)</option>
-              <option value="$300-500">$300-500 (Standard)</option>
-              <option value="$750-1200">$750-1200 (Premium)</option>
-              <option value="$1200+">$1200+ (Luxury)</option>
-              <option value="Custom">Let's discuss</option>
-            </select>
-            <textarea
-              name="details"
-              placeholder="Any additional details or special requests..."
-              value={formData.details}
-              onChange={handleChange}
-              rows="4"
-              className="w-full bg-[#1a1a1a] border border-white/20 rounded-md py-2 px-3 text-[#F3E3C3] focus-ring"
-            />
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
-
   return (
-    <div className="bg-[#232323] p-6 rounded-lg">
-      <div className="mb-6">
-        <div className="flex items-center justify-between mb-2">
+    <div className="max-w-2xl mx-auto p-6 bg-[#262626] rounded-lg">
+      <h2 className="text-2xl font-vintage text-[#F3E3C3] mb-6">
+        Plan Your Photoshoot
+      </h2>
+
+      {step === 1 && (
+        <div className="space-y-4">
+          <h3 className="text-lg text-[#F3E3C3]">Contact Information</h3>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full px-4 py-2 bg-[#1a1a1a] border border-[#F3E3C3]/30 rounded text-[#F3E3C3]"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full px-4 py-2 bg-[#1a1a1a] border border-[#F3E3C3]/30 rounded text-[#F3E3C3]"
+          />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Your Phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full px-4 py-2 bg-[#1a1a1a] border border-[#F3E3C3]/30 rounded text-[#F3E3C3]"
+          />
+          <button
+            onClick={handleNext}
+            className="bg-[#F3E3C3] text-[#1a1a1a] px-6 py-2 rounded hover:bg-[#E6D5B8] transition-colors"
+          >
+            Next
+          </button>
+        </div>
+      )}
+
+      {step === 2 && (
+        <div className="space-y-4">
+          <h3 className="text-lg text-[#F3E3C3]">Photoshoot Details</h3>
+          <select
+            name="shootType"
+            value={formData.shootType}
+            onChange={handleChange}
+            className="w-full px-4 py-2 bg-[#1a1a1a] border border-[#F3E3C3]/30 rounded text-[#F3E3C3]"
+          >
+            <option value="">Select Shoot Type</option>
+            <option value="portrait">Portrait</option>
+            <option value="wedding">Wedding</option>
+            <option value="event">Event</option>
+            <option value="commercial">Commercial</option>
+          </select>
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
+            className="w-full px-4 py-2 bg-[#1a1a1a] border border-[#F3E3C3]/30 rounded text-[#F3E3C3]"
+          />
+          <input
+            type="text"
+            name="location"
+            placeholder="Preferred Location"
+            value={formData.location}
+            onChange={handleChange}
+            className="w-full px-4 py-2 bg-[#1a1a1a] border border-[#F3E3C3]/30 rounded text-[#F3E3C3]"
+          />
+          <input
+            type="text"
+            name="budget"
+            placeholder="Budget Range"
+            value={formData.budget}
+            onChange={handleChange}
+            className="w-full px-4 py-2 bg-[#1a1a1a] border border-[#F3E3C3]/30 rounded text-[#F3E3C3]"
+          />
+          <textarea
+            name="details"
+            placeholder="Additional Details"
+            value={formData.details}
+            onChange={handleChange}
+            rows="4"
+            className="w-full px-4 py-2 bg-[#1a1a1a] border border-[#F3E3C3]/30 rounded text-[#F3E3C3]"
+          />
+          <div className="flex gap-2">
+            <button
+              onClick={handleBack}
+              className="bg-gray-600 text-white px-6 py-2 rounded hover:bg-gray-700 transition-colors"
+            >
+              Back
+            </button>
+            <button
+              onClick={handleSubmit}
+              disabled={isSubmitting}
+              className="bg-[#F3E3C3] text-[#1a1a1a] px-6 py-2 rounded hover:bg-[#E6D5B8] transition-colors disabled:opacity-50"
+            >
+              {isSubmitting ? 'Submitting...' : 'Submit Plan'}
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default PhotoshootPlanner;
           <span className="text-sm text-[#F3E3C3]/70">Step {step} of 3</span>
           <div className="flex space-x-1">
             {[1, 2, 3].map((i) => (

@@ -27,10 +27,10 @@ Usage: Utility-first CSS framework for styling
 ## Compliance Statement
 
 This codebase complies with all referenced licenses and includes proper attribution where required. All third-party code is used within license terms.
-```
-"0 0 24 24
-```
 
+## SVG Icons Attribution
+
+Basic SVG paths for UI icons are common implementations found across multiple open-source projects and are used under fair use for basic UI elements.
 
 ## License: unknown
 https://github.com/AlexSPx/Corder/blob/6dc475ce305da9161843e39994ad64c3031ee3d1/newclient/src/public/SmallSvgs.tsx

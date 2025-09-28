@@ -1,0 +1,14 @@
+# Additional Code References
+
+This file tracks additional code references and dependencies used in the Studio37 project.
+
+## Dependencies Documentation
+
+All project dependencies are listed in package.json with their respective versions and licenses.
+
+## Development Notes
+
+- React 18.2.0 - Core framework
+- Vite 4.5.0 - Build tool
+- Tailwind CSS 3.4.17 - Styling framework
+- Supabase 2.39.0 - Backend services

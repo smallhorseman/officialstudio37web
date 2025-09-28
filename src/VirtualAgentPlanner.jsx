@@ -20,90 +20,90 @@ const VirtualAgentPlanner = () => {
     contact: "You can reach us:\n📞 Phone: (832) 713-9944\n📧 Email: sales@studio37.cc\n📍 Location: Houston, TX\n\nWe're here to help bring your vision to life!"
   };
 
-  const detectIntent = (message) => {
-    const lowerMessage = message.toLowerCase();
-    
-    // Detect various intents
-    if (lowerMessage.match(/(price|pricing|cost|how much|rate)/i)) return 'pricing';
-    if (lowerMessage.match(/(service|offer|what do you do|photography type)/i)) return 'services';
-    if (lowerMessage.match(/(book|schedule|appointment|consultation|hire)/i)) return 'booking';
-    if (lowerMessage.match(/(portfolio|gallery|work|examples|samples)/i)) return 'portfolio';
-    if (lowerMessage.match(/(wedding|bride|groom|marriage|engagement)/i)) return 'wedding';
-    if (lowerMessage.match(/(location|where|houston|travel)/i)) return 'location';
-    if (lowerMessage.match(/(turnaround|delivery|when|timeline)/i)) return 'turnaround';
-    if (lowerMessage.match(/(contact|phone|email|reach)/i)) return 'contact';
-    
-    return 'general';
-  };
-
-  const generateResponse = (intent) => {
-    return predefinedResponses[intent] || "I'd be happy to help you with information about Studio37's photography services. What specific questions do you have?";
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!inputMessage.trim()) return;
-
-    // Add user message
-    const userMsg = {
-      id: messages.length + 1,
-      text: inputMessage,
-      sender: 'user'
-    };
-    
-    setMessages(prev => [...prev, userMsg]);
-    setInputMessage('');
-    setIsTyping(true);
-
-    // Simulate typing delay
-    setTimeout(() => {
-      const botResponse = generateResponse(inputMessage);
-      const botMsg = {
-        id: messages.length + 2,
-        text: botResponse,
-        sender: 'bot'
-      };
-      
-      setMessages(prev => [...prev, botMsg]);
-      setIsTyping(false);
-    }, 1000);
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    scrollToBottom();
   }, [messages]);
 
-  return (
-    <div className="flex flex-col h-full max-h-[600px] bg-[#262626] rounded-lg">
-      {/* Header */}
-      <div className="bg-[#1a1a1a] p-4 rounded-t-lg border-b border-[#F3E3C3]/20">
-        <h3 className="text-lg font-vintage text-[#F3E3C3]">Virtual Photography Planner</h3>
-        <p className="text-sm text-[#F3E3C3]/70">Let's plan your perfect photo session!</p>
-      </div>
+  const handleSendMessage = () => {
+    if (!inputMessage.trim()) return;
 
-      {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.map(msg => (
-          <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-            <div className={`max-w-xs px-4 py-2 rounded-lg ${
-              msg.sender === 'user' 
+    const newMessage = { 
+      id: messages.length + 1, 
+      text: inputMessage, 
+      sender: 'user' 
+    };
+    
+    setMessages([...messages, newMessage]);
+    setIsTyping(true);
+    
+    setTimeout(() => {
+      const botResponse = { 
+        id: messages.length + 2, 
+        text: "Thanks for your message! A team member will respond shortly.", 
+        sender: 'bot' 
+      };
+      setMessages(prev => [...prev, botResponse]);
+      setIsTyping(false);
+    }, 1000);
+    
+    setInputMessage('');
+  };
+
+  return (
+    <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg">
+      <div className="p-4 bg-[#F3E3C3] rounded-t-lg">
+        <h3 className="text-lg font-bold">Virtual Planner</h3>
+      </div>
+      
+      <div className="h-96 overflow-y-auto p-4 space-y-3">
+        {messages.map(message => (
+          <div key={message.id} className={`${message.sender === 'user' ? 'text-right' : 'text-left'}`}>
+            <div className={`inline-block p-3 rounded-lg ${
+              message.sender === 'user' 
                 ? 'bg-[#F3E3C3] text-[#1a1a1a]' 
-                : 'bg-[#1a1a1a] text-[#F3E3C3] border border-[#F3E3C3]/20'
+                : 'bg-gray-100 text-gray-800'
             }`}>
-              <p className="whitespace-pre-line">{msg.text}</p>
+              {message.text}
             </div>
           </div>
         ))}
-        
         {isTyping && (
-          <div className="flex justify-start">
-            <div className="bg-[#1a1a1a] text-[#F3E3C3] px-4 py-2 rounded-lg border border-[#F3E3C3]/20">
-              <div className="flex space-x-1">
-                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce"></div>
-                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                <div className="w-2 h-2 bg-[#F3E3C3] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-              </div>
+          <div className="text-left">
+            <div className="inline-block p-3 rounded-lg bg-gray-100">
+              <span className="animate-pulse">Typing...</span>
             </div>
+          </div>
+        )}
+        <div ref={messagesEndRef} />
+      </div>
+      
+      <div className="p-4 border-t">
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+            placeholder="Type your message..."
+            className="flex-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F3E3C3]"
+          />
+          <button
+            onClick={handleSendMessage}
+            className="px-4 py-2 bg-[#F3E3C3] text-[#1a1a1a] rounded-lg hover:bg-[#E6D5B8] transition-colors"
+          >
+            Send
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default VirtualAgentPlanner;
           </div>
         )}
         

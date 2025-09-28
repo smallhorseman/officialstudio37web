@@ -39,40 +39,36 @@ export const generateResponsiveImages = (baseUrl, breakpoints = {
   desktop: 1200,
   large: 1600
 }) => {
-  if (!baseUrl || !baseUrl.includes('cloudinary.com')) return { src: baseUrl, srcSet: '' };
+  const images = {};
   
-  const srcSet = Object.entries(breakpoints)
-    .map(([device, width]) => {
-      const optimizedUrl = optimizeCloudinaryUrl(baseUrl, { 
-        width: width,
-        quality: device === 'mobile' ? 'auto:low' : 'auto:good'
-      });
-      return `${optimizedUrl} ${width}w`;
-    })
-    .join(', ');
-    
-  return {
-    src: optimizeCloudinaryUrl(baseUrl, { width: 800 }),
-    srcSet,
-    sizes: '(max-width: 480px) 400px, (max-width: 768px) 800px, (max-width: 1024px) 1200px, 1600px'
-  };
+  for (const [key, width] of Object.entries(breakpoints)) {
+    images[key] = optimizeCloudinaryUrl(baseUrl, { width });
+  }
+  
+  return images;
 };
 
-export const preloadCriticalImages = (urls) => {
-  if (!Array.isArray(urls)) return;
-  
-  urls.forEach(url => {
-    const link = document.createElement('link');
-    link.rel = 'preload';
-    link.as = 'image';
-    link.href = optimizeCloudinaryUrl(url, { width: 800, quality: 'auto:low' });
-    link.crossOrigin = 'anonymous';
+export const generateSrcSet = (baseUrl, sizes = [400, 800, 1200, 1600]) => {
+  return sizes
+    .map(size => `${optimizeCloudinaryUrl(baseUrl, { width: size })} ${size}w`)
+    .join(', ');
+};
+
+export const lazyLoadImage = (imageElement) => {
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazy');
+          imageObserver.unobserve(img);
+        }
+      });
+    });
     
-    // Add to document head if not already present
-    if (!document.querySelector(`link[href="${link.href}"]`)) {
-      document.head.appendChild(link);
-    }
-  });
+    imageObserver.observe(imageElement);
+  }
 };
 
 // Advanced lazy loading with Intersection Observer
@@ -152,6 +148,10 @@ export const supportsWebP = () => {
   return canvas.toDataURL('image/webp').indexOf('webp') > 0;
 };
 
+export const getOptimalFormat = () => {
+  if (supportsWebP()) return 'webp';
+  return 'auto'; // Cloudinary auto format
+};
 export const getOptimalFormat = () => {
   if (supportsWebP()) return 'webp';
   return 'auto'; // Cloudinary auto format
